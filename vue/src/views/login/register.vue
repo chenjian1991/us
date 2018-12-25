@@ -15,17 +15,18 @@
                             <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                             <div v-if="phoneRegister">
                                 <FormItem class="form_item">
-                                    <div class="country_container country">
+                                    <span class="pull-left">United States of America</span>
+                                    <div class="country_container country pull-right ">
                                         <div @click="controCountrylSelect">
                                             <input type="hidden">
                                             <div>
-                                                <img :src="countryFlag" alt="">
+                                                <img class="uniteState" :src="countryFlag" alt="">
                                                 <em v-html="globalCountryNumber" class="code"></em>
                                                 <Icon v-show="!countrySelectFlag" type="ios-arrow-down" />
                                                 <Icon v-show="countrySelectFlag" type="ios-arrow-up" />
                                             </div>
                                         </div>
-                                        <transition :duration="1000" mode="out-in"  name='fade'>
+                                        <transition :duration="500" mode="out-in"  name='fade'>
                                             <div v-show="countrySelectFlag" class="select_dropdown country_select_down">
                                                 <ul class="select_down_list">
                                                     <li @click="chooseGlobalCountry(item.en,item.image)" v-for="item in ossJSON" :value="item.label"  :label="item.label">
@@ -49,15 +50,14 @@
                                                 <Icon v-show="selectFlag" type="ios-arrow-up" />
                                             </div>
                                         </div>
-                                        <transition :duration="1000" mode="out-in"  name='fade'>
+                                        <transition :duration="500" mode="out-in"  name='fade'>
                                             <div v-show="selectFlag" class="select_dropdown">
                                                 <ul class="select_down_list">
-                                                <li @click="chooseCountry(item.code)" v-for="item in ossJSON" :value="item.label"  :label="item.label">
+                                                <li @click="chooseCountry(item.code)" v-for="item in ossCountryJSON" :value="item.label"  :label="item.label">
                                                     <div>
                                                         <img class="flag" :src="item.image"></img>
                                                         <span style="color:#000;margin-left:10px;"  v-html="item.en"></span>
                                                     </div>
-
                                                     <span v-html="item.code"></span>
                                                 </li>
                                                 </ul>
@@ -96,7 +96,8 @@
                                 <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
                                  <div id="captcha"></div>
                                   <FormItem class="form_item">
-                                    <div class="country_container country">
+                                      <span class="pull-left">United States of America</span>
+                                    <div class="country_container country pull-right">
                                         <div @click="controCountrylSelect">
                                             <input type="hidden">
                                             <div>
@@ -106,7 +107,7 @@
                                                 <Icon v-show="countrySelectFlag" type="ios-arrow-up" />
                                             </div>
                                         </div>
-                                        <transition :duration="1000" mode="out-in"  name='fade'>
+                                        <transition :duration="500" mode="out-in"  name='fade'>
                                             <div v-show="countrySelectFlag" class="select_dropdown country_select_down">
                                                 <ul class="select_down_list">
                                                     <li @click="chooseGlobalCountry(item.en,item.image)" v-for="item in ossJSON" :value="item.label"  :label="item.label">
@@ -121,7 +122,7 @@
                                     </div>
                                 </FormItem>
                                 <FormItem class="form_item" prop='emailNumber'>
-                                    <img  style="top:18px;" src="../../assets/images/register/email.svg" alt="">
+                                    <img  style="top:13px;" src="../../assets/images/register/email.svg" alt="">
                                     <Input  type="text"   v-model="formValidate.emailNumber"  :placeholder="$t('emailPlacehodler')"></Input>
                                 </FormItem>
                                 <!-- <FormItem class="form_item smsCode" prop='smsCode'>
@@ -175,7 +176,7 @@
 
             
             </div>
-            <div v-if="modal2" class="alert dis-n">
+            <!-- <div v-if="modal2" class="alert dis-n">
                 <div class="title"><i class="iconfont">&#xe604;</i></div>
                 <div class="notice" name="syNotice">
                 {{$t('usNotice')}}
@@ -183,7 +184,7 @@
                 <button @click="del">I GOT IT</button>
                 <div class="spacer_10"></div>
             </div>
-            <div v-if="modal2" class="mask dis-n"></div>
+            <div v-if="modal2" class="mask dis-n"></div> -->
 
         <Modal :modal='showModal' :text="text"></Modal>
        
@@ -305,7 +306,7 @@ const clickoutside = {
                 model1: '',
                 empty:true,
                 token:'',
-                modal2:false,
+                //modal2:false,
                 loaded:true,
                 //agreeAbleUrl:'',
                // agreeAbleUrlEn:'https://55support.zendesk.com/hc/en-us/articles/360004716273-Terms-of-User',
@@ -362,7 +363,8 @@ const clickoutside = {
                 emailParams:{},
                 registerbtn:false,
                 ossJSON:[],
-                countryFlag:'https://oss.55.com/content/country/image/CN.png'
+                ossCountryJSON:[],
+                countryFlag:'https://oss.55.com/content/state/image/AK.png'
                 
 
 
@@ -402,11 +404,19 @@ const clickoutside = {
                     }
                 })
             },
-            getOSSjson(){
-                getApi('https://oss.55.com/content/country/55-country.json',{}).then((res)=>{
+            getOSSStateJson(){
+                getApi('https://oss.55.com/content/state/55-state.json',{}).then((res)=>{
                     this.ossJSON = res;
                 })
             },
+            getOssCountryJson(){
+                getApi('https://oss.55.com/content/country/55-country.json',{}).then((res)=>{
+                    this.ossCountryJSON = res;
+                })
+            },
+
+
+
             // dealCountry(){
             //         let countryArr = []
             //     countrylist.map((v,i) => {
@@ -505,8 +515,8 @@ const clickoutside = {
                                     "fromSite":"B",
                                     "language":localStorage.getItem('countryLanguage'),
                                     "captchaValidateStr":value,
-                                    "country":_that.globalCountryNumber,
-                                    "area":""
+                                    "country":'US',
+                                    "area":_that.globalCountryNumber
 
                             }
                             _that.emailRegisterFun();
@@ -540,8 +550,8 @@ const clickoutside = {
                         "password":this.formValidate.confrimPassword,
                         "inviteCode":this.formValidate.referrId,
                         "fromSite":"B",
-                         "country":this.globalCountryNumber,
-                         "area":"",
+                         "country":'US',
+                         "area":this.globalCountryNumber,
                         }  
                 }else{
                      params = this.emailParams;
@@ -550,10 +560,6 @@ const clickoutside = {
                 postHeaderTokenBodyApi(register,this.token,params).then((res) =>{
                     if(res.code){
                         this.loaded = true;
-                        if(res.code =='10047'){
-                            this.modal2 = true;
-                            return false;
-                        }
                         this.showModal = !this.showModal;
                         this.text = this.$t(res.code);
 
@@ -588,9 +594,6 @@ const clickoutside = {
                                 setTimeout(() => {
                                 this.$router.push('/login')
                              }, 3000);
-                        }else if(res.code =="10047"){
-                            this.modal2 = true;
-                            return false;
                         }
                         this.showModal = !this.showModal;
                         this.text = this.$t(res.code);
@@ -649,6 +652,7 @@ const clickoutside = {
             },
              handleClose(e) {
                 this.selectFlag = false;
+                this.countrySelectFlag = false;
             },
             phoneTab(e){
                 this.phoneRegister = true;
@@ -660,9 +664,9 @@ const clickoutside = {
                 this.emailRegister = true;
                 this.shows =2;
             },
-            del(){
-                this.modal2 = false;
-            },
+            // del(){
+            //     this.modal2 = false;
+            // },
 
 
         },
@@ -712,14 +716,15 @@ const clickoutside = {
             //this.dealCountry();
             this.countryCode();
             this.countryNumber = '+1';
-            this.globalCountryNumber='China'
+            this.globalCountryNumber='Alaska'
             this.formValidate.interest=['ddd'];
             let inviteCode =  this.getUrlParams('code');
             this.formValidate.referrId = inviteCode;
             if(inviteCode){
                 this.referrDisable = true;
             }
-            this.getOSSjson()
+            this.getOSSStateJson();
+            this.getOssCountryJson();
 
         }
         
@@ -728,11 +733,8 @@ const clickoutside = {
 </script>
 
 <style lang='less'>
-
     .ivu-form{
               .ivu-input{
-                width: 580px;
-                height: 48px;
                 padding-left: 53px;
                 border-radius: 0px;
                // border:solid 1px #BDC4E1;
@@ -758,7 +760,10 @@ const clickoutside = {
 
         #registerHtml{
             .ivu-form{
+                 
                 .ivu-input{
+                    width: 400px;
+                    height: 38px;
                     border:1px solid #293B47;
                     border-radius: 5px;
                     background: #13222B;
@@ -776,6 +781,28 @@ const clickoutside = {
                 .ivu-btn-primary{
                     background: #12869A;
                     border: none;
+                }
+                .smsCode{
+                      .ivu-input-type{
+                           width: 280px;
+                           .ivu-input{
+                               width: 280px !important;
+                           }
+                       }
+                        .sendMs{
+                               width: 100px;
+                               height: 38px;
+                               border-radius: 3px;
+                           }
+                }
+                .phone_item{
+                    .ivu-input-type{
+                        width: 290px;
+                        .ivu-input{
+                            width: 100%;
+                            margin-left:20px;
+                        }
+                    }
                 }
 
             }
@@ -826,7 +853,7 @@ const clickoutside = {
             img{
                 z-index: 99;
                 position: absolute;
-                top: 14px;
+                top: 8px;
                 left: 14px;
             }
             img.flag{
@@ -839,7 +866,8 @@ const clickoutside = {
                 img{
                     width:20px;
                     height:14px;
-                    margin-top:3px;
+                    position: static;
+                    margin-top:-3px;
                 }
             }
            

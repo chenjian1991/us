@@ -29,17 +29,6 @@
 
         </div>
         <Modal :modal='showModal' :text="text"></Modal>
-           <div v-if="modal2" class="alert dis-n">
-                <div class="title"><i class="iconfont">&#xe604;</i></div>
-                <div class="notice" name="syNotice">
-                {{$t('usNotice')}}
-                </div>
-                <button @click="del">I GOT IT</button>
-                <div class="spacer_10"></div>
-            </div>
-            <div v-if="modal2" class="mask dis-n"></div>
-
-
     </div>
 </template>
 
@@ -87,7 +76,6 @@ import Cookies from 'js-cookie'
                 token:'',
                 ex55Pin:'',
                 captchaIns:'',
-                modal2:false,
                 loaded:true,
                 paramsObj:{},
                 formValidate:{
@@ -240,9 +228,6 @@ import Cookies from 'js-cookie'
                                     setTimeout(() => {
                                         _that.$router.push('/register')
                                     }, 1500);
-                                }else if(res.code == '10047'){//美国ip登录提示
-                                    _that.modal2 = true;
-                                    return false;
                                 }
                                 _that.showModal = !(_that.showModal);//！取非解决了弹出只谈一次的bug
                                 _that.text = _that.$t(res.code);
@@ -331,10 +316,6 @@ import Cookies from 'js-cookie'
                 })
 
             },
-              del(){
-                    this.modal2 = false;
-            },
-
 
         },
         computed:{

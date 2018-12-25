@@ -1,17 +1,6 @@
 <template>
    <div class="marketBox">
-      <div id="commonMarket" class="plate_content clearfix" :class="site" v-for="(value, site, index) in homeTableObject">
-         <!-- <div class="palte_head">
-             <div class="palte_head_left">
-
-                 <span  @click="tabClick(site,quoteName)" v-bind:class='{on:value.active==quoteName}' v-for="(quoteName,index) in value.quoteTitle">
-                     {{quoteName}}
-                 </span>
-             </div>
-             <div class="palte_head_right">
-                 <Input search  v-model="searchVal" :placeholder="this.$t('inputsearch')" style="width: 150px;background:#000;" />
-             </div>
-         </div> -->
+      <div id="commonMarket"  class="plate_content clearfix" :class="site" v-for="(value, site, index) in homeTableObject">
          <div class="tabelLable">
             <div v-if="site == 'B'" class="labelBox bsiteFont"> <i class="bsite"></i>{{$t('headerblockchain')}}</div>
             <div v-if="site == 'S'" class="labelBox ssiteFont"> <i class="ssite"></i>{{$t('headerstockchain')}}</div>
@@ -101,6 +90,7 @@
                {text:'3'},
                {text:'4'},
             ],
+            routePath:''
          }
       },
       methods:{
@@ -291,6 +281,8 @@
       },
       mounted(){
          this.getSymbolListRealtimeData()
+         this.routePath = this.$route.path;
+         console.log(this.$route.path)
       },
       destroyed() {
          //关闭SSE行情推送
@@ -301,9 +293,9 @@
 </script>
 
 <style scoped  lang="less">
-// .S{
-//    display: none;
-// }
+.F{
+   display: none;
+}
    .plate_content{
       width:1200px;
       min-height: 400px;
