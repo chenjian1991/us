@@ -179,6 +179,7 @@ export default {
         if (this.bannerArr.length > 1) {
           this.isAutoplay = true;
         }
+        this.bannerArr.length=1;
       });
     }
   },
@@ -383,7 +384,7 @@ export default {
       text-align: center;
       color: #344857;
       font-size: 30px;
-      padding: 70px 0 68px;
+      padding: 0px 0 68px;
     }
     ul {
       display: flex;
