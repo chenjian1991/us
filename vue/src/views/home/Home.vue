@@ -179,7 +179,7 @@ export default {
         if (this.bannerArr.length > 1) {
           this.isAutoplay = true;
         }
-        this.bannerArr.length=1;
+        //this.bannerArr.length=1;
       });
     }
   },
@@ -208,6 +208,7 @@ export default {
     },
     mianHomePrice(val, oldVal) {
       this.mainHomePriceObject = val;
+      //console.log(4444,this.mainHomePriceObject)
     }
   },
   mounted() {
