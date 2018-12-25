@@ -6,7 +6,7 @@
         :autoplay="isAutoplay"
         loop
         :radius-dot="false"
-        height="570px"
+        :height="570"
         arrow="never"
         :autoplay-speed="4000"
         style="background:#15232C"
@@ -76,28 +76,6 @@
     </section>
     <section class="siteTable">
       <market :sites="['B']"/>
-    </section>
-    <section class="FF_section">
-      <div class="center ff">{{$t('HomeFF')}}</div>
-      <div class="center ff_title">{{$t('HomeGlobalmarket')}}</div>
-      <ul class="center">
-        <li>
-          <img src="../../assets/images/newHome/Home/ff01@2x.png" width="54px" height="69px" alt>
-          <div class="ff_text">{{$t('HomeBuyingMining')}}</div>
-          <div class="ff_content">{{$t('HomeBuyingMiningTip')}}</div>
-        </li>
-        <li>
-          <img src="../../assets/images/newHome/Home/ff02@2x.png" width="54px" height="69px" alt>
-          <div class="ff_text">{{$t('HomeSuperMiner')}}</div>
-          <div class="ff_content">{{$t('HomeSuperMinerTip')}}</div>
-        </li>
-        <li>
-          <img src="../../assets/images/newHome/Home/ff03@2x.png" width="54px" height="69px" alt>
-          <div class="ff_text">{{$t('HomeFFTokenRecycle')}}</div>
-          <div class="ff_content">{{$t('HomeFFTokenTip')}}</div>
-        </li>
-      </ul>
-      <!-- <a href="" class="center abttion">了解更多</a> -->
     </section>
     <section class="market">
       <div class="market_title">{{$t('HomeMarketPosition')}}</div>
@@ -394,68 +372,9 @@ export default {
     }
   }
   .siteTable {
-    min-height: 500px;
+    min-height: 300px;
   }
-  .FF_section {
-    width: 100%;
-    box-sizing: border-box;
-    height: 554px;
-    //background: #15232C;
-    background: linear-gradient(0deg, rgba(9, 59, 74, 1), rgba(7, 44, 55, 1));
-    color: #fff;
-    overflow: hidden;
-    .center {
-      margin: 0 auto;
-    }
-    .ff {
-      width: 100%;
-      text-align: center;
-      margin-top: 70px;
-      margin-bottom: 27px;
-      font-size: 30px;
-      font-weight: bold;
-    }
-    .ff_title {
-      width: 100%;
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 73px;
-    }
-    ul {
-      width: 1200px;
-      display: flex;
-      justify-content: space-between;
-      li {
-        width: 310px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .ff_text {
-          font-size: 16px;
-          padding: 23px 0 15px 0;
-        }
-        .ff_content {
-          text-align: center;
-          font-size: 14px;
-          color: #7395a0;
-        }
-      }
-    }
-    .abttion {
-      width: 130px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid rgba(80, 195, 203, 0.7);
-      margin-top: 40px;
-      color: #fff;
-      &:hover {
-        color: #50c3cb;
-        border: 1px solid rgba(80, 195, 203, 1);
-      }
-    }
-  }
+
   .market {
     width: 100%;
     height: 590px;
