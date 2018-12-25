@@ -13,11 +13,11 @@
                             <!-- 分站点 -->
                             <div class="siteBox">
                                 <div class="siteName">
-                                    {{currentSite}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
+                                    {{$t('BExchange')}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
                                     <ul @click="changeBoard">
                                         <li data-value="B">{{$t('BExchange')}}</li>
-                                        <li data-value="S">{{$t('SExchange')}}</li>
-                                        <li data-value="F">{{$t('FExchange')}}</li>
+                                        <!-- <li data-value="S">{{$t('SExchange')}}</li> -->
+                                        <!-- <li data-value="F">{{$t('FExchange')}}</li> -->
                                         <!-- <li data-value="C">{{$t('CExchange')}}</li> -->
                                     </ul>
                                 </div>
@@ -904,18 +904,49 @@
                         
                     sortArr.map((v, i) => {
                         v.siteType.map((site,i) => {
-                            // v 每个站
-                            if (siteObj[site]) {
-                                if (siteObj[site][v.quoteAsset]) {
-                                    siteObj[site][v.quoteAsset].push(v)
-                                } else {
-                                    siteObj[site][v.quoteAsset] = [v]
+                            if(site=='B'){
+                                if(v.quoteAsset=='BTC'||v.quoteAsset=='ETH'){
+                                    if(v.baseAsset=='BTC'||v.baseAsset=='LTC'||v.baseAsset=='ETH'||v.baseAsset=='ZEC'||v.baseAsset=='DASH'||v.baseAsset=='XLM'){
+                                        // v 每个站
+                                        if (siteObj[site]) {
+                                            if (siteObj[site][v.quoteAsset]) {
+                                            siteObj[site][v.quoteAsset].push(v)
+                                            } else {
+                                            siteObj[site][v.quoteAsset] = [v]
+                                            }
+                                        } else {
+                                            let obj = {};
+                                            obj[v.quoteAsset] = [v]
+                                            siteObj[site] = obj
+                                        }
+                                    }
                                 }
-                            } else {
-                                let obj = {};
-                                obj[v.quoteAsset] = [v]
-                                siteObj[site] = obj
+                            }else{
+                                // v 每个站
+                                if (siteObj[site]) {
+                                    if (siteObj[site][v.quoteAsset]) {
+                                        siteObj[site][v.quoteAsset].push(v)
+                                    } else {
+                                        siteObj[site][v.quoteAsset] = [v]
+                                    }
+                                } else {
+                                    let obj = {};
+                                    obj[v.quoteAsset] = [v]
+                                    siteObj[site] = obj
+                                }
                             }
+                            // v 每个站
+                            // if (siteObj[site]) {
+                            //     if (siteObj[site][v.quoteAsset]) {
+                            //         siteObj[site][v.quoteAsset].push(v)
+                            //     } else {
+                            //         siteObj[site][v.quoteAsset] = [v]
+                            //     }
+                            // } else {
+                            //     let obj = {};
+                            //     obj[v.quoteAsset] = [v]
+                            //     siteObj[site] = obj
+                            // }
 
                         })
                             symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=21&${v.symbol}_startTime=${queryTime}&` //拼装推送数据查询url
