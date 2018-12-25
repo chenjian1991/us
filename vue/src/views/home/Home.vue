@@ -176,9 +176,11 @@ export default {
             subjectName: v.subjectName
           });
         });
+        this.bannerArr.length=1;
         if (this.bannerArr.length > 1) {
           this.isAutoplay = true;
         }
+
       });
     }
   },
