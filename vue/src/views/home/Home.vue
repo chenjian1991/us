@@ -6,7 +6,7 @@
         :autoplay="isAutoplay"
         loop
         :radius-dot="false"
-        :height="570"
+        height="570px"
         arrow="never"
         :autoplay-speed="4000"
         style="background:#15232C"
@@ -76,6 +76,28 @@
     </section>
     <section class="siteTable">
       <market :sites="['B']"/>
+    </section>
+    <section class="FF_section">
+      <div class="center ff">{{$t('HomeFF')}}</div>
+      <div class="center ff_title">{{$t('HomeGlobalmarket')}}</div>
+      <ul class="center">
+        <li>
+          <img src="../../assets/images/newHome/Home/ff01@2x.png" width="54px" height="69px" alt>
+          <div class="ff_text">{{$t('HomeBuyingMining')}}</div>
+          <div class="ff_content">{{$t('HomeBuyingMiningTip')}}</div>
+        </li>
+        <li>
+          <img src="../../assets/images/newHome/Home/ff02@2x.png" width="54px" height="69px" alt>
+          <div class="ff_text">{{$t('HomeSuperMiner')}}</div>
+          <div class="ff_content">{{$t('HomeSuperMinerTip')}}</div>
+        </li>
+        <li>
+          <img src="../../assets/images/newHome/Home/ff03@2x.png" width="54px" height="69px" alt>
+          <div class="ff_text">{{$t('HomeFFTokenRecycle')}}</div>
+          <div class="ff_content">{{$t('HomeFFTokenTip')}}</div>
+        </li>
+      </ul>
+      <!-- <a href="" class="center abttion">了解更多</a> -->
     </section>
     <section class="market">
       <div class="market_title">{{$t('HomeMarketPosition')}}</div>
@@ -176,11 +198,9 @@ export default {
             subjectName: v.subjectName
           });
         });
-        this.bannerArr.length=1;
         if (this.bannerArr.length > 1) {
           this.isAutoplay = true;
         }
-
       });
     }
   },

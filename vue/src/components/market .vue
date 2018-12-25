@@ -145,7 +145,7 @@
                   nowPrice.last = bigDecimal.round(nowPrice.last, long)
                }
                //默认写死的币种
-               if(v.symbol == "BTCUSDT" ||v.symbol == "EURDUSDD" || v.symbol == "AAPLTUSDT" || v.symbol == "FFUSDT"){
+               if(v.symbol == "BATBTC" ||v.symbol == "EOSBTC" || v.symbol == "ETHBTC" || v.symbol == "LTCBTC"){
                   this.mainHomeCoin[v.symbol] = Object.assign(v, nowPrice)
                   this.$store.commit('updateMainHomePrice', this.mainHomeCoin);
                }
@@ -167,23 +167,40 @@
                sortArr.map((v, i) => {
                   this.sites.map((site,i) => {
                      if(_.indexOf(v.siteType,site) != -1){
-                        // v 每个站
-                        if (siteObj[site]) {
-                           if (siteObj[site][v.quoteAsset]) {
-                              siteObj[site][v.quoteAsset].push(v)
-                           } else {
-                              siteObj[site][v.quoteAsset] = [v]
+                        if(site=='B'){
+                           if(v.quoteAsset=='BTC'||v.quoteAsset=='ETH'){
+                                  // v 每个站
+                              if (siteObj[site]) {
+                                 if (siteObj[site][v.quoteAsset]) {
+                                    siteObj[site][v.quoteAsset].push(v)
+                                 } else {
+                                    siteObj[site][v.quoteAsset] = [v]
+                                 }
+                              } else {
+                                 let obj = {};
+                                 obj[v.quoteAsset] = [v]
+                                 siteObj[site] = obj
+                              }
                            }
-                        } else {
-                           let obj = {};
-                           obj[v.quoteAsset] = [v]
-                           siteObj[site] = obj
+                        }else{
+                            // v 每个站
+                           if (siteObj[site]) {
+                              if (siteObj[site][v.quoteAsset]) {
+                                 siteObj[site][v.quoteAsset].push(v)
+                              } else {
+                                 siteObj[site][v.quoteAsset] = [v]
+                              }
+                           } else {
+                              let obj = {};
+                              obj[v.quoteAsset] = [v]
+                              siteObj[site] = obj
+                           }
                         }
                      }
                   })
                   symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
                })
-               this.symbolListSelf = siteObj//{B:{BTC:[],ETH:[],USDD:[],USDT:[]}}
+               this.symbolListSelf = siteObj
                console.log(1111,siteObj)
 
                // //更新交易对的行情  默认掉用一次  当有快照驱动时 监听数据变化
