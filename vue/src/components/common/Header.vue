@@ -127,8 +127,8 @@
                <!-- <li class="csite"><a>{{$t('headercoustomerchain')}}</a></li> -->
                <!-- <li class="lsite">
                   <a>{{$t('headerlocalbusiness')}}</a>
-               </li> -->
-               <!-- <li class="psite"><a>{{$t('headerpersonalchain')}}</a></li> -->
+               </li>
+               <li class="psite"><a>{{$t('headerpersonalchain')}}</a></li> -->
                <li class="tradecenter">
                   <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'BTCUSDT'}}">{{$t('headerexchangecenter')}}<Icon type="md-arrow-dropdown" size="16" class="triangle"/></router-link>
                   <ul class="tradeList">
