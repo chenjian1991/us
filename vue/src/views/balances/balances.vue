@@ -38,7 +38,10 @@
                <Col span="12"></Col>
             </Row>
             <Tabs value="name1" :animated="animate">
-               <TabPane :label="exchangeAccount" name="name1">
+                 <TabPane :label="B_site" name="name1">
+                     <Table :columns="columns1" :data="dataB"></Table>
+                  </TabPane>
+               <!-- <TabPane :label="exchangeAccount" name="name1">
                   <Table :columns="columns1" :data="dataALL"></Table>
                </TabPane>
                <TabPane :label="B_site" name="name2">
@@ -49,10 +52,10 @@
                </TabPane>
                <TabPane :label="S_site" name="name4">
                   <Table :columns="columns1" :data="dataS"></Table>
-               </TabPane>
+               </TabPane> -->
             </Tabs>
          </div>
-         <div class="below">
+         <!-- <div class="below">
             <p class="below-title">{{$t('BalancesInterestReturn')}}</p>
             <div class="below-content">
                <Row class="title">
@@ -73,7 +76,7 @@
                <Table :columns="columns5" :data="data5"></Table>
                <Page :total="totalPage" :page-size="1" show-elevator class="page" @on-change="onChangePage"/>
             </div>
-         </div>
+         </div> -->
       </div>
       <alertModal className="alert-first" title="BalancesUSDTtoUSDD" v-model="showFirst" :showHeader="showHeaderFirst"
                   width="700">
