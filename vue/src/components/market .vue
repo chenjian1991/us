@@ -210,7 +210,6 @@
                   }
                } else {
                   this.pushData[result.symbol] = [result];
-                  console.log(typeof(result.last))
                }
                //对象变动检测
                this.pushData = Object.assign({}, this.pushData)

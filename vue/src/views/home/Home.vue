@@ -5,8 +5,8 @@
         v-model="value1"
         :autoplay="isAutoplay"
         loop
+        :height='570'
         :radius-dot="false"
-        height="570px"
         arrow="never"
         :autoplay-speed="4000"
         style="background:#15232C"

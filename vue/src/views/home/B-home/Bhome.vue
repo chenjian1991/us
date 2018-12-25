@@ -7,7 +7,7 @@
                             <div class="swiper">
                             <div class="homebox">
                             <section class="bannerSection">
-                            <Carousel v-model="value1" :autoplay-speed="4000" arrow="never" height="570px" :autoplay="isAutoplay" loop :radius-dot="false">
+                            <Carousel v-model="value1" :autoplay-speed="4000" :height='570' arrow="never"  :autoplay="isAutoplay" loop :radius-dot="false">
                                 <CarouselItem v-for="item in bannerArr">
                                    <div v-if="item.targetUrl == '' || item.targetUrl== null">
                                         <div class="demo-carousel">
