@@ -372,8 +372,8 @@ import Cookies from 'js-cookie'
      #login{
            .inner_input_login{
          .ivu-input{
-            width: 580px;
-            height: 48px;
+            width: 400px;
+            height: 38px;
             padding-left: 53px;
             font-size: 14px;
             color:#fff;
@@ -392,7 +392,7 @@ import Cookies from 'js-cookie'
             img{
                 z-index: 99;
                 position: absolute;
-                top: 14px;
+                top: 10px;
                 left: 14px;
             }
             

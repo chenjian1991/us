@@ -131,12 +131,12 @@
                <li class="psite"><a>{{$t('headerpersonalchain')}}</a></li>
                <li class="tradecenter">
                   <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'BTCUSDT'}}">{{$t('headerexchangecenter')}}<Icon type="md-arrow-dropdown" size="16" class="triangle"/></router-link>
-                  <!-- <ul class="tradeList">
+                  <ul class="tradeList">
                      <li>
                         <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'BTCUSDT'}}"><i class="icon btcIcon"> </i><span>{{$t('headerblockexchange')}}</span>
                         </router-link>
                      </li>
-                     <li>
+                     <!-- <li>
                         <router-link :to="{path:'/exchange',query: {site: 'S',symbol:'AAPLTUSDT'}}"><i class="icon klineIcon"></i> <span>{{$t('headerstockexchange')}}</span>
                         </router-link>
                      </li>
@@ -147,8 +147,8 @@
                      <li>
                         <router-link :to="{path:'/exchange',query: {site: 'C',symbol:'AAPLTUSDT'}}"><i class="icon logoIcon"></i> <span>{{$t('headercustomerexchange')}}</span>
                         </router-link>
-                     </li>
-                  </ul> -->
+                     </li> -->
+                  </ul>
                </li>
             </ul>
             <div class="right">
@@ -825,7 +825,7 @@
                display: flex;
                align-items: center;
                span, i {
-                  color: rgba(255, 255, 255, 0.3);
+                  color: rgba(255, 255, 255, 0.6);
                   &:hover {
                      .color-fff;
                   }
