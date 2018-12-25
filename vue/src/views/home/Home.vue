@@ -6,7 +6,7 @@
         :autoplay="isAutoplay"
         loop
         :radius-dot="false"
-        height="570px"
+        :height="570"
         arrow="never"
         :autoplay-speed="4000"
         style="background:#15232C"
