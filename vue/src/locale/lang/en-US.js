@@ -332,7 +332,7 @@ export default {
   dlSignup: 'Sign Up',
   siginAcountPlaceholder: 'Email / Phone number',
   signPasswordPlaceholder: 'Please enter password',
-  signupPhone: 'Sign Up with Phone Number',
+  signupPhone: 'Sign Up with Phone',
   signupEmail: 'Sign Up with Email',
   regPhone: 'Sign Up',
   regSend: 'Send',
