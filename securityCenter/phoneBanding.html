@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../static/web/styles/page/intlTelInput.css">
+    <link rel="stylesheet" href="../static/web/styles/page/demo.css">
+    <link rel="stylesheet" href="../static/web/styles/index.css">
+    <link rel="stylesheet" href="../static/web/styles/page/commonHeadFoot.css">
+    <link rel="stylesheet" href="../static/web/styles/page/securityCenter.css">
+    <title>phoneBanding</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="big-container">
+        <div class="common-header"></div>
+        <div class="phone_wrapper">
+            <div class="phone_content">
+                <a class="phone_nav" href="javascript:;">Acount & Security</a>
+                <a class="phone_nav" href="javascript:;">>Add Mobile phone</a>
+                <div class="phone_title">Do not disclose Password Google Authenticaton codes and SMS to anyone,including 55 suport</div>
+                <div class="phone-msg">
+                    <div class="phone-msg-nav">
+                        Add Mobile Phone
+                    </div>
+                    <div class="phone-input-group">
+                        <form id="phoneBandingForm">
+                            <ul>
+                                <li class="phone-li-item phone-number">
+                                    <span class="phone-span-item">Phone Number：</span><input id="mobile-number" type="tel" name="phoneNum" class="js-phone-input">
+                                </li>
+                                <li class="phone-li-item">
+                                    <span class="phone-span-item">SMS Code：</span><input class="smsCode js-sms-input" type="text" name="smsCode"><em class="phone-sms js-sms-btn">Send SMS</em>
+                                </li>
+                                <li class="phone-li-item">
+                                    <span class="phone-span-item">Google Authentication Code：</span><input type="text" name="googleCode" class="smsCode js-googlecode-input">
+                                </li>
+                                <li class="phone-li-item">
+                                    <button type="button" class="phone-submit js-bind-phone">submit</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="common-footer"></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src='../static/web/js/lib/jquery.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+<script type="text/javascript" src="../static/web/js/page/intlTelInput.js"></script>
+<script type="text/javascript" src="../static/web/js/lib/utils.js"></script>
+<script type="text/javascript" src='../static/web/js/page/common.js'></script>
+<script type="text/javascript" src="../static/web/js/lib/jquery-validation-1.7.0.js"></script>
+<script type="text/javascript" src='../static/web/js/lib/layer.js'></script>
+<script type="text/javascript" src='../static/web/js/page/common_validate.js'></script>
+<script type="text/javascript" src='../static/web/js/page/common-tools.js'></script>
+<script type="text/javascript" src='../static/web/js/page/common-error.js'></script>
+<script type="text/javascript" src='../static/web/js/page/request-bind-phone.js'></script>
+<script type="text/javascript">
+    //国家区号联动
+    $('#mobile-number').intlTelInput();
+    $(document).ready(function () {
+        nav();
+    });
+</script>
+</html>

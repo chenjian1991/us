@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="83px" viewBox="0 0 96 83" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Mining@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="登录后首页" transform="translate(-21.000000, -914.000000)">
+            <g id="Mining" transform="translate(22.000000, 915.000000)">
+                <rect id="矩形_817_拷贝_2" stroke="#5460CB" fill-opacity="0.52587183" fill="#688FFF" fill-rule="nonzero" x="0" y="0" width="94" height="8"></rect>
+                <circle id="椭圆_863" stroke="#5460CB" fill="#8AA8FF" fill-rule="nonzero" cx="4.5" cy="4.5" r="1.5"></circle>
+                <circle id="椭圆_863_拷贝" stroke="#5460CB" fill="#8AA8FF" fill-rule="nonzero" cx="10.5" cy="4.5" r="1.5"></circle>
+                <circle id="椭圆_863_拷贝_2" stroke="#5460CB" fill="#8AA8FF" fill-rule="nonzero" cx="16.5" cy="4.5" r="1.5"></circle>
+                <polygon id="矩形_817_拷贝_5" stroke="#5460CB" points="39.8 63 55.2 63 58 76 37 76"></polygon>
+                <circle id="椭圆_847" stroke="#5460CB" cx="19" cy="28" r="8"></circle>
+                <polyline id="形状_848" stroke="#5460CB" points="15 27 23 27 20.8182691 25"></polyline>
+                <polyline id="形状_848_拷贝" stroke="#5460CB" points="24 30 16 30 18.1823444 32"></polyline>
+                <rect id="矩形_817_拷贝_3" stroke="#5460CB" x="0" y="0" width="94" height="63"></rect>
+                <rect id="矩形_817_拷贝_6" stroke="#5460CB" x="3" y="13" width="88" height="46"></rect>
+                <rect id="矩形_817_拷贝_4" stroke="#5460CB" fill-opacity="0.741508152" fill="#8AA8FF" fill-rule="nonzero" x="32" y="76" width="30" height="5"></rect>
+                <path d="M11,40 L27,40" id="形状_857" stroke="#5460CB" stroke-width="2" fill="#8AA8FF"></path>
+                <path d="M11,45 L27,45" id="形状_857_拷贝" stroke="#5460CB" stroke-width="2" fill="#8AA8FF"></path>
+                <path d="M11,50 L27,50" id="形状_857_拷贝_2" stroke="#5460CB" stroke-width="2" fill="#8AA8FF"></path>
+                <path d="M64,40 L80,40" id="形状_857_拷贝_3" stroke="#5460CB" stroke-width="2" fill="#8AA8FF"></path>
+                <path d="M64,45 L80,45" id="形状_857_拷贝_3-2" stroke="#5460CB" stroke-width="2" fill="#8AA8FF"></path>
+                <path d="M64,50 L80,50" id="形状_857_拷贝_3-3" stroke="#5460CB" stroke-width="2" fill="#8AA8FF"></path>
+                <text id="&lt;&gt;" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#5460CB">
+                    <tspan x="62.64" y="33">&lt;&gt;</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

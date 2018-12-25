@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title class="i18n" name='xpxqHeaderTitle'>Supervision</title>
+    <meta id="i18n_pagename" content="index">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="../static/web/styles/index.css?t=20180912">
+    <link rel="stylesheet" href="../static/web/styles/header_footer.css?t=20180910">
+    <link rel="stylesheet" href="../static/web/styles/page/vueSupervison.css?t=20180724">
+    <link rel="stylesheet" href="../static/web/iconfont/iconfont.css?t=20180912">
+    <style>
+        .scanCodepic{
+            top:-63px !important;
+        }
+        .download_new p{
+            margin:15px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper supervision-wrapper">
+    <div class="common-header"></div>
+    <div class="container clearfix supervision-container" id="supervison-container">
+        <div class="container-inner" id="vue-container">
+            <p class="supervision-tab"><a href="../exchange/b11/index.html#/home" name="xpxqHome" class="i18n"> </a><a class="i18n" name="prvepage" href="./supervision_list.html"></a><a name='xpxqPresentPosition' class="i18n"></a></p>
+            <div class="banner">
+                <div class="baner-left">
+                    <div class="clearfix">
+                        <img  :src="imgsrc"  alt="">
+                        <div class="name clearfix">
+                            <p><em v-html="pageAnswer.s423785g02q0100000"></em> / <em v-html="pageAnswer.s423785g02q0300000"></em><em class="fullNameCoin" v-html="pageAnswer.s423785g02q0200000"></em></p>
+                            <span v-if="pageAnswer.s423785g02q0500000_SQ001=='是'" :title="pageQuestion.s423785g02q0500000_SQ001" v-html="pageQuestion.s423785g02q0500000_SQ001"></span>
+                            <span v-if="pageAnswer.s423785g02q0500000_SQ002=='是'" :title="pageQuestion.s423785g02q0500000_SQ002" v-html="pageQuestion.s423785g02q0500000_SQ002"></span>
+                            <span v-if="pageAnswer.s423785g02q0500000_SQ003=='是'" :title="pageQuestion.s423785g02q0500000_SQ003" v-html="pageQuestion.s423785g02q0500000_SQ003"></span>
+                            <span v-if="pageAnswer.s423785g02q0500000_SQ004=='是'" :title="pageQuestion.s423785g02q0500000_SQ004" v-html="pageQuestion.s423785g02q0500000_SQ004"></span>
+                            <span v-if="pageAnswer.s423785g02q0500000_SQ005=='是'" :title="pageQuestion.s423785g02q0500000_SQ005" v-html="pageQuestion.s423785g02q0500000_SQ005"></span>
+                            <span v-if="pageAnswer.s423785g02q0500000_SQ006=='是'" :title="pageQuestion.s423785g02q0500000_SQ006" v-html="pageQuestion.s423785g02q0500000_SQ006"></span>
+                        </div>
+                    </div>
+                    <div class="baner-left-bottom clearfix">
+                        <ul>
+                            <li>
+                                <em></em>
+                                <span><a target="_blank" :href="pageAnswer.s423785g06q0070000" class="i18n" name="xpxqWebsite"></a></span>
+                            </li>
+                            <li>
+                                <em></em>
+                                <span><a target="_blank" :href="pageAnswer.s423785g03q0100000_SQ002" class="i18n" name="xpxqGithub"></a></span>
+                            </li>
+                            <li>
+                                <em></em>
+                                <span><a target="_blank" :href="whitepaperUrl" class="i18n" name="xpxqWhitePaper"></a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="baner-middle">
+                    <p class="i18n" name="nowprice">现价<em>(刚刚)</em></p>
+                    <div class="price-left">
+                        <p>--</p>
+                        <p><span>--</span><em>（24H）</em></p>
+                    </div>
+                    <div class="price-right">
+                        <ul>
+                            <li>
+                                <span class="i18n" name="loaclhigh"></span>
+                                <em>--</em>
+                            </li>
+                            <li>
+                                <span class="i18n" name="loacllow"></span>
+                                <em>--</em>
+                            </li>
+                            <li>
+                                <span class="i18n" name="exchangeValumn"></span>
+                                <em>--</em>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="baner-right">
+                    <p><em></em><span class="i18n" name="projectmessage"></span></p>
+                    <p><em class="i18n" name="recentday"></em></p>
+                    <p v-html="pageAnswer.submitdate?pageAnswer.submitdate:'--'">2018-04-09</p>
+                    <!--<p>历史披露</p>-->
+                </div>
+            </div>
+            <div class="body-content clearfix">
+            <div class="body-left">
+                <div class="project-description">
+                    <a name="11" id="11"></a>
+                    <div class="descript-title i18n" name="xpxqProjectDescription"></div>
+                    <div v-html="pageAnswer.s423785g06q0050000" class="descript-body">
+                    </div>
+
+                </div>
+                <a name="21" id="21"></a>
+                <div v-if="pageAnswer.s423785g02q0500000_SQ001=='是'" class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqUnderlyingPublicToken"></div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501010"></div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501010"></div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501015">分叉母体：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501015">ASDF</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501020">测试网是否上线：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div  v-html="pageAnswer.s423785g02q0501020">是</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501030">主网是否上线：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501030">是</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ003">DAPP应用数量：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ003">12</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                <div v-html="pageQuestion.s423785g02q0501040_SQ005">TPS：</div>
+                                <div class="line"></div>
+                                </td>
+                                <td>
+                                <div v-html="pageAnswer.s423785g02q0501040_SQ005">10笔/秒</div>
+                                <div class="line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ002">去中心程度：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ002">30%</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ004">出块速度：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ004">1小时</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--<div v-html="pageQuestion.s423785g02q0501040_SQ005">TPS：</div>-->
+                                    <!--<div class="line"></div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<div v-html="pageAnswer.s423785g02q0501040_SQ005">10笔/秒</div>-->
+                                    <!--<div class="line"></div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<div v-html="pageQuestion.s423785g02q0501040_SQ008">安全机制：</div>-->
+                                    <!--<div class="line"></div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<div v-html="pageAnswer.s423785g02q0501040_SQ008">30%</div>-->
+                                    <!--<div class="line"></div>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ009">全网算力：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ009">30%</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501050">是否开源：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501050">否</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ010">算力最近30日日增长率：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ010">30%</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ011">最近30日 日平均转账笔数：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td>
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ011">1112</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ001">主要创新点解决的问题：</div>
+                                    <div class="line"></div>
+
+                                </td>
+                                <td colspan="3">
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ001">设计上定位为面向实用化的区块链技术4.0基础设施，聚焦区块链基础设施和平台层核心技术 研发，能以公有链、联盟链、私有链等形式落地到实际应用场景，成为多个行业的基础设施， 并形成基于区块链的完善行业生态体系。</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ008">安全机制：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td colspan="3">
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ008">30%</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ006">技术主要创新点：</div>
+                                    <div class="line"></div>
+                                </td>
+                                <td colspan="3">
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ006">1.底层P2P网络节点通信、2.底层数据结构、3.分布式共识机制</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div v-html="pageQuestion.s423785g02q0501040_SQ007">主要创新点解决的问题：</div>
+                                    <div class="line"></div>
+
+                                </td>
+                                <td colspan="3">
+                                    <div v-html="pageAnswer.s423785g02q0501040_SQ007">设计上定位为面向实用化的区块链技术4.0基础设施，聚焦区块链基础设施和平台层核心技术 研发，能以公有链、联盟链、私有链等形式落地到实际应用场景，成为多个行业的基础设施， 并形成基于区块链的完善行业生态体系。</div>
+                                    <div class="line"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div v-if="pageAnswer.s423785g02q0500000_SQ002=='是'" class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqExchangeWalletToken">交易所或钱包平台Token相关信息</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502010">搭载的公链</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502010">EOS</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502020_SQ001">管理用户的等值BTC数量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502020_SQ001">≈ 2323 BTC</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502020_SQ002">手续费收取方式与数额：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502020_SQ002">自动扣除，0.1%</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502020_SQ003">上币费收取方式与数额:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502020_SQ003">50万美元，转账</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0504010">是否收益分红：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0504010">否</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502040">是否采用交易即挖矿机制：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502040">否</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502020_SQ004">最近一个月平均单日交易量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502020_SQ004">EOS</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502020_SQ005">最近一个月平均日交易量 最大的前三币种：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502020_SQ005">BTC/USDT、ETH/USDT、 EOS/USDT</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502020_SQ006">最近一个月月活MAU：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502020_SQ006">94992</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502020_SQ007">最近一个月日活DAU：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502020_SQ007">3345</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502020_SQ008">平台上币数量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502020_SQ008">12</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div></div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div></div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div v-if="pageAnswer.s423785g02q0500000_SQ003=='是'" class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqTraditionalInternetToken">传统互联网/实业项目代币化的应用型Token相关信息</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502010">搭载的公链</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502010">EOS</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503040">项目类型:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503040">B2B2C</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503020">当前融资轮次:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503020">A轮</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503030">上一轮估值：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503030">3000万美元</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503010_SQ001">公司名称（原互联网或 实业公司）：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503010_SQ001">万力达集团有限公司</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503010_SQ002">子公司名称（区块链公司：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503010_SQ002">万利达区块科技有限公司</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503050_SQ002">C端APP下载量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503050_SQ002">689,035</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503050_SQ003">C端最近一个月月活MAU：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503050_SQ003">39461</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503050_SQ004">C端最近一个月日活DAU：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503050_SQ004">334</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503050_SQ005">B端用户总量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503050_SQ005">368</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div  v-html="pageQuestion.s423785g02q0503050_SQ006">年总营收：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503050_SQ006">330万美元</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0503050_SQ007">年总净利：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0503050_SQ007">33万美元</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div v-if="pageAnswer.s423785g02q0500000_SQ004=='是'" class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqInvestmentToken">投资/证券类型Token相关信息</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502010">搭载的公链</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502010">EOS</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0504010">分红方式：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0504010">现金分红</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0504020">分红周期：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td colspan="3">
+                                <div v-html="pageAnswer.s423785g02q0504020">1年</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div v-if="pageAnswer.s423785g02q0500000_SQ005=='是'" class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqApplicationTypeToken">应用类型Token相关信息</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502010">搭载的公链</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502010">EOS</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0505010">应用领域：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0505010">B2B2C</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr v-if="!business">
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0505040">是否已经商业使用:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0505040">否</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0505060">商用的主要瓶颈：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0505060">需求端整体趋紧的基本面</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr v-if="business">
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0505040">是否已经商业使用：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0505040">是</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0505050">已经商用的案例是：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0505050">金色区块科技</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0505020">与传统方式比较的优点：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td colspan="3">
+                                <div v-html="pageAnswer.s423785g02q0505020">数据存储更安全</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0505030">与传统方式比较的缺点：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td colspan="3">
+                                <div v-html="pageAnswer.s423785g02q0505030">操作难度提高</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div v-if="pageAnswer.s423785g02q0500000_SQ006=='是'" class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqOtherTypesToken">其他类型Token相关信息</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0502010">搭载的公链</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0502010">EOS</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0506010_SQ001">Token类型：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0506010_SQ001">物联网</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0506010_SQ002">应用场景：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td colspan="3">
+                                <div v-html="pageAnswer.s423785g02q0506010_SQ002">门禁卡、小区管理</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="22" id="22"></a>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqTokenPriceQuantity">Token价格与数量</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0601010">是否已经上其他交易所：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0601010">是</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0601020">已经上的交易所:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0601020">火币</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0602000_SQ002">发行总量:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0602000_SQ002">5,000,000,000</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0602000_SQ003">流通量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0602000_SQ003">461,647,448</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0602000_SQ004">流通率：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0602000_SQ004">30%</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0602000_SQ005">总市值：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0602000_SQ005">≈ $ 3,641,495,921</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0602000_SQ006">团队锁定数量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0602000_SQ006">1,000,000,000</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0602000_SQ007">团队锁定地址：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0602000_SQ007">https://etherscan.io/tx/0xb2f566ecd0 5af8bfc0c31937a1e2ac1d6ca702388 655cd0437cc4d1c8c3e6680</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0602000_SQ008">Token分布离散度：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0602000_SQ008">操作难度提高</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0603000">发行数量变化：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0603000">逐渐减少</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="23" id="23"></a>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqTokenCirculation">Token流转情况</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0701000_SQ002">Token持有地址数：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0701000_SQ002">90223</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0701000_SQ003">转账次数：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0701000_SQ003">245</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0701000_SQ004">转账数量:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0701000_SQ004">5,000,000,000</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0701000_SQ005">Token平均持有时间：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0701000_SQ005">10天</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0701000_SQ006">Token每日因消耗或 其他业务需要使用量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0701000_SQ006">5,000</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div></div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div></div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="24" id="24"></a>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqTokenRecruitment">Token募集</div>
+                    <table class="baseChainBLockTable table_new" >
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0801000">是否有基石或私募：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td colspan="3">
+                                <div v-html="pageAnswer.s423785g02q0801000">有</div>
+                                <div class="line"></div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0801010_SQ002">基石，私募等分配比例:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0801010_SQ002">30%</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0801010_SQ003">基石，私募等锁定时间：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0801010_SQ003">1年</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0801010_SQ004">基石，私募等价格 （对标对应法币）：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0801010_SQ004">1000万美元</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0801010_SQ005">募集币种：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0801010_SQ005">ETH</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0801010_SQ006">募集开始时间：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0801010_SQ006">2017-06-26</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0801010_SQ007">募集结束时间：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g02q0801010_SQ007">2017-09-26</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g02q0801010_SQ008">募集总额度：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td colspan="3">
+                                <div v-html="pageAnswer.s423785g02q0801010_SQ008">100,000 ETH</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="31" id="31"></a>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqDeveloperCommunity">开发者社群</div>
+                    <table class="baseChainBLockTable table_new">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g03q0100000_SQ002">github开发地址：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td colspan="3">
+                                <div v-html="pageAnswer.s423785g03q0100000_SQ002">https://github.com/warmsheep/HuobiRobot</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g03q0100000_SQ003"></div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g03q0100000_SQ003">2次/月</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g03q0100000_SQ004">github更新代码量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g03q0100000_SQ004">200行/月</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="32" id="32"></a>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqUserCommunityC">用户社群运营</div>
+                    <div class="operate-content">
+                        <ul class="user-operate clearfix">
+                            <li>
+                                <div class="operate-tips">
+                                    <!-- <p><em v-html="pageQuestion.s423785g03q0200000_SQ004_SQ003"></em><em v-html="pageAnswer.s423785g03q0200000_SQ004_SQ003"></em></p> -->
+                                     <!-- <p><em v-html="pageQuestion.s423785g03q0200000_SQ004_SQ001"></em><em v-html="pageAnswer.s423785g03q0200000_SQ004_SQ001"></em></p> -->
+                                    <p><em class="i18n" name='name_new'>名称：</em><em v-html="pageAnswer.s423785g03q0200000_SQ004_SQ003"></em></p>
+                                    <p><em class="i18n" name='followers'>关注数：</em><em v-html="pageAnswer.s423785g03q0200000_SQ004_SQ001"></em></p>
+                                </div>
+                                <i class="iconfont">&#xe603;</i>
+                            </li>
+                            <li>
+                                <div class="operate-tips">
+                                    <!-- <p><em v-html="pageQuestion.s423785g03q0200000_SQ003_SQ003"></em><em v-html="pageAnswer.s423785g03q0200000_SQ003_SQ003"></em></p>
+                                    <p><em v-html="pageQuestion.s423785g03q0200000_SQ003_SQ001"></em><em v-html="pageAnswer.s423785g03q0200000_SQ003_SQ001"></em></p> -->
+                                    <p><em class="i18n" name='name_new'>名称：</em><em v-html="pageAnswer.s423785g03q0200000_SQ003_SQ003"></em></p>
+                                    <p><em class="i18n" name='followers'>关注数：</em><em v-html="pageAnswer.s423785g03q0200000_SQ003_SQ001"></em></p>
+                                </div>
+                                <i class="iconfont">&#xe60b;</i>
+                            </li>
+                            <!--<li>-->
+                                <!--<div class="operate-tips">-->
+                                    <!--<p><em v-html="pageQuestion.s423785g03q0200000_SQ002_SQ003"></em><em v-html="pageAnswer.s423785g03q0200000_SQ002_SQ003"></em></p>-->
+                                    <!--<p><em v-html="pageQuestion.s423785g03q0200000_SQ003_SQ001"></em><em v-html="pageAnswer.s423785g03q0200000_SQ003_SQ001"></em></p>-->
+                                <!--</div>-->
+                                <!--<i class="iconfont">&#xe612;</i>-->
+                            <!--</li>-->
+                            <li>
+                                <div class="operate-tips">
+                                    <!-- <p><em v-html="pageQuestion.s423785g03q0200000_SQ002_SQ003"></em><em v-html="pageAnswer.s423785g03q0200000_SQ002_SQ003"></em></p>
+                                    <p><em v-html="pageQuestion.s423785g03q0200000_SQ002_SQ001"></em><em v-html="pageAnswer.s423785g03q0200000_SQ002_SQ001"></em></p> -->
+                                    <p><em class="i18n" name='name_new'>名称：</em><em v-html="pageAnswer.s423785g03q0200000_SQ002_SQ003"></em></p>
+                                    <p><em class="i18n" name='followers'>关注数：</em><em v-html="pageAnswer.s423785g03q0200000_SQ002_SQ001"></em></p>
+                                </div>
+                                <i class="iconfont">&#xe607;</i>
+                            </li>
+                            <li>
+                                <div class="operate-tips">
+                                    <!-- <p><em v-html="pageQuestion.s423785g03q0200000_SQ005_SQ003"></em><em v-html="pageAnswer.s423785g03q0200000_SQ005_SQ003"></em></p>
+                                    <p><em v-html="pageQuestion.s423785g03q0200000_SQ005_SQ001"></em><em v-html="pageAnswer.s423785g03q0200000_SQ005_SQ001"></em></p> -->
+
+                                    <p><em class="i18n" name='name_new'>名称：</em><em v-html="pageAnswer.s423785g03q0200000_SQ005_SQ003"></em></p>
+                                    <p><em class="i18n" name='followers'>关注数：</em><em v-html="pageAnswer.s423785g03q0200000_SQ005_SQ001"></em></p>
+                                </div>
+                                <i class="iconfont">&#xe654;</i>
+                            </li>
+                            <li>
+                                <div class="operate-tips">
+                                    <!-- <p><em v-html="pageQuestion.s423785g03q0200000_SQ006_SQ003"></em><em v-html="pageAnswer.s423785g03q0200000_SQ006_SQ003"></em></p>
+                                    <p><em v-html="pageQuestion.s423785g03q0200000_SQ006_SQ001"></em><em v-html="pageAnswer.s423785g03q0200000_SQ006_SQ001"></em></p> -->
+                                    <p><em class="i18n" name='name_new'>名称：</em><em v-html="pageAnswer.s423785g03q0200000_SQ006_SQ003"></em></p>
+                                    <p><em class="i18n" name='followers'>关注数：</em>><em v-html="pageAnswer.s423785g03q0200000_SQ006_SQ001"></em></p>
+                                </div>
+                                <i class="iconfont">&#xe62f;</i>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <a name="41" id="41"></a>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqCoreTeamInformation">核心团队成员</div>
+                    <table class="baseChainBLockTable team-center-table">
+                        <!-- <thead>
+                            <th>
+                                <td>ee</td>
+                                <td>ee</td>
+                                <td>ee</td>
+                            </th>
+                        </thead> -->
+                        <tbody>
+                        <tr v-if="pageAnswer.s423785g05q0100000_SQ001_SQ002">
+                            <td>
+                                <div class="team-center clearfix">
+                                    <img src="../static/img/account.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0100000_SQ001_SQ002">ceo</p>
+                                        <p>
+                                            <span v-html="pageAnswer.s423785g05q0100000_SQ001_SQ003">软件工程师</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <!-- <div v-html="pageQuestion.s423785g05q0100000_SQ001_SQ006">是否有创业经历</div> -->
+                                <div class="i18n" name='Businessexperience'></div>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ001_SQ006">有</div>
+                                <div class="line"></div>
+
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ001_SQ004">10年金融IT、移动支付、互联网金融、大数据领域的从业经验。曾在多家上市公司的金融科技内部创业项目中担任产品技术部负责人；两年多区块链的产品研发经验，主导包括供应链金融、数据资产交易所等多个区块链项目。</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0100000_SQ002_SQ002">
+                            <td>
+                                <div class="team-center clearfix">
+                                    <img src="../static/img/account.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0100000_SQ002_SQ002">ceo</p>
+                                        <p>
+                                            <span v-html="pageAnswer.s423785g05q0100000_SQ002_SQ003">软件工程师</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <!-- <div v-html="pageQuestion.s423785g05q0100000_SQ002_SQ006">是否有创业经历</div> -->
+                                <div class="i18n" name='Businessexperience'></div>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ002_SQ006">有</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ002_SQ004">10年金融IT、移动支付、互联网金融、大数据领域的从业经验。曾在多家上市公司的金融科技内部创业项目中担任产品技术部负责人；两年多区块链的产品研发经验，主导包括供应链金融、数据资产交易所等多个区块链项目。</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0100000_SQ003_SQ002">
+                            <td>
+                                <div class="team-center clearfix">
+                                    <img src="../static/img/account.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0100000_SQ003_SQ002">ceo</p>
+                                        <p>
+                                            <span v-html="pageAnswer.s423785g05q0100000_SQ003_SQ003">软件工程师</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <!-- <div v-html="pageQuestion.s423785g05q0100000_SQ003_SQ006">是否有创业经历</div> -->
+                                <div class="i18n" name='Businessexperience'></div>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ003_SQ006">有</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ003_SQ004">10年金融IT、移动支付、互联网金融、大数据领域的从业经验。曾在多家上市公司的金融科技内部创业项目中担任产品技术部负责人；两年多区块链的产品研发经验，主导包括供应链金融、数据资产交易所等多个区块链项目。</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0100000_SQ004_SQ002">
+                            <td>
+                                <div class="team-center clearfix">
+                                    <img src="../static/img/account.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0100000_SQ004_SQ002">ceo</p>
+                                        <p>
+                                            <span v-html="pageAnswer.s423785g05q0100000_SQ004_SQ003">软件工程师</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <!-- <div v-html="pageQuestion.s423785g05q0100000_SQ004_SQ006">是否有创业经历</div> -->
+                                <div class="i18n" name='Businessexperience'></div>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ004_SQ006">有</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ001_SQ004">10年金融IT、移动支付、互联网金融、大数据领域的从业经验。曾在多家上市公司的金融科技内部创业项目中担任产品技术部负责人；两年多区块链的产品研发经验，主导包括供应链金融、数据资产交易所等多个区块链项目。</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0100000_SQ005_SQ002">
+                            <td>
+                                <div class="team-center clearfix">
+                                    <img src="../static/img/account.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0100000_SQ005_SQ002">ceo</p>
+                                        <p>
+                                            <span v-html="pageAnswer.s423785g05q0100000_SQ005_SQ003">软件工程师</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <!-- <div v-html="pageQuestion.s423785g05q0100000_SQ005_SQ006">是否有创业经历</div> -->
+                                <div class="i18n" name='Businessexperience'></div>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ005_SQ006">有</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0100000_SQ005_SQ004">10年金融IT、移动支付、互联网金融、大数据领域的从业经验。曾在多家上市公司的金融科技内部创业项目中担任产品技术部负责人；两年多区块链的产品研发经验，主导包括供应链金融、数据资产交易所等多个区块链项目。</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqTeamAbility">团队能力</div>
+                    <table class="baseChainBLockTable table_new">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g05q0201010">核心团队是否行业内人员：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0201010">是</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g05q0201020">核心团队从事本行业时间：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0201020">5年</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g05q0301010">核心团队是否完整:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0301010">是</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g05q0301020">核心团队成员间是否存在 夫妻、恋爱或其他亲属关系：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0301020">否</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g05q0400000">核心团队磨合时间：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0400000">1年以下</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g05q0700000">基金会：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0700000">1年以下</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="42" id="42"></a>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqConsultantTeam">项目顾问</div>
+                    <table class="baseChainBLockTable projectConsult-table projectConsult">
+                        <tbody>
+                        <tr v-if="pageAnswer.s423785g05q0500000_SQ002_SQ003">
+                            <td>
+                                <div class="project-consult">
+                                    <img src="../static/img/company.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0500000_SQ002_SQ003">龙信数据</p>
+                                        <p v-html="pageAnswer.s423785g05q0500000_SQ002_SQ005">企业大数据服务提供商</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0500000_SQ002_SQ004" class="consult-title">战略顾问</div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0500000_SQ003_SQ003">
+                            <td>
+                                <div class="project-consult">
+                                    <img src="../static/img/company.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0500000_SQ003_SQ003">龙信数据</p>
+                                        <p v-html="pageAnswer.s423785g05q0500000_SQ003_SQ005">企业大数据服务提供商</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0500000_SQ003_SQ004" class="consult-title">战略顾问</div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0500000_SQ004_SQ003">
+                            <td>
+                                <div class="project-consult">
+                                    <img src="../static/img/company.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0500000_SQ004_SQ003">龙信数据</p>
+                                        <p v-html="pageAnswer.s423785g05q0500000_SQ004_SQ005">企业大数据服务提供商</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0500000_SQ004_SQ004" class="consult-title">战略顾问</div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0500000_SQ005_SQ003">
+                            <td>
+                                <div class="project-consult">
+                                    <img src="../static/img/company.png" alt="">
+                                    <div>
+                                        <p v-html="pageAnswer.s423785g05q0500000_SQ005_SQ003">龙信数据</p>
+                                        <p v-html="pageAnswer.s423785g05q0500000_SQ005_SQ005">企业大数据服务提供商</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0500000_SQ005_SQ004" class="consult-title">战略顾问</div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="43" id="43"></a>
+                <div v-if="pageAnswer.s423785g05q0600000_SQ002_SQ002" class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqInvestmentAgency">投资机构</div>
+                    <table class="baseChainBLockTable projectConsult-table investor-institute">
+                        <tbody>
+                        <tr v-if="pageAnswer.s423785g05q0600000_SQ002_SQ002">
+                            <td>
+                                <div class="project-consult investor">
+                                    <img src="../static/img/project.png" alt="">
+                                    <span v-html="pageAnswer.s423785g05q0600000_SQ002_SQ002">龙信数据</span>
+                                </div>
+                            </td>
+                            <td v-html="pageAnswer.s423785g05q0600000_SQ002_SQ003">500万</td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0600000_SQ002_SQ004" class="consult-title">30%</div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0600000_SQ003_SQ002">
+                            <td>
+                                <div class="project-consult investor">
+                                    <img src="../static/img/project.png" alt="">
+                                    <span v-html="pageAnswer.s423785g05q0600000_SQ003_SQ002">龙信数据</span>
+                                </div>
+                            </td>
+                            <td v-html="pageAnswer.s423785g05q0600000_SQ003_SQ003">500万</td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0600000_SQ003_SQ004" class="consult-title">30%</div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0600000_SQ004_SQ002">
+                            <td>
+                                <div class="project-consult">
+                                    <span class="institute-name">洪</span>
+                                    <span v-html="pageAnswer.s423785g05q0600000_SQ004_SQ002">龙信数据</span>
+                                </div>
+                            </td>
+                            <td v-html="pageAnswer.s423785g05q0600000_SQ004_SQ003">500万</td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0600000_SQ004_SQ004" class="consult-title">30%</div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0600000_SQ005_SQ002">
+                            <td>
+                                <div class="project-consult">
+                                    <span class="institute-name">洪</span>
+                                    <span v-html="pageAnswer.s423785g05q0600000_SQ005_SQ002">龙信数据</span>
+                                </div>
+                            </td>
+                            <td v-html="pageAnswer.s423785g05q0600000_SQ005_SQ003">500万</td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0600000_SQ005_SQ004" class="consult-title">30%</div>
+                            </td>
+                        </tr>
+                        <tr v-if="pageAnswer.s423785g05q0600000_SQ006_SQ002">
+                            <td>
+                                <div class="project-consult">
+                                    <span class="institute-name">洪</span>
+                                    <span v-html="pageAnswer.s423785g05q0600000_SQ006_SQ002">龙信数据</span>
+                                </div>
+                            </td>
+                            <td v-html="pageAnswer.s423785g05q0600000_SQ006_SQ003">500万</td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g05q0600000_SQ006_SQ004" class="consult-title">30%</div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="51" id="51"></a>
+                <div class="baseChainBlock projectMessage">
+                    <div class="descript-title i18n" name="xpxqProjectInformation">项目信息</div>
+                    <table class="baseChainBLockTable projectConsult-table">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="project-consult clearfix">
+                                    <div>
+                                        <p v-html="pageQuestion.s423785g06q0200000">项目获得的专利：</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g06q0200000" class="consult-title">《论文的主要内容和基本要求》、《论文的主要内容和基本要求》、《论文的主要内容和基本要求》</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="project-consult clearfix">
+                                    <div>
+                                        <p v-html="pageQuestion.s423785g06q0100000">项目出品的论文：</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g06q0100000" class="consult-title">《论文的主要内容和基本要求》、《论文的主要内容和基本要求》、《论文的主要内容和基本要求》</div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="52" id="52"></a>
+                <div class="baseChainBlock">
+                    <div class="descript-title i18n" name="xpxqOperationsData">运营数据</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g04q0100000_SQ002">载体类型（比如APP）</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g04q0100000_SQ002" >APP</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g04q0100000_SQ003">注册人数(万)</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g04q0100000_SQ003">23243</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g04q0100000_SQ004">日活跃人数：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g04q0100000_SQ004">354656</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g04q0100000_SQ005">活跃用户日增长率：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g04q0100000_SQ005">10%</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g04q0200000">其他落地应用补充：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td colspan="3">
+                                <div v-html="pageAnswer.s423785g04q0200000">物联网，门禁卡</div>
+                                <div class="line"></div>
+                            </td>
+
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <a name="61" id="61"></a>
+                <div class="baseChainBlock financeMessage">
+                    <div class="descript-title i18n" name="xpxqFinancialOutsideBlockchain">链下财务信息</div>
+                    <table class="baseChainBLockTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ002">募集代币类型与数量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ002">4000ETH</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ003">募集代币地址：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ003">https://etherscan.io/</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ004">募集法币数量:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ004">300万美元</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ005">募集代币与法币计划花费 （写明具体分类与占比）:</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ005">招聘 10%，推广30%</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ006">是否存在债务：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ006">否</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ011">是否有利润 （包含法币与代币的收入）：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ011">3500ETH</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ008">目前剩余的募集法币数量：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ008">250万美元</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ009">已经花费的代币数量与 花费目的表：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ009">招聘 10%，推广30%</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ010">已经花费的法币数量与花费目的表：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ010">招聘 10%，推广30%</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ011">是否有利润 （包含法币与代币的收入）：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ011">是</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ012">平均月利润为（写清代币与法币）：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ012">法币：40万美元</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageQuestion.s423785g07q0100000_SQ013">净资产：</div>
+                                <div class="line"></div>
+                            </td>
+                            <td>
+                                <div v-html="pageAnswer.s423785g07q0100000_SQ013?pageAnswer.s423785g07q0100000_SQ013:'--'">3335万美元</div>
+                                <div class="line"></div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+                <div class="body-right-container">
+                    <div class="body-right">
+                        <div class="body-right-title i18n" name="xpxqProjectDisclosureCatalog">项目披露目录</div>
+                        <div class="body-right-content">
+                            <dl>
+                                <dt><a class="i18n" name="xpxqOverviewC" href="#1">1. 概览</a></dt>
+                                <dd><a class="i18n" name="xpxqDescriptionC" href="#11">·项目描述</a></dd>
+                                <dt><a  class="i18n" name="xpxqTokenInformationC" href="#2">2. Token信息</a></dt>
+                                <dd><a class="i18n" name="xpxqTypeInformationC" href="#21">· Token类型信息</a></dd>
+                                <dd><a class="i18n" name="xpxqPricequantityC" href="#22">· Token价格与数量</a></dd>
+                                <dd><a class="i18n" name="xpxqTokenCirculationC" href="#23">· Token流转情况</a></dd>
+                                <dd><a class="i18n" name="xpxqTokenRaiseC" href="#24">· Token募集</a></dd>
+                                <dt><a class="i18n" name="xpxqCommunityInformationC" href="#3">3.社群信息</a></dt>
+                                <dd><a class="i18n" name="xpxqDeveloperCommunityC" href="#31">· 开发者社群</a></dd>
+                                <dd><a class="i18n" name="xpxqUserCommunityCsecond" href="#32">· 用户社群运营</a></dd>
+                                <dt><a class="i18n" name="xpxqTeamInformationC" href="#4">4.团队信息</a></dt>
+                                <dd><a class="i18n" name="xpxqCoreTeamC" href="#41">· 核心团队信息</a></dd>
+                                <dd><a class="i18n" name="xpxqConsultantTeamC" href="#42">· 团队顾问</a></dd>
+                                <dd><a class="i18n" name="xpxqInvestmentInstitutionsC" href="#43">· 投资机构</a></dd>
+                                <dt><a class="i18n" name="xpxqProjectInformationC" href="#5">5.项目信息</a></dt>
+                                <dd><a class="i18n" name="xpxqPatentThesisC" href="#51">· 专利/论文</a></dd>
+                                <dd><a class="i18n" name="xpxqOperationalDataC" href="#52">· 运营数据</a></dd>
+                                <dt><a class="i18n" name="xpxqFinancialInformationC" href="#6">6.链下财务信息</a></dt>
+                                <dd><a class="i18n" name="xpxqFinancialDisclosureC" href="#61">· 财务信息披露</a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <div>
+
+
+
+    </div>
+    <div class="common-footer"></div>
+</div>
+<script type="text/javascript" src="../static/web/js/lib/jquery.min.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/lib/jquery.lazyload.js"></script>
+<script type="text/javascript" src="../static/web/js/lib/swiper.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/page/common.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/page_new/supervision.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/page/plateformUrl.js?t=20180912"></script>
+<script type="text/javascript" src='../static/web/js/lib/jquery.i18n.properties.js?t=20180912'></script>
+<script type="text/javascript" src='../static/web/js/lib/layer.js?t=20180912'></script>
+<script type="text/javascript" src='../static/web/js/lib/language.js?t=20180912'></script>
+<script type="text/javascript" src="../static/web/js/page/header.js?t=20180912"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        importHeaderFooter('nav6')
+        sanCode()
+        labelName()
+        layerInternational()
+        navigation('nav6')
+
+
+        $('.wrapper').delegate('.reload', 'click', function () {
+            var value = $(this).attr('data-value');
+            changeLanguage(value);
+        });
+
+        var Constants = {
+            plateformShowUrl : "/api/"
+        }
+        var api = {
+            question:Constants.plateformShowUrl+"/content/survey/getActiveAnswerKey",
+            answer:Constants.plateformShowUrl+"content/survey/getActiveAnswerValue",
+        }
+        getUrlparam()
+        function getUrlparam(){
+            var thisURL = document.URL;
+            var getval =thisURL.split('?')[1];
+            var answerId= getval.split("&")[0].split('=')[1];
+            var surveyId= getval.split("&")[1].split('=')[1];
+            var sversion= getval.split("&")[2].split('=')[1];
+            var params = {
+                answerId:answerId,
+                surveyId:surveyId,
+                sversion:sversion
+            }
+            return params;
+        }
+
+        var urlParam = getUrlparam()
+        console.log(urlParam)
+        var vm = new Vue({
+            el:'#vue-container',
+            data:{
+                pageQuestion:{},
+                pageAnswer:{},
+                imgsrc:'',
+                whitepaperUrl:''
+            },
+            computed:{
+                business:function(){
+                    var businessstatus;
+                    if(this.pageAnswer.s423785g02q0505040=='是'){
+                        businessstatus=true
+                    }else{
+                        businessstatus=false
+                    }
+                    return businessstatus;
+                }
+            }
+        })
+        changeLanguage(localStorage.getItem('countryLanguage'))
+        function changeLanguage(languageValue){
+            if(languageValue=='en'){
+                languageValueName='en'
+            }else if(languageValue=='zh-CN'){
+                languageValueName='zh-Hans'
+            }
+            var params1 ={
+                'surveyId':urlParam.surveyId,
+                'sversion':urlParam.sversion,
+                'answerId':urlParam.answerId,
+                'language':languageValueName,
+            }
+
+            var params2 ={
+                'surveyId':urlParam.surveyId,
+                'sversion':urlParam.sversion,
+                'answerId':urlParam.answerId,
+            }
+            sendPostJsonObj(api.question,params1,function(data){
+                vm.pageQuestion = data;
+                console.log(data)
+                layerInternational()
+            })
+        //请求答案的方法
+            sendPostJsonObj(api.answer,params2,function(data){
+                vm.pageAnswer = data;
+                console.log(data,00000)
+                vm.imgsrc =  JSON.parse(data.s423785g06q0030000)[0].name;
+                if(data.s423785g06q0080000){
+                    vm.whitepaperUrl = JSON.parse(data.s423785g06q0080000)[0].name;
+
+                }else{
+                    vm.whitepaperUrl='';
+                }
+                console.log(vm.whitepaperUrl)
+                layerInternational()
+
+
+            })
+        }
+
+
+
+
+
+
+
+
+
+
+        $(".body-right-content dl dd a").click(function () {
+            $("html, body").animate({scrollTop: $($(this).attr("href")).offset().top+ "px"}, 500);
+            return false;//不要这句会有点卡顿
+
+        });
+
+        if($(window).height()<726){
+            $('.body-right-content').css({
+                'min-height':'650px',
+                'overflow':'auto'
+            })
+        }
+
+        function getScrollTop() {
+            var scrollPos;
+            if (window.pageYOffset) {
+                scrollPos = window.pageYOffset;
+            }else if (document.compatMode && document.compatMode != 'BackCompat')
+            {
+                scrollPos = document.documentElement.scrollTop;
+            }else if (document.body) {
+                scrollPos = document.body.scrollTop;
+            }
+            return scrollPos;
+
+
+        }
+
+    window.onscroll=function(){
+        if(getScrollTop()>=324){
+            $('.body-right').css({
+                'position':'fixed',
+                "top":'0px',
+            })
+        }else if(getScrollTop()<324){
+            $('.body-right').css({
+                'position':'static',
+                'float': 'left',
+                'background': '#fff'
+            })
+        }
+        var bodyleftHeight = $('.container-inner').height()
+        var bodyrightHeight = $('.body-right').height()
+        var reduce = bodyleftHeight-bodyrightHeight;
+//        console.log(bodyleftHeight)
+//        console.log('scorl',getScrollTop())
+//        console.log('reduce',reduce)
+        if(getScrollTop()>bodyleftHeight-bodyrightHeight){
+            $('.body-right').css({
+                'position':'static',
+            })
+        }
+
+
+
+
+
+
+    }
+
+
+    $('.user-operate li').mouseover(function(){
+        $(this).addClass('arrow')
+        $(this).closest('ul').find('.operate-tips').hide();
+        $(this).find('.operate-tips').show()
+    })
+
+        $('.user-operate li').mouseleave(function(){
+            $(this).removeClass('arrow')
+            $(this).closest('ul').find('.operate-tips').hide();
+            $(this).find('.operate-tips').hide()
+        })
+
+
+
+
+
+
+
+
+
+    })
+</script>
+</html>

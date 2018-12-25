@@ -1,0 +1,30 @@
+.wrapper .container .banner {
+  background: url("../../images_new/bj@2x.png") center;
+}
+.wrapper .container .banner .slogan {
+  padding-top: 187px;
+  font-size: 80px;
+  letter-spacing: 4px;
+  font-family: Arial;
+}
+.wrapper .container .banner p {
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+.wrapper .container .content .list .item .name {
+  font-size: 18px;
+  margin-top: 4px;
+}
+.wrapper .container .content .list .item .votes {
+  margin-top: 20px;
+}
+.wrapper .container .content .list .item .votes .sum {
+  font-size: 24px;
+  color: #5A6CB1;
+  letter-spacing: 1.5px;
+  margin-right: 8px;
+}
+.wrapper .container .content .list .item button {
+  margin-top: 15px;
+}
+/*# sourceMappingURL=old_token.css.map */

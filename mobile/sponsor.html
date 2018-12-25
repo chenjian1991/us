@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="Default">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="保荐人">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/feather.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/ionicons.min.css">
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <script src='../static/web/js/lib/layer.js'></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/blocs.min.js"></script>
+    <script src="./js/lazysizes.min.js" defer></script>
+    <script src="./js/vue.min.js" defer></script>
+    <script src="./js/common-tools.js" defer></script>
+    <script src="./js/request-sponsor.js"></script>
+    <title>保荐人</title>
+    <style>
+        .bloc-lg {
+            padding-right: 15px !important;
+            padding-left: 15px !important;
+        }
+
+        .radius-50 {
+            border-radius: 50%;
+        }
+
+        .max-height-120 {
+            max-height: 120px;
+        }
+    </style> <!-- Google Analytics --> <!-- Google Analytics END --> </head>
+<body><!-- Main container -->
+<div class="page-container sponsor-body-div"> <!-- bloc-12 -->
+    <div class="bloc bgc-white none bloc-first l-bloc" id="bloc-12">
+        <div class="container bloc-lg">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="img/avatar.png" data-src="img/avatar.png" class="center-block lazyload max-height-120" id="bloc-first" :src="base.image" :data-src="base.image"/>
+                    <h3 class="mg-md text-center-sm text-center tc-black" v-html="base.nameShow">INBlockchain</h3>
+                    <h5 class="mg-md text-center-sm text-center" v-html="base.introduction">head in code,feet in sand head in code</h5>
+                </div>
+            </div>
+        </div>
+    </div><!-- bloc-12 END --><!-- bloc-13 -->
+    <div class="bloc bgc-white none l-bloc" id="bloc-13">
+        <div class="container bloc-lg">
+            <div class="row">
+                <div class="col-sm-12"><h3 class="mg-md tc-black text-center text-left-xs "><strong>Sponsored projects</strong></h3>
+                    <div class="row voffset-xs" v-if="sponsoredList">
+                        <div class="col-xs-4" v-if="index<3" v-for="(item, index) in sponsoredList">
+                            <a href="supervision.html" :href="'supervision.html?language='+language+'&supervisionId='+item.id">
+                                <img src="img/lazyload-ph.png" data-src="img/sposor_05.png" class="img-responsive center-block lazyload" :src="item.image" :data-src="item.image"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row voffset voffset-xs object-hidden" id="sponsored-div" v-if="sponsoredList && sponsoredList.length>=3">
+                        <div class="col-xs-4" v-if="index>=3" v-for="(item, index) in sponsoredList">
+                            <a href="supervision.html" :href="'supervision.html?language='+language+'&supervisionId='+item.id">
+                                <img src="img/lazyload-ph.png" data-src="img/sposor_05.png" class="img-responsive center-block lazyload" :src="item.image" :data-src="item.image"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row voffset-clear-xs" v-if="sponsoredList && sponsoredList.length>=3">
+                <div class="col-sm-12"><h5 class="mg-md text-center mg-md-xs"><a href="#" data-toggle-visibility="sponsored-div" class="ltc-azure flash-hvr animated">View more</a><br></h5></div>
+            </div>
+        </div>
+    </div><!-- bloc-13 END --><!-- bloc-14 -->
+    <div class="bloc bgc-white none l-bloc" id="bloc-14">
+        <div class="container bloc-lg">
+            <div class="row">
+                <div class="col-sm-12"><h3 class="mg-md tc-black text-center text-left-xs "><strong>List porjects</strong></h3>
+                    <div class="row voffset-xs">
+                        <div class="col-xs-4" v-if="index<3" v-for="(item, index) in listedList">
+                            <a href="supervision.html" :href="'supervision.html?language='+language+'&supervisionId='+item.id">
+                                <img src="img/lazyload-ph.png" data-src="img/sposor_05.png" class="img-responsive center-block lazyload" :src="item.image" :data-src="item.image"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row voffset object-hidden voffset-xs" id="project-div" v-if="listedList && listedList.length>=3">
+                        <div class="col-xs-4" v-if="index>=3" v-for="(item, index) in listedList">
+                            <a href="supervision.html" :href="'supervision.html?language='+language+'&supervisionId='+item.id">
+                                <img src="img/lazyload-ph.png" data-src="img/sposor_05.png" class="img-responsive center-block lazyload" :src="item.image" :data-src="item.image"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row voffset-clear-xs" v-if="listedList && listedList.length>=3">
+                        <div class="col-sm-12"><h5 class="mg-md text-center"><a class="ltc-azure" href="#" data-toggle-visibility="project-div">View more</a><br></h5></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- bloc-14 END --><!-- bloc-15 -->
+    <div class="bloc bgc-white l-bloc" id="bloc-11">
+        <div class="container bloc-lg">
+            <div class="row voffset-clear-xs voffset">
+                <div class="col-sm-12"><h4 class="text-center blocs-team-title  text-left-xs tc-black text-center-sm"><strong>Team (<span v-html="team.length">8</span>)</strong></h4></div>
+            </div>
+            <div class="row voffset-lg voffset-clear-xs" v-if="team">
+                <div v-for="(item, index) in team">
+                    <div class="col-xs-4" v-if="index<3">
+                        <img src="img/lazyload-ph.png" data-src="img/avatar.png" class="img-responsive center-block none img-rd lazyload" :src="item.headImage" :data-src="item.headImage"/>
+                        <h5 class="text-center blocs-team-header  tc-black"><strong v-html="item.name">Jean Ray</strong></h5>
+                        <p v-html="item.position">Development</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row voffset-lg voffset-clear-xs voffset object-hidden" id="team-div" v-if="team && team.length > 3">
+                <div v-for="(item, index) in team">
+                    <div class="col-xs-4" v-if="index>=3">
+                        <img src="img/lazyload-ph.png" data-src="img/avatar.png" class="img-responsive center-block none img-rd lazyload" :src="item.headImage" :data-src="item.headImage"/>
+                        <h5 class="text-center blocs-team-header  tc-black"><strong v-html="item.name">Jean Ray</strong></h5>
+                        <p v-html="item.position">Development</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row voffset voffset-xs" v-if="team && team.length > 3">
+                <div class="col-sm-12"><h6 class="text-center-sm text-center tc-azure mg-lg mg-sm-xs pulse pulse-hvr glow-t  animated"><a class="ltc-azure" data-toggle-visibility="team-div" href="#">View more</a> <br></h6></div>
+            </div>
+        </div>
+    </div><!-- bloc-15 END --><!-- bloc-16 -->
+    <div class="bloc bgc-white l-bloc" id="bloc-16">
+        <div class="container bloc-lg">
+            <div class="row">
+                <div class="col-sm-12"><h3 class="mg-md text-center text-left-xs tc-black "><strong>Contact us</strong></h3></div>
+            </div>
+            <div class="row voffset-clear-xs margin-bottom-20">
+                <div class="col-xs-3">
+                    <div class="text-center"><span class="fa fa-facebook icon-md"></span></div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="text-center"><span class="fa fa-twitter icon-md"></span></div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="text-center"><span class="fa fa-paper-plane icon-md"></span></div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="text-center"><span class="feather-icon icon-mail icon-md"></span></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- bloc-16 END --><!-- ScrollToTop Button --><a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a><!-- ScrollToTop Button END--></div><!-- Main container END --> <!-- Preloader -->
+<div id="page-loading-blocs-notifaction"></div><!-- Preloader END --></body>
+</html>

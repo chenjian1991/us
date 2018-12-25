@@ -1,0 +1,1 @@
+$(function(){$(".supervision-list").click(function(){window.location.href="supervision.html?id=USDT"})});

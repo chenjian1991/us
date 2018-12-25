@@ -1,0 +1,82 @@
+*{margin: 0;padding: 0}
+.wrapper{width: 100%;height: 100%;background:#e9ebf1;}
+.wrapper-inner{width: 70%;height: 100%;margin: 0 auto;}
+.phone-55-logo img{margin-top:60px;width: 174px;height: 54px;}
+.phone-55-logo{display: block;text-align: center;padding-top: 63px;}
+.exchange-world{font-size:14px;color:#5a6cb1;text-align:center;margin-top:18px;}
+.phone-btn,.android-btn{
+    width: 100%;
+    background:#5a6cb1;
+    border-radius:4px;
+    height:46px;
+    margin: 0 auto;
+    font-size:18px;
+    color:#ffffff;
+}
+.phone-btn{
+    display: inline-block;
+    text-align: center;
+    line-height: 46px;
+    margin-top:91px;
+    background: #5a6cb1 url("../../images_new/ios@2x.png") no-repeat left 10% center;
+    background-size:20px 20px;
+}
+.android-btn{
+    display: inline-block;
+    margin-top:34px;
+    background: #5a6cb1 url("../../images_new/Android@2x.png") no-repeat left 10% center;
+    background-size:20px 20px;
+    line-height: 46px;
+    text-align: center;
+
+}
+@media screen and (max-width:320px){
+    .phone-btn{
+        margin-top:91px;
+        background: #5a6cb1 url("../../images_new/ios@2x.png") no-repeat left 3% center;
+        background-size:20px 20px;
+    }
+    .android-btn{
+        margin-top:20px;
+        background: #5a6cb1 url("../../images_new/Android@2x.png") no-repeat left 3% center;
+        background-size:20px 20px;
+
+    }
+}
+.modal{
+    width: 100%;
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    background-color: rgba(0,0,0,0.5);
+    background-size: 100%;
+    display: none;
+}
+.tips{
+    display: none;
+    position: fixed;
+    top:0;
+    right: 0;
+    z-index: 999;
+}
+.tips-content{
+    text-align: center;
+    position: absolute;
+    top:109px;
+    right:77px;
+    font-size:13px;
+    color: #fff;
+
+}
+.download-container{
+    text-align: center;
+}
+.downloadTutorials{
+    margin-top:20px;
+    display: inline-block;
+    color: #88a1ff;
+    text-decoration: underline;
+}

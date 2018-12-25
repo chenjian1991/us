@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="20px" viewBox="0 0 16 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>code</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Tablet" transform="translate(-231.000000, -71.000000)">
+            <g id="code" transform="translate(231.000000, 71.000000)">
+                <path d="M8.42666666,0.14407268 C8.31236341,0.0362403923 8.15596929,-0.0150762429 8,0.00407318957 C7.84399355,-0.0154587987 7.68743988,0.0359101865 7.57333334,0.14407268 C6.08666667,1.57740076 3.71733333,2.30406476 0.530666665,2.30406476 L0,2.30406476 L0,12.3066948 C0,16.9400112 7.316,20 7.98933334,20 C8.68533333,20 16,16.9400112 16,12.3066948 L16,2.30406476 L15.4693333,2.30406476 C12.284,2.30406476 9.91466668,1.57740076 8.42666666,0.14407268 Z M15,12.2818462 C15,16.1075385 8.7182,18.8033846 8,19 C7.28040001,18.802 1,16.1061538 1,12.2804615 L1,3.20984617 C4.03800001,3.13230769 6.383,2.38461538 8,1 C9.617,2.38461538 11.962,3.13230769 15,3.20984617 L15,12.2804615 L15,12.2818462 Z" id="Shape" fill="#8D9ACE" fill-rule="nonzero"></path>
+                <polyline id="Path-6" stroke="#8D9ACE" stroke-linecap="round" stroke-linejoin="round" points="4 10 7 13 12 8"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

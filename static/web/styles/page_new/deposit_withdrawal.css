@@ -1,0 +1,114 @@
+.wrapper em {
+  font-style: normal;
+}
+.wrapper .center-img {
+  vertical-align: top;
+}
+.wrapper .container {
+  background-color: #e9ebf1;
+}
+.wrapper .container .content {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.wrapper .container .content .account {
+  width: 100%;
+  margin-top: 15px;
+  background-color: #fff;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-title {
+  height: 50px;
+  line-height: 49px;
+  padding: 0 18px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-title .f-left .full-name {
+  color: #888;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-title .f-right {
+  height: 49px;
+  font-size: 12px;
+  color: #888;
+  cursor: pointer;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-title .f-right:hover {
+  color: #8d9ace;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-title .f-right:hover i {
+  color: #8d9ace;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-title .f-right i {
+  font-size: 20px;
+  color: #aaa;
+  vertical-align: middle;
+}
+.wrapper .container .content .account .account-box .line {
+  border-bottom-color: #ddd;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content {
+  padding: 20px 30px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .user-hold ul li {
+  float: left;
+  width: 368px;
+  height: 151px;
+  border: solid 1px #eeeeee;
+  text-align: center;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .user-hold ul li img {
+  margin-top: 20px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .user-hold ul li div,
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .user-hold ul li p {
+  color: #888;
+  font-size: 12px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .user-hold ul li div span,
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .user-hold ul li p span {
+  font-size: 26px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .user-hold ul li p {
+  margin-top: 10px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step {
+  margin-top: 30px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .step-common {
+  width: 50%;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .step-common p {
+  margin-bottom: 16px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .deposit-withdrawal-tip ul {
+  margin-top: 16px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .deposit-withdrawal-tip ul li {
+  list-style: disc;
+  margin-left: 18px;
+  font-size: 12px;
+  line-height: 24px;
+}
+.wrapper .container .content .account .account-box .how-to {
+  margin-top: 100px;
+}
+.wrapper .container .content .account .account-box .how-to a {
+  font-size: 12px;
+  color: #8d9ace;
+  cursor: pointer;
+}
+/* WebKit browsers */
+input:focus::-webkit-input-placeholder {
+  color: #333;
+}
+/* Mozilla Firefox 4 to 18 */
+input:focus:-moz-placeholder {
+  color: #333;
+}
+/* Mozilla Firefox 19+ */
+input:focus::-moz-placeholder {
+  color: #333;
+}
+/* Internet Explorer 10+ */
+input:focus:-ms-input-placeholder {
+  color: #333;
+}
+/*# sourceMappingURL=deposit_withdrawal.css.map */

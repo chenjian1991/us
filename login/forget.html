@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title class="i18n" name='zhmmResetPasswordTitle'></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta id="i18n_pagename" content="index">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <link rel="stylesheet" href="../static/web/iconfont/iconfont.css?t=20180912">
+    <link rel="stylesheet" href="../static/web/styles/index.css?t=20180912">
+   <!--  <link rel="stylesheet" href="../static/web/styles/lib/swiper.css"> -->
+     <link rel="stylesheet" href="../static/web/styles/header_footer.css?t=20180910">
+    <link rel="stylesheet" href="../static/web/iconfont/iconfont.css?t=20180912">
+    <!-- <link rel="stylesheet" href="../static/web/styles/page/commonHeadFoot.css"> -->
+    <link rel="stylesheet" href="../static/web/styles/page_new/sign_common.css?t=20180912">
+    <link rel="stylesheet" href="../static/web/styles/page_new/forget.css?t=20180912">
+    <link rel="stylesheet" href="../static/web/styles/page_new/signin.css?t=20180912">
+    
+
+</head>
+<body>
+<div class="wrapper clearfix" id="wrapper">
+    <div class="big-container">
+    <!--header Start-->
+   <div class="common-header"></div>
+    <!--header End-->
+    <div class="container">
+        <div class="content center-level">
+            <div id="tabs-container" class="tab-content">
+                <div>
+                    <div class="content-common">
+                        <form id="forgetForm">
+                        <div class="register-content">
+                            <div class="welcome">
+                                <span class="i18n" name='zhmmResetPassword'> </span>
+                                <p class="i18n" name='zhmmResetExplain'></p>
+                            </div>
+
+                            <div class="register-form">
+                                <div class="form-group">
+                                    <img src="../static/web/images_new/zhanghao@2x.png"
+                                         class="left-icon vertically-centered">
+                                    <input onkeyup="value=value.replace(/[^\d]/g,'')" class="i18n-input" selectattr="placeholder" selectname="zhmmInputAccount" name="forgetPassword" type="text" placeholder="" minlength="5" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="slide" id="slider">
+                                <div class="drag_bg"></div>
+                                <div class="i18n drag_text animated" name='zhmmSlideVerify' onselectstart="return false;"
+                                     unselectable="on">
+                                </div>
+                                <div name='zhmmVerified' class="i18n drag_text pass dis-n"></div>
+                                <div class="handler handler_bg">
+                                    <i class="iconfont arrow">&#xe627;</i><i class="iconfont tick dis-n">&#xe69f;</i>
+                                </div>
+                            </div>
+                            <div class="register-meta">
+                                <button type="button" name="zhmmResetSubmit" class=" i18n sure btn-same forgetPasswordSubmit"></button>
+                                <button style="display: none;" id="language-change" type="button"></button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer Start-->
+    <div class="common-footer"></div>
+    </div>
+    <!--footer End-->
+</div>
+</div>
+<script type="text/javascript" src="../static/web/js/lib/jquery.min.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/lib/jquery-validation-1.7.0.js?t=20180912"></script>
+<!-- <script type="text/javascript" src="../static/web/js/lib/swiper.js"></script> -->
+<script type="text/javascript" src="../static/web/js/page/plateformUrl.js?t=20180912"></script>
+<script type="text/javascript" src='../static/web/js/lib/layer.js?t=20180912'></script>
+<script type="text/javascript" src='../static/web/js/page/common_validate.js?t=20180912'></script>
+<script type="text/javascript" src='../static/web/js/lib/jquery.i18n.properties.js?t=20180912'></script>
+<script type="text/javascript" src='../static/web/js/lib/language.js?t=20180912'></script>
+<script type="text/javascript" src="../static/web/js/page/forget.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/page/plateformUrl.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/page/header.js?t=20180912"></script>
+<!--<script type="text/javascript" src="../static/web/js/page/sign.js?t=20180912"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+<script type="text/javascript">
+            $(document).ready(function(){
+                importHeaderFooter()
+                navigation('nav9')
+                sanCode()
+                labelName()
+                layerInternational()//记住语言
+                var judgeLogin = Cookies.get('loginToken');
+                if (judgeLogin) {
+                    $('.loginAfter').show()
+                    $('.loginbefore').hide()
+                } else {
+                    $('.loginAfter').hide()
+                    $('.loginbefore').show()
+                }
+                $('#language-change').click(function(){//定义切换提示语的点击方法
+                        $('#forgetForm').valid()
+                })
+
+                $('.forgetPasswordSubmit').click(function(){
+                        $('#forgetForm').valid()
+                        if($('#forgetForm').valid()){
+                            var divWidth = $('.drag_bg').width();
+                            if(divWidth=='510'){
+                            var phoneNumber = $('input[name="forgetPassword"]').val().trim().replace(/\s/g,'');
+                            localStorage.setItem('phoneToPassword',phoneNumber)
+                            var data = {
+                                 "phone":phoneNumber
+                            }
+                            sendPostRequestByJsonObj(api.userVertify,data,function(data,xhr,textStatus){
+                                if(textStatus.status==200){
+                                    console.log(data)
+                                    var code = data.code;
+                                    var reponsePhone = data.phone;
+                                    var ex55Pin = data.ex55Pin;
+                                    var hasgoogle = data.isBindingGoogle;
+                                    if(code==10014){
+                                        layer.msg('<div class="i18n" name="userNotexist"></div>',{
+                                            time:3000
+                                        })
+                                        layerInternational()
+
+                                    }else if(code == 10005){
+                                        layer.msg('<div class="i18n" name="namePassWrong">登录账号或密码不正确，请重新输入</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code == 10007){
+                                        layer.msg('<div name="passwordError" class="i18n">登录密码不正确，请重新输入</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code == 10014){
+                                        layer.msg('<div name="userNotSet" class="i18n">用户不存在，请先注册</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10015){
+                                        layer.msg('<div class="i18n" name="moreTenTimes">账号密码错误次数超过10次，用户被锁定。</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10012){
+                                        layer.msg('<div class="i18n" name="inviteCode">邀请码格式不正确</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10022){
+                                        layer.msg('<div class="i18n" name="phoneNumberError">手机号码不正确</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10029){
+                                        layer.msg('<div class="i18n" name="phoneNumberiswrong">手机格式不正确</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10000){
+                                        layer.msg('<div class="i18n" name="systemBusy">系统繁忙，请联系55客服</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10013){
+                                        layer.msg('<div class="i18n" name="Unauthorized">授权不通过，请重新验证</div>')
+                                        layerInternational()
+                                        Cookies.remove('loginToken',{domain:document.domain.split('.').slice(-2).join('.')});
+                                        localStorage.removeItem("curPage");
+                                        window.location.href='../exchange/b11/index.html#/login'
+                                        return false
+                                    }else if(code ==10020){
+                                        layer.msg('<div class="i18n" name="operatetypewrong">操作类型不正确</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10023){
+                                        layer.msg('<div class="i18n" name="ParametersError">请求参数异常</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10024){
+                                        layer.msg('<div class="i18n" name="passwordwrong">密码错误</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code ==10024){
+                                        layer.msg('<div class="i18n" name="paramwrong">参数错误,类型不对</div>')
+                                        layerInternational()
+                                        return false
+                                    }else if(code==403){
+                                        layer.msg('<div class="i18n" name="illegalRequest"></div>')
+                                        layerInternational()
+                                    }else{
+                                        localStorage.setItem('reponsePhone',reponsePhone)
+                                        localStorage.setItem('hasgoogle',hasgoogle)
+
+                                        localStorage.setItem('ex55Pin',ex55Pin)
+                                        window.location.href = "./safeVertification.html";
+                                    }
+                                }
+                            })
+                            }else{
+                                layer.msg('<div class="i18n" name="clickSlide"></div>')
+                                 layerInternational()
+                                
+                            }
+                            
+
+                        }
+                    })
+            })
+</script>
+
+
+</body>
+</html>

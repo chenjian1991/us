@@ -1,0 +1,59 @@
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .step-common .address {
+  width: 537px;
+  height: 129px;
+  padding: 55px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #fafafa;
+  border: none;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .step-common .deposit-btn {
+  padding-right: 33px;
+  text-align: right;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .step-common .deposit-btn button {
+  margin-top: 20px;
+  margin-left: 20px;
+  height: 38px;
+  padding: 0 25px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #8d9ace;
+}
+.wrapper .alert {
+  width: 390px;
+  height: 351px;
+  text-align: center;
+}
+.wrapper .alert p {
+  margin-top: 30px;
+  margin-bottom: 25px;
+  font-size: 20px;
+  color: #5a6cb1;
+}
+.wrapper .alert i {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  color: #ccc;
+  cursor: pointer;
+}
+.wrapper .alert i:hover {
+  color: #bbb;
+}
+.wrapper .alert .qrcode {
+  display: inline-block;
+}
+.wrapper .copy-success {
+  padding: 10px 20px;
+  background-color: #5a6cb1;
+  color: #fff;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+.wrapper .copy-success i {
+  margin-right: 5px;
+}
+/*# sourceMappingURL=deposit.css.map */

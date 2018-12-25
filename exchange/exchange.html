@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta id="i18n_pagename" content="index">
+    <title id="title-price"></title>
+
+    <link rel="shortcut icon" href="../favicon.ico"/>
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../favicon.ico">
+    <link rel="stylesheet" href="../static/web/styles/lib/swiper.min.css">
+    <link rel="stylesheet" href="../static/web/styles/index.css">
+    <link rel="stylesheet" href="../static/web/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../static/web/styles/header_footer.css?t=2018002">
+    <link rel="stylesheet" href="../static/web/styles/page_new/exchange.css?v=1">
+    <link rel="stylesheet" href="../static/web/styles/page_new/password.css?v=1">
+    <link rel="stylesheet" href="../static/web/styles/page_new/alert.css">
+    <link rel="stylesheet" href="../static/web/styles/page_new/theme_night.css" id="themeNight">
+    <style type="text/css">
+        #tv_chart_container {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="common-header">
+        <!--<div class="headerBox">
+            <div class="topBarBox">
+                <div class="website-logo"><a href="../exchange/index.html"><img
+                        src="../static/web/images_new/logo_new.svg"></a></div>
+                <div class="header clearfix">
+                    <dl class="title-left f-left title-nav">
+                        <dt id="nav1"><a href="../exchange/index.html" class="nav-item i18n" name="tbdhINDEX"></a>
+                        </dt>
+
+                        <dt id="nav2"><a href="../exchange/exchange.html?symbol=BTC_USDT" name="tbdhExchange"
+                                         class="nav-item i18n"></a>
+                        </dt>
+
+                        <dt id="nav3"><a href="../vote/supervision_list.html" name="tbdhSupervision"
+                                         class="nav-item i18n"></a>
+                        </dt>
+                        <dt id="nav4"><a target="_blank" href="" name="tbdhSponsor"
+                                         class="nav-item i18n"></a>
+                        </dt>
+                        &lt;!&ndash;<dt id="nav5"><a target="_blank"&ndash;&gt;
+                        &lt;!&ndash;href="https://55support.zendesk.com/hc/en-us/categories/360000443513-Announcements"&ndash;&gt;
+                        &lt;!&ndash;class="nav-item i18n" name="tbdhAnnouncement"></a>&ndash;&gt;
+                        &lt;!&ndash;</dt>&ndash;&gt;
+                        &lt;!&ndash;<dt id="nav6"><a target="_blank" name="tbdhHelp" href="https://55support.zendesk.com/hc/en-us"&ndash;&gt;
+                        &lt;!&ndash;class="nav-item i18n"></a>&ndash;&gt;
+                        &lt;!&ndash;</dt>&ndash;&gt;
+                    </dl>
+                    &lt;!&ndash; 登录后 &ndash;&gt;
+                    <dl class="title-right f-right title-nav white-color assets-header clearfix loginAfter">
+                        <dt class="arrow-down arrrow_down_app">
+                            <a href="../login/sigin_up.html">App</a>
+                        <div class="download_new">
+                            <p>ios&Android</p>
+                            <img src="../static/web/images_new/QR.png" alt="">
+                            <p>扫码下载</p>
+                        </div>
+                        </dt>
+                        <dt class="arrow-down support_dt">
+                            <a href="">
+                                <em class="i18n" name="tbdhAnnouncement">news</em>/<em class="i18n" name="tbdhHelp">support</em>
+                            </a>
+                        <div  class="clearfix support">
+                            <ul>
+                                <li><a target="_blank" class="i18n" href="" name="tbdhAnnouncement">公告</a>
+                                <li><a target="_blank" class="i18n" name="tbdhHelp" href="">帮助</a></li>
+                            </ul>
+                        </div>
+                        </dt>
+                        <dt id="nav7" class="order">
+                            <a href="../order/order.html"><img src="../static/web/images_new/order.png"
+                                                               class="assets-img "><a href="../order/order.html"
+                                                                                      class="i18n" name="tbdhOrder"></a></a>
+                        </dt>
+                        <dt id="nav8" class="balances arrow-down">
+                            <img src="../static/web/images_new/balances.png" class="assets-img">
+                            <em class="i18n" name='tbdhBalancesF'></em>
+                        <div class="assets-header-box assets-header-box-balance">
+                            <ul class="assets-list">
+                                <li>
+                                    <a href="../balances/balances.html">
+                                        <img src="../static/web/images_new/balances.png" class="assets-item-img">
+                                        <a class="i18n" name="tbdhBalancesC" href="../balances/balances.html"></a>
+                                    </a>
+
+                                </li>
+                                &lt;!&ndash;<li><a onclick="deposits(this)"><img src="../static/web/images_new/deposits.png" class="assets-item-img">Deposits</a>&ndash;&gt;
+                                &lt;!&ndash;</li>&ndash;&gt;
+                                &lt;!&ndash;<li><a onclick="withdrawal(this)"><img src="../static/web/images_new/withdrawals.png"&ndash;&gt;
+                                &lt;!&ndash;class="assets-item-img">Withdrawals</a>&ndash;&gt;
+                                &lt;!&ndash;</li>&ndash;&gt;
+                                <li>
+                                    <a href="../balances/transaction_history.html">
+                                        <img src="../static/web/images_new/transaction.png" class="assets-item-img">
+                                        <a class="i18n" name="tbdhTransactionHistory"
+                                           href="../balances/transaction_history.html"></a>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        </dt>
+                        <dt class="user arrow-down">
+                            <img src="../static/web/images_new/geren.png" class="assets-img">&nbsp;
+                        <div class="assets-header-box assets-header-box-user">
+                            <ul class="assets-list">
+                                <li>
+                                    <a href="../securityCenter/securityCenter.html">
+                                        <img src="../static/web/images_new/safety.svg" class="assets-item-img assets-item-img-svg">
+                                        <a href="../securityCenter/securityCenter.html" name="tbdhAccountSecurity"
+                                           class="i18n"> </a>
+                                    </a>
+                                </li>
+                                <li class="idVertication">
+                                    <a href="javascript:;">
+                                        <img src="../static/web/images_new/certification.svg" class="assets-item-img assets-item-img-svg">
+                                        <a href="javascript:;" class="i18n" name="tbdhIDVerification"></a>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <img src="../static/web/images_new/invite.svg" class="assets-item-img assets-item-img-svg">
+                                        <a href="../invitation/invitationCode.html" class="i18n"
+                                           name="invitePeople"></a>
+                                    </a>
+                                </li>
+                                <li class="loginOut">
+                                    <a href="javascript:;">
+                                        <img src="../static/web/images_new/shutdown.svg" class="assets-item-img assets-item-img-svg">
+                                        <a href="javascript:;" class="i18n" name='tbdhLogout'></a>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        </dt>
+                        <dt class="language arrow-down" style="display: flex">
+                            <img class="nationFlag" src="../static/web/images_new/English.svg" alt="">
+                        <div class="language-box">
+                            <ul class="language-style clearfix">
+                                <li data-value="en" class="rightChinese_sec change_lang_item reload">
+                                    <img src="../static/web/images_new/English.svg" alt="">
+                                    English</li>
+                                <li data-value="zh-CN" class="rightChinese_sec change_lang_item reload">
+                                    <img src="../static/web/images_new/China.svg" alt="">
+                                    简体中文</li>
+                            </ul>
+                        </div>
+                        </dt>
+                    </dl>
+                    &lt;!&ndash; 登录前 &ndash;&gt;
+                    <dl class="title-right f-right title-nav assets-header loginbefore">
+                        <dt class="arrow-down arrrow_down_app">
+                            <a href="../login/sigin_up.html">App</a>
+                        <div class="download_new">
+                            <p>ios&Android</p>
+                            <img src="../static/web/images_new/QR.png" alt="">
+                            <p>扫码下载</p>
+                        </div>
+                        </dt>
+                        <dt class="arrow-down support_dt">
+                            <a href="">
+                                <em class="i18n" name="tbdhAnnouncement">news</em>/<em class="i18n" name="tbdhHelp">support</em>
+                            </a>
+                        <div  class="clearfix support">
+                            <ul>
+                                <li><a target="_blank" class="i18n" href="" name="tbdhAnnouncement">公告</a>
+                                <li><a target="_blank" class="i18n" name="tbdhHelp" href="">帮助</a></li>
+                            </ul>
+                        </div>
+                        </dt>
+                        <dt>
+                            <a href="../login/sigin_up.html" class="i18n" name='SignUp'></a>
+                        </dt>
+                        <dt>
+                            <a href="../login/sigin.html" class="i18n" name="SignIn"></a>
+                        </dt>
+                        <dt style="display: flex" class="language">
+                            <img class="nationFlag" src="../static/web/images_new/English.svg" alt="">
+                            &lt;!&ndash;<label class="i18n languageChange" name='languagebefore'></label>&ndash;&gt;
+                        <div class="language-box">
+                            <ul class="language-style clearfix">
+                                <li data-value="en" class="rightChinese_sec change_lang_item reload">
+                                    <img src="../static/web/images_new/English.svg" alt="">
+                                    English
+                                </li>
+                                <li data-value="zh-CN" class="rightChinese_sec change_lang_item reload">
+                                    <img src="../static/web/images_new/China.svg" alt="">
+                                    简体中文
+                                </li>
+                            </ul>
+                        </div>
+                        </dt>
+                    </dl>
+                </div>
+
+            </div>
+        </div>-->
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="up">
+                <!--左边币种信息-->
+                <div class="aside">
+                    <div class="aside-content">
+                        <div class="item-title i18n" name='bbjyCryptocurrency'></div>
+                        <div class="tab-panel space-between">
+                            <!--<a href="#RMBT">RMBT</a>-->
+                            <a href="#USDT">USDT</a>
+                            <a href="#BTC">BTC</a>
+                            <a href="#ETH">ETH</a>
+                        </div>
+                        <ul class="item-title-list list-title">
+                            <li class="text-left i18n" name='bbjyChooseType'></li>
+                            <li class="text-center i18n" name='bbjyChoosePrice'></li>
+                            <li class="text-right">%</li>
+                        </ul>
+                        <div id="tabs-container" class="swiper-container swiper-container-horizontal tab-content">
+                            <div class="swiper-wrapper coin-list">
+                                <!--RMBT-->
+                                <!--<div class="content-common swiper-slide" id="RMBT"></div>-->
+                                <!--<script id="rmbt_list" type="text/x-jquery-tmpl">-->
+                                <!--<ul class="item-content item-common" data-symbol=${symbol} data-symbol-path=${baseAsset}_${quoteAsset}>-->
+                                <!--<li class="text-left">-->
+                                <!--<span class="name">${baseAsset}</span></li>-->
+                                <!--<li class="text-center price"></li>-->
+                                <!--<li class="text-right precent"></li>-->
+                                <!--</ul>-->
+                                <!--</script>-->
+                                <!--USDT-->
+                                <div class="content-common swiper-slide" id="USDT"></div>
+                                <script id="usdt-list" type="text/x-jquery-tmpl">
+                                    <ul class="item-content item-common" data-symbol=${symbol} data-symbol-path=${baseAsset}_${quoteAsset}>
+                                        <li class="text-left">
+                                        <span class="name">${baseAsset}</span></li>
+                                        <li class="text-center price"></li>
+                                        <li class="text-right precent"></li>
+                                    </ul>
+
+
+
+                                </script>
+                                <!--BTC-->
+                                <div class="content-common swiper-slide" id="BTC"></div>
+                                <script id="btc-list" type="text/x-jquery-tmpl">
+                                    <ul class="item-content item-common" data-symbol=${symbol} data-symbol-path=${baseAsset}_${quoteAsset}>
+                                        <li class="text-left">
+                                        <span class="name">${baseAsset}</span></li>
+                                        <li class="text-center price"></li>
+                                        <li class="text-right precent"></li>
+                                    </ul>
+
+
+
+                                </script>
+                                <!--ETH-->
+                                <div class="content-common swiper-slide" id="ETH"></div>
+                                <script id="eth-list" type="text/x-jquery-tmpl">
+                                    <ul class="item-content item-common" data-symbol=${symbol} data-symbol-path=${baseAsset}_${quoteAsset}>
+                                        <li class="text-left">
+                                        <!--<i class="iconfont uncollected"></i>-->
+                                        <span class="name">${baseAsset}</span></li>
+                                        <li class="text-center price"></li>
+                                        <li class="text-right precent"></li>
+                                    </ul>
+
+
+
+                                </script>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--右边图表及交易与盘口信息-->
+                <div class="main">
+                    <div class="page-content">
+                        <div class="trading-chart">
+                            <!--大盘信息-->
+                            <div class="trading-box">
+                                <!--大盘信息-->
+                                <div class="trading-coin">
+                                    <div class="coin-name"><span class="baseAsset"></span>/<span
+                                            class="quoteAsset"></span></div>
+                                    <div class="coin-price"><span class="current-price"></span><span
+                                            class="change">
+                                        <!--<span>≈</span><span> 125.43 CNY</span>-->
+                                    </span>
+                                    </div>
+                                </div>
+                                <ul class="price-list clearfix">
+                                    <li>
+                                        <p class="base i18n" name='bbjyChange'></p>
+                                        <span id="change"></span>
+                                    </li>
+                                    <li>
+                                        <p class="base i18n" name='bbjyHourHigh'></p>
+                                        <span id="high"></span>
+                                    </li>
+                                    <li>
+                                        <p class="base i18n" name='bbjyHourLow'></p>
+                                        <span id="low"></span>
+                                    </li>
+                                    <li>
+                                        <p class="base i18n" name="bbjyHourVol"></p>
+                                        <span id="volume"></span>
+                                    </li>
+                                </ul>
+                                <!-- <a href="../vote/supervision.html" class="info-show"><img
+                                        src="../static/web/img/logo.png"
+                                        class="img-logo">
+                                    <div class="text">Info<br>show</div>
+                                </a> -->
+
+                            </div>
+                            <!--这里是图表, 高度不定-->
+                            <div id="tv_chart_container"
+                                 style="height:480px;margin-top:0px;position:relative;overflow: hidden"></div>
+                        </div>
+                        <div class="trade-wrap clearfix">
+                            <!--左侧交易信息-->
+                            <div class="trade-panel">
+                                <!--买入-->
+                                <div class="buy-panel buy-sell-common">
+                                    <div class="trade-title">
+                                        <strong class="green"><em class="i18n" name="bbjyBuyTitle"></em>&nbsp;<span
+                                                class="baseAsset"></span></strong>
+                                        <div class="space-between">
+                                            <span class="available"><em class="i18n"
+                                                                        name="bbjyBuyAvailable"></em>&nbsp;<span
+                                                    id="availableQuote">--</span>&nbsp;<span
+                                                    class="quoteAsset"></span></span>
+                                            <!--<a class="text">Deposit</a>-->
+                                        </div>
+                                        <!--<div class="cost-price">Cost price： <span>10.56</span> <span>USDT</span>-->
+                                        <!--<i class="iconfont">&#xe60a;</i>-->
+                                        <!--</div>-->
+                                    </div>
+                                    <div class="trade-msg">
+                                        <p class="label i18n" name="bbjyBuyPrice"></p>
+                                        <div class="price-box">
+                                            <form>
+                                                <input type="text" maxlength="14" id="buy_price" class="input-price"
+                                                       autocomplete="off" data-style="price"
+                                                       style="ime-mode:disabled"
+                                                       onkeydown="keepDecimalPlaces(event)"
+                                                       onpaste="return false" ondragenter="return false"
+                                                       onclick="getCursorPosition(this)">
+                                            </form>
+                                            <div class="name-show vertically-centered quoteAsset"></div>
+                                        </div>
+                                        <!--<div class="trans">≈<span>4382.61</span><span>CNY</span></div>-->
+
+                                        <p class="label amount i18n" name="bbjyBuyAmount"></p>
+                                        <div class="price-box">
+                                            <form>
+                                                <input type="text" maxlength="14" id="buy_num" class="input-num"
+                                                       autocomplete="off" data-style="amount"
+                                                       style="ime-mode:disabled"
+                                                       onkeydown="keepDecimalPlaces(event)"
+                                                       onpaste="return false" ondragenter="return false"
+                                                       onclick="getCursorPosition(this)">
+                                            </form>
+                                            <div class="name-show vertically-centered baseAsset"></div>
+                                        </div>
+                                        <div class="range">
+                                            <div class="path"></div>
+                                            <div class="range-ball" data-side="buy">
+                                                <div class="ball" style="left: 0;transform: translateX(0);">
+                                                    <div class="active-ball"></div>
+                                                </div>
+                                                <div class="ball" style="left: 25%;transform: translateX(-25%);"></div>
+                                                <div class="ball" style="left: 50%;transform: translateX(-50%);"></div>
+                                                <div class="ball" style="left: 75%;transform: translateX(-75%);"></div>
+                                                <div class="ball"
+                                                     style="left: 100%;transform: translateX(-100%);"></div>
+                                            </div>
+                                            <div class="range-num">
+                                                <div class="num" style="left: 0;transform: translateX(0);"> 0</div>
+                                                <div class="num" style="left: 25%;transform: translateX(-25%);">25</div>
+                                                <div class="num" style="left: 50%;transform: translateX(-50%);">50</div>
+                                                <div class="num" style="left: 75%;transform: translateX(-75%);">75</div>
+                                                <div class="num" style="left: 100%;transform: translateX(-100%);">100
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="label"><em class="i18n"
+                                                             name="bbjyBuyTotal"></em>&nbsp;&nbsp;<span
+                                                id="buy_total" class="total-num">0.00000000</span>&nbsp;<span><span
+                                                class="quoteAsset"></span></span>
+                                        </p>
+                                        <button class="btn un-login-btn dis-n">
+                                            <a href="../login/sigin.html" class="text"><em class="i18n"
+                                                                                           name="bbjyBuyLogin"></em></a>
+                                            <em class="i18n" name="bbjyOr"></em>
+                                            <a href="../login/sigin_up.html" class="text"><em class="i18n"
+                                                                                              name="bbjyBuyRegister"></em></a>
+                                            <em class="i18n" name="bbjyToTrade"></em>
+                                        </button>
+                                        <button class="btn login-btn dis-n buy-btn buy-sell-btn" id="buy_btn"
+                                                onclick="buy()"><em class="i18n" name="bbjyBuyOperation"></em>
+                                        </button>
+                                        <button class="btn restricted-btn dis-n" disabled><em class="i18n" name="bbjyBuyOperation"></em>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="right-line horizontally-centered"></div>
+                                <!--卖出-->
+                                <div class="sell-panel buy-sell-common">
+                                    <div class="trade-title">
+                                        <strong class="red"><em class="i18n" name="bbjySellTitle"></em>&nbsp;<span
+                                                class="baseAsset"></span></strong>
+                                        <div class="space-between">
+                                            <span class="available text-common"><em class="i18n"
+                                                                                    name="bbjySellAvailable"></em>&nbsp;<span
+                                                    id="availableBase">--</span>&nbsp;&nbsp;<span
+                                                    class="baseAsset"></span></span>
+                                            <!--<a class="text">Deposit</a>-->
+                                        </div>
+                                        <!--<div class="cost-price text-common text-right">Cost price： <span>10.56</span>-->
+                                        <!--<span>USDT</span>-->
+                                        <!--<i-->
+                                        <!--class="iconfont">&#xe60a;</i>-->
+                                        <!--</div>-->
+                                    </div>
+                                    <div class="trade-msg">
+                                        <p class="label i18n" name="bbjySellPrice"></p>
+                                        <div class="price-box">
+                                            <form>
+                                                <input type="text" maxlength="14" id="sell_price" class="input-price"
+                                                       autocomplete="off" data-style="price"
+                                                       style="ime-mode:disabled"
+                                                       onkeydown="keepDecimalPlaces(event)"
+                                                       onpaste="return false" ondragenter="return false"
+                                                       onclick="getCursorPosition(this)"></form>
+                                            <div class="name-show vertically-centered quoteAsset"></div>
+                                        </div>
+                                        <!--<div class="trans">≈<span>4382.61</span><span>CNY</span></div>-->
+
+                                        <p class="label amount i18n" name="bbjySellAmount"></p>
+                                        <div class="price-box">
+                                            <form>
+                                                <input type="text" id="sell_num" maxlength="14" class="input-price"
+                                                       autocomplete="off" data-style="amount"
+                                                       style="ime-mode:disabled"
+                                                       onkeydown="keepDecimalPlaces(event)"
+                                                       onpaste="return false" ondragenter="return false"
+                                                       onclick="getCursorPosition(this)">
+                                            </form>
+                                            <div class="name-show vertically-centered baseAsset"></div>
+                                        </div>
+                                        <div class="range">
+                                            <div class="path"></div>
+                                            <div class="range-ball" data-side="sell">
+                                                <div class="ball" style="left: 0;transform: translateX(0);">
+                                                    <div class="active-ball"></div>
+                                                </div>
+                                                <div class="ball" style="left: 25%;transform: translateX(-25%);"></div>
+                                                <div class="ball" style="left: 50%;transform: translateX(-50%);"></div>
+                                                <div class="ball" style="left: 75%;transform: translateX(-75%);"></div>
+                                                <div class="ball"
+                                                     style="left: 100%;transform: translateX(-100%);"></div>
+                                            </div>
+                                            <div class="range-num">
+                                                <div class="num" style="left: 0;transform: translateX(0);">0</div>
+                                                <div class="num" style="left: 25%;transform: translateX(-25%);">25</div>
+                                                <div class="num" style="left: 50%;transform: translateX(-50%);">50</div>
+                                                <div class="num" style="left: 75%;transform: translateX(-75%);">75</div>
+                                                <div class="num" style="left: 100%;transform: translateX(-100%);">100
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="label"><em class="i18n"
+                                                             name="bbjySellTotal"></em>&nbsp;&nbsp;<span
+                                                id="sell_total"
+                                                class="total-num">0.00000000</span>&nbsp;<span
+                                                class="quoteAsset"></span>
+                                        </p>
+                                        <button class="btn un-login-btn dis-n">
+                                            <a href="../login/sigin.html" class="text"><em class="i18n"
+                                                                                           name="bbjySellLogin"></em></a>
+                                            <em class="i18n" name="bbjyOr">or</em>
+                                            <a href="../login/sigin_up.html" class="text"><em class="i18n"
+                                                                                              name="bbjySellRegister"></em></a>
+                                            <em class="i18n" name="bbjyToTrade"></em>
+                                        </button>
+                                        <button class="btn login-btn dis-n sell-btn buy-sell-btn" id="sell_btn"
+                                                onclick="sell()"><em class="i18n" name="bbjySellOperation"></em>
+                                        </button>
+                                        <button class="btn restricted-btn dis-n" disabled><em class="i18n" name="bbjySellOperation"></em>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--右侧盘口信息-->
+                            <div class="order-book">
+                                <div class="order-book-content">
+                                    <!--卖单-->
+                                    <div class="sell-buy-orders">
+                                        <div class="order">
+                                            <ul class="item-title-list list-title">
+                                                <li class="temp"></li>
+                                                <li class="text-title"><em class="i18n"
+                                                                           name="bbjyNowPrice"></em>(<span
+                                                        class="quoteAsset"></span>)
+                                                </li>
+                                                <li class="text-title"><em class="i18n" name="bbjyNowAmount"></em>(<span
+                                                        class="baseAsset"></span>)
+                                                </li>
+                                                <li class="text-title"><em class="i18n"
+                                                                           name="bbjyNowTotal"></em>(<span
+                                                        class="quoteAsset"></span>)
+                                                </li>
+                                            </ul>
+                                            <ul class="orders-body" id="sell_orders_list"></ul>
+                                            <script id="sell_orders" type="text/x-jquery-tmpl">
+                                                 <li class="sell-order-lists order-list" data-price=${price}>
+                                                    <span class="red"><em class='i18n' name='panSell'></em>${i}</span>
+                                                    <span>${price}</span>
+                                                    <span>${quantity}</span>
+                                                    <span>${total}</span>
+                                                    <b class="sell-order-color" style="width: ${width}"></b>
+                                                 </li>
+
+
+
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="current">
+                                        <span class="current-price"></span>
+                                        <i class="iconfont green upArrow dis-n">&#xe7f5;</i>
+                                        <i class="iconfont red downArrow dis-n">&#xe600;</i>
+                                    </div>
+                                    <!--买单-->
+                                    <div class="sell-buy-orders">
+                                        <div class="order">
+                                            <ul class="orders-body" id="buy_orders_list"></ul>
+                                            <script id="buy_orders" type="text/x-jquery-tmpl">
+                                                 <li class="buy-order-lists order-list" data-price=${price}>
+                                                    <span class="green"><em class='i18n' name='panBuy'></em>${i}</span>
+                                                    <span>${price}</span>
+                                                    <span>${quantity}</span>
+                                                    <span>${total}</span>
+                                                    <b class="buy-order-color" style="width: ${width}"></b>
+                                                 </li>
+
+
+
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="more text-right"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quickNav vertically-centered dis-n" id="count_down">
+                        <div class="quickContent">
+                            <div class="quickContent-title">
+                                <div class="line">
+                                    <p class="i18n" name="bbjyComingSoon"></p>
+                                </div>
+                            </div>
+                            <div class="countDown space-between">
+                                <span class="text" name="bbjyDistance"></span>
+                                <div class="box-content"><span class="box"></span>
+                                    <div class="leftTime" id="day"></div>
+                                </div>
+                                <span class="text i18n" name="bbjyDays"></span>
+                                <div class="box-content"><span class="box"></span>
+                                    <div class="leftTime" id="hour"></div>
+                                </div>
+                                <span class="text i18n" name="bbjyHours"></span>
+                                <div class="box-content"><span class="box"></span>
+                                    <div class="leftTime" id="minute"></div>
+                                </div>
+                                <span class="text i18n" name="bbjyMinutes"></span>
+                                <div class="box-content"><span class="box"></span>
+                                    <div class="leftTime" id="second"></div>
+                                </div>
+                                <span class="text i18n" name="bbjySeconds"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="below clearfix">
+                <!--左侧委托单-->
+                <div class="below-left">
+                    <div class="open-order">
+                        <ul class="space-between item-title">
+                            <li class="i18n" name="bbjyOpenOrders"></li>
+                            <li><a href="../order/order.html" class="text"><em class="i18n"
+                                                                               name="bbjyOrderAll"></em></a>
+                            </li>
+                            <!--<li><a class="text" id="buy_side">Buy</a><a class="text" id="sell_side">Sell</a><a href=""-->
+                            <!--class="text">All</a>-->
+                            <!--</li>-->
+                        </ul>
+                        <div class="table-box">
+                            <table width="100%" id="open_table">
+                                <tr class="tr-title">
+                                    <th class="i18n" name="bbjyOrderDate"></th>
+                                    <th class="i18n" name="bbjyOrderPair"></th>
+                                    <th class="i18n" name="bbjyOrderType"></th>
+                                    <th class="i18n" name="bbjyOrderSide"></th>
+                                    <th class="i18n" name="bbjyOrderPrice"></th>
+                                    <th class="i18n" name="bbjyOrderAmount"></th>
+                                    <th class="i18n" name="bbjyOrderFilled"></th>
+                                    <th class="i18n" name="bbjyOrderTotal"></th>
+                                    <th class="i18n" name="bbjyOperation"></th>
+                                </tr>
+                                <tr class="no-order dis-n" id="no_open_order">
+                                    <td colspan="9" class="no-open i18n" name="bbjyOrderTIP"></td>
+                                </tr>
+                            </table>
+                            <script id="open_order_list" type="text/x-jquery-tmpl">
+                                 <tr class="open-order-content">
+                                    <td>${createdAt}</td>
+                                    <td>${symbol}</td>
+                                    <td class="i18n" name=${orderType}></td>
+                                    <td class="order-side i18n" name=${orderSide}></td>
+                                    <td>${limitPrice}</td>
+                                    <td>${filledCumulativeQuantity}/${quantity}</td>
+                                    <td>${filled}%</td>
+                                    <td>${total}</td>
+                                 {{if cancelledUpdatedAt!=null && orderStatus=="SUBMITTED"}}
+                                    <td class="cancel-status i18n" data-order-id=${orderId} name="bbjyCancelling"></td>
+                                 {{else}}
+                                    <td data-order-id=${orderId}><a class="cancel i18n" onclick="cancel(this)" name="bbjyCancel"></a></td>
+                                 {{/if}}
+                                 </tr>
+
+
+
+                            </script>
+                        </div>
+                    </div>
+                    <div class="history">
+                        <ul class="space-between item-title">
+                            <li class="i18n" name="bbjyHistory"></li>
+                            <li><a href="../order/order.html" class="text"><em class="i18n"
+                                                                               name="bbjyOrderAll"></em></a></li>
+                        </ul>
+                        <div class="table-box">
+                            <table width="100%" id="complete_table">
+                                <tr class="tr-title">
+                                    <th class="i18n" name="bbjyHistoryDate"></th>
+                                    <th class="i18n" name="bbjyHistoryPair"></th>
+                                    <th class="i18n" name="bbjyHistoryType"></th>
+                                    <th class="i18n" name="bbjyHistorySide"></th>
+                                    <th class="i18n" name="bbjyHistoryAvg"></th>
+                                    <th class="i18n" name="bbjyHistoryPrice"></th>
+                                    <th class="i18n" name="bbjyHistoryAmount"></th>
+                                    <th class="i18n" name="bbjyHistoryFilled"></th>
+                                    <th class="i18n" name="bbjyHistoryTotal"></th>
+                                    <th class="i18n" name="bbjyHistoryStatus"></th>
+                                </tr>
+                                <!--无历史-->
+                                <tr class="no-order dis-n" id="no_history_order">
+                                    <td colspan="10" class="no-history i18n" name="bbjyHistoryTIP"></td>
+                                </tr>
+                            </table>
+                            <script id="history_order_list" type="text/x-jquery-tmpl">
+                                 <tr class="history-order-content">
+                                    <td>${createdAt}</td>
+                                    <td>${symbol}</td>
+                                    <td class="i18n" name=${orderType}></td>
+                                    <td class="order-side i18n" name=${orderSide}></td>
+                                    <td>${filledAveragePrice}</td>
+                                    <td>${limitPrice}</td>
+                                    <td>${filledCumulativeQuantity}/${quantity}</td>
+                                    <td>${filled}%</td>
+                                    <td>${total}</td>
+                                    <td class="i18n" name=${orderStatus}></td>
+                                 </tr>
+
+
+
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!--右侧成交单-->
+                <div class="below-right">
+                    <div class="trade-history">
+                        <div class="item-title i18n" name="bbjyTradeHistory"></div>
+                        <div class="history-content scroll-style">
+                            <table width="100%" class="history-table" id="deal_table"></table>
+                            <script id="deal_order_list" type="text/x-jquery-tmpl">
+                                <tr class="deal-order-content">
+                                    <td class="text-left deal-price ${color}">${last}</td>
+                                    <td class="text-right deal-amount">${volume}</td>
+                                    <td class="text-right deal-time">${dateTime}</td>
+                                </tr>
+
+
+
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--交易密码6个框-->
+    <div class="alert alert-trade-password dis-n">
+        <div class="alert-title">
+            <div class="i18n" name="bbjyPassword"></div>
+            <i class="iconfont" id="close_icon">&#xe630;</i>
+        </div>
+        <div class="alert-content">
+            <div class="i18n text" name="bbjyInputPassword"></div>
+            <div class="square">
+                <input type="tel" maxlength="6" autocomplete="new-password" autofocus
+                       onpaste="return false" ondragenter="return false" data-attr="tradePassword"
+                       onkeydown="keepDecimalPlaces(event)"
+                       onclick="getCursorPosition(this)">
+                <div class="fake">
+                    <div class="fakebox">
+                        <input type="password" maxlength="1" autocomplete="new-password">
+                        <input type="password" maxlength="1" autocomplete="new-password">
+                        <input type="password" maxlength="1" autocomplete="new-password">
+                        <input type="password" maxlength="1" autocomplete="new-password">
+                        <input type="password" maxlength="1" autocomplete="new-password">
+                        <input type="password" maxlength="1" autocomplete="new-password">
+                    </div>
+                </div>
+
+                <div class="active"></div>
+            </div>
+            <div class="expired space-between"><span class="i18n" name="bbjyExpiredTime"></span><a
+                    href="../securityCenter/setTradingPassword.html" class="i18n" name="bbjyForgetPassword"></a>
+            </div>
+            <div class="space-between">
+                <button class="cancel i18n" name="bbjyTipCancel" id="close"></button>
+                <button class="confirm i18n" name="bbjyTipSubmit"></button>
+            </div>
+        </div>
+    </div>
+    <div class="mask dis-n"></div>
+
+
+    <!--订单成功-->
+    <div class="component_tips center-level success dis-n" id="order_success">
+        <i class="iconfont success-green">&#xe69f;</i>
+        <span class="prompt i18n" name="bbjyOrderSuccess"></span>
+    </div>
+
+    <!--错误-->
+    <div class="component_tips center-level error dis-n">
+        <i class="iconfont red">&#xe7f4;</i>
+
+        <span class="prompt dis-n error-msg"></span>
+
+        <span class="prompt dis-n buy-price i18n" name="bbjyEnterBuyPrice"></span>
+        <span class="prompt dis-n buy-max-price"><em class="i18n" name="bbjyBuyPriceNotMore"></em>
+            <em id="buy_max_price"></em></span>
+        <span class="prompt dis-n buy-min-price"><em class="i18n" name="bbjyBuyPriceNotLess"></em>
+            <em id="buy_min_price"></em></span>
+        <span class="prompt dis-n buy-price-size"><em class="i18n" name="bbjyBuyPriceMultiple"></em>
+            <em id="buy_price_size"></em></span>
+
+        <span class="prompt dis-n buy-volume i18n" name="bbjyEnterBuyVolume"></span>
+        <span class="prompt dis-n buy-max-volume"><em class="i18n" name="bbjyBuyVolumeNotMore"></em>
+            <em id="buy_max_volume"></em></span>
+        <span class="prompt dis-n buy-min-volume"><em class="i18n" name="bbjyBuyVolumeNotLess"></em>
+            <em id="buy_min_volume"></em></span>
+        <span class="prompt dis-n buy-volume-size"><em class="i18n" name="bbjyBuyVolumeMultiple"></em>
+            <em id="buy_volume_size"></em></span>
+        <span class="prompt dis-n buy-available-volume"><em class="i18n" name='bbjyBuyTotalNotMore'></em>
+            <em id="buy_available_volume"></em></span>
+
+        <span class="prompt dis-n sell-price i18n" name="bbjyEnterSellPrice"></span>
+        <span class="prompt dis-n sell-max-price"><em class="i18n" name="bbjySellPriceNotMore"></em>
+            <em id="sell_max_price"></em></span>
+        <span class="prompt dis-n sell-min-price"><em class="i18n" name="bbjySellPriceNotLess"></em>
+            <em id="sell_min_price"></em></span>
+        <span class="prompt dis-n sell-price-size"><em class="i18n" name="bbjySellPriceMultiple"></em>
+            <em id="sell_price_size"></em></span>
+
+        <span class="prompt dis-n sell-volume i18n" name="bbjyEnterSellVolume"></span>
+        <span class="prompt dis-n sell-max-volume"><em class="i18n" name="bbjySellVolumeNotMore"></em>
+            <em id="sell_max_volume"></em></span>
+        <span class="prompt dis-n sell-min-volume"><em class="i18n" name="bbjySellVolumeNotLess"></em>
+            <em id="sell_min_volume"></em></span>
+        <span class="prompt dis-n sell-volume-size"><em class="i18n" name="bbjySellVolumeMultiple"></em>
+            <em id="sell_volume_size"></em></span>
+        <span class="prompt dis-n sell-available-volume"><em class="i18n" name='bbjySellTotalNotMore'></em>
+            <em id="sell_available_volume"></em></span>
+
+        <span class="prompt dis-n no-password-error i18n" name="bbjyNoPasswordError"></span>
+        <span class="prompt dis-n password-error i18n" name="bbjyPasswordError"></span>
+        <span class="prompt dis-n check-password-error"></span>
+
+        <span class="prompt dis-n account-error i18n" name="bbjyAccountError"></span>
+
+    </div>
+
+
+    <!--footer Start-->
+    <div class="common-footer"></div>
+</div>
+
+<!--敬请期待-->
+<div class="coming-soon vertically-centered dis-n">
+    <div class="quickContent">
+        <h1 class="i18n" name="bbjyComingSoon"></h1>
+    </div>
+</div>
+<!--<div class="mask-coming-soon blur"></div>-->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script type="text/javascript" src="../static/web/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../static/web/js/lib/swiper.js"></script>
+<script type="text/javascript" src='../static/web/js/lib/jquery.i18n.properties.js'></script>
+<script type="text/javascript" src='../static/web/js/lib/language.js'></script>
+
+<script type="text/javascript" src="../charting_library_new/charting_library.min.js"></script>
+<script type="text/javascript" src="../charting_library_new/datafeed/udf/datafeeddemo.js"></script>
+<script type="text/javascript" src="../static/web/js/page_new/tradingView.js"></script>
+
+<script type="text/javascript" src="../static/web/js/lib/MathContext.js"></script>
+<script type="text/javascript" src="../static/web/js/lib/bigdecimal.js"></script>
+<script type="text/javascript" src="../static/web/js/lib/jquery.tmpl.js"></script>
+
+<script type="text/javascript" src="../static/web/js/page_new/header_footer.js"></script>
+<script type="text/javascript" src="../static/web/js/page_new/alert.js"></script>
+
+<script type="text/javascript" src="../static/web/js/page_new/trading_interface.js"></script>
+<script type="text/javascript" src="../static/web/js/page_new/sso.js"></script>
+<script type="text/javascript" src="../static/web/js/index.js"></script>
+<script type="text/javascript" src="../static/web/js/page_new/quote.js"></script>
+<script type="text/javascript" src="../static/web/js/page_new/exchange.js"></script>
+<script type="text/javascript" src="../static/web/js/page/plateformUrl.js"></script>
+<script type="text/javascript" src="../static/web/js/page_new/order_common.js"></script>
+<script type="text/javascript" src="../static/web/js/page/header.js"></script>
+
+<script type="text/javascript" src="../static/web/js/page_new/trade.js"></script>
+
+<script>
+    // $(document.body).css("overflow-y", "hidden");
+
+</script>
+
+</body>
+</html>

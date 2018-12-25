@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title class="i18n" name='safevertification'>safevertification</title>
+      <meta id="i18n_pagename" content="index">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     <link rel="stylesheet" href="../static/web/iconfont/iconfont.css?t=20180912">
+    <link rel="stylesheet" href="../static/web/styles/index.css?t=20180912">
+     <link rel="stylesheet" href="../static/web/styles/header_footer.css?t=20180910">
+    <link rel="stylesheet" href="../static/web/iconfont/iconfont.css?t=20180912">
+    <!-- <link rel="stylesheet" href="../static/web/styles/page/commonHeadFoot.css"> -->
+    <link rel="stylesheet" href="../static/web/styles/page_new/sign_common.css?t=20180912">
+    <link rel="stylesheet" href="../static/web/styles/page_new/forget.css?t=20180912">
+    <link rel="stylesheet" href="../static/web/styles/page_new/signin.css?t=20180912">
+    <link rel="stylesheet" href="../static/web/styles/page_new/signup.css?t=20180912">
+
+</head>
+<body>
+<div class="wrapper" id="wrapper">
+    <div class="big-container">
+    <!--header Start-->
+   <div class="common-header"></div>
+    <!--header End-->
+    <div class="container">
+        <div class="content center-level">
+            <div id="tabs-container" class="tab-content">
+                <div>
+                    <div class="content-common">
+                        <form id="forgetForm">
+                        <div class="register-content">
+                            <div class="welcome">
+                                <span name='zhmmSecurity' class="i18n">safety Vertification</span>
+                                <p  class="i18n" name='zhmmResetExplain'>For security purposes no withdrawals are permitted for 24 hours after modification of security methods.</p>
+                            </div>
+
+                            <div class="register-form">
+                                <div class="form-group">
+                                    <img src="../static/web/images_new/zhanghao@2x.png"
+                                         class="left-icon vertically-centered">
+                                    <input class="responsePhone" name="forgetPassword" type="text" disabled="disabled" placeholder="Please input account">
+                                </div>
+                            </div>
+                            <div class="register-form">
+                                <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
+                                <div id="captcha"></div> <!-- 验证码容器元素 -->
+                            <div class="form-group">
+                                <img src="../static/web/images_new/yanzheng@2x.png"
+                                     class="left-icon vertically-centered">
+                                <input  selectattr="placeholder"  selectname="smsCode" class="smsCode i18n-input" name="SMS" type="text" minlength="6" maxlength="6">
+                                <button name="zhmmSend"  id="btnSendCode"   class="sendSms i18n">Send</button>
+                            </div>
+                            </div>
+                            <div class="register-form google-form">
+                                <div class="form-group">
+                                    <img src="../static/web/images_new/yanzheng@2x.png"
+                                         class="left-icon vertically-centered">
+                                    <input onkeyup="value=value.replace(/[^\d]/g,'')" selectattr="placeholder"  selectname="googleCodenum" class="smsCode googlcode i18n-input" name="Google" type="text" minlength="6" maxlength="6">
+                                </div>
+                            </div>
+                            
+                            <div class="register-meta">
+                                <button name="zhmmSecuritySubmit" type="button"  class="i18n sure btn-same forgetPasswordSubmit">Submit</button>
+                                <button style="display: none;" id="language-change" type="button"></button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer Start-->
+    <div class="common-footer"></div>
+    </div>
+    <!--footer End-->
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+<script type="text/javascript" src="../static/web/js/lib/jquery.min.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/lib/jquery-validation-1.7.0.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/page/plateformUrl.js?t=20180912"></script>
+<script type="text/javascript" src='../static/web/js/lib/layer.js?t=20180912'></script>
+<script type="text/javascript" src='../static/web/js/page/common_validate.js?t=20180912'></script>
+<script type="text/javascript" src='../static/web/js/lib/jquery.i18n.properties.js?t=20180912'></script>
+ <script type="text/javascript" src='../static/web/js/lib/language.js?t=20180912'></script>
+ <script type="text/javascript" src="../static/web/js/page/plateformUrl.js?t=20180912"></script>
+<script type="text/javascript" src="../static/web/js/page/header.js?t=20180912"></script>
+<script src="https://cstaticdun.126.net/load.min.js"></script>
+
+<script type="text/javascript">
+            importHeaderFooter();
+            labelName()
+            navigation('nav9')
+            sanCode()
+            //自动填充手机号码
+            var reponesPhoneNumber = localStorage.getItem('reponsePhone');
+            $('input[name="forgetPassword"]').val(reponesPhoneNumber);
+            $(document).ready(function () {
+            var hasgoogle = localStorage.getItem('hasgoogle');
+            if(hasgoogle=='true'){
+                $('.google-form').show()
+            }else {
+                $('.google-form').hide()
+            }
+            })
+
+            //网易盾验证
+            $('.wrapper').delegate('.reload', 'click', function () {
+                initEn()
+            });
+            initEn()
+            var  captchaIns;
+            function  initEn() {
+                if (captchaIns) {
+                    captchaIns.destroy()
+                }
+                var lan = localStorage.getItem('countryLanguage')
+                initNECaptcha({
+                    element: '#captcha',
+                    captchaId: 'a3cd39c172284133a3470b7ec05a2bb0',
+                    mode: 'popup',
+                    width: '320px',
+                    lang:lan,
+                    onReady: function (instance) {
+                        // 验证码一切准备就绪，此时可正常使用验证码的相关功能
+                    },
+                    onVerify: function (err, data) {
+                        if(err){
+                            //
+                        }
+                        if(data){
+                            sendMessage()
+                        }
+                    }
+                }, function (instance) {
+                    // 初始化成功后，用户输入对应用户名和密码，以及完成验证后，直接点击登录按钮即可
+                    captchaIns = instance;
+                }, function onerror(err) {
+                    //验证码初始化失败处理逻辑，例如：提示用户点击按钮重新初始化
+                    // 初始化失败后触发该函数，err对象描述当前错误信息
+                })
+
+            }
+            //放到封装initen的方法外面，不然每点击一次都会绑定一次；
+            document.getElementById('btnSendCode').addEventListener('click', function (event) {
+                event.preventDefault()
+                captchaIns && captchaIns.popUp()
+            })
+
+
+         /*发送验证码*/
+        var InterValObj; //timer变量，控制时间 
+        var count = 60; //间隔函数，1秒执行 
+        var curCount;//当前剩余秒数 
+        function sendMessage() {
+         　curCount = count;
+        　　//设置button效果，开始计时 
+          // $("#btnSendCode").attr("disabled", "true");
+           $("#btnSendCode").text(curCount + "s"); 
+            //$('#btnSendCode').addClass('gray')
+           InterValObj = window.setInterval(SetRemainTime, 1000);
+           var phoneNumber =  localStorage.getItem('phoneToPassword')
+            var ValidateStr = $('input[name="NECaptchaValidate"]').val();
+            var data = {
+                "ex55Pin":localStorage.getItem('ex55Pin'),
+                "phone":phoneNumber,
+             "codeType":"PHONE",
+             "operateType":"RESET_PASSWORD",
+            "captchaValidateStr":ValidateStr
+            }
+            $.ajax({
+                url:api.sendSms,
+                type:'post',
+                data:JSON.stringify(data),
+                dataType:'json',
+                contentType:"application/json;charset=UTF-8",
+                success:function(data){
+                    var code = data.code;
+                    if(code==10021){
+                        layer.msg('<div class="i18n" name="Verification"></div>')
+                        initEn()
+                        layerInternational()
+                        window.clearInterval(InterValObj);//停止计时器
+                    }else if(code==10038){
+                        layer.msg('<div class="i18n" name="verificationinvalid">验证码发送无效，请重新发送</div>');
+                        layerInternational()
+                        initEn()
+                        window.clearInterval(InterValObj);//停止计时器
+                    }else if(code==10041){
+                        layer.msg('<div class="i18n" name="userLocked">用户已被锁定</div>');
+                        layerInternational()
+                        initEn()
+                    }else if(code==10042){
+                        layer.msg('<div class="i18n" name="verificationinvalidWrong">人机验证未通过</div>');
+                        initEn()
+                        layerInternational()
+                        window.clearInterval(InterValObj);//停止计时器
+                    }
+                }
+            })
+        } 
+        //timer处理函数 
+        function SetRemainTime() { 
+              if (curCount == 0) {         
+                window.clearInterval(InterValObj);//停止计时器 
+                $("#btnSendCode").removeAttr("disabled");//启用按钮 
+                $('#btnSendCode').removeClass('gray')
+                  $("#btnSendCode").attr('name','reaginSend');
+                  layerInternational()
+              } 
+              else {
+                curCount--; 
+                $("#btnSendCode").text(curCount + "s"); 
+              } 
+            }
+
+
+
+$('#language-change').click(function(){
+    $('#forgetForm').valid()
+})
+
+
+        $(document).ready(function(){
+                $('.forgetPasswordSubmit').click(function(){
+                        $('#forgetForm').valid()
+                        if($('#forgetForm').valid()){
+                        var data2 = {
+                            "ex55Pin":localStorage.getItem('ex55Pin'),
+                            "phoneCode":$('.smsCode').val().trim().replace(/\s/g,''),
+                            "operateType":"RESET_PASSWORD",
+                            "codeType":"PHONE",
+                            "googleCode":$('.googlcode').val().trim().replace(/\s/g,''),
+                        }
+                        $.ajax({
+                            url:api.verityCode,
+                            type:"post",
+                            data:JSON.stringify(data2),
+                            dataType:'json',
+                            contentType:"application/json;charset=UTF-8",
+                            success:function(data,xhr){
+                                var code = data.code;
+                                if(code==10003){
+                                    layer.msg('<div class="i18n" name="SMSVerification"></div>')
+                                    layerInternational()
+                                    return false
+                                }else if(code==10021){
+                                    layer.msg('<div class="i18n" name="verificationCode"></div>')
+                                    layerInternational()
+                                    return false
+                                }else if(code==10025){
+                                    layer.msg('<div class="i18n" name="googleNotwright"></div>')
+                                    layerInternational()
+                                    return false
+                                }else if(code==10023){
+                                    layer.msg('<div class="i18n" name="paramError"></div>')
+                                    layerInternational()
+                                }else if(code==10035){
+                                    layer.msg('<div class="i18n" name="SMSNotCorrect"></div>')
+                                    layerInternational()
+                                    return false
+                                }else{
+                                    var reponseToken = data.token;
+                                    var token = localStorage.setItem('reponseToken',reponseToken)
+                                    console.log(reponseToken)
+                                    window.location.href = './resetNewpass.html'
+                                }
+
+
+                            }
+                        })
+
+                        }
+                    })
+
+            }) 
+</script>
+
+
+</body>
+</html>

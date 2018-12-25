@@ -1,0 +1,694 @@
+@media only screen and (max-width: 1230px) {
+  .container {
+    padding: 15px 0;
+  }
+}
+@media only screen and (min-width: 1230px) and (max-width: 1920px) {
+  .container {
+    padding: 15px;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .container {
+    padding: 15px;
+  }
+}
+.container .aside {
+  width: 25.5%;
+  padding-right: 14px;
+}
+.container .main {
+  margin-left: 25.5%;
+}
+.container .main .trade-panel {
+  float: left;
+  width: 65.77181208%;
+}
+.container .main .order-book {
+  float: right;
+  width: 34.22818792%;
+  padding-left: 12px;
+}
+.container .below-left {
+  width: 74.5%;
+  float: left;
+}
+.container .below-right {
+  float: right;
+  width: 25.5%;
+  padding-left: 12px;
+}
+body {
+  background-color: #e9ebf1;
+  color: #333;
+}
+body .aside-content,
+body .trading-chart,
+body .trade-panel,
+body .order-book-content,
+body .open-order,
+body .history,
+body .trade-history,
+body .ball {
+  background-color: #fff;
+}
+body .trans,
+body .btn,
+body ::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+}
+body .path {
+  background-color: #ccc;
+}
+body .active-ball {
+  background-color: #8d9ace;
+}
+body .current {
+  background-color: #F3F3F3;
+}
+body .no-history,
+body .no-order {
+  background-color: #eee;
+}
+body .item-common:hover {
+  background-color: #e9ebf1;
+}
+body .orders-body li:hover {
+  background-color: #e9ebf1;
+}
+body .login-btn {
+  background-color: #5a6cb1;
+  color: #fff;
+}
+body .restricted-btn {
+  background-color: #4e5368;
+  cursor: not-allowed;
+}
+body .base,
+body .trade-title,
+body .item-title-list,
+body .available,
+body .num,
+body .more,
+body th,
+body .no-history,
+body .no-order {
+  color: #888;
+}
+body .text,
+body .active,
+body .li-active {
+  color: #5a6cb1;
+}
+body i,
+body .name-show {
+  color: #ccc;
+}
+body .btn {
+  color: #fff;
+}
+body .cancel {
+  color: #666;
+}
+body .li-active {
+  border-bottom: solid 2px #5A6CB1;
+}
+body .style-list,
+body tr,
+body .item-title,
+body .tab-panel {
+  border-bottom: solid 1px #ddd;
+}
+body .right-line {
+  border-right: dashed 1px #ddd;
+}
+body .ball {
+  border: solid 1px #ccc;
+}
+body .item-content {
+  border-top: solid 1px #ddd;
+}
+body input {
+  border: solid 1px #ddd;
+}
+body input:focus {
+  border-color: #5A6CB1;
+}
+body .order .item-title-list {
+  border-bottom: solid 1px #ddd;
+}
+.headerBox .header .theme {
+  color: #5A6CB1;
+  display: inline-block;
+}
+.container {
+  width: 100%;
+  min-width: 1200px;
+  font-size: 14px;
+}
+.container .content {
+  width: 100%;
+}
+.container .content .up {
+  height: 964px;
+}
+.container .content .up .aside {
+  float: left;
+}
+.container .content .up .aside .aside-content {
+  height: 964px;
+}
+.container .content .up .aside .aside-content ul li {
+  float: left;
+  height: inherit;
+}
+.container .content .up .aside .aside-content .tab-panel a {
+  width: 20%;
+  display: inline-block;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.container .content .up .aside .aside-content .item-title-list {
+  padding: 0 25px;
+}
+.container .content .up .aside .aside-content .list-title li,
+.container .content .up .aside .aside-content .item-common li {
+  width: 33.33333333%;
+  font-size: 12px;
+}
+.container .content .up .aside .aside-content .list-title li .iconfont,
+.container .content .up .aside .aside-content .item-common li .iconfont {
+  cursor: pointer;
+  color: #8d9ace;
+}
+.container .content .up .aside .aside-content .list-title li .collect:hover,
+.container .content .up .aside .aside-content .item-common li .collect:hover {
+  color: #5a6cb1;
+}
+.container .content .up .aside .aside-content .list-title li .collect:before,
+.container .content .up .aside .aside-content .item-common li .collect:before {
+  content: "\e602";
+}
+.container .content .up .aside .aside-content .list-title li .uncollected:hover,
+.container .content .up .aside .aside-content .item-common li .uncollected:hover {
+  color: #5a6cb1;
+}
+.container .content .up .aside .aside-content .list-title li .uncollected:before,
+.container .content .up .aside .aside-content .item-common li .uncollected:before {
+  content: "\e62c";
+}
+.container .content .up .aside .aside-content .tab-content .content-common {
+  height: 831px;
+  overflow-y: scroll;
+  padding-left: 5px;
+}
+.container .content .up .aside .aside-content .tab-content .item-content {
+  height: 34px;
+}
+.container .content .up .aside .aside-content .tab-content .item-content li {
+  line-height: 34px;
+  cursor: pointer;
+}
+.container .content .up .aside .aside-content .tab-content .item-content li:first-child {
+  padding-left: 3px;
+}
+.container .content .up .aside .aside-content .tab-content .item-content li:last-child {
+  padding-right: 8px;
+}
+.container .content .up .aside .aside-content .tab-content .item-content li .name {
+  vertical-align: top;
+  margin-left: 15px;
+}
+.container .content .main {
+  position: relative;
+}
+.container .content .main .page-content .trading-chart .trading-box {
+  height: 50px;
+  padding: 0;
+}
+.container .content .main .page-content .trading-chart .trading-box .trading-coin,
+.container .content .main .page-content .trading-chart .trading-box .coin-name,
+.container .content .main .page-content .trading-chart .trading-box .coin-price {
+  display: inline-block;
+  height: inherit;
+  font-size: 16px;
+}
+.container .content .main .page-content .trading-chart .trading-box .coin-name {
+  font-size: 22px;
+}
+.container .content .main .page-content .trading-chart .trading-box .trading-coin {
+  line-height: 50px;
+  vertical-align: top;
+  font-weight: bold;
+}
+.container .content .main .page-content .trading-chart .trading-box .trading-coin .coin-name {
+  margin-left: 22px;
+}
+.container .content .main .page-content .trading-chart .trading-box .trading-coin .coin-price {
+  height: 50px;
+  margin-right: 30px;
+  margin-left: 36px;
+}
+.container .content .main .page-content .trading-chart .trading-box .trading-coin .coin-price .current-price {
+  font-size: 22px;
+}
+.container .content .main .page-content .trading-chart .trading-box .trading-coin .coin-price .change {
+  font-size: 12px;
+  margin-left: 19px;
+  font-weight: lighter;
+}
+.container .content .main .page-content .trading-chart .trading-box .price-list {
+  display: inline-block;
+  margin-left: 30px;
+}
+.container .content .main .page-content .trading-chart .trading-box .price-list li {
+  float: left;
+  min-width: 100px;
+  height: 50px;
+  padding: 0 20px;
+  text-align: center;
+}
+.container .content .main .page-content .trading-chart .trading-box .price-list li .base {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+.container .content .main .page-content .trading-chart .trading-box .info-show {
+  float: right;
+}
+.container .content .main .page-content .trading-chart .trading-box .info-show .img-logo {
+  margin-top: 10px;
+  font-size: 0;
+}
+.container .content .main .page-content .trading-chart .trading-box .info-show .text {
+  display: inline-block;
+  line-height: 14px;
+  margin: 12px 14px 0 6px;
+  vertical-align: top;
+}
+.container .content .main .page-content .trading-chart .time-nav {
+  position: absolute;
+  top: 0;
+}
+.container .content .main .page-content .trading-chart .time-nav .btn {
+  width: 50px;
+  height: 25px;
+  font-weight: bold;
+  background-color: #eee;
+  margin: 0;
+  border: none;
+  border-right: solid 1px #fff;
+  float: left;
+}
+.container .content .main .page-content .trade-wrap {
+  margin-top: 14px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel {
+  position: relative;
+  height: 420px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common {
+  float: left;
+  width: 50%;
+  padding: 16px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-title {
+  font-size: 10px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-title strong {
+  font-size: 18px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-title .space-between {
+  margin-top: 12px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-title .cost-price {
+  text-align: right;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg {
+  position: relative;
+  margin-top: 20px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .label {
+  margin-left: 4px;
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .price-box {
+  position: relative;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .price-box input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 37px;
+  padding: 0 13px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .price-box .name-show {
+  position: absolute;
+  right: 10px;
+  font-weight: lighter;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .amount {
+  margin-top: 16px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .trans {
+  height: 24px;
+  line-height: 24px;
+  text-align: left;
+  font-size: 10px;
+  padding-left: 12px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .range {
+  position: relative;
+  margin-top: 26px;
+  height: 37px;
+  margin-bottom: 25px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .range .path {
+  position: absolute;
+  top: 9px;
+  width: 100%;
+  height: 2px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .range .range-ball {
+  position: relative;
+  height: 20px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .range .range-ball .ball {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .range .range-ball .active-ball {
+  width: 12px;
+  height: 12px;
+  margin: 3px 0 0 3px;
+  border-radius: 50%;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .range .range-num {
+  position: relative;
+  height: 20px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .range .range-num .num {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  font-size: 12px;
+  text-align: center;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .btn {
+  width: 100%;
+  height: 37px;
+  border-radius: 3px;
+  margin-top: 11px;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .btn a {
+  font-weight: bold;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .buy-btn {
+  background-color: #27a781;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .buy-sell-common .trade-msg .sell-btn {
+  background-color: #DC382C;
+}
+.container .content .main .page-content .trade-wrap .trade-panel .right-line {
+  top: 17px;
+  width: 0;
+  height: 390px;
+}
+.container .content .main .page-content .trade-wrap .order-book {
+  height: 420px;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .item-common li {
+  float: left;
+  font-size: 12px;
+  text-align: right;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .item-common li:hover {
+  background-color: #e9ebf1;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .item-title-list {
+  padding: 0 10px 0 13px;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .item-title-list li:not(first-child) {
+  width: 30%;
+  height: inherit;
+  float: left;
+  text-align: right;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .item-title-list .temp {
+  width: 10%;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .orders-body {
+  height: 156px;
+  overflow: hidden;
+  padding-left: 6px;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .orders-body li {
+  position: relative;
+  height: 25px;
+  line-height: 25px;
+  margin: 3.5px 0;
+  padding-right: 6px;
+  cursor: pointer;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .orders-body li span {
+  height: inherit;
+  float: left;
+  font-size: 10px;
+  text-align: right;
+  white-space: nowrap;
+  width: 30%;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .orders-body li span:first-child {
+  width: 10%;
+  text-align: left;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .orders-body li b {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 25px;
+  max-width: 100%;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .orders-body .sell-order-color {
+  background-color: rgba(220, 56, 44, 0.1);
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .sell-buy-orders .order .orders-body .buy-order-color {
+  background-color: rgba(39, 167, 129, 0.1);
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .current {
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  font-size: 18px;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .current img {
+  display: inline-block;
+  font-size: 0;
+  margin-left: 2px;
+}
+.container .content .main .page-content .trade-wrap .order-book .order-book-content .more {
+  height: 28px;
+  margin-right: 14px;
+}
+.container .content .main .blur {
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+  /* Chrome, Opera */
+  -moz-filter: blur(6px);
+  -ms-filter: blur(6px);
+}
+.container .content .main .quickNav {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  background-color: #202741;
+}
+.container .content .main .quickNav .quickContent {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: 161px;
+  padding: 0 35px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(24, 23, 29, 0.15);
+  color: #fff;
+}
+.container .content .main .quickNav .quickContent .quickContent-title {
+  position: relative;
+  height: 50px;
+  margin-top: 30px;
+}
+.container .content .main .quickNav .quickContent .quickContent-title .line {
+  width: 250px;
+  margin: 0 auto;
+  padding: 0 60px;
+  border-bottom: solid 1px #fff;
+}
+.container .content .main .quickNav .quickContent .quickContent-title .line p {
+  position: relative;
+  top: -8px;
+  background-color: #202741;
+}
+.container .content .main .quickNav .quickContent .quickContent-title i {
+  font-size: 34px;
+  color: #ffb800;
+}
+.container .content .main .quickNav .quickContent .countDown {
+  height: 60px;
+  min-width: 510px;
+  padding: 0 10px;
+  line-height: 52px;
+}
+.container .content .main .quickNav .quickContent .countDown .box-content {
+  display: inline-block;
+  position: relative;
+}
+.container .content .main .quickNav .quickContent .countDown .text {
+  display: inline-block;
+  margin: 0 21px;
+  color: #fff;
+}
+.container .content .main .quickNav .quickContent .countDown .box {
+  display: inline-block;
+  width: 47px;
+  height: 52px;
+  line-height: 52px;
+  border-radius: 5px;
+  background-color: #4558a2;
+}
+.container .content .main .quickNav .quickContent .countDown .leftTime {
+  position: absolute;
+  top: 0;
+  width: 47px;
+  font-size: 26px;
+  color: #fff;
+}
+.container .below {
+  margin: 15px 0;
+}
+.container .below .below-left .open-order,
+.container .below .below-left .history {
+  min-height: 286px;
+  max-height: 526px;
+}
+.container .below .below-left .open-order .space-between li:last-child,
+.container .below .below-left .history .space-between li:last-child {
+  padding-right: 12px;
+}
+.container .below .below-left .open-order .space-between li:last-child .text,
+.container .below .below-left .history .space-between li:last-child .text {
+  display: inline-block;
+  padding: 0 8px;
+  cursor: pointer;
+}
+.container .below .below-left .open-order .table-box,
+.container .below .below-left .history .table-box {
+  padding: 0 5px 40px;
+}
+.container .below .below-left .open-order .table-box table tr,
+.container .below .below-left .history .table-box table tr {
+  height: 40px;
+}
+.container .below .below-left .open-order .table-box table tr th,
+.container .below .below-left .history .table-box table tr th,
+.container .below .below-left .open-order .table-box table tr td,
+.container .below .below-left .history .table-box table tr td {
+  font-size: 12px;
+  text-align: left;
+  font-weight: normal;
+  padding-right: 20px;
+}
+.container .below .below-left .open-order .table-box table tr th:first-child,
+.container .below .below-left .history .table-box table tr th:first-child,
+.container .below .below-left .open-order .table-box table tr td:first-child,
+.container .below .below-left .history .table-box table tr td:first-child {
+  padding-left: 5px;
+}
+.container .below .below-left .open-order .table-box table tr th:last-child,
+.container .below .below-left .history .table-box table tr th:last-child,
+.container .below .below-left .open-order .table-box table tr td:last-child,
+.container .below .below-left .history .table-box table tr td:last-child {
+  padding-right: 5px;
+  text-align: right;
+}
+.container .below .below-left .open-order .table-box table .tr-title,
+.container .below .below-left .history .table-box table .tr-title {
+  height: 36px;
+}
+.container .below .below-left .open-order .table-box table .cancel-status,
+.container .below .below-left .history .table-box table .cancel-status {
+  padding-right: 10px !important;
+}
+.container .below .below-left .open-order .table-box table .cancel,
+.container .below .below-left .history .table-box table .cancel {
+  display: inline-block;
+  height: 28px;
+  line-height: 26px;
+  padding: 0 20px;
+  margin-left: 8px;
+  border: solid 1px #ccc;
+  cursor: pointer;
+}
+.container .below .below-left .open-order .table-box table .cancel:hover,
+.container .below .below-left .history .table-box table .cancel:hover {
+  background-color: #5a6cb1;
+  color: #fff;
+}
+.container .below .below-left .open-order .table-box .no-order .no-history,
+.container .below .below-left .history .table-box .no-order .no-history,
+.container .below .below-left .open-order .table-box .no-order .no-open,
+.container .below .below-left .history .table-box .no-order .no-open {
+  padding: 0 10px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+}
+.container .below .below-left .history {
+  margin-top: 15px;
+}
+.container .below .below-right .trade-history .item-title {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 15px;
+}
+.container .below .below-right .trade-history .history-content {
+  height: 546px;
+  overflow-y: scroll;
+}
+.container .below .below-right .trade-history .history-content .history-table tr {
+  height: 28px;
+  line-height: 28px;
+  font-size: 10px;
+}
+.container .below .below-right .trade-history .history-content .history-table tr td:first-child {
+  padding-left: 14px;
+}
+.container .below .below-right .trade-history .history-content .history-table tr td:last-child {
+  padding-right: 14px;
+}
+/*设置溢出滚动条样式*/
+.scroll-style::-webkit-scrollbar {
+  width: 10px;
+  /* 不给背景色不会影响数据多少的样式*/
+  background-color: transparent;
+}
+.scroll-style::-webkit-scrollbar-thumb {
+  width: 10px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.scroll-style::-webkit-scrollbar-track {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}

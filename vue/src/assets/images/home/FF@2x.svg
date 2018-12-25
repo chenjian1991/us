@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="86px" height="87px" viewBox="0 0 86 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>FF@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="登录后首页" transform="translate(-22.000000, -1221.000000)">
+            <g id="FF" transform="translate(23.000000, 1222.000000)">
+                <path d="M72,71 C60.003203,84.6119023 41.1704132,88.7718897 25,81.381861 M13,74 C12.4244811,73.4436989 11.8700177,72.8727583 11.3366099,72.294498 C-2.24409436,57.531247 -3.80185916,34.7680718 7.63082943,18.1429791 C8.63283044,16.6928093 9.72046783,15.3091374 10.8874244,14 M21,5.69744703 C35.8275977,-2.95711807 54.3937453,-1.66172799 67.8935487,8.9692856 C81.393352,19.6002992 87.111838,37.4289113 82.3370459,54" id="椭圆_895" stroke="#5460CB"></path>
+                <circle id="椭圆_895-2" stroke="#5460CB" fill="#8AA8FF" fill-rule="nonzero" cx="74" cy="70" r="2"></circle>
+                <circle id="椭圆_895_拷贝_2" stroke="#5460CB" fill="#8AA8FF" fill-rule="nonzero" cx="20" cy="6" r="2"></circle>
+                <circle id="椭圆_895_拷贝_3" stroke="#5460CB" fill="#8AA8FF" fill-rule="nonzero" cx="14" cy="74" r="2"></circle>
+                <path d="M14.2299116,18.8701275 C21.0346579,10.6819808 31.0925636,5.96685459 41.6829974,6.00017542 C52.2734312,6.03349625 62.3019985,10.8118208 69.0560041,19.0426277 M70,63.757659 C63.0438533,73.0070943 52.0944668,78.3047467 40.5914429,77.9864301 C29.0884191,77.6681134 18.4432603,71.7728873 12,62.1526578" id="椭圆_895_拷贝" stroke="#5460CB" stroke-width="1.2" stroke-dasharray="4"></path>
+                <path d="M16,25 L16,58" id="形状_876_拷贝" stroke="#5460CB" fill="#8AA8FF"></path>
+                <path d="M23,25 L23,49" id="形状_876_拷贝_2" stroke="#5460CB" fill="#8AA8FF"></path>
+                <rect id="矩形_886" fill="#5460CB" fill-rule="nonzero" x="58" y="30" width="3" height="6"></rect>
+                <rect id="矩形_886_拷贝" fill="#5460CB" fill-rule="nonzero" x="66" y="38" width="3" height="6"></rect>
+                <rect id="矩形_886_拷贝_2" fill="#5460CB" fill-rule="nonzero" x="73" y="48" width="3" height="6"></rect>
+                <path d="M60,25 L60,46" id="形状_876" stroke="#5460CB" fill="#8AA8FF"></path>
+                <path d="M68,25 L68,50" id="形状_876_拷贝-2" stroke="#5460CB" fill="#8AA8FF"></path>
+                <path d="M75,25 L75,56" id="形状_876_拷贝_2-2" stroke="#5460CB" fill="#8AA8FF"></path>
+                <rect id="矩形_886_拷贝_3" fill="#5460CB" fill-rule="nonzero" x="7" y="30" width="4" height="6"></rect>
+                <rect id="矩形_886_拷贝_3-2" fill="#5460CB" fill-rule="nonzero" x="14" y="46" width="4" height="6"></rect>
+                <path d="M53.9683224,37.3247943 C56.0622203,42.3697725 54.9096176,48.1793949 51.0483192,52.0428894 C47.1870209,55.9063839 41.3780545,57.0622901 36.3318861,54.9712616 C31.2857177,52.8802332 27.9969022,47.9543932 28.0000022,42.4921407 C27.9987309,35.0431106 34.0354346,29.0029735 41.4844646,29.0000088 C46.9467149,28.9938025 51.8744246,32.2798162 53.9683224,37.3247943 Z" id="椭圆_892_拷贝" stroke="#5460CB" fill-opacity="0.54" fill="#8AA8FF"></path>
+                <circle id="椭圆_892" stroke="#5460CB" fill-opacity="0.849999964" fill="#F7F7F7" fill-rule="nonzero" cx="41.5" cy="42.5" r="9.5"></circle>
+                <path d="M37,40 L37,46 L37.9157393,46 L37.9157393,43.311828 L40.8918919,43.311828 L40.8918919,42.5304659 L37.9157393,42.5304659 L37.9157393,40.781362 L41.063593,40.781362 L41.063593,40 L37,40 Z M41.9292528,40 L41.9292528,46 L42.8449921,46 L42.8449921,43.311828 L45.8211447,43.311828 L45.8211447,42.5304659 L42.8449921,42.5304659 L42.8449921,40.781362 L46,40.781362 L46,40 L41.9292528,40 Z" id="FF-2" fill="#5460CB"></path>
+                <polygon id="矩形_886_拷贝_3-3" fill="#5460CB" points="21 34 25 34 25 40 21 40"></polygon>
+                <path d="M9,25 L9,50" id="形状_876-2" stroke="#5460CB" fill="#8AA8FF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

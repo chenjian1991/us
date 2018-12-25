@@ -1,0 +1,86 @@
+.wrapper .container .banner {
+  height: 606px;
+  background: url("../../images_new/bg@2x.png") center;
+}
+.wrapper .container .banner img,
+.wrapper .container .banner .rule {
+  display: block;
+  margin: 0 auto;
+}
+.wrapper .container .banner .slogan {
+  padding-top: 187px;
+  font-size: 42px;
+  letter-spacing: 2px;
+}
+.wrapper .container .banner .img-box {
+  position: relative;
+}
+.wrapper .container .banner .img-box .img-desc {
+  top: 10px;
+}
+.wrapper .container .banner .img-box .img-desc span {
+  display: inline-block;
+  width: 252px;
+  height: 40px;
+  margin-top: 15px;
+  font-size: 16px;
+}
+.wrapper .container .banner .pic {
+  margin-top: 47px;
+}
+.wrapper .container .banner .rule {
+  color: #8d9ace;
+  text-decoration: underline;
+  margin-top: 32px;
+}
+.wrapper .container .content .list {
+  width: 1200px;
+}
+.wrapper .container .content .list .item .ratio {
+  font-size: 14px;
+  color: #353948;
+  margin-top: 6px;
+}
+.wrapper .container .content .list .item .ratio span {
+  font-size: 16px;
+  color: #5a6cb1;
+}
+.wrapper .container .content .list .item .votes {
+  margin-top: -13px;
+}
+.wrapper .container .content .list .item .votes .percent {
+  font-size: 30px;
+  color: #5a6cb1;
+  margin-left: 15px;
+}
+.wrapper .container .content .list .item .support {
+  margin-top: -6px;
+}
+.wrapper .container .content .list .item .sponsor {
+  text-align: right;
+  margin-top: 4px;
+  margin-bottom: 3px;
+}
+.wrapper .container .content .list .item .sponsor img {
+  margin-left: 5px;
+}
+.wrapper .container .content .list .item .progress-bar {
+  width: 260px;
+  height: 16px;
+  background-color: #e9ebf1;
+  border-radius: 8px;
+}
+.wrapper .container .content .list .item .progress-bar .progress {
+  height: inherit;
+  background-color: #ff8a00;
+  border-radius: 8px;
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+  line-height: 16px;
+  font-weight: lighter;
+}
+.wrapper .container .content .list .item .vote-btn {
+  margin-top: 12px;
+}
+/*# sourceMappingURL=new_token.css.map */

@@ -1,0 +1,744 @@
+@media only screen and (max-width: 1230px) {
+  .container {
+    padding: 15px 0;
+  }
+}
+
+@media only screen and (min-width: 1230px) and (max-width: 1920px) {
+  .container {
+    padding: 15px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .container {
+    padding: 15px;
+  }
+}
+
+// 自适应
+.container {
+  .aside {
+    width: 306/1200*100%;
+    padding-right: 14px;
+  }
+  .main {
+    margin-left: 306/1200*100%;
+    .trade-panel {
+      float: left;
+      width: 588/894*100%;
+    }
+    .order-book {
+      float: right;
+      width: 306/894*100%;
+      padding-left: 12px;
+    }
+  }
+  .below-left {
+    width: 894/1200*100%;
+    float: left;
+  }
+  .below-right {
+    float: right;
+    width: 306/1200*100%;
+    padding-left: 12px;
+  }
+}
+
+//主题
+body {
+  background-color: #e9ebf1;
+  color: #333;
+  //背景色
+  .aside-content, .trading-chart, .trade-panel, .order-book-content, .open-order, .history, .trade-history, .ball {
+    background-color: #fff;
+  }
+  .trans, .btn, ::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+  }
+  .path {
+    background-color: #ccc;
+  }
+  .active-ball {
+    background-color: #8d9ace;
+  }
+  .current {
+    background-color: #F3F3F3;
+  }
+  .no-history, .no-order {
+    background-color: #eee;
+  }
+  .item-common {
+    &:hover {
+      background-color: #e9ebf1;;
+    }
+  }
+  .orders-body {
+    li {
+      &:hover {
+        background-color: #e9ebf1;
+      }
+    }
+  }
+  .login-btn {
+    background-color: #5a6cb1;
+    color: #fff;
+  }
+  .restricted-btn {
+    background-color: #4e5368;
+    cursor: not-allowed;
+  }
+  //颜色
+  .base, .trade-title, .item-title-list, .available, .num, .more, th, .no-history, .no-order {
+    color: #888;
+  }
+  .text, .active, .li-active {
+    color: #5a6cb1;
+  }
+  i, .name-show {
+    color: #ccc;
+  }
+  .btn {
+    color: #fff;
+  }
+  .cancel {
+    color: #666;
+  }
+  //边框线
+  .li-active {
+    border-bottom: solid 2px #5A6CB1;
+  }
+  .style-list, tr, .item-title, .tab-panel {
+    border-bottom: solid 1px #ddd;
+  }
+  .right-line {
+    border-right: dashed 1px #ddd;
+  }
+  .ball {
+    border: solid 1px #ccc;
+  }
+  .item-content {
+    border-top: solid 1px #ddd;
+  }
+  input {
+    border: solid 1px #ddd;
+    &:focus {
+      border-color: #5A6CB1;
+    }
+  }
+  .order {
+    .item-title-list {
+      border-bottom: solid 1px #ddd;
+    }
+  }
+}
+
+.headerBox {
+  .header {
+    .theme {
+      color: #5A6CB1;
+      display: inline-block;
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  min-width: 1200px;
+  font-size: 14px;
+  .content {
+    width: 100%;
+    .up {
+      height: 964px;
+      .aside {
+        float: left;
+        .aside-content {
+          height: 964px;
+          ul {
+            li {
+              float: left;
+              height: inherit;
+            }
+          }
+          .tab-panel {
+            a {
+              width: 20%;
+              display: inline-block;
+              height: 44px;
+              line-height: 44px;
+              text-align: center;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+            }
+          }
+
+          .item-title-list {
+            padding: 0 25px;
+          }
+          .list-title, .item-common {
+            li {
+              width: 100/3%;
+              font-size: 12px;
+              .iconfont {
+                cursor: pointer;
+                color: #8d9ace;
+              }
+              .collect {
+                &:hover {
+                  color: #5a6cb1;
+                }
+                &:before {
+                  content: "\e602";
+                }
+              }
+              .uncollected {
+                &:hover {
+                  color: #5a6cb1;
+                }
+                &:before {
+                  content: "\e62c";
+                }
+              }
+            }
+          }
+          .tab-content {
+            .content-common {
+              height: 831px;
+              overflow-y: scroll;
+              padding-left: 5px;
+            }
+            .item-content {
+              height: 34px;
+              li {
+                line-height: 34px;
+                cursor: pointer;
+                &:first-child {
+                  padding-left: 3px;
+                }
+                &:last-child {
+                  padding-right: 8px;
+                }
+                .name {
+                  vertical-align: top;
+                  margin-left: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .main {
+      position: relative;
+      .page-content {
+        .trading-chart {
+          //大盘信息
+          .trading-box {
+            height: 50px;
+            padding: 0;
+            .trading-coin, .coin-name, .coin-price {
+              display: inline-block;
+              height: inherit;
+              font-size: 16px;
+            }
+            .coin-name {
+              font-size: 22px;
+            }
+            .trading-coin {
+              line-height: 50px;
+              vertical-align: top;
+              font-weight: bold;
+              .coin-name {
+                margin-left: 22px;
+              }
+              .coin-price {
+                height: 50px;
+                margin-right: 30px;
+                margin-left: 36px;
+                .current-price {
+                  font-size: 22px;
+                }
+                .change {
+                  font-size: 12px;
+                  margin-left: 19px;
+                  font-weight: lighter;
+                }
+              }
+            }
+            .price-list {
+              display: inline-block;
+              margin-left: 30px;
+              li {
+                float: left;
+                min-width: 100px;
+                height: 50px;
+                padding: 0 20px;
+                text-align: center;
+                .base {
+                  font-size: 12px;
+                  margin-top: 5px;
+                  margin-bottom: 0;
+                }
+              }
+            }
+            .info-show {
+              float: right;
+              .img-logo {
+                margin-top: 10px;
+                font-size: 0;
+              }
+              .text {
+                display: inline-block;
+                line-height: 14px;
+                margin: 12px 14px 0 6px;
+                vertical-align: top;
+              }
+            }
+
+          }
+
+          .time-nav {
+            position: absolute;
+            top: 0;
+            .btn {
+              width: 50px;
+              height: 25px;
+              font-weight: bold;
+              background-color: #eee;
+              margin: 0;
+              border: none;
+              border-right: solid 1px #fff;
+              float: left;
+            }
+          }
+        }
+        .trade-wrap {
+          margin-top: 14px;
+          .trade-panel {
+            position: relative;
+            height: 420px;
+            .buy-sell-common {
+              float: left;
+              width: 50%;
+              padding: 16px;
+              .trade-title {
+                font-size: 10px;
+                strong {
+                  font-size: 18px;
+                }
+                .space-between {
+                  margin-top: 12px;
+                }
+                .cost-price {
+                  text-align: right;
+                }
+              }
+              .trade-msg {
+                position: relative;
+                margin-top: 20px;
+                .label {
+                  margin-left: 4px;
+                  margin-top: 20px;
+                  margin-bottom: 4px;
+                }
+                .price-box {
+                  position: relative;
+                  input {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 37px;
+                    padding: 0 13px;
+                    border-radius: 3px;
+                    font-size: 14px;
+                  }
+                  .name-show {
+                    position: absolute;
+                    right: 10px;
+                    font-weight: lighter;
+                  }
+                }
+                .amount {
+                  margin-top: 16px;
+                }
+                .trans {
+                  height: 24px;
+                  line-height: 24px;
+                  text-align: left;
+                  font-size: 10px;
+                  padding-left: 12px;
+                }
+                .range {
+                  position: relative;
+                  margin-top: 26px;
+                  height: 37px;
+                  margin-bottom: 25px;
+                  .path {
+                    position: absolute;
+                    top: 9px;
+                    width: 100%;
+                    height: 2px;
+                  }
+                  .range-ball {
+                    position: relative;
+                    height: 20px;
+                    .ball {
+                      position: absolute;
+                      top: 50%;
+                      margin-top: -10px;
+                      width: 20px;
+                      height: 20px;
+                      border-radius: 50%;
+                    }
+                    .active-ball {
+                      width: 12px;
+                      height: 12px;
+                      margin: 3px 0 0 3px;
+                      border-radius: 50%;
+                    }
+                  }
+                  .range-num {
+                    position: relative;
+                    height: 20px;
+                    .num {
+                      position: absolute;
+                      top: 50%;
+                      margin-top: -10px;
+                      font-size: 12px;
+                      text-align: center;
+                    }
+                  }
+                }
+                .btn {
+                  width: 100%;
+                  height: 37px;
+                  border-radius: 3px;
+                  margin-top: 11px;
+                  a {
+                    font-weight: bold;
+                  }
+                }
+                .buy-btn {
+                  background-color: #27a781;
+                }
+                .sell-btn {
+                  background-color: #DC382C;
+                }
+              }
+            }
+            .right-line {
+              top: 17px;
+              width: 0;
+              height: 390px;
+            }
+          }
+          .order-book {
+            height: 420px;
+            .order-book-content {
+              .sell-buy-orders {
+                .order {
+                  .item-common {
+                    li {
+                      float: left;
+                      font-size: 12px;
+                      text-align: right;
+                      &:hover {
+                        background-color: #e9ebf1;;
+                      }
+                    }
+                  }
+                  .item-title-list {
+                    padding: 0 10px 0 13px;
+                    li:not(first-child) {
+                      width: 30%;
+                      height: inherit;
+                      float: left;
+                      text-align: right;
+                    }
+                    .temp {
+                      width: 10%;
+                    }
+                  }
+                  .orders-body {
+                    height: 156px;
+                    overflow: hidden;
+                    padding-left: 6px;
+                    li {
+                      position: relative;
+                      height: 25px;
+                      line-height: 25px;
+                      margin: 3.5px 0;
+                      padding-right: 6px;
+                      cursor: pointer;
+                      span {
+                        height: inherit;
+                        float: left;
+                        font-size: 10px;
+                        text-align: right;
+                        white-space: nowrap;
+                        width: 30%;
+                        &:first-child {
+                          width: 10%;
+                          text-align: left;
+                        }
+                      }
+                      b {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        height: 25px;
+                        max-width: 100%;
+                      }
+                    }
+                    .sell-order-color {
+                      background-color: rgba(220, 56, 44, 0.1);
+                    }
+                    .buy-order-color {
+                      background-color: rgba(39, 167, 129, 0.1);
+                    }
+                  }
+                }
+              }
+              .current {
+                height: 43px;
+                line-height: 43px;
+                text-align: center;
+                font-size: 18px;
+                img {
+                  display: inline-block;
+                  font-size: 0;
+                  margin-left: 2px;
+                }
+              }
+              .more {
+                height: 28px;
+                margin-right: 14px;
+              }
+            }
+          }
+        }
+      }
+      .blur {
+        filter: blur(6px);
+        -webkit-filter: blur(6px); /* Chrome, Opera */
+        -moz-filter: blur(6px);
+        -ms-filter: blur(6px);
+      }
+      //倒计时
+      .quickNav {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        background-color: #202741;
+        .quickContent {
+          position: relative;
+          display: inline-block;
+          width: auto;
+          height: 161px;
+          padding: 0 35px;
+          text-align: center;
+          box-shadow: 0 0 20px rgba(24, 23, 29, 0.15);
+          color: #fff;
+          .quickContent-title {
+            position: relative;
+            height: 50px;
+            margin-top: 30px;
+            .line {
+              width: 250px;
+              margin: 0 auto;
+              padding: 0 60px;
+              border-bottom: solid 1px #fff;
+              p {
+                position: relative;
+                top: -8px;
+                background-color: #202741;
+              }
+            }
+            i {
+              font-size: 34px;
+              color: #ffb800;
+            }
+          }
+          .countDown {
+            height: 60px;
+            min-width: 510px;
+            padding: 0 10px;
+            line-height: 52px;
+            .box-content {
+              display: inline-block;
+              position: relative;
+            }
+            .text {
+              display: inline-block;
+              margin: 0 21px;
+              color: #fff;
+            }
+            .box {
+              display: inline-block;
+              width: 47px;
+              height: 52px;
+              line-height: 52px;
+              border-radius: 5px;
+              background-color: #4558a2;
+            }
+            .leftTime {
+              position: absolute;
+              top: 0;
+              width: 47px;
+              font-size: 26px;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+  .below {
+    margin: 15px 0;
+    .below-left {
+      .open-order, .history {
+        min-height: 286px;
+        max-height: 526px;
+        .space-between {
+          li {
+            &:last-child {
+              padding-right: 12px;
+              .text {
+                display: inline-block;
+                padding: 0 8px;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        .table-box {
+          padding: 0 5px 40px;
+          table {
+            tr {
+              height: 40px;
+              th, td {
+                font-size: 12px;
+                text-align: left;
+                font-weight: normal;
+                padding-right: 20px;
+                &:first-child {
+                  padding-left: 5px;
+                }
+                &:last-child {
+                  padding-right: 5px;
+                  text-align: right;
+                }
+              }
+            }
+            .tr-title {
+              height: 36px;
+            }
+            .cancel-status {
+              padding-right: 10px !important;
+            }
+            .cancel {
+              display: inline-block;
+              height: 28px;
+              line-height: 26px;
+              padding: 0 20px;
+              margin-left: 8px;
+              border: solid 1px #ccc;
+              cursor: pointer;
+              &:hover {
+                background-color: #5a6cb1;
+                color: #fff;
+              }
+            }
+          }
+          .no-order {
+            .no-history, .no-open {
+              padding: 0 10px;
+              height: 32px;
+              line-height: 32px;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .history {
+        margin-top: 15px;
+      }
+    }
+    .below-right {
+      .trade-history {
+        .item-title {
+          height: 40px;
+          line-height: 40px;
+          padding-left: 15px;
+        }
+        .history-content {
+          height: 546px;
+          overflow-y: scroll;
+          .history-table {
+            tr {
+              height: 28px;
+              line-height: 28px;
+              font-size: 10px;
+              td {
+                &:first-child {
+                  padding-left: 14px;
+                }
+                &:last-child {
+                  padding-right: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*设置溢出滚动条样式*/
+.scroll-style::-webkit-scrollbar {
+  width: 10px;
+  /* 不给背景色不会影响数据多少的样式*/
+  background-color: transparent;
+}
+
+.scroll-style::-webkit-scrollbar-thumb {
+  width: 10px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.scroll-style::-webkit-scrollbar-track {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+//版本升级
+
+//.coming-soon {
+//  position: absolute;
+//  text-align: center;
+//  width: 100%;
+//  background-color: #202741;
+//  z-index: 20;
+//  .quickContent {
+//    position: relative;
+//    display: inline-block;
+//    width: auto;
+//    height: 161px;
+//    line-height: 161px;
+//    text-align: center;
+//    color: #fff;
+//    h1 {
+//      font-size: 36px;
+//    }
+//  }
+//}
+
+//.blur {
+//  filter: blur(20px);
+//  -webkit-filter: blur(20px); /* Chrome, Opera */
+//  -moz-filter: blur(20px);
+//  -ms-filter: blur(20px);
+//}

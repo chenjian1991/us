@@ -1,0 +1,176 @@
+.clearfix:after {
+    content:""; 
+    display: block; 
+    clear:both; 
+ }
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ html,body{
+     height: 100%;
+     background-size: cover;
+     .main_container{
+        height: 100%;
+        display: flex;
+        flex-direction: column; 
+     }
+     .headerbox{
+        flex: 0 0 auto;
+     }
+     #app{
+         height: 100%;
+     }
+     .root{
+         min-height: 100%;
+         flex: 1 0 auto;
+         .wrapper{
+            width: 100%;
+            padding-top: 20px;
+            background: #18183e;
+            //padding-top: 143px;
+            .header-title{
+                width: 1200px;
+                margin: 0 auto;
+                padding-bottom: 20px;
+                font-size:14px;
+                a{
+                    color: #fff;
+                }
+                .arrow{
+                    color: #fff;
+                    display: inline-block;
+                    margin: 0px 10px;
+                }
+            }
+            .register_wraper{
+                max-width: 1200px;
+                margin:0 auto;
+                height: 600px;
+                background: #2B2C57;
+                .warn-tips{
+                    height: 40px;
+                    line-height: 40px;
+                    color: #fff;
+                    font-size: 14px;
+                    background: #e4adac;
+                    padding-left: 20px;
+                    font-weight: bold;
+                }
+                .page-title{
+                    height: 60px;
+                    width: 1157px;
+                    margin: 0 auto;
+                    line-height: 60px;
+                    border-bottom: 1px solid #d8d8d8;
+                    color: #fff;
+                    font-size: 14px;
+                }
+               .inner_input_login{
+                   width: 780px;
+                   margin: 0 auto; 
+                   //padding-top: 108px;
+                   .ivu-form-item{
+                    margin-bottom: 30px;
+                   }
+                   .loginbtn{
+                       font-size: 16px;
+                       font-weight: bold;
+                   }
+                   .login_title{
+
+                       p{
+                           font-size: 14px;
+                           color: #fff;
+                           margin-top: 15px;
+                           font-weight: bold;
+                       }
+                       .line{
+                           height: 2px;
+                           width: 224px;
+                           background: #bdc4e0;
+                           position: relative;
+                           top: 36px;
+                           left: 273px;
+                       }
+                       .step{
+                            width: 46px;
+                            height: 46px;
+                            text-align: center;
+                            line-height: 46px;
+                            font-size: 20px;
+                            border-radius: 50%;
+                            margin-bottom: 20px;
+                            color: #e6e9f3;
+                            border: 2px solid #d8d8d8;
+                            // &::after{
+                            //     content: '';
+                            //     display: inline-block;
+                            //     height: 3px;
+                            //     border: 1px solid;
+                            //     position: absolute;
+                            //     left: 530px;
+                            //     top: 40px;
+                            //     background: #bdc4e0;
+                            //     color: #bdc4e0;
+                            //     width: 176px;
+                            // }
+
+                       }
+                       .active{
+                        color: #5A6CB1;
+                        border: 2px solid #5A6CB1;
+                        }
+                       .step-one{
+                           margin-left: 180px;
+                           display: flex;
+                           flex-direction: column;
+                           align-items: center;
+                           width: 140px;
+
+                       }
+
+                       .step-two{
+                           display: flex;
+                           flex-direction: column;
+                           align-items: center;
+                           margin-right: 180px;
+                           width: 160px;
+                           
+                            
+                       }
+                       text-align: center;
+                       padding-bottom: 104px;
+                   }
+                   .form-item{
+                       margin-top: 100px;
+                       .span-label{
+                           width: 120px;
+                           margin-right: 10px;
+                           height: 48px;
+                           line-height: 48px;
+                           color: #fff;
+                           font-size: 13px;
+                           text-align: right;
+                       }
+                   }
+                   .ivu-btn{
+                       width: 580px;
+                       height: 48px;
+                       font-size:16px;
+                       margin-top: 16px;
+                       border-radius: 0px !important;
+                       margin-left:129px;
+                   }
+                 
+               }
+            }
+            
+        }
+     }
+     .footerBox{
+         flex: 0 0 auto;
+     }
+     
+ }
+

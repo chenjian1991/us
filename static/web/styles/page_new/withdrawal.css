@@ -1,0 +1,315 @@
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .step-common .step-title {
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .step-common .amount-title {
+  margin-top: 17px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .step-common .amount-title .limit {
+  color: #888;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal {
+  padding-right: 60px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .withdrawal-address {
+  padding-right: 15px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal input {
+  padding-left: 15px;
+  width: 510px;
+  height: 42px;
+  font-size: 14px;
+  background-color: #fff;
+  border: solid 1px #ccc;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box {
+  position: relative;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .select {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  height: 40px;
+  line-height: 40px;
+  width: 42px;
+  font-size: 10px;
+  text-align: center;
+  color: #ccc;
+  background-color: #fff;
+  z-index: 5;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .select i {
+  cursor: pointer;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .available-symbol {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  z-index: 5;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .available-symbol .baseAsset {
+  display: inline-block;
+  height: 39px;
+  font-size: 10px;
+  text-align: center;
+  background-color: #fff;
+  margin-left: 10px;
+  border-left: none;
+  color: #333;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .available-symbol .available-box {
+  display: inline-block;
+  font-size: 12px;
+  color: #ccc;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .available-symbol .available-box .available:hover {
+  color: #8d9ace;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box #option {
+  position: absolute;
+  z-index: 20;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .address-list {
+  width: 510px;
+  max-height: 420px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .address-item {
+  width: 510px;
+  height: 42px;
+  line-height: 42px;
+  padding: 0 15px;
+  color: #333333;
+  background-color: #ffffff;
+  border: solid 1px #cccccc;
+  border-top: none;
+  cursor: pointer;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .address-item i {
+  font-size: 18px;
+  color: #ccc;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .address-item span {
+  margin-left: 10px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .address-item:hover {
+  background-color: #cccccc;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .address-item:hover i {
+  color: #fff;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .existAddress {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .new-address {
+  position: relative;
+  margin-top: 10px;
+  height: 42px;
+  line-height: 42px;
+  display: none;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .new-address .label {
+  display: inline-block;
+  width: 120px;
+  height: 42px;
+  background-color: #ffffff;
+  border: solid 1px #cccccc;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .new-address .address {
+  width: 370px;
+  height: 42px;
+  background-color: #ffffff;
+  border: solid 1px #cccccc;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .new-address .label-box,
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .new-address .address-box {
+  position: absolute;
+  top: 0;
+  height: 42px;
+  line-height: 42px;
+  color: #ccc;
+  cursor: text;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .new-address .label-box {
+  left: 15px;
+  width: 105px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .input-box .new-address .address-box {
+  left: 156px;
+  width: 355px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .placeholder-box {
+  position: relative;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .placeholder-box .placeholder {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 508px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 42px 0 15px;
+  background-color: #e9ebf1;
+  z-index: 2;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .withdrawal-fee {
+  margin-top: 22px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .withdrawal-fee span {
+  font-size: 12px;
+  color: #888;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .withdrawal-fee em {
+  color: #333;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal p {
+  height: 12px;
+  font-size: 12px;
+  line-height: 24px;
+}
+.wrapper .container .content .account .account-box .deposit-withdrawal-content .deposit-withdrawal-step .withdrawal .submit {
+  margin-top: 26px;
+  width: 510px;
+  height: 42px;
+  color: #fff;
+  background-color: #5a6cb1;
+}
+.wrapper .alert-security-verification {
+  width: 590px;
+  padding: 34px 40px 50px;
+  text-align: center;
+}
+.wrapper .alert-security-verification i {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  color: #ccc;
+  cursor: pointer;
+}
+.wrapper .alert-security-verification i:hover {
+  color: #bbb;
+}
+.wrapper .alert-security-verification p {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #5a6cb1;
+}
+.wrapper .alert-security-verification h6 {
+  width: 370px;
+  font-size: 12px;
+  color: #272c3f;
+  margin: 0 auto 30px;
+}
+.wrapper .alert-security-verification label {
+  display: block;
+  margin-bottom: 10px;
+  color: #272c3f;
+  text-align: left;
+  margin-top: 26px;
+}
+.wrapper .alert-security-verification label span {
+  color: #888;
+}
+.wrapper .alert-security-verification .input-box {
+  position: relative;
+  width: 510px;
+}
+.wrapper .alert-security-verification .input-box input {
+  width: 510px;
+  height: 42px;
+  background-color: #ffffff;
+  padding-left: 15px;
+}
+.wrapper .alert-security-verification .input-box button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 42px;
+  line-height: 42px;
+  color: #fff;
+  background-color: #8d9ace;
+}
+.wrapper .alert-security-verification .submit {
+  width: 100%;
+  height: 42px;
+  margin-top: 50px;
+  color: #fff;
+  background-color: #5a6cb1;
+}
+.wrapper .alert-delete {
+  width: 430px;
+  height: 210px;
+  background-color: #fff;
+  text-align: center;
+}
+.wrapper .alert-delete .title {
+  font-size: 20px;
+  margin-top: 58px;
+}
+.wrapper .alert-delete button {
+  width: 130px;
+  height: 38px;
+  color: #fff;
+  background-color: #5a6cb1;
+  margin: 42px 35px;
+}
+.wrapper .alert-delete button:hover {
+  background-color: #4f5f9d;
+}
+.wrapper .alert-queue {
+  padding: 40px 0;
+  width: 560px;
+}
+.wrapper .alert-queue .title {
+  width: 335px;
+  font-size: 20px;
+  text-align: center;
+  color: #8d9ace;
+  margin: 0 auto;
+}
+.wrapper .alert-queue .title i {
+  font-size: 23px;
+  color: #8d9ace;
+  margin-right: 10px;
+}
+.wrapper .alert-queue ul {
+  text-align: center;
+}
+.wrapper .alert-queue ul li {
+  font-size: 12px;
+  color: #272c3f;
+}
+.wrapper .alert-queue .ok {
+  display: block;
+  width: 130px;
+  height: 38px;
+  margin: 35px auto 0;
+  color: #fff;
+  background-color: #5a6cb1;
+}
+.wrapper .alert-queue .ok:hover {
+  background-color: #4f5f9d;
+}
+/*设置溢出滚动条样式*/
+::-webkit-scrollbar {
+  width: 10px;
+  /* 不给背景色不会影响数据多少的样式*/
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  width: 10px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #ccc;
+}
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #eee;
+}
+/*# sourceMappingURL=withdrawal.css.map */

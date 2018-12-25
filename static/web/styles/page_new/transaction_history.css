@@ -1,0 +1,309 @@
+.wrapper em {
+  font-style: normal;
+}
+.wrapper .center-img {
+  vertical-align: top;
+}
+.wrapper .container {
+  background-color: #e9ebf1;
+}
+.wrapper .container .content {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.wrapper .container .content .main {
+  width: 100%;
+  height: 210px;
+  background-color: #fff;
+  padding: 20px;
+}
+.wrapper .container .content .main .person .person-msg .center-img {
+  margin: 23px 0 0 30px;
+}
+.wrapper .container .content .main .person .person-msg ul {
+  display: inline-block;
+  margin-top: 16px;
+}
+.wrapper .container .content .main .person .person-msg ul li {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 30px;
+}
+.wrapper .container .content .main .person .person-msg ul li img {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+.wrapper .container .content .main .person .person-msg ul li span {
+  color: #666;
+}
+.wrapper .container .content .main .person .person-msg ul li em {
+  font-size: 16px;
+  margin-left: 10px;
+}
+.wrapper .container .content .main .person .person-msg ul li strong {
+  font-size: 20px;
+  font-weight: normal;
+  color: #dd0000;
+}
+.wrapper .container .content .main .person .person-msg ul li .in-use {
+  margin-left: 40px;
+}
+.wrapper .container .content .main .person .person-msg ul li button {
+  width: 90px;
+  height: 28px;
+  background-color: #5a6cb1;
+  border-radius: 14px;
+  font-size: 12px;
+  color: #fff;
+  margin-left: 50px;
+}
+.wrapper .container .content .main .person .security {
+  width: 556px;
+  height: 170px;
+  background-color: #fafafa;
+}
+.wrapper .container .content .main .person .security .security-box {
+  padding: 28px 66px 0;
+}
+.wrapper .container .content .main .person .security .security-box .withdrawal {
+  height: 28px;
+  line-height: 28px;
+}
+.wrapper .container .content .main .person .security .security-box .withdrawal span {
+  font-size: 12px;
+  color: #666;
+}
+.wrapper .container .content .main .person .security .security-box .withdrawal .push-level {
+  position: relative;
+  display: inline-block;
+  margin: 0 30px 0 33px;
+}
+.wrapper .container .content .main .person .security .security-box .withdrawal .push-level span {
+  position: absolute;
+  top: -1px;
+  left: 28px;
+  font-family: HiraginoSansGB-W3;
+  color: #fff;
+  font-size: 12px;
+}
+.wrapper .container .content .main .person .security .security-box .withdrawal .a-btn {
+  display: inline-block;
+  width: 90px;
+  height: 28px;
+  line-height: 28px;
+  background-color: #5a6cb1;
+  border-radius: 14px;
+  text-align: center;
+  font-family: HiraginoSansGB-W3;
+  font-size: 12px;
+  color: #fff;
+}
+.wrapper .container .content .main .person .security .security-box .security-level {
+  margin-top: 28px;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .level {
+  width: 410px;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .level .path {
+  margin: 0 auto;
+  width: 363px;
+  height: 10px;
+  background-color: #ddd;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .level .level-ball .ball {
+  position: relative;
+  display: inline-block;
+  margin-top: -20px;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .level .level-ball .ball span {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  font-family: HiraginoSansGB-W3;
+  font-size: 12px;
+  color: #fff;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .level .level-ball .ball .num {
+  font-size: 12px;
+  color: #5a6cb1;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .level .level-ball .ball .num span {
+  color: #888;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .range-num {
+  width: 496px;
+  margin-top: 6px;
+  margin-left: -42px;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .range-num .num {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  font-size: 12px;
+  color: #5a6cb1;
+}
+.wrapper .container .content .main .person .security .security-box .security-level .range-num .num em {
+  color: #888;
+}
+.wrapper .container .content .account {
+  width: 100%;
+  margin-top: 15px;
+  background-color: #fff;
+}
+.wrapper .container .content .account .account-box .tab-panel {
+  height: 50px;
+  line-height: 49px;
+  padding-left: 3px;
+}
+.wrapper .container .content .account .account-box .tab-panel a {
+  display: inline-block;
+  padding: 0 20px;
+  margin: 0 17px;
+}
+.wrapper .container .content .account .account-box .tab-panel .active {
+  font-weight: bold;
+  color: #5a6cb1;
+  border-bottom: solid 2px #5a6cb1;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common {
+  padding: 0 20px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box {
+  text-align: left;
+  font-size: 12px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .table {
+  height: 497px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box tr {
+  border-bottom: solid 1px #ddd;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box th {
+  height: 36px;
+  line-height: 36px;
+  color: #888;
+  font-weight: normal;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box th:last-child {
+  text-align: right;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box td {
+  height: 46px;
+  color: #333;
+  padding-right: 60px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box td a {
+  color: #5a6cb1;
+  text-decoration: underline;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box td:last-child {
+  padding-right: 0;
+  text-align: right;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-history .no-deposit,
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-history .no-withdraw {
+  padding: 0 10px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-history {
+  background-color: #eee;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-history {
+  color: #888;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .pagination {
+  height: 59px;
+  line-height: 59px;
+  text-align: right;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .account-content-common {
+  border-bottom: solid 1px #ddd;
+  display: block;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .account-content-common li {
+  float: left;
+  width: auto;
+  text-align: left;
+  font-size: 12px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .title-list {
+  height: 36px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .title-list li {
+  height: 36px;
+  line-height: 36px;
+  color: #888;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list {
+  height: 46px;
+  line-height: 46px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li {
+  height: 46px;
+  line-height: 46px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .img-logo {
+  margin: 8px 0 0 5px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li a {
+  display: inline-block;
+  height: 28px;
+  line-height: 26px;
+  padding: 0 20px;
+  margin-left: 8px;
+  border: solid 1px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li a:hover {
+  color: #fff;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-deposit {
+  color: #27a781;
+  border-color: #27a781;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-deposit:hover {
+  background-color: #27a781;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-withdrawal {
+  color: #dc382c;
+  border-color: #dc382c;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-withdrawal:hover {
+  background-color: #dc382c;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-trade {
+  color: #5a6cb1;
+  border-color: #5a6cb1;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-trade:hover {
+  background-color: #5a6cb1;
+}
+.wrapper .container .content .account .account-box .tab-content .margin {
+  position: relative;
+  height: auto;
+}
+.wrapper .container .content .account .account-box .tab-content .margin .coming-soon {
+  text-align: center;
+}
+.wrapper .container .content .account .account-box .tab-content .margin .coming-soon .text {
+  color: #ccc;
+  margin-top: 5px;
+}
+/* WebKit browsers */
+input:focus::-webkit-input-placeholder {
+  color: #333;
+}
+/* Mozilla Firefox 4 to 18 */
+input:focus:-moz-placeholder {
+  color: #333;
+}
+/* Mozilla Firefox 19+ */
+input:focus::-moz-placeholder {
+  color: #333;
+}
+/* Internet Explorer 10+ */
+input:focus:-ms-input-placeholder {
+  color: #333;
+}
+/*# sourceMappingURL=transaction_history.css.map */

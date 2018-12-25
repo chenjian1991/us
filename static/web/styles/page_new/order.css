@@ -1,0 +1,188 @@
+.wrapper em {
+  font-style: normal;
+}
+.wrapper .center-img {
+  vertical-align: top;
+}
+.wrapper .container {
+  background-color: #e9ebf1;
+}
+.wrapper .container .content {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.wrapper .container .content .account {
+  width: 100%;
+  margin-top: 15px;
+  background-color: #fff;
+}
+.wrapper .container .content .account .account-box .tab-panel {
+  height: 50px;
+  line-height: 49px;
+  padding-left: 3px;
+}
+.wrapper .container .content .account .account-box .tab-panel a {
+  display: inline-block;
+  padding: 0 20px;
+  margin: 0 17px;
+}
+.wrapper .container .content .account .account-box .tab-panel .active {
+  font-weight: bold;
+  color: #5a6cb1;
+  border-bottom: solid 2px #5a6cb1;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common {
+  padding: 0 20px 20px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box {
+  text-align: left;
+  font-size: 12px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .table {
+  height: 497px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box tr {
+  border-bottom: solid 1px #ddd;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box th {
+  height: 36px;
+  line-height: 36px;
+  color: #888;
+  font-weight: normal;
+  padding-right: 40px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box th:first-child {
+  padding-left: 5px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box th:last-child {
+  padding-right: 5px;
+  text-align: right;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box td {
+  height: 46px;
+  color: #333;
+  padding-right: 10px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box td:first-child {
+  padding-left: 5px;
+  width: 200px;
+  padding-right: auto;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box td:last-child {
+  padding-right: 5px;
+  text-align: right;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .cancel-status {
+  padding-right: 10px !important;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .cancel {
+  display: inline-block;
+  height: 28px;
+  line-height: 26px;
+  padding: 0 20px;
+  margin-left: 8px;
+  border: solid 1px #ccc;
+  color: #666;
+  cursor: pointer;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .cancel:hover {
+  background-color: #5a6cb1;
+  color: #fff;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-order .no-history,
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-order .no-open,
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-order .no-filled {
+  padding: 0 10px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-order {
+  background-color: #eee;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .table-box .no-order {
+  color: #888;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .pagination {
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .account-content-common {
+  border-bottom: solid 1px #ddd;
+  display: block;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .account-content-common li {
+  float: left;
+  width: auto;
+  text-align: left;
+  font-size: 12px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .title-list {
+  height: 36px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .title-list li {
+  height: 36px;
+  line-height: 36px;
+  color: #888;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list {
+  height: 46px;
+  line-height: 46px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li {
+  height: 46px;
+  line-height: 46px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .img-logo {
+  margin: 8px 0 0 5px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li a {
+  display: inline-block;
+  height: 28px;
+  line-height: 26px;
+  padding: 0 20px;
+  margin-left: 8px;
+  border: solid 1px;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li a:hover {
+  color: #fff;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-deposit {
+  color: #27a781;
+  border-color: #27a781;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-deposit:hover {
+  background-color: #27a781;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-withdrawal {
+  color: #dc382c;
+  border-color: #dc382c;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-withdrawal:hover {
+  background-color: #dc382c;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-trade {
+  color: #5a6cb1;
+  border-color: #5a6cb1;
+}
+.wrapper .container .content .account .account-box .tab-content .content-common .account-content .icon-content .icon-list li .a-btn-trade:hover {
+  background-color: #5a6cb1;
+}
+/* WebKit browsers */
+input:focus::-webkit-input-placeholder {
+  color: #333;
+}
+/* Mozilla Firefox 4 to 18 */
+input:focus:-moz-placeholder {
+  color: #333;
+}
+/* Mozilla Firefox 19+ */
+input:focus::-moz-placeholder {
+  color: #333;
+}
+/* Internet Explorer 10+ */
+input:focus:-ms-input-placeholder {
+  color: #333;
+}
+/*# sourceMappingURL=order.css.map */

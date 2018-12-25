@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/**
+ * @author: xgc-whj
+ * @date: 2018-02-05
+ * @version: v1.6
+ * @description: 请务必保留作者、日期及版本号
+ */
+
+/*ccs-1*/
+.whj_jqueryPaginationCss-1 {
+    display: inline-block;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.whj_jqueryPaginationCss-1 div {
+    display: inline-block;
+    margin: 0 10px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.whj_jqueryPaginationCss-1 .whj_bgc {
+    color: #5a6cb1;
+}
+
+.whj_jqueryPaginationCss-1 .whj_border {
+    border-radius: 50%;
+    color: #5a6cb1;
+}
+
+.whj_jqueryPaginationCss-1 .whj_num {
+    color: #333;
+}
+
+.whj_jqueryPaginationCss-1 .whj_color {
+    color: #698ca9;
+}
+
+.whj_jqueryPaginationCss-1 .whj_checked {
+    background-color: #5a6cb1;
+    color: #fff;
+}
+
+.whj_jqueryPaginationCss-1 .whj_hoverDisable {
+    color: #ccc;
+}
