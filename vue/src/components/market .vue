@@ -183,7 +183,7 @@
                   })
                   symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
                })
-               this.symbolListSelf = siteObj
+               this.symbolListSelf = siteObj//{B:{BTC:[],ETH:[],USDD:[],USDT:[]}}
                console.log(1111,siteObj)
 
                // //更新交易对的行情  默认掉用一次  当有快照驱动时 监听数据变化
