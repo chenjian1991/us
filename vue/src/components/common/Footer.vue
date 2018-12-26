@@ -119,7 +119,7 @@
         },
         initAnnoucementList(){
                 this.adArr=[];
-                AnnoucementList({language:this.$store.state.app.countryLanguage,fromSite:'ALL'}).then(data =>{
+                AnnoucementList({language:this.$store.state.app.countryLanguage,fromSite:'US'}).then(data =>{
                     data.map((v,i) => {
                         this.adArr.push({title:v.title,targetUrl:v.targetUrl,createTime:moment(v.createTime).format('MM-DD')})
                         this.resultAD = this.adArr.slice(0,3)
