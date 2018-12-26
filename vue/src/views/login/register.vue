@@ -15,8 +15,8 @@
                             <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                             <div v-if="phoneRegister">
                                 <FormItem class="form_item">
-                                    <span class="pull-left">United States of America</span>
-                                    <div class="country_container country pull-right ">
+                                    <div style="color:#12869A;">Select your current state of legal residence:</div>
+                                    <div class="country_container country">
                                         <div @click="controCountrylSelect">
                                             <input type="hidden">
                                             <div>
@@ -38,6 +38,11 @@
                                                 </ul>
                                             </div>
                                         </transition>
+                                   
+                                    </div>
+                                    <div style="font-size:12px;line-height:15px;color:#51809f;margin-top:15px;text-align:justify;">
+                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Alabama, Arizona, Connecticut, Georgia, Hawaii, Idaho, Louisiana, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. 
+                                        We are working hard to be able to do so in the near future. Please check back in the near future for updates.
                                     </div>
                                 </FormItem>
                                 <FormItem class="form_item phone_item" prop='phoneNumber'>
@@ -96,8 +101,8 @@
                                 <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
                                  <div id="captcha"></div>
                                   <FormItem class="form_item">
-                                      <span class="pull-left">United States of America</span>
-                                    <div class="country_container country pull-right">
+                                    <div style="color:#12869A;">Select your current state of legal residence:</div>
+                                    <div class="country_container country">
                                         <div @click="controCountrylSelect">
                                             <input type="hidden">
                                             <div>
@@ -119,6 +124,10 @@
                                                 </ul>
                                             </div>
                                         </transition>
+                                    </div>
+                                    <div style="font-size:12px;line-height:15px;color:#51809f;margin-top:15px;text-align:justify;">
+                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Alabama, Arizona, Connecticut, Georgia, Hawaii, Idaho, Louisiana, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. 
+                                        We are working hard to be able to do so in the near future. Please check back in the near future for updates.
                                     </div>
                                 </FormItem>
                                 <FormItem class="form_item" prop='emailNumber'>

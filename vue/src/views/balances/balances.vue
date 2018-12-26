@@ -870,10 +870,12 @@
                         this.currencyPrecision[v.currency] = v.currencyPrecision
                      })
 
-                     const deleteCurrency = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM']
+                     const bSite = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM']
+                     // const cSite = ['LVSUP', 'YEEZY']
+
                      this.allAccount['B'] = this.allAccount['B'].filter(v => {
                         let flag = false
-                        deleteCurrency.map(value => {
+                        bSite.map(value => {
                            if (v.currency === value) {
                               flag = true
                            }
@@ -882,19 +884,19 @@
                            return flag
                         }
                      })
-                     if (this.allAccount['C']) {
-                        this.allAccount['C'] = this.allAccount['C'].filter(v => {
-                           let flag = false
-                           deleteCurrency.map(value => {
-                              if (v.currency === value) {
-                                 flag = true
-                              }
-                           })
-                           if (flag) {
-                              return flag
-                           }
-                        })
-                     }
+                     // if (this.allAccount['C']) {
+                     //    this.allAccount['C'] = this.allAccount['C'].filter(v => {
+                     //       let flag = false
+                     //       cSite.map(value => {
+                     //          if (v.currency === value) {
+                     //             flag = true
+                     //          }
+                     //       })
+                     //       if (flag) {
+                     //          return flag
+                     //       }
+                     //    })
+                     // }
 
                      this.siteTypeList.push('ALL')//全站
                      this.siteTypeList.map(val => {//各站附初始值币种
@@ -1328,6 +1330,9 @@
       @select-color: #949DA6;
       @border-border-color: #F5F5F5;
       /*table 样式 start*/
+      .ivu-tabs{
+         overflow: visible;
+      }
       .ivu-tabs-content {
          margin-top: 50px; //隐藏按钮的高度
       }
