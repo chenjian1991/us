@@ -236,7 +236,7 @@
                 value1:0,
                 isAutoplay:true,
                 clientType:'PC',
-                fromSite:'C',
+                fromSite:'US_C',
                 language:window.localStorage.getItem('countryLanguage') || 'zh-CN',
                 bannerArr:[],
 

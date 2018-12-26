@@ -1,5 +1,5 @@
 <template>
-    <div  id="registerHtml" class="root">
+    <div  class="root">
         <div  class="wrapper">
             <div  class="register_wraper">
                 <div class="title">

@@ -150,7 +150,7 @@ export default {
       value1: 0,
       isAutoplay: false,
       clientType: "PC",
-      fromSite: "ALL",
+      fromSite: "US",
       language: window.localStorage.getItem("countryLanguage") || "zh-CN",
       bannerArr: [],
       mainHomePriceObject: {}

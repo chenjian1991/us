@@ -48,7 +48,7 @@ module.exports = {
       proxy: {
          '/api': {
             // target: 'http://www.test_uat.55.exchange:5555/', // 测试本地环境
-            target: 'https://www.55.com/', // 测试本地环境
+             target: 'https://www.55.com/', // 测试本地环境
             changeOrigin: true,
             pathRewrite: {
                // '^/api': ''
@@ -57,7 +57,7 @@ module.exports = {
          },
          '/broker': {
             // target: 'http://www.test_uat.55.exchange:5555/', // 测试环境行情推送
-            target: 'https://www.55.com/', // 测试本地环境
+             target: 'https://www.55.com/', // 测试本地环境
             changeOrigin: true,
             pathRewrite: {
                // '^/broker': ''
@@ -66,7 +66,7 @@ module.exports = {
          },
          '/quote': {
             // target: 'http://www.test_uat.55.exchange:5555/', // 测试环境行情推送
-            target: 'https://www.55.com/', // 测试本地环境
+             target: 'https://www.55.com/', // 测试本地环境
             changeOrigin: true,
             pathRewrite: {
                // '^/quote': ''
