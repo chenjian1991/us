@@ -38,16 +38,19 @@
                <Col span="12"></Col>
             </Row>
             <Tabs value="name1" :animated="animate">
-                 <TabPane :label="B_site" name="name1">
-                     <Table :columns="columns1" :data="dataB"></Table>
-                  </TabPane>
+               <TabPane :label="B_site" name="name1">
+                  <Table :columns="columns1" :data="dataB"></Table>
+               </TabPane>
+               <TabPane :label="C_site" name="name5">
+                  <Table :columns="columns1" :data="dataC"></Table>
+               </TabPane>
                <!-- <TabPane :label="exchangeAccount" name="name1">
                   <Table :columns="columns1" :data="dataALL"></Table>
                </TabPane>
                <TabPane :label="B_site" name="name2">
                   <Table :columns="columns1" :data="dataB"></Table>
                </TabPane>
-               <TabPane :label="f_site" name="name3">
+               <TabPane :label="F_site" name="name3">
                   <Table :columns="columns1" :data="dataF"></Table>
                </TabPane>
                <TabPane :label="S_site" name="name4">
@@ -271,13 +274,15 @@
             B_site: (h) => {
                return h('div', {}, this.$t('zcBSiteAccount'))
             },
-            f_site: (h) => {
+            F_site: (h) => {
                return h('div', {}, this.$t('zcFSiteAccount'))
             },
             S_site: (h) => {
                return h('div', {}, this.$t('zcSSiteAccount'))
             },
-
+            C_site: (h) => {
+               return h('div', {}, this.$t('headercoustomerchain'))
+            },
             columns1: [
                {
                   key: 'imgSrc',
@@ -760,7 +765,7 @@
                                                       path: 'exchange',
                                                       query: {
                                                          'symbol': v.replace(/\//, ''),
-                                                         'site':value
+                                                         'site': value
                                                       }
                                                    })
                                                    // if (value === 'B') {
@@ -793,6 +798,7 @@
             dataB: [],
             dataF: [],
             dataS: [],
+            dataC: [],
             columns5: [
                {
                   key: 'createdAt',
@@ -863,6 +869,33 @@
                         this.currencyImg += `${v['currency']},`;//获取币种图标的参数
                         this.currencyPrecision[v.currency] = v.currencyPrecision
                      })
+
+                     const deleteCurrency = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM']
+                     this.allAccount['B'] = this.allAccount['B'].filter(v => {
+                        let flag = true
+                        deleteCurrency.map(value => {
+                           if (v.currency === value) {
+                              flag = false
+                           }
+                        })
+                        if (flag) {
+                           return flag
+                        }
+                     })
+                     if (this.allAccount['C']) {
+                        this.allAccount['C'] = this.allAccount['C'].filter(v => {
+                           let flag = true
+                           deleteCurrency.map(value => {
+                              if (v.currency === value) {
+                                 flag = false
+                              }
+                           })
+                           if (flag) {
+                              return flag
+                           }
+                        })
+                     }
+
                      this.siteTypeList.push('ALL')//全站
                      this.siteTypeList.map(val => {//各站附初始值币种
                         let data = `data${val}`
@@ -1442,7 +1475,7 @@
 
    .wrapper {
       position: relative;
-      padding: 0px 0 10px;
+      padding: 40px 0 20px;
       background-color: #F7F9FA;
       .content {
          width: 1200px;
