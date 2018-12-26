@@ -124,7 +124,7 @@
                <!-- <li class="fsite">
                   <router-link to='/Fhome'>{{$t('headerfrancechain')}}</router-link>
                </li> -->
-               <!-- <li class="csite"><a>{{$t('headercoustomerchain')}}</a></li> -->
+               <li class="csite"><router-link to='/Chome'>{{$t('headercoustomerchain')}}</router-link></li>
                <!-- <li class="lsite">
                   <a>{{$t('headerlocalbusiness')}}</a>
                </li>
@@ -507,9 +507,9 @@
                }
             }
             .csite{
-               a{
-                  color: rgba(255,255,255,0.2);
-               }
+               // a{
+               //    color: rgba(255,255,255,0.2);
+               // }
                &:hover{a {
                   color: rgba(255,255,255,0.2);
                }}
