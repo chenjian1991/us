@@ -16,13 +16,13 @@
                                     <span v-if="siteIndex == 'B'">{{$t('BExchange')}}</span>
                                     <!-- <span v-if="siteIndex == 'S'">{{$t('SExchange')}}</span> -->
                                     <!-- <span v-if="siteIndex == 'F'">{{$t('FExchange')}}</span> -->
-                                    <span v-if="siteIndex == 'C'">{{$t('CExchange')}}</span>
+                                    <span v-if="siteIndex == 'C'">{{$t('headercustomerexchange')}}</span>
                                     <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
                                     <ul @click="changeBoard">
                                         <li data-value="B">{{$t('BExchange')}}</li>
                                         <!-- <li data-value="S">{{$t('SExchange')}}</li> -->
                                         <!-- <li data-value="F">{{$t('FExchange')}}</li> -->
-                                        <li data-value="C">{{$t('CExchange')}}</li>
+                                        <li data-value="C">{{$t('headercustomerexchange')}}</li>
                                     </ul>
                                 </div>
                             </div>

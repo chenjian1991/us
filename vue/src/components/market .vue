@@ -523,7 +523,7 @@
    }
    .marketBox{
       .ivu-tabs-bar{
-         padding-left:200px;
+         padding-left:220px;
       }
       .B{
          .ivu-tabs-nav .ivu-tabs-tab-active{

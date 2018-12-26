@@ -377,7 +377,7 @@ export default {
         left:0px;
         z-index: 1000;
         li{
-            width:130px;
+            width:170px;
             height:35px;
             line-height: 35px;
             padding-left:17px;
