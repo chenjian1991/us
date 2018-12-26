@@ -139,7 +139,7 @@
                                     <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('emialCodePlaceholder')"></Input>
                                     <sendBtn   @sendCick= 'sendSMSfun' :empty='empty' :emailMessage='emailMessage'></sendBtn>
                                 </FormItem> -->
-                                <FormItem class="form_item" prop='password'>
+                                <FormItem style="margin-top:30px" class="form_item passwrod-item" prop='password'>
                                     <img src="../../assets/images/register/password.svg" alt="">
                                     <Input type="password" v-model="formValidate.password" :placeholder="$t('passwordPlacehodler')"></Input>
                                 </FormItem>
@@ -726,7 +726,7 @@ const clickoutside = {
             this.countryCode();
             this.countryNumber = '+1';
             this.globalCountryNumber='Alaska'
-            this.formValidate.interest=['ddd'];
+           // this.formValidate.interest=['ddd'];
             let inviteCode =  this.getUrlParams('code');
             this.formValidate.referrId = inviteCode;
             if(inviteCode){
