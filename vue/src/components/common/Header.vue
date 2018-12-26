@@ -130,10 +130,10 @@
                </li>
                <li class="psite"><a>{{$t('headerpersonalchain')}}</a></li> -->
                <li class="tradecenter">
-                  <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'BTCUSDT'}}">{{$t('headerexchangecenter')}}<Icon type="md-arrow-dropdown" size="16" class="triangle"/></router-link>
+                  <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'ETHBTC'}}">{{$t('headerexchangecenter')}}<Icon type="md-arrow-dropdown" size="16" class="triangle"/></router-link>
                   <ul class="tradeList">
                      <li>
-                        <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'BTCUSDT'}}"><i class="icon btcIcon"> </i><span>{{$t('headerblockexchange')}}</span>
+                        <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'ETHBTC'}}"><i class="icon btcIcon"> </i><span>{{$t('headerblockexchange')}}</span>
                         </router-link>
                      </li>
                      <!-- <li>
@@ -143,11 +143,11 @@
                      <li>
                         <router-link :to="{path:'/exchange',query: {site: 'F',symbol:'EURDUSDT'}}"><i class="icon exchangeIcon"></i>
                            <span>{{$t('headerfranceexchange')}}</span></router-link>
-                     </li>
+                     </li>-->
                      <li>
-                        <router-link :to="{path:'/exchange',query: {site: 'C',symbol:'AAPLTUSDT'}}"><i class="icon logoIcon"></i> <span>{{$t('headercustomerexchange')}}</span>
+                        <router-link :to="{path:'/exchange',query: {site: 'C',symbol:'LVSUPBTC'}}"><i class="icon logoIcon"></i> <span>{{$t('headercustomerexchange')}}</span>
                         </router-link>
-                     </li> -->
+                     </li> 
                   </ul>
                </li>
             </ul>
@@ -511,7 +511,7 @@
                //    color: rgba(255,255,255,0.2);
                // }
                &:hover{a {
-                  color: rgba(255,255,255,0.2);
+                  color: #7689A2
                }}
             }
             .lsite{

@@ -75,7 +75,7 @@
       </div>
     </section>
     <section class="siteTable">
-      <market :sites="['B']"/>
+      <market :sites="['B','C']"/>
     </section>
     <section class="market">
       <div class="market_title">{{$t('HomeMarketPosition')}}</div>

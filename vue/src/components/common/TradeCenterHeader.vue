@@ -5,12 +5,12 @@
         <router-link to='/home'><img src="../../assets/images/logo/logo.png" width="40px" height="28px" alt></router-link>
       </li>
       <li class="tradecenter">
-            <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'BTCUSDT'}}">{{$t('headerexchangecenter')}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/></router-link>
+            <router-link :to="{path:'/exchange',query: {site: 'B',symbol:'ETHBTC'}}">{{$t('headerexchangecenter')}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/></router-link>
            <ul class="tradeList">
                 <li><router-link :to="{path:'/exchange',query: {site: 'B'}}"><i class="icon btcIcon"> </i><span>{{$t('BExchange')}}</span></router-link></li>
                 <!-- <li><router-link :to="{path:'/exchange',query: {site: 'S'}}"><i class="icon klineIcon"></i> <span>{{$t('SExchange')}}</span></router-link></li>
                 <li><router-link :to="{path:'/exchange',query: {site: 'F'}}"><i class="icon exchangeIcon"></i> <span>{{$t('FExchange')}}</span></router-link></li> -->
-                <!-- <li><router-link :to="{path:'/exchange',query: {site: 'C'}}"><i class="icon logoIcon"></i> <span>{{$t('headercoustomerchain')}}</span></router-link></li> -->
+                <li><router-link :to="{path:'/exchange',query: {site: 'C'}}"><i class="icon logoIcon"></i> <span>{{$t('headercoustomerchain')}}</span></router-link></li>
                 <!-- <li><router-link :to="{path:'/Bhome',query: {site: 'B'}}"><i class="icon personIcon"></i> <span>个人交易</span></router-link></li>
                 <li><router-link :to="{path:'/Bhome',query: {site: 'B'}}"><i class="icon shopIcon"></i> <span>本地商业交易</span></router-link></li> -->
             </ul>
