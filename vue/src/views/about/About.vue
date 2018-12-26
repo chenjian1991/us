@@ -12,8 +12,9 @@
                         {{$t('aboutInfo1')}} </br></br>
                         {{$t('aboutInfo2')}} </br></br>
                         {{$t('aboutInfo3')}}</br></br>
-                        <!-- {{$t('aboutInfo4')}}</br></br>
-                        {{$t('aboutInfo5')}} -->
+                        {{$t('aboutInfo31')}}</br>
+                        {{$t('aboutInfo4')}}</br></br>
+                        {{$t('aboutInfo5')}}
                     </div>
                 </div>
                <div class="panel-heading no-padding">
