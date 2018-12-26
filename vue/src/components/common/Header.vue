@@ -577,9 +577,9 @@
                position: absolute;
                background: #121F28;
                top: 48px;
-               right: -21px;
+               left:0;
                li {
-                  width: 130px;
+                  width: 170px;
                   height: 35px;
                   padding-left: 17px;
                   padding-right: 0px;
