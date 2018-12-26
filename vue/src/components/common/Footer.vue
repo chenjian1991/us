@@ -43,7 +43,7 @@
                     </ul>
                     <ul class="clearfix country">
                         <li>{{$t('footerorigin')}}</li>
-                        <li> <a href="">{{$t('footerglobal')}}</a></li>
+                        <li><router-link to='/home'>US</router-link></li>
                         <!-- <li><a href="">{{$t('footerussite')}}</a></li> -->
                     </ul>
                 </div>
