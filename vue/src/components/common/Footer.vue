@@ -212,6 +212,9 @@
                 text-align: center;
                 color: #fff;
                 margin-top: 78px;
+                &:hover{
+                    background: rgba(80,195,203,1);
+                }
                 cursor: pointer;
                 .email-icon{
                     font-size: 25px;
