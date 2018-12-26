@@ -15,7 +15,7 @@
                         </FormItem>
                          <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
                          <div id="captcha"></div>
-                        <Button v-if="loaded" class="loginbtn"  @keyup.enter.native="handleSubmit('formValidate')" @click="handleSubmit('formValidate')" type="primary">{{$t('dlLogin')}}</Button>
+                        <Button v-if="loaded" class="loginbtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('dlLogin')}}</Button>
                         <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
                         
                     </Form>
