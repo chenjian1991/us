@@ -238,6 +238,7 @@ export default {
    //C站首页
    CHomefashionableTokenTit:'热门潮牌通证',
    CHomeIssuerTit:'潮牌通证发行方',
+   CHomeAuthenticityTit:'确保 100% 真品',
    CHomeAdvantageTit1:'KOL 发行方',
    CHomeAdvantageTit2:'第三方 Legit Ckeck',
    CHomeAdvantageTit3:'透明托管，支持完整赎回',

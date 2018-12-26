@@ -233,15 +233,16 @@ export default {
    LPart5Content3: 'Local business token issuers must disclose key operation data on a regular basis, the information will be logged on blockchain.',
 
    //C站首页
-   CHomefashionableTokenTit: '热门潮牌通证',
+   CHomefashionableTokenTit: 'Premium Brand Token',
    CHomeIssuerTit: '潮牌通证发行方',
-   CHomeAdvantageTit1: 'KOL 发行方',
-   CHomeAdvantageTit2: '第三方 Legit Ckeck',
-   CHomeAdvantageTit3: '透明托管，支持完整赎回',
+   CHomeAuthenticityTit:'100% Authenticity',
+   CHomeAdvantageTit1: 'Issued by KOL',
+   CHomeAdvantageTit2: 'Third-party Legit Check',
+   CHomeAdvantageTit3: 'Custody by Trust Company',
    CHomeAdvantageTit4: '优先理赔机制',
-   CHomeAdvantageBrief1: '55全球市场严格筛选潮牌通证发行方，通过发行方需要是该领域内KOL，55全球市场会基于其粉丝数量等客观数据评估。',
-   CHomeAdvantageBrief2: '55全球市场与潮牌领域的生产商和第三方权威合作以确保潮牌限量品为100%正品。',
-   CHomeAdvantageBrief3: '潮牌通证发行后，该通证锚定的潮牌商品会由55全球市场委托第三方信托公司透明管理。拥有全量通证后，持有者可以将该商品赎回。',
+   CHomeAdvantageBrief1: 'To ensure the token value is backed by authentic products, 55 Global Markets holds high standard when screening issuers of Premium Brand Product Tokens. The issuers must be franchised retailers or widely regarded as Key Opinion Leaders.',
+   CHomeAdvantageBrief2: '55 Global Markets work closely with third-party legit check service providers, as well as franchised retailers to ensure 100% authenticity of the products. All physical items must pass legit check before starting token issuance process.',
+   CHomeAdvantageBrief3: 'Once the physical items passed legit check, they will be shipped to third-party trust company for custody, then the token representation of the premium brand can be issued. With full possession of tokens, holders can redeem the physical items.',
    CHomeAdvantageBrief4: '如果商品在赎回后被官方验证为非正品，55全球市场将启动优先理赔机制赔偿投资者，而后追责发行方，最大化保障投资者利益。',
 
 
