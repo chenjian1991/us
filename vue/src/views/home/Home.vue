@@ -38,7 +38,7 @@
               </div>
               <div :class="[v.showColor == '1' ? 'textColorGreen' : 'textColorRed']">
                 <span :class="[v.showColor == '1' ? 'greendollars' : 'reddollars']"></span>
-                <span class="price">{{v.last}}</span>
+                <span class="price"> {{v.last}}</span>
               </div>
               <div :class="[v.showColor == '1' ? 'percentGreen' : 'percentRed']">{{v.percent}}</div>
               <img

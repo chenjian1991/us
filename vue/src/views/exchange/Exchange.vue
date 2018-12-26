@@ -13,7 +13,11 @@
                             <!-- 分站点 -->
                             <div class="siteBox">
                                 <div class="siteName">
-                                    {{$t('BExchange')}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
+                                    <span v-if="siteIndex == 'B'">{{$t('BExchange')}}</span>
+                                    <!-- <span v-if="siteIndex == 'S'">{{$t('SExchange')}}</span> -->
+                                    <!-- <span v-if="siteIndex == 'F'">{{$t('FExchange')}}</span> -->
+                                    <span v-if="siteIndex == 'C'">{{$t('CExchange')}}</span>
+                                    <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
                                     <ul @click="changeBoard">
                                         <li data-value="B">{{$t('BExchange')}}</li>
                                         <!-- <li data-value="S">{{$t('SExchange')}}</li> -->
@@ -516,7 +520,6 @@
             return {
                 boardIndex: 'A', //板块轮播
                 siteIndex:'B',//站点索引  B F L S 
-                currentSite:"区块链交易",
                 quoteCoinIndex: 0, //计价币种轮播索引
                 currentSymbol: '', //当前行情交易对
                 currentSymbolObj:{},//当前行情+交易对的对象
@@ -618,7 +621,6 @@
             //切换版块
             changeBoard(e) {
                 let boardKey = e.target.getAttribute('data-value');
-                this.currentSite = this.$t(boardKey+"Exchange")
                 this.siteIndex = boardKey
                 this.quoteCoinIndex = 0;
                 this.currentQuoteCoin = 0;
@@ -870,10 +872,7 @@
                 getSymbolList().then(res => {
                     this.symbolList = {};
                     res.map((v, i) => {
-                        let site = config[document.domain] || 'B' //默认的是B站
-                        if(v.siteType && v.siteType.indexOf(site) != -1){
-                            this.symbolList[v.symbol] = v
-                        }
+                        this.symbolList[v.symbol] = v
                     })
                     //增加蒙层逻辑
                     this.isShowTradeMask();
@@ -961,7 +960,6 @@
                             //默认站点 计价资产
                             // this.siteIndex = this.currentSymbolObj && this.currentSymbolObj.siteType[0] || 'B'
                             this.siteIndex = this.$route.query.site || 'B'
-                            this.currentSite = this.$t(this.siteIndex+"Exchange")
                             //当前的计价资产名称
                             this.currentQuoteCoinName =this.currentSymbolObj &&  this.currentSymbolObj.quoteAsset
                             let index = getIndexInObject(siteObj[this.siteIndex],this.currentQuoteCoinName)
@@ -976,7 +974,6 @@
                         }
 
                     }else{
-                        this.currentSite = this.$t("BExchange")
                         this.currentSymbol =  sortArr[0].symbol //默认排序后的第一个交易对
                         this.currentSymbolObj = sortArr[0]
                     }
@@ -1595,7 +1592,6 @@
             $route(to,from){ //路由site变化 
                 if(this.$route.query && this.$route.query.site){
                     let boardKey = this.$route.query.site
-                    this.currentSite = this.$t(boardKey+"Exchange")
                     this.siteIndex = boardKey
                     this.quoteCoinIndex = 0;
                     this.currentQuoteCoin = 0;
