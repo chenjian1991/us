@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="announce clearfix">
-                    <ul>
+                    <ul class="clearfix">
                         <li>{{$t('footerEmailus')}}</li>
                         <li v-for="item in resultAD"><a target="_blank" :href="item.targetUrl">{{item.title}}<span>[{{item.createTime}}]</span></a></li>
                         <li class="more"><a target="_blank" :href="moreAnounce">{{$t('footermore')}}</a></li>
