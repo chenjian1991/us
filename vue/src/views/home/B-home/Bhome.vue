@@ -28,7 +28,7 @@
                                 <market :sites="['B']" />
                         </section>
                         </div>
-                    <div class="mining-mechanism">
+                    <!-- <div class="mining-mechanism">
                         <div class="mining-mechanism-inner">
                                   <div class="mining-title">{{$t('HomeFFSelfBalancing')}}</div>
                             <div class="section-border light_border"></div>
@@ -56,13 +56,9 @@
                                     <p class="font-weight-normal">{{$t('HomeFFTokenTip')}}</p>
                                 </div>
                             </div>
-                            <!-- <div class="review-more">
-                                <span>了解更多</span>
-                            </div> -->
-
                         </div>
                       
-                    </div>
+                    </div> -->
            
                     <!--  下载app -->
                     <section class="ios">
