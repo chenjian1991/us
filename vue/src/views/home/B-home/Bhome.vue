@@ -122,7 +122,7 @@
                 noData:false,
                 isAutoplay:true,
                 clientType:'PC',
-                fromSite:'B',
+                fromSite:'US_B',
                 language:window.localStorage.getItem('countryLanguage') || 'zh-CN',
                 bannerArr:[],
             }
