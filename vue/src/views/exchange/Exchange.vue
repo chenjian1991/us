@@ -18,7 +18,7 @@
                                         <li data-value="B">{{$t('BExchange')}}</li>
                                         <!-- <li data-value="S">{{$t('SExchange')}}</li> -->
                                         <!-- <li data-value="F">{{$t('FExchange')}}</li> -->
-                                        <!-- <li data-value="C">{{$t('CExchange')}}</li> -->
+                                        <li data-value="C">{{$t('CExchange')}}</li>
                                     </ul>
                                 </div>
                             </div>

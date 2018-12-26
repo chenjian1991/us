@@ -872,10 +872,10 @@
 
                      const deleteCurrency = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM']
                      this.allAccount['B'] = this.allAccount['B'].filter(v => {
-                        let flag = true
+                        let flag = false
                         deleteCurrency.map(value => {
                            if (v.currency === value) {
-                              flag = false
+                              flag = true
                            }
                         })
                         if (flag) {
@@ -884,10 +884,10 @@
                      })
                      if (this.allAccount['C']) {
                         this.allAccount['C'] = this.allAccount['C'].filter(v => {
-                           let flag = true
+                           let flag = false
                            deleteCurrency.map(value => {
                               if (v.currency === value) {
-                                 flag = false
+                                 flag = true
                               }
                            })
                            if (flag) {
