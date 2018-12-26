@@ -175,11 +175,12 @@ export default {
             targetUrl: v.targetUrl,
             subjectName: v.subjectName
           });
+
         });
-        if (this.bannerArr.length > 1) {
-          this.isAutoplay = true;
+        this.bannerArr.length=1;
+        if (this.bannerArr.length > 0) {
+          this.isAutoplay = false;//不轮播
         }
-        //this.bannerArr.length=1;
       });
     }
   },

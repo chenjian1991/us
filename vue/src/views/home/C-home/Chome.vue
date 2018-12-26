@@ -7,19 +7,31 @@
                         <div class="swiper">
                             <div class="homebox">
                                 <section class="bannerSection">
-                                    <Carousel v-model="value1"  :autoplay-speed='4000' :autoplay="isAutoplay" loop :radius-dot="false">
+                                    <Carousel :autoplay-speed="4000" v-model="value1" arrow="never" :height="570" :autoplay="isAutoplay" loop :radius-dot="false">
                                         <CarouselItem v-for="item in bannerArr">
-                                            <div class="demo-carousel">
-                                                <img :src="item.imageUrl" alt="" >
-                                                <span class="bannerText" >{{item.text}}</span>
+                                            <div v-if="item.targetUrl == '' || item.targetUrl== null">
+                                                <div class="demo-carousel">
+                                                    <img :src="item.imageUrl" alt="">
+                                                </div>
                                             </div>
+                                            <a v-else :href="item.targetUrl" target="_blank">
+                                                <div class="demo-carousel">
+                                                    <img :src="item.imageUrl" alt="">
+                                                </div>
+                                            </a>
                                         </CarouselItem>
                                     </Carousel>
                                 </section>
+                                
                             </div>
                         </div>
+                        <!-- market-section -->
+                        <section class="siteTable">
+                            <market :sites="['C']" />
+                        </section>
 
                         <!-- fashionableToken-section -->
+                        <!-- 热门潮牌通证 -->
                         <div class="fashionableToken-section">
                             <div class="public-title">
                                 <h1>{{$t('CHomefashionableTokenTit')}}</h1>
@@ -64,15 +76,18 @@
                                     </li>
                                 </ul>
                             </div>
-
+                            <!-- 遮罩层 -->
+                            <div class="mask-box">
+                                <div class="mask-content">
+                                    trading starts soon
+                                </div>
+                            </div>
                         </div>
-
-                        <!-- market-section -->
-                        <!-- <market :sites="['C']" /> -->
                     </div>
 
                     <!-- issuer-section -->
-                    <div class="issuer-section">
+                    <!-- 潮牌通证发行方 -->
+                    <!-- <div class="issuer-section">
                         <div class="public-title">
                             <h1>{{$t('CHomeIssuerTit')}}</h1>
                         </div>
@@ -110,12 +125,13 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- authenticity-section -->
+                    <!-- 确保 100% 真品 -->
                     <div class="authenticity-section">
                         <div class="public-title">
-                            <h1>100% Authenticity</h1>
+                            <h1>{{$t('CHomeAuthenticityTit')}}</h1>
                         </div>
                         <div class="authenticity-content">
                             <ul>
@@ -140,13 +156,13 @@
                                     </div>
                                     <p class="font-weight-normal">{{$t('CHomeAdvantageBrief3')}}</p>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <div>
                                         <img src="../../../assets/images/home/Chome/authenticity-icon4@2x.png" alt="">
                                         <h3>{{$t('CHomeAdvantageTit4')}}</h3>
                                     </div>
                                     <p class="font-weight-normal">{{$t('CHomeAdvantageBrief4')}}</p>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>  
                     </div>  
@@ -178,7 +194,7 @@
                 noPadding: '--',
                 symbolList:[],
                 boardIndex:'USDT',
-                site:'S',
+                site:'C',
                 symbolListSelf:{},
                 quoteCoinList:[],
                 pushData:[],//推送过来的快照
@@ -223,14 +239,6 @@
                 fromSite:'C',
                 language:window.localStorage.getItem('countryLanguage') || 'zh-CN',
                 bannerArr:[],
-                // bannerArr:[{
-                //     url:require('../../../assets/images/home/Shome/banner.png'),
-                //     text:'第一个图片'
-                // },
-                // {
-                //     url:require('../../../assets/images/home/Shome/banner.png'),
-                //     text:'第二个图片'
-                // }]
 
             }
         },
@@ -248,14 +256,20 @@
         },
         methods:{
            initBannerList() {
+                this.value1 = 0;
+                this.bannerArr = []
+                this.isAutoplay = false
                 let params = {}
                 params.clientType = this.clientType
                 params.fromSite = this.fromSite
-                params.language = this.language
+                params.language = this.$store.state.app.countryLanguage || window.localStorage.getItem('countryLanguage') || 'zh-CN'
                 BannerList(params).then(data => {
                     data.map((v,i) => {
-                    this.bannerArr.push({imageUrl:v.imageUrl,targetUrl:v.targetUrl,subjectName:v.subjectName})
+                        this.bannerArr.push({imageUrl:v.imageUrl,targetUrl:v.targetUrl,subjectName:v.subjectName})
                     })
+                    if(this.bannerArr.length>1){
+                    this.isAutoplay = true
+                    }
                 })
                 },
             gotoExchange(symbol,type){

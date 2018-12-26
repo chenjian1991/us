@@ -154,9 +154,12 @@
             <div class="right">
                <Icon type="md-volume-up" size="16"/> &nbsp;&nbsp;
                <div class="adbox">
-                  <ul class="adList" ref="con1" :class="{anim:animate==true}">
+                  <!-- <ul class="adList" ref="con1" :class="{anim:animate==true}">
                      <li v-for="item in adArr"><a :href="item.targetUrl" target="_blank"><span class="point">{{item.title}}</span> <span
                         class="date">[{{item.createTime}}]</span></a></li>
+                  </ul> -->
+                  <ul class="adList">
+                     <li target='_blank' href='www.baidu.com'>百度</li>
                   </ul>
                </div>
             </div>
@@ -281,17 +284,17 @@
                })
             })
          },
-         scroll() {
-            let con1 = this.$refs.con1;
-            con1.style.marginTop = '-13px';
-            this.animate = !this.animate;
-            setTimeout(() => {
-               this.adArr.push(this.adArr[0]);
-               this.adArr.shift();
-               con1.style.marginTop = '0px';
-               this.animate = !this.animate;  // 这个地方如果不把animate 取反会出现消息回滚的现象，此时把ul 元素的过渡属性取消掉就可以完美实现无缝滚动的效果了
-            }, 500)
-         },
+         // scroll() {
+         //    let con1 = this.$refs.con1;
+         //    con1.style.marginTop = '-13px';
+         //    this.animate = !this.animate;
+         //    setTimeout(() => {
+         //       this.adArr.push(this.adArr[0]);
+         //       this.adArr.shift();
+         //       con1.style.marginTop = '0px';
+         //       this.animate = !this.animate;  // 这个地方如果不把animate 取反会出现消息回滚的现象，此时把ul 元素的过渡属性取消掉就可以完美实现无缝滚动的效果了
+         //    }, 500)
+         // },
          verfiy() {
             let loginToken = Cookies.get('loginToken');
             getHeaderTokenApi(relatNameVerify, {}, loginToken).then((res) => {

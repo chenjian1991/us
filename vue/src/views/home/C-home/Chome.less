@@ -16,26 +16,24 @@
             width: 100%;
             height: 100%;
             .bannerSection {
+                min-height: 570px;
+                background: #15232C;
                 width: 100%;
                 height: 100%;
+                margin-bottom:50px;
                 .demo-carousel{
                     width:100%;
-                    height: 100%;
-                    position: relative;
+                    height: 570px;
+                    display: flex;
+                    justify-content: center;
+                    overflow: hidden;
                     img{
-                        //width:100%;
-                    }
-                    .bannerText{
-                        position: absolute;
-                        top:30px;
-                        left: 100px;
-                        font-size: 20px;
-                        color: #fff;
+                        width: auto;
                     }
                 }
-                .bannerItem{
-                    position: relative;
-                }
+            }
+            .siteTable{
+                min-height: 500px;
             }
         }
     }
@@ -160,9 +158,10 @@
         padding-top:36px;
         width: 100%;
         background: #fff;
+        position: relative;
         .fashionableToken-content{
             margin: 0 auto;
-            padding: 20px 0 10px;
+            padding: 40px 0 50px;
             width: 1200px;
             ul{
                 width:100%;
@@ -198,6 +197,30 @@
                     } 
                 }
     
+            }
+        }
+        .mask-box{
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            width:100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index:999;
+            .mask-content{
+                position: absolute;
+                top:50%;
+                left:50%;
+                margin-left:-400px;
+                margin-top:-50px;
+                width:800px;
+                height: 100px;
+                line-height: 100px;
+                color:#fff;
+                text-align: center;
+                font-size:40px;
             }
         }
     }
@@ -274,7 +297,8 @@
             display: flex;
             justify-content: space-between;
             li{
-                width: 230px;
+                // width: 230px;
+                width:340px;
                 div{
                     img{
                         height: 60px;

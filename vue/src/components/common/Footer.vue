@@ -27,11 +27,11 @@
                     <ul class="clearfix asset">
                         <li>{{$t('footerassetstype')}}</li>
                         <li><router-link to="/Bhome">{{$t('footerblockchain')}}</router-link></li>
-                        <li><router-link to="/Shome">{{$t('headerstockchain')}}</router-link></li>
-                        <li><router-link to="/Fhome">{{$t('headerfrancechain')}}</router-link></li>
-                        <li>{{$t('headercoustomerchain')}}</li>
-                        <li>{{$t('headerlocalbusiness')}}</li>
-                        <li>{{$t('headerpersonalchain')}}</li>
+                        <!-- <li><router-link to="/Shome">{{$t('headerstockchain')}}</router-link></li>
+                        <li><router-link to="/Fhome">{{$t('headerfrancechain')}}</router-link></li> -->
+                        <li><router-link to="/Chome">{{$t('headercoustomerchain')}}</router-link></li>
+                        <!-- <li>{{$t('headerlocalbusiness')}}</li>
+                        <li>{{$t('headerpersonalchain')}}</li> -->
                     </ul>
                     <ul class="clearfix exchange-pairs">
                         <li>{{$t('footerexchangeparis')}}</li>
