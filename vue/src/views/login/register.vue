@@ -725,7 +725,7 @@ const clickoutside = {
             //this.dealCountry();
             this.countryCode();
             this.countryNumber = '+1';
-            this.globalCountryNumber='Alaska'
+            this.globalCountryNumber='California'
            // this.formValidate.interest=['ddd'];
             let inviteCode =  this.getUrlParams('code');
             this.formValidate.referrId = inviteCode;
