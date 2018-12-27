@@ -161,7 +161,7 @@
      import {BigNumber} from 'bignumber.js';
     import config from '@/config'
     import {getDecimalExNumber } from '../../../lib/utils.js';
-    import  market from "../../../components/market .vue";
+    import  market from "../../../components/market.vue";
     export default {
         data(){
             return{

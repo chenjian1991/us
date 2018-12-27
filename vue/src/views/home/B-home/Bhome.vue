@@ -102,7 +102,7 @@
     import {alreadyDividend,identify,AndroidDownloadUrl} from '../../../../api/urls.js';
     import {getApi,getHeaderTokenApi} from '../../../../api/axios.js';
     import Cookies from 'js-cookie';
-    import  market from "../../../components/market .vue";
+    import  market from "../../../components/market.vue";
     export default {
         data(){
             return{

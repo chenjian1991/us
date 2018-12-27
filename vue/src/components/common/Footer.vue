@@ -35,11 +35,11 @@
                     </ul>
                     <ul class="clearfix exchange-pairs">
                         <li>{{$t('footerexchangeparis')}}</li>
-                        <li @click="gotoExchange('ETHUSDT','B')">ETH/USDT</li>
-                        <li @click="gotoExchange('FFUSDT','B')">FF/USDT</li>
-                        <li @click="gotoExchange('FBTUSDT','S')">FBT/USDT</li>
-                        <li @click="gotoExchange('BTCUSDT','B')">BTC/USDT</li>
-                        <li @click="gotoExchange('EURDUSDD','F')">EURD/USDD</li>
+                        <li @click="gotoExchange('ETHBTC','B')">ETH/BTC </li>
+                        <li @click="gotoExchange('LTCBTC','B')">LTC/BTC</li>
+                        <li @click="gotoExchange('DASHBTC','B')">DASH/BTC</li>
+                        <li @click="gotoExchange('LTCETH','B')">LTC/ETH</li>
+                        <li @click="gotoExchange('LVSUPBTC','C')">LVSUP/BTC</li>
                     </ul>
                     <ul class="clearfix country">
                         <li>{{$t('footerorigin')}}</li>
@@ -56,7 +56,7 @@
                         <li><router-link to="/fee">{{$t('footerfees')}}</router-link></li>
                         <li>{{$t('footergroup')}}</li>
                         <li><a target="_blank" :href="telegramURL">Telegram</a></li>
-                        <li><a target="_blank" href="https://www.facebook.com/55GlobalMarkets/">FB</a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/55GlobalMarkets/">Facebook</a></li>
                         <li><a target="_blank" href="https://twitter.com/55GlobalMarkets">Twitter</a></li>
                     </ul>
                 </div>

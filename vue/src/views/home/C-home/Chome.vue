@@ -4,31 +4,34 @@
             <div class="wrapper">
                 <div class="container-self home_container">
                     <div class="main_plate clearfix">
+                    <div style="min-height:850px;">
                         <div class="swiper">
-                            <div class="homebox">
-                                <section class="bannerSection">
-                                    <Carousel :autoplay-speed="4000" v-model="value1" arrow="never" :height="570" :autoplay="isAutoplay" loop :radius-dot="false">
-                                        <CarouselItem v-for="item in bannerArr">
-                                            <div v-if="item.targetUrl == '' || item.targetUrl== null">
-                                                <div class="demo-carousel">
-                                                    <img :src="item.imageUrl" alt="">
+                                <div class="homebox">
+                                    <section class="bannerSection">
+                                        <Carousel :autoplay-speed="4000" v-model="value1" arrow="never" :height="570" :autoplay="isAutoplay" loop :radius-dot="false">
+                                            <CarouselItem v-for="item in bannerArr">
+                                                <div v-if="item.targetUrl == '' || item.targetUrl== null">
+                                                    <div class="demo-carousel">
+                                                        <img :src="item.imageUrl" alt="">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <a v-else :href="item.targetUrl" target="_blank">
-                                                <div class="demo-carousel">
-                                                    <img :src="item.imageUrl" alt="">
-                                                </div>
-                                            </a>
-                                        </CarouselItem>
-                                    </Carousel>
-                                </section>
-                                
+                                                <a v-else :href="item.targetUrl" target="_blank">
+                                                    <div class="demo-carousel">
+                                                        <img :src="item.imageUrl" alt="">
+                                                    </div>
+                                                </a>
+                                            </CarouselItem>
+                                        </Carousel>
+                                    </section>
+                                    
+                                </div>
                             </div>
-                        </div>
-                        <!-- market-section -->
-                        <section class="siteTable">
-                            <market :sites="['C']" />
-                        </section>
+                            <!-- market-section -->
+                            <section class="siteTable">
+                                <market :sites="['C']" />
+                            </section>
+                    </div>
+                      
 
                         <!-- fashionableToken-section -->
                         <!-- 热门潮牌通证 -->
@@ -182,7 +185,7 @@
     import {getDecimalExNumber } from '../../../lib/utils.js';
     import {getApi} from '../../../../api/axios.js'
     import {nadDATA,dowDATA,spnDATA} from "../../../../api/urls.js";
-    import  market from "../../../components/market .vue";
+    import  market from "../../../components/market.vue";
     export default {
         data(){
             return{

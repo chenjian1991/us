@@ -147,7 +147,8 @@
                //默认写死的币种
                if(v.symbol == "ETHBTC" ||v.symbol == "LTCBTC" || v.symbol == "LTCETH" || v.symbol == "DASHBTC"){
                   this.mainHomeCoin[v.symbol] = Object.assign(v, nowPrice)
-                  this.$store.commit('updateMainHomePrice', this.mainHomeCoin);
+                  // this.$store.commit('updateMainHomePrice', this.mainHomeCoin);
+                  this.$emit('getPrice',this.mainHomeCoin)
                }
                newArr.push(Object.assign(v, nowPrice))
             })
@@ -183,7 +184,6 @@
                                     siteObj[site] = obj
                                  }
                               }
-                             
                            }
                         }else{
                             // v 每个站
@@ -204,10 +204,8 @@
                   symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
                })
                this.symbolListSelf = siteObj
-               console.log(1111,siteObj)
-
                // //更新交易对的行情  默认掉用一次  当有快照驱动时 监听数据变化
-               // this.initBoardModule();
+               this.initBoardModule();
                //获取交易对的推送的行情
                this.getSSERealTime(symbolUrl)
             })
@@ -301,7 +299,6 @@
       mounted(){
          this.getSymbolListRealtimeData()
          this.routePath = this.$route.path;
-         console.log(this.$route.path)
       },
       destroyed() {
          //关闭SSE行情推送
