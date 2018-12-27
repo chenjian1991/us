@@ -48,7 +48,7 @@
         </div>
     </section>
     <section class="siteTable">
-      <market :sites="['B','C']" />
+      <market :sites="['B','C']" @getPrice="updatePrice"/>
     </section>
     <section class="market">
       <div class="market_title">{{$t('HomeMarketPosition')}}</div>
@@ -115,61 +115,55 @@
 </template>
 
 <script>
-import { BannerList } from "_api/home";
-import market from "@/components/market.vue";
+  import {BannerList} from '_api/home'
+import  market from "@/components/market.vue";
 
 export default {
   data() {
     return {
-      value1: 0,
-      isAutoplay: false,
-      clientType: "PC",
-      fromSite: "US",
-      language: window.localStorage.getItem("countryLanguage") || "zh-CN",
-      bannerArr: [],
+      value1:0,
+      isAutoplay:false,
+      clientType:'PC',
+      fromSite:'US',
+      language:window.localStorage.getItem('countryLanguage') || 'zh-CN',
+      bannerArr:[],
       mainHomePriceObject:{},
-    };
+    }
   },
   methods: {
     initBannerList() {
       this.value1 = 0;
-      this.bannerArr = [];
-      this.isAutoplay = false;
-      let params = {};
-      params.clientType = this.clientType;
-      params.fromSite = this.fromSite;
-      params.language =
-        this.$store.state.app.countryLanguage ||
-        window.localStorage.getItem("countryLanguage") ||
-        "zh-CN";
+      this.bannerArr = []
+      this.isAutoplay = false
+      let params = {}
+      params.clientType = this.clientType
+      params.fromSite = this.fromSite
+      params.language = this.$store.state.app.countryLanguage || window.localStorage.getItem('countryLanguage') || 'zh-CN'
       BannerList(params).then(data => {
-        data.map((v, i) => {
-          this.bannerArr.push({
-            imageUrl: v.imageUrl,
-            targetUrl: v.targetUrl,
-            subjectName: v.subjectName
-          });
-
-        });
-        this.bannerArr.length=1;
-        if (this.bannerArr.length > 0) {
-          this.isAutoplay = false;//不轮播
+        data.map((v,i) => {
+           this.bannerArr.push({imageUrl:v.imageUrl,targetUrl:v.targetUrl,subjectName:v.subjectName})
+        })
+        if(this.bannerArr.length>1){
+          this.isAutoplay = true
         }
-      });
+      })
+    },
+    updatePrice(obj){
+      this.mainHomePriceObject =Object.assign({},obj) 
     }
   },
-  computed: {
+  computed:{
       languageChange(){
           return  this.$store.state.app.countryLanguage;//  返回全局state的状态值
       },
       loginStatus(){
           return this.$store.state.app.isLogin;
       },
-      mianHomePrice(){
-        return this.$store.state.app.mainHomePriceObject;
-      }
+      // mianHomePrice(){
+      //   return this.$store.state.app.mainHomePriceObject;
+      // }
   },
-  watch: {
+  watch:{
       languageChange(val,oldVal){//监听全局语言的状态
           this.initBannerList()
       },
@@ -180,18 +174,20 @@ export default {
               this.isLogin = false;
           }
       },
-      mianHomePrice(val,oldVal){
-          this.mainHomePriceObject = val
-      }
+      // mianHomePrice(val,oldVal){
+      //   console.log(12332)
+      //     this.mainHomePriceObject = val
+      // }
   },
-  mounted() {
-    this.$store.commit("changeHeaderColor", "");
-    this.$store.commit("changeFooterColor", "#15232C");
+  mounted(){
+    this.$store.commit('changeHeaderColor', '');
+    this.$store.commit('changeFooterColor', '#15232C');
     //Header设为透明色
     this.initBannerList();
+
   },
   components: {
-    market
+   market
   }
 };
 </script>

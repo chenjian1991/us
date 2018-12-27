@@ -147,7 +147,8 @@
                //默认写死的币种
                if(v.symbol == "ETHBTC" ||v.symbol == "LTCBTC" || v.symbol == "LTCETH" || v.symbol == "DASHBTC"){
                   this.mainHomeCoin[v.symbol] = Object.assign(v, nowPrice)
-                  this.$store.commit('updateMainHomePrice', this.mainHomeCoin);
+                  // this.$store.commit('updateMainHomePrice', this.mainHomeCoin);
+                  this.$emit('getPrice',this.mainHomeCoin)
                }
                newArr.push(Object.assign(v, nowPrice))
             })
