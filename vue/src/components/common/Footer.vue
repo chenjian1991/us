@@ -102,18 +102,18 @@
                 let lang = this.$store.state.app.countryLanguage;
             if(lang=='en'){
                 this.telegramURL='https://t.me/www55com_English';
-                this.moreAnounce="https://55support.zendesk.com/hc/en/categories/360000443513-Announcements"
+                this.moreAnounce="https://55f-support.zendesk.com/hc/en-gb/articles/360014903373-With-the-Power-of-Blockchain-Let-Us-Reshape-Global-Asset-Trading-Together"
             }else if(lang=='vi'){
                 this.telegramURL='https://t.me/Vietnam_55globalmarkets';
-                this.moreAnounce="https://55support.zendesk.com/hc/en/categories/360000443513-Announcements"
+                this.moreAnounce="https://55f-support.zendesk.com/hc/en-gb/articles/360014903373-With-the-Power-of-Blockchain-Let-Us-Reshape-Global-Asset-Trading-Together"
 
             }else if(lang=='ko'){
                 this.telegramURL='https://t.me/korea_55globalmarket';
-                this.moreAnounce="https://55support.zendesk.com/hc/en/categories/360000443513-Announcements"
+                this.moreAnounce="https://55f-support.zendesk.com/hc/en-gb/articles/360014903373-With-the-Power-of-Blockchain-Let-Us-Reshape-Global-Asset-Trading-Together"
 
             }else if(lang=='zh-CN'||lang=="zh"){
                 this.telegramURL='https://t.me/www55com_Mandarin';
-                this.moreAnounce="https://55support.zendesk.com/hc/zh-cn/categories/360000443513-Announcements"
+                this.moreAnounce="https://55f-support.zendesk.com/hc/en-gb/articles/360014903373-With-the-Power-of-Blockchain-Let-Us-Reshape-Global-Asset-Trading-Together"
 
             }
         },
