@@ -23,8 +23,6 @@ export default {
     firstLogin:false,
     backgroundHeader:'', //改变Header的背景色
     backgroundFooter:"",
-    mainHomePriceObject:{},//{BTCUSDT:{...},FFUSDT:{}}
-
   },
   getters: {
 
@@ -60,10 +58,6 @@ export default {
     changeFooterColor(state,value){
       state.backgroundFooter = value;
     },
-    // 更新首页4个推荐的币种
-    updateMainHomePrice(state,value){
-      state.mainHomePriceObject = value
-    }
   },
 
 

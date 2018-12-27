@@ -159,9 +159,6 @@ export default {
       loginStatus(){
           return this.$store.state.app.isLogin;
       },
-      // mianHomePrice(){
-      //   return this.$store.state.app.mainHomePriceObject;
-      // }
   },
   watch:{
       languageChange(val,oldVal){//监听全局语言的状态
@@ -174,10 +171,6 @@ export default {
               this.isLogin = false;
           }
       },
-      // mianHomePrice(val,oldVal){
-      //   console.log(12332)
-      //     this.mainHomePriceObject = val
-      // }
   },
   mounted(){
     this.$store.commit('changeHeaderColor', '');
