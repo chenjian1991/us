@@ -286,7 +286,7 @@
             columns1: [
                {
                   key: 'imgSrc',
-                  width: 35,
+                  width: 50,
                   align: 'left',
                   render: (h, params) => {
                      return h('img', {
@@ -301,7 +301,7 @@
                },
                {
                   key: 'currency',
-                  width: 75,
+                  width: 100,
                   renderHeader: (h) => {
                      const params = 'currency'
                      return h('div', {
@@ -349,7 +349,7 @@
                },
                {
                   key: 'available',
-                  width: 145,
+                  width: 180,
                   align: 'right',
                   render: (h, params) => {
                      return h('div', {}, params.row.available ? params.row.available : '--')
@@ -409,7 +409,7 @@
                },
                {
                   key: 'frozen',
-                  width: 145,
+                  width: 180,
                   align: 'right',
                   render: (h, params) => {
                      return h('div', {}, params.row.frozen ? params.row.frozen : '--')
@@ -460,7 +460,7 @@
                },
                {
                   key: 'total',
-                  width: 145,
+                  width: 180,
                   align: 'right',
                   render: (h, params) => {
                      return h('div', {}, params.row.total ? params.row.total : '--')
@@ -509,84 +509,84 @@
                         )],)])
                   }
                },
-               {
-                  key: 'USDT',
-                  width: 130,
-                  align: 'right',
-                  render: (h, params) => {
-                     if (!params.row.USDT) {
-                        return h('div', {}, '--')
-                     } else {
-                        return h('div', {}, params.row.USDT)
-                     }
-                  },
-                  renderHeader: (h) => {
-                     const params = 'USDT'
-                     return h('div', {
-                        style: {
-                           cursor: 'pointer'
-                        },
-                        on: {
-                           click: () => {
-                              this.balancesSort(params)
-                              this.sortColor(params)
-                           }
-                        }
-                     }, [h('div', {
-                        style: {
-                           display: 'inline-block'
-                        }
-                     }, this.$t('zcUSDTEstimation')),
-                        h('span', {
-                           style: {
-                              fontSize: '14px'
-                           }
-                        }, [h('Icon',
-                           {
-                              attrs: {
-                                 type: 'md-arrow-dropup'
-                              },
-                              style: {
-                                 position: 'absolute',
-                                 color: this.sortName === params && this.directive === true ? '#12869A' : '#949DA6'
-                              }
-                           }
-                        ), h('Icon',
-                           {
-                              attrs: {
-                                 type: 'md-arrow-dropdown'
-                              },
-                              style: {
-                                 marginTop: '8px',
-                                 color: this.sortName === params && this.directive === false ? '#12869A' : '#949DA6'
-                              }
-                           }
-                        )],)])
-                  }
-               },
-               {
-                  key: 'USDT',
-                  title: ' ',
-                  width: 190,
-                  align: 'left',
-                  render: (h, params) => {
-                     if (!params.row.USDT) {
-                        return h('div', {}, '--')
-                     } else {
-                        let name = this.currentCurrency.name
-                        let rate = this.currentCurrency.rate
-                        let text = '≈ ' + this.transferNumber(bigDecimal.multiply(params.row.USDT, rate), 2) + ' ' + name
-                        return h('div', {
-                           style: {
-                              color: '#12869A'
-                           }
-                        }, text)
-                     }
-                  },
-               },
+               // {
+               //    key: 'USDT',
+               //    width: 130,
+               //    align: 'right',
+               //    render: (h, params) => {
+               //       if (!params.row.USDT) {
+               //          return h('div', {}, '--')
+               //       } else {
+               //          return h('div', {}, params.row.USDT)
+               //       }
+               //    },
+               //    renderHeader: (h) => {
+               //       const params = 'USDT'
+               //       return h('div', {
+               //          style: {
+               //             cursor: 'pointer'
+               //          },
+               //          on: {
+               //             click: () => {
+               //                this.balancesSort(params)
+               //                this.sortColor(params)
+               //             }
+               //          }
+               //       }, [h('div', {
+               //          style: {
+               //             display: 'inline-block'
+               //          }
+               //       }, this.$t('zcUSDTEstimation')),
+               //          h('span', {
+               //             style: {
+               //                fontSize: '14px'
+               //             }
+               //          }, [h('Icon',
+               //             {
+               //                attrs: {
+               //                   type: 'md-arrow-dropup'
+               //                },
+               //                style: {
+               //                   position: 'absolute',
+               //                   color: this.sortName === params && this.directive === true ? '#12869A' : '#949DA6'
+               //                }
+               //             }
+               //          ), h('Icon',
+               //             {
+               //                attrs: {
+               //                   type: 'md-arrow-dropdown'
+               //                },
+               //                style: {
+               //                   marginTop: '8px',
+               //                   color: this.sortName === params && this.directive === false ? '#12869A' : '#949DA6'
+               //                }
+               //             }
+               //          )],)])
+               //    }
+               // },
+               // {
+               //    key: 'USDT',
+               //    title: ' ',
+               //    width: 190,
+               //    align: 'left',
+               //    render: (h, params) => {
+               //       if (!params.row.USDT) {
+               //          return h('div', {}, '--')
+               //       } else {
+               //          let name = this.currentCurrency.name
+               //          let rate = this.currentCurrency.rate
+               //          let text = '≈ ' + this.transferNumber(bigDecimal.multiply(params.row.USDT, rate), 2) + ' ' + name
+               //          return h('div', {
+               //             style: {
+               //                color: '#12869A'
+               //             }
+               //          }, text)
+               //       }
+               //    },
+               // },
                {
                   key: 'operate',
-                  width: 300,
+                  // width: 300,
                   align: 'right',
                   render: (h, params) => {
                      const url='../..'
