@@ -45,6 +45,12 @@ export function getObjFirstKey(data) {
         return key
     }
 }
+//获取对象里面的第一个value
+export function getObjFirstValue(data) {
+    for (var key in data) {
+        return data[key]
+    }
+}
 //根据key ，把在对象里的序号返回
 export function getIndexInObject(obj,param){
     let i  = 0;
