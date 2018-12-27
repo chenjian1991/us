@@ -487,6 +487,7 @@ export default {
                 }
             } 
              .dropList{
+                 &::-webkit-scrollbar {display:none};
                 position: absolute;
                 top:32px;
                 right:0;
@@ -588,6 +589,7 @@ export default {
       }
     }
     .dropList {
+      &::-webkit-scrollbar {display:none};
       position: absolute;
       top: 60px;
       right: 0;

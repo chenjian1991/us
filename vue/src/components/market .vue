@@ -1,15 +1,15 @@
 <template>
    <div class="marketBox">
-      <div id="commonMarket"  class="plate_content clearfix" :class="site" v-for="(value, site, index) in homeTableObject">
+      <div id="commonMarket"  class="plate_content clearfix" :class="site" :key="index" v-for="(value, site, index) in homeTableObject">
          <div class="tabelLable">
             <div v-if="site == 'B'" class="labelBox bsiteFont"> <i class="bsite"></i>{{$t('headerblockchain')}}</div>
             <div v-if="site == 'S'" class="labelBox ssiteFont"> <i class="ssite"></i>{{$t('headerstockchain')}}</div>
             <div v-if="site == 'F'" class="labelBox fsiteFont"> <i class="fsite"></i>{{$t('headerfrancechain')}}</div>
             <div v-if="site == 'C'" class="labelBox csiteFont"> <i class="csite"></i>{{$t('headercoustomerchain')}}</div>
          </div>
-         <div class="more"><router-link to='/exchange'>{{$t('bbjyMore')}}</router-link></div>
+         <div class="more"> <router-link :to="{path:'/exchange',query: {site:site}}">{{$t('bbjyMore')}}</router-link></div>
          <Tabs :animated="false">
-            <TabPane :label="quote" v-for="(item,quote,num) in value">
+            <TabPane :label="quote" v-for="(item,quote,num) in value" :key="num">
                <div class="plate-table table-responsive">
                   <table class="table" >
                      <thead>
