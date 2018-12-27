@@ -124,8 +124,9 @@
             <li>{{$t('homewebsit')}}</li>
           </ul>
           <div class="download-btn">
-            <img src="../../assets/images/home/Bhome/App_Download_QR.svg" alt>
+            <img style="width:104px;height:104px;" src="../../assets/images/home/Bhome/qrcode.png" alt>
           </div>
+          
         </div>
         <div class="download-right">
           <img
