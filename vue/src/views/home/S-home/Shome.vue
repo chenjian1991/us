@@ -101,7 +101,7 @@
     import {getDecimalExNumber } from '../../../lib/utils.js';
     import {getApi} from '../../../../api/axios.js'
     import {nadDATA,dowDATA,spnDATA} from "../../../../api/urls.js";
-    import  market from "../../../components/market .vue";
+    import  market from "../../../components/market.vue";
     export default {
         data(){
             return{

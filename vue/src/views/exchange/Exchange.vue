@@ -493,6 +493,7 @@
         getTokenByKey as getValue,
         setLocalStorage,
         checkExpiredAble,
+        getObjFirstValue,
         addSymbolSplitLine,
         storage,
         isDivideAll,
@@ -953,7 +954,21 @@
                     })
                     this.symbolListSelf = siteObj
                     this.boardLoading = false //板块loading
-                    if(this.$route.query.symbol || storage.has('currentSymbol')){ //根据url展示默认的交易对
+                    //只有站点默认展示第一个交易对
+                    let siteRouter = this.$route.query.site
+                    //url 只有site
+                    if(siteRouter && !this.$route.query.symbol){
+                        this.currentSymbol = getObjFirstValue(siteObj[siteRouter])[0].symbol
+                        this.currentSymbolObj =this.symbolList_quote[this.currentSymbol]
+                        this.siteIndex = siteRouter 
+                        //当前的计价资产名称
+                        this.currentQuoteCoinName =this.currentSymbolObj &&  this.currentSymbolObj.quoteAsset
+                        let index = getIndexInObject(siteObj[this.siteIndex],this.currentQuoteCoinName)
+                        this.currentQuoteCoin = index
+                        this.quoteCoinIndex = index
+                        //增加蒙层逻辑
+                        this.isShowTradeMask()
+                    }else if(this.$route.query.symbol || storage.has('currentSymbol')){ //根据url展示默认的交易对
                         this.currentSymbol = this.$route.query.symbol  || storage.get('currentSymbol')  
                         this.currentSymbolObj =this.symbolList_quote[this.currentSymbol]
                         if(this.currentSymbolObj){

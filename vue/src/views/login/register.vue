@@ -441,8 +441,12 @@ const clickoutside = {
             //     })
             // },
             sendSMSfun(callback){
-                let len = this.countryNumber.length;
-                let itc = this.countryNumber.substring(1);
+                let itc ;
+                if(String(this.countryNumber).lastIndexOf('+') !== -1){
+                  itc= String(this.countryNumber).substring(1);
+                }else{
+                  itc = this.countryNumber
+                }
                 if(this.shows==1){
                     this.phoneMessage = {
                     itc:itc,
@@ -548,8 +552,12 @@ const clickoutside = {
 
 
             phoneRegisterFun(){//手机注册方法
-                let len = this.countryNumber.length;
-                let itc = this.countryNumber.substring(1);
+                let itc ;
+                if(String(this.countryNumber).lastIndexOf('+') !== -1){
+                  itc= this.countryNumber.substring(1);
+                }else{
+                  itc = this.countryNumber
+                }
                 let params;
                 if(this.phoneRegister){
                         params = {
@@ -652,7 +660,7 @@ const clickoutside = {
             },
             chooseCountry(code){
                 this.selectFlag = false;
-                this.countryNumber = code;
+                this.countryNumber = code
             },
             chooseGlobalCountry(name,img){
                 this.countrySelectFlag = false;
@@ -725,7 +733,7 @@ const clickoutside = {
             //this.dealCountry();
             this.countryCode();
             this.countryNumber = '+1';
-            this.globalCountryNumber='Alaska'
+            this.globalCountryNumber='California'
            // this.formValidate.interest=['ddd'];
             let inviteCode =  this.getUrlParams('code');
             this.formValidate.referrId = inviteCode;
