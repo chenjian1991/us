@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="label-box">
                                             <p>Louis Vuitton/Superme Box Logo Hooded Sweatshirt</p>
-                                            <p>TICKER: SUPLVT</p>
+                                            <!-- <p>TICKER: SUPLVT</p> -->
                                         </div>
                                     </li>
                                     <li>
@@ -52,8 +52,8 @@
                                             <img src="../../../assets/images/home/Chome/fashionable-img2@2x.png" alt="">
                                         </div>
                                         <div class="label-box">
-                                            <p>AIR JORDAN 11 RETRO "CONCORD" 2018 TICKER: SUPLVT</p>
-                                            <p>TICKER: SUPLVT</p>
+                                            <p>AIR JORDAN 11 RETRO "CONCORD" 2018</p>
+                                            <!-- <p>TICKER: SUPLVT</p> -->
                                         </div>
                                     </li>
                                     <li>
@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="label-box">
                                             <p>AIR JORDAN 1 RETRO HIGN "ROOKIE OF THE YEAR"</p>
-                                            <p>TICKER: SUPLVT</p>
+                                            <!-- <p>TICKER: SUPLVT</p> -->
                                         </div>
                                     </li>
                                     <li>
@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="label-box">
                                             <p>AIR JORDAN 1 TO 11 PACKAGE</p>
-                                            <p>TICKER: SUPLVT</p>
+                                            <!-- <p>TICKER: SUPLVT</p> -->
                                         </div>
                                     </li>
                                 </ul>
