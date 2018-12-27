@@ -11,15 +11,21 @@
                     <div class="panel-body paddong_30_left">
                         {{$t('aboutInfo1')}} </br></br>
                         {{$t('aboutInfo2')}} </br></br>
-                        {{$t('aboutInfo3')}}</br></br>
-                        {{$t('aboutInfo31')}}</br>
+                        {{$t('aboutInfo3')}}
+                    </div>
+                </div>
+                 <div class="panel-heading no-padding">
+                        <h3>{{$t('aboutInfo31')}}</h3>
+                </div>
+                <div>
+                    <div class="panel-body paddong_30_left">
                         {{$t('aboutInfo4')}}</br></br>
                         {{$t('aboutInfo5')}}
                     </div>
                 </div>
                <div class="panel-heading no-padding">
-                        <h3>{{$t('ContactUs')}}</h3>
-                      </div>
+                    <h3>{{$t('ContactUs')}}</h3>
+                </div>
                 <div>
                     <div class="panel-body paddong_30_left">
                         {{$t('Forbusiness')}}</br>
