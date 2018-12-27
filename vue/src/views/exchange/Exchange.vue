@@ -493,6 +493,7 @@
         getTokenByKey as getValue,
         setLocalStorage,
         checkExpiredAble,
+        getObjFirstValue,
         addSymbolSplitLine,
         storage,
         isDivideAll,
