@@ -589,15 +589,16 @@
                   width: 300,
                   align: 'right',
                   render: (h, params) => {
-                     let url = ''
+                     const url='../..'
+                     // let url = ''
                      let siteType = params.row.siteType
-                     siteType.map(v => {//充值提现的URL 注意5站域名
-                        if (v === 'B') {
-                           url = '../..'
-                        } else {
-                           url = `https://${v.toLowerCase()}.55.com`
-                        }
-                     })
+                     // siteType.map(v => {//充值提现的URL 注意5站域名
+                     //    if (v === 'B') {
+                     //       url = '../..'
+                     //    } else {
+                     //       url = `https://${v.toLowerCase()}.55.com`
+                     //    }
+                     // })
 
                      let deposit = false
                      let withdraw = false
@@ -754,6 +755,7 @@
                                        },
                                     },
                                     params.row['list'] && params.row['list'].length !== 0 ? params.row.list.map(function (v) {//有交易对
+                                       // console.log(v)
                                        return h('dt', {
                                           'class': {'tradeBtn': true},
                                           on: {
@@ -951,7 +953,11 @@
                res.map((v) => {
                   this.exchangeList.map(value => {
                      if (v['baseAsset'] === value['currency']) {
-                        value['list'].push(`${v.baseAsset}/${v.quoteAsset}`)//exchangeList加入交易对
+                        if(v.quoteAsset==='USDT'||v.quoteAsset==='USDD'){//过滤 USDT和USDD的右侧币
+                           return
+                        }else{
+                           value['list'].push(`${v.baseAsset}/${v.quoteAsset}`)//exchangeList加入交易对
+                        }
                      }
                   })
                })
