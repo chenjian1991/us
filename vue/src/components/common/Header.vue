@@ -30,12 +30,10 @@
                </li> -->
             </ul>
             <ul class="right">
-               <li>MSB No.31000137604928</li>
+               <li style="font-size:12px;">MSB No.31000137604928</li>
                <li class="appdownload">
-                  <span class="child-hover cursorPoint"><i class="fa fa-mobile" aria-hidden="true"></i>&nbsp;&nbsp;{{$t('hederdownload')}}
-                  </span>
+                  <span class="child-hover cursorPoint"><i class="fa fa-mobile" aria-hidden="true"></i>&nbsp;&nbsp;{{$t('hederdownload')}}</span>
                   <img src="../../assets/images/home/Bhome/qrcode.png" alt="">
-                 
                </li>
                <li>
                   <span class="nav-icon">
