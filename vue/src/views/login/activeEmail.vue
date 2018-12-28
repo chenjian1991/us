@@ -2,7 +2,7 @@
     <div class="root">
         <div class="wrapper">
             <div class="title">
-                <img src="../../assets/images/footer/footer-logo.svg" alt="">
+                <img src="../../assets/images/footer/foot-logo2.svg" alt="">
             </div>
             <div class="mail-box">
                 <div class="content">
@@ -10,7 +10,7 @@
                          <Icon  class="success" type="md-checkmark-circle" />
                         {{$t('registerSucccess')}}
                     </p>
-                    <div class="not-arrive">{{$t('transferto')}} <span v-html="whichSite"></span>{{$t('siteLogin')}} </div>
+                    <div class="not-arrive"><router-link to='/login'>{{$t('HomeSignin')}} </router-link></div>
                 </div>
             </div>
             
@@ -74,25 +74,28 @@ import Cookies from 'js-cookie'
                     }else{//请求成功跳转不同的站
                         this.showModal = !this.showModal;
                         this.text = this.$t(11001);
-                        let fromSite = res.fromSite;
+                        // let fromSite = res.fromSite;
                        
-                        if(fromSite==null||fromSite ==""||fromSite=="B"||fromSite=='null'){
-                            this.whichSite = "B";
-                        }else{
-                            this.whichSite = fromSite;
-                        }
-                        setTimeout(() => {
-                            if(fromSite==null||fromSite ==""||fromSite=="B"){
-                                window.location.href = "https://www.55.com/#/login";
-                            }else if(fromSite=="F"){
-                                window.location.href = "https://f.55.com/#/login";
-                            }else if(fromSite=="L"){
-                                window.location.href = "https://l.55.com/#/login";
-                            }else if(fromSite=="S"){
-                                window.location.href = "https://s.55.com/#/login";
-                            }
-                        }, 5000);
-                     
+                        // if(fromSite==null||fromSite ==""||fromSite=="B"||fromSite=='null'){
+                        //     this.whichSite = "B";
+                        // }else{
+                        //     this.whichSite = fromSite;
+                        // }
+                        // setTimeout(() => {
+                        //     if(fromSite==null||fromSite ==""||fromSite=="B"){
+                        //         window.location.href = "https://www.55.com/#/login";
+                        //     }else if(fromSite=="F"){
+                        //         window.location.href = "https://f.55.com/#/login";
+                        //     }else if(fromSite=="L"){
+                        //         window.location.href = "https://l.55.com/#/login";
+                        //     }else if(fromSite=="S"){
+                        //         window.location.href = "https://s.55.com/#/login";
+                        //     }
+                        // }, 5000);
+                        setTimeout(() => {  
+                                //window.location.href = "https://www.55.com/#/login";
+                                this.$router.push('login')
+                            }, 5000);
                     }
                 })
             }
