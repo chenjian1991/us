@@ -388,11 +388,13 @@
                {
                   key: 'lastCommission',
                   render: (h, params) => {
-                     let orderSide = params.row.orderSide
-                     let symbol = addSymbolSplitLine(params.row.symbol)
-                     let text
-                     orderSide === 'BUY' ? text = symbol.slice(0, symbol.indexOf('/')) : text = symbol.slice(symbol.indexOf('/') + 1)
-                     let commission = bigDecimal.round(scientificToNumber(params.row.lastCommission), 8) + ' ' + text
+                     // let orderSide = params.row.orderSide
+                     // let symbol = addSymbolSplitLine(params.row.symbol)
+                     // let text
+                     // orderSide === 'BUY' ? text = symbol.slice(0, symbol.indexOf('/')) : text = symbol.slice(symbol.indexOf('/') + 1)
+                     // let commission = bigDecimal.round(scientificToNumber(params.row.lastCommission), 8) + ' ' + text
+                     // return h('div', {}, commission)
+                     let commission = bigDecimal.round(scientificToNumber(params.row.lastCommission), 8) + ' ' + params.row['lastCommissionCurrency']
                      return h('div', {}, commission)
                   },
                   renderHeader: (h) => {
