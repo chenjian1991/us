@@ -16,7 +16,7 @@
             </ul>
         </li>
         <li>
-            <a href="http://otc.55.com">OTC</a>
+            <!-- <a href="http://otc.55.com">OTC</a> -->
         </li>
     </ul>
     <div class="rightBox">

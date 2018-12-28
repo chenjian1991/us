@@ -64,7 +64,7 @@
                     <ul class="clearfix">
                         <li>{{$t('footerpartener')}}</li>
                         <li>DaoCoin</li>
-                        <li>TrustOne</li>
+                        <li>Mercurity</li>
                         <li>Prime Trust</li>
                         <li>Daollar Pay</li>
                         <li>&copy55.com</li>

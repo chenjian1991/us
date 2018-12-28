@@ -35,10 +35,10 @@
                                 <th>{{$t('exchangefee')}}</th>
                             </thead>
                             <tbody>
-                                <tr>
+                                <!-- <tr>
                                     <td>FF(Fifty-five Token)</td>
                                     <td>0.15%</td>
-                                </tr>
+                                </tr> -->
                                  <tr>
                                     <td>BITCOIN (BTC)</td>
                                     <td>0.1%</td>
@@ -47,7 +47,7 @@
                                     <td>ETHER (ETH)</td>
                                     <td>0.1%</td>
                                 </tr>
-                                 <tr>
+                                 <!-- <tr>
                                     <td>OMG(OmiseGO)</td>
                                     <td>0.1%</td>
                                 </tr>
@@ -58,7 +58,7 @@
                                  <tr>
                                     <td>ETC(Ethereum Classic)</td>
                                     <td>0.1%</td>
-                                </tr>
+                                </tr> -->
 
                                  <tr>
                                     <td>LITECOIN(LTC)</td>
@@ -72,7 +72,7 @@
                                     <td>ZCASH(ZEC)</td>
                                     <td>0.1%</td>
                                 </tr>
-                                 <tr>
+                                 <!-- <tr>
                                     <td>KYBERNETWORK(KNC)</td>
                                     <td>0.1%</td>
                                 </tr>
@@ -127,7 +127,7 @@
                                 <tr>
                                     <td>THETA</td>
                                     <td>0.1%</td>
-                                </tr>
+                                </tr> -->
                                 
                             </tbody>
                         </table>
@@ -147,11 +147,11 @@
                                     <td>BITCOIN (BTC)</td>
                                     <td>0.0005BTC</td>
                                 </tr>
-                                <tr>
+                                 <tr>
                                     <td>ETHER (ETH)</td>
                                     <td>0.01ETH</td>
                                 </tr>
-                                <tr>
+                               <!-- <tr>
                                     <td>TETHERUS (USDT)</td>
                                     <td>10USDT</td>
                                 </tr>
@@ -162,11 +162,11 @@
                                 <tr>
                                     <td>BCH (BITCOIN CASH)</td>
                                     <td>0.003 BCH</td>
-                                </tr>
+                                </tr> 
                                 <tr>
                                     <td>ETC(Ethereum Classic)</td>
                                     <td>0.3 ETC</td>
-                                </tr>
+                                </tr>-->
 
                                 <tr>
                                     <td>LITECOIN(LTC)</td>
@@ -180,7 +180,7 @@
                                     <td>ZCASH(ZEC)</td>
                                     <td>0.025ZEC</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td>KYBERNETWORK(KNC)</td>
                                     <td>9KNC</td>
                                 </tr>
@@ -243,7 +243,7 @@
                                 <tr>
                                     <td>THETA</td>
                                     <td>35 THETA</td>
-                                </tr>
+                                </tr> -->
 
                             </tbody>
                         </table>

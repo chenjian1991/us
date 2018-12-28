@@ -350,7 +350,7 @@
                         {{$t('h5description')}}
                     </div>
                     <div class="download-container">
-                            <a :href="androidURL"  class="ios-btn andorid-btn">Android</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.globalmarkets55.us.ex55.app"  class="ios-btn andorid-btn">Android</a>
                             <a href="javascript:;" class="ios-btn " @click="downloadAPP">iOS</a>
                     </div>
                     <div class="ios-help pull-right">
