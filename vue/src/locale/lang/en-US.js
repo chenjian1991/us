@@ -55,9 +55,9 @@ export default {
   sicoIntroduce: "SICO stands for Supervised Initial Coin Offering. SICO is an evaluation framework proposed by 55 Global Markets, it is designed with one sole purpose that is to protect investor’s interests by filtering out unqualified project tokens, only SICO certified tokens can be listed for trading. SICO framework consists of three building blocks being a) Initial SICO Test for general information collection; b) APIs, web crawler and address analyzer to push and pull real-time token information for disclosure, and c) Brain of Blockchain (a.k.a BOB), a complex data model to evaluate overall healthiness of a token.",
   sicotext: "ATTEND SICO TEST NOW",
   sicoReview: "Tokens Undergoing SICO Review for Listing",
-  HomeTitle: '55 Global Market - One World, One Exchange！',
-  HomeDescription: '55 Global Market,Blockchain Service Token Exchange,Forex Token Exchange',
-  HomeKeyword: '55 Global Market,55.com',
+  HomeTitle: '55 Global Markets - One World, One Exchange！',
+  HomeDescription: '55 Global Markets,Blockchain Service Token Exchange,Forex Token Exchange',
+  HomeKeyword: '55 Global Markets,55.com',
 
   HomeSafetyAt: 'Security Partners',
   HomeManageAssets: 'Smooth Trading Anytime Anywhere',
