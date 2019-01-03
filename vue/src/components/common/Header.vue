@@ -45,15 +45,15 @@
                <li class="currency">
                   <span  @click="openSetting" class="currencySetting">{{$t('headerSetting')}}</span>
                </li>
-               <li class="language languagenav">
+               <!-- <li class="language languagenav">
                   <span>{{countryLanguage}}&nbsp;<Icon type="md-arrow-dropdown" size="16" class="triangle"/></span>
                   <ul class="dropList" @click="changeLangage">
                      <li data-value="en">English</li>
-                     <!-- <li data-value="ko">한국어</li> -->
-                     <!-- <li data-value="vi">Tiếng Việt</li> -->
+                     <li data-value="ko">한국어</li>
+                     <li data-value="vi">Tiếng Việt</li>
                      <li data-value="zh-CN">简体中文</li>
                   </ul>
-               </li>
+               </li> -->
             </ul>
          </div>
       </div>
