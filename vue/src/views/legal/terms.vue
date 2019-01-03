@@ -10,7 +10,7 @@
 								<div class="title">Articles in this section</div>
 								<ul>
 									<li>
-										<router-link class="active" to='/terms'> · Terms of Use</router-link>
+										<router-link class="active" to='/terms'> · User Agreement</router-link>
 									</li>
 									<li >
 										<router-link to='/privice'> · Privacy Policy</router-link>
@@ -25,7 +25,7 @@
                     	</div>
                     <div class="panel-body paddong_30_left left-part">
 						<div class="panel-heading no-padding">
-							<h3 class="panel-title">Terms  of  Use</h3>
+							<h3 class="panel-title">User Agreement</h3>
 						</div>
 						<h4><b>U.S. Fifty Five Exchange User Agreement</b></h4>
                         <p>

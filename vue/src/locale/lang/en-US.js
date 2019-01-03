@@ -326,7 +326,7 @@ export default {
   passwordNotMach: 'The two passwords are different.Please retry',
   passwordReg: 'It must be a combination of 8-20 numbers and letters',
   regAgree: 'I agree to 55',
-  regTermsOfUse: 'Terms Of Use',
+  regTermsOfUse: 'User Agreement',
   dlWelcome: 'Welcome to 55 Global Markets',
   dlLogin: 'Log In',
   dlForgot: 'Forgot your password ?',

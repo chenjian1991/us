@@ -11,7 +11,7 @@
 									<div class="title">Articles in this section</div>
 									<ul>
 										<li>
-											<router-link to='/terms'> · Terms of Use</router-link>
+											<router-link to='/terms'> · User Agreement</router-link>
 										</li>
 										<li>
 											<router-link class="active" to='/privice'> · Privacy Policy</router-link>
