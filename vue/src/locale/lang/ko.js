@@ -998,6 +998,7 @@ export default {
  footersendeamil: "If you have any question,please contact customer support via e-mail.",
  footerEmailus: "Announcements",
  footermore: "More",
+ UserAgreement:'User Agreement',
  footerassetstype: "Tokenized Assets",
  footerblockchain: "Blockchain Token",
  footerstockchian: 'Stock Token',

@@ -1008,6 +1008,7 @@ export default {
   // footerPhone:'Mobile ：',
   // 新footer
   footercustomerservice: "Customer Service",
+  UserAgreement:'User Agreement',
   footeralladyservice: "55 Global Markets customer support is available 24/7.",
   footersendeamil: "If you have any question,please contact customer support via e-mail.",
   footerEmailus: "Announcements",

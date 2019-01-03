@@ -1020,6 +1020,7 @@ export default {
    footersendeamil:"如有任何疑问，请发送邮件到客服邮箱",
    footerEmailus:"公告板",
    footermore:"更多",
+   UserAgreement:'用户协议',
    footerassetstype:"通证资产类别",
    footerblockchain:"区块链通证",
    footerstockchian:'通证化股票',
