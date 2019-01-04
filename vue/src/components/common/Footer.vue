@@ -51,9 +51,11 @@
                     <ul>
                         <li>{{$t('footercompany')}}</li>
                         <li><router-link to="/about55">{{$t('footerabout55')}}</router-link></li>
+                         <li><router-link to="/terms">{{$t('UserAgreement')}}</router-link></li>
                         <li><router-link to="/privice">{{$t('footersecretterms')}}</router-link></li>
                         <li><router-link to="/disclaimer">{{$t('footerlaw')}}</router-link></li>
                         <li><router-link to="/fee">{{$t('footerfees')}}</router-link></li>
+                        <li><a target="_blank" href="https://55support.zendesk.com/hc/en-us">Help</a></li>
                         <li>{{$t('footergroup')}}</li>
                         <li><a target="_blank" :href="telegramURL">Telegram</a></li>
                         <li><a target="_blank" href="https://www.facebook.com/55GlobalMarkets/">Facebook</a></li>
@@ -371,7 +373,7 @@
                      li:nth-child(6){
                         color: #fff;
                         font-size:14px;
-                        margin-left:70px;
+                        // margin-left:70px;
                     }
                 }
             }

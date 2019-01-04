@@ -70,14 +70,14 @@
     </ul>
     <ul class="languageBox">
         <li class="currency aaa" @click="openSetting">{{$t('headerSetting')}}</li>
-        <li class="language">{{countryLanguage}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
+        <!-- <li class="language">{{countryLanguage}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
             <ul class="dropList" @click="changeLangage">
                 <li data-value="en">English</li>
-                <!-- <li data-value="ko">한국어</li>
-                <li data-value="vi">Tiếng Việt</li> -->
+                <li data-value="ko">한국어</li>
+                <li data-value="vi">Tiếng Việt</li>
                 <li data-value="zh-CN">简体中文</li>
             </ul>
-        </li>
+        </li> -->
     </ul>
 
     </div>

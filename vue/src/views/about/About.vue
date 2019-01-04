@@ -20,7 +20,7 @@
                 <div>
                     <div class="panel-body paddong_30_left">
                         {{$t('aboutInfo4')}}</br></br>
-                        {{$t('aboutInfo5')}}
+                        <!-- {{$t('aboutInfo5')}} -->
                     </div>
                 </div>
                <div class="panel-heading no-padding">
