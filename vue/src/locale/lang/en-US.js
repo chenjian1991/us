@@ -140,7 +140,7 @@ export default {
   Homeexchange: "Low Transaction Costs",
   Homeexchangedes: "Creates transparency to reduce asset exchange costs significantly",
   homeallday: "24/7 on a Global Scale",
-  homealldaydes: "Liquidity premium is provided through 24/7 asset exposure on a global platform",
+  homealldaydes: "Liquidity premium is provided through 24/7 asset exposure on a global network",
   homeinvestor: 'Low Entrance Threshold',
   homeinvestordes: "Asset tokenization and fragmentation to reduce investment threshold",
   homeliqid: "Bridge to Tokenized World",
@@ -267,7 +267,7 @@ export default {
   headerwhitepaper: "White Paper",
   hederdownload: "APP Download",
   headercoin: "Currency",
-  headerhope: "55 Global Markets - Next Generation Global Assets Trading Platform ",
+  headerhope: "55 Global Markets - Next Generation Global Assets Trading Network",
   HomeSignup: 'Sign Up',
   HomeSignin: 'Log In',
   homeOrder: 'Order',
@@ -1047,7 +1047,7 @@ export default {
 
   //关于55页面
   aboutTitle: 'About 55 Global Markets',
-  aboutInfo1: "55 Global Markets is the world's first asset trading platform designed to allow a seamless and efficient flow of high-quality assets around the world. 55 Global Markets aims to build a globally connected, continuous, transparent, low-friction, non-discriminatory asset trading network using blockchain technology and tokens as transaction vehicles.",
+  aboutInfo1: "55 Global Markets is the world's first asset trading network designed to allow a seamless and efficient flow of high-quality assets around the world. 55 Global Markets aims to build a globally connected, continuous, transparent, low-friction, non-discriminatory asset trading network using blockchain technology and tokens as transaction vehicles.",
   aboutInfo2: "55 Global Markets is not limited to cryptocurrencies like Bitcoin or Ethereum. Our ultimate goal is to use tokenization to bridge traditional liquidity markets to support the trading of a wider array of assets. Through 55 Global Markets, users will have access to an asset market of, according to internal estimates, up to $8 trillion every day, in comparison to cryptocurrency trading around of approximately $15 billion on an average day of Q3, 2018.",
   aboutInfo3: "55 Global Markets’ mission is to facilitate the unrestricted flow of global assets via tokenization and blockchain technology. 55 Global Markets aims to reconstruct existing asset exchange models using tokens as transaction vehicles, making transactions more transparent and efficient. Using blockchain technology and tokens, 55 Global Markets aims to remove the barriers of time, currency and language, and gives everyone an equal opportunity to buy and sell quality assets on a global scale.",
   aboutInfo31:"Regulation Compliance",
