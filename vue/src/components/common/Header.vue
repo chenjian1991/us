@@ -1,5 +1,5 @@
 <template>
-   <div class="nav_box hidden-xs" v-bind:style="styleObject">
+   <div class="nav_box" v-bind:style="styleObject">
       <!-- 第一行导航 -->
       <div class="nav_top">
          <div class="header_content">
@@ -419,6 +419,14 @@
 
    }
 </script>
+<style lang='less'>
+@media screen and (min-width:320px) and(max-width:970px){
+  .nav_box{
+    width: 1200px !important;
+  }
+
+}
+</style>
 
 <style scoped lang="less">
    .color-fff {
@@ -460,6 +468,7 @@
         margin:0 auto;
         display: flex;
         justify-content: space-between;
+        padding: 0 15px;
         .router-link-active{
             color: #fff;
         }

@@ -896,19 +896,19 @@ const clickoutside = {
         
         
      }
-@media screen and (min-width:320px) and(max-width:970px){
-     .inner_input{
-         .ivu-select{
-             .ivu-select-dropdown{
-                   width: 101% !important;
-                    left: 0px !important;;
-             }
-         }
+// @media screen and (min-width:320px) and(max-width:970px){
+//      .inner_input{
+//          .ivu-select{
+//              .ivu-select-dropdown{
+//                    width: 101% !important;
+//                     left: 0px !important;;
+//              }
+//          }
 
 
 
-}
-}
+// }
+// }
 
 
 
@@ -918,6 +918,4 @@ const clickoutside = {
 <style scoped lang="less">
     @import './register.less';
 </style>
-<style lang='less'>
-    @import './mediaRegister.less';
-</style>
+

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-bind:style="styleObject" class="footer-container hidden-xs">
+        <div v-bind:style="styleObject" class="footer-container">
             <div v-bind:style="styleObject" class="footer-inner">
                 <div class="service-contain clearfix">
                     <div class="service">
@@ -185,7 +185,7 @@
             margin: 0 auto;
             background: #15232C;
             .service-contain{
-                padding: 70px 0;
+                padding: 70px 15px;
                 border-bottom:1px solid #192B37;
                    .service{
                 float: left;
@@ -227,6 +227,7 @@
             }
             }
             .announce{
+                padding: 0 15px;
                 border-bottom: 1px solid #192B37;
                 ul{
                     
@@ -263,6 +264,7 @@
                 }
             }
             .hot-assets{
+                padding: 0 15px;
                 ul{
                     padding-top: 30px;
                     &:nth-child(1){
@@ -348,6 +350,7 @@
                 }
             }
             .company{
+                padding: 0 15px;
                 border-top: 1px solid #192B37;
                 border-bottom: 1px solid #192B37;
                 ul{
@@ -378,6 +381,7 @@
                 }
             }
             .partner{
+                padding: 0 15px;
                 ul{
                     li{
                         float: left;

@@ -407,6 +407,3 @@ import Cookies from 'js-cookie'
     @import './login.less';
 </style>
 
-<style lang='less'>
-    @import './mediaLogin.less';
-</style>

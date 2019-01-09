@@ -1,5 +1,5 @@
 <template>
-  <div class="tradeHeaderbox hidden-xs">
+  <div class="tradeHeaderbox">
     <ul class="left">
       <li class="logo">
         <router-link to='/home'><img src="../../assets/images/logo/logo.png" width="40px" height="28px" alt></router-link>
