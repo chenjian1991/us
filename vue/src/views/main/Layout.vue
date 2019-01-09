@@ -92,7 +92,7 @@
             }else{
                 this.showTradeHeader = false
             }
-           // this.judgeDevice()
+            this.judgeDevice()
            // this.getAndroidUrl()
         }
     }

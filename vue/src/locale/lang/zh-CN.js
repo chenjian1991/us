@@ -148,10 +148,7 @@ export default {
 
    //b站
    homeplateform:"下载APP",
-
-
-
-
+   homedownlaod:"下载APP",
 
    // home: '首页',
    // tbdhExchange: '币币交易',
