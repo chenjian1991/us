@@ -52,10 +52,10 @@
             gotoDownload(){
                 var u = navigator.userAgent;
                 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                //var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
                 if(isAndroid){
                     window.location.href = 'https://play.google.com/store/apps/details?id=com.globalmarkets55.us.ex55.app';
-                }else if(isiOS){
+                }{
                     window.location.href='https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1442483182';
 
                 }
