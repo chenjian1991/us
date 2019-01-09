@@ -160,6 +160,8 @@ export default {
    // tbdhBalancesC: "Số dư",
     //b站
     homeplateform:"55 Mobile App",
+    homedownlaod:"Download",
+
    //F站首页
    fExchangeTokenExchange: "Forex Token Market",
    fExchangeConvertYourFiat: "Exchange tokenized fiat at a superlow cost 24/7!",
