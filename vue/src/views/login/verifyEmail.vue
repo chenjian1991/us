@@ -142,5 +142,5 @@ import Cookies from 'js-cookie'
 body{
     overflow: auto !important;
 }
-    @import './mediaLogin.less';
+   // @import './mediaLogin.less';
 </style>

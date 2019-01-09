@@ -184,6 +184,19 @@ export default {
   }
 };
 </script>
+<style lang='less'>
+@media screen and (min-width:320px) and(max-width:970px){
+  html{
+    width: 1200px;
+  }
+  .nav_box{
+    width: 1200px;
+  }
+
+}
+
+
+</style>
 <style>
 /* banner图 */
 .ivu-carousel-dots {
@@ -442,7 +455,7 @@ export default {
         display: flex;
         justify-content: space-between;
         .download-left{
-           // margin-left: 70px;
+            margin-left: 15px;
             h2{
                 margin-top: 66px;
                 font-size:22px;

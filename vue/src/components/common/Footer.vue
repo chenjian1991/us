@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-bind:style="styleObject" class="footer-container hidden-xs">
+        <div v-bind:style="styleObject" class="footer-container">
             <div v-bind:style="styleObject" class="footer-inner">
                 <div class="service-contain clearfix">
                     <div class="service">
@@ -56,7 +56,7 @@
                         <li><router-link to="/disclaimer">{{$t('footerlaw')}}</router-link></li>
                         <li><router-link to="/fee">{{$t('footerfees')}}</router-link></li>
                         <li><a target="_blank" href="https://55support.zendesk.com/hc/en-us">Help</a></li>
-                        <li>{{$t('footergroup')}}</li>
+                        <li style="color:#fff">{{$t('footergroup')}}</li>
                         <li><a target="_blank" :href="telegramURL">Telegram</a></li>
                         <li><a target="_blank" href="https://www.facebook.com/55GlobalMarkets/">Facebook</a></li>
                         <li><a target="_blank" href="https://twitter.com/55GlobalMarkets">Twitter</a></li>
@@ -185,7 +185,7 @@
             margin: 0 auto;
             background: #15232C;
             .service-contain{
-                padding: 70px 0;
+                padding: 70px 15px;
                 border-bottom:1px solid #192B37;
                    .service{
                 float: left;
@@ -227,6 +227,7 @@
             }
             }
             .announce{
+                padding: 0 15px;
                 border-bottom: 1px solid #192B37;
                 ul{
                     
@@ -263,6 +264,7 @@
                 }
             }
             .hot-assets{
+                padding: 0 15px;
                 ul{
                     padding-top: 30px;
                     &:nth-child(1){
@@ -348,6 +350,7 @@
                 }
             }
             .company{
+                padding: 0 15px;
                 border-top: 1px solid #192B37;
                 border-bottom: 1px solid #192B37;
                 ul{
@@ -378,6 +381,7 @@
                 }
             }
             .partner{
+                padding: 0 15px;
                 ul{
                     li{
                         float: left;

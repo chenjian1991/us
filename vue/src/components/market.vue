@@ -325,7 +325,7 @@
       .tabelLable{
          position: absolute;
          top:4px;
-         left:0;
+         left:15px;
          .labelBox{
             display:flex;
             align-items: center;
@@ -379,7 +379,7 @@
       .more{
          position: absolute;
          top:11px;
-         right: 0;
+         right: 15px;
          z-index: 1000;
          a{
             color: #949DA6;
