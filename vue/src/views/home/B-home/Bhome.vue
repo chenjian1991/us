@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="Bhome" class="root-contain hidden-xs">
+        <div id="Bhome" class="root-contain">
             <div id="home_pc" class="wrapper">
                     <div class="container-self">
                         <div class="main_plate clearfix">
