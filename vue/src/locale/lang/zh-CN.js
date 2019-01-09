@@ -147,7 +147,7 @@ export default {
    homeprotectdes:"创新的SICO机制保障投资者权益",
 
    //b站
-   homedownlaod:"下载APP",
+   homeplateform:"下载APP",
 
 
 

@@ -159,7 +159,7 @@ export default {
    tbdhBalancesF: "Số dư",
    // tbdhBalancesC: "Số dư",
     //b站
-    homedownlaod:"Download the App now",
+    homeplateform:"55 Mobile App",
    //F站首页
    fExchangeTokenExchange: "Forex Token Market",
    fExchangeConvertYourFiat: "Exchange tokenized fiat at a superlow cost 24/7!",

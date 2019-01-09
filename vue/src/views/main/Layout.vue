@@ -1,5 +1,17 @@
 <template>
     <div class="main_container">
+        <div  v-show="download" class="app-tip hidden-lg clearfix">
+            <a class="clearfix" id="appLink" href="javascript:;">
+                <img class="logo" src="../../assets/images/home/Bhome/55logo_us.png" alt="gate.io APP">
+                <div class="logo2">
+                   <!-- <img src="../../assets/images/home/Bhome/55logo-2.png" alt=""> -->
+                    <p style="font-size:60px;">{{$t('homeplateform')}}</p>
+                </div>
+                <span @click="gotoDownload" class="dn-btn">Download</span>
+                 <i @click="close" style="font-size:60px;margin-top:-40px;">x</i>
+
+            </a>
+        </div>
         <TradeCenterHeader v-if="showTradeHeader"/>
         <Header2 v-else/>
         <!-- Content 内容 -->
@@ -7,19 +19,7 @@
             <router-view></router-view>
         </div>
         <Footer></Footer>
-        <div v-show="download" class="hidden-lg clearfix">
-            <div class="app-tip">
-            <a class="clearfix" id="appLink" href="javascript:;">
-                <img class="logo" src="../../assets/images/home/Bhome/55logo.png" alt="gate.io APP">
-                <div class="logo2">
-                   <img src="../../assets/images/home/Bhome/55logo-2.png" alt="">
-                    <p style="font-size:45px;">One World,One Exchange</p>
-                </div>
-                <span @click="gotoDownload" class="dn-btn">Download</span>
-            </a>
-            <i @click="close" style="font-size:60px;margin-top:80px;">x</i>
-        </div>
-        </div>
+    
     </div>
 </template>
 
@@ -54,10 +54,20 @@
                 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
                 var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
                 if(isAndroid){
-                    window.location.href = this.androidURL;
+                    window.location.href = 'https://play.google.com/store/apps/details?id=com.globalmarkets55.us.ex55.app';
                 }else if(isiOS){
                     window.location.href='https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1442483182';
 
+                }
+            },
+            judgeDevice(){
+                var u = navigator.userAgent;
+                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                if(isAndroid){
+                    this.download = true;
+                }else if(isiOS){
+                    this.download = false;
                 }
             }
         },
@@ -82,21 +92,23 @@
             }else{
                 this.showTradeHeader = false
             }
-            this.getAndroidUrl()
+           // this.judgeDevice()
+           // this.getAndroidUrl()
         }
     }
 </script>
-<style lang="less" scoped>
-html{
+<style lang='less'>
+@media screen and (min-width:320px) and(max-width:970px){
+    html{
     position: relative;
     body{
         position: relative;
     }
    
-}
-    .clearfix{
-        height: 264px;
     }
+}
+</style>
+<style lang="less" scoped>
     .clearfix:after {
                 content:""; 
                 display: block; 
@@ -104,35 +116,31 @@ html{
     }
      .app-tip{
         width: 1200px;
-        height: 264px;
-        background: linear-gradient(#093B4A, #072C37); 
-        box-shadow: 0 0 2px rgba(0,0,0,0.1);
+        padding:25px 0px;
+        background:rgba(9,59,74,0.7);
         position: fixed;
-        bottom: 0;
+        bottom:0px;
         z-index: 99996;
         i{
-            margin-top: 15px;
             margin-left: 25px;
             font-style: normal;
             color: #fff;
         }
         #appLink{
-            width: 93%;
-            padding: 40px 0;
-            float: left;
+            width: 100%;
+            display:flex;
+            align-items:center;
+            justify-content: space-between;
             -webkit-tap-highlight-color: rgba(255,0,0,0);
             .logo{
-                float: left;
-                width: 160px;
-                height: 160px;
+                width: 105px;
+                height: 105px;
                 margin:20px 20px; 
             }
             .logo2{
-                float: left;
                 p{
                     font-size: 50px;
                     color: #FFFFFF;
-                    margin-top: 40px;
                 }
                 img{
                     margin-top: 20px;
@@ -147,7 +155,6 @@ html{
                 border-radius:6px;
                 color: #fff;
                 padding: 15px 30px;
-                margin-top: 50px;
             }
         }
     }
