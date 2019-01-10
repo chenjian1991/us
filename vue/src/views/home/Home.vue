@@ -34,7 +34,7 @@
                   <div v-else class="redBackground"></div>
                   <div><span class="baseAsset">{{v.baseAsset}}</span> <span class="quoteAsset">/{{v.quoteAsset}}</span></div>
                   <div :class="[v.showColor == '1' ? 'textColorGreen' : 'textColorRed']">
-                    <span :class="[v.showColor == '1' ? 'greendollars' : 'reddollars']"></span>
+                    <!-- <span :class="[v.showColor == '1' ? 'greendollars' : 'reddollars']"></span> -->
                     <span class="price"> {{v.last}}</span>
                   </div>
                   <div :class="[v.showColor == '1' ? 'percentGreen' : 'percentRed']">{{v.percent}}</div>
@@ -265,20 +265,20 @@ export default {
           &:last-child{
             margin-right: 0;
           }
-          .reddollars{
-            display: inline-block;
-            width: 11px;
-            height: 18px;
-            background: url('../../assets/images/home/mainHome/redDollar.png') center center;
-            background-size: 11px 15px;
-          }
-          .greendollars{
-            display: inline-block;
-            width: 11px;
-            height: 18px;
-            background: url('../../assets/images/home/mainHome/greenDollar.png') center center;
-            background-size: 11px 15px;
-          }
+          // .reddollars{
+          //   display: inline-block;
+          //   width: 11px;
+          //   height: 18px;
+          //   background: url('../../assets/images/home/mainHome/redDollar.png') center center;
+          //   background-size: 11px 15px;
+          // }
+          // .greendollars{
+          //   display: inline-block;
+          //   width: 11px;
+          //   height: 18px;
+          //   background: url('../../assets/images/home/mainHome/greenDollar.png') center center;
+          //   background-size: 11px 15px;
+          // }
           .redBackground{
             width: 144px;
             height: 140px;
