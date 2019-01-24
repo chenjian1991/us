@@ -49,15 +49,10 @@
          }
       },
       mounted(){
-         console.log(this.balancesData)
-
       },
       watch: {
          balancesData: {
             handler (newVal,oldVal) {
-               console.log(newVal)
-               console.log(newVal.currency,newVal.frozen)
-
                this.currency=newVal.currency
                this.currencyName=newVal.currencyName
                this.total=newVal.total
