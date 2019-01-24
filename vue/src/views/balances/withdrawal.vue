@@ -145,6 +145,17 @@
 
          </div>
       </alertModal>
+      <alertModal className="alert-fourth" v-model="showFourth" :showHeader="showHeaderFourth"
+                  :closable="closableFourth" width="590">
+         <div class="alert-content">
+            <h3>
+               {{$t('withdrawkycalert')}}
+            </h3>
+            <Button @click="cancel" class="kyc-btn kyc-btn-cancel">{{$t('tsBtnNo')}}</Button>
+            <Button @click="toKyc" class="kyc-btn kyc-btn-ok">{{$t('gotokyc')}}</Button>
+
+         </div>
+      </alertModal>
    </div>
 </template>
 
@@ -162,6 +173,8 @@
       getUserInfo,
       send,
       codeVerify,
+      getRealtimeList,
+      getIdentify
    } from '_api/balances.js'
    import {
       scientificToNumber,
@@ -187,13 +200,16 @@
             showFirst: false,
             showSecond: false,
             showThird: false,
+            showFourth: false,
             bordered: false,
             showHeaderFirst: false,
             showHeaderSecond: true,
             showHeaderThird: false,
+            showHeaderFourth: false,
             closableFirst: false,
             closableSecond: true,
             closableThird: false,
+            closableFourth: false,
             fee: '0.00000000',
             receiveAmount: '0.00000000',
             minAmount: '--',
@@ -231,6 +247,8 @@
             textEMAIL: 'tsyzSend',
             textPHONE: 'tsyzSend',
             userInfo: {},
+            kyc: false,
+            price: '',
             errorCode: {
                emptyEmail: 'tsyzEMAILRequired',
                emptyPhone: 'tsyzSMSRequired',
@@ -282,6 +300,8 @@
             })
             this.getBalances()
             this.getWithdrawAddress()
+            this.getRealtimeList()
+            this.getIdentify()
          },
          transferNumber(number, num = 8) {
             if (number === '--') {
@@ -363,7 +383,6 @@
             this.showFirst = true
             this.deleteAddress = e.target.parentNode.getAttribute('value')//获取dt属性
             this.deleteLabel = e.target.parentNode.getAttribute('label')//获取dt属性
-
          },
          deleteWithdrawAddress() {//删除地址
             this.exchange.deleteWithdrawAddress(this.currency, this.deleteLabel, this.deleteAddress, () => {
@@ -371,6 +390,39 @@
             }, () => {
             });
             this.showFirst = false
+         },
+         cancel() {
+            this.showFourth = false
+         },
+         getRealtimeList() {
+            if (this.currency === 'BTC') {
+               getRealtimeList({symbol: 'BTCUSDT'}).then(res => {//资产估值
+                  this.price = res['BTCUSDT'].data.last
+               })
+            } else {
+               getRealtimeList({symbol: [`${this.currency}BTC`, 'BTCUSDT']}).then(res => {//资产估值
+                  this.price = Number(bigDecimal.multiply(res[`${this.currency}BTC`].data.last, res['BTCUSDT'].data.last))
+               })
+            }
+         },
+         getIdentify() {
+            getIdentify(this.loginToken).then(res => {
+               this.checkStatus = res.data.checkStatus
+               if (res.data.checkStatus === 'PASSED') {
+                  this.kyc = true
+               }
+            })
+         },
+         toKyc() {
+            if (this.checkStatus === 'NOT_SET') {
+               this.$router.push({
+                  path: 'identiy',
+               })
+            } else {
+               this.$router.push({
+                  path: 'identityResult',
+               })
+            }
          },
          submit() {//第一步提交
             let address = ''
@@ -380,6 +432,10 @@
             let newAddress = this.value4
             let exist = false
             let EOSWithdrawLabel = this.EOSLabelValue
+            if (amount * this.price >= 500 && this.kyc === false) {
+               this.showFourth = true
+               return
+            }
             try {
                if (this.addAddress) {//添加新地址
                   this.verifyAddress(newLabel, this.errorCode.emptyLabel)
@@ -434,7 +490,8 @@
                   this.warning(e.code, e.params)
                }
             }
-         },
+         }
+         ,
          getUserInfo() {//获取用户信息
             this.value5 = this.value6 = this.value7 = ''
             if (!this.email && !this.phone) {
@@ -458,7 +515,8 @@
             } else {
                this.showSecond = true
             }
-         },
+         }
+         ,
          sendCode(codeType) {//发送验证码
             this[`disabled${codeType}`] = true
             send(this.loginToken, {
@@ -478,7 +536,8 @@
                   this.getCountDown(codeType, res['expiredSeconds'])
                }
             })
-         },
+         }
+         ,
          getCountDown(codeType, second) {//倒计时
             let disabledType = `disabled${codeType}`
             let type = `text${codeType}`
@@ -493,7 +552,8 @@
                   second--;
                }
             }.bind(this), 1000);
-         },
+         }
+         ,
          emptyEnter(value, empty, corrent, min, max, ava) {
             let regAmount = new RegExp("^\\d+(\\.)?\\d{0," + this.currencyPrecision[this.currency] + "}$");//提现数量
             // let regAmount = /^\d+(\.)?\d{0,8}$/;//提现数量
@@ -521,12 +581,14 @@
             if (value > this.available) {
                throw ava
             }
-         },
+         }
+         ,
          verifyAddress(value, code) {
             if (value.length === 0) {
                throw code
             }
-         },
+         }
+         ,
          verifyCode(params, value, empty, code) {//try throw 验证码异常
             let regCode = /^\d{6}$/;//提现数量
             if (this.userInfo[params]) {
@@ -537,7 +599,8 @@
                   throw code
                }
             }
-         },
+         }
+         ,
          sureWithdraw() {//提现
             try {
                this.verifyCode('email', this.value5, this.errorCode.emptyEmail, this.errorCode.email)
@@ -561,7 +624,8 @@
             } catch (error) {
                this.warning(error)//抛出异常
             }
-         },
+         }
+         ,
          success() {
             this.showThird = false
             this.showNewAddress = this.disabled = this.agree = this.disabledNoLabel = false//添加新地址隐藏 取消临时地址禁用
@@ -569,11 +633,13 @@
             this.value1 = this.value2 = this.value3 = this.value4 = this.EOSLabelValue = ''
             this.receiveAmount = '0.00000000'
             this.getBalances()
-         },
+         }
+         ,
          changeAddress(type) {
             window.event.target.value = window.event.target.value.replace(/[^A-Za-z0-9]/g, "");  //清除“数字”和“.”以外的字符
             this[type] = window.event.target['value']
-         },
+         }
+         ,
          changeValue(type) {
             // window.event.target.value = (window.event.target.value.match(/^\d*(\.?\d{0,8})/g)[0])||null
             // this[type] = window.event.target['value']
@@ -596,7 +662,8 @@
             } else {//able状态之后的disabled状态
                this.receiveAmount = '0.00000000'
             }
-         },
+         }
+         ,
          changeAgree() {//eos 无备注按钮
             this.disabledNoLabel = !this.disabledNoLabel
             this.EOSLabelValue = ''//清空输入框
@@ -608,15 +675,18 @@
                this.radioStatus = ''
                this.noLabelStatus = ''
             }
-         },
+         }
+         ,
          checkCode(type) {//验证码输入框校验
             window.event.target['value'] = window.event.target['value'].replace(/[^\d]/g, '');
             this[type] = window.event.target['value']
-         },
+         }
+         ,
          error(code, params) {
             params = params || ''
             this.$Message.error(this.$t(code) + params);
-         },
+         }
+         ,
          warning(code, params) {
             params = params || ''
             this.$Message.warning(this.$t(code) + params);
@@ -1006,4 +1076,45 @@
          }
       }
    }
+
+   .alert-fourth {
+      .alert-content {
+         position: relative;
+         margin: 0 auto;
+         text-align: center;
+         padding: 66px 24px 50px;
+         h3 {
+            font-size: 14px;
+            color: #455665;
+            margin-bottom: 34px;
+         }
+         .kyc-btn {
+            width: 132px;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #fff;
+            margin-top: 35px;
+            border-radius: 2px;
+         }
+         .kyc-btn-cancel {
+            background-color: #fff;
+            border: solid 1px #198599;
+            color: #198599;
+            margin-right: 70px;
+
+            &:hover {
+               background-color: #198599;
+               color: #fff;
+            }
+         }
+         .kyc-btn-ok {
+            color: #fff;
+            background-color: #198599;
+            &:hover {
+               background-color: #108093;
+            }
+         }
+      }
+   }
+
 </style>
