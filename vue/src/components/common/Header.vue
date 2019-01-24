@@ -468,7 +468,7 @@
         margin:0 auto;
         display: flex;
         justify-content: space-between;
-        padding: 0 15px;
+      //   padding: 0 15px;
         .router-link-active{
             color: #fff;
         }
