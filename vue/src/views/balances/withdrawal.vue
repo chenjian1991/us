@@ -173,11 +173,11 @@
       getUserInfo,
       send,
       codeVerify,
+      getIdentify,
       getRealtimeList,
-      getIdentify
    } from '_api/balances.js'
    import {
-      scientificToNumber,
+      scientificToNumber, subNumberPoint, onlyInputNumAndPoint
    } from '@/lib/utils.js'
 
    export default {
@@ -191,8 +191,6 @@
             withdrawData: {},
             currency: '--',
             currencyName: '--',
-            total: '--',
-            frozen: '--',
             available: '--',
             currencyPrecision: {},
             deleteLabel: '',
@@ -248,6 +246,7 @@
             textPHONE: 'tsyzSend',
             userInfo: {},
             kyc: false,
+            checkStatus: '',
             price: '',
             errorCode: {
                emptyEmail: 'tsyzEMAILRequired',
@@ -280,9 +279,7 @@
                   fn(loginToken);
                };
             } else {
-               this.$router.push({
-                  path: `login`,
-               })
+               this.$router.push('/login')
             }
             getCurrencyList().then(res => {//币种全称
                res.map(v => {
@@ -294,14 +291,11 @@
                      this.minAmount = v["withdrawMinAmount"];
                      this.maxAmount = v["withdrawMaxAmount"];
                      this.withdrawData['currencyName'] = v['currencyName']
-                     this.withdrawData = JSON.parse(JSON.stringify(this.withdrawData))// 这句话很重要 重新赋值 更新数据！！！
                   }
                })
+               this.getBalances()
             })
-            this.getBalances()
             this.getWithdrawAddress()
-            this.getRealtimeList()
-            this.getIdentify()
          },
          transferNumber(number, num = 8) {
             if (number === '--') {
@@ -327,21 +321,24 @@
                   res.map((v) => {
                      if (v["currency"] === this.currency) {
                         let precision = this.currencyPrecision[v.currency]
-                        this.available = this.transferNumber(v.available, precision)
-                        this.frozen = this.transferNumber(v.frozen, precision)
-                        this.total = this.transferNumber(bigDecimal.add(v.available, v.frozen), precision)
-                        this.withdrawData['available'] = this.transferNumber(v.available, precision)
-                        this.withdrawData['frozen'] = this.transferNumber(v.frozen, precision)
-                        this.withdrawData['total'] = this.transferNumber(bigDecimal.add(v.available, v.frozen), precision)
+                        if (v['available'] < 0.00000001) {
+                           v['available'] = 0
+                        }
+                        if (v['frozen'] < 0.00000001) {
+                           v['frozen'] = 0
+                        }
+                        this.withdrawData['available'] = this.available = this.transferNumber(subNumberPoint(v.available, precision), precision)
+                        this.withdrawData['frozen'] = this.transferNumber(subNumberPoint(v.frozen, precision), precision)
+                        this.withdrawData['total'] = this.transferNumber(subNumberPoint(bigDecimal.add(v.available, v.frozen), precision), precision)
                      }
                   })
                   if (this.available === '--') {
-                     this.available = this.frozen = this.total = '0.00000000'
-                     this.withdrawData['available'] = this.withdrawData['frozen'] = this.withdrawData['total'] = '0.00000000'
+                     this.available = this.withdrawData['available'] = this.withdrawData['frozen'] = this.withdrawData['total'] = '0.00000000'
                   }
+               } else {
+                  this.available = this.withdrawData['available'] = this.withdrawData['frozen'] = this.withdrawData['total'] = '0.00000000'
                }
                this.withdrawData = JSON.parse(JSON.stringify(this.withdrawData))// 这句话很重要 重新赋值 更新数据！！！
-
             }.bind(this))
          },
          getWithdrawAddress() {//提现地址
@@ -371,7 +368,7 @@
             this.disabled = false
             this.addAddress = false
          },
-         chooseNewAddress() {
+         chooseNewAddress() {//选择新地址
             this.value3 = this.value4 = ''
             this.showOption = false
             this.showNewAddress = true
@@ -383,6 +380,7 @@
             this.showFirst = true
             this.deleteAddress = e.target.parentNode.getAttribute('value')//获取dt属性
             this.deleteLabel = e.target.parentNode.getAttribute('label')//获取dt属性
+
          },
          deleteWithdrawAddress() {//删除地址
             this.exchange.deleteWithdrawAddress(this.currency, this.deleteLabel, this.deleteAddress, () => {
@@ -394,35 +392,26 @@
          cancel() {
             this.showFourth = false
          },
-         getRealtimeList() {
-            if (this.currency === 'BTC') {
-               getRealtimeList({symbol: 'BTCUSDT'}).then(res => {//资产估值
-                  this.price = res['BTCUSDT'].data.last
-               })
-            } else {
-               getRealtimeList({symbol: [`${this.currency}BTC`, 'BTCUSDT']}).then(res => {//资产估值
-                  this.price = Number(bigDecimal.multiply(res[`${this.currency}BTC`].data.last, res['BTCUSDT'].data.last))
-               })
-            }
-         },
-         getIdentify() {
-            getIdentify(this.loginToken).then(res => {
-               this.checkStatus = res.data.checkStatus
-               if (res.data.checkStatus === 'PASSED') {
-                  this.kyc = true
-               }
-            })
-         },
          toKyc() {
-            if (this.checkStatus === 'NOT_SET') {
-               this.$router.push({
-                  path: 'identiy',
-               })
-            } else {
-               this.$router.push({
-                  path: 'identityResult',
-               })
+            if (this.checkStatus === 'NOT_SET') {/*  */
+               window.location.href = "../../identityAuthentication/noAuthentication.html";
+            } else if (this.checkStatus === 'PASSED') {
+               window.location.href = "../../identityAuthentication/passed.html";
+            } else if (this.checkStatus === 'CHECKING') {
+               window.location.href = "../../identityAuthentication/underReview.html";
+            } else if (this.checkStatus === 'FAILURE') {
+               window.location.href = '../../identityAuthentication/noPass.html';
             }
+            // if (this.checkStatus === 'NOT_SET') {
+            //    window.open()
+            //    this.$router.push({
+            //       path: '/identiy',
+            //    })
+            // } else {
+            //    this.$router.push({
+            //       path: '/identityResult',
+            //    })
+            // }
          },
          submit() {//第一步提交
             let address = ''
@@ -432,10 +421,6 @@
             let newAddress = this.value4
             let exist = false
             let EOSWithdrawLabel = this.EOSLabelValue
-            if (amount * this.price >= 500 && this.kyc === false) {
-               this.showFourth = true
-               return
-            }
             try {
                if (this.addAddress) {//添加新地址
                   this.verifyAddress(newLabel, this.errorCode.emptyLabel)
@@ -451,7 +436,7 @@
                if (this.addAddress) {//是否添加新地址
                   this.addressList.map(v => {
                      if (newLabel === v.label) {
-                        exist = true
+                        exist = true//存在相同的label
                         this.warning('txyzLabelExists');
                      }
                   })
@@ -468,21 +453,63 @@
                } else {
                   this.addressVerify = address
                }
-               getVerifyAddress({'coinType': this.coinType, 'address': this.addressVerify}).then(res => {//验证地址
-                  if (res.verify) {//地址通过
-                     if (this.addAddress) {
-                        this.exchange.createWithdrawAddress(this.currency, newLabel, address, function () {//添加提现地址
+               (async () => {
+                  await new Promise(resolve => {
+                     getVerifyAddress({'coinType': this.coinType, 'address': this.addressVerify}).then(res => {//验证地址
+                        if (res.verify) {//地址通过
+                           resolve()
+                        } else {//地址错误
+                           this.error('tsCorrectAddress');
+                        }
+                     })
+                  })
+                  await new Promise(resolve => {
+                     if (this.currency === 'BTC') {
+                        getRealtimeList({symbol: 'BTCUSDT'}).then(res => {//资产估值
+                           this.price = res['BTCUSDT'].data.last
+                           resolve()
+
+                        })
+                     } else {
+                        getRealtimeList({symbol: [`${this.currency}BTC`, 'BTCUSDT']}).then(res => {//资产估值
+                           this.price = Number(bigDecimal.multiply(res[`${this.currency}BTC`].data.last, res['BTCUSDT'].data.last))
+                           resolve()
+
+                        })
+                     }
+                  })
+                  await new Promise(resolve => {
+                     if (amount * this.price >= 500) {
+                        getIdentify(this.loginToken).then(res => {//kyc
+                           this.checkStatus = res.data.checkStatus
+                           if (res.data.checkStatus === 'PASSED') {
+                              this.kyc = true//实名通过 可以提现
+                           }
+                           resolve()
+                        })
+                     } else {
+                        resolve()
+                     }
+                  })
+                  await new Promise(resolve => {
+                     if (amount * this.price >= 500 && this.kyc === false) {//去实名
+                        this.showFourth = true
+                        resolve()
+                     } else {
+                        if (this.addAddress) {
+                           this.exchange.createWithdrawAddress(this.currency, newLabel, address, function () {//添加提现地址
+                              this.getWithdrawAddress()
+                              this.getUserInfo()
+                              resolve()
+                           }.bind(this))
+                        } else {
                            this.getWithdrawAddress()
                            this.getUserInfo()
-                        }.bind(this))
-                     } else {
-                        this.getWithdrawAddress()
-                        this.getUserInfo()
+                           resolve()
+                        }
                      }
-                  } else {//地址错误
-                     this.error('tsCorrectAddress');
-                  }
-               })
+                  })
+               })()
             } catch (e) {
                if (typeof e === 'string') {
                   this.warning(e)
@@ -490,8 +517,7 @@
                   this.warning(e.code, e.params)
                }
             }
-         }
-         ,
+         },
          getUserInfo() {//获取用户信息
             this.value5 = this.value6 = this.value7 = ''
             if (!this.email && !this.phone) {
@@ -515,8 +541,7 @@
             } else {
                this.showSecond = true
             }
-         }
-         ,
+         },
          sendCode(codeType) {//发送验证码
             this[`disabled${codeType}`] = true
             send(this.loginToken, {
@@ -536,8 +561,7 @@
                   this.getCountDown(codeType, res['expiredSeconds'])
                }
             })
-         }
-         ,
+         },
          getCountDown(codeType, second) {//倒计时
             let disabledType = `disabled${codeType}`
             let type = `text${codeType}`
@@ -552,8 +576,7 @@
                   second--;
                }
             }.bind(this), 1000);
-         }
-         ,
+         },
          emptyEnter(value, empty, corrent, min, max, ava) {
             let regAmount = new RegExp("^\\d+(\\.)?\\d{0," + this.currencyPrecision[this.currency] + "}$");//提现数量
             // let regAmount = /^\d+(\.)?\d{0,8}$/;//提现数量
@@ -581,14 +604,12 @@
             if (value > this.available) {
                throw ava
             }
-         }
-         ,
+         },
          verifyAddress(value, code) {
             if (value.length === 0) {
                throw code
             }
-         }
-         ,
+         },
          verifyCode(params, value, empty, code) {//try throw 验证码异常
             let regCode = /^\d{6}$/;//提现数量
             if (this.userInfo[params]) {
@@ -599,8 +620,7 @@
                   throw code
                }
             }
-         }
-         ,
+         },
          sureWithdraw() {//提现
             try {
                this.verifyCode('email', this.value5, this.errorCode.emptyEmail, this.errorCode.email)
@@ -624,8 +644,7 @@
             } catch (error) {
                this.warning(error)//抛出异常
             }
-         }
-         ,
+         },
          success() {
             this.showThird = false
             this.showNewAddress = this.disabled = this.agree = this.disabledNoLabel = false//添加新地址隐藏 取消临时地址禁用
@@ -633,23 +652,22 @@
             this.value1 = this.value2 = this.value3 = this.value4 = this.EOSLabelValue = ''
             this.receiveAmount = '0.00000000'
             this.getBalances()
-         }
-         ,
+         },
          changeAddress(type) {
             window.event.target.value = window.event.target.value.replace(/[^A-Za-z0-9]/g, "");  //清除“数字”和“.”以外的字符
             this[type] = window.event.target['value']
-         }
-         ,
+         },
          changeValue(type) {
             // window.event.target.value = (window.event.target.value.match(/^\d*(\.?\d{0,8})/g)[0])||null
             // this[type] = window.event.target['value']
-            window.event.target.value = window.event.target.value.replace(/[^\d.]/g, "");  //清除“数字”和“.”以外的字符
-            window.event.target.value = window.event.target.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
-            window.event.target.value = window.event.target.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
-            window.event.target.value = window.event.target.value.replace(/^(\-)*(\d+)\.(\d\d\d\d\d\d\d\d\d).*$/, '$1$2.$3');//只能输入两个小数
-            if (window.event.target.value.indexOf(".") < 0 && window.event.target.value != "") {//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
-               window.event.target.value = parseFloat(window.event.target.value);
-            }
+            // window.event.target.value = window.event.target.value.replace(/[^\d.]/g, "");  //清除“数字”和“.”以外的字符
+            // window.event.target.value = window.event.target.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
+            // window.event.target.value = window.event.target.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+            // window.event.target.value = window.event.target.value.replace(/^(\-)*(\d+)\.(\d\d\d\d\d\d\d\d\d).*$/, '$1$2.$3');//只能输入两个小数
+            // if (window.event.target.value.indexOf(".") < 0 && window.event.target.value != "") {//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+            //    window.event.target.value = parseFloat(window.event.target.value);
+            // }
+            window.event.target.value = onlyInputNumAndPoint(window.event.target.value, this.currencyPrecision[this.currency])
             this[type] = window.event.target['value']
             let val = Number(window.event.target['value'])
             if (val >= this.minAmount && val <= this.available) {
@@ -662,8 +680,7 @@
             } else {//able状态之后的disabled状态
                this.receiveAmount = '0.00000000'
             }
-         }
-         ,
+         },
          changeAgree() {//eos 无备注按钮
             this.disabledNoLabel = !this.disabledNoLabel
             this.EOSLabelValue = ''//清空输入框
@@ -675,18 +692,15 @@
                this.radioStatus = ''
                this.noLabelStatus = ''
             }
-         }
-         ,
+         },
          checkCode(type) {//验证码输入框校验
             window.event.target['value'] = window.event.target['value'].replace(/[^\d]/g, '');
             this[type] = window.event.target['value']
-         }
-         ,
+         },
          error(code, params) {
             params = params || ''
             this.$Message.error(this.$t(code) + params);
-         }
-         ,
+         },
          warning(code, params) {
             params = params || ''
             this.$Message.warning(this.$t(code) + params);
@@ -1116,5 +1130,4 @@
          }
       }
    }
-
 </style>
