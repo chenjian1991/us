@@ -246,7 +246,10 @@ export function getApi(url, params) {
       //     }
       // }
       axios.get(url, {
-         params: params
+         params: params,
+         paramsSerializer: params => {
+            return qs.stringify(params, { indices: false })//处理参数有数组问题
+         }
       }).then(response => {
          resolve(response.data)
       }).catch((error) => {
