@@ -145,6 +145,17 @@
 
          </div>
       </alertModal>
+      <alertModal className="alert-fourth" v-model="showFourth" :showHeader="showHeaderFourth"
+                  :closable="closableFourth" width="590">
+         <div class="alert-content">
+            <h3>
+               {{$t('withdrawkycalert')}}
+            </h3>
+            <Button @click="cancel" class="kyc-btn kyc-btn-cancel">{{$t('tsBtnNo')}}</Button>
+            <Button @click="toKyc" class="kyc-btn kyc-btn-ok">{{$t('gotokyc')}}</Button>
+
+         </div>
+      </alertModal>
    </div>
 </template>
 
@@ -162,9 +173,11 @@
       getUserInfo,
       send,
       codeVerify,
+      getIdentify,
+      getRealtimeList,
    } from '_api/balances.js'
    import {
-      scientificToNumber,
+      scientificToNumber, subNumberPoint, onlyInputNumAndPoint
    } from '@/lib/utils.js'
 
    export default {
@@ -178,8 +191,6 @@
             withdrawData: {},
             currency: '--',
             currencyName: '--',
-            total: '--',
-            frozen: '--',
             available: '--',
             currencyPrecision: {},
             deleteLabel: '',
@@ -187,13 +198,16 @@
             showFirst: false,
             showSecond: false,
             showThird: false,
+            showFourth: false,
             bordered: false,
             showHeaderFirst: false,
             showHeaderSecond: true,
             showHeaderThird: false,
+            showHeaderFourth: false,
             closableFirst: false,
             closableSecond: true,
             closableThird: false,
+            closableFourth: false,
             fee: '0.00000000',
             receiveAmount: '0.00000000',
             minAmount: '--',
@@ -231,6 +245,9 @@
             textEMAIL: 'tsyzSend',
             textPHONE: 'tsyzSend',
             userInfo: {},
+            kyc: false,
+            checkStatus: '',
+            price: '',
             errorCode: {
                emptyEmail: 'tsyzEMAILRequired',
                emptyPhone: 'tsyzSMSRequired',
@@ -262,9 +279,7 @@
                   fn(loginToken);
                };
             } else {
-               this.$router.push({
-                  path: `login`,
-               })
+               this.$router.push('/login')
             }
             getCurrencyList().then(res => {//币种全称
                res.map(v => {
@@ -276,11 +291,10 @@
                      this.minAmount = v["withdrawMinAmount"];
                      this.maxAmount = v["withdrawMaxAmount"];
                      this.withdrawData['currencyName'] = v['currencyName']
-                     this.withdrawData = JSON.parse(JSON.stringify(this.withdrawData))// 这句话很重要 重新赋值 更新数据！！！
                   }
                })
+               this.getBalances()
             })
-            this.getBalances()
             this.getWithdrawAddress()
          },
          transferNumber(number, num = 8) {
@@ -307,21 +321,24 @@
                   res.map((v) => {
                      if (v["currency"] === this.currency) {
                         let precision = this.currencyPrecision[v.currency]
-                        this.available = this.transferNumber(v.available, precision)
-                        this.frozen = this.transferNumber(v.frozen, precision)
-                        this.total = this.transferNumber(bigDecimal.add(v.available, v.frozen), precision)
-                        this.withdrawData['available'] = this.transferNumber(v.available, precision)
-                        this.withdrawData['frozen'] = this.transferNumber(v.frozen, precision)
-                        this.withdrawData['total'] = this.transferNumber(bigDecimal.add(v.available, v.frozen), precision)
+                        if (v['available'] < 0.00000001) {
+                           v['available'] = 0
+                        }
+                        if (v['frozen'] < 0.00000001) {
+                           v['frozen'] = 0
+                        }
+                        this.withdrawData['available'] = this.available = this.transferNumber(subNumberPoint(v.available, precision), precision)
+                        this.withdrawData['frozen'] = this.transferNumber(subNumberPoint(v.frozen, precision), precision)
+                        this.withdrawData['total'] = this.transferNumber(subNumberPoint(bigDecimal.add(v.available, v.frozen), precision), precision)
                      }
                   })
                   if (this.available === '--') {
-                     this.available = this.frozen = this.total = '0.00000000'
-                     this.withdrawData['available'] = this.withdrawData['frozen'] = this.withdrawData['total'] = '0.00000000'
+                     this.available = this.withdrawData['available'] = this.withdrawData['frozen'] = this.withdrawData['total'] = '0.00000000'
                   }
+               } else {
+                  this.available = this.withdrawData['available'] = this.withdrawData['frozen'] = this.withdrawData['total'] = '0.00000000'
                }
                this.withdrawData = JSON.parse(JSON.stringify(this.withdrawData))// 这句话很重要 重新赋值 更新数据！！！
-
             }.bind(this))
          },
          getWithdrawAddress() {//提现地址
@@ -351,7 +368,7 @@
             this.disabled = false
             this.addAddress = false
          },
-         chooseNewAddress() {
+         chooseNewAddress() {//选择新地址
             this.value3 = this.value4 = ''
             this.showOption = false
             this.showNewAddress = true
@@ -371,6 +388,30 @@
             }, () => {
             });
             this.showFirst = false
+         },
+         cancel() {
+            this.showFourth = false
+         },
+         toKyc() {
+            if (this.checkStatus === 'NOT_SET') {/*  */
+               window.location.href = "../../identityAuthentication/noAuthentication.html";
+            } else if (this.checkStatus === 'PASSED') {
+               window.location.href = "../../identityAuthentication/passed.html";
+            } else if (this.checkStatus === 'CHECKING') {
+               window.location.href = "../../identityAuthentication/underReview.html";
+            } else if (this.checkStatus === 'FAILURE') {
+               window.location.href = '../../identityAuthentication/noPass.html';
+            }
+            // if (this.checkStatus === 'NOT_SET') {
+            //    window.open()
+            //    this.$router.push({
+            //       path: '/identiy',
+            //    })
+            // } else {
+            //    this.$router.push({
+            //       path: '/identityResult',
+            //    })
+            // }
          },
          submit() {//第一步提交
             let address = ''
@@ -395,7 +436,7 @@
                if (this.addAddress) {//是否添加新地址
                   this.addressList.map(v => {
                      if (newLabel === v.label) {
-                        exist = true
+                        exist = true//存在相同的label
                         this.warning('txyzLabelExists');
                      }
                   })
@@ -412,21 +453,63 @@
                } else {
                   this.addressVerify = address
                }
-               getVerifyAddress({'coinType': this.coinType, 'address': this.addressVerify}).then(res => {//验证地址
-                  if (res.verify) {//地址通过
-                     if (this.addAddress) {
-                        this.exchange.createWithdrawAddress(this.currency, newLabel, address, function () {//添加提现地址
+               (async () => {
+                  await new Promise(resolve => {
+                     getVerifyAddress({'coinType': this.coinType, 'address': this.addressVerify}).then(res => {//验证地址
+                        if (res.verify) {//地址通过
+                           resolve()
+                        } else {//地址错误
+                           this.error('tsCorrectAddress');
+                        }
+                     })
+                  })
+                  await new Promise(resolve => {
+                     if (this.currency === 'BTC') {
+                        getRealtimeList({symbol: 'BTCUSDT'}).then(res => {//资产估值
+                           this.price = res['BTCUSDT'].data.last
+                           resolve()
+
+                        })
+                     } else {
+                        getRealtimeList({symbol: [`${this.currency}BTC`, 'BTCUSDT']}).then(res => {//资产估值
+                           this.price = Number(bigDecimal.multiply(res[`${this.currency}BTC`].data.last, res['BTCUSDT'].data.last))
+                           resolve()
+
+                        })
+                     }
+                  })
+                  await new Promise(resolve => {
+                     if (amount * this.price >= 500) {
+                        getIdentify(this.loginToken).then(res => {//kyc
+                           this.checkStatus = res.data.checkStatus
+                           if (res.data.checkStatus === 'PASSED') {
+                              this.kyc = true//实名通过 可以提现
+                           }
+                           resolve()
+                        })
+                     } else {
+                        resolve()
+                     }
+                  })
+                  await new Promise(resolve => {
+                     if (amount * this.price >= 500 && this.kyc === false) {//去实名
+                        this.showFourth = true
+                        resolve()
+                     } else {
+                        if (this.addAddress) {
+                           this.exchange.createWithdrawAddress(this.currency, newLabel, address, function () {//添加提现地址
+                              this.getWithdrawAddress()
+                              this.getUserInfo()
+                              resolve()
+                           }.bind(this))
+                        } else {
                            this.getWithdrawAddress()
                            this.getUserInfo()
-                        }.bind(this))
-                     } else {
-                        this.getWithdrawAddress()
-                        this.getUserInfo()
+                           resolve()
+                        }
                      }
-                  } else {//地址错误
-                     this.error('tsCorrectAddress');
-                  }
-               })
+                  })
+               })()
             } catch (e) {
                if (typeof e === 'string') {
                   this.warning(e)
@@ -577,13 +660,14 @@
          changeValue(type) {
             // window.event.target.value = (window.event.target.value.match(/^\d*(\.?\d{0,8})/g)[0])||null
             // this[type] = window.event.target['value']
-            window.event.target.value = window.event.target.value.replace(/[^\d.]/g, "");  //清除“数字”和“.”以外的字符
-            window.event.target.value = window.event.target.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
-            window.event.target.value = window.event.target.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
-            window.event.target.value = window.event.target.value.replace(/^(\-)*(\d+)\.(\d\d\d\d\d\d\d\d\d).*$/, '$1$2.$3');//只能输入两个小数
-            if (window.event.target.value.indexOf(".") < 0 && window.event.target.value != "") {//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
-               window.event.target.value = parseFloat(window.event.target.value);
-            }
+            // window.event.target.value = window.event.target.value.replace(/[^\d.]/g, "");  //清除“数字”和“.”以外的字符
+            // window.event.target.value = window.event.target.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
+            // window.event.target.value = window.event.target.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+            // window.event.target.value = window.event.target.value.replace(/^(\-)*(\d+)\.(\d\d\d\d\d\d\d\d\d).*$/, '$1$2.$3');//只能输入两个小数
+            // if (window.event.target.value.indexOf(".") < 0 && window.event.target.value != "") {//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+            //    window.event.target.value = parseFloat(window.event.target.value);
+            // }
+            window.event.target.value = onlyInputNumAndPoint(window.event.target.value, this.currencyPrecision[this.currency])
             this[type] = window.event.target['value']
             let val = Number(window.event.target['value'])
             if (val >= this.minAmount && val <= this.available) {
@@ -1003,6 +1087,46 @@
             color: #fff;
             margin-top: 35px;
             border-radius: 0;
+         }
+      }
+   }
+
+   .alert-fourth {
+      .alert-content {
+         position: relative;
+         margin: 0 auto;
+         text-align: center;
+         padding: 66px 24px 50px;
+         h3 {
+            font-size: 14px;
+            color: #455665;
+            margin-bottom: 34px;
+         }
+         .kyc-btn {
+            width: 132px;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #fff;
+            margin-top: 35px;
+            border-radius: 2px;
+         }
+         .kyc-btn-cancel {
+            background-color: #fff;
+            border: solid 1px #198599;
+            color: #198599;
+            margin-right: 70px;
+
+            &:hover {
+               background-color: #198599;
+               color: #fff;
+            }
+         }
+         .kyc-btn-ok {
+            color: #fff;
+            background-color: #198599;
+            &:hover {
+               background-color: #108093;
+            }
          }
       }
    }

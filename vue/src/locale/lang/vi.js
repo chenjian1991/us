@@ -1239,4 +1239,9 @@ export default {
    //提现历史
    tslsNoWithdraw: 'Bạn không có lịch sử rút nào',
    COMPLETED: 'Đã hoàn thành',
+
+   //提现kyc
+   withdrawkycalert: 'To prevent potential risks, please finish the ID Verification before withdrawal',
+   gotokyc: 'Do ID Verification',
+
 }

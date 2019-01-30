@@ -1241,4 +1241,8 @@ export default {
    //提现历史
    tslsNoWithdraw: '暂无提现历史',
    COMPLETED: '已完成',
+
+   //提现kyc
+   withdrawkycalert: '由于您的账户存在风险，请您进行身份认证后再进行提现',
+   gotokyc: '去身份认证',
 }

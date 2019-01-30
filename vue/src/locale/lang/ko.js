@@ -1221,4 +1221,8 @@ export default {
    //提现历史
    tslsNoWithdraw: '출금내역이 없습니다',
    COMPLETED: '완료',
+
+   //提现kyc
+   withdrawkycalert: '계정의 안전를 위하여 신분 인증해주세요.',
+   gotokyc: '신분 인증',
 }

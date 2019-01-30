@@ -577,23 +577,25 @@ Exchange.prototype.getAssetTicket = function (fn) {
    })
 };
 //提现
-Exchange.prototype.withdraw = function (currency, address, amount, fee, fn,errorFn) {
+Exchange.prototype.withdraw = function (currency, address, amount, fee, fn, errorFn) {
    var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getWithdrawSession(Exchange.TokenType.ASSET, function (_assetSession) {
-         _this.getAssetTicket(function (_assetTicket) {
-            withdraw({"session": _assetSession}, {
-               "currency": currency,
-               "accountId": _accountId,
-               "ticket": _assetTicket,
-               "address": address,
-               "amount": amount,
-               "fee": fee
-            }).then(data => {
-               fn(data);
-            }).catch(data => {
-               errorFn(data);
-            });
+   _this.ssoProvider.getSsoToken(function (_ssoToken) {
+      _this.getAccountId(function (_accountId) {
+         _this.getWithdrawSession(Exchange.TokenType.ASSET, function (_assetSession) {
+            _this.getAssetTicket(function (_assetTicket) {
+               withdraw({"ssoToken": _ssoToken, "session": _assetSession}, {
+                  "currency": currency,
+                  "accountId": _accountId,
+                  "ticket": _assetTicket,
+                  "address": address,
+                  "amount": amount,
+                  "fee": fee
+               }).then(data => {
+                  fn(data);
+               }).catch(data => {
+                  errorFn(data);
+               });
+            })
          })
       })
    })
