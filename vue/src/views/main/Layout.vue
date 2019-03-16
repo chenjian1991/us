@@ -83,7 +83,7 @@
         components: {
            Footer,
            Header2,
-           TradeCenterHeader
+           TradeCenterHeader,
         },
         mounted(){
             this.ifAPP = this.$store.state.app.ifAPP;
@@ -158,5 +158,6 @@
             }
         }
     }
+        
    
 </style>

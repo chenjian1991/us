@@ -33,7 +33,7 @@
                                     <p class="font-normal">B-Site</p>
                                     <ul>
                                         <li> <router-link to="/terms">{{$t('footerterms')}}</router-link> </li>
-                                        <li><router-link to="/privice">{{$t('footerprivice')}}</router-link></li>
+                                        <li><router-link to="/privacy">{{$t('footerprivice')}}</router-link></li>
                                         <li><router-link to="/disclaimer">{{$t('footerdisclaimer')}}</router-link></li>
                                         <li><router-link to="/fee">{{$t('footerfee')}}</router-link></li>
                                         <li><a target="_blank" :href="AnnounceURL">{{$t('footerannounce')}}</a></li>

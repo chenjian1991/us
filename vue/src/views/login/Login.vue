@@ -29,6 +29,7 @@
 
         </div>
         <Modal :modal='showModal' :text="text"></Modal>
+        <IPModal v-model="isShowLoignIP"/>
     </div>
 </template>
 
@@ -36,6 +37,7 @@
 import {login,userInfo,userVerify,verifyEmail,loginHistory} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
+import IPModal from '@/components/IPModal'
 import { duration } from 'moment';
 import Cookies from 'js-cookie'
 
@@ -43,7 +45,8 @@ import Cookies from 'js-cookie'
     export default {
         name:'login',
         components:{
-            Modal
+            Modal,
+            IPModal
         },
         data() {
                const validatePhone = (rule,value,callback) =>{
@@ -83,6 +86,7 @@ import Cookies from 'js-cookie'
                     password:'',
                 },
                 showModal:false,
+                isShowLoignIP:false,
                 text:'',
                 ruleValidate: {
                     phoneNumber: [
@@ -104,33 +108,38 @@ import Cookies from 'js-cookie'
       
         methods:{
             handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        
-                        this.empty = false;
-                         let acountNumber  = this.formValidate.phoneNumber;
-                         let params;
-                         if(acountNumber.indexOf('@')!==-1){//邮箱登录
-                              params = {
-                                "email":this.formValidate.phoneNumber,
-                                "password":this.formValidate.password,
-                                "codeType":"EMAIL",
-                            }
-                         }else{
-                              params = {
-                                "phone":this.formValidate.phoneNumber,
-                                "password":this.formValidate.password,
-                                "codeType":"PHONE",
-                            }
-                         }
-
-                          
-                            this.paramsObj = params;
-                        this.captchaIns && this.captchaIns.popUp()
-                    } else {
-                        //this.$Message.error('Fail!');
-                    }
-                })
+                //
+                if(this.$store.state.app.isShowIP_warning){
+                    this.isShowLoignIP = true
+                }else{
+                    this.$refs[name].validate((valid) => {
+                        if (valid) {
+                            
+                            this.empty = false;
+                             let acountNumber  = this.formValidate.phoneNumber;
+                             let params;
+                             if(acountNumber.indexOf('@')!==-1){//邮箱登录
+                                  params = {
+                                    "email":this.formValidate.phoneNumber,
+                                    "password":this.formValidate.password,
+                                    "codeType":"EMAIL",
+                                }
+                             }else{
+                                  params = {
+                                    "phone":this.formValidate.phoneNumber,
+                                    "password":this.formValidate.password,
+                                    "codeType":"PHONE",
+                                }
+                             }
+    
+                              
+                                this.paramsObj = params;
+                            this.captchaIns && this.captchaIns.popUp()
+                        } else {
+                            //this.$Message.error('Fail!');
+                        }
+                    })
+                }
             },
             getUserInfo(token){
                 postHeaderTokenBodyApi(userInfo,token,{}).then((res) =>{
