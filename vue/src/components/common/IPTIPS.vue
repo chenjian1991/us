@@ -21,7 +21,10 @@
                     if(data.restrict){
                         this.message = data.message
                         this.isShowIP_waring = true
-                        this.$store.commit('changeIPwaring', data.restrict);
+                        this.$store.commit('changeIPwaring', true);
+                    }else{
+                        this.isShowIP_waring = false
+                        this.$store.commit('changeIPwaring', false);
                     }
                })
            }
