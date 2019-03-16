@@ -81,6 +81,7 @@
     </ul>
 
     </div>
+    <IP/>
     <Modal v-model="modal1" width="442">
         <p slot="header" style="text-align:center">
             <span>{{$t('headerSetting')}}</span>
@@ -103,9 +104,13 @@
 import {getLegalTenderValue} from '_api/header.js'
 import {getHeaderTokenApi} from '_api/axios.js';
 import {relatNameVerify} from '../../../api/urls.js'
+import IP from './IPTIPS.vue'
 import Cookies from 'js-cookie'
 
 export default {
+    components: {
+         IP
+    },
     data() {
         return {
             isLogin: true,

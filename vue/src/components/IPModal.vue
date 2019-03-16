@@ -5,14 +5,7 @@
                 <Icon type="ios-warning" size="48"/>
             </div>
                 <div style="text-align:left" class="ip_content">
-                            Currently, 55 Global Markets does not serve residents of the following
-jurisdiction: Alabama, Arizona, Connecticut, Georgia, Hawaii, Idaho, Lo
-uisiana, New York, North Carolina, Vermont, Washington, District of C
-olumbia, American Samoa, Guam, Northern Mariana Islands, Puerto Ri
-co, Virgin Islands, U.S., United States Minor Outlying Islands, Armed F
-orces Americas, Armed Forces Europe, Armed Forces Pacific. We are
-working hard to be able to do so in the near future. Please check back
- in the near future for updates. 
+                            Currently, 55 Global Markets does not serve residents of the following jurisdiction: Connecticut, Hawaii, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. We are working hard to be able to do so in the near future. Please check back in the near future for updates.
                 </div>
                 <div slot="footer">
                     <div class="ip_btn" @click="closeDialog">Acknowledge</div>

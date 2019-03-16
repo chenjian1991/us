@@ -41,8 +41,7 @@
                                    
                                     </div>
                                     <div style="font-size:12px;line-height:15px;color:#51809f;margin-top:15px;text-align:justify;">
-                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Alabama, Arizona, Connecticut, Georgia, Hawaii, Idaho, Louisiana, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. 
-                                        We are working hard to be able to do so in the near future. Please check back in the near future for updates.
+                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Connecticut, Hawaii, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. We are working hard to be able to do so in the near future. Please check back in the near future for updates.
                                     </div>
                                 </FormItem>
                                 <FormItem class="form_item phone_item" prop='phoneNumber'>
@@ -126,8 +125,7 @@
                                         </transition>
                                     </div>
                                     <div style="font-size:12px;line-height:15px;color:#51809f;margin-top:15px;text-align:justify;">
-                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Alabama, Arizona, Connecticut, Georgia, Hawaii, Idaho, Louisiana, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. 
-                                        We are working hard to be able to do so in the near future. Please check back in the near future for updates.
+                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Connecticut, Hawaii, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. We are working hard to be able to do so in the near future. Please check back in the near future for updates.
                                     </div>
                                 </FormItem>
                                 <FormItem class="form_item" prop='emailNumber'>

@@ -16,9 +16,9 @@
                <!-- <li>
                   <a href="https://usdd.55.com" target="_blank">USDD</a>
                </li> -->
-               <li>
+               <!-- <li>
                   <a href="http://sico.55.com/sicotest/index.php/397213?lang=en">SICO-TOKEN LISTING</a>
-               </li>
+               </li> -->
                <!-- <li>
                   <a href="">TokenGate</a>
                </li>
