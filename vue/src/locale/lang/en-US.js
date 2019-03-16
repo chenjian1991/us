@@ -319,7 +319,7 @@ export default {
   passwordRequier: 'This field is required',
   comfrimpassRequier: 'This field is required',
   checkboxRequire: 'Check this box',
-  passwordNotMach: 'The two passwords are different.Please retry',
+  passwordNotMach: 'The two password inputs do not match.',
   passwordReg: 'It must be a combination of 8-20 numbers and letters',
   regAgree: 'I agree to 55',
   regTermsOfUse: 'User Agreement',
@@ -607,7 +607,7 @@ export default {
    //sso接口数据返回
    10000: "The system is busy,please contact 55 support.",
    10001: "The phone number has been used",
-   10002: "The email has been used", //这个是已经注册成功的，可以直接登录了
+   10002: "An account already exists with that email address. We are redirecting you to sign in page.", //这个是已经注册成功的，可以直接登录了
    10003: "Incorrect SMS code, Please try again.",
    10004: "Incorrect email code, Please try again.",
    10005: "Incorrect account or login password,Please try again. ",
