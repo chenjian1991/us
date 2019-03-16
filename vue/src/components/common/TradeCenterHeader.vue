@@ -1,5 +1,6 @@
 <template>
-  <div class="tradeHeaderbox">
+<div>
+    <div class="tradeHeaderbox">
     <ul class="left">
       <li class="logo">
         <router-link to='/home'><img src="../../assets/images/logo/logo.png" width="40px" height="28px" alt></router-link>
@@ -20,68 +21,68 @@
         </li>
     </ul>
     <div class="rightBox">
-    <!-- 登录前 -->
-    <ul class="right" v-if="!isLogin">
-      <li>
-        <a href class="login">
-          <router-link to="/login">{{$t('HomeSignin')}}</router-link>
-        </a>
-      </li>
-      <li>
-        <a href class="login register">
-          <router-link class="loginRouter" to="/register">{{$t('HomeSignup')}}</router-link>
-        </a>
-      </li>
-    </ul>
-    <ul class="right" v-else>
-      <li class="banalance">
-        <router-link to="/order" class="order">{{$t('homeOrder')}}</router-link>
-      </li>
-      <!-- 资产 -->
-      <li class="currency banalance">
-        {{$t('homeBalances')}}
-        <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
-        <ul class="dropList">
-          <!-- 资产 -->
-          <li>
-            <router-link to="/balances">{{$t('homeBalances')}}</router-link>
-          </li>
-          <li>
-            <router-link to="/transaction_history">{{$t('tbdhTransactionHistory')}}</router-link>
-          </li>
+        <!-- 登录前 -->
+        <ul class="right" v-if="!isLogin">
+        <li>
+            <a href class="login">
+            <router-link to="/login">{{$t('HomeSignin')}}</router-link>
+            </a>
+        </li>
+        <li>
+            <a href class="login register">
+            <router-link class="loginRouter" to="/register">{{$t('HomeSignup')}}</router-link>
+            </a>
+        </li>
         </ul>
-      </li>
-      <li class="language banalance">
-        <Icon type="md-person" size="16"/>
-        <ul class="dropList">
-          <!-- 安全中心 -->
-          <li>
-            <router-link to="/safeCenter">{{$t('tbdhAccountSecurity')}}</router-link>
-          </li>
-          <li @click="verfiy">
-            {{$t('tbdhIDVerification')}}
-          </li>
-          <!-- <li>
-            <a href="../../../invitation/invitationCode.html" name="invitePeople">{{$t('invitePeople')}}</a>
-          </li> -->
-          <li @click="quitFun">{{$t('tbdhLogout')}}</li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="languageBox">
-        <li class="currency aaa" @click="openSetting">{{$t('headerSetting')}}</li>
-        <!-- <li class="language">{{countryLanguage}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
-            <ul class="dropList" @click="changeLangage">
-                <li data-value="en">English</li>
-                <li data-value="ko">한국어</li>
-                <li data-value="vi">Tiếng Việt</li>
-                <li data-value="zh-CN">简体中文</li>
+        <ul class="right" v-else>
+        <li class="banalance">
+            <router-link to="/order" class="order">{{$t('homeOrder')}}</router-link>
+        </li>
+        <!-- 资产 -->
+        <li class="currency banalance">
+            {{$t('homeBalances')}}
+            <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
+            <ul class="dropList">
+            <!-- 资产 -->
+            <li>
+                <router-link to="/balances">{{$t('homeBalances')}}</router-link>
+            </li>
+            <li>
+                <router-link to="/transaction_history">{{$t('tbdhTransactionHistory')}}</router-link>
+            </li>
             </ul>
-        </li> -->
-    </ul>
+        </li>
+        <li class="language banalance">
+            <Icon type="md-person" size="16"/>
+            <ul class="dropList">
+            <!-- 安全中心 -->
+            <li>
+                <router-link to="/safeCenter">{{$t('tbdhAccountSecurity')}}</router-link>
+            </li>
+            <li @click="verfiy">
+                {{$t('tbdhIDVerification')}}
+            </li>
+            <!-- <li>
+                <a href="../../../invitation/invitationCode.html" name="invitePeople">{{$t('invitePeople')}}</a>
+            </li> -->
+            <li @click="quitFun">{{$t('tbdhLogout')}}</li>
+            </ul>
+        </li>
+        </ul>
+        <ul class="languageBox">
+            <li class="currency aaa" @click="openSetting">{{$t('headerSetting')}}</li>
+            <!-- <li class="language">{{countryLanguage}} <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
+                <ul class="dropList" @click="changeLangage">
+                    <li data-value="en">English</li>
+                    <li data-value="ko">한국어</li>
+                    <li data-value="vi">Tiếng Việt</li>
+                    <li data-value="zh-CN">简体中文</li>
+                </ul>
+            </li> -->
+        </ul>
 
     </div>
-    <IP/>
+    
     <Modal v-model="modal1" width="442">
         <p slot="header" style="text-align:center">
             <span>{{$t('headerSetting')}}</span>
@@ -98,6 +99,9 @@
         </div>
     </Modal>
   </div>
+    <IP/>
+</div>
+
 </template>
 
 <script>
