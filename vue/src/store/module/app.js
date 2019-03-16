@@ -23,6 +23,7 @@ export default {
     firstLogin:false,
     backgroundHeader:'', //改变Header的背景色
     backgroundFooter:"",
+    isShowIP_warning:false,//IP限制提示
   },
   getters: {
 
@@ -57,6 +58,9 @@ export default {
     },
     changeFooterColor(state,value){
       state.backgroundFooter = value;
+    },
+    changeIPwaring(state,value){
+      state.isShowIP_warning = value;
     },
   },
 

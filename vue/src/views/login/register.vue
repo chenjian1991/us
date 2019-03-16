@@ -196,7 +196,7 @@
             <div v-if="modal2" class="mask dis-n"></div> -->
 
         <Modal :modal='showModal' :text="text"></Modal>
-       
+        <IPModal v-model="isShowLoignIP"/>
 
         </div>
 
@@ -212,6 +212,7 @@ import sendBtn from '../../components/sendBtn'
 import {codeVerify,register,emailRegister,ossjson} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
+import IPModal from '@/components/IPModal'
 const clickoutside = {
     // 初始化指令
     bind(el, binding, vnode) {
@@ -335,7 +336,7 @@ const clickoutside = {
                     referrId:'',
                     interest:[],
                 },
-             
+                isShowLoignIP:false,
                 showModal:false,
                 text:'',
                 ruleValidate: {
@@ -387,6 +388,7 @@ const clickoutside = {
         components:{
             sendBtn,
             Modal,
+            IPModal,
             'remote-json':{
                 render(createElement){
                     return createElement('script',{attrs:{type:"text/javascript",src:this.src}})
@@ -398,20 +400,24 @@ const clickoutside = {
         },
         methods:{
             handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        
-                        if(this.emailRegister){//如果是邮箱注册
-                            this.captchaIns && this.captchaIns.popUp()
-                        }else{//如果是手机注册
-                            this.loaded = false;
-                             this.codeVerifyFun();
+                if(this.$store.state.app.isShowIP_warning){
+                    this.isShowLoignIP = true
+                }else{
+                    this.$refs[name].validate((valid) => {
+                        if (valid) {
+                            
+                            if(this.emailRegister){//如果是邮箱注册
+                                this.captchaIns && this.captchaIns.popUp()
+                            }else{//如果是手机注册
+                                this.loaded = false;
+                                 this.codeVerifyFun();
+                            }
+                        } else {//验证不通过
+    
+    
                         }
-                    } else {//验证不通过
-
-
-                    }
-                })
+                    })
+                }
             },
             getOSSStateJson(){
                 getApi('https://oss.55.com/content/state/55-state.json',{}).then((res)=>{

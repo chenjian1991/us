@@ -164,6 +164,7 @@
             </div>
          </div>
       </div>
+      <IP/>
       <Modal v-model="modal1" width="442">
          <p slot="header" style="text-align:center">
             <span>{{$t('headerSetting')}}</span>
@@ -189,7 +190,8 @@
    import moment from 'moment';
    import Cookies from 'js-cookie'
    import {relatNameVerify} from '../../../api/urls.js'
-
+   import IP from './IPTIPS.vue'
+   // import {IPTIPS} from './IPTIPS.vue'
    export default {
       data() {
          return {
@@ -375,6 +377,9 @@
             }
          }
       },
+      components: {
+         IP
+      },
       mounted() {
          // this.$i18n.locale = window.localStorage.getItem('countryLanguage') || 'en-US';
          //设置Header颜色
@@ -415,7 +420,10 @@
       destroyed() {
          clearInterval(this.timer)
          
-      }
+      },
+      // components:{
+      //    IPTIPS:IPTIPS
+      // }
 
    }
 </script>
@@ -969,5 +977,11 @@
             }
          }
       }
+      //US 拦截提示
+      .us_tips{
+            width:100%;
+            height: 44px;
+            background:#9DADB4;
+        }
    }
 </style>
