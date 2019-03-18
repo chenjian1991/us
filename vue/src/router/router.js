@@ -32,7 +32,7 @@ import newtradePassword from "../views/resetTradePasswrod/newtradePassword.vue"
 import verfifyEmail from "../views/login/verifyEmail.vue";
 import activeEmail from "../views/login/activeEmail.vue";
 import terms from "../views/legal/terms.vue";
-import privice from "../views/legal/privice.vue";
+import privacy from "../views/legal/privice.vue";
 import fee from "../views/legal/fee.vue";
 import disclaimer from "../views/legal/disclaimer.vue";
 import setGoogle from "../views/google/setGoogle.vue";
@@ -286,13 +286,13 @@ const router = new Router({
                 },
                 component: terms
               },
-              {//privice
-                  path: 'privice',
-                  name: 'privice',
+              {//privacy
+                  path: 'privacy',
+                  name: 'privacy',
                   meta: {
                     title: ''
                   },
-                  component: privice
+                  component: privacy
               },
               {//fee
                 path: 'fee',

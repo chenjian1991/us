@@ -41,8 +41,7 @@
                                    
                                     </div>
                                     <div style="font-size:12px;line-height:15px;color:#51809f;margin-top:15px;text-align:justify;">
-                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Alabama, Arizona, Connecticut, Georgia, Hawaii, Idaho, Louisiana, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. 
-                                        We are working hard to be able to do so in the near future. Please check back in the near future for updates.
+                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Connecticut, Hawaii, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. We are working hard to be able to do so in the near future. Please check back in the near future for updates.
                                     </div>
                                 </FormItem>
                                 <FormItem class="form_item phone_item" prop='phoneNumber'>
@@ -126,8 +125,7 @@
                                         </transition>
                                     </div>
                                     <div style="font-size:12px;line-height:15px;color:#51809f;margin-top:15px;text-align:justify;">
-                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Alabama, Arizona, Connecticut, Georgia, Hawaii, Idaho, Louisiana, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. 
-                                        We are working hard to be able to do so in the near future. Please check back in the near future for updates.
+                                        Currently, 55 Global Markets does not serve residents of the following jurisdiction: Connecticut, Hawaii, New York, North Carolina, Vermont, Washington, District of Columbia, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands, U.S., United States Minor Outlying Islands, Armed Forces Americas, Armed Forces Europe, Armed Forces Pacific. We are working hard to be able to do so in the near future. Please check back in the near future for updates.
                                     </div>
                                 </FormItem>
                                 <FormItem class="form_item" prop='emailNumber'>
@@ -196,7 +194,7 @@
             <div v-if="modal2" class="mask dis-n"></div> -->
 
         <Modal :modal='showModal' :text="text"></Modal>
-       
+        <IPModal v-model="isShowLoignIP"/>
 
         </div>
 
@@ -212,6 +210,7 @@ import sendBtn from '../../components/sendBtn'
 import {codeVerify,register,emailRegister,ossjson} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
+import IPModal from '@/components/IPModal'
 const clickoutside = {
     // 初始化指令
     bind(el, binding, vnode) {
@@ -335,7 +334,7 @@ const clickoutside = {
                     referrId:'',
                     interest:[],
                 },
-             
+                isShowLoignIP:false,
                 showModal:false,
                 text:'',
                 ruleValidate: {
@@ -387,6 +386,7 @@ const clickoutside = {
         components:{
             sendBtn,
             Modal,
+            IPModal,
             'remote-json':{
                 render(createElement){
                     return createElement('script',{attrs:{type:"text/javascript",src:this.src}})
@@ -398,20 +398,24 @@ const clickoutside = {
         },
         methods:{
             handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        
-                        if(this.emailRegister){//如果是邮箱注册
-                            this.captchaIns && this.captchaIns.popUp()
-                        }else{//如果是手机注册
-                            this.loaded = false;
-                             this.codeVerifyFun();
+                if(this.$store.state.app.isShowIP_warning){
+                    this.isShowLoignIP = true
+                }else{
+                    this.$refs[name].validate((valid) => {
+                        if (valid) {
+                            
+                            if(this.emailRegister){//如果是邮箱注册
+                                this.captchaIns && this.captchaIns.popUp()
+                            }else{//如果是手机注册
+                                this.loaded = false;
+                                 this.codeVerifyFun();
+                            }
+                        } else {//验证不通过
+    
+    
                         }
-                    } else {//验证不通过
-
-
-                    }
-                })
+                    })
+                }
             },
             getOSSStateJson(){
                 getApi('https://oss.55.com/content/state/55-state.json',{}).then((res)=>{

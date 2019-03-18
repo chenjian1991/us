@@ -12,7 +12,7 @@
 											<router-link to='/terms'> · User Agreement</router-link>
 										</li>
 										<li>
-											<router-link class="active" to='/privice'> · Privacy Policy</router-link>
+											<router-link class="active" to='/privacy'> · Privacy Policy</router-link>
 										</li>
 										<li>
 											<router-link to='/disclaimer'> · Disclaimer</router-link>
