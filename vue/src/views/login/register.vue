@@ -373,7 +373,7 @@ const clickoutside = {
                 registerbtn:false,
                 ossJSON:[],
                 ossCountryJSON:[],
-                countryFlag:'https://oss.55.com/content/state/image/AK.png'
+                countryFlag:'https://oss.55.com/content/state/image/CA.png'
                 
 
 
