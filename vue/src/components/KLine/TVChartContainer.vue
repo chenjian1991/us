@@ -7,9 +7,9 @@
 
 <script>
   import Loading from "@/components/Loading"
-  import {
-    widget
-  } from "../../lib/charting_library.min";
+  // import {
+  //   widget
+  // } from "../../lib/charting_library.min";
   import Datafeed from './udf/index.js'
   import {
     storage
@@ -164,7 +164,7 @@
             chartTypes: ["Area", "Line"]
           }
         };
-        const tvWidget = window.tv = new widget(widgetOptions);
+        const tvWidget = window.tv = new window.TradingView.widget(widgetOptions);
         this.tvWidget = tvWidget
 
         tvWidget.MAStudies = [];
