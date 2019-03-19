@@ -108,8 +108,7 @@ import Cookies from 'js-cookie'
       
         methods:{
             handleSubmit (name) {
-                //
-                if(this.$store.state.app.isShowIP_warning){
+                if(this.$store.state.app.ip_status =='RESTRICT'){
                     this.isShowLoignIP = true
                 }else{
                     this.$refs[name].validate((valid) => {

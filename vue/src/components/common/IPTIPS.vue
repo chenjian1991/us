@@ -17,14 +17,16 @@
        methods: {
            initData() {
                getApi('/api/content/ip-restrict').then(data =>{
-                //    console.log(data)
-                    if(data.restrict){
+                    //    console.log(data)
+                    this.$store.commit('changeIPwaring', data.state);
+                    if(data.state == 'RESTRICT'){
                         this.message = data.message
                         this.isShowIP_waring = true
-                        this.$store.commit('changeIPwaring', true);
+                    }else if(data.state == 'UNKNOWN'){
+                        this.message = data.message
+                        this.isShowIP_waring = true
                     }else{
                         this.isShowIP_waring = false
-                        this.$store.commit('changeIPwaring', false);
                     }
                })
            }

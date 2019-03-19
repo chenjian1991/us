@@ -23,7 +23,7 @@ export default {
     firstLogin:false,
     backgroundHeader:'', //改变Header的背景色
     backgroundFooter:"",
-    isShowIP_warning:false,//IP限制提示
+    ip_status:'',//IP限制提示 RESTRICT,UNKNOWN, PASSED
   },
   getters: {
 
@@ -60,7 +60,7 @@ export default {
       state.backgroundFooter = value;
     },
     changeIPwaring(state,value){
-      state.isShowIP_warning = value;
+      state.ip_status = value;
     },
   },
 
