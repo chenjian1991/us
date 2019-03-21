@@ -50,25 +50,28 @@
                 })
             },
             gotoDownload(){
-                var u = navigator.userAgent;
-                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-                //var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-                if(isAndroid){
-                    window.location.href = 'https://play.google.com/store/apps/details?id=com.globalmarkets55.us.ex55.app';
-                }{
+                let sUserAgent = navigator.userAgent.toLowerCase();
+                let bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+                let bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+                let bIsAndroid = sUserAgent.match(/android/i) == "android";
+                  if (bIsIpad || bIsIphoneOs) {
                     window.location.href='https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1442483182';
-
+                }else{//如果是安卓
+                   window.location.href = 'https://play.google.com/store/apps/details?id=com.globalmarkets55.us.ex55.app';
                 }
+               
             },
             judgeDevice(){
-                var u = navigator.userAgent;
-                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-                //var isiOS = u.indexOf('iPhone') > -1  //ios终端
-                if(isAndroid){
-                    this.download = true;
-                }else{
+                let sUserAgent = navigator.userAgent.toLowerCase();
+                let bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+                let bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+                let bIsAndroid = sUserAgent.match(/android/i) == "android";
+                  if (bIsIpad || bIsIphoneOs) {
                     this.download = false;
+                }else{//如果是安卓
+                    this.download = true;
                 }
+               
             }
         },
         watch:{
