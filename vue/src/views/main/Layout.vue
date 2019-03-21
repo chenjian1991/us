@@ -44,11 +44,11 @@
             close(){
                 this.download = false;
             },
-            getAndroidUrl(){
-                getApi(AndroidDownloadUrl,{}).then((res)=>{
-                    this.androidURL = res.downloadPath;
-                })
-            },
+            // getAndroidUrl(){
+            //     getApi(AndroidDownloadUrl,{}).then((res)=>{
+            //         this.androidURL = res.downloadPath;
+            //     })
+            // },
             gotoDownload(){
                 let sUserAgent = navigator.userAgent.toLowerCase();
                 let bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
