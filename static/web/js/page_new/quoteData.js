@@ -1,1 +1,0 @@
-function QuoteDate(){this.quoteList=[]}QuoteDate.prototype.getQuoteList=function(t){};

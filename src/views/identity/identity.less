@@ -1,0 +1,351 @@
+.clearfix:after {
+    content:""; 
+    display: block; 
+    clear:both; 
+ }
+ i,em{
+     font-style: normal;
+ }
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ html,body{
+     .root{
+         min-height: 100%;
+         flex: 1 0 auto;
+         .wrapper{
+            width: 100%;
+            background-color: #F7F9FA;
+            .header-title{
+                width: 1200px;
+                margin: 0 auto;
+                padding: 10px;
+                font-size:14px;
+                a{
+                    color: #949DA6;
+                }
+                .arrow{
+                    color: #949DA6;
+                    display: inline-block;
+                    margin: 0px 10px;
+                }
+            }
+            .register_wraper{
+                max-width: 1200px;
+                margin:0 auto;
+                background: #fff;
+                .warn-tips{
+                    line-height: 30px;
+                    color: #949da6;
+                    font-size: 13px;
+                    background: #f7fcfd;
+                    padding-left: 20px;
+                    &:nth-child(1){
+                        padding-top: 10px;
+                    }
+                    &:nth-child(2){
+                        padding-bottom: 10px;
+                    }
+                }
+                .page-title{
+                    height: 60px;
+                    width: 1157px;
+                    margin: 0 auto;
+                    line-height: 60px;
+                    border-bottom: 1px solid #d8d8d8;
+                    color: #949DA6;
+                    font-size: 14px;
+                    padding-left:15px;
+                }
+               .inner_input_login{
+                   width: 850px;
+                   margin: 0 auto; 
+                   .title{
+                       text-align: center;
+                       color: #949DA6;
+                       font-size: 14px;
+                       padding: 50px 0px;
+                   }
+                   
+                 
+                   .loginbtn{
+                       font-size: 16px;
+                       font-weight: bold;
+                   }
+                   .radio{
+                       height: 48px;
+                       line-height: 48px;
+                       display: flex;
+                       align-items: center;
+                       span{
+                           color: #949DA6;
+                       }
+                   }
+                   .country_container{
+                    cursor: pointer;
+                    width: auto;
+                    height: 48px;
+                    border:1px solid #E7EAED;
+                    line-height: 48px;
+                    text-align: center;
+                    
+                    div{
+                        text-align: left;
+                        padding-left: 10px;
+                        color: #949DA6;
+                        display: flex;
+                        justify-content: space-between;
+                        em{
+                            font-size:16px;
+                        }
+                        i{
+                            font-size:17px;
+                            margin-top: 13px;
+                            padding-right: 10px;
+                        }
+                    }
+                    .ivu-select-arrow {
+                        color: #808695;
+                        font-size: 14px;
+                        line-height: 1;
+                        margin-top: -7px;
+                        position: absolute;
+                        right: 8px;
+                        top: 50%;
+                        transition: all .2s ease-in-out;
+                    }
+
+
+                    .select_dropdown{
+                        background-color: #fff;
+                        border-radius: 4px;
+                        box-shadow: 0 1px 6px rgba(0,0,0,.2);
+                        box-sizing: border-box;
+                        margin: 5px 0;
+                        max-height: 200px;
+                        overflow: auto;
+                        padding: 5px 0;
+                        position: absolute;
+                        width: inherit;
+                        z-index: 900;
+                        left: 0px;
+                        width: 520px;
+                        .select_down_list{
+                            width: 100%;
+                                li{
+                                    // display: flex;
+                                    // justify-content: space-between;
+                                    clear: both;
+                                    color: #515a6e;
+                                    font-size: 12px!important;
+                                    line-height: normal;
+                                    list-style: none;
+                                    margin: 0;
+                                    padding: 7px 16px;
+                                    transition: all .2s ease-in-out;
+                                    white-space: nowrap;
+                                    cursor: pointer;
+                                    &:hover,:active{
+                                        color: #2d8cf0;
+                                        background: #f3f3f3;
+                                    }
+                                    span:nth-child(2){
+                                        color: rgb(204, 204, 204);
+                                    }
+                                }
+                        }
+                    }
+
+                }
+               
+                   
+                   .form-item{
+                       .span-label{
+                           width: 230px;
+                           margin-right: 10px;
+                           height: 48px;
+                           line-height: 48px;
+                           color: #949DA6;
+                           font-size: 13px;
+                           text-align: right;
+                       }
+                   }
+                   .ivu-btn{
+                       width: 260px;
+                       height: 48px;
+                       font-size:16px;
+                       margin-top: 16px;
+                       margin-bottom: 40px;
+                       border-radius: 0px !important;
+                       margin-left:236px;
+                   }
+                 
+               }
+               .upload-img-container{
+                width: 1000px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                margin-top: 40px;
+                .upload-img-contain{
+                    position: relative;
+                    top: -200px;
+                    z-index: 300;
+                    .ivu-upload{
+                         opacity: 0; 
+                         filter:Alpha(opacity=0); 
+                    }
+                    
+                }
+                .item{
+                    width: 304px;
+                    min-height: 191px;
+                    position: relative;
+                    .pic-tips{
+                        li{
+                            list-style: none;
+                            .right{
+                                color: green;
+                            }
+                            span{
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                    p{
+                        text-align: center;
+                        font-size: 16px;
+                        color: #949DA6;
+                        padding: 0 0 10px;
+                    }
+                    .closebtn{
+                        font-size: 30px;        
+                        font-weight: bold;                    
+                        position: absolute;
+                        top: 0px;
+                        right:0px;
+                        &:hover{
+                            color: #fff;
+                        }
+                    }
+                    .identityCard-one{
+                        cursor: pointer;
+                        height: 191px;
+                        position: relative;
+                        img{
+                            width: 100%;
+                            height: 200px;
+                        }
+                        .identity-hover-img{
+                            position: absolute;
+                            top: 0px;
+                            display: none;
+                            z-index: 99;
+                        }
+                        .demo-upload-list{
+                            width: 304px;
+                            height: 100%;
+                            position: absolute;
+                            z-index: 100;
+                            border-radius: 0px !important;
+                        }
+                        &:hover{
+                            .identity-hover-img{
+                                position: absolute;
+                                top: 0px;
+                                display: block;
+                                z-index: 130;
+
+                            }
+                        }
+                    }
+                    .identityCard-two{
+                        cursor: pointer;
+                        height: 191px;
+                        position: relative;
+                        .demo-upload-list{
+                            width: 304px;
+                            height: 100%;
+                            position: absolute;
+                            z-index: 100;
+                            border-radius: 0px !important;
+
+                        }
+                        img{
+                            width: 100%;
+                            height: 200px;
+
+                        }
+                        .identity-hover-img{
+                            position: absolute;
+                            top: 0px;
+                            display: none;
+                            z-index: 99;
+
+                        }
+                        &:hover{
+                            .identity-hover-img{
+                                display: block;
+                            }
+                        }
+
+                    }
+                    .identityCard-three{
+                        cursor: pointer;
+                        height: 191px;
+                        position: relative;
+                        .demo-upload-list{
+                            width: 304px;
+                            height: 100%;
+                            position: absolute;
+                            z-index: 100;
+                            border-radius: 0px !important;
+                        }
+                        img{
+                            width: 100%;
+                            height: 200px;
+                        }
+                        .identity-hover-img{
+                            position: absolute;
+                            top: 0px;
+                            display: none;
+                            z-index: 99;
+                        }
+                        &:hover{
+                            .identity-hover-img{
+                                display: block;
+                            }
+                        }
+
+                    }
+                    ul{
+                        margin-top: 30px;
+                        li{
+                            color: #949DA6;
+                            font-size: 12px;
+                            padding-left: 10px;
+                            list-style-type: disc;
+                            list-style-position: inside;
+                            text-indent: 0px;
+                        }
+                    }
+                   
+                }
+            }
+            .button-container{
+                width: 260px;
+                margin: 0 auto;
+                margin-top: 63px;
+                padding-bottom: 63px;
+            }
+            }
+            
+        }
+     }
+     .footerBox{
+         flex: 0 0 auto;
+     }
+     
+ }
+

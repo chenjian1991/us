@@ -1,0 +1,258 @@
+.root{
+    .banner{
+        height: 510px;
+        background: url('../../assets/images/dnet/banner.svg') no-repeat center;
+        background-size: cover;
+        text-align: center;
+        .hero-content{
+            margin:0 auto;
+            padding-top:200px;
+            width:1000px;
+            color:#fff;
+            img{
+                margin-bottom:6px;
+                width:86px;
+            }
+            h3{
+                font-size:66px;
+                font-weight: 500;
+            }
+            p{
+                font-size: 16px;  
+                color:#fff; 
+            }
+        }
+        
+    }
+    .token-box{
+        margin: -50px auto 0;
+        width: 1000px;
+        background: #fff;
+        border-radius: 4px 4px 0 0;
+        .token-input{
+            width: 1000px;
+            padding: 33px 0 45px;
+            background: #fff;
+            box-shadow: 0px 0px 20px 0px rgba(133, 132, 132, 0.3);
+            border-radius: 4px;
+            text-align: center;
+        }
+        .token-activity{
+            width:930px;
+            margin:0 auto;
+            padding: 35px 0 0;
+            .timer-text{
+                text-align: right;
+                font-size:12px;
+                color:#7c8697;
+                p{
+                    margin-bottom:5px;
+                    padding-right:5px;
+                    span{
+                        color:#377dff;
+                    }
+                }
+                
+            }
+            .progress_box{
+                height: 34px;
+                width: 100%;
+                background:#e4e7f0;
+                border:5px solid #f7f8fa;
+                border-radius:25px;
+                .progress{
+                    height: 24px;
+                    min-width:40px;
+                    width: 465px;
+                    border-radius:25px 0 0 25px;
+                    background: #377dff;
+                    span{
+                        padding: 0 10px;
+                        display: inline-block;
+                        line-height: 24px;
+                        color:#fff;
+                    }
+                    .progress-info{
+                        padding-right:5px;
+                        float: right;
+                    }
+                }
+            }
+            .progress_text{
+                margin-bottom:34px;
+                padding-top:14px;
+                text-align: right;
+                color:#3d4654;
+                font-size:12px;
+                p{
+                    padding-right:5px;
+                    .active{
+                        font-size:14px;
+                        font-weight: 600;
+                        color: #2c3645;
+                    }
+                }
+                
+            }
+            .btn-box{
+                text-align: center;
+                a{
+                    display: inline-block;
+                    width: 200px;
+                    height: 50px;
+                    line-height: 50px;
+                    color:#377dff;
+                    border:1px solid #377dff;
+                    font-size:14px;
+                }
+            }
+            .activity-text{
+                padding:40px 0;
+                text-align: center;
+                color:#7c8697;
+                font-size:14px;
+            }
+        }
+        .d-driver{
+            height: 1px;
+            background: #f3f3f3;
+        }
+        .realTimeToken-info{
+            -ms-flex-pack: justify;
+            -webkit-box-pack: justify;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: space-between;
+            width: 1000px;
+            padding:60px 18px 0 40px;
+            .realTimeToken-item{
+                margin-bottom:90px;
+                width:300px;
+                text-align: left;
+                color:#2c3645;
+                position: relative;
+                label{
+                    margin-bottom:28px;
+                    border-left:3px solid #377dff;
+                    padding-left:10px;
+                    height: 16px;
+                    line-height: 16px;
+                    font-size:14px;
+                }
+                p{
+                    font-size: 18px;
+                    font-weight: 600;
+                    color:#2c3645;
+                }
+                span{
+                    position: absolute;
+                    bottom:0;
+                    right:0;
+                }
+                span.up{
+                    color:#27a781;
+                }
+                span.down{
+                    color:#dc382c;
+                }
+            }
+        }
+        .tokenInfo-wrap{
+            .token-info{
+                -ms-flex-pack: justify;
+                -webkit-box-pack: justify;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                justify-content: space-between;
+                width: 1000px;
+                text-align: left;
+                font-size:14px;
+                div{
+                    padding-left: 36px;
+                    width:500px;
+                    line-height: 50px;
+                    color:#848996;
+                    span{
+                        color:#2c3645;
+                        a{
+                            color:#377dff;
+                        }
+                    }
+                    .color-blue{
+                        color:#377dff;
+                    }
+                }
+                .team-info{
+                    padding: 20px 0 4px 36px;
+                    img{
+                        width:100px;
+                        height: 100px;
+                        border-radius:4px;
+                        float: left;
+                        margin-right:20px;
+                    }
+                    div{
+                        p{
+                            margin-bottom:16px;
+                            span{
+                                a{
+                                    margin-right:16px;
+                                    color:#36404e;
+                                    font-size:16px;
+                                }
+                                a:hover{
+                                    color:#377dff;
+                                }
+                            }
+                        }
+                    }
+                }
+                .news-info{
+                    width:1000px;
+                    padding: 0 20px;
+                    color:#2d3746;
+                    span{
+                        line-height: 50px;
+                        display: block;
+                        float: right;
+                        color:#787e8c;
+                    }
+                }
+                
+            }
+            .token-info:nth-child(odd)
+            {
+                background:#f7f8fa;
+            }
+
+        }
+
+        .input-text{
+            .equal{
+                color: #697B8C;
+                font-size: 40px;
+                margin-left:20px;
+                margin-right: 20px;
+                position: relative;
+                top: 5px;
+            }
+        }
+
+    }
+
+
+    .section-box{
+        -ms-flex-pack: justify;
+        -webkit-box-pack: justify;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: space-between;
+        width: 1170px;
+        .section-item{
+            width:50%;
+        }
+    }
+}

@@ -1,0 +1,80 @@
+.clearfix:after {
+    content:""; 
+    display: block; 
+    clear:both; 
+ }
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ html,body{
+     font-family: PingFangSC-Regular;
+     height: 100%;
+    // background: url(../../assets/images/register/bg-b@2x.png) no-repeat;
+     background-size: cover;
+     .main_container{
+        height: 100%;
+        display: flex;
+        flex-direction: column; 
+     }
+     .headerbox{
+        flex: 0 0 auto;
+     }
+     #app{
+         height: 100%;
+     }
+     .root{
+         min-height: 100%;
+         flex: 1 0 auto;
+         background: #111E26;
+         .wrapper{
+            width: 100%;
+            padding-top: 20px;
+            background: #111E26;
+           // padding-top: 143px;
+            .register_wraper{
+                width: 1200px;
+                margin:0 auto;
+                height: 818px;
+               .inner_input_login{
+                   width: 580px;
+                   margin: 0 auto; 
+                   padding-top: 108px;
+                   .ivu-form-item{
+                    margin-bottom: 30px;
+                   }
+                   .loginbtn{
+                       font-size: 16px;
+                       font-weight: bold;
+                   }
+                   .login_title{
+                       text-align: center;
+                       font-size: 30px;
+                       color: #2d8cf0;
+                       padding-bottom: 104px;
+                       font-weight: bold;
+                   }
+                   .ivu-btn{
+                       width: 580px;
+                       height: 48px;
+                       font-size:16px;
+                       margin-top: 50px;
+                   }
+                 .login_footer{
+                     display: flex;
+                     justify-content: space-between;
+                     margin-top: 17px;
+                     color:rgba(90,108,177,1);
+                     font-size: 13px;
+                 }
+               }
+            }
+            
+        }
+     }
+     .footerBox{
+         flex: 0 0 auto;
+     }
+     
+ }
+

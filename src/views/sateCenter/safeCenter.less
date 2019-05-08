@@ -1,0 +1,293 @@
+.clearfix:after {
+    content:""; 
+    display: block; 
+    clear:both; 
+ }
+ i,em{
+     font-style: normal;
+ }
+ *{
+     margin: 0;
+     padding: 0;
+ }
+//  html,body,div,span,em,i,a,p,h1,h2,h3,table,tr,td,dl,dt,dd{
+//     font-family: PingFangSC-Regular Microsoft YaHei;
+//  }
+ .ivu-icon{
+    font-family: Ionicons !important;//因为设置了font-family，所以必须再强制设为Ionicons
+ }
+ .alert{
+     font-size: 20px;
+     color: red;
+ }
+ .circle{
+     font-size: 20px;
+     color: green;
+ }
+ .warning{
+     color:#ff9c00;
+     font-size: 20px;
+ }
+ html,body{
+     height: 100%;
+     background: url(../../assets/images/register/bg-b@2x.png) no-repeat;
+     background-size: cover;
+     .main_container{
+        height: 100%;
+        display: flex;
+        flex-direction: column; 
+     }
+     .headerbox{
+        flex: 0 0 auto;
+     }
+     #app{
+         height: 100%;
+     }
+     .root{
+         min-height: 100%;
+         flex: 1 0 auto;
+         //background: #e9ebf1;
+         .wrapper{
+             min-height: 700px;
+             background: #F5F7F8;
+             //padding-top: 143px;
+             .safe_title{
+                  max-width: 1200px;
+                  padding: 20px 0px;
+                  margin: 0 auto;
+                  a{
+                      color: #949DA6;
+                      font-size: 20px;
+                      padding:20px;
+                  }
+             }
+             .safe_container{
+                max-width: 1200px;
+                height: auto;
+                margin: 0 auto;
+                .basic_message{ 
+                    h2{
+                        font-weight: bold;
+                        padding: 10px 0px;
+                        font-size: 16px;
+                        color: #344857;
+                    }
+                    background: #fff;
+                    padding: 0px 20px;
+                    .info-content{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .account-number{
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                        .ff-fee{
+                            li{
+                                span:nth-child(1){
+                                    color: #344857;
+                                    font-size:14px;
+                                    em{
+                                        color: #949DA6;
+                                        padding-right: 10px;
+                                    }
+                                }
+                            }
+                        }
+                        .despoit{
+                            padding: 8px 20px;
+                            color: #FFFFFF;
+                            font-size:14px;
+                            cursor: pointer;
+                            background:rgba(18,134,154,1);
+                        }
+                        ul{
+                            padding-bottom: 10px;
+                            li{
+                                font-size: 14px;
+                                span{
+                                    color: #949DA6;
+                                }
+                                em{
+                                    color: #344857;
+                                }
+                                
+    
+                            }
+                            li:nth-child(2){
+                                margin-left: 25px;
+                            }
+                        }
+                    }
+                 
+                }
+                .safe_level{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 15px;
+                    .level_left{
+                        width: 49%;
+                        background:#fff;
+                        h2{
+                            padding-left: 15px;
+                            height: 49px;
+                            line-height: 49px;
+                            font-weight: bold;
+                            color: #344857;
+                            font-size: 14px;
+                            border-bottom: 1px solid #F5F5F5;
+                        }
+                        .left_content{
+                            display: flex;
+                            justify-content: flex-start;
+                            position: relative;
+                            .level_name{
+                                position: absolute;
+                                left: 59px;
+                                top: 35px;
+                                font-size: 30px;
+                                color: #fff;
+                            }
+                            img{
+                                margin: 15px 0 14px 35px;
+                            }
+                            div{
+                                margin-left: 65px;
+                                padding-top: 17px;
+                                p{
+                                    font-size: 14px;
+                                    color: #949DA6;
+                                    padding-top: 14px;
+                                }
+                            }
+                        }
+                    }
+                    .level_right{
+                        width: 49%;
+                        background:#fff;
+                        h2{
+                            padding-left: 15px;
+                            height: 49px;
+                            line-height: 49px;
+                            font-weight: bold;
+                            color: #344857;
+                            font-size: 14px;
+                            border-bottom: 1px solid #F5F5F5;
+                        }
+                        ul{
+                            padding: 6px;
+                            margin-top: 18px;
+                            li{
+                                display: flex;
+                                justify-content: space-between;
+                                line-height: 48px;
+                                padding:0 20px;
+                                span{
+                                    color: #949DA6;
+                                    font-size: 14px;
+                                }
+                                .trading_pass{
+                                    em{
+                                        padding-right: 10px;
+                                    }
+                                }
+                                a{
+                                    color: #12869A;
+                                    font-size: 14px;
+                                }
+
+                            }
+                        }
+                        
+                    }
+                }
+                .verfification{
+                    max-width: 1200px;
+                    background: #fff;
+                    margin: 0 auto;
+                    margin-top: 15px;
+                    .title{
+                        font-weight: bold;
+                        font-size: 14px !important;
+                        height: 50px;
+                        line-height: 50px;
+                        border-bottom: 1px solid #F5F5F5;
+                        color: #344857;
+                        padding-left: 15px;
+                    }
+                    .vertification_content{
+                        ul{
+                            padding: 0px 15px;
+                            li{
+                                display: flex;
+                                justify-content: space-between;
+                                padding:15px  0px; 
+                                em{
+                                    padding-left: 5px;
+                                    color: #949DA6;
+                                }
+                                span{
+                                    font-size: 12px;
+                                    color: #AAB0CC;
+                                    &:nth-child(1){
+                                        width: 20%;
+                                        display: flex;
+                                        display: -webkit-flex;
+                                        display: -ms-flexbox;
+                                    }
+                                    &:nth-child(2){
+                                        width: 20%;
+                                        color: #344857;
+                                    }
+                                    &:nth-child(3){
+                                        width: 60%;
+                                        color: #949DA6;
+                                    }
+                                    &:nth-child(4){
+                                        color: #12869A;
+                                        font-size: 14px;
+                                        width: 20%;
+                                        text-align: right;
+                                        padding-right: 10px;
+                                        cursor: pointer;
+                                        a{
+                                            color: #12869A;
+                                            font-size: 14px;
+                                        }
+                                    }
+                                   
+                                }
+                            }
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+                }
+
+             }
+         }
+
+
+
+
+
+
+
+
+
+
+     
+     }
+     .footerBox{
+         flex: 0 0 auto;
+     }
+     
+ }
+

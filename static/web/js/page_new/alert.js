@@ -1,1 +1,0 @@
-function alert_box(o){o=o||".alert",$(".mask,"+o).removeClass("dis-n"),$(document.body).css("overflow-y","hidden")}function hide_alert(){$(".mask,.alert").addClass("dis-n"),$(document.body).css("overflow-y","auto")}$("#close_icon").click(function(){hide_alert()});

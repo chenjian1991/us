@@ -1,0 +1,244 @@
+.clearfix:after {
+    content:""; 
+    display: block; 
+    clear:both; 
+ }
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ html,body{
+     font-family: PingFangSC-Regular;
+     height: 100%;
+     background-size: cover;
+     .main_container{
+        height: 100%;
+        display: flex;
+        flex-direction: column; 
+     }
+     .headerbox{
+        flex: 0 0 auto;
+     }
+     #app{
+         height: 100%;
+     }
+     .root{
+         flex: 1 0 auto;
+         min-height: inherit;
+         background-size: cover;
+         .wrapper{
+            width: 100%;
+            background: #F5F7F8;
+            min-height: 700px;
+            .register_wraper{
+                max-width: 1200px;
+                margin:0 auto;
+                height: auto;
+                min-height: 500px;
+                background: #fff;
+                .band-nav{
+                    padding: 20px 10px;
+                    color: #949DA6;
+                    a{
+                        font-size: 14px;
+                        color:rgba(170,176,204,1);
+                    }
+                   
+                }
+                .tips{
+                    padding: 12px 20px;
+                    background:#f7fcfd;
+                    color: #949da6;
+                }
+                // .divider{
+                //     height:1px;
+                //     background:#d6dee1;
+                // }
+               .title{
+                   font-size:30px;
+                   color: #2d8cf0;
+                   text-align: center;
+                   height: 80px;
+                   line-height: 128px;
+                   font-weight: bold;
+               }
+               .inner_input{
+                   width: 750px;
+                   height: auto;
+                   margin: 0 auto; 
+                   margin-top: 100px;
+                .phone{
+                    .phone-item{
+                        div{
+                            display: flex;
+                            justify-content: flex-end;
+                            span{
+                                padding-top: 15px;
+                                min-width: 140px;
+                                text-align: right;
+                                margin-right: 12px;
+                                color:rgba(170,176,204,1);
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+                  .register-title{
+                      padding-bottom: 70px;
+                      .register_on{
+                          color: #2D8BF0;
+                          border-bottom: 1px solid #2D8BF0;
+                      }
+                      ul{
+                          display: flex;
+                          justify-content: space-between;
+                          li{
+                              width: 50%;
+                              color: #666666;
+                              text-align: center;
+                              font-size:16px;
+                              line-height: 24px;
+                              padding-bottom: 20px;
+                              padding-top: 50px;
+                              cursor: pointer;
+                            border-bottom: 1px solid #666666;
+
+                          }
+                      }
+                  }
+                  .form_item{
+                      span{
+                          color: #fff;
+                      }
+                  }
+                    .country_container{
+                        cursor: pointer;
+                        width: 130px;
+                        height: 48px;
+                        border:1px solid #bdc4e1;
+                        line-height: 48px;
+                        text-align: center;
+                        div{
+                            text-align: center;
+                            em{
+                                font-size:20px;
+                            }
+                            i{
+                                font-size:17px;
+                                padding-left: 5px;
+                                margin-top: -6px;
+
+                            }
+                        }
+                        .ivu-select-arrow {
+                            color: #808695;
+                            font-size: 14px;
+                            line-height: 1;
+                            margin-top: -7px;
+                            position: absolute;
+                            right: 8px;
+                            top: 50%;
+                            transition: all .2s ease-in-out;
+                        }
+
+
+                        .select_dropdown{
+                            background-color: #fff;
+                            border-radius: 4px;
+                            box-shadow: 0 1px 6px rgba(0,0,0,.2);
+                            box-sizing: border-box;
+                            margin: 5px 0;
+                            max-height: 200px;
+                            overflow: auto;
+                            padding: 5px 0;
+                            position: absolute;
+                            width: inherit;
+                            z-index: 900;
+                            left: 0px;
+                            width: 580px;
+                            .select_down_list{
+                                    li{
+                                        display: flex;
+                                        justify-content: space-between;
+                                        clear: both;
+                                        color: #515a6e;
+                                        font-size: 12px!important;
+                                        line-height: normal;
+                                        list-style: none;
+                                        margin: 0;
+                                        padding: 7px 16px;
+                                        transition: all .2s ease-in-out;
+                                        white-space: nowrap;
+                                        cursor: pointer;
+                                        &:hover,:active{
+                                            color: #2d8cf0;
+                                            background: #f3f3f3;
+                                        }
+                                        span:nth-child(2){
+                                            color: rgb(204, 204, 204);
+                                        }
+                                    }
+                            }
+                        }
+
+
+
+
+
+
+
+
+                    }
+
+
+
+
+
+                   .smsCode{
+                       position: relative !important;
+                       .btn_contain{
+                           position: absolute;
+                           right: 0px;
+                           top: 0px;
+                           .btn_contain{
+                               background: red;
+                           }
+                       }
+                   }
+                   .agreeAble{
+                       color: #2d8cf0 !important;
+                   }
+                   .ivu-btn{
+                       width: 580px;
+                       height: 48px;
+                       font-size:16px;
+                       background: #12869a;
+                       border-color: #12869a;
+                       border-radius: 5px!important;
+                       &:hover{
+                        background:#108093;
+                    }
+
+                   }
+                   .register_bottom{
+                       text-align: right;
+                       font-size:15px;
+                       margin-top: 10px;
+                       span{
+                            a{
+                                color: #2d8cf0 !important;
+                            }
+                       }
+                       
+                   }
+                 
+               }
+            }
+            
+        }
+     }
+     .footerBox{
+         flex: 0 0 auto;
+     }
+     
+ }

@@ -1,1 +1,0 @@
-function resize(e){window.innerHeight<e+footer+header?$(".container").css("min-height",e+30):$(".container").height(window.innerHeight-header-footer+"px")}var footer=287,header=61,content=$(".content").height();resize(content),window.onresize=function(){resize(content)};
