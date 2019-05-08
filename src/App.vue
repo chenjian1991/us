@@ -46,6 +46,7 @@
             this.$Notice.config({
                 duration: 3
             });
+            console.log('hello')
         }
     }
 </script>
