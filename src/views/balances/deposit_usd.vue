@@ -61,7 +61,7 @@
                </li>
             </ul>
             <div class="information">
-               <Row v-for="item in information">
+               <Row v-for="item in information" :key="item.key">
                   <Col span="7" class="col-left">{{$t(item['key'])}}</Col>
                   <Col span="17" class="col-right">{{item['value']}}</Col>
                </Row>
