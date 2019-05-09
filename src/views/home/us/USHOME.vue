@@ -705,12 +705,42 @@
                 <div class="col-md-5">
                   <div class="mb-5">
                     <h3 class="text-white font-weight-normal">Supreme Swarovski Box Logo Hooded Sweatshirt</h3>
+                    </br>
                     <span class="d-block h6 text-white mb-2">Original Retail Price：$598</span>
                     <span class="d-block h6 text-white mb-2">Market Price：$1403 - Price Quote from StockX</span>
                     <span class="d-block h6 text-white mb-2">Tokens Required for Redemption：59800 Tokens/Hoodie</span>
                     <span class="d-block h6 text-white mb-2">ATO Token Price：0.01$</span>
                     <span class="d-block h6 text-white mb-2">Total ATO sales amount：600,000 Supreme Tokens</span>
-                    <span class="d-block h6 text-white mb-2">ATO Starts in：03 Days，20 Hrs, 15 Mins, 21 Secs</span>
+                    <span class="d-block h6 text-white mb-2">ATO Starts in：
+                      <span>
+                         <!-- Countdown -->
+                        <div class="js-countdown row mb-5"
+                            data-end-date="2019/05/21"
+                            data-month-format="%m"
+                            data-days-format="%D"
+                            data-hours-format="%H"
+                            data-minutes-format="%M"
+                            data-seconds-format="%S">
+                          <div class="col-3">
+                            <strong class="js-cd-days h3 text-primary font-weight-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Days</span>
+                          </div>
+                          <div class="col-3">
+                            <strong class="js-cd-hours h3 text-primary font-weight-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Hours</span>
+                          </div>
+                          <div class="col-3">
+                            <strong class="js-cd-minutes h3 text-primary font-weight-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Mins</span>
+                          </div>
+                          <div class="col-3">
+                            <strong class="js-cd-seconds h3 text-primary font-weight-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Secs</span>
+                          </div>
+                        </div>
+                        <!-- End Countdown -->
+                      </span>
+                    </span>
                   </div>
 
                   <button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Open on 21st May 18:00 (UTC+8)</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token through ATO</strong></span></span></button>&
@@ -1511,6 +1541,7 @@
                     breakpoint: 768,
                     hideTimeOut: 0
                 });
+                 
             // initialization of header
                 $.HSCore.components.HSHeader.init($('#header'));
 
@@ -1531,6 +1562,16 @@
 
                 // initialization of cubeportfolio
                 $.HSCore.components.HSCubeportfolio.init('.cbp');
+
+
+                // initialization of countdowns
+                var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+                  yearsElSelector: '.js-cd-years',
+                  daysElSelector: '.js-cd-days',
+                  hoursElSelector: '.js-cd-hours',
+                  minutesElSelector: '.js-cd-minutes',
+                  secondsElSelector: '.js-cd-seconds'
+                });
 
                 // initialization of sticky blocks
                 setTimeout(function () {
