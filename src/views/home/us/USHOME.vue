@@ -1408,6 +1408,19 @@
                 })
             },
             initWebSocket() {
+              this.initConnect()
+              let self = this;
+              // 断开重连机制,尝试发送消息,捕获异常发生时重连
+              this.timer = setInterval(() => {
+                try {
+                  self.stompClient.send("test");
+                } catch (err) {
+                  console.log("断线了: " + err);
+                  self.initConnect()
+                }
+              }, 5000);
+            },
+            initConnect(){
               const domain = document.domain;
               console.log(domain)
               if(domain.startsWith('www.') || domain.startsWith('us.')){
@@ -1419,23 +1432,7 @@
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }
-              /* let socket = new SockJS('https://www.55.com/xchange/marketdata');
-              debugger */
-              /* this.stompClient = Stomp.over(socket);
-              this.stompClient.debug = null */
-              
               this.connection('btc_usd');
-
-              let self = this;
-              // 断开重连机制,尝试发送消息,捕获异常发生时重连
-              this.timer = setInterval(() => {
-                try {
-                  self.stompClient.send("test");
-                } catch (err) {
-                  console.log("断线了: " + err);
-                  self.connection('btc_usd');
-                }
-              }, 5000);
             },
             connection(symbol) {
                 const sym2 = symbol.toUpperCase().replace(/_/, '');
@@ -1527,7 +1524,7 @@
 
                 // initialization of go to
                 $.HSCore.components.HSGoTo.init('.js-go-to');
-
+                //获得汇率
                 getRealtimeList().then(data => this.USDTUSDD = data.find(item => item.symbol === 'USDTUSDD').last)
                 getRealtimeList().then(data => this.ETHBTCRate = data.find(item => item.symbol === 'ETHBTC').last)
                 
