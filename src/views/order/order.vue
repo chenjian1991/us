@@ -17,7 +17,6 @@
             </TabPane>
          </Tabs>
       </div>
-
       <!--交易密码6个框-->
       <div class="mask" v-if="showPassWordPage" @click="clickMask">
          <div class="alert alert-trade-password dis-n">
@@ -32,7 +31,7 @@
                </div>
                <div class="expired space-between">
                   <span>{{$t("bbjyExpiredTime")}}</span>
-                  <a href="../../securityCenter/setTradingPassword.html">{{$t("bbjyForgetPassword")}}</a>
+                  <router-link to="/originTradePassword">{{$t("bbjyForgetPassword")}}</router-link>
                </div>
                <div class="space-between">
                   <button class="cancel" @click="closePassWordPage">{{$t("bbjyTipCancel")}}</button>
@@ -328,9 +327,9 @@
             data2: [],
             columns3: [
                {
-                  key: 'createdAt',
+                  key: 'updatedAt',
                   render: (h, params) => {
-                     return h('div', {}, moment(params.row['createdAt']).format('YYYY-MM-DD HH:mm:ss'))
+                     return h('div', {}, moment(params.row['updatedAt']).format('YYYY-MM-DD HH:mm:ss'))
                   },
                   renderHeader: (h) => {
                      return h('div', {}, this.$t('bbjyOrderDate'))
