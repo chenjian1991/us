@@ -99,6 +99,7 @@ const interFinanceThree = () =>import(/* webpackChunkName: 'interFinance' */ '..
 const card = () => import(/* webpackChunkName: "chome" */ '../views/visa.vue')
 const redeemyeezy = () => import(/* webpackChunkName: "chome" */ '../views/redeemyeezy.vue')
 const tokenizeyeezy = () => import(/* webpackChunkName: "chome" */ '../views/tokenizeyeezy.vue')
+const Supreme = () => import(/* webpackChunkName: "chome" */ '../views/Supreme.vue')
 
 
 import i18n from '@/locale/index.js';
@@ -133,13 +134,12 @@ const router = new Router({
          component: Test
       },
       {
-         path: '/ushome',
-         name: 'USHOME',
-         redirect: '/home',
+         path: '/supreme',
+         name: 'supreme',
          meta: {
             title: 'HomeTitle'
          },
-         component: USHOME
+         component: Supreme
       },
       {
          path: '/',
@@ -716,7 +716,11 @@ const router = new Router({
 
          ]
       },
-
+      {
+         path: '*',
+         name: 'error_404',
+         component: () => import('@/views/error-page/404.vue')
+       }
    ]
 })
 
