@@ -49,7 +49,7 @@
         <!-- Nav -->
         <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar">
           <!-- Logo -->
-          <router-link class="navbar-brand u-header__navbar-brand" to="/ushome" aria-label="Front">
+          <router-link class="navbar-brand u-header__navbar-brand" to="/home" aria-label="Front">
             <img class="u-header__navbar-brand-default" src="../../assets/images/logo2@x2.png" alt="Logo" style="width:154px;height:45px">
             <img class="u-header__navbar-brand-on-scroll" src="../../assets/images/logo1@x2.png" alt="Logo" style="width:154px;height:45px">
           </router-link>
