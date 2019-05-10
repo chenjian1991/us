@@ -714,26 +714,26 @@
                     <span class="d-block h6 text-white mb-2">ATO Starts in：
                          <!-- Countdown -->
                         <div class="js-countdown row mb-5"
-                            data-end-date="2019/05/21"
+                            data-end-date="2019/05/21 13:00:00"
                             data-month-format="%m"
                             data-days-format="%D"
                             data-hours-format="%H"
                             data-minutes-format="%M"
                             data-seconds-format="%S"
                             style="padding-top:20px">
-                          <div  style="background:red;margin-left:15px">
+                          <div  style="background:#d93649;margin-left:15px">
                             <strong class="js-cd-days h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Days</span>
                           </div>
-                          <div style="background:red;margin-left:15px">
+                          <div style="background:#d93649;margin-left:15px">
                             <strong class="js-cd-hours h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Hours</span>
                           </div>
-                          <div style="background:red;margin-left:15px">
+                          <div style="background:#d93649;margin-left:15px">
                             <strong class="js-cd-minutes h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Mins</span>
                           </div>
-                          <div style="background:red;margin-left:15px">
+                          <div style="background:#d93649;margin-left:15px">
                             <strong class="js-cd-seconds h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Secs</span>
                           </div>
