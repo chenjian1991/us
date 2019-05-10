@@ -709,10 +709,9 @@
                     <span class="d-block h6 text-white mb-2">Original Retail Price：$598</span>
                     <span class="d-block h6 text-white mb-2">Market Price：$1403 - Price Quote from StockX</span>
                     <span class="d-block h6 text-white mb-2">Tokens Required for Redemption：59800 Tokens/Hoodie</span>
-                    <span class="d-block h6 text-white mb-2">ATO Token Price：0.01$</span>
-                    <span class="d-block h6 text-white mb-2">Total ATO sales amount：600,000 Supreme Tokens</span>
+                    <span class="d-block h6 text-white mb-2">ATO Token Price：$0.01</span>
+                    <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：598,000 Supreme Tokens</span>
                     <span class="d-block h6 text-white mb-2">ATO Starts in：
-                      <span>
                          <!-- Countdown -->
                         <div class="js-countdown row mb-5"
                             data-end-date="2019/05/21"
@@ -720,26 +719,26 @@
                             data-days-format="%D"
                             data-hours-format="%H"
                             data-minutes-format="%M"
-                            data-seconds-format="%S">
-                          <div class="col-3">
-                            <strong class="js-cd-days h3 text-primary font-weight-bold mb-0"></strong>
+                            data-seconds-format="%S"
+                            style="padding-top:20px">
+                          <div  style="background:red;margin-left:15px">
+                            <strong class="js-cd-days h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Days</span>
                           </div>
-                          <div class="col-3">
-                            <strong class="js-cd-hours h3 text-primary font-weight-bold mb-0"></strong>
+                          <div style="background:red;margin-left:15px">
+                            <strong class="js-cd-hours h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Hours</span>
                           </div>
-                          <div class="col-3">
-                            <strong class="js-cd-minutes h3 text-primary font-weight-bold mb-0"></strong>
+                          <div style="background:red;margin-left:15px">
+                            <strong class="js-cd-minutes h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Mins</span>
                           </div>
-                          <div class="col-3">
-                            <strong class="js-cd-seconds h3 text-primary font-weight-bold mb-0"></strong>
+                          <div style="background:red;margin-left:15px">
+                            <strong class="js-cd-seconds h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Secs</span>
                           </div>
                         </div>
                         <!-- End Countdown -->
-                      </span>
                     </span>
                   </div>
 
