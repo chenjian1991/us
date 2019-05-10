@@ -1492,6 +1492,7 @@ export default {
    balanceNotice:"提示",
    balanceNoticeCon1:"请您先完成L1实名认证再进行下一步",
    balanceNoticeCon:"请您先完成L2等级身份认证",
+   noticeL1:"去完成",
    noticeL2:"去完成",
    nextTime:"取消",
    balanceDeposit:"USD充值",

@@ -95,7 +95,7 @@
       </div>
       <!--实名认证1-->
       <us-modal v-model="showNoVerification1" className="alertModal" width="750px" title="balanceNotice"
-                okText="noticeL2" cancelText="nextTime" @ok="ok1" @cancel="cancel1" :showBtn="true">
+                okText="noticeL1" cancelText="nextTime" @ok="ok1" @cancel="cancel1" :showBtn="true">
          <div class="alert-content">
             <h4 class="notice">{{$t('balanceNoticeCon1')}}</h4>
          </div>
@@ -483,10 +483,10 @@
                                        if (!this.checkStatus) {
                                           getIdentify(Cookies.get('loginToken')).then(res => {//实名认证
                                              this.checkStatus = res.data.checkStatus
-                                             this.dealCheckStatus(params.row.currency)
+                                             this.dealCheckStatus(params.row.currency, 'deposit')
                                           })
                                        } else {
-                                          this.dealCheckStatus(params.row.currency)
+                                          this.dealCheckStatus(params.row.currency, 'deposit')
                                        }
                                     }
                                  }
@@ -509,12 +509,14 @@
                               on: {
                                  click: () => {
                                     if (withdraw) {
-                                       this.$router.push({
-                                          path: 'withdrawal',
-                                          query: {
-                                             'currency': params.row.currency
-                                          }
-                                       })
+                                       if (!this.checkStatus) {
+                                          getIdentify(Cookies.get('loginToken')).then(res => {//实名认证
+                                             this.checkStatus = res.data.checkStatus
+                                             this.dealCheckStatus(params.row.currency, 'withdrawal')
+                                          })
+                                       } else {
+                                          this.dealCheckStatus(params.row.currency, 'withdrawal')
+                                       }
                                     }
                                  }
                               }
@@ -924,10 +926,10 @@
                return bigDecimal.round(scientificToNumber(number), num)
             }
          },
-         dealCheckStatus(currency) {
+         dealCheckStatus(currency, path) {
             if (this.checkStatus === "PASSED") {
                this.$router.push({
-                  path: 'deposit',
+                  path: path,
                   query: {
                      'currency': currency
                   }
