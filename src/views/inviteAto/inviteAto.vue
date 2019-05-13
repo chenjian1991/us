@@ -126,7 +126,7 @@ export default {
             return{
                 loginflag:false,
                 modal1:false,
-                inviteLink:'http://localhost:8080/#/beinvited'
+                inviteLink:'http://uspc.55.exchange:8880/#/beinvited'
             }
         },
         methods:{
