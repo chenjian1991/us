@@ -64,44 +64,9 @@ export default {
         },
         mounted(){
                  $.HSCore.components.HSHeader.init($('#header'));
-                // initialization of unfold component
-                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
-                    afterOpen: function () {
-                    $(this).find('input[type="search"]').focus();
-                    }
-                });
-
-                // initialization of malihu scrollbar
-                $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
-
-                // initialization of forms
                 $.HSCore.helpers.HSFocusState.init();
-
-                // initialization of form validation
-                $.HSCore.components.HSValidation.init('.js-validate', {
-                    rules: {
-                    confirmPassword: {
-                        equalTo: '#password'
-                    }
-                    }
-                });
-
-                // initialization of show animations
-                $.HSCore.components.HSShowAnimation.init('.js-animation-link');
-
-                // initialization of slick carousel
-                $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
-
-                // initialization of autonomous popups
-                $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-shopping-cart-window', {
-                    autonomous: true
-                });
-
-                // initialization of go to
                 $.HSCore.components.HSGoTo.init('.js-go-to');
-                $.HSCore.components.HSModalWindow.init('.js-modal-window', {// 弹窗
-                    autonomous: true
-                });
+            
         }
 }
 </script>

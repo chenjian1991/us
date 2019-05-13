@@ -100,7 +100,7 @@
         title='您的邀请链接是'
        >
         <p>好友喊你来助力55 ATO，注册充值即获得100 Supreme，快来参加吧</p>
-        <p >https://us.55gm.co/#/beinvited</p>
+        <p >http://uspc.55.exchange:8880/#/beinvited</p>
         <div slot="footer">
             <Button type="primary" size="large"   @click="del">关闭</Button>
             <Button type="primary" size="large" v-clipboard:copy="inviteLink" v-clipboard:success="onCopy">复制</Button>
@@ -126,7 +126,7 @@ export default {
             return{
                 loginflag:false,
                 modal1:false,
-                inviteLink:'http://uspc.55.exchange:8880/#/beinvited'
+                inviteLink:'好友喊你来助力55 ATO，注册充值即获得100 Supreme，快来参加吧,http://uspc.55.exchange:8880/#/beinvited'
             }
         },
         methods:{
@@ -156,49 +156,12 @@ export default {
             joinTelegram(){
                  window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
             }
-            
-
         },
         mounted(){
                  $.HSCore.components.HSHeader.init($('#header'));
-                // initialization of unfold component
-                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
-                    afterOpen: function () {
-                    $(this).find('input[type="search"]').focus();
-                    }
-                });
-
-                // initialization of malihu scrollbar
-                $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
-
-                // initialization of forms
-                $.HSCore.helpers.HSFocusState.init();
-
-                // initialization of form validation
-                $.HSCore.components.HSValidation.init('.js-validate', {
-                    rules: {
-                    confirmPassword: {
-                        equalTo: '#password'
-                    }
-                    }
-                });
-
-                // initialization of show animations
-                $.HSCore.components.HSShowAnimation.init('.js-animation-link');
-
-                // initialization of slick carousel
-                $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
-
-                // initialization of autonomous popups
-                $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-shopping-cart-window', {
-                    autonomous: true
-                });
-
-                // initialization of go to
-                $.HSCore.components.HSGoTo.init('.js-go-to');
-                $.HSCore.components.HSModalWindow.init('.js-modal-window', {// 弹窗
-                    autonomous: true
-                });
+                  $.HSCore.helpers.HSFocusState.init();
+                  $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+                  $.HSCore.components.HSGoTo.init('.js-go-to');
                 this.judgeLogin()
         }
 }
