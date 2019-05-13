@@ -58,7 +58,7 @@
             <button  @click='popup' v-if="loginflag"  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得30 Supreme通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
             <button @click='gotoLogin' v-else target="_blank" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得30 Supreme通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
             <br>
-            <button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
+            <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
 
 
           </div>
@@ -152,6 +152,9 @@ export default {
             gotoLogin(){
                 // window.open('http://47.75.120.27:8030/mobile/#/login?from=inviteATO')
                 window.location.href='http://47.75.120.27:8030/mobile/#/login?from=inviteATO'
+            },
+            joinTelegram(){
+                 window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
             }
             
 
