@@ -100,7 +100,7 @@
         title='您的邀请链接是'
        >
         <p>好友喊你来助力55 ATO，注册充值即获得100 Supreme，快来参加吧</p>
-        <p >http://localhost:8080/#/beinvited</p>
+        <p >https://us.55gm.co/#/beinvited</p>
         <div slot="footer">
             <Button type="primary" size="large"   @click="del">关闭</Button>
             <Button type="primary" size="large" v-clipboard:copy="inviteLink" v-clipboard:success="onCopy">复制</Button>
