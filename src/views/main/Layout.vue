@@ -20,8 +20,8 @@
         <Footer></Footer>
         <div class="footerTips" >
             <div class="cookiesBox" v-if="isShowCookiesBox">
-                Our site uses cookies. By continuing to use our site you are agreeing to our  
-                <router-link to="/privacy">Cookie Policy</router-link> . <span class="cookiesBtn" @click="closeCookiesBox">OK, I UNDERSTAND</span> 
+                <div>Our site uses cookies. By continuing to use our site you are agreeing to our <router-link to="/privacy" class="gotoPolicy">Cookie Policy</router-link> .</div>
+                <div class="cookiesBtn" @click="closeCookiesBox">OK, I UNDERSTAND</div> 
             </div>
             <div class="ipBox" v-if="isShowIPModal">
                 <div class="ipText">{{message}}</div>
@@ -154,14 +154,20 @@
         z-index: 90;
         .cookiesBox{
             width: 100%;
-            background: rgba(33,40,48,.8);
+            background: rgba(48,70,85,.9);
             color: #fff;
-            padding:10px 20px;
+            padding:10px 35px;
+            display: flex;
+            justify-content: space-between;
             text-align: center;
             font-size: 14px;
             .cookiesBtn{
                 color: #12869a;
                 cursor: pointer;
+            }
+            .gotoPolicy{
+                color: #fff;
+                text-decoration: underline !important;
             }
         }
         .ipBox{
@@ -179,7 +185,7 @@
             }
             .closeBtn{
                 margin-left: 20px;
-                color: #fff;
+                color: #12869a;
                 &:hover{
                     color: #fff;
                 }
