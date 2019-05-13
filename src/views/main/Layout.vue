@@ -18,11 +18,15 @@
             <router-view></router-view>
         </div>
         <Footer></Footer>
-        <div class="footerTips" v-if="isShowIPModal">
-            <p>
-                {{message}}
-            </p>
-            <a class="closeBtn" @click="closeIpmodal">CLOSE</a>
+        <div class="footerTips" >
+            <div class="cookiesBox" v-if="isShowCookiesBox">
+                Our site uses cookies. By continuing to use our site you are agreeing to our  
+                <router-link to="/privacy">Cookie Policy</router-link> . <span class="cookiesBtn" @click="closeCookiesBox">OK, I UNDERSTAND</span> 
+            </div>
+            <div class="ipBox" v-if="isShowIPModal">
+                <div class="ipText">{{message}}</div>
+                <a class="closeBtn" @click="closeIpmodal">CLOSE</a>
+            </div>
         </div>
     </div>
 </template>
@@ -38,6 +42,7 @@
             return{
                 ifAPP:false,
                 isShowIPModal:true,
+                isShowCookiesBox:false,
                 showTradeHeader:false,
                 androidURL:'',
                 download:true,
@@ -78,6 +83,10 @@
             },
             closeIpmodal(){
                 this.isShowIPModal = false
+            },
+            closeCookiesBox(){
+                this.isShowCookiesBox = false
+                window.localStorage.setItem('COOKIESMODAL','CLOSED')
             }
         },
         watch:{
@@ -104,6 +113,13 @@
             this.getAndroidUrl();
             this.judgePCorMoble()
 
+            let cookiesModalFlag = window.localStorage.getItem('COOKIESMODAL')
+                console.log(123312,cookiesModalFlag !== 'CLOSED')
+            if(cookiesModalFlag !== 'CLOSED'){
+                this.isShowCookiesBox = true
+            }else{
+                this.isShowCookiesBox = false
+            }
             //获取拦截公告
             //  getApi('/api/content/ip-restrict').then(data =>{
             //          if(data.state == 'RESTRICT'){
@@ -132,25 +148,41 @@
 </style>
 <style lang="less" scoped>
     .footerTips{
-        align-items:flex-start;
-        background: rgba(33,40,48,.9);
-        flex-direction: row;
         bottom: 0;
-        display: flex;
-        justify-content:space-between;
         position: fixed;
         width: 100vw;
         z-index: 90;
-        padding:32px 20px;
-        p{
-            padding:0 10px !important;
-            position: relative;
+        .cookiesBox{
+            width: 100%;
+            background: rgba(33,40,48,.8);
             color: #fff;
+            padding:10px 20px;
+            text-align: center;
+            font-size: 14px;
+            .cookiesBtn{
+                color: #12869a;
+                cursor: pointer;
+            }
         }
-        .closeBtn{
+        .ipBox{
+            width: 100%;
+            background: rgba(33,40,48,.9);
+            padding:10px 35px !important;
+            text-align: left;
+            position: relative;
+            display: flex;
             color: #fff;
-            &:hover{
+            font-size: 14px;
+            margin-bottom: 0;
+            .ipText{
+
+            }
+            .closeBtn{
+                margin-left: 20px;
                 color: #fff;
+                &:hover{
+                    color: #fff;
+                }
             }
         }
     }
