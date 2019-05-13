@@ -94,6 +94,9 @@ const Chome = () => import(/* webpackChunkName: "chome" */ '../views/home/C-home
 const interFinanceOne = () =>import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceOne.vue') 
 const interFinanceTWO = () =>import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceTWO.vue') 
 const interFinanceThree = () =>import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceThree.vue') 
+const inviteAto = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/inviteAto.vue') 
+const beinvited = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/beinvited.vue') 
+const registerSuccess = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/registerSuccess.vue') 
 
 
 const card = () => import(/* webpackChunkName: "chome" */ '../views/visa.vue')
@@ -141,6 +144,30 @@ const router = new Router({
          },
          component: Supreme
       },
+         {//inviteAto
+            path: '/inviteAto',
+            name: 'inviteAto',
+            meta: {
+               title: ''
+            },
+            component: inviteAto
+         },
+         {//beinvited
+            path: '/beinvited',
+            name: 'beinvited',
+            meta: {
+               title: ''
+            },
+            component: beinvited
+         },
+         {//registerSuccess
+            path: '/registerSuccess',
+            name: 'registerSuccess',
+            meta: {
+               title: ''
+            },
+            component: registerSuccess
+         },
       {
          path: '/',
          name: '',
@@ -713,6 +740,8 @@ const router = new Router({
                },
                component: interFinanceThree
             },
+         
+            
 
          ]
       },

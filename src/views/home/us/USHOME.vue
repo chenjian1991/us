@@ -419,7 +419,7 @@
                             <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" :href="btcCommunityURL" target="_blank">BTC Community <span class="fa fa-angle-right ml-2"></span></a>   
                             <!-- <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" href="index.html" target="_blank">EOS Commuity <span class="fa fa-angle-right ml-2"></span></a> -->
                             <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" :href="ethCommunityURL" target="_blank">ETH Community <span class="fa fa-angle-right ml-2"></span></a> 
-                            <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" :href="yeezyCommunityURL" target="_blank">YEEZY Community <span class="fa fa-angle-right ml-2"></span></a>
+                            <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" :href="supremeURL" target="_blank">Supreme Community <span class="fa fa-angle-right ml-2"></span></a>
                         </div>
                         <!-- End Testimonials -->
                         </div>
@@ -449,60 +449,60 @@
                             "slidesToShow": 1
                             }
                         }]'>
-                        <div class="js-slide rounded-pill p-2">
-                        <!-- Authors -->
-                        <div class="media align-items-center">
-                            <div class="d-flex mr-3">
-                            <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img1.jpg" alt="Image Description">
-                            </div>
-                            <div class="media-body">
-                            <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Lisa Loud</h4>
-                            <p class="small u-slick--pagination-testimonials-v1__text mb-0">BitMEX - Head of Marketing</p>
-                            </div>
-                        </div>
-                        <!-- End Authors -->
-                        </div>
-                        <div class="js-slide rounded-pill p-2">
-                        <!-- Authors -->
-                        <div class="media align-items-center">
-                            <div class="d-flex mr-3">
-                            <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
-                            </div>
-                            <div class="media-body">
-                            <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Logan Schauer</h4>
-                            <p class="small u-slick--pagination-testimonials-v1__text mb-0">CEO of Crypto Media Group</p>
-                            </div>
-                        </div>
-                        <!-- End Authors -->
-                        </div>
+                        <a class="js-slide rounded-pill p-2" :href="LisaURL" target="_blank">
+                          <!-- Authors -->
+                              <div class="media align-items-center">
+                                  <div class="d-flex mr-3">
+                                  <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img1.jpg" alt="Image Description">
+                                  </div>
+                                  <div class="media-body">
+                                  <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Lisa Loud</h4>
+                                  <p class="small u-slick--pagination-testimonials-v1__text mb-0">BitMEX - Head of Marketing</p>
+                                  </div>
+                              </div>
+                          <!-- End Authors -->
+                        </a>
+                        <a class="js-slide rounded-pill p-2" :href="LoganURL" target="_blank">
+                              <!-- Authors -->
+                              <div class="media align-items-center">
+                                  <div class="d-flex mr-3">
+                                  <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
+                                  </div>
+                                  <div class="media-body">
+                                  <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Logan Schauer</h4>
+                                  <p class="small u-slick--pagination-testimonials-v1__text mb-0">CEO of Crypto Media Group</p>
+                                  </div>
+                              </div>
+                              <!-- End Authors -->
+                        </a>
                         
-                        <div class="js-slide rounded-pill p-2">
-                        <!-- Authors -->
-                        <div class="media align-items-center">
-                            <div class="d-flex mr-3">
-                            <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img4.jpg" alt="Image Description">
+                        <a class="js-slide rounded-pill p-2" :href="GeoffURL" target="_blank">
+                            <!-- Authors -->
+                            <div class="media align-items-center">
+                                <div class="d-flex mr-3">
+                                <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img4.jpg" alt="Image Description">
+                                </div>
+                                <div class="media-body">
+                                <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Geoff Shearer</h4>
+                                <p class="small u-slick--pagination-testimonials-v1__text mb-0">Director of 55 Social</p>
+                                </div>
                             </div>
-                            <div class="media-body">
-                            <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Geoff Shearer</h4>
-                            <p class="small u-slick--pagination-testimonials-v1__text mb-0">Director of 55 Social</p>
-                            </div>
-                        </div>
-                        <!-- End Authors -->
-                        </div>
+                            <!-- End Authors -->
+                        </a>
 
-                        <div class="js-slide rounded-pill p-2">
-                        <!-- Authors -->
-                        <div class="media align-items-center">
-                            <div class="d-flex mr-3">
-                            <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img2.jpg" alt="Image Description">
-                            </div>
-                            <div class="media-body">
-                            <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Jason Zhao</h4>
-                            <p class="small u-slick--pagination-testimonials-v1__text mb-0">Top Crypto Trader</p>
-                            </div>
-                        </div>
-                        <!-- End Authors -->
-                        </div>
+                        <a class="js-slide rounded-pill p-2" :href="JasonURL" target="_blank">
+                              <!-- Authors -->
+                              <div class="media align-items-center">
+                                  <div class="d-flex mr-3">
+                                  <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img2.jpg" alt="Image Description">
+                                  </div>
+                                  <div class="media-body">
+                                  <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Jason Zhao</h4>
+                                  <p class="small u-slick--pagination-testimonials-v1__text mb-0">Top Crypto Trader</p>
+                                  </div>
+                              </div>
+                              <!-- End Authors -->
+                        </a>
                     </div>
                     <!-- End Slick Carousel - Testimonials Pagination Nav -->
                     </div>
@@ -1121,7 +1121,7 @@
                             <div class="row">
                                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                 <h3 class="h5 mb-4">Darren Sandler</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Chief Compliance Officer</span>
+                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3" style="text-align:left">Chief Compliance Officer </br></br> General Counsel</span>
                                 <p class="font-size-14">Darren is Chief Compliance Officer and General Counsel. Previously, Darren was an attorney at Kirkland & Ellis LLP and Schulte Roth & Zabel LLP. While at Kirkland and Ellis, Darren led the firm's first blockchain client matter.</p>
 
                                 </div>
@@ -1421,6 +1421,10 @@
               btcCommunityURL:'',
               ethCommunityURL:'',
               yeezyCommunityURL:'',
+              JasonURL:'',
+              LisaURL:'',
+              LoganURL:'',
+              GeoffURL:'',
               supremeURL:'',
               loginToken:Cookies.get('loginToken'),
               chatToken:'',
@@ -1438,6 +1442,37 @@
                         email:this.emailName,
                     }
                 })
+            },
+            initURL(){
+                if(this.loginToken){
+                    postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
+                      this.chatToken = data.token +'/'
+                      // this.iframeURL = `${CHAT_URL.baseURL}${this.chatToken}/`+encodeURIComponent(`${CHAT_URL.englishURL}`)
+                      //社区链接
+                      this.siteCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
+                      this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
+                      this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
+                      this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
+                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
+                      this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
+                      this.JasonURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
+                      this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
+                      this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
+                  })
+                }else{
+                      this.chatToken = 'null/'
+                      //社区链接
+                      this.siteCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
+                      this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
+                      this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
+                      this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
+                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
+                      this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
+                      this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
+                      this.JasonURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
+                      this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
+                      this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
+                }
             },
             transfer(){
                 this.$router.push({
@@ -1554,6 +1589,7 @@
               this[_Array] = arr
             }
         },
+        
         beforeMount(){
            
         },
@@ -1610,35 +1646,18 @@
                 getRealtimeList().then(data => this.ETHBTCRate = data.find(item => item.symbol === 'ETHBTC').last)
                 
                 this.initWebSocket()
-
-                if(this.loginToken){
-                    postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
-                      this.chatToken = data.token +'/'
-                      // this.iframeURL = `${CHAT_URL.baseURL}${this.chatToken}/`+encodeURIComponent(`${CHAT_URL.englishURL}`)
-                      //社区链接
-                      this.siteCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
-                      this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
-                      this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
-                      this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
-                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
-                      
-                  })
-                }else{
-                      this.chatToken = 'null/'
-                      //社区链接
-                      this.siteCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
-                      this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
-                      this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
-                      this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
-                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
-                      
-                }
+                this.initURL()
 
         },
         beforeDestroy() {
           // 页面离开时断开连接,清除定时器
           this.disconnect();
           clearInterval(this.timer);
+        },
+        computed: {
+         loginStatus() {
+            return this.$store.state.app.isLogin;
+         },
         },
         watch:{
           BTCUSD(){
@@ -1655,7 +1674,19 @@
           },
           ZECBTC(){
             this.gbboWave('ZECBTC')
-          }
+          },
+                   loginStatus(val, oldVal) {
+            if (val) {
+               this.isLogin = true;
+            } else {
+               this.isLogin = false;
+
+            }
+            setTimeout(()=>{
+                this.initURL()
+            },1000)
+            
+         },
         }
     }
 </script>
