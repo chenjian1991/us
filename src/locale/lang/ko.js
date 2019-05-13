@@ -1678,6 +1678,7 @@ export default {
    balanceNotice:"Notice",
    balanceNoticeCon1:"Please complete Level 1 Verification before continuing",
    balanceNoticeCon:"Please complete Level 2 Verification before continuing.",
+   noticeL1:"Complete L1 verification",
    noticeL2:"Complete L2 Verification",
    nextTime:"Cancel",
    balanceDeposit:"DEPOSIT USD",

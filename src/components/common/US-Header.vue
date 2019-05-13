@@ -49,7 +49,7 @@
         <!-- Nav -->
         <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar">
           <!-- Logo -->
-          <router-link class="navbar-brand u-header__navbar-brand" to="/ushome" aria-label="Front">
+          <router-link class="navbar-brand u-header__navbar-brand" to="/home" aria-label="Front">
             <img class="u-header__navbar-brand-default" src="../../assets/images/logo2@x2.png" alt="Logo" style="width:154px;height:45px">
             <img class="u-header__navbar-brand-on-scroll" src="../../assets/images/logo1@x2.png" alt="Logo" style="width:154px;height:45px">
           </router-link>
@@ -251,13 +251,13 @@
                     <!-- Mega Menu Banner -->
                     <div class="d-none d-md-block u-header__banner-v2 pr-4">
                         <div class="d-flex align-items-end">
-                        <img class="img-fluid mr-4" src="assets/svg/bg/yezi.png" alt="Image Description" style="width: 200px;">
+                        <img class="img-fluid mr-4" src="assets/svg/bg/supreme.png" alt="Image Description" style="width: 200px;">
                         <div class="py-4">
                             <div class="mb-4">
-                            <strong class="d-block u-header__banner-v2-title mb-2 text-primary-55">YEEZY Token</strong>
-                            <span class="d-block u-header__banner-v2-text">Assets backed token supported by YEEZY 350 sneakers</span>
+                            <strong class="d-block u-header__banner-v2-title mb-2 text-primary-55">Supreme Token</strong>
+                            <span class="d-block u-header__banner-v2-text">Asset backed token supported by Supreme products</span>
                             </div>
-                            <button data-v-de088f66="" type="button" class="btn btn-xs btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2"><span><span data-v-de088f66="" class="d-flex mr-3"><span data-v-de088f66=""></span></span><span data-v-de088f66="" class="media-body"><span data-v-de088f66="" class="d-block">coming soon</span><strong data-v-de088f66="" class="font-size-14">Buy YEEZY Tokens</strong></span></span></button>
+                            <button data-v-de088f66="" type="button" class="btn btn-xs btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2"><span><span data-v-de088f66="" class="d-flex mr-3"><span data-v-de088f66=""></span></span><span data-v-de088f66="" class="media-body"><span data-v-de088f66="" class="d-block">coming soon</span><strong data-v-de088f66="" class="font-size-14">Buy Supreme Token</strong></span></span></button>
                             <!-- <a class="btn btn-sm btn-primary  transition-3d-hover text-white" @click="gotoYEEZY" >Buy YEEZY Token <span class="fa fa-angle-right ml-2"></span></a> -->
                         </div>
                         </div>

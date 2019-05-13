@@ -511,13 +511,11 @@
             <!--  55 social end -->
 
             <!-- yezi start -->
-                <!-- Description Section -->
-                <div class="container u-space-3">
+                <!-- <div class="container u-space-3">
                   <div class="h2 text-primary-55 text-center py-3">Unrestricted flow of assets</div>
                   <div class="h6 text-center text-secondary pb-3">Buy and sell tokenized limited edition items</div>
                   <div class="row">
                     <div class="col-lg-7 mb-7 mb-lg-0">
-                      <!-- Cubeportfolio -->
                       <div class="cbp"
                           data-layout="grid"
                           data-animation="quicksand"
@@ -526,19 +524,15 @@
                           data-media-queries='[
                             {"width": 300, "cols": 1}
                           ]'>
-                        <!-- Item -->
                         <div class="cbp-item">
                           <div class="cbp-caption">
                             <img class="rounded" src="assets/yeezy.jpg" alt="Image Description">
                           </div>
                         </div>
-                        <!-- End Item -->
                       </div>
-                      <!-- End Cubeportfolio -->
                     </div>
 
                     <div id="stickyBlockStartPoint" class="col-lg-5">
-                      <!-- Sticky Block -->
                       <div class="js-sticky-block pl-lg-4"
                           data-sticky-view="lg"
                           data-start-point="#stickyBlockStartPoint"
@@ -553,7 +547,6 @@
 
                         <hr class="my-5">
 
-                        <!-- List -->
                         <ul class="list-unstyled mb-0">
                           <li  class="media mb-1">
                             <div class="d-flex w-40 w-sm-30">
@@ -588,36 +581,15 @@
                               </small>
                             </div>
                           </li>
-                          <!-- <li class="media">
-                            <div class="d-flex w-40 w-sm-30">
-                              <h4 class="h6">Token Price</h4>
-                            </div>
-                            <div class="media-body">
-                              <small class="d-block text-muted mb-1 pl-4">
-                                8583
-                              </small>
-                            </div>
-                          </li> -->
+                          
                         </ul>
-                        <!-- End List -->
 
                         <hr class="my-5">
 
-                        <!-- Button -->
-                          <!-- <button type="button" @click="$router.push('/exchange?site=c')" class="btn btn-xs btn-primary u-btn-primary u-btn-wide transition-3d-hover text-left mb-2 mr-sm-1">
-                            <span class="media align-items-center">
-
-                              <span class="media-body">
-                                <span class="d-block"></span>
-                                <strong class="font-size-14">Buy YEEZY Tokens</strong>
-                              </span>
-                            </span>
-                          </button> --> 
+                       
                           <button data-v-de088f66="" type="button" class="btn btn-xs btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2"><span><span data-v-de088f66="" class="d-flex mr-3"><span data-v-de088f66=""></span></span><span data-v-de088f66="" class="media-body"><span data-v-de088f66="" class="d-block">coming soon</span><strong data-v-de088f66="" class="font-size-14">Buy YEEZY Tokens</strong></span></span></button>
                           <br>
-                          <!-- End Button -->
 
-                          <!-- Button -->
                           <a :href="yeezyCommunityURL" target="_blank">
                           <button type="button" class="btn btn-xs btn-primary u-btn-primary u-btn-wide transition-3d-hover text-left mb-2">
                             <span class="media align-items-center">
@@ -628,8 +600,6 @@
                             </span>
                           </button>
                           </a>
-                          <!-- End Button -->
-                          <!-- Button -->
                           <br>
                           <button type="button" @click="$router.push('/tokenizeyeezy')" class="btn btn-xs btn-primary u-btn-primary u-btn-wide transition-3d-hover text-left mb-2">
                             <span class="media align-items-center">
@@ -639,25 +609,150 @@
                               </span>
                             </span>
                           </button>
-                          <!-- End Button -->
-                                   <br>     <!-- Button -->
+                                   <br>     
                           <button data-v-de088f66="" type="button" class="btn btn-xs btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2"><span><span data-v-de088f66="" class="d-flex mr-3"><span data-v-de088f66=""></span></span><span data-v-de088f66="" class="media-body"><span data-v-de088f66="" class="d-block">coming soon</span><strong data-v-de088f66="" class="font-size-14">Redeem YEEZY Sneaker with Tokens</strong></span></span></button>
-                          <!-- <button type="button" @click="$router.push('/redeemyeezy')" class="btn btn-xs btn-primary u-btn-primary u-btn-wide transition-3d-hover text-left mb-2">
-                            <span class="media align-items-center">
-                              <span class="media-body">
-                                <span class="d-block"></span>
-                                <strong class="font-size-14">Redeem YEEZY Sneaker with Tokens</strong>
-                              </span>
-                            </span>
-                          </button> -->
-                          <!-- End Button -->
+                          
                       </div>
-                      <!-- End Sticky Block -->
+                    </div>
+                  </div>
+                </div> -->
+            <!-- yezi end -->
+          <!-- ATO -->
+          <div class="container u-space-3" id="atoRow">
+            <div class="row justify-content-lg-between align-items-lg-center">
+              <div class="col-lg-5 order-lg-2 mb-9 mb-lg-0">
+                <!-- Description -->
+                <h2 class="font-weight-medium">Asset Token Onboarding</h2>
+                <p>55 has designed and implemented a new generation of issuance and supervision mechanisms known as the Asset Token Onboarding (ATO). ATO is designed to protect the investor’s right to know and will be applied throughout the whole lifecycle of a token from listing to delisting. </p >
+                <!-- End Description -->
+
+                <!-- List -->
+                <ul class="list-unstyled text-secondary">
+                  <li class="media my-3">
+                    <div class="d-flex mt-1 mr-2">
+                      <span class="fa fa-check text-success"></span>
+                    </div>
+                    <div class="media-body">
+                      A stack of tokenization utilities  
+                    </div>
+                  </li>
+                  <li class="media my-3">
+                    <div class="d-flex mt-1 mr-2">
+                      <span class="fa fa-check text-success"></span>
+                    </div>
+                    <div class="media-body">
+                      Local marketing team to bring your product to market
+                    </div>
+                  </li>
+                  <li class="media my-3">
+                    <div class="d-flex mt-1 mr-2">
+                      <span class="fa fa-check text-success"></span>
+                    </div>
+                    <div class="media-body">
+                      Token can be listed only if oversubscribed by 2.5 times during pre-sale.
+                    </div>
+                  </li>
+                </ul>
+                <!-- End List -->
+                </br>
+                For ATO, please send email to 
+                <a  href="mailto:ato@55.com">
+                            <Icon class="email-icon" type="ios-mail-outline" />
+                            ato@55.com
+                        </a>
+              </div>
+
+              <div class="col-lg-7 order-lg-1">
+
+                <div class="text-center" >
+                  <img src="assets/25_1.png" style="width:100%;height:100%" alt="">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        <!-- End ATO -->   
+            <!-- supreme start -->
+            <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
+                <div class="container u-space-2">
+                  <div class="col-md-12 col-lg-12 col-xl-12">
+                    <div class="text-center mb-4">
+                      <h2 class="h1 text-white font-weight-normal">Upcoming ATO - Supreme Token <img class="img-fluid" src="/assets/svg/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
+                      <p class="lead u-text-light">Buy Supreme tokens through ATO and using tokens to redeem 100% authentic Supreme product at original retail price.</p>
+                    </div>
+                  </div>
+                <br>
+              <div class="row justify-content-md-between">
+                <!-- Item Image -->
+                <div class="col-md-6 mb-7 mb-md-0">
+                  <div class="js-slick-carousel u-slick"
+                      data-infinite="true"
+                      data-arrows-classes="u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
+                      data-arrow-left-classes="fa fa-arrow-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left"
+                      data-arrow-right-classes="fa fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right"
+                      data-pagi-classes="text-center u-slick__pagination u-slick__pagination--white mt-7 mb-0">
+                    <div class="js-slide px-7 my-4">
+                      <img class="img-fluid" src="/assets/svg/supreme/img6.png" alt="Image Description">
+                    </div>
+                    <div class="js-slide px-7 my-4">
+                      <img class="img-fluid" src="/assets/svg/supreme/img7.png" alt="Image Description">
                     </div>
                   </div>
                 </div>
-                <!-- End Description Section -->
-            <!-- yezi end -->
+                <!-- End Item Image -->
+
+                <!-- Content -->
+                <div class="col-md-5">
+                  <div class="mb-5">
+                    <h3 class="text-white font-weight-normal">Supreme Swarovski Box Logo Hooded Sweatshirt</h3>
+                    </br>
+                    <span class="d-block h6 text-white mb-2">Original Retail Price：$598</span>
+                    <span class="d-block h6 text-white mb-2">Market Price：$1403 - Price Quote from StockX</span>
+                    <span class="d-block h6 text-white mb-2">Tokens Required for Redemption：59800 Tokens/Hoodie</span>
+                    <span class="d-block h6 text-white mb-2">ATO Token Price：$0.01</span>
+                    <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：598,000 Supreme Tokens</span>
+                    <span class="d-block h6 text-white mb-2">ATO Starts in：
+                         <!-- Countdown -->
+                        <div class="js-countdown row mb-5"
+                            data-end-date="2019/05/21 13:00:00"
+                            data-month-format="%m"
+                            data-days-format="%D"
+                            data-hours-format="%H"
+                            data-minutes-format="%M"
+                            data-seconds-format="%S"
+                            style="padding-top:20px">
+                          <div  style="background:#d93649;margin-left:15px">
+                            <strong class="js-cd-days h3 text-white font-weight-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Days</span>
+                          </div>
+                          <div style="background:#d93649;margin-left:15px">
+                            <strong class="js-cd-hours h3 text-white font-weight-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Hours</span>
+                          </div>
+                          <div style="background:#d93649;margin-left:15px">
+                            <strong class="js-cd-minutes h3 text-white font-weight-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Mins</span>
+                          </div>
+                          <div style="background:#d93649;margin-left:15px">
+                            <strong class="js-cd-seconds h3 text-white font-weight-bold mb-0"></strong>
+                            <span class="h5 font-weight-normal mb-0">Secs</span>
+                          </div>
+                        </div>
+                        <!-- End Countdown -->
+                    </span>
+                  </div>
+
+                  <button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Open on 21st May 13:00 (UTC+8)</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token through ATO</strong></span></span></button>&
+                  <router-link to="/identiy">
+                    <button type="button" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">KYC before ATO</span><strong data-v-d1e1e420="" class="font-size-14">ID Verification Now</strong></span></span></button>
+                  </router-link>
+                  <a :href="supremeURL" target="_blank"><button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Know more about Supreme</span><strong data-v-d1e1e420="" class="font-size-14">Join Supreme Community</strong></span></span></button></a>
+                </div>
+                <!-- End Content -->
+              </div>
+             </div>
+           </div>
+            <!-- supreme end -->
 
             <!-- Front in Frames Section -->
            <div style="background:#f6f9fc" id="55card">
@@ -821,61 +916,7 @@
                 </div>
             <!-- End Subscribe Section -->
 
-        <!-- ATO -->
-          <div class="container u-space-3" id="atoRow">
-            <div class="row justify-content-lg-between align-items-lg-center">
-              <div class="col-lg-5 order-lg-2 mb-9 mb-lg-0">
-                <!-- Description -->
-                <h2 class="font-weight-medium">Asset Token Onboarding</h2>
-                <p>55 has designed and implemented a new generation of issuance and supervision mechanisms known as the Asset Token Onboarding (ATO). ATO is designed to protect the investor’s right to know and will be applied throughout the whole lifecycle of a token from listing to delisting. </p >
-                <!-- End Description -->
-
-                <!-- List -->
-                <ul class="list-unstyled text-secondary">
-                  <li class="media my-3">
-                    <div class="d-flex mt-1 mr-2">
-                      <span class="fa fa-check text-success"></span>
-                    </div>
-                    <div class="media-body">
-                      A stack of tokenization utilities  
-                    </div>
-                  </li>
-                  <li class="media my-3">
-                    <div class="d-flex mt-1 mr-2">
-                      <span class="fa fa-check text-success"></span>
-                    </div>
-                    <div class="media-body">
-                      Local marketing team to bring your product to market
-                    </div>
-                  </li>
-                  <li class="media my-3">
-                    <div class="d-flex mt-1 mr-2">
-                      <span class="fa fa-check text-success"></span>
-                    </div>
-                    <div class="media-body">
-                      Token can be listed only if oversubscribed by 2.5 times during pre-sale.
-                    </div>
-                  </li>
-                </ul>
-                <!-- End List -->
-                </br>
-                For ATO, please send email to 
-                <a  href="mailto:ato@55.com">
-                            <Icon class="email-icon" type="ios-mail-outline" />
-                            ato@55.com
-                        </a>
-              </div>
-
-              <div class="col-lg-7 order-lg-1">
-
-                <div class="text-center" >
-                  <img src="assets/25_1.png" style="width:100%;height:100%" alt="">
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <!-- End ATO -->            
+               
 
             <!-- Blog Grid Section Read our news & -->
                 <div class="u-bg-light-blue-50">
@@ -1380,6 +1421,7 @@
               btcCommunityURL:'',
               ethCommunityURL:'',
               yeezyCommunityURL:'',
+              supremeURL:'',
               loginToken:Cookies.get('loginToken'),
               chatToken:'',
             }
@@ -1499,6 +1541,7 @@
                     breakpoint: 768,
                     hideTimeOut: 0
                 });
+                 
             // initialization of header
                 $.HSCore.components.HSHeader.init($('#header'));
 
@@ -1519,6 +1562,16 @@
 
                 // initialization of cubeportfolio
                 $.HSCore.components.HSCubeportfolio.init('.cbp');
+
+
+                // initialization of countdowns
+                var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+                  yearsElSelector: '.js-cd-years',
+                  daysElSelector: '.js-cd-days',
+                  hoursElSelector: '.js-cd-hours',
+                  minutesElSelector: '.js-cd-minutes',
+                  secondsElSelector: '.js-cd-seconds'
+                });
 
                 // initialization of sticky blocks
                 setTimeout(function () {
@@ -1542,6 +1595,8 @@
                       this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
                       this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
                       this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
+                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
+                      
                   })
                 }else{
                       this.chatToken = 'null/'
@@ -1550,6 +1605,8 @@
                       this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
                       this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
                       this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
+                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
+                      
                 }
 
         },
