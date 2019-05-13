@@ -162,7 +162,7 @@
             text-align: center;
             font-size: 14px;
             .cookiesBtn{
-                color: #12869a;
+                color: #fff;
                 cursor: pointer;
             }
             .gotoPolicy{
@@ -185,7 +185,7 @@
             }
             .closeBtn{
                 margin-left: 20px;
-                color: #12869a;
+                color: #fff;
                 &:hover{
                     color: #fff;
                 }
