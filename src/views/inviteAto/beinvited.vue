@@ -57,7 +57,7 @@
 
 <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即助力</strong></button>
 <br>
-<button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
+<button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
 
 
 
@@ -119,6 +119,9 @@ export default {
                 // window.open('http://47.75.120.27:8030/mobile/#/phoneRegister?from=bevited')
                 window.location.href='http://47.75.120.27:8030/mobile/#/phoneRegister?from=bevited'
             },
+            joinTelegram(){
+                 window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
+            }
             
 
         },
