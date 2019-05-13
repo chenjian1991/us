@@ -1,29 +1,28 @@
 <template>
     <div id="inviteAto">
   <main id="content" role="main">
+     <div class="container u-space-1">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
+          <h2 class="h5">131****1234邀请您助力55 ATO，注册充值后即可获得30 Supreme H + 3 USDT</h2>
+          <br>
+          <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即助力</strong></button>
+          <br>
+          <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
+        </div>
+      </div>
+    </div>
     <!-- Hero Section -->
     <div class="u-gradient-half-warning-v3">
       <div class="container u-space-2">
-
-<div class="col-md-12 col-lg-12 col-xl-12">
-
-
-<div class="text-center mb-4">
-
-
-  <h2 class="h3 text-white font-weight-normal">邀请好友助力获得Supreme潮牌通证，攒够潮牌通证换取正品Supreme产品 <img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
-
-
-
-  <p class="lead u-text-light">
-    
-被邀用户完成注册、实名认证、充值不低于10 USDT等值的数字货币的充值，即为助力成功；发起助力邀请的用户会获得30个Supreme空投；参与助力的用户，将会获得3 USDT空投
-  </p>
-
-</div></div>
-
-<br>
-
+        <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="text-center mb-4">
+          <h2 class="h3 text-white font-weight-normal">邀请好友助力获得Supreme潮牌通证，攒够潮牌通证换取正品Supreme产品 <img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
+          <p class="lead u-text-light">
+            被邀用户完成注册、实名认证、充值不低于10 USDT等值的数字货币的充值，即为助力成功；发起助力邀请的用户会获得30个Supreme空投；参与助力的用户，将会获得3 USDT空投
+          </p>
+        </div></div>
+    <br>
         <div class="row justify-content-md-between">
           <!-- Item Image -->
           <div class="col-md-6 mb-7 mb-md-0">
@@ -42,7 +41,6 @@
             </div>
           </div>
           <!-- End Item Image -->
-
           <!-- Content -->
           <div class="col-md-5">
             <div class="mb-5">
@@ -54,43 +52,12 @@
               <span class="d-block h6 text-white mb-2">Supreme通证 ATO 总量：598,000</span>
               <span class="d-block h6 text-white mb-2">Supreme ATO 开始时间：2019年5月21日，下午1点(UTC+8)</span>
             </div>
-
-<button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即助力</strong></button>
-<br>
-<button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
-
-
-
-
-
           </div>
           <!-- End Content -->
         </div>
       </div>
     </div>
     <!-- End Hero Section -->
-
-    <!-- Product Details Section -->
-    <div class="container u-space-1">
-      <div class="row">
-        <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
-          <h2 class="h5">131****1234邀请您助力55 ATO，注册充值后即可获得30 Supreme H + 3 USDT</h2>
-          <!-- <h2 class="h6">活动时间：2019年5月14日12:00开始，至2019年5月21日 14:00结束</h2>
-          <h2 class="h6">助力名额：2000个用户，先到先得，名额满员活动结束</h2>
-          <ul class="text-secondary pl-3">
-            <li>用户登录后，发起邀请后，助力用户完成注册、实名认证、充值不低于10USDT等值的数字货币的充值，即为助力成功；</li>
-            <li>发起助力邀请的用户，在助力成功后，会获得30个Supreme空投；参与助力的用户，在完成助力步骤后，将会获得3USDT空投；（Supreme会在ATO以后正式开始交易）</li>
-            <li>每位用户可重复邀请好友助力，但只有第一次助力成功即可获取奖励，不会叠加奖励；后续邀请仅有好友一方获得奖励；</li>
-            <li>完成助力获得的奖励（Supreme和USDT）会在三个工作日以内空投至用户账户；</li>
-            <li>禁止作弊，如发现用户作弊，将取消活动奖励；</li>
-            <li>本活动解释权归55资产网络所有，客服联系方式service@55.com；</li>
-          </ul> -->
-        </div>
-
-
-       
-      </div>
-    </div>
   </main>
 
   <!-- Go to Top -->
