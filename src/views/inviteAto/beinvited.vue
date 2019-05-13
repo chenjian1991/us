@@ -4,7 +4,7 @@
      <div class="container u-space-1">
       <div class="row">
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
-          <h2 class="h5">131****1234邀请您助力55 ATO，注册充值后即可获得30 Supreme H + 3 USDT</h2>
+          <h2 class="h5">{{userName}}邀请您助力55 ATO，注册充值后即可获得30 Supreme H + 3 USDT</h2>
           <br>
           <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即助力</strong></button>
           <br>
@@ -74,11 +74,17 @@
     </div>
 </template>
 <script>
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+import { getHeaderTokenApi,getApi } from '_api/axios'
+import {getUserName} from '../../../api/urls.js'
+import { debuglog } from 'util';
+
 export default {
         data(){
             return{
-                // modal1:true,
+                loginToken:'',
+                userCode:'',
+                userName:'',
             }
         },
         methods:{
@@ -88,50 +94,31 @@ export default {
             },
             joinTelegram(){
                  window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
+            },
+             getInviteCode() {
+                getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},this.loginToken).then(data => {
+                    this.userCode = data.data.userCode;
+                    this.getUserPhone()
+                })
+            },
+            getUserPhone(){
+                  getApi(getUserName+this.userCode,{}).then((res)=>{
+                    this.userName =res.userName;
+                  })
             }
             
 
         },
         mounted(){
+                this.loginToken = Cookies.get('loginToken');
+                if(this.loginToken){
+                  this.getInviteCode()
+                }
                  $.HSCore.components.HSHeader.init($('#header'));
-                // initialization of unfold component
-                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
-                    afterOpen: function () {
-                    $(this).find('input[type="search"]').focus();
-                    }
-                });
-
-                // initialization of malihu scrollbar
-                $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
-
-                // initialization of forms
                 $.HSCore.helpers.HSFocusState.init();
-
-                // initialization of form validation
-                $.HSCore.components.HSValidation.init('.js-validate', {
-                    rules: {
-                    confirmPassword: {
-                        equalTo: '#password'
-                    }
-                    }
-                });
-
-                // initialization of show animations
-                $.HSCore.components.HSShowAnimation.init('.js-animation-link');
-
-                // initialization of slick carousel
                 $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
-
-                // initialization of autonomous popups
-                $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-shopping-cart-window', {
-                    autonomous: true
-                });
-
-                // initialization of go to
                 $.HSCore.components.HSGoTo.init('.js-go-to');
-                $.HSCore.components.HSModalWindow.init('.js-modal-window', {// 弹窗
-                    autonomous: true
-                });
+             
         }
 }
 </script>
