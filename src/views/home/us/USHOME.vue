@@ -1450,6 +1450,19 @@
                 })
             },
             initWebSocket() {
+              this.initConnect()
+              let self = this;
+              // 断开重连机制,尝试发送消息,捕获异常发生时重连
+              this.timer = setInterval(() => {
+                try {
+                  self.stompClient.send("test");
+                } catch (err) {
+                  console.log("断线了: " + err);
+                  self.initConnect()
+                }
+              }, 5000);
+            },
+            initConnect(){
               const domain = document.domain;
               console.log(domain)
               if(domain.startsWith('www.') || domain.startsWith('us.')){
@@ -1461,23 +1474,7 @@
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }
-              /* let socket = new SockJS('https://www.55.com/xchange/marketdata');
-              debugger */
-              /* this.stompClient = Stomp.over(socket);
-              this.stompClient.debug = null */
-              
               this.connection('btc_usd');
-
-              let self = this;
-              // 断开重连机制,尝试发送消息,捕获异常发生时重连
-              this.timer = setInterval(() => {
-                try {
-                  self.stompClient.send("test");
-                } catch (err) {
-                  console.log("断线了: " + err);
-                  self.connection('btc_usd');
-                }
-              }, 5000);
             },
             connection(symbol) {
                 const sym2 = symbol.toUpperCase().replace(/_/, '');
@@ -1527,6 +1524,34 @@
                   exchange.bidLevel.qty,
                 ]})
               }
+            },
+            gbboWave(coinPair){
+              let arr = [this[coinPair].E55,this[coinPair].BINANCE,this[coinPair].HUOBI,this[coinPair].BITREX,this[coinPair].COINBASEPRO]
+              arr = arr.reduce((n1,n2) =>{
+                if(n2){
+                  return n1.concat(n2)
+                }else {
+                  return n1
+                }
+              },[]);
+              const _Array = coinPair + 'Array'
+              const _WaveArray = coinPair +'WaveArray'
+              if(this[_Array][0]){
+                arr.forEach((item,index) => {
+                  if( item > this[_Array][index] ){
+                    this[_WaveArray][index] = 1
+                    setTimeout(()=>{
+                      this[_WaveArray][index] = 0
+                    },200)
+                  }else if( item < this[_Array][index] ){
+                    this[_WaveArray][index] = -1
+                    setTimeout(()=>{
+                      this[_WaveArray][index] = 0
+                    },200)
+                  }
+                })
+              }
+              this[_Array] = arr
             }
         },
         beforeMount(){
@@ -1580,7 +1605,7 @@
 
                 // initialization of go to
                 $.HSCore.components.HSGoTo.init('.js-go-to');
-
+                //获得汇率
                 getRealtimeList().then(data => this.USDTUSDD = data.find(item => item.symbol === 'USDTUSDD').last)
                 getRealtimeList().then(data => this.ETHBTCRate = data.find(item => item.symbol === 'ETHBTC').last)
                 
@@ -1617,104 +1642,19 @@
         },
         watch:{
           BTCUSD(){
-            let arr = [this.BTCUSD.BITREX,this.BTCUSD.COINBASEPRO]
-            arr = arr.reduce(function (n1,n2) {return n1.concat(n2)});
-            if(this.BTCUSDArray[0]){
-              arr.forEach((item,index) => {
-                if( item > this.BTCUSDArray[index] ){
-                  this.BTCUSDWaveArray[index] = 1
-                  setTimeout(()=>{
-                    this.BTCUSDWaveArray[index] = 0
-                  },200)
-                }else if( item < this.BTCUSDArray[index] ){
-                  this.BTCUSDWaveArray[index] = -1
-                  setTimeout(()=>{
-                    this.BTCUSDWaveArray[index] = 0
-                  },200)
-                }
-              })
-            }
-            this.BTCUSDArray = arr
+            this.gbboWave('BTCUSD')
           },
           BTCUSDT(){
-            let arr = [this.BTCUSDT.E55,this.BTCUSDT.BINANCE,this.BTCUSDT.HUOBI]
-            arr = arr.reduce(function (n1,n2) {return n1.concat(n2)});
-            if(this.BTCUSDTArray[0]){
-              arr.forEach((item,index) => {
-                if( item > this.BTCUSDTArray[index] ){
-                  this.BTCUSDTWaveArray[index] = 1
-                  setTimeout(()=>{
-                    this.BTCUSDTWaveArray[index] = 0
-                  },200)
-                }else if( item < this.BTCUSDTArray[index] ){
-                  this.BTCUSDTWaveArray[index] = -1
-                  setTimeout(()=>{
-                    this.BTCUSDTWaveArray[index] = 0
-                  },200)
-                }
-              })
-            }
-            this.BTCUSDTArray = arr
+            this.gbboWave('BTCUSDT')
           },
           ETHBTC(){
-            let arr = [this.ETHBTC.E55,this.ETHBTC.BINANCE,this.ETHBTC.HUOBI,this.ETHBTC.BITREX,this.ETHBTC.COINBASEPRO]
-            arr = arr.reduce(function (n1,n2) {return n1.concat(n2)});
-            if(this.ETHBTCArray[0]){
-              arr.forEach((item,index) => {
-                if( item > this.ETHBTCArray[index] ){
-                  this.ETHBTCWaveArray[index] = 1
-                  setTimeout(()=>{
-                    this.ETHBTCWaveArray[index] = 0
-                  },200)
-                }else if( item < this.ETHBTCArray[index] ){
-                  this.ETHBTCWaveArray[index] = -1
-                  setTimeout(()=>{
-                    this.ETHBTCWaveArray[index] = 0
-                  },200)
-                }
-              })
-            }
-            this.ETHBTCArray = arr
+            this.gbboWave('ETHBTC')
           },
           DASHBTC(){
-            let arr = [this.DASHBTC.E55,this.DASHBTC.BINANCE,this.DASHBTC.HUOBI,this.DASHBTC.BITREX,this.DASHBTC.COINBASEPRO]
-            arr = arr.reduce(function (n1,n2) {return n1.concat(n2)});
-            if(this.DASHBTCArray[0]){
-              arr.forEach((item,index) => {
-                if( item > this.DASHBTCArray[index] ){
-                  this.DASHBTCWaveArray[index] = 1
-                  setTimeout(()=>{
-                    this.DASHBTCWaveArray[index] = 0
-                  },200)
-                }else if( item < this.DASHBTCArray[index] ){
-                  this.DASHBTCWaveArray[index] = -1
-                  setTimeout(()=>{
-                    this.DASHBTCWaveArray[index] = 0
-                  },200)
-                }
-              })
-            }
-            this.DASHBTCArray = arr
+            this.gbboWave('DASHBTC')
           },
           ZECBTC(){
-            let arr = [this.ZECBTC.E55,this.ZECBTC.BINANCE,this.ZECBTC.HUOBI,this.ZECBTC.BITREX,this.ZECBTC.COINBASEPRO]
-            arr = arr.reduce(function (n1,n2) {return n1.concat(n2)});
-            if(this.ZECBTCArray[0]){
-              arr.forEach((item,index) => {
-                if( item > this.ZECBTCArray[index] ){
-                  this.ZECBTCWaveArray[index] = 1
-                  setTimeout(()=>{
-                    this.ZECBTCWaveArray[index] = 0
-                  },200)
-                }else if( item < this.ZECBTCArray[index] ){
-                  this.ZECBTCWaveArray[index] = -1
-                  setTimeout(()=>{
-                    this.ZECBTCWaveArray[index] = 0
-                  },200)
-                }
-              })
-            }
-            this.ZECBTCArray = arr
+            this.gbboWave('ZECBTC')
           }
         }
     }
