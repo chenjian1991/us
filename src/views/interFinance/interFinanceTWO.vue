@@ -434,8 +434,8 @@ import timeout from '../../components/timeOut';
                    if(res.message){   
                             this.loaded = true;
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                     }
                    this.buttonflag = true;
@@ -508,8 +508,8 @@ import timeout from '../../components/timeOut';
                       if(res.message){   
                            this.loaded = true 
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                     }
                     this.countryList = res.data.entity;
@@ -528,8 +528,8 @@ import timeout from '../../components/timeOut';
                        if(res.message){    
                            this.loaded = true
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                     }
                      this.stateList = res.data.entity;
@@ -557,8 +557,8 @@ import timeout from '../../components/timeOut';
                      if(res.message){    
                          this.loaded = true
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                     }
                    this.banknameList = res.data.entity.sendList;
@@ -631,8 +631,8 @@ import timeout from '../../components/timeOut';
                             if(res.message){   
                                 this.loaded = true; 
                                 this.$Notice.error({
-                                    title: this.$t(res.message),
-                                    desc:this.$t(res.message)
+                                    title: this.$t('transfer'+res.message),
+                                    desc:this.$t('transfer'+res.message)
                                 });
                             }
                             let id = res.data.id;

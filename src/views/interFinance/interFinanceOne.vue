@@ -328,8 +328,8 @@ import { all } from 'q';
                     if(res.message){  
                          this.loaded=true;  
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                     }
                     this.sendList = res.data.entity.sendList;
@@ -364,8 +364,8 @@ import { all } from 'q';
                 postHeaderKeyIdBodyApi(commonRemite,{"url":'/api/pay/remtrade/getCountrys',"params":JSON.stringify(params)}).then((res)=>{
                     if(res.message){
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                     }
                     if(res.status=='10001'){
@@ -442,8 +442,8 @@ import { all } from 'q';
                 postHeaderKeyIdBodyApi(commonRemite,{"url":'/api/pay/remtrade/getLastRate',"params":JSON.stringify(paramsobj)}).then((res)=>{
                      if(res.message){    
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                         }
                     this.rateValue = res.data.value.last;
@@ -530,8 +530,8 @@ import { all } from 'q';
                             if(res.message){   
                                 this.loaded = true;
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                             }
                             if(res.status=='10001'){

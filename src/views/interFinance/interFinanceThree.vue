@@ -138,8 +138,8 @@ import timeout from '../../components/timeOut';
                      if(res.message){    
                          this.loaded = true;
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                     }
                     this.reponseLockid = res.data.value.lockId;
@@ -170,8 +170,8 @@ import timeout from '../../components/timeOut';
                     if(res.message){    
                         this.loaded = true;
                             this.$Notice.error({
-                                title: this.$t(res.message),
-                                desc:this.$t(res.message)
+                                title: this.$t('transfer'+res.message),
+                                desc:this.$t('transfer'+res.message)
                             });
                     }
                     this.responseRate = res.data.entity;
@@ -206,8 +206,8 @@ import timeout from '../../components/timeOut';
                                         if(res.message){    
                                              this.loaded = true;
                                                 this.$Notice.error({
-                                                    title: this.$t(res.message),
-                                                    desc:this.$t(res.message)
+                                                    title: this.$t('transfer'+res.message),
+                                                    desc:this.$t('transfer'+res.message)
                                                 });
                                         }
                                         if(res.status=='10001'){
