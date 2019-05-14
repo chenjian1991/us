@@ -43,13 +43,13 @@
           <!-- End Item Image -->
           <!-- Content -->
           <div class="col-md-5">
-            <div class="mb-5">
+             <div class="mb-5">
               <h3 class="text-white font-weight-normal">可兑换商品：Supreme 施华洛世奇联名套头衫</h3>
               <span class="d-block h6 text-white mb-2">原始零售价格：$598</span>
               <span class="d-block h6 text-white mb-2">市场价格：$1403 - 同款StockX价格</span>
-              <span class="d-block h6 text-white mb-2">兑换所需潮牌通证：59800 Supreme 通证/件</span>
-              <span class="d-block h6 text-white mb-2">Supreme通证 ATO 价格：$0.01</span>
-              <span class="d-block h6 text-white mb-2">Supreme通证 ATO 总量：598,000</span>
+              <span class="d-block h6 text-white mb-2">兑换所需潮牌通证：5980 Supreme 通证/件</span>
+              <span class="d-block h6 text-white mb-2">Supreme通证 ATO 价格：$0.1</span>
+              <span class="d-block h6 text-white mb-2">Supreme通证 ATO 总量：59,800</span>
               <span class="d-block h6 text-white mb-2">Supreme ATO 开始时间：2019年5月21日，下午1点(UTC+8)</span>
             </div>
           </div>
