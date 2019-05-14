@@ -631,14 +631,15 @@ const router = new Router({
                },
                component: groupDetail
             },
-            {//usdd
-               path: 'usdd',
-               name: 'usdd',
-               meta: {
-                  title: ''
-               },
-               component: usdd
-            }, {//FF
+            // {//usdd
+            //    path: 'usdd',
+            //    name: 'usdd',
+            //    meta: {
+            //       title: ''
+            //    },
+            //    component: usdd
+            // }, 
+            {//FF
                path: 'FF',
                name: 'FF',
                meta: {
