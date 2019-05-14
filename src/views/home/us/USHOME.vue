@@ -428,9 +428,9 @@
 
                     <!-- Slick Carousel - Testimonials Pagination Nav -->
                     <div id="testimonialsNavPagination" class="js-slick-carousel u-slick u-slick--gutters-3 u-slick--pagination-testimonials-v1"
-                        data-infinite="true"
+                        data-infinite="false"
                         data-slides-show="3"
-                        data-center-mode="true"
+                        data-center-mode="false"
                         data-focus-on-select="true"
                      
                         data-responsive='[{
