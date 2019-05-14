@@ -157,7 +157,7 @@
               type="button"
               class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"
             >
-            <a href="https://play.google.com/store/apps/details?id=com.globalmarkets55.us.ex55.app" target="_new" class=" text-white">
+            <a href="https://play.google.com/store/apps/details?id=com.ex55us.app" target="_new" class=" text-white">
               <span class="media align-items-center">
                 <span class="d-flex mr-3">
                   <span class="fab fa-google-play font-size-26"></span>

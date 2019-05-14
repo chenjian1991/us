@@ -708,9 +708,9 @@
                     </br>
                     <span class="d-block h6 text-white mb-2">Original Retail Price：$598</span>
                     <span class="d-block h6 text-white mb-2">Market Price：$1403 - Price Quote from StockX</span>
-                    <span class="d-block h6 text-white mb-2">Tokens Required for Redemption：59800 Tokens/Hoodie</span>
-                    <span class="d-block h6 text-white mb-2">ATO Token Price：$0.01</span>
-                    <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：598,000 Supreme Tokens</span>
+                    <span class="d-block h6 text-white mb-2">Tokens Required for Redemption：5980 Tokens/Hoodie</span>
+                    <span class="d-block h6 text-white mb-2">ATO Token Price：$0.1</span>
+                    <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：59,800 Supreme Tokens</span>
                     <span class="d-block h6 text-white mb-2">ATO Starts in：
                          <!-- Countdown -->
                         <div class="js-countdown row mb-5"
@@ -1294,7 +1294,7 @@
 
                               <!-- Button -->
                               <button type="button" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2">
-                                <a href="https://play.google.com/store/apps/details?id=com.globalmarkets55.us.ex55.app" target="_new" class="text-white">
+                                <a href="https://play.google.com/store/apps/details?id=com.ex55us.app" target="_new" class="text-white">
                                   <span class="media align-items-center">
                                     <span class="d-flex mr-3">
                                       <span class="fab fa-google-play font-size-26"></span>
