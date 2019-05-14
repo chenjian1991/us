@@ -475,7 +475,7 @@
                         },
                         align: 'center',
                          render: (h, params) => {
-                           return h('div', {}, this.$t(params.row.status))
+                           return h('div', {}, this.$t('transfer'+params.row.status))
                         },
                     }
             ],
