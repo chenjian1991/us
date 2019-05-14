@@ -78,6 +78,8 @@ import Cookies from 'js-cookie';
 import { getHeaderTokenApi,getApi } from '_api/axios'
 import {getUserName} from '../../../api/urls.js'
 import { debuglog } from 'util';
+// import { Promise, reject } from 'q';
+// import { resolve } from 'dns';
 
 export default {
         data(){
@@ -96,10 +98,14 @@ export default {
                  window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
             },
              getInviteCode() {
-                getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},this.loginToken).then(data => {
-                    this.userCode = data.data.userCode;
-                    this.getUserPhone()
-                })
+               var p = new Promise((resolve,reject)=>{
+                        getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},this.loginToken).then(data => {
+                            this.userCode = data.data.userCode;
+                            resolve(data)
+                    })
+               })
+               return p;
+                
             },
             getUserPhone(){
                   getApi(getUserName+this.userCode,{}).then((res)=>{
@@ -112,7 +118,11 @@ export default {
         mounted(){
                 this.loginToken = Cookies.get('loginToken');
                 if(this.loginToken){
-                  this.getInviteCode()
+                  // this.getInviteCode()
+                  // this.getUserPhone()
+                  this.getInviteCode().then(this.getUserPhone).then(res=>{
+                    // console.log(res)
+                  })
                 }
                  $.HSCore.components.HSHeader.init($('#header'));
                 $.HSCore.helpers.HSFocusState.init();

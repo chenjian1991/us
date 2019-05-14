@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "bignumber.js": "^7.2.1",
     "bootstrap": "^3.3.7",
+    "dns": "^0.2.2",
     "echarts": "^4.1.0",
     "font-awesome": "^4.7.0",
     "highcharts": "^7.0.3",
