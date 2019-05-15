@@ -1121,7 +1121,7 @@
                             <div class="row">
                                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                 <h3 class="h5 mb-4">Darren Sandler</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3" style="text-align:left">Chief Compliance Officer </br></br> General Counsel</span>
+                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3" style="text-align:left">CCO & General Counsel</span>
                                 <p class="font-size-14">Darren is Chief Compliance Officer and General Counsel. Previously, Darren was an attorney at Kirkland & Ellis LLP and Schulte Roth & Zabel LLP. While at Kirkland and Ellis, Darren led the firm's first blockchain client matter.</p>
 
                                 </div>
