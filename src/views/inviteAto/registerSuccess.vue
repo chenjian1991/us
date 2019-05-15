@@ -57,9 +57,8 @@ export default {
                  window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
             },
             download(){
-                window.open('https://us.55gm.co/#/download')
+                window.open('https://55link.de.com/#/download')
             },
-            
 
         },
         mounted(){
