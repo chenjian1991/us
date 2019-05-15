@@ -17,7 +17,7 @@
 
   <p class="lead u-text-light">
     
-被邀用户完成注册、实名认证、充值不低于10 USDT等值的数字货币的充值，即为助力成功；发起助力邀请的用户会获得30个Supreme空投；参与助力的用户，将会获得3 USDT空投
+被邀用户完成注册、实名认证、充值不低于10 USDT等值的数字货币的充值，即为助力成功；发起助力邀请的用户会获得3个SUP空投；参与助力的用户，将会获得3 USDT空投
   </p>
 
 </div></div>
@@ -48,15 +48,15 @@
             <div class="mb-5">
               <h3 class="text-white font-weight-normal">可兑换商品：Supreme 施华洛世奇联名套头衫</h3>
               <span class="d-block h6 text-white mb-2">原始零售价格：$598</span>
-              <span class="d-block h6 text-white mb-2">市场价格：$1403 - 同款StockX价格</span>
-              <span class="d-block h6 text-white mb-2">兑换所需潮牌通证：5980 Supreme 通证/件</span>
-              <span class="d-block h6 text-white mb-2">Supreme通证 ATO 价格：$0.1</span>
-              <span class="d-block h6 text-white mb-2">Supreme通证 ATO 总量：59,800</span>
-              <span class="d-block h6 text-white mb-2">Supreme ATO 开始时间：2019年5月21日，下午1点(UTC+8)</span>
+              <span class="d-block h6 text-white mb-2">市场参考价格：$1500</span>
+              <span class="d-block h6 text-white mb-2">兑换所需潮牌通证：5980 SUP/件</span>
+              <span class="d-block h6 text-white mb-2">SUP通证 ATO 价格：$0.1</span>
+              <span class="d-block h6 text-white mb-2">SUP通证 ATO 总量：59,800</span>
+              <span class="d-block h6 text-white mb-2">SUP ATO 开始时间：2019年5月21日，下午1点(UTC+8)</span>
             </div>
 
-            <button  @click='popup' v-if="loginflag"  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得30 Supreme通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
-            <button @click='gotoLogin' v-else target="_blank" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得30 Supreme通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
+            <button  @click='popup' v-if="loginflag"  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得3 SUP通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
+            <button @click='gotoLogin' v-else target="_blank" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得3 SUP通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
             <br>
             <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
 
@@ -72,21 +72,18 @@
     <div class="container u-space-1">
       <div class="row">
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
-          <h2 class="h5">助力规则</h2>
-          <h2 class="h6">活动时间：2019年5月14日12:00开始，至2019年5月21日 14:00结束</h2>
+          <h2 class="h5">活动规则：</h2>
+          <h2 class="h6">活动时间：北京时间2019年5月14日12:00开始，至2019年5月23日 12:00结束</h2>
           <h2 class="h6">助力名额：2000个用户，先到先得，名额满员活动结束</h2>
           <ul class="text-secondary pl-3">
-            <li>用户登录后，发起邀请后，助力用户完成注册、实名认证、充值不低于10USDT等值的数字货币的充值，即为助力成功；</li>
-            <li>发起助力邀请的用户，在助力成功后，会获得30个Supreme空投；参与助力的用户，在完成助力步骤后，将会获得3USDT空投；（Supreme会在ATO以后正式开始交易）</li>
-            <li>每位用户可重复邀请好友助力，但只有第一次助力成功即可获取奖励，不会叠加奖励；后续邀请仅有好友一方获得奖励；</li>
-            <li>完成助力获得的奖励（Supreme和USDT）会在三个工作日以内空投至用户账户；</li>
-            <li>禁止作弊，如发现用户作弊，将取消活动奖励；</li>
-            <li>本活动解释权归55资产网络所有，客服联系方式service@55.com；</li>
+            <li>1. 用户登录后，发起邀请后，助力用户完成注册、实名认证、充值不低于10USDT等值的数字货币的充值，即为助力成功；</li>
+            <li>2. 发起助力邀请的用户，在助力成功后，会获得3个SUP空投；参与助力的用户，在完成助力步骤后，将会获得3USDT空投；（SUP会在ATO以后正式开始交易）</li>
+            <li>3. 每位用户可重复邀请好友助力，但只有第一次助力成功即可获取奖励，不会叠加奖励；后续邀请仅有好友一方获得奖励；</li>
+            <li>4. 完成助力获得的奖励（USDT和SUP)会在活动结束后三个工作日以内空投至用户账户</li>
+            <li>5. 禁止作弊，如发现用户作弊，将取消活动奖励；</li>
+            <li>6. 本活动解释权归55资产网络所有，客服联系方式service@55.com；</li>
           </ul>
         </div>
-
-
-       
       </div>
     </div>
     <!-- End Prouct Details Section -->
@@ -99,8 +96,7 @@
         v-model="modal1"
         title='您的邀请链接是'
        >
-        <p>好友喊你来助力55 ATO，注册充值即获得100 Supreme，快来参加吧</p>
-        <p >http://uspc.55.exchange:8880/#/beinvited</p>
+        <p v-html="inviteLink"></p>
         <div slot="footer">
             <Button type="primary" size="large"   @click="del">关闭</Button>
             <Button type="primary" size="large" v-clipboard:copy="inviteLink" v-clipboard:success="onCopy">复制</Button>
@@ -120,13 +116,16 @@
     </div>
 </template>
 <script>
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+import { getHeaderTokenApi,getApi } from '_api/axios'
+import {getUserName} from '../../../api/urls.js'
 export default {
         data(){
             return{
                 loginflag:false,
                 modal1:false,
-                inviteLink:'好友喊你来助力55 ATO，注册充值即获得100 Supreme，快来参加吧,http://uspc.55.exchange:8880/#/beinvited'
+                inviteLink:'',
+                userCode:'',
             }
         },
         methods:{
@@ -150,12 +149,22 @@ export default {
                 this.modal1=true;
             },
             gotoLogin(){
-                // window.open('http://47.75.120.27:8030/mobile/#/login?from=inviteATO')
-                window.location.href='http://47.75.120.27:8030/mobile/#/login?from=inviteATO'
+                window.location.href='https://m.55gm.co/#/login?from=inviteATO'
             },
             joinTelegram(){
                  window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
-            }
+            },
+             getInviteCode() {
+               var p = new Promise((resolve,reject)=>{
+                        getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},Cookies.get('loginToken')).then(data => {
+                            this.userCode = data.data.userCode;
+                            this.inviteLink ='好友喊你来助力55 ATO，注册充值即获得3SUP，快来参加吧，邀请链接：'+'https://us.55link.de.com/#/beinvited?inviteCode='+this.userCode;
+                            // console.log( this.userCode)
+                            resolve(data)
+                    })
+               })
+               return p;
+            },
         },
         mounted(){
                  $.HSCore.components.HSHeader.init($('#header'));
@@ -163,6 +172,7 @@ export default {
                   $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
                   $.HSCore.components.HSGoTo.init('.js-go-to');
                 this.judgeLogin()
+                this.getInviteCode()
         }
 }
 </script>
