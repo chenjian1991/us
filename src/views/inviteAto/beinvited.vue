@@ -93,7 +93,6 @@ export default {
         methods:{
             register(){
                 window.location.href='https://m.55link.de.com/#/phoneRegister?from=bevited&invite_code='+this.invitedCode;
-
             },
             joinTelegram(){
                  window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
@@ -102,6 +101,17 @@ export default {
                var p = new Promise((resolve,reject)=>{
                         getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},this.loginToken).then(data => {
                             this.userCode = data.data.userCode;
+                            if(data.data.code){
+                                if(data.data.code='10013'){
+                                  this.$Message.success(this.$t('10013'));
+                                  setTimeout(() => {
+                                       window.location.href='https://m.55link.de.com/#/login?from=inviteATO';
+                                  }, 2000);
+                                }else{
+                                    this.$Message.success(this.$t(data.data.code));
+                                }
+                                  
+                            }
                             resolve(data)
                     })
                })
@@ -110,6 +120,7 @@ export default {
             },
             getUserPhone(){
                   getApi(getUserName+this.userCode,{}).then((res)=>{
+                    debugger
                     this.userName =res.userName;
                   })
             },
