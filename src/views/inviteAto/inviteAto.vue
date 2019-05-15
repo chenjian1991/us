@@ -119,6 +119,7 @@
 import Cookies from 'js-cookie';
 import { getHeaderTokenApi,getApi } from '_api/axios'
 import {getUserName} from '../../../api/urls.js'
+import { debuglog } from 'util';
 export default {
         data(){
             return{
@@ -159,7 +160,15 @@ export default {
                         getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},Cookies.get('loginToken')).then(data => {
                             this.userCode = data.data.userCode;
                             this.inviteLink ='好友喊你来助力55 ATO，注册充值即获得3SUP，快来参加吧，邀请链接：'+'https://us.55link.de.com/#/beinvited?inviteCode='+this.userCode;
-                            // console.log( this.userCode)
+                            if(data.data.code){
+                                if(data.data.code='10013'){
+                                  this.$Message.success(this.$t('10013'));
+                                    window.location.href='https://m.55link.de.com/#/login?from=inviteATO';
+                                }else{
+                                    this.$Message.success(this.$t(data.data.code));
+                                }
+                                  
+                            }
                             resolve(data)
                     })
                })
