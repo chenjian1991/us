@@ -152,7 +152,7 @@ export default {
                 window.location.href='https://m.55gm.co/#/login?from=inviteATO'
             },
             joinTelegram(){
-                 window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
+                 window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
             },
              getInviteCode() {
                var p = new Promise((resolve,reject)=>{
