@@ -54,7 +54,7 @@ export default {
 
             },
             joinTelegram(){
-                 window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
+                 window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
             },
             download(){
                 window.open('https://55link.de.com/#/download')
