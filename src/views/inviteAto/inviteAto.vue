@@ -120,6 +120,7 @@ import Cookies from 'js-cookie';
 import { getHeaderTokenApi,getApi } from '_api/axios'
 import {getUserName} from '../../../api/urls.js'
 import { debuglog } from 'util';
+import { setTimeout } from 'timers';
 export default {
         data(){
             return{
@@ -163,7 +164,9 @@ export default {
                             if(data.data.code){
                                 if(data.data.code='10013'){
                                   this.$Message.success(this.$t('10013'));
-                                    window.location.href='https://m.55link.de.com/#/login?from=inviteATO';
+                                  setTimeout(() => {
+                                       window.location.href='https://m.55link.de.com/#/login?from=inviteATO';
+                                  }, 2000);
                                 }else{
                                     this.$Message.success(this.$t(data.data.code));
                                 }
