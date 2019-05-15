@@ -4,7 +4,7 @@
      <div class="container u-space-1">
       <div class="row">
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
-          <h2 class="h5">{{userName}}邀请您助力55 ATO，注册充值后即可获得30 Supreme H + 3 USDT</h2>
+          <h2 class="h5">{{userName}}邀请您助力55 ATO，注册充值后即可获得3USDT</h2>
           <br>
           <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即助力</strong></button>
           <br>
@@ -19,7 +19,7 @@
         <div class="text-center mb-4">
           <h2 class="h3 text-white font-weight-normal">邀请好友助力获得Supreme潮牌通证，攒够潮牌通证换取正品Supreme产品 <img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
           <p class="lead u-text-light">
-            被邀用户完成注册、实名认证、充值不低于10 USDT等值的数字货币的充值，即为助力成功；发起助力邀请的用户会获得30个Supreme空投；参与助力的用户，将会获得3 USDT空投
+            被邀用户完成注册、实名认证、充值不低于10 USDT等值的数字货币的充值，即为助力成功；发起助力邀请的用户会获得3个SUP空投；参与助力的用户，将会获得3USDT空投
           </p>
         </div></div>
     <br>
@@ -46,11 +46,11 @@
              <div class="mb-5">
               <h3 class="text-white font-weight-normal">可兑换商品：Supreme 施华洛世奇联名套头衫</h3>
               <span class="d-block h6 text-white mb-2">原始零售价格：$598</span>
-              <span class="d-block h6 text-white mb-2">市场价格：$1403 - 同款StockX价格</span>
-              <span class="d-block h6 text-white mb-2">兑换所需潮牌通证：5980 Supreme 通证/件</span>
-              <span class="d-block h6 text-white mb-2">Supreme通证 ATO 价格：$0.1</span>
-              <span class="d-block h6 text-white mb-2">Supreme通证 ATO 总量：59,800</span>
-              <span class="d-block h6 text-white mb-2">Supreme ATO 开始时间：2019年5月21日，下午1点(UTC+8)</span>
+              <span class="d-block h6 text-white mb-2">市场参考价格：$1500</span>
+              <span class="d-block h6 text-white mb-2">兑换所需潮牌通证：5980 SUP/件</span>
+              <span class="d-block h6 text-white mb-2">SUP通证 ATO 价格：$0.1</span>
+              <span class="d-block h6 text-white mb-2">SUP通证 ATO 总量：59,800</span>
+              <span class="d-block h6 text-white mb-2">SUP ATO 开始时间：2019年5月21日，下午1点(UTC+8)</span>
             </div>
           </div>
           <!-- End Content -->
@@ -87,12 +87,13 @@ export default {
                 loginToken:'',
                 userCode:'',
                 userName:'',
+                invitedCode:'',
             }
         },
         methods:{
             register(){
-                // window.open('http://47.75.120.27:8030/mobile/#/phoneRegister?from=bevited')
-                window.location.href='http://47.75.120.27:8030/mobile/#/phoneRegister?from=bevited'
+                window.location.href='https://m.55gm.co/#/phoneRegister?from=bevited&inviteCode='+this.invitedCode;
+
             },
             joinTelegram(){
                  window.open('https://social.55gm.co/groups/profile/973135123669061637/feed')
@@ -111,15 +112,31 @@ export default {
                   getApi(getUserName+this.userCode,{}).then((res)=>{
                     this.userName =res.userName;
                   })
-            }
+            },
+              getUrlParams(name){
+                    let after = window.location.hash.split("?")[1];
+                    if(after)
+                    {
+                        let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                        var r = after.match(reg);
+                        if(r != null) {
+                            return  decodeURIComponent(r[2]);
+                        }
+                        else  {
+                            return '';
+                        }
+
+                    }
+
+            },
             
 
         },
         mounted(){
+                this.invitedCode = this.getUrlParams('inviteCode');
+                console.log(this.invitedCode)
                 this.loginToken = Cookies.get('loginToken');
                 if(this.loginToken){
-                  // this.getInviteCode()
-                  // this.getUserPhone()
                   this.getInviteCode().then(this.getUserPhone).then(res=>{
                     // console.log(res)
                   })
