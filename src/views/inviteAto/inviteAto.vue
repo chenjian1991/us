@@ -149,7 +149,7 @@ export default {
                 this.modal1=true;
             },
             gotoLogin(){
-                window.location.href='https://m.55gm.co/#/login?from=inviteATO'
+                window.location.href='https://m.55link.de.com/#/login?from=inviteATO'
             },
             joinTelegram(){
                  window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
