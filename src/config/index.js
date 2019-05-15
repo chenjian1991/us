@@ -83,9 +83,9 @@ export  function getCommouityBaseURL() {
       return 'http://47.245.56.224/'
   }else if(domain == "55.com" || domain == "www.55.com"){
       return 'https://social.55.com/'
-  }else if(domain == "www.55ex.co" || domain == "55ex.co"){
+  }else if(domain == "www.55ex.co" || domain == "55ex.co" || domain == "us.55ex.co"){
       return 'https://social.55ex.co/'
-  }else if(domain == "www.55link.de.com" || domain == "55link.de.com"){
+  }else if(domain == "www.55link.de.com" || domain == "55link.de.com" || domain == "us.55link.de.com"){
     return 'https://social.55link.de.com/'
   }else{
       return 'https://social.55.com/'
