@@ -4,7 +4,7 @@
      <div class="container u-space-1">
       <div class="row">
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
-          <h2 class="h5">{{userName}}邀请您助力55 ATO，注册充值后即可获得3USDT</h2>
+          <h2 class="h5">您的好友邀请您助力55 ATO，注册充值后即可获得3USDT</h2>
           <br>
           <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即助力</strong></button>
           <br>
@@ -148,9 +148,8 @@ export default {
                 console.log(this.invitedCode)
                 this.loginToken = Cookies.get('loginToken');
                 if(this.loginToken){
-                  this.getInviteCode().then(this.getUserPhone).then(res=>{
-                    // console.log(res)
-                  })
+                  // this.getInviteCode().then(this.getUserPhone).then(res=>{
+                  // })
                 }
                  $.HSCore.components.HSHeader.init($('#header'));
                 $.HSCore.helpers.HSFocusState.init();
