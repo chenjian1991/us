@@ -92,7 +92,7 @@ export default {
         },
         methods:{
             register(){
-                window.location.href='https://m.55gm.co/#/phoneRegister?from=bevited&inviteCode='+this.invitedCode;
+                window.location.href='https://m.55gm.co/#/phoneRegister?from=bevited&invite_code='+this.invitedCode;
 
             },
             joinTelegram(){
