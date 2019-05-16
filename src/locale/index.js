@@ -47,9 +47,10 @@ if(url.indexOf('inviteAto')!==-1||url.indexOf('beinvited')!==-1||url.indexOf('re
   lang = getUrlKey('language') || window.localStorage.getItem('countryLanguage') || navLang
 }else{
   lang = 'en'
+  localStorage.setItem('countryLanguage',lang)  //这段代码会导致每次刷新页面都是读取对浏览器对语言，而不是从本地读取语言,能够确保countryLanguage永远有
+
 }
 
-localStorage.setItem('countryLanguage',lang)  //这段代码会导致每次刷新页面都是读取对浏览器对语言，而不是从本地读取语言,能够确保countryLanguage永远有
 
 Vue.config.lang = lang
 
