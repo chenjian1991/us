@@ -4,9 +4,9 @@
      <div class="container u-space-1">
       <div class="row">
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
-          <h2 class="h5">您的好友邀请您助力55 ATO，注册充值后即可获得3USDT</h2>
+          <h2 class="h5">{{$t('supchage')}}</h2>
           <br>
-          <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">注册领取 3 USDT </strong></button>
+          <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">{{$t('supregister2')}}</strong></button>
           <br>
           <!-- <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button> -->
         </div>
@@ -17,9 +17,9 @@
       <div class="container u-space-2">
         <div class="col-md-12 col-lg-12 col-xl-12">
         <div class="text-center mb-4">
-          <h2 class="h3 text-white font-weight-normal">邀请好友助力获得Supreme潮牌通证，攒够潮牌通证换取正品Supreme产品 <img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
+          <h2 class="h3 text-white font-weight-normal">{{$t('supinvite')}}<img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
           <p class="lead u-text-light">
-            被邀用户完成注册、实名认证、充值不低于10 USDT等值的数字货币的充值，即为助力成功；发起助力邀请的用户会获得3个SUP空投；参与助力的用户，将会获得3USDT空投
+            {{$t('supregister')}}
           </p>
         </div></div>
     <br>
@@ -44,13 +44,13 @@
           <!-- Content -->
           <div class="col-md-5">
              <div class="mb-5">
-              <h3 class="text-white font-weight-normal">可兑换商品：Supreme 施华洛世奇联名套头衫</h3>
-              <span class="d-block h6 text-white mb-2">原始零售价格：$598</span>
-              <span class="d-block h6 text-white mb-2">市场参考价格：$1500</span>
-              <span class="d-block h6 text-white mb-2">兑换所需潮牌通证：5980 SUP/件</span>
-              <span class="d-block h6 text-white mb-2">SUP通证 ATO 价格：$0.1</span>
-              <span class="d-block h6 text-white mb-2">SUP通证 ATO 总量：59,800</span>
-              <span class="d-block h6 text-white mb-2">SUP ATO 开始时间：2019年5月21日，下午1点(UTC+8)</span>
+              <h3 class="text-white font-weight-normal">{{$t('supproduct')}}</h3>
+              <span class="d-block h6 text-white mb-2">{{$t('supprice')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('supmarket')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('suptokne')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('supatoprice')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('supatoquentity')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('suptime')}}</span>
             </div>
           </div>
           <!-- End Content -->
