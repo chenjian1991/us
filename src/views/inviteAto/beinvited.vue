@@ -6,9 +6,9 @@
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
           <h2 class="h5">您的好友邀请您助力55 ATO，注册充值后即可获得3USDT</h2>
           <br>
-          <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即助力</strong></button>
+          <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">注册领取 3 USDT </strong></button>
           <br>
-          <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
+          <!-- <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button> -->
         </div>
       </div>
     </div>
@@ -94,9 +94,9 @@ export default {
             register(){
                 window.location.href='https://m.55link.de.com/#/phoneRegister?from=bevited&invite_code='+this.invitedCode;
             },
-            joinTelegram(){
-                 window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
-            },
+            // joinTelegram(){
+            //      window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
+            // },
              getInviteCode() {
                var p = new Promise((resolve,reject)=>{
                         getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},this.loginToken).then(data => {

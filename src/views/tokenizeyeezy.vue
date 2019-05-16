@@ -45,15 +45,15 @@
 
 <!-- Title -->
             <p>1. Your sneaker should be among one of the following Yeezy models.  </p>
-            <p>2. Your sneaker should be in brand new and unworn condition. Note that 55 will request third-party to conduct authenticity check. In case the sneaker does not pass legit check, it will be returned to you at your cost. </p>
+            <p>2. Your sneaker should be in brand new and unworn condition. Note that 55 will request third-party to conduct an authenticity check. In the event that your sneaker does not pass out authentication check, it will be returned to you at your own cost. </p>
             <p>3. Shipping cost and tokenization fee will be deducted from the tokens for the sneaker.</p>
             <div class="mb-4">
               <h2 class="h5">Step 1: Pick an item you would like to tokenize.</h2>
             </div>
             <!-- End Title -->
 <div class="col-md-9"><div class="bg-white rounded p-3"><div class="custom-control custom-radio d-flex align-items-center small text-muted">
-  <input type="radio" v-model="select" value=2015 id="deliveryRadio1" name="deliveryRadio" checked="checked" class="custom-control-input"><label for="deliveryRadio1" class="custom-control-label ml-1"><span class="d-block h6 text-dark font-weight-normal mb-1"><strong class="text-dark">adidas Yeezy Boost 350 Pirate Black（2015）- size 7-13<br></strong></span><span class="d-block">Style Code: AQ2659</span><img src="assets/shoes/sneaker.jpg" style="width: 120px;"></label></div></div><hr class="my-0"><div class="bg-white rounded p-3"><div class="custom-control custom-radio d-flex align-items-center small text-muted">
-  <input type="radio" v-model="select" value=2016 id="deliveryRadio2" name="deliveryRadio" class="custom-control-input"><label for="deliveryRadio2" class="custom-control-label ml-1"><span class="d-block h6 text-dark font-weight-normal mb-1"><strong class="text-dark">adidas Yeezy Boost 350 Pirate Black (2016) - size 7-13<br></strong></span><span class="d-block">Style Code: AQ2659</span><img src="assets/shoes/sneaker.jpg" style="width: 120px;"></label></div></div><hr class="my-0"></div>
+  <input type="radio" v-model="select" value=2015 id="deliveryRadio1" name="deliveryRadio" checked="checked" class="custom-control-input"><label for="deliveryRadio1" class="custom-control-label ml-1"><span class="d-block h6 text-dark font-weight-normal mb-1"><strong class="text-dark">Adidas Yeezy Boost 350 Pirate Black（2015）- Size 7-13<br></strong></span><span class="d-block">Style Code: AQ2659</span><img src="assets/shoes/sneaker.jpg" style="width: 120px;"></label></div></div><hr class="my-0"><div class="bg-white rounded p-3"><div class="custom-control custom-radio d-flex align-items-center small text-muted">
+  <input type="radio" v-model="select" value=2016 id="deliveryRadio2" name="deliveryRadio" class="custom-control-input"><label for="deliveryRadio2" class="custom-control-label ml-1"><span class="d-block h6 text-dark font-weight-normal mb-1"><strong class="text-dark">Adidas Yeezy Boost 350 Pirate Black (2016) - Size 7-13<br></strong></span><span class="d-block">Style Code: AQ2659</span><img src="assets/shoes/sneaker.jpg" style="width: 120px;"></label></div></div><hr class="my-0"></div>
 <br>
 
 

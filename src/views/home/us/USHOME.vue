@@ -765,7 +765,7 @@
                           
                           <h2 class="text-primary">55 <span class="font-weight-bold">VISA Debit Card</span></h2>
                           
-                          <p>Seamlessly integrated with 55 GBBO, your cryptocurrencies can be converted to fiat currency almost in real time. 55, in collaboratin with VISA and major payment service providers worldwide, allows you to pay at millions of storefront or POS terminals.</p >
+                          <p>Seamlessly integrated with 55 GBBO, your cryptocurrencies can be converted to fiat currency almost in real time. 55, in collaboration with VISA and major payment service providers worldwide, allows you to pay at millions of storefronts or POS terminals.</p >
                         </div>
                         <!-- End Title -->
                         
