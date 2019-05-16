@@ -58,7 +58,7 @@
             <button  @click='popup' v-if="loginflag"  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得3 SUP通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
             <button @click='gotoLogin' v-else target="_blank" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得3 SUP通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
             <br>
-            <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
+            <!-- <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button> -->
 
 
           </div>
@@ -78,7 +78,7 @@
           <ul class="text-secondary pl-3">
             <li>1. 用户登录后，发起邀请后，助力用户完成注册、实名认证、充值不低于10USDT等值的数字货币的充值，即为助力成功；</li>
             <li>2. 发起助力邀请的用户，在助力成功后，会获得3个SUP空投；参与助力的用户，在完成助力步骤后，将会获得3USDT空投；（SUP会在ATO以后正式开始交易）</li>
-            <li>3. 每位用户可重复邀请好友助力，但只有第一次助力成功即可获取奖励，不会叠加奖励；后续邀请仅有好友一方获得奖励；</li>
+            <li>3. 每位用户可重复邀请好友助力，被邀请的好友需要在活动结束前完成助力，双方才会获得奖励</li>
             <li>4. 完成助力获得的奖励（USDT和SUP)会在活动结束后三个工作日以内空投至用户账户</li>
             <li>5. 禁止作弊，如发现用户作弊，将取消活动奖励；</li>
             <li>6. 本活动解释权归55资产网络所有，客服联系方式service@55.com；</li>
@@ -153,7 +153,11 @@ export default {
                 window.location.href='https://m.55link.de.com/#/login?from=inviteATO'
             },
             joinTelegram(){
-                 window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
+                  if(Cookies.get('loginToken')){//登陆了
+                         window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
+                  }else{
+                       window.location.href='https://m.55link.de.com/#/login?from=inviteATO'
+                  }
             },
              getInviteCode() {
                var p = new Promise((resolve,reject)=>{
