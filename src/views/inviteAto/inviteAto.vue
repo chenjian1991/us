@@ -164,7 +164,7 @@ export default {
                var p = new Promise((resolve,reject)=>{
                         getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},Cookies.get('loginToken')).then(data => {
                             this.userCode = data.data.userCode;
-                            this.inviteLink ='好友喊你来助力55 ATO，注册充值即获得3SUP，快来参加吧，邀请链接：'+'https://us.55link.de.com/#/beinvited?inviteCode='+this.userCode;
+                            this.inviteLink =this.$t('supfriend2')+'https://us.55link.de.com/#/beinvited?inviteCode='+this.userCode;
                             if(data.data.code){
                                 if(data.data.code='10013'){
                                     this.$Message.success(this.$t('10013'));
