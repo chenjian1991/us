@@ -164,7 +164,7 @@ export const inviteURL = `${proxyURL}/sso/invite/query.myInviteCode`//邀请好�
 export const queryMining = `${proxyURL}/activity-korea/activity/korea/mining/mimed.query`//查询是否已经挖矿
 export const weakupGroup = `${proxyURL}/activity-korea/activity/korea/mining/member.weakUp`//喊他挖矿
 export const getUserName = `${proxyURL}/sso/invite/getUserName?inviteCode=`//获取邀请的用户是谁，
-
+export const socialToken = `${proxyURL}/sso/social/get-token`//social token
 
 /*  韩国挖矿  */
 //usdd
