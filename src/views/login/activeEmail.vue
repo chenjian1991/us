@@ -1,5 +1,5 @@
 <template>
-    <div class="root">
+    <div id="activeEmail" class="root">
         <div class="wrapper">
             <div class="title">
                 <img src="../../assets/images/footer/foot-logo.svg" alt="">
@@ -124,6 +124,15 @@ import Cookies from 'js-cookie'
     }
 </script>
 <style lang='less'>
+    html{
+         min-height:100vh;
+         body{
+            min-height:100vh;
+            #activeEmail{
+             min-height:100vh;
+            }
+         }
+    }
     .main_container{
         min-height:100%;
         display: flex;
@@ -132,10 +141,7 @@ import Cookies from 'js-cookie'
      .headerbox{
         flex: 0 0 auto;
      }
-    //  #app{
-    //      height: 100%;
-    //      background: #18183e;
-    //  }
+   
     .footerBox{
          flex: 0 0 auto;
      }
@@ -143,6 +149,7 @@ import Cookies from 'js-cookie'
 
 </style>
 <style scoped lang="less">
+    
     @import './activeEmail.less';
 </style>
 

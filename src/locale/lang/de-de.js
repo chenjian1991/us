@@ -741,7 +741,7 @@ export default {
    aqzxSecurityLevel: "Security Level",
    aqzxPassword: 'Password',
    recommended: "Using multiple two-factor authentication is highly recommended.",
-   higherSec: "Higher security level,higher withdrawal amount.",
+   higherSec: "Higher security level=higher withdrawal amount.",
    jymmLoginPassword: "Login password",
    jymmTradingPassword: 'Trading password',
    aqzxRealName: ' Authentication',
@@ -754,7 +754,7 @@ export default {
    aqzxGoogle: 'Google-Authenticator',
    aqzxIdentity: 'L1 Verification',
    aqzxPhoneExplain: "Used to withdraw, retrieve password, change security settings and verify while managing API.",
-   aqzxPhoneExplaintwo: 'Used to promote the withdraw amount,retrieving account information.',
+   aqzxPhoneExplaintwo: 'Used to promote the withdraw amount, And for retrieving account information.',
    //修改密码
    aqzxchangepassword: "Change Login Password",
    aqzxtips: "*For security purposes no withdrawals are permitted for 24 hours after modification of security methods.",
@@ -936,7 +936,8 @@ export default {
    emailSendclick: "Click the link inside to get started!",
    emailDontArrive: "Email didn’t arrive?",
    emailreSend: "We resent the email. Please check your inbox",
-   registerSucccess: "Congratulations! 55 registration success, open a trading trip",
+   registerSucccess: "Congratulations! You have successfully registered your 55 account, start trading now!",
+
    transferto: "Will be transferred to 55",
    siteLogin: "-Site login",
    //fees
@@ -1638,7 +1639,7 @@ export default {
    kyc1Notice: "Please complete L1 Verification before continuing.",
    kyc1NoticeConfirm: "Complete L1 Verification",
    kyc2: "L2 Verification",
-   kyc2Hint: "Used to enable fiat deposit and withdraw",
+   kyc2Hint: "Used to enable fiat deposit and withdraw.",
    kyc2View: "View",
    kyc2Add: "Add",
    kyc2level: "Level 2 Verification",

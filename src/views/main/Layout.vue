@@ -46,7 +46,7 @@
                 showTradeHeader:false,
                 androidURL:'',
                 download:true,
-                message:'Attention: please note that residents of the state of Connecticut, Florida, Hawaii, Maine, Mississippi, New Jersey, New York, North Carolina, North Dakota, Ohio, South Dakota, Texas, Vermont, Washington are not permitted to trade on 55.com',
+                message:'Attention: Please note that residents of the state of Connecticut, Florida, Hawaii, Maine, Mississippi, New Jersey, New York, North Carolina, North Dakota, Ohio, South Dakota, Texas, Vermont, Washington are not permitted to trade on 55.com',
                 routerArr:['home','Bhome','Shome','Fhome','Chome','login','register','usdd','FF','stock','cinfo','about55','capital','card','redeemyeezy','tokenizeyeezy'],
 
             }
