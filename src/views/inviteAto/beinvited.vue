@@ -4,7 +4,7 @@
      <div class="container u-space-1">
       <div class="row">
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
-          <h2 class="h5">{{userName}}邀请您助力55 ATO，注册充值后即可获得3USDT</h2>
+          <h2 class="h5">您的好友邀请您助力55 ATO，注册充值后即可获得3USDT</h2>
           <br>
           <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即助力</strong></button>
           <br>
@@ -93,7 +93,6 @@ export default {
         methods:{
             register(){
                 window.location.href='https://m.55link.de.com/#/phoneRegister?from=bevited&invite_code='+this.invitedCode;
-
             },
             joinTelegram(){
                  window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
@@ -102,6 +101,17 @@ export default {
                var p = new Promise((resolve,reject)=>{
                         getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},this.loginToken).then(data => {
                             this.userCode = data.data.userCode;
+                            if(data.data.code){
+                                if(data.data.code='10013'){
+                                  this.$Message.success(this.$t('10013'));
+                                  setTimeout(() => {
+                                       window.location.href='https://m.55link.de.com/#/login?from=inviteATO';
+                                  }, 2000);
+                                }else{
+                                    this.$Message.success(this.$t(data.data.code));
+                                }
+                                  
+                            }
                             resolve(data)
                     })
                })
@@ -110,6 +120,7 @@ export default {
             },
             getUserPhone(){
                   getApi(getUserName+this.userCode,{}).then((res)=>{
+                    debugger
                     this.userName =res.userName;
                   })
             },
@@ -137,9 +148,8 @@ export default {
                 console.log(this.invitedCode)
                 this.loginToken = Cookies.get('loginToken');
                 if(this.loginToken){
-                  this.getInviteCode().then(this.getUserPhone).then(res=>{
-                    // console.log(res)
-                  })
+                  // this.getInviteCode().then(this.getUserPhone).then(res=>{
+                  // })
                 }
                  $.HSCore.components.HSHeader.init($('#header'));
                 $.HSCore.helpers.HSFocusState.init();
