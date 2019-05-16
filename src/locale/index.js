@@ -44,7 +44,7 @@ let lang = getUrlKey('language') || window.localStorage.getItem('countryLanguage
 let url = window.location.href;
 // console.log(url.indexOf('registerSuccess'))
 if(url.indexOf('inviteAto')!==-1||url.indexOf('beinvited')!==-1||url.indexOf('registerSuccess')!==-1){
-  lang = getUrlKey('language') || window.localStorage.getItem('countryLanguage') || navLang
+  lang =  navLang
 }else{
   lang = 'en'
   localStorage.setItem('countryLanguage',lang)  //这段代码会导致每次刷新页面都是读取对浏览器对语言，而不是从本地读取语言,能够确保countryLanguage永远有
