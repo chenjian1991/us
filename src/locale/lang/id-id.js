@@ -1779,7 +1779,7 @@ export default {
     supclose:"Close",
     supcopy:"Copy",
     supfriend2:"Join 55's Supreme campaign to get 3 SUP. Sign up and deposit now : link",
-    supchage:"Join 55's Supreme campaign to grab 3 SUP. Sign up and deposit now : link",
+    supchage:"Join 55's Supreme campaign to grab 3 SUP. Sign up and deposit now.",
     suphelp:"Join now!",
     supregistersucess:"Congratulations on successful registration!",
     supretitle:"Acquire collectibles with fair price; Invite friends with free airdrops!",
