@@ -86,8 +86,7 @@
              data-src="//www.youtube.com/watch?v=BEjqZvOTuLU"
             data-speed="700"
             data-animate-in="zoomIn"
-            data-animate-out="zoomOut"
-            data-caption="Front - Responsive Website Template">
+            data-animate-out="zoomOut">
             <span class="u-media-player__icon u-media-player__icon--lg">
               <span class="fa fa-play u-media-player__icon-inner"></span>
             </span>
