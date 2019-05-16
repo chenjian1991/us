@@ -11,11 +11,11 @@
         <div class="row justify-content-md-between">
           <div class="col-md-5">
             <div class="mb-5">
-              <h3 class="text-white font-weight-normal">恭喜您注册成功</h3>
+              <h3 class="text-white font-weight-normal">{{$t('supregistersucess')}}</h3>
             </div>
-                <button @click="gotoSocial" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button>
+                <button @click="gotoSocial" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">{{$t('supmessage')}}</span><strong data-v-d1e1e420="" class="font-size-14">{{$t('supsocial')}}</strong></span></span></button>
                 <br>
-                <button  @click='download'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">立即下载APP进行充值</strong></button>
+                <button  @click='download'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">{{$t('supdownload')}}</strong></button>
           </div>
         </div>
       </div>

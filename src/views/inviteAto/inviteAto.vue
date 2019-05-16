@@ -11,13 +11,13 @@
 <div class="text-center mb-4">
 
 
-  <h2 class="h3 text-white font-weight-normal">邀请好友助力获得Supreme潮牌通证，攒够潮牌通证换取正品Supreme产品 <img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
+  <h2 class="h3 text-white font-weight-normal">{{$t('supinvite')}} <img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
 
 
 
   <p class="lead u-text-light">
     
-  被邀用户完成注册、实名认证、充值不低于10 USDT等值的数字货币的充值，即为助力成功；发起助力邀请的用户会获得3个SUP空投；参与助力的用户，将会获得3 USDT空投
+  {{$t('supregister')}}
   </p>
 
 </div></div>
@@ -46,17 +46,17 @@
           <!-- Content -->
           <div class="col-md-5">
             <div class="mb-5">
-              <h3 class="text-white font-weight-normal">可兑换商品：Supreme 施华洛世奇联名套头衫</h3>
-              <span class="d-block h6 text-white mb-2">原始零售价格：$598</span>
-              <span class="d-block h6 text-white mb-2">市场参考价格：$1500</span>
-              <span class="d-block h6 text-white mb-2">兑换所需潮牌通证：5980 SUP/件</span>
-              <span class="d-block h6 text-white mb-2">SUP通证 ATO 价格：$0.1</span>
-              <span class="d-block h6 text-white mb-2">SUP通证 ATO 总量：59,800</span>
-              <span class="d-block h6 text-white mb-2">SUP ATO 开始时间：2019年5月21日，下午1点(UTC+8)</span>
+              <h3 class="text-white font-weight-normal">{{$t('supproduct')}}</h3>
+              <span class="d-block h6 text-white mb-2">{{$t('supprice')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('supmarket')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('suptokne')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('supatoprice')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('supatoquentity')}}</span>
+              <span class="d-block h6 text-white mb-2">{{$t('suptime')}}</span>
             </div>
 
-            <button  @click='popup' v-if="loginflag"  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得3 SUP通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
-            <button @click='gotoLogin' v-else target="_blank" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">您可获得3 SUP通证，好友获得3 USDT</span><strong data-v-d1e1e420="" class="font-size-14">现在就邀请好友助力</strong></span></span></button>
+            <button  @click='popup' v-if="loginflag"  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">{{$t('supcommon')}}</span><strong data-v-d1e1e420="" class="font-size-14">{{$t('supfriend')}}</strong></span></span></button>
+            <button @click='gotoLogin' v-else target="_blank" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">{{$t('supcommon')}}</span><strong data-v-d1e1e420="" class="font-size-14">{{$t('supfriend')}}</strong></span></span></button>
             <br>
             <!-- <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button> -->
 
@@ -72,16 +72,16 @@
     <div class="container u-space-1">
       <div class="row">
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
-          <h2 class="h5">活动规则：</h2>
-          <h2 class="h6">活动时间：至2019年5月23日 12:00结束</h2>
-          <h2 class="h6">助力名额：2000个用户，先到先得，名额满员活动结束</h2>
+          <h2 class="h5">{{$t('suprules')}}</h2>
+          <h2 class="h6">{{$t('supactivetime')}}</h2>
+          <h2 class="h6">{{$t('supmaxperson')}}</h2>
           <ul class="text-secondary pl-3">
-            <li>1. 用户登录后，发起邀请后，助力用户完成注册、实名认证、充值不低于10USDT等值的数字货币的充值，即为助力成功；</li>
-            <li>2. 发起助力邀请的用户，在助力成功后，会获得3个SUP空投；参与助力的用户，在完成助力步骤后，将会获得3USDT空投；（SUP会在ATO以后正式开始交易）</li>
-            <li>3. 每位用户可重复邀请好友助力，被邀请的好友需要在活动结束前完成助力，双方才会获得奖励</li>
-            <li>4. 完成助力获得的奖励（USDT和SUP)会在活动结束后三个工作日以内空投至用户账户</li>
-            <li>5. 禁止作弊，如发现用户作弊，将取消活动奖励；</li>
-            <li>6. 本活动解释权归55资产网络所有，客服联系方式service@55.com；</li>
+            <li>{{$t('supaddtion')}}</li>
+            <li>{{$t('supsuccess')}}</li>
+            <li>{{$t('supreward')}}</li>
+            <li>{{$t('supaccount')}}</li>
+            <li>{{$t('supforbiden')}}</li>
+            <li>{{$t('supemail')}}</li>
           </ul>
         </div>
       </div>
@@ -94,12 +94,12 @@
      <Modal
         class='inviteAto'
         v-model="modal1"
-        title='您的邀请链接是'
+        :title='this.$t("supinviteurl")'
        >
         <p v-html="inviteLink"></p>
         <div slot="footer">
-            <Button type="primary" size="large"   @click="del">关闭</Button>
-            <Button type="primary" size="large" v-clipboard:copy="inviteLink" v-clipboard:success="onCopy">复制</Button>
+            <Button type="primary" size="large"   @click="del">{{$t('supclose')}}</Button>
+            <Button type="primary" size="large" v-clipboard:copy="inviteLink" v-clipboard:success="onCopy">{{$t('supcopy')}}</Button>
         </div>
     </Modal>
   <!-- Go to Top -->
