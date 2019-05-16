@@ -148,7 +148,7 @@ export default {
                 this.modal1= false;
             },
             popup(){
-                this.modal1=true;
+                this.getInviteCode();
             },
             gotoLogin(){
                 window.location.href='https://m.55link.de.com/#/login?from=inviteATO'
@@ -167,14 +167,14 @@ export default {
                             this.inviteLink ='好友喊你来助力55 ATO，注册充值即获得3SUP，快来参加吧，邀请链接：'+'https://us.55link.de.com/#/beinvited?inviteCode='+this.userCode;
                             if(data.data.code){
                                 if(data.data.code='10013'){
-                                  this.$Message.success(this.$t('10013'));
-                                  setTimeout(() => {
-                                       window.location.href='https://m.55link.de.com/#/login?from=inviteATO';
-                                  }, 2000);
+                                    this.$Message.success(this.$t('10013'));
+                                    window.location.href='https://m.55link.de.com/#/login?from=inviteATO';
                                 }else{
                                     this.$Message.success(this.$t(data.data.code));
                                 }
                                   
+                            }else{
+                               this.modal1=true;
                             }
                             resolve(data)
                     })
@@ -188,7 +188,6 @@ export default {
                   $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
                   $.HSCore.components.HSGoTo.init('.js-go-to');
                 this.judgeLogin()
-                this.getInviteCode()
         }
 }
 </script>
