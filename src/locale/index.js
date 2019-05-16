@@ -41,7 +41,14 @@ navLang === 'zh-CN' || navLang === 'zh'  ? navLang = 'zh-CN' :  navLang = 'en'
 
 // let navLang = 'en' //诸位，各站默认打开的首页都是英文
 let lang = getUrlKey('language') || window.localStorage.getItem('countryLanguage') || navLang // 如果都读到的浏览器语言不符合vue-i8n格式要求，就设置为英语‘en’
-lang = 'en'
+let url = window.location.href;
+// console.log(url.indexOf('registerSuccess'))
+if(url.indexOf('inviteAto')!==-1||url.indexOf('beinvited')!==-1||url.indexOf('registerSuccess')!==-1){
+  lang = getUrlKey('language') || window.localStorage.getItem('countryLanguage') || navLang
+}else{
+  lang = 'en'
+}
+
 localStorage.setItem('countryLanguage',lang)  //这段代码会导致每次刷新页面都是读取对浏览器对语言，而不是从本地读取语言,能够确保countryLanguage永远有
 
 Vue.config.lang = lang
