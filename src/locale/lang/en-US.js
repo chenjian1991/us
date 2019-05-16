@@ -808,7 +808,7 @@ export default {
    aqzxSecurityLevel: "Security Level",
    aqzxPassword: 'Password',
    recommended: "Using multiple two-factor authentication is highly recommended.",
-   higherSec: "Higher security level,higher withdrawal amount.",
+   higherSec: "Higher security level=higher withdrawal amount.",
    jymmLoginPassword: "Login password",
    jymmTradingPassword: 'Trading password',
    aqzxRealName: ' Authentication',
@@ -1009,7 +1009,7 @@ export default {
    emailSendclick: "Click the link inside to get started!",
    emailDontArrive: "Email didn’t arrive?",
    emailreSend: "We resent the email. Please check your inbox",
-   registerSucccess: "Congratulations! 55 registration success, open a trading trip",
+   registerSucccess: "Congratulations! You have successfully registered your 55 account, start trading now!",
    transferto: "Will be transferred to 55",
    siteLogin: "-Site login",
 

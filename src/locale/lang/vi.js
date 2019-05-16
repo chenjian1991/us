@@ -806,7 +806,7 @@ export default {
    aqzxSecurityLevel: "Security Level",
    aqzxPassword: "Password",
    recommended: "Using multiple two-factor authentication is highly recommended.",
-   higherSec: "Higher security level,higher withdrawal amount.",
+   higherSec: "Higher security level=higher withdrawal amount.",
    jymmLoginPassword: "Login password",
    jymmTradingPassword: "Trading password",
    aqzxRealName: " Authentication",
