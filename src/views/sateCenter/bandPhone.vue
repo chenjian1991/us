@@ -414,7 +414,7 @@ const clickoutside = {
            }
             this.dealCountry();
             this.countryCode();
-            this.countryNumber = '+86';
+            this.countryNumber = '+1';
            
 
 
