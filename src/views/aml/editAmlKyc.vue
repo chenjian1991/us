@@ -949,6 +949,9 @@ import moment from 'moment';
      
    }
 #editamlkyc{
+     .ivu-radio-wrapper{
+        margin-right: 20px !important;
+    }
     .radio{
         label{
             &:nth-child(1){
