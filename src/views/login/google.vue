@@ -110,7 +110,16 @@ import {setCookies} from '@/config'
             loginFun(){//绑定谷歌后的登录，走的是谷歌验证的接口
                 let params = {
                     "ex55Pin":localStorage.getItem('ex55Pin'),
-                    "googleCode":this.formValidate.googleNumber
+                    "googleCode":this.formValidate.googleNumber,
+                    "userClientInfo":{
+                        "deviceModel":"MI 2S",
+                        "deviceId": "xxxsllsj",
+                        "resolution":"1920*1080",
+                        "os":"Android",
+                        "netType":"4G",
+                        "operator":"China Mobile"
+                    }
+
                 }
                 postHeaderTokenBodyApi(googleLogin,localStorage.getItem('googleToken'),params).then((res) =>{
                     if(res.code){
