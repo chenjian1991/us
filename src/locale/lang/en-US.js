@@ -1752,7 +1752,7 @@ export default {
    kyc2View:"View",
    kyc2Add:"Add",
    kyc2level:"L2 Verification",
-   kyc2Notic2: "* please verify that all of your information is accurate before submiiting",
+   kyc2Notic2: "* please verify that all of your information is accurate before submitting",
    kyc2Basic:"Basic",
    kyc2Address:"Address",
    kyc2Tax:"Tax",
