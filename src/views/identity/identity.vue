@@ -283,8 +283,8 @@
                                     <li>
                                         <Icon class='right' type="md-checkmark" />
                                         <span>{{$t('sfrzNote55')}}</span>
-                                        <Icon class='right' type="md-checkmark" />
-                                        <span>{{$t('sfrzNoteToday')}}</span>
+                                        <!-- <Icon class='right' type="md-checkmark" />
+                                        <span>{{$t('sfrzNoteToday')}}</span> -->
                                     </li>
                                 </ul>
                             </div>

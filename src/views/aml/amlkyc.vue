@@ -900,6 +900,9 @@ import moment from 'moment';
      
    }
 #amlkyc{
+    .ivu-radio-wrapper{
+        margin-right: 20px;
+    }
     .radio{
         label{
             &:nth-child(1){

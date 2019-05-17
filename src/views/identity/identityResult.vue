@@ -54,7 +54,7 @@
                     </div>
                    
                 </div>
-                <div class="email-adderss">{{$t('sendEmail')}}</div>
+                <div class="email-adderss">{{$t('kyc2Resultbutton')}}</div>
                     
             </div>
     </div>
