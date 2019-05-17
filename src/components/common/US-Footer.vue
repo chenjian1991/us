@@ -184,7 +184,7 @@
           <img src="assets/svg/logos/logo-white-footer.svg" alt="Logo" style="width: 50px;">
         </a>
         <!-- End Logo -->
-        <p class="small text-white"><a style="color:#fff;" target="_blank" href="http://uspc.55.exchange:8880/MSB.pdf">MSB No.31000146897405</a> </p>
+        <p class="small text-white"><a style="color:#fff;" target="_blank" href="https://www.55.com/MSB.pdf">MSB No.31000146897405</a> </p>
         <p class="small text-white">12 East 49th Street,11th floor, New York, NYC 10017</p>
         <p class="small text-white">&copy; 2017-2019 55. All rights reserved.</p>
       </div>
