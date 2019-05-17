@@ -1356,6 +1356,9 @@
                     <div class="js-slide">
                       <img class="u-clients" src="../../../assets/images/fenwick_logo.png" alt="Image Description">
                     </div>
+                     <div class="js-slide">
+                      <img class="u-clients" style="height:31px;" src="../../../assets/images/fenwick_logo1.png" alt="Image Description">
+                    </div>
                     <div class="js-slide">
                       <img class="u-clients" src="assets/svg/logos/parnter/partner-logo3.png" alt="Image Description">
                     </div>
