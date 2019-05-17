@@ -925,7 +925,7 @@ export default {
    sfrzSubmit: "Submit",
    sfrzIDCardFront: "Identity Card Front Side",
    sfrzIDCardFrontUpload: "Please upload the front of your Driver's License or National ID Document",
-   sfrzIDCardFrontLabel1: "Please upload the front side of your driver's license or ID card or passport.",
+   sfrzIDCardFrontLabel1: "Please upload the front side of your driver's license, ID card, or passport.",
    // sfrzIDCardFrontLabel11: "Please upload the front side of your driver's license or ID card or passport.",
    sfrzIDCardFrontLabel2: "The photo should be complete and clearly visible, in jpg / jpeg / png format.",
    sfrzIDCardBack: "Identity Card Back Side",
