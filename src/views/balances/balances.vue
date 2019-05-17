@@ -40,6 +40,10 @@
                               <Icon type="ios-arrow-forward"/>
                            </router-link>
                         </span>
+                        <a target="_blank" href="https://www.gcodigital.com/">
+                           <img style="width:156px;height:16px;float:right;" src="../../assets/images/balances/gco-logo@2x.png" alt="">
+                        </a>
+                        
                      </div>
                      <div class="space-between">
                         <div><em>{{USD}}</em>&nbsp;&nbsp;<span>USD</span></div>

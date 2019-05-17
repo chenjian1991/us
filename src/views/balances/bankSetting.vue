@@ -29,6 +29,13 @@
                                                                        class="add-icon">{{$t('withdrawAcc1')}}</span>
                   </div>
                </div>
+               <div>
+                     <div>
+                        <a target="_blank" href="https://www.gcodigital.com/">
+                        <img style="width:202px;height:25px;margin-top:20px;" src="../../assets/images/balances/gco-logo@2x.png" class="logo">
+                        </a>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
