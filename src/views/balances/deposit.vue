@@ -75,7 +75,7 @@
                   <div class="below-col">
                      <p class="tip">{{$t('czTips')}}</p>
                      <ul>
-                        <li>{{$t('sendOnly')}}{{currency}}{{$t('czTipsContent')}}</li>
+                        <li>{{$t('sendOnly')}} {{currency}} {{$t('czTipsContent')}}</li>
                         <li>{{$t('aftemaking')}}</li>
                      </ul>
                   </div>

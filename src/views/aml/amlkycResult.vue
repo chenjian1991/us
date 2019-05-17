@@ -75,8 +75,8 @@
                                         <div class="basic_left">
                                             <ul>
                                                 <li>{{$t('kyc2Taxconutry')}}</li>
-                                                <li v-if="basicObj.tpCountry=='US'">{{$t('kyc2TaxID')}}</li>
-                                                <li v-else>{{$t('kyc2TaxIDNo')}}</li>
+                                                <li v-if="basicObj.tpCountry=='US'">{{$t('kyc2TaxIDNo')}}</li>
+                                                <li v-else>{{$t('kyc2TaxID')}}</li>
                                             </ul>
                                         </div>
                                         <div class="basic_right">
@@ -241,7 +241,7 @@
                         this.basicObj.firstName = data.firstName;
                         this.basicObj.lastName = data.lastName;
                         this.basicObj.tpGender = data.tpGender;
-                        this.basicObj.birthday = moment(data.birthday).format('YYYY-MM-DD');
+                        this.basicObj.birthday = moment(data.birthday).format('MM/DD/YYYY');
                         this.basicObj.tpEmail = data.tpEmail;
                         this.basicObj.tpPhone = data.tpPhone;
                         this.basicObj.addressType = data.addressType;
@@ -252,7 +252,7 @@
                         this.basicObj.taxCountry = data.taxCountry;
                         this.basicObj.identifyType = data.identifyType;
                         this.basicObj.passport = data.passport;
-                        this.basicObj.identifyExpire = moment(data.identifyExpire).format('YYYY-MM-DD');
+                        this.basicObj.identifyExpire = moment(data.identifyExpire).format('MM/DD/YYYY');//MM/DD/YYYY
                         this.basicObj.identifyId = data.identifyId;
                         this.basicObj.remark = this.$t(data.remark);
                         this.basicObj.usPostalcode = data.usPostalcode;

@@ -132,12 +132,28 @@ import {setCookies} from '@/config'
                                 "email":this.formValidate.phoneNumber,
                                 "password":this.hashFlag?this.setSha(this.formValidate.password):this.formValidate.password,
                                 "codeType":"EMAIL",
+                                "userClientInfo":{
+                                    "deviceModel":"MI 2S",
+                                    "deviceId": "xxxsllsj",
+                                    "resolution":"1920*1080",
+                                    "os":"Android",
+                                    "netType":"4G",
+                                    "operator":"China Mobile"
+                                    }
                             }
                          }else{
                               params = {
                                 "phone":this.formValidate.phoneNumber,
                                 "password":this.hashFlag?this.setSha(this.formValidate.password):this.formValidate.password,
                                 "codeType":"PHONE",
+                                "userClientInfo":{
+                                    "deviceModel":"MI 2S",
+                                    "deviceId": "xxxsllsj",
+                                    "resolution":"1920*1080",
+                                    "os":"Android",
+                                    "netType":"4G",
+                                    "operator":"China Mobile"
+                                    }
                             }
                          }
                             this.paramsObj = params;

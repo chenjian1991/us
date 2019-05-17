@@ -223,7 +223,7 @@
                                 </div>
                                 <ul>
                                     <li v-if='VALID_IDENTITY_CARD'>{{$t('sfrzIDCardBackLabel1')}}</li>
-                                    <li v-else>{{$t('sfrzIDCardBackLabel11')}}</li>
+                                    <li v-else>{{$t('sfrzIDCardBackLabel1')}}</li>
                                     <li>{{$t('sfrzIDCardBackLabel3')}}</li>
                                 </ul>
                             </div>
@@ -283,8 +283,8 @@
                                     <li>
                                         <Icon class='right' type="md-checkmark" />
                                         <span>{{$t('sfrzNote55')}}</span>
-                                        <Icon class='right' type="md-checkmark" />
-                                        <span>{{$t('sfrzNoteToday')}}</span>
+                                        <!-- <Icon class='right' type="md-checkmark" />
+                                        <span>{{$t('sfrzNoteToday')}}</span> -->
                                     </li>
                                 </ul>
                             </div>
@@ -680,7 +680,9 @@ import { denodeify } from 'q';
 </script>
 <style lang='less'>
 #identity{
-    
+        .ivu-radio-wrapper{
+            margin-right: 20px;
+        }
     .ivu-progress-show-info{
             .ivu-progress-outer{
                  padding-right: 15px !important;
