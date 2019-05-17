@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div class="google-content">
                 <div class="title">
-                   <router-link to='/safeCenter'>{{$t('ggyzMAcountSecurity')}}</router-link> 
+                   <router-link to='/safeCenter'>{{$t('ggyzMAcountSecurity')}} </router-link> 
                    <router-link to=''>{{$t('ggyzMGoogleAuthentication')}}</router-link>
                 </div>
                 <div class="content">
@@ -23,7 +23,7 @@
                                             <div class="ios-title">IOS</div>
                                             <div class="ios-description">{{$t('ggyzIOSMethod')}}</div>
                                             <div  class="clearfix img-container">
-                                                <a target="_blank" href="https://itunes.apple.com/cn/app/google-authenticator/id388497605?mt=8"> <img src="../../assets/images/google/APP-STORE.png" alt=""></a>
+                                                <a target="_blank" href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8"> <img src="../../assets/images/google/APP-STORE.png" alt=""></a>
                                                 <em  @mouseenter="showMth('ios')" @mouseleave="hideMth('ios')" class="scancode"></em>
                                                 <img v-if="showPic" class="scanpic" src="../../assets/images/google/step-1.png" alt="">
                                             </div>

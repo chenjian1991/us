@@ -43,7 +43,7 @@
                          <!-- 发送邮箱验证码 -->
                          <div v-if="emailFlage"  class="clearfix">
                             <div class="pull-left span-label">
-                                <span>{{$t('aqzxsendemail')}}</span><em>{{emailAddress}}</em>
+                                <span>{{$t('aqzxsendemail')}}</span><i>&nbsp</i> <em>{{emailAddress}}:</em>
                             </div>
                              <div>
                                 <FormItem class="form_item smsCode pull-left" prop='emailCode'>
