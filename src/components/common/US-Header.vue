@@ -278,7 +278,7 @@
                 <!-- Starter - Link -->
                 <li class="nav-item">
                     <a class="nav-link u-header__nav-link" href="#55card">
-                    55 Visa Debit
+                    55 Debit Card
                     </a>
                 </li>
                 <!-- End Starter - Link -->
