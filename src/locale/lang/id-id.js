@@ -1786,7 +1786,7 @@ export default {
     supemail:"6. All rights are reserved by 55.com. If you have any questions, please contact: service@55.com.",
     supclose:"Close",
     supcopy:"Copy",
-    supfriend2:"Join 55's Supreme campaign to get 10 USDT. Sign up and deposit now : link",
+    supfriend2:"Join 55's Supreme campaign to get 10 USDT. Sign up and deposit now :",
     supchage:"Join 55's Supreme campaign to grab 3 SUP. Sign up and deposit now.",
     suphelp:"Join now!",
     supregistersucess:"Congratulations on successful registration!",
