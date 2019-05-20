@@ -1810,7 +1810,7 @@ export default {
       supemail:"6. 本活动解释权归55所有，客服联系方式service@55.com；",
       supclose:"关闭",
       supcopy:"复制",
-      supfriend2:"好友喊你来助力55 ATO，注册充值即获得3SUP，快来参加吧，邀请链接：",
+      supfriend2:"好友喊你来助力55 ATO，注册充值即获得10USDT，快来参加吧，邀请链接：",
       supchage:"邀请您助力55 ATO，注册充值后即可获得3USDT",
       suphelp:"立即助力",
       supregistersucess:"恭喜您注册成功",
