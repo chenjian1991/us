@@ -714,7 +714,7 @@
                     <span class="d-block h6 text-white mb-2">ATO Total Subscription Amount：
                         </br>
                         <div style="background:#d93649;font-size:30px;font-weight:bolder;width:130px;margin-top:30px;">
-                          $129,060
+                          $128,623
                         </div>
                          <!-- Countdown -->
                         <!-- <div class="js-countdown row mb-5"
