@@ -714,7 +714,7 @@
                     <span class="d-block h6 text-white mb-2">ATO Starts in：
                          <!-- Countdown -->
                         <div class="js-countdown row mb-5"
-                            data-end-date="2019/05/21 13:00:00"
+                            data-end-date="2019/05/21 1:00:00"
                             data-month-format="%m"
                             data-days-format="%D"
                             data-hours-format="%H"
