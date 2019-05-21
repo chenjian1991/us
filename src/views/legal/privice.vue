@@ -696,7 +696,7 @@ inter-ideograph;text-indent:-18.0pt;mso-list:l9 level1 lfo9'><![if !supportLists
 lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
 style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
 dir=LTR></span><span lang=EN>To enforce or apply our terms of use
-https://www.55.com/#/terms and other agreements, including for billing and
+https://www.55.com/terms and other agreements, including for billing and
 collection purposes.</span></p>
 
 <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
@@ -835,7 +835,7 @@ lang=EN>If you delete your User Contributions from the Website, copies of your
 User Contributions may remain viewable in cached and archived pages, or might
 have been copied or stored by other Website users. Proper access and use of
 information provided on the Website, including User Contributions, is governed
-by our terms of use https://www.55.com/#/terms.</span></p>
+by our terms of use https://www.55.com/terms.</span></p>
 
 <p class=MsoNormal><span lang=EN></span></p>
 
