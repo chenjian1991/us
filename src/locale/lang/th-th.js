@@ -541,7 +541,7 @@ export default {
    327978: "Can not exceed 105% of the current sell1 price",
    327994: "Can't be less than 95% of the current buy1 price",
    393242: "Asset ticket error",
-   393258: "Asset freeze not enough",
+   393258: "Insufficient Funds",
    393274: "Asset unfreeze not enough",
    393290: "Asset reduction freeze partial error",
    393306: "Asset increase available error",
