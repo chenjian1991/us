@@ -85,13 +85,13 @@ import Cookies from 'js-cookie'
                         }
                         setTimeout(() => {
                             if(fromSite==null||fromSite ==""||fromSite=="B"){
-                                window.location.href = "https://www.55.com/#/login";
+                                window.location.href = "https://www.55.com/login";
                             }else if(fromSite=="F"){
-                                window.location.href = "https://f.55.com/#/login";
+                                window.location.href = "https://f.55.com/login";
                             }else if(fromSite=="L"){
-                                window.location.href = "https://l.55.com/#/login";
+                                window.location.href = "https://l.55.com/login";
                             }else if(fromSite=="S"){
-                                window.location.href = "https://s.55.com/#/login";
+                                window.location.href = "https://s.55.com/login";
                             }
                         }, 5000);
                      

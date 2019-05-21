@@ -1497,7 +1497,7 @@ charges a fee for each Taker Order and Maker Order that is posted to the Order
 Book. The fee is calculated as a percentage of the Order. </span></p>
 
 <p class=MsoNormal><span lang=EN-US>3.2.<span style='mso-tab-count:1'>  </span>The
-current fee rates can be found at https://www.55.com/#/fee. </span></p>
+current fee rates can be found at https://www.55.com/fee. </span></p>
 
 <p class=MsoNormal><span lang=EN-US></span></p>
 

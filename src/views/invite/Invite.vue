@@ -156,7 +156,7 @@ import moment from 'moment'
                     // let protocol = window.location.protocol;//协议
                     // let host = window.location.host;//主机名+端口号
                     // let targetUrl = protocol + "//" + host;
-                    this.inviteLink = "https://55link.de.com/#/register?invite_code=" + this.userCode;
+                    this.inviteLink = "https://55link.de.com/register?invite_code=" + this.userCode;
                 })
             },
             getInviteUserCount(){

@@ -584,7 +584,7 @@
             })
         },
         gotOtc(){
-            window.open('https://otc.55gm.co/#/home','_blank')
+            window.open('https://otc.55gm.co/home','_blank')
             this.model2 = false;
         },
         getStockJson(name,url,language){

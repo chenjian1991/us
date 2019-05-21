@@ -263,7 +263,7 @@
         queryInviteUrlFun(){
             queryInviteUrl(Cookies.get('loginToken')).then((res)=>{
                 this.userCode = res.data.userCode;
-                this.inviteLink = 'https://55link.de.com/#/register?invite_code='+ this.userCode;
+                this.inviteLink = 'https://www.55.com/register?invite_code='+ this.userCode;
                 // let protocol = window.location.protocol;//协议
                 // let host = window.location.host;//主机名+端口号
                 // let targetUrl = protocol + "//" + host;
