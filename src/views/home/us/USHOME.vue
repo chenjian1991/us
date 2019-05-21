@@ -711,9 +711,13 @@
                     <span class="d-block h6 text-white mb-2">Tokens Required for Redemption：5980 Tokens/Hoodie</span>
                     <span class="d-block h6 text-white mb-2">ATO Token Price：$0.1</span>
                     <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：59,800 Supreme Tokens</span>
-                    <span class="d-block h6 text-white mb-2">ATO Starts in：
+                    <span class="d-block h6 text-white mb-2">ATO Total Subscription Amount：
+                        </br>
+                        <div style="background:#d93649;font-size:30px;font-weight:bolder;width:130px;margin-top:30px;">
+                          $129,060
+                        </div>
                          <!-- Countdown -->
-                        <div class="js-countdown row mb-5"
+                        <!-- <div class="js-countdown row mb-5"
                             data-end-date="2019/05/21 1:00:00"
                             data-month-format="%m"
                             data-days-format="%D"
@@ -737,7 +741,7 @@
                             <strong class="js-cd-seconds h3 text-white font-weight-bold mb-0"></strong>
                             <span class="h5 font-weight-normal mb-0">Secs</span>
                           </div>
-                        </div>
+                        </div> -->
                         <!-- End Countdown -->
                     </span>
                   </div>
