@@ -48,7 +48,7 @@
               <h2 class="h5">Step 1: Pick an item you would like to redeem.</h2>
             </div>
             <!-- End Title -->
-            <div class="col-md-9">
+            <!-- <div class="col-md-9">
                     <div class="bg-white rounded p-3">
                       <div class="custom-control custom-radio d-flex align-items-center small text-muted">
                         <input type="radio" class="custom-control-input" id="deliveryRadio1" name="deliveryRadio" checked="">
@@ -90,7 +90,33 @@
 
                   </div>
 
-<br>
+<br> -->
+<div class="col-md-9">
+                    <div class="bg-white rounded p-3">
+                      <div class="custom-control custom-radio d-flex align-items-center small text-muted">
+                        <input type="radio" class="custom-control-input" id="deliveryRadio1" name="deliveryRadio" checked="">
+                        <label class="custom-control-label ml-1" for="deliveryRadio1">
+                          <span class="d-block h6 text-dark font-weight-normal mb-1"><strong class="text-dark">Supreme Swarovski Box Logo Hooded Sweatshirt Black - Size M,L<br></strong>5980 Supreme Tokens</span>
+                          <span class="d-block"><a href=" " target="_blank">Product description and market price quote from StockX</a ></span>
+                          <img src="assets/supreme/black.jpg" style="width: 120px;"></img>
+                        </label>
+                      </div>
+                    </div>
+
+                    <hr class="my-0">
+
+                    <div class="bg-white rounded p-3">
+                      <div class="custom-control custom-radio d-flex align-items-center small text-muted">
+                        <input type="radio" class="custom-control-input" id="deliveryRadio2" name="deliveryRadio">
+                        <label class="custom-control-label ml-1" for="deliveryRadio2">
+                          <span class="d-block h6 text-dark font-weight-normal mb-1"><strong class="text-dark">Supreme Swarovski Box Logo Hooded Sweatshirt Heather Grey - Size M,L<br></strong>5980 Supreme Tokens</span>
+                          <span class="d-block"><a href="https://stockx.com/supreme-swarovski-box-logo-hooded-sweatshirt-heather-grey" target="_blank">Product description and market price quote from StockX</a ></span>
+                          <img src="assets/supreme/grey.jpg" style="width: 120px;"></img>
+                        </label>
+                      </div>
+                    </div>
+
+               </div>
 
 
             <!-- Title -->
