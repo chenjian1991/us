@@ -654,7 +654,7 @@ export default {
           verify(validate){
               //debugger
               postApplyCardInfo(validate,{
-                  business:"REDEEMYEEZY",
+                  business:"redeemsupreme",
                   firstName:this.firstName,
                   lastName:this.lastName,
                   email:this.email,

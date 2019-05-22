@@ -100,7 +100,7 @@ const registerSuccess = () =>import(/* webpackChunkName: 'interFinance' */ '../v
 
 
 const card = () => import(/* webpackChunkName: "chome" */ '../views/visa.vue')
-const redeemyeezy = () => import(/* webpackChunkName: "chome" */ '../views/redeemyeezy.vue')
+const redeemsupreme = () => import(/* webpackChunkName: "chome" */ '../views/redeemsupreme.vue')
 const tokenizeyeezy = () => import(/* webpackChunkName: "chome" */ '../views/tokenizeyeezy.vue')
 const Supreme = () => import(/* webpackChunkName: "chome" */ '../views/Supreme.vue')
 
@@ -703,12 +703,12 @@ const router = new Router({
                component: card
             },
             {//api
-               path: 'redeemyeezy',
-               name: 'redeemyeezy',
+               path: 'redeemsupreme',
+               name: 'redeemsupreme',
                meta: {
                   title: 'Redeem Yeezy Sneaker with Yeezy Tokens'
                },
-               component: redeemyeezy
+               component: redeemsupreme
             },
             {//api
                path: 'tokenizeyeezy',
