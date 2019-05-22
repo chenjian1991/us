@@ -677,7 +677,7 @@
                 <div class="container u-space-2">
                   <div class="col-md-12 col-lg-12 col-xl-12">
                     <div class="text-center mb-4">
-                      <h2 class="h1 text-white font-weight-normal">Upcoming ATO - Supreme Token <img class="img-fluid" src="/assets/svg/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
+                      <h2 class="h1 text-white font-weight-normal">Successful ATO - Supreme Token <img class="img-fluid" src="/assets/svg/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
                       <p class="lead u-text-light">Buy Supreme tokens through ATO and using tokens to redeem 100% authentic Supreme product at original retail price.</p>
                     </div>
                   </div>

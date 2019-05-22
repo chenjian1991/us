@@ -6,15 +6,15 @@
   <main id="content" role="main">
     <!-- Hero Section -->
     <div class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll"
-         data-options='{direction: "normal"}' style="background-image: url(assets/img14.jpg);">
+         data-options='{direction: "normal"}' style="background-image: url(assets/img14.jpeg);">
       <!-- Apply your Parallax background image here -->
-      <div class="divimage dzsparallaxer--target" style="height: 120%; background-image: url(img14.jpg);"></div>
+      <div class="divimage dzsparallaxer--target" style="height: 120%; background-image: url(img14.jpeg);"></div>
 
       <!-- Content -->
       <div class="container position-relative u-space-5-top u-space-3-bottom z-index-2">
         <div class="w-lg-80 text-center mx-auto">
-          <h1 class="display-5 font-size-40--md-down text-white font-weight-bold">Redeem Authentic Yeezy Sneaker</h1>
-          <p class="lead text-white">with your Yeezy Tokens</p>
+          <h1 class="display-5 font-size-40--md-down text-white font-weight-bold">Redeem Authentic Supreme Sweatshirt</h1>
+          <p class="lead text-white">with your Supreme Tokens</p>
         </div>
       </div>
       <!-- End Content -->
@@ -121,7 +121,7 @@
 
             <!-- Title -->
             <div class="mb-4" style="margin-top:22px">
-              <h2 class="h5">Step 2: Make sure you have sufficient Yeezy tokens stored in 55 wallet. Haven't got enough? You can buy Yeezy tokens here</h2> 
+              <h2 class="h5">Step 2: Make sure you have sufficient Supreme tokens stored in 55 wallet. Haven't got enough? You can buy Supreme tokens here</h2> 
             </div>
             <!-- End Title -->
 
