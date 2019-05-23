@@ -103,7 +103,7 @@ export const commonRemite =`${proxyURL}/spot/exchangeRemittance/common` //中原
 export const createRealName = `${proxyURL}/sso/user/identify`//创建实名认证
 export const uploadPic = `${proxyURL}/sso/user/identify.upload`//上传图片
 export const identifyPhoto = `${proxyURL}/sso/user/identify.photo`//查询图片地址
-
+export const cardEffective = `${proxyURL}/sso/new-identify/card-effective/`// 身份证号是否唯一
 /* f site add 货币交换汇率 start */
 export const getLastRate = `https://f.daocoin.money/api/trust_publish/getLastCurrencyRate` //获取最新的汇率
 /* 货币交换汇率 end*/

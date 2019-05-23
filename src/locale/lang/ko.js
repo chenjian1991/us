@@ -966,6 +966,7 @@ export default {
    sendEmail: "문제가 발생하면 service@55.com으로 메일을 보내주십시오.",
    invalidFormate: "Invalid file format.",
    picIsToolarge: "File is too large, no more than 1M. ",
+   idcardUnick:'The ID number has been used.',
    //邀请好友
    yqzyImage1: "친구 초대",
    yqzyImage2: "초대한 사람 가입과 실명 인증 완료 ",

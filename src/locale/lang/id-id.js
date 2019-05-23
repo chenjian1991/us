@@ -853,6 +853,7 @@ export default {
      sendEmail: "Jika ada masalah, Silahkan kirim email ke service@55.com",
      invalidFormate: "Invalid file format.",
     picIsToolarge: "File is too large, no more than 1M. ",
+    idcardUnick:'The ID number has been used.',
      //邀请好友
      yqzyImage1: "Undang Teman Anda",
      yqzyImage2: "Setiap orang yang diundang untuk mendaftar dan lulus sertifikasi nama asli.",

@@ -854,7 +854,7 @@ export default {
    sendEmail: "如果有疑问，请发送邮件到service@55.com",
    invalidFormate: "图片格式不正确",
    picIsToolarge: "文件太大，不得超过1M。",
-
+   idcardUnick:'该证件号已被使用',
    //邀请好友
    yqzyImage1: "邀请好友",
    yqzyImage2: "每成功邀请一人完成注册，并通过实名认证",
