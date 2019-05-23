@@ -79,6 +79,7 @@ import Cookies from 'js-cookie';
 import { getHeaderTokenApi,getApi } from '_api/axios'
 import {getUserName} from '../../../api/urls.js'
 import { debuglog } from 'util';
+import {getUrlKey} from '@/lib/utils.js'
 // import { Promise, reject } from 'q';
 // import { resolve } from 'dns';
 
@@ -114,27 +115,27 @@ export default {
                     this.userName =res.userName;
                   })
             },
-              getUrlParams(name){
-                    let after = window.location.hash.split("?")[1];
-                    if(after)
-                    {
-                        let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-                        var r = after.match(reg);
-                        if(r != null) {
-                            return  decodeURIComponent(r[2]);
-                        }
-                        else  {
-                            return '';
-                        }
+            //   getUrlParams(name){
+            //         let after = window.location.hash.split("?")[1];
+            //         if(after)
+            //         {
+            //             let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            //             var r = after.match(reg);
+            //             if(r != null) {
+            //                 return  decodeURIComponent(r[2]);
+            //             }
+            //             else  {
+            //                 return '';
+            //             }
 
-                    }
+            //         }
 
-            },
+            // },
             
 
         },
         mounted(){
-                this.invitedCode = this.getUrlParams('inviteCode');
+                this.invitedCode = getUrlKey('inviteCode');
                 console.log(this.invitedCode)
                 this.loginToken = Cookies.get('loginToken');
                 if(this.loginToken){

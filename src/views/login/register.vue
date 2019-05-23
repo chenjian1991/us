@@ -661,22 +661,22 @@ const clickoutside = {
             //         this.agreeAbleUrl = this.agreeAbleUrlCH;
             //     }
             // },
-            getUrlParams(name){
-                    let after = window.location.hash.split("?")[1];
-                    if(after)
-                    {
-                        let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-                        var r = after.match(reg);
-                        if(r != null) {
-                            return  decodeURIComponent(r[2]);
-                        }
-                        else  {
-                            return '';
-                        }
+            // getUrlParams(name){
+            //         let after = window.location.hash.split("?")[1];
+            //         if(after)
+            //         {
+            //             let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            //             var r = after.match(reg);
+            //             if(r != null) {
+            //                 return  decodeURIComponent(r[2]);
+            //             }
+            //             else  {
+            //                 return '';
+            //             }
 
-                    }
+            //         }
 
-            },
+            // },
             controlSelect(){
                 this.selectFlag = !this.selectFlag;
                 this.countrySelectFlag = false;
@@ -717,8 +717,8 @@ const clickoutside = {
             judgePCorMoble(){
                 let u = navigator.userAgent;
                 if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// 移动端
-                    if(this.getUrlParams('invite_code')){
-                        window.location.href='http://47.75.120.27:8030/mobile/#/emailRegister?invite_code='+this.getUrlParams('invite_code');
+                    if(getUrlKey('invite_code')){
+                        window.location.href='http://47.75.120.27:8030/mobile/#/emailRegister?invite_code='+getUrlKey('invite_code');
                     }else{
                         window.location.href='http://47.75.120.27:8030/mobile/#/emailRegister';
                     }
@@ -767,7 +767,7 @@ const clickoutside = {
             this.initRobot()
             this.countryCode();
             // this.formValidate.interest=['ddd'];
-            let inviteCode =  this.getUrlParams('invite_code');
+            let inviteCode = getUrlKey('invite_code');
             this.formValidate.referrId = inviteCode;
             if(inviteCode){
                 this.referrDisable = true;

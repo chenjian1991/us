@@ -27,6 +27,8 @@ import {activationEmail} from '../../../api/urls.js';
 import {getApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 import Cookies from 'js-cookie'
+import {getUrlKey} from '@/lib/utils.js'
+
 
     export default {
         name:'login',
@@ -43,27 +45,27 @@ import Cookies from 'js-cookie'
 
         },
         methods:{
-            getUrlParams(name){
-                    let after = window.location.hash.split("?")[1];
-                    if(after)
-                    {
-                        let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-                        var r = after.match(reg);
-                        if(r != null) { 
-                            return  decodeURIComponent(r[2]);
-                        }
-                        else  {
-                            return '';
-                        }
+            // getUrlParams(name){
+            //         let after = window.location.hash.split("?")[1];
+            //         if(after)
+            //         {
+            //             let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            //             var r = after.match(reg);
+            //             if(r != null) { 
+            //                 return  decodeURIComponent(r[2]);
+            //             }
+            //             else  {
+            //                 return '';
+            //             }
 
-                    }
+            //         }
 
-            },
+            // },
             gotoSite(){
-                if(!this.getUrlParams('code')){
+                if(!getUrlKey('code')){
                     return false;
                 }
-                let codeParams = this.getUrlParams('code').replace(/(\")/g, "");//去掉url中的引号；
+                let codeParams = getUrlKey('code').replace(/(\")/g, "");//去掉url中的引号；
                 let url = activationEmail+'/'+codeParams;
                 getApi(url,{}).then((res)=>{
                       if(res.code){
