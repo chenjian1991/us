@@ -6,7 +6,8 @@
         <div class="col-sm-12 col-md-12 mb-5 mb-md-0">
           <h2 class="h5">{{$t('supchage')}}</h2>
           <br>
-          <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">{{$t('supregister2')}}</strong></button>
+          <!-- <button  @click='register'  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">{{$t('supregister2')}}</strong></button> -->
+          <button   class="btn btn-xs  u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><strong data-v-d1e1e420="" class="font-size-14">{{$t('BalancesEventOver')}}</strong></button>
           <br>
           <!-- <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button> -->
         </div>

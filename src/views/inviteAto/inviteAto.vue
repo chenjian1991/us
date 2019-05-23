@@ -55,8 +55,9 @@
               <span class="d-block h6 text-white mb-2">{{$t('suptime')}}</span>
             </div>
 
-            <button  @click='popup' v-if="loginflag"  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">{{$t('supcommon')}}</span><strong data-v-d1e1e420="" class="font-size-14">{{$t('supfriend')}}</strong></span></span></button>
-            <button @click='gotoLogin' v-else target="_blank" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">{{$t('supcommon')}}</span><strong data-v-d1e1e420="" class="font-size-14">{{$t('supfriend')}}</strong></span></span></button>
+            <!-- <button  @click='popup' v-if="loginflag"  class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">{{$t('supcommon')}}</span><strong data-v-d1e1e420="" class="font-size-14">{{$t('supfriend')}}</strong></span></span></button>
+            <button @click='gotoLogin' v-else target="_blank" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">{{$t('supcommon')}}</span><strong data-v-d1e1e420="" class="font-size-14">{{$t('supfriend')}}</strong></span></span></button> -->
+            <button  target="_blank" class="btn btn-xs u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><strong data-v-d1e1e420="" class="font-size-14">{{$t('BalancesEventOver')}}</strong></span></span></button>
             <br>
             <!-- <button @click="joinTelegram" type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">获取最新Supreme市场信息</span><strong data-v-d1e1e420="" class="font-size-14">加入Supreme社群</strong></span></span></button> -->
 
@@ -186,7 +187,7 @@ export default {
                   $.HSCore.helpers.HSFocusState.init();
                   $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
                   $.HSCore.components.HSGoTo.init('.js-go-to');
-                this.judgeLogin()
+                  this.judgeLogin();
         }
 }
 </script>
