@@ -554,6 +554,14 @@ const clickoutside = {
                                     'country':_that.EmailcountryName,
                                     "site":"B",
                                     "activityCode":getUrlKey('src'),
+                                     "userClientInfo":{
+                                        "deviceModel":"MI 2S",
+                                        "deviceId": "xxxsllsj",
+                                        "resolution":"1920*1080",
+                                        "os":"Android",
+                                        "netType":"4G",
+                                        "operator":"China Mobile"
+                                        }
                             }
                             _that.emailRegisterFun();
                             
@@ -587,6 +595,15 @@ const clickoutside = {
                         "country": this.phoneCountryName,
                         "site": "B",
                         "activityCode":getUrlKey('src'),
+                         "userClientInfo":{
+                                        "deviceModel":"MI 2S",
+                                        "deviceId": "xxxsllsj",
+                                        "resolution":"1920*1080",
+                                        "os":"Android",
+                                        "netType":"4G",
+                                        "operator":"China Mobile"
+                                        }
+                        
                         }  
                 }else{
                      params = this.emailParams;
