@@ -152,15 +152,14 @@
                                 </FormItem>
                                 <FormItem prop="interest">
                                     <CheckboxGroup v-model="formValidate.interest">
-                                        <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}}</span>
+                                        <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}} </span>
                                         <router-link class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
-                                        <!-- <a class="agreeAble" target="_blank" :href="agreeAbleUrl">{{$t('regTermsOfUse')}}</a> -->
+                                            <span style="color:#51809F;padding:0 10px;">and</span>
+                                        <router-link class="termsurl" to="/privacy">Privacy Policy</router-link>
                                         </Checkbox>
                                     </CheckboxGroup>
                                 </FormItem>
                           </div>
-
-
                             <Button v-if="loaded"  :disabled='registerbtn' id="registerBtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('regSignup')}}</Button>
                             <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
                              

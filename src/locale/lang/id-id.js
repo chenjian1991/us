@@ -290,6 +290,8 @@ export default {
     regSignup: 'Daftar',
     regAlreadyReg: 'Sudah Mendaftar?',
     regLogin: 'Masuk',
+   隐私条款:'Privacy Policy',
+
     usNotice: "55, termasuk semua produk dan layanan yang ditawarkan dengan ini, saat ini tidak tersedia untuk warga negara atau penduduk Amerika Serikat dan wilayah afiliasinya. Kami tidak menawarkan, meminta, mempromosikan, atau jika tidak bertahan untuk dapat memberikan layanan atau produk kepada setiap warga negara atau penduduk Amerika Serikat. Silahkan lihat ketentuan penggunaan kami untuk informasi lebih lanjut.",
     //5站title翻译
     HomePageTitle: '55 - One World, One Exchange ',

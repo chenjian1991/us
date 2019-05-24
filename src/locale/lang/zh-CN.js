@@ -277,7 +277,7 @@ export default {
    passwordNotMach: '两次输入的密码不一致,请重新输入',
    passwordReg: '密码必须是8-20位数字和字母组合',
    regAgree: '我同意55的',
-   regTermsOfUse: '使用条款',
+   regTermsOfUse: '用户协议',
    dlWelcome: '欢迎登录55',
    dlLogin: '登录',
    dlForgot: '忘记密码 ?',
@@ -289,6 +289,7 @@ export default {
    regSignup: '注册',
    regAlreadyReg: '已经注册过?',
    regLogin: '登录',
+   隐私条款:'隐私条款',
    usNotice: "55 Global Markets, including all products and services offered hereby, is currently not available to any citizens or residents of the United States and its affiliated territories. We are not offering, soliciting, promoting, or otherwise holding out as being able to provide any service or product to any citizens or residents of the United States. Please see our Terms of Use for more information.",
    //5站title翻译
    HomePageTitle: '55 - 让世界自由流动!',

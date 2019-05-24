@@ -344,6 +344,8 @@ export default {
    regSignup: "Đăng ký",
    regAlreadyReg: "Đã đăng ký",
    regLogin: "Đăng nhập",
+   隐私条款:'Privacy Policy',
+
    //5站title翻译
    HomePageTitle: "Sàn giao dịch 55 I Sàn giao dịch thế giới với sự trung thực",
    // LoginPageTitle:"Log In - 55 Exchange",
