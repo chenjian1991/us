@@ -1061,6 +1061,9 @@
       .ivu-table-header {
          border-top: 1px solid #F5F5F5;
       }
+      .ivu-table-wrapper{
+         overflow:visible;
+      }
       /*table 样式 end*/
 
       .ivu-tabs-no-animation > .ivu-tabs-content {
