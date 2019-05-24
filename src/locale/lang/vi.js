@@ -344,6 +344,7 @@ export default {
    regSignup: "Đăng ký",
    regAlreadyReg: "Đã đăng ký",
    regLogin: "Đăng nhập",
+   registerAnd:'and',
    隐私条款:'Privacy Policy',
 
    //5站title翻译
@@ -681,6 +682,16 @@ export default {
    Bx000001:'parameter request error ',
    Bx000002:'opration failed',
    Ax000001:'service is busy',
+   400:"Request error(400)",
+   401:"Login timeout,please relogin",
+   403:"Server error(403)",
+   404:"Page not found(404)",
+   500:"Server error(500)",
+   503:"Server error(503)",
+   10000:"Request error(10000)",
+   0x01000A:"Request error(1000)",
+   0x01001A:"Request error(1001)",
+   0x01002B:"Server error(1002)",
 
    //挖矿
 

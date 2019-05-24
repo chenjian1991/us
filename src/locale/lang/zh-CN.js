@@ -289,6 +289,7 @@ export default {
    regSignup: '注册',
    regAlreadyReg: '已经注册过?',
    regLogin: '登录',
+   registerAnd:'和',
    隐私条款:'隐私条款',
    usNotice: "55 Global Markets, including all products and services offered hereby, is currently not available to any citizens or residents of the United States and its affiliated territories. We are not offering, soliciting, promoting, or otherwise holding out as being able to provide any service or product to any citizens or residents of the United States. Please see our Terms of Use for more information.",
    //5站title翻译
@@ -469,7 +470,7 @@ export default {
    panSell: '卖',
    panBuy: '买',
    //交易部分返回
-   500: "服务器维护",
+   // 500: "服务器维护",
    65579: "通用服务器端错误",
    65562: '通用请求错误',
    131099: "创建账号异常",
@@ -506,7 +507,7 @@ export default {
    393306: "资产增加错误",
    393338: "充值地址查询错误",
    //sso接口异常情况
-   10000: "系统繁忙，请联系55客服。",
+   // 10000: "系统繁忙，请联系55客服。",
    10001: "该手机已被使用",
    10002: "该邮箱已被使用，即将前往登录页。",
    10003: "短信验证码不正确，请重新输入。",
@@ -572,6 +573,16 @@ export default {
    Bx000001:'请求参数错误',
    Bx000002:'操作失败',
    Ax000001:'服务繁忙',
+   400:"参数请求错误(400)",
+   401:"登录超时，请重新登录",
+   403:"服务异常，请稍后再试(403)",
+   404:"请求地址错误(404)",
+   500:"服务器错误(500)",
+   503:"服务器不可用(503)",
+   10000:"参数请求异常(10000)",
+   0x01000A:"参数或者请求地址错误(1000)",
+   0x01001A:"参数或者请求地址错误(1001)",
+   0x01002B:"服务器异常(1002)",
    //挖矿
    MiningBuying: '买入即挖矿',
    MiningBackToBuyer: '买入挖矿，手续费3倍返还',
