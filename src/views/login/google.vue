@@ -23,10 +23,11 @@
 </template>
 
 <script>
-import {userInfo,googleLogin,loginHistory} from '../../../api/urls.js';
+import {userInfo,googleLogin,loginHistory,socialToken} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import {setCookies} from '@/config'
+import {setCookies} from '@/config';
+import {getCommouityBaseURL} from '../../config/index.js';
     export default {
         name:'login',
         components:{
@@ -55,6 +56,9 @@ import {setCookies} from '@/config'
                 },
                 showModal:false,
                 text:'',
+                fromSocial:"",
+                responseSocialToken:'',
+                domain:'',
                 ruleValidate: {
                     googleNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -81,6 +85,16 @@ import {setCookies} from '@/config'
                     }
                 })
             },
+             gotoSocial(loginToken){//拿登陆token去换取social token
+              if(loginToken){//登陆了
+                  postHeaderTokenBodyApi(socialToken,loginToken,{}).then((res)=>{
+                         this.responseSocialToken = res.token;
+                         window.location.href= this.domain+'api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
+                  }) 
+              }else{
+              
+              }
+         },
             getUserInfo(token){
                 postHeaderTokenBodyApi(userInfo,token,{}).then((res) =>{
                     let tradingPasswordFlag = res.isSetTradePasswrod;
@@ -95,11 +109,19 @@ import {setCookies} from '@/config'
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                        this.$router.push('/home');  
+                           if(this.fromSocial==undefined){
+                                    this.$router.push('/home');  
+                            }else{//说明来自social
+                                    this.gotoSocial(token)
+                            }
 
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                        this.$router.push('/home');  
+                          if(this.fromSocial==undefined){
+                                    this.$router.push('/home');  
+                            }else{//说明来自social
+                                    this.gotoSocial(token)
+                            }
 
                     }
                 }).catch((res) =>{
@@ -171,7 +193,8 @@ import {setCookies} from '@/config'
             }
         },
         mounted(){
-           
+            this.fromSocial = this.$route.query.fromSocial;
+            this.domain = getCommouityBaseURL();
         }
         
         

@@ -44,11 +44,15 @@
 </template>
 
 <script>
-import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl} from '../../../api/urls.js';
+import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl,socialToken} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 import { duration } from 'moment';
-import {setCookies} from '@/config'
+import {setCookies} from '@/config';
+import {getUrlKeyandEncode} from '@/lib/utils.js';
+import {getCommouityBaseURL} from '../../config/index.js';
+
+
 
 
     export default {
@@ -97,6 +101,9 @@ import {setCookies} from '@/config'
                 hashFlag:false,
                 showModal:false,
                 text:'',
+                responseSocialToken:'',
+                domain:'',
+                fromSocial:'',
                 ruleValidate: {
                     phoneNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -190,16 +197,34 @@ import {setCookies} from '@/config'
                     console.log(res)
                 })
             },
+        gotoSocial(loginToken){//拿登陆token去换取social token
+              if(loginToken){//登陆了
+                  postHeaderTokenBodyApi(socialToken,loginToken,{}).then((res)=>{
+                         this.responseSocialToken = res.token;
+                         window.location.href= this.domain+'api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
+                  }) 
+              }else{
+              
+              }
+         },
             gitlogHistory(token){//登录历史接口
                   postHeaderTokenBodyApi(loginHistory,token,{}).then((res) =>{
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                          this.$router.push('/home');  
+                          if(this.fromSocial=="null"){
+                                this.$router.push('/home');  
+                          }else{//说明来自social
+                                 this.gotoSocial(token)
+                          }
 
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                         this.$router.push('/home');  
+                          if(this.fromSocial=="null"){
+                                this.$router.push('/home');  
+                          }else{//说明来自social
+                                 this.gotoSocial(token)
+                          }
                     }
                     //请求自选的币种
                     this.$store.dispatch("getMarkSymbol");
@@ -345,7 +370,16 @@ import {setCookies} from '@/config'
                         let ex55Pin = res.ex55Pin;
                         localStorage.setItem('ex55Pin',ex55Pin)
                         this.ex55Pin = ex55Pin;
-                        this.$router.push('/google');
+                        if(this.fromSocial=='null'){//说明是从social跳过来的
+                                this.$router.push('/google');
+                        }else{
+                             this.$router.push({
+                                    path:'/google',
+                                    query:{
+                                        fromSocial:this.fromSocial
+                                    }
+                                })
+                        }
                     }
                     
 
@@ -365,7 +399,16 @@ import {setCookies} from '@/config'
                         let ex55Pin = res.ex55Pin;
                         localStorage.setItem('ex55Pin',ex55Pin)
                         this.ex55Pin = ex55Pin;
-                        this.$router.push('/google');
+                         if(this.fromSocial=='null'){
+                                this.$router.push('/google');
+                        }else{//说明是从social跳过来的
+                             this.$router.push({
+                                    path:'/google',
+                                    query:{
+                                        fromSocial:this.fromSocial
+                                    }
+                                })
+                        }
                     }
                     
 
@@ -406,6 +449,9 @@ import {setCookies} from '@/config'
             //初始化为未登录状态
            this.$store.commit('changeLoingStatus',false)
            this.initRobot();
+            this.fromSocial = getUrlKeyandEncode('socialback');
+            console.log(this.fromSocial)
+           this.domain = getCommouityBaseURL();
         },
         created(){
             var _this = this;

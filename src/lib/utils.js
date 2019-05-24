@@ -33,6 +33,10 @@ export const storage = {
 export function getUrlKey(name) {
    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
 }
+//获取url中的key并加码
+export function getUrlKeyandEncode(name) {
+   return encodeURIComponent(decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null)
+}
 
 //判断两个能否整除
 export function isDivideAll(num1, num2) {

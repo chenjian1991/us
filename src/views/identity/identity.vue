@@ -307,7 +307,7 @@
 
 <script>
 import {countrylist} from '../identity/country.js'
-import {uploadPic,identifyPhoto} from '../../../api/urls.js';
+import {uploadPic,identifyPhoto,cardEffective} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi,getApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Cookies from 'js-cookie';
 import Modal from '@/components/Modal';
@@ -340,6 +340,55 @@ import { denodeify } from 'q';
                     callback(new Error(this.$t('phoneNumberRequier')))
                 }else{
                     callback()
+                }
+            };
+            const validateIdCard = (rule,value,callback) => {
+                if(value === ''){
+                    callback(new Error(this.$t('phoneNumberRequier')))
+                }else{
+                    getHeaderTokenApi(cardEffective+value,'',Cookies.get('loginToken')).then((res)=>{
+                        if(res.data.result){//可以使用
+                                callback()
+                        }else if(res.data.code){
+                             this.$Notice.error({
+                                        title: this.$t(res.data.code),
+                                        desc:this.$t(res.data.code)
+                                });
+                            if(res.data.code='Cx000001'){
+                                Cookies.remove('loginToken', {domain: document.domain.split('.').slice(-2).join('.')})
+                                this.$router.push('/login')
+                            }
+                               
+
+                        }else{
+                             callback(new Error(this.$t('idcardUnick')))
+                        }
+                    })
+
+                }
+            };
+            const validatePassport = (rule,value,callback) => {
+                if(value === ''){
+                    callback(new Error(this.$t('phoneNumberRequier')))
+                }else{
+                    getHeaderTokenApi(cardEffective+value,'',Cookies.get('loginToken')).then((res)=>{
+                        if(res.data.result){
+                                callback()
+                        }else if(res.data.code){
+                            this.$Notice.error({
+                                        title: this.$t(res.data.code),
+                                        desc:this.$t(res.data.code)
+                                });
+                            if(res.data.code='Cx000001'){
+                                 Cookies.remove('loginToken', {domain: document.domain.split('.').slice(-2).join('.')})
+                                    this.$router.push('/login')
+                            }
+                        }else{
+                             callback(new Error(this.$t('idcardUnick')))
+
+                        }
+                    })
+
                 }
             };
             return {
@@ -393,10 +442,10 @@ import { denodeify } from 'q';
                         {validator: validateSms, trigger: 'blur'}
                     ],
                     passPort: [
-                        { validator: validateSms, trigger: 'blur' }
+                        { validator: validatePassport, trigger: 'blur' }
                     ],
                     idCard:[
-                        { validator: validateSms, trigger: 'blur' }
+                        { validator: validateIdCard, trigger: 'blur' }
                     ],
                     
                     
