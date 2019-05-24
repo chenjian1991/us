@@ -322,6 +322,8 @@ export default {
    regSignup: 'Kayıt',
    regAlreadyReg: 'Already Registered?',
    regLogin: 'Giriş',
+   隐私条款:'Privacy Policy',
+
    //5站title翻译
    HomePageTitle: '55 - One World, One Exchange ',
    ExchangeTitle: 'Log In - 55',

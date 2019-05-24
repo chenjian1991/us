@@ -322,6 +322,8 @@ export default {
    regSignup: "S'enregistrer",
    regAlreadyReg: 'Already Registered?',
    regLogin: 'Connexion',
+   隐私条款:'Privacy Policy',
+
    //5站title翻译
    HomePageTitle: '55 - One World, One Exchange ',
    ExchangeTitle: 'Log In - 55',

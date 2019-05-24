@@ -341,6 +341,7 @@ export default {
    regSignup: "등록",
    regAlreadyReg: "이미 등록하셨습니까?",
    regLogin: "로그인",
+   隐私条款:'Privacy Policy',
    usNotice: "55, including all products and services offered hereby, is currently not available to any citizens or residents of the United States and its affiliated territories. We are not offering, soliciting, promoting, or otherwise holding out as being able to provide any service or product to any citizens or residents of the United States. Please see our Terms of Use for more information.",
 
    //5站title翻译
