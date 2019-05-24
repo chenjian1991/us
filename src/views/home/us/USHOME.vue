@@ -769,15 +769,15 @@
                           
                           <h2 class="text-primary">55 <span class="font-weight-bold">Debit Card</span></h2>
                           
-                          <p>Seamlessly integrated with 55 GBBO, your cryptocurrencies can be converted to fiat currency almost in real time. 55, in collaboration with VISA, MASTER, and major payment service providers worldwide, allows you to pay at millions of storefronts or POS terminals.</p >
+                          <p>Seamlessly integrated with 55 GBBO, your cryptocurrencies can be converted to fiat currency almost in real time. 55, in collaboration with major payment service providers, will allow you to pay at millions of storefronts or POS terminals.</p >
                         </div>
                         <!-- End Title -->
                         
                         <button type="button" @click="$router.push('/card')" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2">
                             <span class="media align-items-center">
-                              <span class="d-flex mr-3">
+                              <!-- <span class="d-flex mr-3">
                                 <span class="fab fa-cc-visa font-size-26"></span>
-                              </span>
+                              </span> -->
                               <span class="media-body">
                                 <span class="d-block">Pre-order Now</span>
                                 <strong class="font-size-14">55 Debit Card</strong>

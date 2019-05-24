@@ -341,6 +341,8 @@ export default {
    regSignup: "등록",
    regAlreadyReg: "이미 등록하셨습니까?",
    regLogin: "로그인",
+   registerAnd:'and',
+   隐私条款:'Privacy Policy',
    usNotice: "55, including all products and services offered hereby, is currently not available to any citizens or residents of the United States and its affiliated territories. We are not offering, soliciting, promoting, or otherwise holding out as being able to provide any service or product to any citizens or residents of the United States. Please see our Terms of Use for more information.",
 
    //5站title翻译
@@ -678,7 +680,16 @@ export default {
    Bx000001:'parameter request error ',
    Bx000002:'opration failed',
    Ax000001:'service is busy',
-
+   400:"Request error(400)",
+   401:"Login timeout,please relogin",
+   403:"Server error(403)",
+   404:"Page not found(404)",
+   500:"Server error(500)",
+   503:"Server error(503)",
+   10000:"Request error(10000)",
+   0x01000A:"Request error(1000)",
+   0x01001A:"Request error(1001)",
+   0x01002B:"Server error(1002)",
    //挖矿
    MiningBuying: "구매는 가상화페 채굴하는 것입니다.",
    MiningBackToBuyer: "가상 화폐 채굴하면 수수료는 3 배 반환됩니다.",

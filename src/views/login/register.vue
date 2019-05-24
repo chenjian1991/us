@@ -90,8 +90,9 @@
                                 <FormItem prop="interest">
                                     <CheckboxGroup v-model="formValidate.interest">
                                         <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}}</span>
-                                        <router-link class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
-                                            <!-- <a class="agreeAble" target="_blank" :href="agreeAbleUrl">{{$t('regTermsOfUse')}}</a> -->
+                                        <router-link target="_blank" class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
+                                           <span style="color:#51809F;padding:0 10px;">{{$t('registerAnd')}}</span>
+                                        <router-link target="_blank" class="termsurl" to="/privacy">{{$t('隐私条款')}}</router-link>
                                         </Checkbox>
                                     </CheckboxGroup>
                                 </FormItem>
@@ -152,15 +153,14 @@
                                 </FormItem>
                                 <FormItem prop="interest">
                                     <CheckboxGroup v-model="formValidate.interest">
-                                        <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}}</span>
-                                        <router-link class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
-                                        <!-- <a class="agreeAble" target="_blank" :href="agreeAbleUrl">{{$t('regTermsOfUse')}}</a> -->
+                                        <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}} </span>
+                                        <router-link target="_blank" class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
+                                            <span style="color:#51809F;padding:0 10px;">{{$t('registerAnd')}}</span>
+                                        <router-link target="_blank" class="termsurl" to="/privacy">{{$t('隐私条款')}}</router-link>
                                         </Checkbox>
                                     </CheckboxGroup>
                                 </FormItem>
                           </div>
-
-
                             <Button v-if="loaded"  :disabled='registerbtn' id="registerBtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('regSignup')}}</Button>
                             <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
                              
@@ -554,6 +554,14 @@ const clickoutside = {
                                     'country':_that.EmailcountryName,
                                     "site":"B",
                                     "activityCode":getUrlKey('src'),
+                                     "userClientInfo":{
+                                        "deviceModel":"MI 2S",
+                                        "deviceId": "xxxsllsj",
+                                        "resolution":"1920*1080",
+                                        "os":"Android",
+                                        "netType":"4G",
+                                        "operator":"China Mobile"
+                                        }
                             }
                             _that.emailRegisterFun();
                             
@@ -587,6 +595,15 @@ const clickoutside = {
                         "country": this.phoneCountryName,
                         "site": "B",
                         "activityCode":getUrlKey('src'),
+                         "userClientInfo":{
+                                        "deviceModel":"MI 2S",
+                                        "deviceId": "xxxsllsj",
+                                        "resolution":"1920*1080",
+                                        "os":"Android",
+                                        "netType":"4G",
+                                        "operator":"China Mobile"
+                                        }
+                        
                         }  
                 }else{
                      params = this.emailParams;
