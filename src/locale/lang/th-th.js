@@ -322,6 +322,7 @@ export default {
    regSignup: 'สมัครใช้งาน',
    regAlreadyReg: 'Already Registered?',
    regLogin: 'เข้าสู่ระบบ',
+   registerAnd:'and',
    隐私条款:'Privacy Policy',
 
    //5站title翻译

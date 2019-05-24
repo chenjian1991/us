@@ -322,6 +322,7 @@ export default {
    regSignup: 'Registe-se',
    regAlreadyReg: 'Already Registered?',
    regLogin: 'Login',
+   registerAnd:'and',
    隐私条款:'Privacy Policy',
    400:"Request error(400)",
    401:"Login timeout,please relogin",

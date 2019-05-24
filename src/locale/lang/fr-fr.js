@@ -322,6 +322,7 @@ export default {
    regSignup: "S'enregistrer",
    regAlreadyReg: 'Already Registered?',
    regLogin: 'Connexion',
+   registerAnd:'and',
    隐私条款:'Privacy Policy',
 
    //5站title翻译

@@ -323,6 +323,7 @@ export default {
    regSignup: 'Registrarme',
    regAlreadyReg: 'Already Registered?',
    regLogin: 'Iniciar sesión',
+   registerAnd:'and',
    隐私条款:'Privacy Policy',
 
    //5站title翻译

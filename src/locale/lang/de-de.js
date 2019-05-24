@@ -322,6 +322,7 @@ export default {
    regSignup: 'Registrieren',
    regAlreadyReg: 'Already Registered?',
    regLogin: 'Anmelden',
+   registerAnd:'and',
    隐私条款:'Privacy Policy',
    //5站title翻译
    HomePageTitle: '55 - One World, One Exchange ',

@@ -91,7 +91,7 @@
                                     <CheckboxGroup v-model="formValidate.interest">
                                         <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}}</span>
                                         <router-link target="_blank" class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
-                                           <span style="color:#51809F;padding:0 10px;">and</span>
+                                           <span style="color:#51809F;padding:0 10px;">{{$t('registerAnd')}}</span>
                                         <router-link target="_blank" class="termsurl" to="/privacy">{{$t('隐私条款')}}</router-link>
                                         </Checkbox>
                                     </CheckboxGroup>
@@ -155,7 +155,7 @@
                                     <CheckboxGroup v-model="formValidate.interest">
                                         <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}} </span>
                                         <router-link target="_blank" class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
-                                            <span style="color:#51809F;padding:0 10px;">and</span>
+                                            <span style="color:#51809F;padding:0 10px;">{{$t('registerAnd')}}</span>
                                         <router-link target="_blank" class="termsurl" to="/privacy">{{$t('隐私条款')}}</router-link>
                                         </Checkbox>
                                     </CheckboxGroup>

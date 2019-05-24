@@ -289,6 +289,7 @@ export default {
    regSignup: '注册',
    regAlreadyReg: '已经注册过?',
    regLogin: '登录',
+   registerAnd:'和',
    隐私条款:'隐私条款',
    usNotice: "55 Global Markets, including all products and services offered hereby, is currently not available to any citizens or residents of the United States and its affiliated territories. We are not offering, soliciting, promoting, or otherwise holding out as being able to provide any service or product to any citizens or residents of the United States. Please see our Terms of Use for more information.",
    //5站title翻译

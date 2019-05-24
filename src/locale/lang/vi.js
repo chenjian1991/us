@@ -344,6 +344,7 @@ export default {
    regSignup: "Đăng ký",
    regAlreadyReg: "Đã đăng ký",
    regLogin: "Đăng nhập",
+   registerAnd:'and',
    隐私条款:'Privacy Policy',
 
    //5站title翻译
