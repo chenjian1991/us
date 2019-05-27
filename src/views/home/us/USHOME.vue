@@ -803,7 +803,7 @@
                         <div class="col-7 px-2 mb-3">
                           <!-- Fancybox -->
                           <a>
-                            <img class="img-fluid rounded" src="assets/svg/bg/topright.jpeg" alt="Image Description">
+                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/topright.jpeg" alt="Image Description">
 
 
                           </a >
@@ -823,7 +823,7 @@
                         <div class="col-5 px-2 mb-3">
                           <!-- Fancybox -->
                           <a>
-                            <img class="img-fluid rounded" src="assets/svg/bg/bottomright.jpg" alt="Image Description">
+                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/bottomright.jpg" alt="Image Description">
 
                           </a >
                           <!-- End Fancybox -->
@@ -1141,8 +1141,8 @@
                             <div class="row">
                                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                 <h3 class="h5 mb-4">Ashu Swami</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">CEO of 55 Pro</span>
-                                <p class="font-size-14">Ashu is the CEO of 55 Pro. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
+                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">CEO of 55 Prime</span>
+                                <p class="font-size-14">Ashu is the CEO of 55 Prime. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
 
                                 </div>
                                 <div class="col-sm-6">
@@ -1171,8 +1171,8 @@
                             <div class="row">
                                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                 <h3 class="h5 mb-4">Lisa Loud	</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">SVP of Business Development</span>
-                                <p class="font-size-14">Lisa Loud has joined 55 as SVP of Business Development. Lisa led strategy at BitMEX from 2017, and during her tenure, the exchange volume reached the largest crypto volume worldwide in early 2018. </p>
+                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3"> SVP of Strategic Partnerships</span>
+                                <p class="font-size-14">Lisa Loud has joined 55 as  SVP of Strategic Partnerships. Lisa led strategy at BitMEX from 2017, and during her tenure, the exchange volume reached the largest crypto volume worldwide in early 2018. </p>
                                 </div>
                                 <div class="col-sm-6">
                                 <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_2.jpg" alt="Image Description">
