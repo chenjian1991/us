@@ -43,7 +43,8 @@ import {
    createRealName,
    queryFavoritesPair,
    updateFavoritesPair,
-   deleteFavoritesPair
+   deleteFavoritesPair,
+   queryTradePassWordURL
 } from './urls'
 
 const checkExpiredAble = (expiredAble) => {
@@ -219,7 +220,9 @@ export const getHistoricalTimeRange = (params) => {
 export const getSummarizedTimeRange = (params) => {
    return getApi(summarizedTimeRange, params)
 }
-
+export const queryTradePassWordStatus = (token) => {
+   return getHeaderTokenApi(queryTradePassWordURL, {},token)
+}
 
 
 

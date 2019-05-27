@@ -114,7 +114,6 @@
             this.judgePCorMoble()
 
             let cookiesModalFlag = window.localStorage.getItem('COOKIESMODAL')
-                console.log(123312,cookiesModalFlag !== 'CLOSED')
             if(cookiesModalFlag !== 'CLOSED'){
                 this.isShowCookiesBox = true
             }else{

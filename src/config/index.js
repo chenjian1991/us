@@ -38,6 +38,7 @@ export function clearLocalStorage(){
     localStorage.removeItem("securitPhone");
     localStorage.removeItem("Emailtoken");
     localStorage.removeItem("phoneToken");
+    localStorage.removeItem("PASSWORDTOKEN")
     // window.location.reload();
   }, 100)
 }
