@@ -474,6 +474,7 @@
                                     this.modal1 = false;
                                     this.queryOpenTradepassword();
                                     localStorage.removeItem("ORDER_SESSION");
+                                    localStorage.removeItem("PASSWORDTOKEN")
                                     this.$Notice.success({
                                        title: this.$t('11001'),
                                        desc:this.$t('11001')
