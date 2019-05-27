@@ -824,6 +824,11 @@ export default {
    aqzxIdentity: "신분 인증",
    aqzxPhoneExplain: "API 관리 중 인출, 비밀번호 검색, 보안 설정 변경 및 확인에 사용",
    aqzxPhoneExplaintwo: "인출 금액을 올리고 계좌 정보를 되찾는 데 사용됩니다. ",
+   交易密码失效:'Trading password Validity',
+   仅应用于币币交易:'Vaild for Crypto-to-Crypto Trade',
+   每两小时输入:'Every 2 hours',
+   不输入:'Never',
+   safeVerify:'Security Verification',
    //修改登录密码
    aqzxchangepassword: "로그인 비밀번호 변경",
    aqzxtips: "다른 사람에게 비밀번호, Google 인증 코드 및 SMS 인증코드를 공개하지 마십시오.",

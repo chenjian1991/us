@@ -827,7 +827,12 @@ export default {
    aqzxIdentity: "L1 Verification",
    aqzxPhoneExplain: "Used to withdraw, retrieve password, change security settings, and verify while managing API.",
    aqzxPhoneExplaintwo: "'Used to promote the withdraw amount,retrieving account information.",
-   //修改登录密码
+   交易密码失效:'Trading password Validity',
+   仅应用于币币交易:'Vaild for Crypto-to-Crypto Trade',
+   每两小时输入:'Every 2 hours',
+   不输入:'Never',
+   safeVerify:'Security Verification',
+   //修改密码
    aqzxchangepassword: "Change Login Password",
    aqzxtips: "Do not disclose Password, Google Authentication codes and SMS to anyone, including 55 support.",
    aqzxverify: "Security Verification",

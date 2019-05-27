@@ -715,6 +715,11 @@ export default {
      aqzxIdentity: 'Verifikasi Identitas',
      aqzxPhoneExplain: "Digunakan untuk penarikan, mengambil kembali kata sandi, mengubah pengaturan keamanan dan menverifikasi sambil mengelola API.",
      aqzxPhoneExplaintwo: 'digunakan untuk menaikan jumlah penarikan, mengambil informasi akun.',
+     交易密码失效:'Trading password Validity',
+   仅应用于币币交易:'Vaild for Crypto-to-Crypto Trade',
+   每两小时输入:'Every 2 hours',
+   不输入:'Never',
+   safeVerify:'Security Verification',
      //修改密码
      aqzxchangepassword: "Ubah kata sandi untuk masuk",
      aqzxtips: "*Untuk memastikan keamanan tidak ada penarikan yang diizinkan selama 24 jam setelah memodifikasi metode keamanan.",
