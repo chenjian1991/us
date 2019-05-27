@@ -725,6 +725,11 @@ export default {
    aqzxIdentity: 'L1身份认证',
    aqzxPhoneExplain: "用于提币、找回密码、修改安全设置、管理API时进行安全验证",
    aqzxPhoneExplaintwo: '用于提升提币金额，找回账户信息',
+   交易密码失效:'交易密码时效',
+   仅应用于币币交易:'仅应用于币币交易',
+   每两小时输入:'每两小时输入',
+   不输入:'不输入',
+   safeVerify:'安全验证',
    //修改登录密码
    aqzxchangepassword: "修改登录密码",
    aqzxtips: "为了您的账户安全，修改登录密码后24小时内不允许提币。",
