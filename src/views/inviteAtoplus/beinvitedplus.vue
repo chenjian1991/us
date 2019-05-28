@@ -18,10 +18,10 @@
       <div class="container u-space-2">
         <div class="col-md-12 col-lg-12 col-xl-12">
         <div class="text-center mb-4">
-          <h2 class="h3 text-white font-weight-normal">{{$t('supinviteplus')}}<img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
-          <p class="lead u-text-light">
+          <h2 class="h3 text-white font-weight-normal">{{$t('supregisterplus')}}<img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
+          <!-- <p class="lead u-text-light">
             {{$t('supregisterplus')}}
-          </p>
+          </p> -->
         </div></div>
     <br>
         <div class="row justify-content-md-between">
