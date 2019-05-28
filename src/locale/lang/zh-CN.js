@@ -1843,7 +1843,7 @@ export default {
       supmarketplus:"市场参考价格：$1,500",
       suptokneplus:"兑换所需潮牌通证：5,980 SUP/件",
       supatopriceplus:"SUP通证 ATO+ 价格：$0.1",
-      supatoquentityplus:"SUP通证 ATO+ 总量：59,800",
+      supatoquentityplus:"SUP通证 ATO+ 总量：119,600",
       suptimeplus:"SUP ATO+ 开始时间：2019年5月30日，中午12点(UTC+8)",
       supcommonplus:"邀请好友获得奖励并提升额度",
       supfriendplus:"现在就邀请好友助力",
