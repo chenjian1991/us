@@ -176,7 +176,7 @@ const router = new Router({
             path: '/atoInivteplus',
             name: 'atoInivteplus',
             meta: {
-               title: 'supretitle'
+               title: 'supinviteplus'
             },
             component: atoInivteplus
          },
@@ -184,7 +184,7 @@ const router = new Router({
             path: '/beinvitedplus',
             name: 'beinvitedplus',
             meta: {
-               title: 'supretitle'
+               title: 'supinviteplus'
             },
             component: beinvitedplus
          },
@@ -192,7 +192,7 @@ const router = new Router({
             path: '/registerSuccessplus',
             name: 'registerSuccessplus',
             meta: {
-               title: 'supretitle'
+               title: 'supinviteplus'
             },
             component: registerSuccessplus
          },
