@@ -98,6 +98,9 @@ const inviteAto = () =>import(/* webpackChunkName: 'interFinance' */ '../views/i
 const beinvited = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/beinvited.vue') 
 const registerSuccess = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/registerSuccess.vue') 
 
+const atoInivteplus = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/inviteAtoplus.vue') 
+const beinvitedplus = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/beinvitedplus.vue') 
+const registerSuccessplus = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/registerSuccessplus.vue') 
 
 const card = () => import(/* webpackChunkName: "chome" */ '../views/visa.vue')
 const redeemsupreme = () => import(/* webpackChunkName: "chome" */ '../views/redeemsupreme.vue')
@@ -171,6 +174,31 @@ const router = new Router({
             },
             component: registerSuccess
          },
+         {//atoInivtePlus
+            path: '/atoInivteplus',
+            name: 'atoInivteplus',
+            meta: {
+               title: 'supretitle'
+            },
+            component: atoInivteplus
+         },
+          {//beinvitedplus
+            path: '/beinvitedplus',
+            name: 'beinvitedplus',
+            meta: {
+               title: 'supretitle'
+            },
+            component: beinvitedplus
+         },
+          {//registerSuccessplus
+            path: '/registerSuccessplus',
+            name: 'registerSuccessplus',
+            meta: {
+               title: 'supretitle'
+            },
+            component: registerSuccessplus
+         },
+       
       {
          path: '/',
          name: '',
