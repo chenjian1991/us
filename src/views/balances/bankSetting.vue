@@ -355,7 +355,8 @@
          getIdentify() { //实名认证
             if (!this.bankAccountName) {
                getIdentify(Cookies.get('loginToken')).then(res => {
-                  localStorage.setItem('bankAccountName', res.data.firstName + res.data.lastName)
+                  console.log(res)
+                  localStorage.setItem('bankAccountName', `${res.data.firstName} ${res.data.lastName}`)
                   this.bankAccountName = localStorage.getItem('bankAccountName')
                })
             }

@@ -49,6 +49,9 @@
 
 <style lang="less">
    .us-modal {
+      ul{
+         margin-bottom: 0 !important;
+      }
       .main {
          padding: 54px 100px 55px 80px;
          .title {
