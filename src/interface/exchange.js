@@ -292,7 +292,7 @@ Exchange.prototype.issuedTradePassword = function (token, password, fn) {
       fn(getValue("PASSWORDTOKEN"))
       return;
    }
-   getCreatePasswordToken(token, {"password": password}).then(data => {
+   getCreatePasswordToken(token, {"password": password,"tradePasswordType":"TRADE_PASSWORD"}).then(data => {
       if(data.code == "10018" || data.code == "10011"|| data.code == "10017"|| data.code == "10018"){
          //全局错误弹窗
          Notice.warning({
