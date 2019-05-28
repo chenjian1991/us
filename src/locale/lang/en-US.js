@@ -1971,7 +1971,7 @@ export default {
     //裂变活动h5页面plus
     //裂变活动h5页面plus
     supinviteplus:"助力55 Supreme ATO+，提升ATO+额度",
-    supregisterplus:"ATO+预热，邀请好友提升ATO+额度",
+    supregisterplus:"ATO+预热，邀请好友提升额度并获得USDT奖励",
     supproductplus:"可兑换商品：Supreme 施华洛世奇联名套头衫",
     suppriceplus:"原始零售价格：$598",
     supmarketplus:"市场参考价格：$1,500",
