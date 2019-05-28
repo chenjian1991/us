@@ -21,7 +21,7 @@
         components: {},
         data() {
             return {
-                HomeTitle:this.$t(this.$route.meta.title),
+                HomeTitle:this.$t('HomeTitle'),
                 HomeKeyword : this.$t('HomeKeyword'),
                 HomeDescription : this.$t('HomeDescription')
             }
@@ -43,7 +43,6 @@
             },
         },
         mounted() {
-            console.log(this.$route.meta)
             this.$Notice.config({
                 duration: 3
             });
