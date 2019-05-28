@@ -376,7 +376,7 @@ const router = new Router({
                path: 'setGoogle',
                name: 'setGoogle',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: setGoogle
             },
@@ -403,7 +403,7 @@ const router = new Router({
                path: 'identiy',
                name: 'identiy',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: identiy
             },
@@ -427,7 +427,7 @@ const router = new Router({
                path: 'terms',
                name: 'terms',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: terms
             },
@@ -444,7 +444,7 @@ const router = new Router({
                path: 'privacy',
                name: 'privacy',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: privacy
             },
@@ -452,7 +452,7 @@ const router = new Router({
                path: 'fee',
                name: 'fee',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: fee
             },
@@ -460,7 +460,7 @@ const router = new Router({
                path: 'disclaimer',
                name: 'disclaimer',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: disclaimer
             },
@@ -468,7 +468,7 @@ const router = new Router({
                path: 'amlKyc',
                name: 'amlKyc',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: amlKyc
             },
@@ -476,7 +476,7 @@ const router = new Router({
                path: 'amlkycResult',
                name: 'amlkycResult',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: amlkycResult
             },
@@ -484,7 +484,7 @@ const router = new Router({
                path: 'editAmlKyc',
                name: 'editAmlKyc',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: editAmlKyc
             },
@@ -492,7 +492,7 @@ const router = new Router({
                path: 'aml',
                name: 'aml',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: aml
             },
@@ -641,7 +641,7 @@ const router = new Router({
                path: 'miningKorea',
                name: 'miningKorea',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: miningKorea
             },
@@ -649,7 +649,7 @@ const router = new Router({
                path: 'myMining',
                name: 'myMining',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: myKoreaMining
             },
@@ -658,7 +658,7 @@ const router = new Router({
                path: 'groupDetail',
                name: 'groupDetail',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: groupDetail
             },
@@ -674,21 +674,21 @@ const router = new Router({
                path: 'FF',
                name: 'FF',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: FF
             }, {//stock
                path: 'stock',
                name: 'stock',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: stock
             }, {//usdd
                path: 'cinfo',
                name: 'cinfo',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: cinfo
             },
@@ -696,7 +696,7 @@ const router = new Router({
                path: 'StockToken',
                name: 'cintongzhengStockfo',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: StockToken
             },
@@ -704,7 +704,7 @@ const router = new Router({
                path: 'createAPI',
                name: 'createAPI',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: createAPI
             },
@@ -712,7 +712,7 @@ const router = new Router({
                path: 'sendEmail',
                name: 'sendEmail',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: sendEmail
             },
@@ -720,7 +720,7 @@ const router = new Router({
                path: 'apiManage',
                name: 'apiManage',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: apiManage
             },
@@ -752,7 +752,7 @@ const router = new Router({
                path: 'interFinanceOne',
                name: 'interFinanceOne',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: interFinanceOne
             },
@@ -760,7 +760,7 @@ const router = new Router({
                path: 'interFinanceTWO',
                name: 'interFinanceTWO',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: interFinanceTWO
             },
@@ -768,7 +768,7 @@ const router = new Router({
                path: 'interFinanceThree',
                name: 'interFinanceThree',
                meta: {
-                  title: ''
+                  title: 'HomeTitle'
                },
                component: interFinanceThree
             },
