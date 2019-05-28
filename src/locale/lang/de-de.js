@@ -1985,7 +1985,8 @@ export default {
    supretitle:"55.com",
    supregister2:"Register to earn 10 USDT",
    supinviteurl:'Your invitation link is',
- supdownload:'Download App now',
+   supdownload:'Download App now',
+  
    
 
    
