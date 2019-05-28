@@ -21,7 +21,7 @@
         components: {},
         data() {
             return {
-                HomeTitle:'',
+                HomeTitle:this.$t('HomeTitle'),
                 HomeKeyword : this.$t('HomeKeyword'),
                 HomeDescription : this.$t('HomeDescription')
             }
@@ -43,15 +43,9 @@
             },
         },
         mounted() {
-            // console.log(this.$route)
-            // this.HomeTitle= this.$t(this.$route.meta.title)
             this.$Notice.config({
                 duration: 3
             });
-        },
-        beforeMount(){
-             console.log(this.$route)
-            this.HomeTitle= this.$t(this.$route.meta.title)
         }
     }
 </script>
