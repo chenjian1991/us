@@ -11,14 +11,11 @@
 <div class="text-center mb-4">
 
 
-  <h2 class="h3 text-white font-weight-normal">{{$t('supinviteplus')}} <img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
-
-
-
-  <p class="lead u-text-light">
+  <h2 class="h3 text-white font-weight-normal">{{$t('supregisterplus')}} <img class="img-fluid" src="../../assets/images/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
+  <!-- <p class="lead u-text-light">
     
   {{$t('supregisterplus')}}
-  </p>
+  </p> -->
 
 </div></div>
 
@@ -163,7 +160,7 @@ export default {
                var p = new Promise((resolve,reject)=>{
                         getHeaderTokenApi(`/api/sso/invite/query.myInviteCode`,{},Cookies.get('loginToken')).then(data => {
                             this.userCode = data.data.userCode;
-                            this.inviteLink =this.$t('supfriend2plus')+'https://us.55link.de.com/#/beinvited?inviteCode='+this.userCode;
+                            this.inviteLink =this.$t('supfriend2plus')+'https://us.55link.de.com/#/beinvitedplus?inviteCode='+this.userCode;
                             if(data.data.code){
                                 if(data.data.code='10013'){
                                     this.$Message.success(this.$t('10013'));
