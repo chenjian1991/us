@@ -42,9 +42,40 @@ navLang === 'zh-CN' || navLang === 'zh'  ? navLang = 'zh-CN' :  navLang = 'en'
 // let navLang = 'en' //诸位，各站默认打开的首页都是英文
 let lang = getUrlKey('language') || window.localStorage.getItem('countryLanguage') || navLang // 如果都读到的浏览器语言不符合vue-i8n格式要求，就设置为英语‘en’
 let url = window.location.href;
-// console.log(url.indexOf('registerSuccess'))
-if(url.indexOf('inviteAto')!==-1||url.indexOf('beinvited')!==-1||url.indexOf('registerSuccess')!==-1){
-  lang =  navLang
+let number = url.indexOf('atoInivtePlus')
+// console.log(typeof(url.indexOf('atoInivtePlus')))
+// ||url.indexOf('beinvitedplus')>0||url.indexOf('registerSuccessplus')>0
+if(url.indexOf('atoInivtePlus')>0){
+  // console.log('ddd')
+   let navLang = navigator.language || navigator.browserLanguage;
+   let resultLanguage;
+    if(navLang=='id'){
+      resultLanguage = 'id-id';
+    }else if(navLang=='ru'){
+      resultLanguage = 'ru-ru';
+    }else if(navLang=='de'){
+      resultLanguage = 'de-de';
+    }else if(navLang=='fr'){
+      resultLanguage = 'fr-fr';
+    }else if(navLang=='es'){
+      resultLanguage = 'es-es';
+    }else if(navLang=='tr'){
+      resultLanguage = 'tr-tr';
+    }else if(navLang=='tr'){
+      resultLanguage = 'tr-tr';
+    }else if(navLang=='pt'){
+      resultLanguage = 'pt-pt';
+    }else if(navLang=='th'){
+      resultLanguage = 'th-th';
+    }else if(navLang=='zh'){
+      resultLanguage = 'zh-CN';
+    }else{
+      resultLanguage = navLang;
+    }
+    lang =  resultLanguage ;
+    console.log(resultLanguage)
+
+  
 }else{
   lang = 'en'
   localStorage.setItem('countryLanguage',lang)  //这段代码会导致每次刷新页面都是读取对浏览器对语言，而不是从本地读取语言,能够确保countryLanguage永远有
