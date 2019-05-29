@@ -1844,7 +1844,7 @@ export default {
       supregistersucess:"恭喜您注册成功",
       supretitle:"55.com",
       supregister2:"注册领取 10 USDT ",
-      supinviteurl:'您的邀请链接链接是',
+      supinviteurl:'您的邀请链接是',
       supdownload:'立即下载APP进行充值',
       //裂变活动h5页面plus
       supinviteplus:"助力55 Supreme ATO+，提升ATO+额度",
@@ -1877,7 +1877,8 @@ export default {
       supregistersucessplus:"恭喜您注册成功",
       supretitleplus:"55.com",
       supregister2plus:"注册领取8 USDT ",
-      supinviteurlplus:'您的邀请链接链接是',
+      supinviteurlplus:'您的邀请链接是',
       supdownloadplus:'立即下载APP进行充值',
+      
    
 }
