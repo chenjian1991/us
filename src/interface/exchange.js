@@ -40,7 +40,9 @@ import {
    getFFfeesMethod,
    //韩国挖矿
    queryGroupDetail,
-   queryMiningflag
+   queryMiningflag,
+   getCompletedList_v2,
+   getFilledList_v2,
 } from '_api/exchange.js'
 import Cookies from 'js-cookie'
 //韩国挖矿
@@ -336,6 +338,44 @@ Exchange.prototype.listCompletedOrder = function (page, fn) {
       })
    })
 };
+
+//订单筛选
+Exchange.prototype.listCompleted_v2Order = function (params, fn) {
+   var _this = this;
+   _this.getAccountId(function (_accountId) {
+      _this.getToken(Exchange.TokenType.ORDER, function (_orderToken) {
+         getCompletedList_v2(
+            Object.assign(
+               {
+                  "token": _orderToken,
+                  "accountId": _accountId,
+                  forward: false,
+                  limit: 11,
+               }, params)).then(data => {
+            fn(data);
+         })
+      })
+   })
+};
+
+Exchange.prototype.getFilledList_v2Order = function (params, fn) {
+   var _this = this;
+   _this.getAccountId(function (_accountId) {
+      _this.getToken(Exchange.TokenType.ORDER, function (_orderToken) {
+         getFilledList_v2(
+            Object.assign(
+               {
+                  "token": _orderToken,
+                  "accountId": _accountId,
+                  forward: false,
+                  limit: 11,
+               }, params)).then(data => {
+            fn(data);
+         })
+      })
+   })
+};
+
 
 Exchange.prototype.listFilledOrderDetail = function (page, fn) {
    var _this = this;

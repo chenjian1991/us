@@ -13,17 +13,17 @@ const resolve = dir => {
 // 比如你打包的文件放到服务器的my-app文件夹，域名为a.com，则应改为
 // http(s)://a.com/my-app/
 const BASE_URL = '/'
-
+const targetUrl = 'https://uat.us.55gm.co/' // us测试环境
 //   const targetUrl='http://www.test_uat.55.exchange:5555/' // 测试本地环境
- //const targetUrl='http://uspc.55.exchange:8880/' // us测试环境
- const targetUrl='https://us.55gm.co/' //生产
+//  const targetUrl='http://uspc.55.exchange:8880/' // us测试环境
+// const targetUrl='https://us.55gm.co/' //生产
 
- 
+
 module.exports = {
    transpileDependencies: [
       'vue-echarts',
       'resize-detector'
-    ],
+   ],
    // Project deployment base
    // By default we assume your app will be deployed at the root of a domain,
    // e.g. https://www.my-app.com/
@@ -41,9 +41,9 @@ module.exports = {
          .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
          .set('_c', resolve('src/components'))
          .set('_api', resolve('api'))
-         // config
-         // .entry('main.js')
-         //   .add('babel-polyfill')
+      // config
+      // .entry('main.js')
+      //   .add('babel-polyfill')
       // .set('vue','vue/dist/vue.js')
    },
    // configureWebpack: {
@@ -61,7 +61,7 @@ module.exports = {
    // 如果你希望让 lint 错误在开发时直接显示在浏览器中，你可以使用 lintOnSave: 'error'。这会强制 eslint-loader 将 lint 错误输出为编译错误，同时也意味着 lint 错误将会导致编译失败。
    lintOnSave: false,
    devServer: {
-       proxy: {
+      proxy: {
          '/api': {
             target: targetUrl, // 全站
             changeOrigin: true,

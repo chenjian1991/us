@@ -44,7 +44,9 @@ import {
    queryFavoritesPair,
    updateFavoritesPair,
    deleteFavoritesPair,
-   queryTradePassWordURL
+   queryTradePassWordURL,
+   completedList_v2,
+   filledList_v2,
 } from './urls'
 
 const checkExpiredAble = (expiredAble) => {
@@ -182,6 +184,15 @@ export const getIdentify = (params) => {
 //获取完全成交和已经撤单的列表 
 export const getCompletedList = (params) => {
    return getApi(completedList, params)
+}
+//获取完全成交和已经撤单的列表--筛选
+export const getCompletedList_v2 = (params) => {
+   return getApi(completedList_v2, params)
+}
+
+//交易明细--筛选
+export const getFilledList_v2 = (params) => {
+   return getApi(filledList_v2, params)
 }
 //撤单
 export const getCancelOrder = (params, data) => {
