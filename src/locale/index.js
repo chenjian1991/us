@@ -70,7 +70,7 @@ if(url.indexOf('atoInivtePlus')>0){
     }else if(navLang=='zh'){
       resultLanguage = 'zh-CN';
     }else{
-      resultLanguage = navLang;
+      resultLanguage = 'en';
     }
     lang =  resultLanguage ;
     console.log(resultLanguage)
