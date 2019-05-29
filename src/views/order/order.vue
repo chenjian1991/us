@@ -2,21 +2,40 @@
    <div class="wrapper" id="orderTabs">
       <div class="content">
          <Tabs value="name1" :animated="animate">
-            <TabPane :label="open" name="name1">
+            <TabPane :label="$t('orderOpen')" name="name1">
                <Table :columns="columns1" :data="data1"></Table>
             </TabPane>
-            <TabPane :label="history" name="name2">
+            <TabPane :label="$t('orderComplete')" name="name2" id="orderTabName2">
+               <order-filter :showHide="true" :symbolList="quoteAssetList"
+                             @search="searchComplete($event)" @reset="resetComplete"></order-filter>
                <Table :columns="columns2" :data="data2"></Table>
-               <Page :total="totalPage1" :page-size="1" show-elevator class="page" @on-change="onChangePage1"/>
-
+               <!--搜索自定义分页-->
+               <div class="page">
+                  <div class="page-box" @click="prevPageComplete" :disabled="prevComplete"
+                       :class="prevComplete?'disabled-style':'green-color-style'">{{$t('orderPagePrev')}}
+                  </div>
+                  <div class="page-box" @click="nextPageComplete" :disabled="nextComplete"
+                       :class="nextComplete?'disabled-style':'green-color-style'">{{$t('orderPageNext')}}
+                  </div>
+               </div>
             </TabPane>
-            <TabPane :label="transaction" name="name3">
+            <TabPane :label="$t('orderDetail')" name="name3" id="orderTabName3">
+               <order-filter :showHide="false" :symbolList="quoteAssetList"
+                             @search="searchDetail($event)" @reset="resetDetail"></order-filter>
                <Table :columns="columns3" :data="data3"></Table>
-               <Page :total="totalPage2" :page-size="1" show-elevator class="page" @on-change="onChangePage2"/>
-
+               <!--搜索自定义分页-->
+               <div class="page">
+                  <div class="page-box" @click="prevPageDetail" :disabled="prevDetail"
+                       :class="prevDetail?'disabled-style':'green-color-style'">{{$t('orderPagePrev')}}
+                  </div>
+                  <div class="page-box" @click="nextPageDetail" :disabled="nextDetail"
+                       :class="nextDetail?'disabled-style':'green-color-style'">{{$t('orderPageNext')}}
+                  </div>
+               </div>
             </TabPane>
          </Tabs>
       </div>
+
       <!--交易密码6个框-->
       <div class="mask" v-if="showPassWordPage" @click="clickMask">
          <div class="alert alert-trade-password dis-n">
@@ -48,10 +67,14 @@
    import moment, {isMoment} from 'moment'
    import bigDecimal from 'js-big-decimal' //除法失效
    import PasswordInput from '@/components/PasswordInput.vue'
+   import orderFilter from '@/components/orderFilter.vue'
    import Cookies from 'js-cookie'
    import {
       getSymbolList,
    } from '_api/exchange.js'
+   import {
+      getCompletedList_v2,
+   } from '_api/balances.js'
    import {
       scientificToNumber,
       addSymbolSplitLine,
@@ -65,25 +88,36 @@
       name: "order",
       components: {
          PasswordInput: PasswordInput,
+         'order-filter': orderFilter,
       },
       data() {
          return {
+            tabName: 'name1',
             animate: false,
-            SSE_order: null,//订单推送
-            symbolList: {},//交易接口的symbolList 接口
-            totalPage1: 1,
-            totalPage2: 1,
             showPassWordPage: false,
+            prevComplete: true,//前一页是否禁用
+            nextComplete: false,//下一页是否禁用
+            completeList: [],
+            startTimeComplete: '',
+            endTimeComplete: '',
+            initTimeComplete: '',
+            completeParams: {},//分页参数
+            isCompletePrev: false,//是否点击上一页
+
+            prevDetail: true,//前一页是否禁用
+            nextDetail: false,//下一页是否禁用
+            detailList: [],
+            startTimeDetail:'',
+            endTimeDetail: '',
+            initTimeDetail: '',
+            detailParams: {},
+            isDetailPrev: false,
+
+            quoteAssetList: [],
+
+            symbolList: {},//交易接口的symbolList 接口
             orderId: '',
-            open: (h) => {
-               return h('div', {}, this.$t('orderOpen'))
-            },
-            history: (h) => {
-               return h('div', {}, this.$t('orderComplete'))
-            },
-            transaction: (h) => {
-               return h('div', {}, this.$t('orderDetail'))
-            },
+
             columns1: [
                {
                   key: 'createdAt',
@@ -97,7 +131,7 @@
                },
                {
                   key: 'symbol',
-                  width: 120,
+                  width: 105,
                   render: (h, params) => {
                      return h('div', {}, addSymbolSplitLine(params.row.symbol))
                   },
@@ -133,7 +167,7 @@
                },
                {
                   key: 'limitPrice',
-                  width: 150,
+                  width: 120,
                   render: (h, params) => {
                      let priceLong = this.symbolList[params.row.symbol]['priceTickSize'] || 8
                      let limitPrice = bigDecimal.round(scientificToNumber(params.row.limitPrice), getDecimalsNum(priceLong))
@@ -157,6 +191,7 @@
                },
                {
                   key: 'filled',
+                  width: 150,
                   render: (h, params) => {
                      let filled = (100 * (params.row.filledCumulativeQuantity / params.row.quantity)).toFixed(2) + '%'
                      return h('div', {}, filled)
@@ -167,7 +202,7 @@
                },
                {
                   key: 'total',
-                  width: 180,
+                  width: 150,
                   render: (h, params) => {
                      let total = params.row.limitPrice * params.row.quantity
                      return h('div', {}, bigDecimal.round(scientificToNumber(total), 8))
@@ -194,7 +229,7 @@
                            on: {
                               click: () => {
                                  this.orderId = params.row.orderId
-                                 this.getCancelOrder(params.row.orderId)
+                                 this.getCancelOrder()
                               }
                            }
                         }, this.$t('bbjyCancel'))
@@ -219,7 +254,7 @@
                },
                {
                   key: 'symbol',
-                  width: 120,
+                  width: 105,
                   render: (h, params) => {
                      return h('div', {}, addSymbolSplitLine(params.row.symbol))
                   },
@@ -229,7 +264,7 @@
                },
                {
                   key: 'orderType',
-                  width: 60,
+                  width: 70,
                   render: (h, params) => {
                      return h('div', {}, this.$t(params.row.orderType))
                   },
@@ -239,7 +274,7 @@
                },
                {
                   key: 'orderSide',
-                  width: 60,
+                  width: 70,
                   render: (h, params) => {
                      let orderSide = params.row.orderSide
                      let color
@@ -256,7 +291,7 @@
                },
                {
                   key: 'avg',
-                  width: 150,
+                  width: 120,
                   render: (h, params) => {
                      let priceLong = this.symbolList[params.row.symbol]['priceTickSize'] || 8
                      let avg = bigDecimal.round(scientificToNumber(params.row.filledAveragePrice), getDecimalsNum(priceLong))
@@ -268,7 +303,7 @@
                },
                {
                   key: 'limitPrice',
-                  width: 150,
+                  width: 120,
                   render: (h, params) => {
                      let priceLong = this.symbolList[params.row.symbol]['priceTickSize'] || 8
                      let limitPrice = bigDecimal.round(scientificToNumber(params.row.limitPrice), getDecimalsNum(priceLong))
@@ -292,7 +327,7 @@
                },
                {
                   key: 'filled',
-                  width: 70,
+                  width: 110,
                   render: (h, params) => {
                      let filled = (100 * (params.row.filledCumulativeQuantity / params.row.quantity)).toFixed(2) + '%'
                      return h('div', {}, filled)
@@ -314,7 +349,7 @@
                },
                {
                   key: 'orderStatus',
-                  width: 100,
+                  width: 125,
                   align: 'right',
                   render: (h, params) => {
                      return h('div', {}, this.$t(params.row.orderStatus))
@@ -422,71 +457,178 @@
       },
       methods: {
          init() {
-            let loginToken = Cookies.get('loginToken')
-            let ssoProvider = {};
-            //创建实例
-            this.exchange = new Exchange(ssoProvider);
-            if (loginToken) {
-               this.exchange.ssoProvider.getSsoToken = function (fn) {
-                  fn(loginToken);
-               };
-               this.getSSEOrderList()
-            } else {
-               this.$router.push('/login')
-            }
             (async () => {
                await new Promise(resolve => {
                   getSymbolList().then(res => {
                      res.map((v) => {
                         this.symbolList[v.symbol] = v
+                        //国际站不展示USD
+                        if (v.quoteAsset !== 'USDD'&&v.quoteAsset !== 'USDT') {
+                           this.quoteAssetList.push(v.quoteAsset)
+                        }
                      })
+                     this.quoteAssetList.unshift('ALL')
+                     //对象转数组去重
+                     this.quoteAssetList = Array.from(new Set(this.quoteAssetList))
                      resolve()
                   }).catch(error => {
                   })
                });
                await new Promise(resolve => {
                   this.getListOpenOrder()
-                  this.getListCompletedOrder()
-                  this.getListFilledOrderDetail()
+                  this.resetComplete()
+                  this.resetDetail()
                   resolve();
                });
             })()
          },
+         //委托
          getListOpenOrder() {
             this.exchange.listOpenOrder(function (data) {
                this.data1 = data
             }.bind(this))
          },
-         getListCompletedOrder(page = 1) {
-            this.exchange.listCompletedOrder(page, function (res) {
-               this.totalPage1 = res.pages
-               if (res.data.length !== 0) {
-                  this.data2 = res.data
+         //成交
+         listCompleted_v2Order(params, value) {
+            this.exchange.listCompleted_v2Order(params, function (res) {
+               if (this.isCompletePrev) {//点击的上一页
+                  res = res.reverse()
+                  //与第一页第一条数据相比较
+                  if (res[0].createdAt >= this.initTimeComplete) {
+                     this.prevComplete = true
+                  }
                }
+               this.completeList = res//存数据 点击上一页使用
+               if (res.length > 10) {
+                  this.nextComplete = false//下一步可用
+               } else {
+                  this.nextComplete = true//下一步禁用
+               }
+               if (value) {
+                  this.initTimeComplete = res[0] && res[0].createdAt
+               }
+               this.data2 = res.slice(0, 10)
             }.bind(this))
          },
-         getListFilledOrderDetail(page = 1) {
-            this.exchange.listFilledOrderDetail(page, function (res) {
-               this.totalPage2 = res.pages
-               if (res.data.length !== 0) {
-                  this.data3 = res.data
+         //明细
+         getFilledList_v2Order(params, value) {
+            this.exchange.getFilledList_v2Order(params, function (res) {
+               if (this.isDetailPrev) {//点击的上一页
+                  res = res.reverse()
+                  //与第一页第一条数据相比较
+                  if (res[0].updatedAt >= this.initTimeDetail) {
+                     this.prevDetail = true
+                  }
                }
+               this.detailList = res//存数据 点击上一页使用
+               if (res.length > 10) {
+                  this.nextDetail = false//下一步可用
+               } else {
+                  this.nextDetail = true//下一步禁用
+               }
+               if (value) {
+                  this.initTimeDetail = res[0] && res[0].updatedAt
+               }
+               this.data3 = res.slice(0, 10)
             }.bind(this))
          },
-         getCancelOrder(orderId) {
-            if (getValue("ORDER_SESSION")) {
-               this.exchange.cancelOrder(orderId, function (res) {
-                  this.getListOpenOrder()
-               }.bind(this))
-            } else {
-               this.showPassWordPage = true
+         resetComplete() {
+            this.isCompletePrev = false
+            let params = {forward: false}
+            this.listCompleted_v2Order(params, 'reset')
+         },
+         searchComplete(params) {
+            this.isCompletePrev = false
+            this.completeParams = params
+            params['forward'] = false
+            this.prevComplete = true
+            this.listCompleted_v2Order(params, 'search')
+         },
+         //分页 成交
+         prevPageComplete() {
+            if (!this.prevComplete) {
+               this.isCompletePrev = true
+               this.startTimeComplete = this.completeList[0].createdAt
+               this.nextComplete = false
+               let params = JSON.parse(JSON.stringify(this.completeParams))
+               params['forward'] = true
+               params['startDateTime'] = this.startTimeComplete
+               this.listCompleted_v2Order(params)
             }
          },
-         onChangePage1(currentPage) {
-            this.getListCompletedOrder(currentPage)
+         nextPageComplete() {
+            if (!this.nextComplete) {
+               this.isCompletePrev = false
+               this.endTimeComplete = this.completeList[10].createdAt
+               this.prevComplete = false
+               let params = JSON.parse(JSON.stringify(this.completeParams))
+               params['forward'] = false
+               params['endDateTime'] = this.endTimeComplete
+               this.listCompleted_v2Order(params)
+            }
          },
-         onChangePage2(currentPage) {
-            this.getListFilledOrderDetail(currentPage)
+
+         //重置
+         resetDetail() {
+            this.isDetailPrev = false
+            let params = {forward: false}
+            this.getFilledList_v2Order(params, 'reset')
+         },
+         //搜索
+         searchDetail(params) {
+            this.isDetailPrev = false
+            this.detailParams = params
+            params['forward'] = false
+            this.prevDetail = true
+            this.getFilledList_v2Order(params, 'search')
+         },
+         //分页 明细
+         prevPageDetail() {
+            if (!this.prevDetail) {
+               this.isDetailPrev = true
+               this.startTimeDetail = this.detailList[0].updatedAt
+               this.nextDetail = false
+               let params = JSON.parse(JSON.stringify(this.detailParams))
+               params['forward'] = true
+               params['startDateTime'] = this.startTimeDetail
+               this.getFilledList_v2Order(params)
+            }
+         },
+         nextPageDetail() {
+            if (!this.nextDetail) {
+               this.isDetailPrev = false
+               this.endTimeDetail = this.detailList[10].updatedAt
+               this.prevDetail = false
+               let params = JSON.parse(JSON.stringify(this.detailParams))
+               params['forward'] = false
+               params['endDateTime'] = this.endTimeDetail
+               this.getFilledList_v2Order(params)
+            }
+         },
+         //撤单
+         getCancelOrder() {
+            //需要输入密码
+            if (this.$store.state.exchange.inputTradePassWordStatus === true) {
+               if (getValue("ORDER_SESSION")) {
+                  this.cancelOrder()
+               } else {
+                  this.showPassWordPage = true
+               }
+            } else {
+               this.cancelOrder()
+            }
+         },
+         submitPassWord() {//提交交易密码页面
+            if (this.exchangePassWord == null || this.exchangePassWord.length < 6) {
+               this.$Message.warning(this.$t('bbjyInputPassword'));
+            } else {
+               this.cancelOrder(this.exchangePassWord)
+            }
+         },
+         cancelOrder(password = '') {
+            this.exchange.cancelOrder(this.orderId, password, function () {
+               this.getListOpenOrder()
+            }.bind(this))
          },
          clickMask() {//交易框获取焦点
             this.$refs.childPassword.getFocus();
@@ -503,59 +645,23 @@
                this.exchangePassWord = callbackData
             }
          },
-         submitPassWord() {//提交交易密码页面
-            if (this.exchangePassWord == null || this.exchangePassWord.length < 6) {
-               this.$Message.warning(this.$t('bbjyInputPassword'));
-               return false
-            }
-            let loginToken = Cookies.get('loginToken')
-            this.exchange.issuedTradePassword(loginToken, this.exchangePassWord, function (data) {
-               if (!data["code"]) {
-                  //隐藏密码输入框
-                  this.closePassWordPage()
-                  this.exchange.ssoProvider["getExtension"] = data["token"];
-                  this.exchange.cancelOrder(this.orderID, function (data) {
-                     this.getListOpenOrder()
-                  }.bind(this));
-               } else {
-                  //错误提示
-                  this.$Message.warning(this.$t(data['code']));
-               }
-            }.bind(this))
-         },
-         //获取推送的订单
-         getSSEOrderList() {
-            //刚进页面初始数据
-            this.exchange.listFilledOrder(function (token, accountId) {
-               let baseURL = window.location.protocol + '//' + window.location.host //域名
-               //判断orderId
-               this.SSE_order = new EventSource(`${baseURL}/api/spot/order/detail.stream?token=${token}&accountId=${accountId}`)
-               this.SSE_order.onopen = function (e) {
-                  console.log("订单推送连接已经建立：", this.readyState);
-               };
-
-               this.SSE_order.addEventListener('_RESULT', function (e) {
-                  let result = JSON.parse(e.data)
-                  if (result) {
-                     this.data3 = result
-                     this.getListOpenOrder()
-                     this.getListCompletedOrder()
-                  }
-               }.bind(this))
-
-               this.SSE_order.addEventListener('_ERROR', function (e) {
-               }.bind(this))
-
-               this.SSE_order.onerror = function (e) {
-                  setTimeout(function () {
-                     this.getSSEOrderList()
-                  }.bind(this), 10000)
-               }.bind(this);
-            }.bind(this))
-         },
+      },
+      created(){
+         let loginToken = Cookies.get('loginToken')
+         let ssoProvider = {};
+         //创建实例
+         this.exchange = new Exchange(ssoProvider);
+         if (loginToken) {
+            this.exchange.ssoProvider.getSsoToken = function (fn) {
+               fn(loginToken);
+            };
+         } else {
+            this.$router.push('/login')
+         }
       },
       mounted() {
          this.$store.commit('changeHeaderColor', '#15232C');
+         this.$store.dispatch("getTradePassWordStatus")
          this.init()
       },
       deactivated() {
@@ -564,105 +670,63 @@
    }
 </script>
 <style lang="less">
-   #orderTabs, #historyTabs, #balances {
-      /*  选项卡样式  start */
-      @page-border-color: #EDEEF0;
-      .ivu-table-cell {
-         color: #344857;
-      }
-      .ivu-tabs-ink-bar {
-         width: 180px !important;
-         background-color: #12869A;
-      }
-      .ivu-tabs-tab {
-         width: 180px;
-         line-height: 50px;
-         text-align: center;
-         font-size: 14px;
-         padding: 0;
-         color: #949DA6;
-         &:hover {
-            color: #344857;
-         }
-      }
-      .ivu-tabs-bar {
-         border-bottom-color: #F5F5F5;
-         margin-bottom: 0;
-      }
-      .ivu-tabs-tab-active {
-         color: #344857 !important;
-      }
-      /*  选项卡样式  end */
+   @import '../balances/balances.less';
 
-      /*  table 样式 start*/
-      .ivu-table-wrapper {
-         border: none;
-      }
-      .ivu-table {
-         background-color: transparent;
-         overflow: visible;
-         &:before {
-            background-color: transparent;
-         }
-         &:after {
-            background-color: transparent;
-         }
-      }
-      .ivu-table {
-         th, td {
-            /*background-color: #091341;*/
-            border-bottom-color: #F5F5F5 !important;
-         }
-      }
-      .ivu-table th {
-         background-color: #fff;
-      }
-      .ivu-table-header .ivu-table-cell {
-         font-size: 12px;
-         color: #949DA6;
-         padding: 0 5px;
-      }
-      .ivu-table-body .ivu-table-cell {
-         font-size: 12px;
-         color: #344857;
-         padding: 0 5px;
-      }
-      .ivu-tabs-no-animation > .ivu-tabs-content {
-         padding: 0 20px 10px;
-      }
-      /*table 样式 end*/
-
-      /* page 样式 start  */
-      .ivu-page-item, .ivu-page-next, .ivu-page-prev {
-         background-color: transparent;
-         border-color: @page-border-color;
-         a {
-            color: #949DA6;
-         }
-      }
-      .ivu-page-item-active {
-         background-color: #12869A;
-         a {
-            color: #fff;
-         }
-      }
-      .ivu-page-options-elevator input {
-         background-color: transparent;
-         border-color: @page-border-color;
-         color: #949DA6;
-      }
-      /* page 样式 end  */
-   }
-
+   @color-light-gary: #E7EAED;
+   @color-green: #12869A;
    #orderTabs, table, th, td {
       border: none;
    }
+
+   #orderTabs {
+      .ivu-tabs {
+         overflow: visible;
+      }
+      .ivu-tabs-content {
+         /*margin-top: 50px; //隐藏按钮的高度*/
+      }
+      .ivu-table-overflowX {
+         overflow-x: hidden;
+      }
+      .ivu-select-dropdown{
+         font-size: 12px;
+      }
+
+   }
+
 </style>
 <style lang="less" scoped>
+   @color-light-gary: #E7EAED;
+   @color-green: #12869A;
+   .light-gray {
+      color: @color-light-gary;
+   }
+
+   .green-color-style {
+      color: @color-green;
+      border-color: @color-green;
+      cursor: pointer;
+      &:hover {
+         background-color: @color-green;
+         color: #fff;
+      }
+   }
+
+   .disabled-style {
+      color: #949DA6;
+      border-color: #949DA6;
+      cursor: not-allowed;
+   }
+
+   #orderTabName2, #orderTabName3 {
+      margin-top: 50px;
+   }
+
    .wrapper {
-      padding: 15px 0 10px;
+      padding: 30px 0 30px;
       background-color: #F7F9FA;
       .content {
+         position: relative;
          width: 1200px;
          margin: 0 auto;
          background-color: #fff;
@@ -673,6 +737,20 @@
    .page {
       margin-top: 20px;
       text-align: right;
+      .page-box {
+         display: inline-block;
+         height: 32px;
+         line-height: 30px;
+         padding: 0 10px;
+         border: 1px solid;
+         border-radius: 4px;
+         margin-left: 10px;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+         font-size: 12px;
+      }
    }
 
    @buy-color: #66B76D;
@@ -691,6 +769,10 @@
       background-color: rgba(0, 0, 0, 0.7);
       z-index: 15;
       overflow: hidden;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -754,6 +836,10 @@
                }
             }
             .space-between {
+               display: -ms-flexbox;
+               display: -webkit-flex;
+               display: -moz-flex;
+               display: -ms-flex;
                display: flex;
                justify-content: space-between;
                button {

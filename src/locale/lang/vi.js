@@ -1128,15 +1128,24 @@ export default {
    general: "for general inquiry: service@55.com",
    Legal: "Tuyên bố pháp lý",
    SocialPresence: "Social Presence",
-   //订单
 
+   //订单
    orderCommission: "Commission",
    orderOpen: "Open Orders",
    orderComplete: "Order History",
    orderDetail: "Transaction History",
+   orderSideAll: "Side",
+   orderSearch: "Search",
+   orderReset: "Reset",
+   orderHide: "Hide cancelled orders",
+   orderStartTime: "Start time",
+   orderEndTime: "End time",
+   orderCoin: "Coin",
+   orderAll: "All",
+   orderPagePrev: 'Previous',
+   orderPageNext: 'Next',
 
    //资产
-
    zcExchangeAccount: "All Account",
    zcBSiteAccount: "B-site Account",
    zcFSiteAccount: "F-site Account",
