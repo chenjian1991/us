@@ -809,7 +809,6 @@ function checkSSOToken(to,next) {
 }
 
 router.beforeEach((to, from, next) => {
-   console.log(1111,'beforeEach',to.meta.title,i18n.t(to.meta.title))
    /* 路由发生变化修改页面title */
    if (to.meta.title) {
       document.title = i18n.t(to.meta.title)
