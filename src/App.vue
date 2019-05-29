@@ -6,24 +6,10 @@
 <script>
     export default {
         name: 'app',
-        metaInfo(){
-            return{
-                title: this.HomeTitle, // set a title
-                meta: [{                 // set meta
-                    name: 'keywords',
-                    content:this.HomeKeyword
-                },{
-                    name:'description',
-                    content:this.HomeDescription
-                }],
-            }
-        },
         components: {},
         data() {
             return {
-                HomeTitle:this.$t('HomeTitle'),
-                HomeKeyword : this.$t('HomeKeyword'),
-                HomeDescription : this.$t('HomeDescription')
+               
             }
         },
         methods: {},

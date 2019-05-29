@@ -525,7 +525,7 @@ const router = new Router({
                path: 'about55',
                name: 'about55',
                meta: {
-                  title: 'About 55'
+                  title: 'aboutTitle'
                },
                component: About
             },
@@ -533,7 +533,7 @@ const router = new Router({
                path: 'capital',
                name: 'capital',
                meta: {
-                  title: '55 Capital'
+                  title: 'capital'
                },
                component: Captial
             },
@@ -811,11 +811,24 @@ function checkSSOToken(to,next) {
 }
 
 router.beforeEach((to, from, next) => {
+   console.log(1111,'beforeEach',to.meta.title,i18n.t(to.meta.title))
    /* 路由发生变化修改页面title */
    if (to.meta.title) {
       document.title = i18n.t(to.meta.title)
+   }else{
+      document.title = i18n.t('HomeTitle')
    }
    window.scroll(0, 0); //跳转到新页面，将页面头部置顶；
    next()
 })
+
+// router.afterEach((to, from) => {
+//    console.log(2222,'afterEach')
+//    /* 路由发生变化修改页面title */
+//    if (to.meta.title) {
+//       document.title = i18n.t(to.meta.title)
+//    }
+//    window.scroll(0, 0); //跳转到新页面，将页面头部置顶；
+//    // next()
+// })
 export default router

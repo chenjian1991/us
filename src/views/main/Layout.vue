@@ -38,8 +38,23 @@
     import {AndroidDownloadUrl} from '../../../api/urls.js';
     import {getApi} from '../../../api/axios.js';
     export default {
+        // metaInfo(){
+        //     return{
+        //         title: this.HomeTitle, // set a title
+        //         meta: [{                 // set meta
+        //             name: 'keywords',
+        //             content:this.HomeKeyword
+        //         },{
+        //             name:'description',
+        //             content:this.HomeDescription
+        //         }],
+        //     }
+        // },
         data(){
             return{
+                // HomeTitle:this.$t(this.$route.meta.title),
+                // HomeKeyword : this.$t('HomeKeyword'),
+                // HomeDescription : this.$t('HomeDescription'),
                 ifAPP:false,
                 isShowIPModal:true,
                 isShowCookiesBox:false,
@@ -48,7 +63,6 @@
                 download:true,
                 message:'Attention: Please note that residents of the state of Connecticut, Florida, Hawaii, Maine, Mississippi, New Jersey, New York, North Carolina, North Dakota, Ohio, South Dakota, Texas, Vermont, Washington are not permitted to trade on 55.com',
                 routerArr:['home','Bhome','Shome','Fhome','Chome','login','register','usdd','FF','stock','cinfo','about55','capital','card','redeemsupreme','tokenizeyeezy'],
-
             }
            
         },
