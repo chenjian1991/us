@@ -45,8 +45,8 @@ let url = window.location.href;
 let number = url.indexOf('atoInivtePlus')
 // console.log(typeof(url.indexOf('atoInivtePlus')))
 // ||url.indexOf('beinvitedplus')>0||url.indexOf('registerSuccessplus')>0
-if(url.indexOf('atoInivtePlus')>0){
-  // console.log('ddd')
+if(url.indexOf('atoInivtePlus')>0||url.indexOf('beinvitedplus')>0||url.indexOf('registerSuccessplus')>0){
+  console.log('ddd')
    let navLang = navigator.language || navigator.browserLanguage;
    let resultLanguage;
     if(navLang=='id'){
