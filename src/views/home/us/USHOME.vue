@@ -107,16 +107,16 @@
                                           <img src="../../../assets/images/index/bittrex_small.png" alt="">
                                         </div>
                                         <div class="cell">
-                                          <span>{{BTCUSD.BITREX?BTCUSD.BITREX[0].toFixed(2):'-'}}</span>
+                                          <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[0].toFixed(2):'-'}}</span>
                                         </div>
                                         <div class="cell">
-                                          <span>{{BTCUSD.BITREX?BTCUSD.BITREX[1].toFixed(4):'-'}}</span>
+                                          <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[1].toFixed(4):'-'}}</span>
                                         </div>
                                         <div class="cell">
-                                          <span>{{BTCUSD.BITREX?BTCUSD.BITREX[2].toFixed(2):'-'}}</span>
+                                          <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[2].toFixed(2):'-'}}</span>
                                         </div>
                                         <div class="cell">
-                                          <span>{{BTCUSD.BITREX?BTCUSD.BITREX[3].toFixed(4):'-'}}</span>
+                                          <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[3].toFixed(4):'-'}}</span>
                                         </div>
                                       </div>
                                       <div class="row">
@@ -274,8 +274,8 @@
                       <span class="row_right" :class="{up:BTCUSDTWaveArray[10] === 1,down:BTCUSDTWaveArray[10] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[2]*USDTUSDD).toFixed(2): "-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:BTCUSDWaveArray[0] === 1,down:BTCUSDWaveArray[0] === -1}">{{BTCUSD.BITREX?(BTCUSD.BITREX[0]).toFixed(2): "-"}}</span>
-                      <span class="row_right" :class="{up:BTCUSDWaveArray[2] === 1,down:BTCUSDWaveArray[2] === -1}">{{BTCUSD.BITREX?(BTCUSD.BITREX[2]).toFixed(2): "-"}}</span>
+                      <span class="row_left"  :class="{up:BTCUSDWaveArray[0] === 1,down:BTCUSDWaveArray[0] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[0]).toFixed(2): "-"}}</span>
+                      <span class="row_right" :class="{up:BTCUSDWaveArray[2] === 1,down:BTCUSDWaveArray[2] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[2]).toFixed(2): "-"}}</span>
                     </div>
                     <div class="row">
                       <span class="row_left"  :class="{up:BTCUSDWaveArray[4] === 1,down:BTCUSDWaveArray[4] === -1}">{{BTCUSD.COINBASEPRO?(BTCUSD.COINBASEPRO[0]).toFixed(2): "-"}}</span>
@@ -307,8 +307,8 @@
                       <span class="row_right" :class="{up:ETHBTCWaveArray[10] === 1,down:ETHBTCWaveArray[10] === -1}">{{ETHBTC.HUOBI?ETHBTC.HUOBI[2].toFixed(6): "-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:ETHBTCWaveArray[12] === 1,down:ETHBTCWaveArray[12] === -1}">{{ETHBTC.BITREX?ETHBTC.BITREX[0].toFixed(6): "-"}}</span>
-                      <span class="row_right" :class="{up:ETHBTCWaveArray[14] === 1,down:ETHBTCWaveArray[14] === -1}">{{ETHBTC.BITREX?ETHBTC.BITREX[2].toFixed(6): "-"}}</span>
+                      <span class="row_left"  :class="{up:ETHBTCWaveArray[12] === 1,down:ETHBTCWaveArray[12] === -1}">{{ETHBTC.BITTREX?ETHBTC.BITTREX[0].toFixed(6): "-"}}</span>
+                      <span class="row_right" :class="{up:ETHBTCWaveArray[14] === 1,down:ETHBTCWaveArray[14] === -1}">{{ETHBTC.BITTREX?ETHBTC.BITTREX[2].toFixed(6): "-"}}</span>
                     </div>
                     <div class="row">
                       <span class="row_left"  :class="{up:ETHBTCWaveArray[16] === 1,down:ETHBTCWaveArray[16] === -1}">{{ETHBTC.COINBASEPRO?ETHBTC.COINBASEPRO[0].toFixed(6): "-"}}</span>
@@ -340,8 +340,8 @@
                       <span class="row_right" :class="{up:DASHBTCWaveArray[10] === 1,down:DASHBTCWaveArray[10] === -1}">{{DASHBTC.HUOBI?(DASHBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:DASHBTCWaveArray[12] === 1,down:DASHBTCWaveArray[12] === -1}">{{DASHBTC.BITREX?(DASHBTC.BITREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:DASHBTCWaveArray[14] === 1,down:DASHBTCWaveArray[14] === -1}">{{DASHBTC.BITREX?(DASHBTC.BITREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_left"  :class="{up:DASHBTCWaveArray[12] === 1,down:DASHBTCWaveArray[12] === -1}">{{DASHBTC.BITTREX?(DASHBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_right" :class="{up:DASHBTCWaveArray[14] === 1,down:DASHBTCWaveArray[14] === -1}">{{DASHBTC.BITTREX?(DASHBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
                     <div class="row">
                       <span class="row_left"  :class="{up:DASHBTCWaveArray[16] === 1,down:DASHBTCWaveArray[16] === -1}">{{DASHBTC.COINBASEPRO?(DASHBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
@@ -373,8 +373,8 @@
                       <span class="row_right" :class="{up:ZECBTCWaveArray[10] === 1,down:ZECBTCWaveArray[10] === -1}">{{ZECBTC.HUOBI?(ZECBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:ZECBTCWaveArray[12] === 1,down:ZECBTCWaveArray[12] === -1}">{{ZECBTC.BITREX?(ZECBTC.BITREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:ZECBTCWaveArray[14] === 1,down:ZECBTCWaveArray[14] === -1}">{{ZECBTC.BITREX?(ZECBTC.BITREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_left"  :class="{up:ZECBTCWaveArray[12] === 1,down:ZECBTCWaveArray[12] === -1}">{{ZECBTC.BITTREX?(ZECBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_right" :class="{up:ZECBTCWaveArray[14] === 1,down:ZECBTCWaveArray[14] === -1}">{{ZECBTC.BITTREX?(ZECBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
                     <div class="row">
                       <span class="row_left"  :class="{up:ZECBTCWaveArray[16] === 1,down:ZECBTCWaveArray[16] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
@@ -1464,9 +1464,9 @@
               }
             },
             saveExchangeData(type,data){
-              const {HUOBI,BITREX,E55,BINANCE,COINBASEPRO} = JSON.parse(data.body).providerBBOMap
+              const {HUOBI,BITTREX,E55,BINANCE,COINBASEPRO} = JSON.parse(data.body).providerBBOMap
               this.getExchangeData(HUOBI,'HUOBI',type)
-              this.getExchangeData(BITREX,'BITREX',type)
+              this.getExchangeData(BITTREX,'BITTREX',type)
               this.getExchangeData(E55,'E55',type)
               this.getExchangeData(BINANCE,'BINANCE',type)
               this.getExchangeData(COINBASEPRO,'COINBASEPRO',type)
