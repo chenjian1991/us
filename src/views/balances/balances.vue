@@ -1345,6 +1345,7 @@
          em {
             font-size: 20px;
             color: #EA4853;
+            font-style: normal;
          }
          .transferBtn {
             background-color: #5A6CB1;

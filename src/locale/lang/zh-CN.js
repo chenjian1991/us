@@ -1613,6 +1613,8 @@ export default {
    bankSwift:"Swift码",
    bankPayType1:"国际电汇",
    bankSubmit:"提交",
+   bankSwiftCode:"Swift Code or Bank Identifier Codes (BIC) consists of 8 or 11 characters, it's a unique identification code for a particular bank, normally used to transmit money across the international border.",
+   bankRoutingNumber:"A routing number (RTN) is a nine digit bank code, which can be found on the bottom of a check and symbolize the bank and region where the account is located.",
    accountSercurity:"提示",
    withdrawConfee1:"提现申请一经提交，平台将收取",
    withdrawConfee2:"作为手续费，从提现金额里扣除。",

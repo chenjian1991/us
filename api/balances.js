@@ -2,7 +2,7 @@ import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postFormDataApi} from
 
 import {
    realTime, verifyAddress, userInfo, ssoSend, withdrawCodeVerify, identify, ssoGoogleVerify, ssoCodeVerify,
-   updateSecretKeyUrl, closeSecretKeyUrl, queryStateUrl
+   updateSecretKeyUrl, closeSecretKeyUrl, queryStateUrl, queryUserInfoUrl
 } from "./urls";
 
 export const getRealtimeList = () => {
@@ -46,4 +46,8 @@ export const closeSecretKey = (params, data) => {
 
 export const queryState = (token) => {
    return getHeaderTokenApi(queryStateUrl, '', token)
+}
+
+export const queryUserInfo = (token) => {
+   return getHeaderTokenApi(queryUserInfoUrl, '', token)
 }
