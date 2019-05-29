@@ -187,3 +187,6 @@ export const queryStateUrl = `${proxyURL}/sso/identify-tp/query-state` //实名�
 
 //visa card
 export const postVisaCardInfoUrl = `${proxyURL}/sso/form/submit` //首页申请信用卡
+
+//获取国籍
+export const queryUserInfoUrl = `${proxyURL}/sso/new-user/query-user-info` //获取国籍

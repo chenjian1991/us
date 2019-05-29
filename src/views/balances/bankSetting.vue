@@ -30,10 +30,10 @@
                   </div>
                </div>
                <div>
-                     <div>
-                        <a target="_blank" href="https://www.gcodigital.com/">
-                        <img src="../../assets/images/balances/gco-logo1x.png" >
-                        </a>
+                  <div>
+                     <a target="_blank" href="https://www.gcodigital.com/">
+                        <img src="../../assets/images/balances/gco-logo1x.png">
+                     </a>
                   </div>
                </div>
             </div>
@@ -44,62 +44,74 @@
          <div class="alert-content">
             <div class="information">
                <Row class="accountInfo" type="flex" align="middle">
-                  <Col span="6" class="col-left" align="right">{{$t('bankname')}}</Col>
-                  <Col span="18" class="col-right">
+                  <Col :span="leftSpan" class="col-left" align="right">{{$t('bankname')}}</Col>
+                  <Col :span="rightSpan" class="col-right">
                      <input type="text" v-model.trim="bankName" :maxlength="255" class="input" :disabled="disabled"
                             :class="{borderColor:errorInput==='bankName',bgColor:disabled}" @input="change('bankName')">
                   </Col>
                </Row>
                <Row class="accountInfo" type="flex" align="middle">
-                  <Col span="6" class="col-left" align="right">{{$t('bankAccname')}}</Col>
-                  <Col span="18" class="col-right">
+                  <Col :span="leftSpan" class="col-left" align="right">{{$t('bankAccname')}}</Col>
+                  <Col :span="rightSpan" class="col-right">
                      <input type="text" v-model.trim="bankAccountName" class="input" :disabled="true"
                             :class="{bgColor:disabled}">
                   </Col>
                </Row>
                <Row class="accountInfo" type="flex" align="middle">
-                  <Col span="6" class="col-left" align="right">{{$t('bankAcc')}}</Col>
-                  <Col span="18" class="col-right">
+                  <Col :span="leftSpan" class="col-left" align="right">{{$t('bankAcc')}}</Col>
+                  <Col :span="rightSpan" class="col-right">
                      <input type="text" v-model.trim="bankAccountNumber" :maxlength="50" class="input"
                             :class="{borderColor:errorInput==='bankAccountNumber',bgColor:disabled}"
                             :disabled="disabled" @input="change('bankAccountNumber')">
                   </Col>
                </Row>
                <Row class="accountInfo" type="flex" align="middle">
-                  <Col span="6" class="col-left" align="right">{{$t('bankAccmail')}}</Col>
-                  <Col span="18" class="col-right">
+                  <Col :span="leftSpan" class="col-left" align="right">{{$t('bankAccmail')}}</Col>
+                  <Col :span="rightSpan" class="col-right">
                      <input type="text" v-model.trim="contactEmail" :maxlength="255" class="input" :disabled="disabled"
                             :class="{borderColor:errorInput==='contactEmail',bgColor:disabled}"
                             @input="change('contactEmail')">
                   </Col>
                </Row>
                <Row class="accountInfo" type="flex" align="middle">
-                  <Col span="6" class="col-left" align="right">{{$t('bankAccname2')}}</Col>
-                  <Col span="18" class="col-right">
+                  <Col :span="leftSpan" class="col-left" align="right">{{$t('bankAccname2')}}</Col>
+                  <Col :span="rightSpan" class="col-right">
                      <input type="text" v-model.trim="contactName" :maxlength="255" class="input" :disabled="disabled"
                             :class="{borderColor:errorInput==='contactName',bgColor:disabled}"
                             @input="change('contactName')">
                   </Col>
                </Row>
-               <Row class="accountInfo" type="flex" align="middle">
-                  <Col span="6" class="col-left" align="right">{{$t('bankRout')}}</Col>
-                  <Col span="18" class="col-right">
+               <!--美国用户 RoutingNumber 必填，不需要填 swiftCode-->
+               <Row class="accountInfo" type="flex" align="middle" v-if="isUS">
+                  <Col :span="leftSpan" class="col-left" align="right">{{$t('bankRout')}}
+                     <!--问号上提示-->
+                     <Tooltip :content="$t('bankRoutingNumber')" placement="top">
+                        <Icon type="ios-help-circle" class="help-icon"/>
+                     </Tooltip>
+                  </Col>
+                  <Col :span="rightSpan" class="col-right">
                      <input type="text" v-model.trim="routingNumber" :maxlength="9" class="input" :disabled="disabled"
                             :class="{borderColor:errorInput==='routingNumber',bgColor:disabled}"
                             @input="change('routingNumber')">
                   </Col>
                </Row>
-               <Row class="accountInfo" type="flex" align="middle">
-                  <Col span="6" class="col-left" align="right">{{$t('bankSwift')}}</Col>
-                  <Col span="18" class="col-right">
+               <!--美国以外的用户 swiftCode必填， 不需要填RoutingNumber-->
+               <Row class="accountInfo" type="flex" align="middle" v-else>
+                  <Col :span="leftSpan" class="col-left" align="right">{{$t('bankSwift')}}
+                     <!--问号上提示-->
+                     <Tooltip :content="$t('bankSwiftCode')" placement="top">
+                        <Icon type="ios-help-circle" class="help-icon"/>
+                     </Tooltip>
+                  </Col>
+                  <Col :span="rightSpan" class="col-right">
                      <input type="text" v-model.trim="swiftCode" :maxlength="15" class="input" :disabled="disabled"
                             :class="{borderColor:errorInput==='swiftCode',bgColor:disabled}"
                             @input="change('swiftCode')">
                   </Col>
                </Row>
                <Row class="accountInfo" type="flex" align="middle">
-                  <Col span="6" class="col-left" align="right">{{$t('bankPayType')}}</Col>
-                  <Col span="18" class="col-right">
+                  <Col :span="leftSpan" class="col-left" align="right">{{$t('bankPayType')}}</Col>
+                  <Col :span="rightSpan" class="col-right">
                      <Select v-model.trim="paymentType" size="large" class="select" :disabled="disabled">
                         <Option v-for="(item) in paymentTypeList" :value="item" :key="item">{{item}}</Option>
                      </Select>
@@ -121,7 +133,7 @@
       onlyInputNumAndPoint, parseUrl
    } from '@/lib/utils.js'
    import {
-      getIdentify,
+      getIdentify, queryUserInfo,
    } from '_api/balances.js'
 
    export default {
@@ -148,7 +160,10 @@
             showBtn: false,
             disabled: false,
             errorInput: '',
+            leftSpan:7,
+            rightSpan:17,
 
+            isUS: true,//美国国籍
             bankAccountName: localStorage.getItem('bankAccountName') || '',
             bankAccountNumber: '',
             contactEmail: '',
@@ -174,6 +189,7 @@
       methods: {
          init() {
             this.getWithdrawAddress()
+            this.queryUserInfo()
          },
          getWithdrawAddress() {//银行卡
             this.exchange.withdrawAddress(this.currency, function (res) {
@@ -184,6 +200,15 @@
                   this.bankList = []
                }
             }.bind(this))
+         },
+         queryUserInfo() {
+            queryUserInfo(Cookies.get('loginToken')).then(res => {
+               if (res.data.country !== 'US') {
+                  this.isUS = false
+                  this.paymentType = 'international-wire'
+                  this.paymentTypeList = ['international-wire']
+               }
+            })
          },
          sort(res) {
             this.bankList = []
@@ -326,7 +351,7 @@
                   this.loading = false
                }.bind(this))
             } catch (e) {
-               if(e) {
+               if (e) {
                   this.warning(e)
                }
                this.loading = false
@@ -355,7 +380,6 @@
          getIdentify() { //实名认证
             if (!this.bankAccountName) {
                getIdentify(Cookies.get('loginToken')).then(res => {
-                  console.log(res)
                   localStorage.setItem('bankAccountName', `${res.data.firstName} ${res.data.lastName}`)
                   this.bankAccountName = localStorage.getItem('bankAccountName')
                })
@@ -570,6 +594,11 @@
                &:focus {
                   border-color: @color;
                }
+            }
+            .help-icon {
+               font-size: 18px;
+               color: #949DA6;
+               cursor: pointer;
             }
             .select {
                &:focus {
