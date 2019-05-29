@@ -318,37 +318,37 @@
                   <div class="pair">
                     <div class="title row">
                       <div class="pairName">
-                        <span class="front">DASH</span>
+                        <span class="front">LTC</span>
                         <span class="back">/ETH</span>
                       </div>
-                      <div class="tradeBtn" @click="$router.push('/exchange?symbol=DASHETH')">Trade</div>
+                      <div class="tradeBtn" @click="$router.push('/exchange?symbol=LTCETH')">Trade</div>
                     </div>
                     <div class="row">
                       <span>Best Ask</span>
                       <span>Best Bid</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:DASHBTCWaveArray[0] === 1,down:DASHBTCWaveArray[0] === -1}">{{DASHBTC.E55?(DASHBTC.E55[0]/ETHBTCRate).toFixed(6):"-"}}</span>
-                      <span class="row_right" :class="{up:DASHBTCWaveArray[2] === 1,down:DASHBTCWaveArray[2] === -1}">{{DASHBTC.E55?(DASHBTC.E55[2]/ETHBTCRate).toFixed(6):"-"}}</span>
+                      <span class="row_left"  :class="{up:LTCBTCWaveArray[0] === 1,down:LTCBTCWaveArray[0] === -1}">{{LTCBTC.E55?(LTCBTC.E55[0]/ETHBTCRate).toFixed(6):"-"}}</span>
+                      <span class="row_right" :class="{up:LTCBTCWaveArray[2] === 1,down:LTCBTCWaveArray[2] === -1}">{{LTCBTC.E55?(LTCBTC.E55[2]/ETHBTCRate).toFixed(6):"-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:DASHBTCWaveArray[4] === 1,down:DASHBTCWaveArray[4] === -1}">{{DASHBTC.BINANCE?(DASHBTC.BINANCE[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:DASHBTCWaveArray[6] === 1,down:DASHBTCWaveArray[6] === -1}">{{DASHBTC.BINANCE?(DASHBTC.BINANCE[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_left"  :class="{up:LTCBTCWaveArray[4] === 1,down:LTCBTCWaveArray[4] === -1}">{{LTCBTC.BINANCE?(LTCBTC.BINANCE[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_right" :class="{up:LTCBTCWaveArray[6] === 1,down:LTCBTCWaveArray[6] === -1}">{{LTCBTC.BINANCE?(LTCBTC.BINANCE[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:DASHBTCWaveArray[8] === 1,down:DASHBTCWaveArray[8] === -1}">{{DASHBTC.HUOBI?(DASHBTC.HUOBI[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:DASHBTCWaveArray[10] === 1,down:DASHBTCWaveArray[10] === -1}">{{DASHBTC.HUOBI?(DASHBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_left"  :class="{up:LTCBTCWaveArray[8] === 1,down:LTCBTCWaveArray[8] === -1}">{{LTCBTC.HUOBI?(LTCBTC.HUOBI[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_right" :class="{up:LTCBTCWaveArray[10] === 1,down:LTCBTCWaveArray[10] === -1}">{{LTCBTC.HUOBI?(LTCBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:DASHBTCWaveArray[12] === 1,down:DASHBTCWaveArray[12] === -1}">{{DASHBTC.BITTREX?(DASHBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:DASHBTCWaveArray[14] === 1,down:DASHBTCWaveArray[14] === -1}">{{DASHBTC.BITTREX?(DASHBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_left"  :class="{up:LTCBTCWaveArray[12] === 1,down:LTCBTCWaveArray[12] === -1}">{{LTCBTC.BITTREX?(LTCBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_right" :class="{up:LTCBTCWaveArray[14] === 1,down:LTCBTCWaveArray[14] === -1}">{{LTCBTC.BITTREX?(LTCBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:DASHBTCWaveArray[16] === 1,down:DASHBTCWaveArray[16] === -1}">{{DASHBTC.COINBASEPRO?(DASHBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:DASHBTCWaveArray[18] === 1,down:DASHBTCWaveArray[18] === -1}">{{DASHBTC.COINBASEPRO?(DASHBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_left"  :class="{up:LTCBTCWaveArray[16] === 1,down:LTCBTCWaveArray[16] === -1}">{{LTCBTC.COINBASEPRO?(LTCBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                      <span class="row_right" :class="{up:LTCBTCWaveArray[18] === 1,down:LTCBTCWaveArray[18] === -1}">{{LTCBTC.COINBASEPRO?(LTCBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
                   </div>
-                  <div class="pair">
+                  <!-- <div class="pair">
                     <div class="title row">
                       <div class="pairName">
                         <span class="front">ZEC</span>
@@ -380,7 +380,7 @@
                       <span class="row_left"  :class="{up:ZECBTCWaveArray[16] === 1,down:ZECBTCWaveArray[16] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
                       <span class="row_right" :class="{up:ZECBTCWaveArray[18] === 1,down:ZECBTCWaveArray[18] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
             </div>
             <!-- GBBO end -->
@@ -1368,9 +1368,9 @@
               ETHBTC:{},
               ETHBTCArray:[],
               ETHBTCWaveArray:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-              DASHBTC:{},
-              DASHBTCArray:[],
-              DASHBTCWaveArray:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+              LTCBTC:{},
+              LTCBTCArray:[],
+              LTCBTCWaveArray:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
               ZECBTC:{},
               ZECBTCArray:[],
               ZECBTCWaveArray:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -1450,8 +1450,8 @@
                   this.stompClient.subscribe('/topic/bbo/ZECBTC',(data) => {
                     this.saveExchangeData('ZECBTC',data)
                   });
-                  this.stompClient.subscribe('/topic/bbo/DASHBTC',(data) => {
-                    this.saveExchangeData('DASHBTC',data)
+                  this.stompClient.subscribe('/topic/bbo/LTCBTC',(data) => {
+                    this.saveExchangeData('LTCBTC',data)
                   });
                   
                 });
@@ -1593,8 +1593,8 @@
           ETHBTC(){
             this.gbboWave('ETHBTC')
           },
-          DASHBTC(){
-            this.gbboWave('DASHBTC')
+          LTCBTC(){
+            this.gbboWave('LTCBTC')
           },
           ZECBTC(){
             this.gbboWave('ZECBTC')
