@@ -38,23 +38,23 @@
     import {AndroidDownloadUrl} from '../../../api/urls.js';
     import {getApi} from '../../../api/axios.js';
     export default {
-        metaInfo(){
-            return{
-                title: this.HomeTitle, // set a title
-                meta: [{                 // set meta
-                    name: 'keywords',
-                    content:this.HomeKeyword
-                },{
-                    name:'description',
-                    content:this.HomeDescription
-                }],
-            }
-        },
+        // metaInfo(){
+        //     return{
+        //         title: this.HomeTitle, // set a title
+        //         meta: [{                 // set meta
+        //             name: 'keywords',
+        //             content:this.HomeKeyword
+        //         },{
+        //             name:'description',
+        //             content:this.HomeDescription
+        //         }],
+        //     }
+        // },
         data(){
             return{
-                HomeTitle:this.$route.meta.title,
-                HomeKeyword : this.$t('HomeKeyword'),
-                HomeDescription : this.$t('HomeDescription'),
+                // HomeTitle:this.$t(this.$route.meta.title),
+                // HomeKeyword : this.$t('HomeKeyword'),
+                // HomeDescription : this.$t('HomeDescription'),
                 ifAPP:false,
                 isShowIPModal:true,
                 isShowCookiesBox:false,
