@@ -2016,7 +2016,7 @@ export default {
    supregistersucessplus: "恭喜您注册成功",
    supretitleplus: "55.com",
    supregister2plus: "注册领取8 USDT ",
-   supinviteurlplus: '您的邀请链接链接是',
+   supinviteurlplus: '您的邀请链接是',
    supdownloadplus: '立即下载APP进行充值',
 
 };
