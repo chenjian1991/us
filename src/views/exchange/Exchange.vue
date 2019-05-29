@@ -968,7 +968,7 @@
                         v.siteType.map((site,i) => {
                             if(site=='B'){
                                 if(v.quoteAsset=='BTC'||v.quoteAsset=='ETH' || v.quoteAsset=='USD'){
-                                    if(v.baseAsset=='BTC'||v.baseAsset=='LTC'||v.baseAsset=='ETH'||v.baseAsset=='ZEC'||v.baseAsset=='DASH'||v.baseAsset=='XLM'){
+                                    if(v.baseAsset=='BTC'||v.baseAsset=='LTC'||v.baseAsset=='ETH'||v.baseAsset=='XLM'){
                                         // v 每个站
                                         if (siteObj[site]) {
                                             if (siteObj[site][v.quoteAsset]) {

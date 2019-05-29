@@ -137,7 +137,7 @@
                     <!-- ETH -->
 
                     <!-- DASH -->
-                    <li class="dropdown-item hs-has-sub-menu">
+                    <!-- <li class="dropdown-item hs-has-sub-menu">
                         <a id="navLinkPagesCareers" class="nav-link u-header__sub-menu-nav-link u-list__link py-2" href="javascript:;"
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -146,7 +146,6 @@
                         <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
                         </a>
 
-                        <!-- Submenu (level 2) -->
                         <ul id="navSubmenuPagesCareers" class="hs-sub-menu list-unstyled u-header__sub-menu u-header__sub-menu-menu-gutter--y u-header__sub-menu-offset" style="min-width: 220px;"
                             aria-labelledby="navLinkPagesCareers">
                         <li class="dropdown-item px-0">
@@ -155,12 +154,8 @@
                         <li class="dropdown-item px-0">
                             <router-link class="nav-link u-list__link px-4" :to="{path:'/exchange',query: {symbol:'DASHETH'}}">DASH/ETH Trading</router-link>
                         </li>
-                        <!-- <li class="dropdown-item px-0">
-                            <a class="nav-link u-list__link px-4" href="../pages/careers-single.html">BCH Community</a>
-                        </li> -->
                         </ul>
-                        <!-- End Submenu (level 2) -->
-                    </li>
+                    </li> -->
                     <!-- DASH end  -->
 
                     <!-- LTC -->
@@ -190,7 +185,7 @@
                     </li>
                     <!-- LTC -->
                     <!-- ZEC -->
-                    <li class="dropdown-item hs-has-sub-menu">
+                    <!-- <li class="dropdown-item hs-has-sub-menu">
                         <a id="navLinkPagesLogin" class="nav-link u-header__sub-menu-nav-link u-list__link py-2" href="javascript:;"
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -199,7 +194,6 @@
                         <span class="fa fa-angle-right u-header__sub-menu-nav-link-icon"></span>
                         </a>
 
-                        <!-- Submenu (level 2) -->
                         <ul id="navSubmenuPagesLogin" class="hs-sub-menu list-unstyled u-header__sub-menu u-header__sub-menu-menu-gutter--y u-header__sub-menu-offset" style="min-width: 220px;"
                             aria-labelledby="navLinkPagesLogin">
                             <li class="dropdown-item px-0">
@@ -208,12 +202,8 @@
                             <li class="dropdown-item px-0">
                                 <router-link class="nav-link u-list__link px-4" :to="{path:'/exchange',query: {symbol:'ZECETH'}}">ZEC/ETH Trading</router-link>
                             </li>
-                            <!-- <li class="dropdown-item px-0">
-                                <a class="nav-link u-list__link px-4" href="../pages/signup-simple.html">ZEC Community</a>
-                            </li> -->
                         </ul>
-                        <!-- End Submenu (level 2) -->
-                    </li>
+                    </li> -->
                     <!-- ZEC -->
 
                     <!-- Contacts -->
