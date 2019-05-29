@@ -495,7 +495,7 @@ const router = new Router({
                path: 'about55',
                name: 'about55',
                meta: {
-                  title: 'About 55'
+                  title: 'aboutTitle'
                },
                component: About
             },
@@ -503,7 +503,7 @@ const router = new Router({
                path: 'capital',
                name: 'capital',
                meta: {
-                  title: '55 Capital'
+                  title: 'capital'
                },
                component: Captial
             },
