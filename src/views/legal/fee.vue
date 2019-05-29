@@ -67,14 +67,14 @@
                                     <td>LITECOIN (LTC)</td>
                                     <td>0.1%</td>
                                 </tr>
-                                 <tr>
+                                 <!-- <tr>
                                     <td>DASH (DASH)</td>
                                     <td>0.1%</td>
-                                </tr>
-                                 <tr>
+                                </tr> -->
+                                 <!-- <tr>
                                     <td>ZCASH (ZEC)</td>
                                     <td>0.1%</td>
-                                </tr>
+                                </tr> -->
                                  <tr>
                                     <td>YEEZY (YEEZY)</td>
                                     <td>0.1%</td>
@@ -179,14 +179,14 @@
                                     <td>LITECOIN (LTC)</td>
                                     <td>0.05 LTC</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td>DASH (DASH)</td>
                                     <td>0.015 DASH</td>
-                                </tr>
-                                <tr>
+                                </tr> -->
+                                <!-- <tr>
                                     <td>ZCASH (ZEC)</td>
                                     <td>0.025 ZEC</td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td>YEEZY (YEEZY)</td>
                                     <td>1 YEEZY</td>
