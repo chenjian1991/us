@@ -43,7 +43,7 @@ navLang === 'zh-CN' || navLang === 'zh'  ? navLang = 'zh-CN' :  navLang = 'en'
 let lang = getUrlKey('language') || window.localStorage.getItem('countryLanguage') || navLang // 如果都读到的浏览器语言不符合vue-i8n格式要求，就设置为英语‘en’
 let url = window.location.href;
 // console.log(url.indexOf('registerSuccess'))
-if(url.indexOf('inviteAto')!==-1||url.indexOf('beinvited')!==-1||url.indexOf('registerSuccess')!==-1){
+if(url.indexOf('atoInivteplus')!==-1||url.indexOf('beinvitedplus')!==-1||url.indexOf('registerSuccessplus')!==-1){
   lang =  navLang
 }else{
   lang = 'en'
