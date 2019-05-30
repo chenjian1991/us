@@ -163,10 +163,6 @@
                           </div>
                             <Button v-if="loaded"  :disabled='registerbtn' id="registerBtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('regSignup')}}</Button>
                             <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
-                             
-                        
-
-
                         </Form>
                         <div class="register_bottom">
                             <span><span style="color:#51809F;margin-right:5px;">{{$t('regAlreadyReg')}}</span> <router-link  to='./login'>{{$t('regLogin')}}</router-link></span>
