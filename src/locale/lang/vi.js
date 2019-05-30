@@ -1697,9 +1697,11 @@ export default {
    kyc2upperletter:'only two capital letters allowed',
    kyc28upperletter:'Incorrect format，1 captital letter and 8 numbers',
    l2mgmtAuditRR1:"Your photo does not match with your ID card.",
-l2mgmtAuditRR2:"Your address file does not match with your address info.",
-l2mgmtAuditRR3:"ID certificate file is not clear,please upload a better one.",
-l2mgmtAuditRR4:"your name does not match your ID certificate.",
+  l2mgmtAuditRR2:"Your address file does not match with your address info.",
+  l2mgmtAuditRR3:"ID certificate file is not clear,please upload a better one.",
+  l2mgmtAuditRR4:"your name does not match your ID certificate.",
+  l2mgmtAuditRR5:"your address should be more specific, accurate to room number.",
+
    //   USD 充值提现
    balanceAvailable:"Balance",
    balanceDSPT:"Deposit",
