@@ -491,6 +491,7 @@
          //成交
          listCompleted_v2Order(params, value) {
             this.exchange.listCompleted_v2Order(params, function (res) {
+               console.log(res)
                if (this.isCompletePrev) {//点击的上一页
                   res = res.reverse()
                   //与第一页第一条数据相比较
