@@ -585,6 +585,7 @@
          this.exchange = null
       },
       mounted() {
+         console.log()
          let loginToken = Cookies.get('loginToken');
          this.getUserInfo(loginToken)
          this.getRealNameIdentify(loginToken)
