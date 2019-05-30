@@ -476,10 +476,10 @@ const clickoutside = {
                 let itc = this.countryNumber;
                 if(this.shows==1){
                     this.phoneMessage = {
-                    itc:itc,
-                    phone:this.formValidate.phoneNumber,
-                    codeType:"PHONE",
-                    operateType:"REGISTER",
+                        itc:itc,
+                        phone:this.formValidate.phoneNumber,
+                        codeType:"PHONE",
+                        operateType:"REGISTER",
                     }
                 }
                 if(callback){//callback是从子组件传递过来的参数
