@@ -205,8 +205,8 @@
             queryUserInfo(Cookies.get('loginToken')).then(res => {
                if (res.data.country !== 'US') {
                   this.isUS = false
-                  this.paymentType = 'international-wire'
-                  this.paymentTypeList = ['international-wire']
+                  this.paymentType = 'wire_international'
+                  this.paymentTypeList = ['wire_international']
                   this.information.splice(5, 1)
                } else {
                   this.information.splice(6, 1)
