@@ -1462,18 +1462,17 @@
                 //     // showError("account-error");
                 //     this.$Message.warning(this.$t('bbjyAccountError'));
                 // } else 
-                // if (this.setTradePassword == true) {
-                //     //交易密码是否设置
-                //     this.$Notice.warning({
-                //         title: this.$t('bbjyNoPasswordError'),
-                //     });
-                //     setTimeout(function () {
-                //         this.$router.push('/originTradePassword')
-                //     }.bind(this), 1000);
+                if (this.setTradePassword == true) {
+                    //交易密码是否设置
+                    this.$Notice.warning({
+                        title: this.$t('bbjyNoPasswordError'),
+                    });
+                    setTimeout(function () {
+                        this.$router.push('/originTradePassword')
+                    }.bind(this), 1000);
 
-                //     //继续撤单
-                // } else
-                if(this.$store.state.exchange.inputTradePassWordStatus){
+                    //继续撤单
+                } else if(this.$store.state.exchange.inputTradePassWordStatus){
                     //密码
                     if (getValue("ORDER_SESSION")) {
                         //密码为失效
@@ -1580,16 +1579,15 @@
                     this.buyDisabled = false
                 }
                 //没有设置交易密码直接下单 增加逻辑
-                // else if(this.setTradePassword == false){
-                //     this.$Notice.warning({
-                //         title:this.$t('bbjyNoPasswordError'),
-                //     });
-                //     this.buyDisabled = false
-                //     setTimeout(function () {
-                //         this.$router.push('/originTradePassword')
-                //     }.bind(this), 1000);
-                // }
-                else if (this.$store.state.exchange.inputTradePassWordStatus){
+                else if(this.setTradePassword == false){
+                    this.$Notice.warning({
+                        title:this.$t('bbjyNoPasswordError'),
+                    });
+                    this.buyDisabled = false
+                    setTimeout(function () {
+                        this.$router.push('/originTradePassword')
+                    }.bind(this), 1000);
+                }else if (this.$store.state.exchange.inputTradePassWordStatus){
                     //需要输入密码
                     if (getValue("ORDER_SESSION")) {
                         this.exchange.createNewOrder({
@@ -1694,15 +1692,14 @@
                     this.sellDisabled = false;
                 }
                 //未设置交易密码直接下单
-                // else if(this.setTradePassword == false){
-                //     this.$Notice.warning({
-                //         title: this.$t('bbjyNoPasswordError'),
-                //     });
-                //     setTimeout(function () {
-                //         this.$router.push('/originTradePassword')
-                //     }.bind(this), 1000);
-                // } 
-                else if(this.$store.state.exchange.inputTradePassWordStatus){
+                else if(this.setTradePassword == false){
+                    this.$Notice.warning({
+                        title: this.$t('bbjyNoPasswordError'),
+                    });
+                    setTimeout(function () {
+                        this.$router.push('/originTradePassword')
+                    }.bind(this), 1000);
+                }else if(this.$store.state.exchange.inputTradePassWordStatus){
                     //需要输入交易密码
                     if (getValue("ORDER_SESSION")) {
                         this.sellDisabled = true;
