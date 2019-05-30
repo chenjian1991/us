@@ -160,8 +160,8 @@
             showBtn: false,
             disabled: false,
             errorInput: '',
-            leftSpan:7,
-            rightSpan:17,
+            leftSpan: 7,
+            rightSpan: 17,
 
             isUS: true,//美国国籍
             bankAccountName: localStorage.getItem('bankAccountName') || '',
@@ -207,6 +207,9 @@
                   this.isUS = false
                   this.paymentType = 'international-wire'
                   this.paymentTypeList = ['international-wire']
+                  this.information.splice(5, 1)
+               } else {
+                  this.information.splice(6, 1)
                }
             })
          },
@@ -321,15 +324,19 @@
                   this.errorInput = 'contactName'
                   throw 'connamePop'
                }
-               if (!patternRoute.test(this.routingNumber)) {
-                  this.errorInput = 'routingNumber'
-                  throw 'routnumPop'
-               }
-               if (!patternSwift.test(this.swiftCode)) {
-                  this.errorInput = 'swiftCode'
-                  throw 'swiftPop'
-               }
+               //判断国籍
 
+               if (this.isUS === true) {
+                  if (!patternRoute.test(this.routingNumber)) {
+                     this.errorInput = 'routingNumber'
+                     throw 'routnumPop'
+                  }
+               } else {
+                  if (!patternSwift.test(this.swiftCode)) {
+                     this.errorInput = 'swiftCode'
+                     throw 'swiftPop'
+                  }
+               }
                if (this.bankLength === 0) {//未设置过 直接默认
                   address += `default=${new Date().getTime()}&`
                } else {
