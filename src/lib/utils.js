@@ -232,6 +232,9 @@ export function addSymbolSplitLine(symbol) {
       case "ETH":
          str = symbol.slice(0, -3) + "/" + quote;
          break;
+      case "USD":
+         str = symbol.slice(0, -3) + "/" + quote;
+         break;
       default:
          str = symbol.slice(0, -4) + "/" + symbol.slice(-4);
          break;
