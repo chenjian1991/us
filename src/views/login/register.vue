@@ -473,7 +473,6 @@ const clickoutside = {
 
             },
             sendSMSfun(callback){
-                //let len = this.countryNumber.length;
                 let itc = this.countryNumber;
                 if(this.shows==1){
                     this.phoneMessage = {

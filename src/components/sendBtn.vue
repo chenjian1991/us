@@ -39,14 +39,14 @@
         methods: {
             sendCode(){
                 this.$emit('sendCick')//触发父组件的方法
-                if(this.ssoEmail||this.tradePassEmail){
+                if(this.ssoEmail||this.tradePassEmail){//邮箱不需要人机验证
                     this.noMachineBtnPost();
                 }
-                this.captchaIns && this.captchaIns.popUp()
+                this.captchaIns && this.captchaIns.popUp()//弹出人机验证
 
             },
             initRobot(){
-                let _that = this;
+                let _that = this;　
                 let captchaIns;
                 if (captchaIns) {
                     captchaIns.destroy()
@@ -75,15 +75,9 @@
                             let captchaValidateStr = {
                                 captchaValidateStr:value
                             }
-                            // if(_that.emailMessage){//邮箱注册发送验证码
-                            //     let registerParams = Object.assign(_that.emailMessage,captchaValidateStr)// 对象组合
-                            //      _that.$options.methods.sendPostRequest(registerParams,_that);
-
-                            // }
                             if(_that.phoneMessage){//手机注册发送验证码
                                 let registerParams = Object.assign(_that.phoneMessage,captchaValidateStr)// 对象组合
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
-
                             }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
                                     let registerParams = Object.assign(_that.ForgotEmailPassworMessage,captchaValidateStr)// 对象组合
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
@@ -109,6 +103,9 @@
                 })//初始化函数结尾
 
                 return captchaIns;
+            },
+            machineVerifyPass(){
+
             },
             noMachineBtnPost(){//不需要人机验证
                 if(this.ssoEmail){//绑定邮箱发送验证码
