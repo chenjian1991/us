@@ -2,7 +2,7 @@
     <div class="root">
         <div id="login" class="wrapper">
             <div class="register_wraper">
-                  <!-- <Modal
+                  <Modal
                     class="robotModal"
                     v-model="robotModalflag"
                     title="验证"
@@ -10,8 +10,7 @@
                    >
                     <div id="robot"></div>
                     <p slot="footer"></p>
-                </Modal> -->
-                <googleModal :googleRobotFlag='googleRobotFlag'></googleModal>
+                </Modal>
                 <div class="inner_input_login">
                     <div class="login_title">{{$t('dlWelcome')}}</div>
                      <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
@@ -58,7 +57,6 @@
 import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl,socialToken} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
 import Modaltips from '@/components/Modal';
-import googleModal from "../../components/googeRobot";
 import { duration } from 'moment';
 import {setCookies} from '@/config';
 import {getUrlKeyandEncode} from '@/lib/utils.js';
@@ -69,7 +67,6 @@ import { setTimeout } from 'timers';
         name:'login',
         components:{
             Modaltips,
-            googleModal
         },
         data() {
                const validatePhone = (rule,value,callback) =>{
@@ -116,7 +113,7 @@ import { setTimeout } from 'timers';
                 responseSocialToken:'',
                 domain:'',
                 fromSocial:'',
-                // robotModalflag:false,
+                robotModalflag:false,
                 ruleValidate: {
                     phoneNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -178,8 +175,8 @@ import { setTimeout } from 'timers';
                          }
                             // this.googleRobotFlag = true;
                             // console.log(this)
-                            // this.paramsObj = params;
-                            // this.captchaIns && this.captchaIns.popUp()
+                            this.paramsObj = params;
+                            this.captchaIns && this.captchaIns.popUp()
                         }).catch((error)=>{
                                 this.$Message.error('server error')
                             })
@@ -372,35 +369,35 @@ import { setTimeout } from 'timers';
 
                 return captchaIns;
             },
-            // onloadCallback(){
-            //     console.log(this)
-            //     let _that = this;
-            //     console.log("grecaptcha is ready!");
-            //     let widgetId=grecaptcha.render('robot', {
-            //         'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
-            //         "theme":'light',
-            //         "size":'normal',
-            //         'callback': function (data) {//验证成功回调函数
-            //             console.log(data)
-            //             if(data.length!==0){
-            //                 setTimeout(()=>{
-            //                     _that.robotModalflag= false;
-            //                 },2000)
-            //              console.log('Verified: not robot');
-            //             }
-            //         },
-            //         "expired-callback":function(){//验证失效回调函数
-            //             console.log('expired-callback')
-            //         },
-            //         "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
-            //             console.log('error-callback')
-            //         },
+            onloadCallback(){
+                console.log(this)
+                let _that = this;
+                console.log("grecaptcha is ready!");
+                let widgetId=grecaptcha.render('robot', {
+                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
+                    "theme":'light',
+                    "size":'normal',
+                    'callback': function (data) {//验证成功回调函数
+                        console.log(data)
+                        if(data.length!==0){
+                            setTimeout(()=>{
+                                _that.robotModalflag= false;
+                            },2000)
+                         console.log('Verified: not robot');
+                        }
+                    },
+                    "expired-callback":function(){//验证失效回调函数
+                        console.log('expired-callback')
+                    },
+                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
+                        console.log('error-callback')
+                    },
 
-            //         });
-            //         console.log(widgetId)
-            //         return widgetId;
+                    });
+                    console.log(widgetId)
+                    return widgetId;
 
-            // },
+            },
             requestGoogleFun(){//绑定手机的验证
                 let phoneNumber = this.formValidate.phoneNumber;
                 let phone = {
@@ -495,7 +492,7 @@ import { setTimeout } from 'timers';
            this.initRobot();
             this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
-            // this.onloadCallback()
+            this.onloadCallback()
 
         },
         created(){
