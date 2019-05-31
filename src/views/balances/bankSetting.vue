@@ -346,16 +346,13 @@
                let friendlyName = md5(address)
                this.loading = true
                this.exchange.createWithdrawAddress(this.currency, friendlyName, address, function (result) {//添加提现地址
-                  this.showModal = false
-                  this.getWithdrawAddress()
-                  this.cancel()
-                  this.loading = false
-               }.bind(this), function (result) {
-                  this.$Message.error({
-                     content: result.data.message,
-                     duration: 3
-                  });
-                  this.loading = false
+                  if (result.data.code) {
+                     this.loading = false
+                  }else{
+                     this.showModal = false
+                     this.getWithdrawAddress()
+                     this.cancel()
+                  }
                }.bind(this))
             } catch (e) {
                if (e) {
