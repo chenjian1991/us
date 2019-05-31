@@ -113,22 +113,16 @@ axios.interceptors.response.use(
          } else if (error.response.status === 504) {
             // Message.error(error.response.data.message)
          } else if (error.response.status === 500) {
-            console.log(1)
-            console.log(i18n.t('tsTips'),i18n.t(500))
-
             Notice.error({
                title: i18n.t('tsTips'),
                desc: i18n.t(500),
             });
          }
-         console.log(error.response)
          return Promise.reject(error.response) // 返回接口返回的错误信息
       }else{
          return {}
       }
    })
-
-
 
 /**
  *  封装axios的post请求
