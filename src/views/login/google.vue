@@ -242,5 +242,5 @@ import {getCommouityBaseURL} from '../../config/index.js';
 </style>
 
 <style lang='less'>
-    // @import './mediaLogin.less';
+    @import './mediaLogin.less';
 </style>

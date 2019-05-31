@@ -823,14 +823,12 @@ const clickoutside = {
 </script>
 
 <style lang='less'>
-
     .ivu-form{
-              .ivu-input{
+            .ivu-input{
                 width: 580px;
                 height: 48px;
                 padding-left: 53px;
                 border-radius: 0px;
-               // border:solid 1px #BDC4E1;
                 font-size: 14px;
                 background: #353948;
                 color:#fff;
@@ -900,9 +898,7 @@ const clickoutside = {
      .headerbox{
         flex: 0 0 auto;
      }
-    //  #app{
-    //      height: 100%;
-    //  }
+   
     .footerBox{
          flex: 0 0 auto;
      }
@@ -972,5 +968,5 @@ const clickoutside = {
     @import './register.less';
 </style>
 <style lang='less'>
-//    @import './mediaRegister.less';
+   @import './mediaRegister.less';
 </style>
