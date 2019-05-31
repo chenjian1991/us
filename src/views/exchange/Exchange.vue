@@ -1464,36 +1464,41 @@
                 // } else 
                 if (this.setTradePassword == false) {
                     //交易密码是否设置
-                    // this.$Message.warning(this.$t('bbjyNoPasswordError'))
                     this.$Notice.warning({
                         title: this.$t('bbjyNoPasswordError'),
                     });
                     setTimeout(function () {
-                        // window.location.href = "../../securityCenter/setTradingPassword.html";
                         this.$router.push('/originTradePassword')
                     }.bind(this), 1000);
-                } else if (getValue("ORDER_SESSION")) {
-                    this.exchange.cancelOrder(orderId, function (data) {
-                    //撤单成功
-                    // this.$Message.success(this.$t('bbjyCancelMsg'));
-                    this.$Notice.success({
-                        title: this.$t('bbjyCancelMsg'),
-                    });
-                    this.updateOpenListAndCompletedList()
-                    }.bind(this));
-                } else {
-                    this.openPassWordPage();
-                    v.isDisabled = false;
+
+                    //继续撤单
+                } else if(this.$store.state.exchange.inputTradePassWordStatus){
+                    //密码
+                    if (getValue("ORDER_SESSION")) {
+                        //密码为失效
+                        this.exchange.cancelOrder(this.orderID,null,(data)=>{
+                            //撤单成功
+                            this.$Notice.success({
+                                title: this.$t('tsTips'),
+                                desc: this.$t('bbjyCancelMsg'),
+                            })
+                        });
+                    } else {
+                        this.openPassWordPage();
+                        v.isDisabled = false;
+                    }
+                }else{
+                    this.submitPassWord()
                 }
   
             },
             buyBtn(){
-               
                 window._czc.push(["_trackEvent",'买入按钮','点击','币币交易页面',0,'buyBtn']);
                 if(!this.symbolList || JSON.stringify(this.symbolList)=="{}" || !this.symbolList[this.currentSymbol]){
                     //暂停交易
                     this.$Notice.warning({
-                        title: this.$t('bbjyStop'),
+                        title: this.$t('tsTips'),
+                        desc:this.$t('bbjyStop'),
                     });
                     return
                 }
@@ -1512,85 +1517,103 @@
                     this.buyPriceEmpty = true
                     //买入价格
                     this.$Notice.warning({
-                        title: this.$t('bbjyEnterBuyPrice'),
+                        title: this.$t('tsTips'),
+                        desc: this.$t('bbjyEnterBuyPrice'),
                     });
                     this.buyDisabled = false
                 }else if(!this.buyCountInput){
                     this.buyCountEmpty = true
                     //数量
                     this.$Notice.warning({
-                        title: this.$t('bbjyEnterBuyVolume'),
+                        title: this.$t('tsTips'),
+                        desc: this.$t('bbjyEnterBuyVolume'),
                     });
                     this.buyDisabled = false
                 }else if(Number(this.buyPriceInput)>Number(maxPrice)){
                     //买入价格不能超过
                     this.$Notice.warning({
-                        title: this.$t('bbjyBuyPriceNotMore')+maxPrice,
+                        title: this.$t('tsTips'),
+                        desc: this.$t('bbjyBuyPriceNotMore')+maxPrice,
                     });
                     this.buyDisabled = false
                 }else if(Number(this.buyPriceInput)<Number(minPrice)){
                     // this.$Message.warning('买入价格不能少于'+minPrice);
                     this.$Notice.warning({
-                        title: this.$t('bbjyBuyPriceNotLess')+minPrice,
+                        title: this.$t('tsTips'),
+                        desc: this.$t('bbjyBuyPriceNotLess')+minPrice,
                     });
                     this.buyDisabled = false
                 }else if(Number(this.buyCountInput)>Number(maxQuantity)){
                     // this.$Message.warning('买入数量不能超过'+maxQuantity);
                     this.$Notice.warning({
-                        title:this.$t('bbjyBuyVolumeNotMore')+maxQuantity,
+                        title: this.$t('tsTips'),
+                        desc: this.$t('bbjyBuyVolumeNotMore')+maxQuantity,
                     });
                     this.buyDisabled = false
                 }else if(Number(this.buyCountInput)<Number(minQuantity)){
                     // this.$Message.warning('买入数量不能少于'+minPrice);
                     this.$Notice.warning({
-                        title: this.$t('bbjyBuyVolumeNotLess')+minQuantity,
+                        title: this.$t('tsTips'),
+                        desc:this.$t('bbjyBuyVolumeNotLess')+minQuantity,
                     });
                     this.buyDisabled = false
                 } else if (!isPriceSize) {
                     // 价格整数倍于
                     this.$Notice.warning({
-                        title: this.$t('bbjyBuyPriceMultiple')+priceTickSize,
+                        title: this.$t('tsTips'),
+                        desc:  this.$t('bbjyBuyPriceMultiple')+priceTickSize,
                     });
                     this.buyDisabled = false
                 } else if (!isQuantitySize) {
                     this.$Notice.warning({
-                        title:this.$t('bbjyBuyVolumeMultiple')+quantityStepSize,
+                        title: this.$t('tsTips'),
+                        desc: this.$t('bbjyBuyVolumeMultiple')+quantityStepSize,
                     });
                     this.buyDisabled = false
                 }else if (status == "HALT") {
                     //账户停止
                     this.$Notice.warning({
-                        title: this.$t('bbjyAccountError'),
+                        title: this.$t('tsTips'),
+                        desc:  this.$t('bbjyAccountError'),
                     });
                     this.buyDisabled = false
-                }else if(this.setTradePassword == false){
+                }
+                //没有设置交易密码直接下单 增加逻辑
+                else if(this.setTradePassword == false){
                     this.$Notice.warning({
                         title:this.$t('bbjyNoPasswordError'),
                     });
                     this.buyDisabled = false
                     setTimeout(function () {
-                        // window.location.href = "../../securityCenter/setTradingPassword.html";
                         this.$router.push('/originTradePassword')
                     }.bind(this), 1000);
-                } else if (getValue("ORDER_SESSION")) {
-                    this.exchange.createNewOrder({
-                        "symbol": this.currentSymbol,
-                        "orderType": "LIMIT",
-                        "orderSide": this.orderType,
-                        "quantity": this.buyCountInput,
-                        "limitPrice": this.buyPriceInput
-                    }, function (data) {
-                        this.buyDisabled = false
-                        this.$Notice.success({
-                            title: this.$t('bbjyOrderSuccess'),
-                        });
-                     }.bind(this),
-                        function (data) {
-                            this.buyDisabled = false;
-                        }.bind(this)
-                    );
-                } else {
-                   this.openPassWordPage();
+                }else if (this.$store.state.exchange.inputTradePassWordStatus){
+                    //需要输入密码
+                    if (getValue("ORDER_SESSION")) {
+                        this.exchange.createNewOrder({
+                            "symbol": this.currentSymbol,
+                            "orderType": "LIMIT",
+                            "orderSide": this.orderType,
+                            "quantity": this.buyCountInput,
+                            "limitPrice": this.buyPriceInput
+                        },null, (data)=> {
+                            this.buyDisabled = false
+                            this.$Notice.success({
+                                title: this.$t('tsTips'),
+                                desc:this.$t('bbjyOrderSuccess'),
+                            });
+                        },
+                           (data)=> {
+                                this.buyDisabled = false;
+                            }
+                        );
+                    } else {
+                         this.openPassWordPage();
+                    }
+                    return
+                }else{
+                    //直接下单
+                    this.submitPassWord()
                 }
             },
             sellBtn(){
@@ -1667,37 +1690,46 @@
                         title: this.$t('bbjyAccountError'),
                     });
                     this.sellDisabled = false;
-                }else if(this.setTradePassword == false){
+                }
+                //未设置交易密码直接下单
+                else if(this.setTradePassword == false){
                     this.$Notice.warning({
                         title: this.$t('bbjyNoPasswordError'),
                     });
                     setTimeout(function () {
-                        // window.location.href = "../../securityCenter/setTradingPassword.html";
                         this.$router.push('/originTradePassword')
                     }.bind(this), 1000);
-                } else if (getValue("ORDER_SESSION")) {
-                    this.sellDisabled = true;
-                    this.exchange.createNewOrder({
-                        "symbol": this.currentSymbol,
-                        "orderType": "LIMIT",
-                        "orderSide": this.orderType,
-                        "quantity": this.sellCountInput,
-                        "limitPrice": this.sellPriceInput
-                    },
-                    function (data) {
-                        // orderComplete();
-                         this.sellDisabled = false;
-                        this.$Notice.success({
-                            title: this.$t('bbjyOrderSuccess'),
-                        });
-                    }.bind(this),
-                    function (data) {
-                        this.sellDisabled = false;
-                        
-                    }.bind(this)
-                    );
-                } else {
-                   this.openPassWordPage();
+                }else if(this.$store.state.exchange.inputTradePassWordStatus){
+                    //需要输入交易密码
+                    if (getValue("ORDER_SESSION")) {
+                        this.sellDisabled = true;
+                        this.exchange.createNewOrder({
+                            "symbol": this.currentSymbol,
+                            "orderType": "LIMIT",
+                            "orderSide": this.orderType,
+                            "quantity": this.sellCountInput,
+                            "limitPrice": this.sellPriceInput
+                        },
+                        null,
+                        (data) =>{
+                            // orderComplete();
+                            this.sellDisabled = false;
+                            this.$Notice.success({
+                                title: this.$t('tsTips'),
+                                desc: this.$t('bbjyOrderSuccess'),
+                            });
+                        },
+                        (data)=> {
+                            this.sellDisabled = false;
+                            
+                        }
+                        );
+                    } else {
+                        this.openPassWordPage();
+                    }
+                }else{
+                   //下单
+                   this.submitPassWord()
                 }
             },
             openPassWordPage(){
@@ -1730,59 +1762,68 @@
             changeDepth(index){
                 this.isShowDepth = index
             },
-            submitPassWord(){//提交交易密码页面
-                if(this.exchangePassWord==null || this.exchangePassWord.length<6){
-                    this.$Notice.warning({
-                        title: this.$t('bbjyInputPassword'),
-                    });
-                     return false
-                }
-                // let loginToken = Cookies.get('loginToken')
-                this.exchange.issuedTradePassword(this.loginToken, this.exchangePassWord, function (data) {
-                    if (!data["code"]) {
-                        this.exchange.ssoProvider["getExtension"] = data["token"];
-                        if (this.orderType == "cancel") {
-                            this.exchange.cancelOrder(this.orderID, function (data) {
-                                //隐藏密码输入框
-                                this.closePassWordPage()
-                            }.bind(this));
-                        } else {
-                            this.exchange.createNewOrder({
-                                "symbol": this.currentSymbol,
-                                "orderType": "LIMIT",
-                                "orderSide": this.orderType,
-                                "quantity": this.orderType=="BUY"?this.buyCountInput:this.sellCountInput,
-                                "limitPrice":this.orderType=="BUY"?this.buyPriceInput:this.sellPriceInput,
-                            }, function (data) {
-                                this.orderType=="BUY" ? this.buyDisabled = false : this.sellDisable= false
-                                if(this.orderType=="BUY" || this.orderType=="SELL"){
-                                    this.$Notice.success({
-                                        title: this.$t('bbjyOrderSuccess'),
-                                    });
-                                }else{
-                                    //撤单成功
-                                    this.$Notice.success({
-                                        title: this.$t('bbjyCancelMsg'),
-                                    });
-                                }
-                                //隐藏密码框
-                                this.closePassWordPage()
-                            }.bind(this),
-                                function(data){
-                                    this.sellDisabled = false;
-                                    this.buyDisabled = false;
-                                    this.closePassWordPage()
-                                }.bind(this)
-                            );
-                        }
-                    } else {
-                        //错误提示
+        submitPassWord(){//提交交易密码页面
+                if(this.$store.state.exchange.inputTradePassWordStatus && this.showPassWordPage){
+                    if(this.exchangePassWord==null || this.exchangePassWord.length<6){
                         this.$Notice.warning({
-                            title: this.$t(data['code']),
+                            title: this.$t('bbjyInputPassword'),
                         });
+                        return false
                     }
-                }.bind(this))
-            }
+                }else{
+                    this.exchangePassWord = ""
+                }
+                if (this.orderType == "cancel") {
+                    this.exchange.cancelOrder(this.orderID,this.exchangePassWord,(data)=>{
+                        //隐藏密码输入框
+                        this.closePassWordPage()
+                        //撤单成功
+                        this.$Notice.success({
+                            title: this.$t('tsTips'),
+                            desc: this.$t('bbjyCancelMsg'),
+                        })
+                    });
+                } else {
+                    this.exchange.createNewOrder(
+                    {
+                        "symbol": this.currentSymbol,
+                        "orderType": "LIMIT",
+                        "orderSide": this.orderType,
+                        "quantity": this.orderType=="BUY"?this.buyCountInput:this.sellCountInput,
+                        "limitPrice":this.orderType=="BUY"?this.buyPriceInput:this.sellPriceInput,
+                    },
+                    this.exchangePassWord,
+                    (data)=> {
+                        this.orderType=="BUY" ? this.buyDisabled = false : this.sellDisable= false
+                        if(this.orderType=="BUY" || this.orderType=="SELL"){
+                            this.sellDisabled = false;
+                            this.buyDisabled = false;
+                            this.$Notice.success({
+                                title: this.$t('tsTips'),
+                                desc:this.$t('bbjyOrderSuccess'),
+                            });
+                        }else{
+                            //撤单成功
+                            this.$Notice.success({
+                                title: this.$t('tsTips'),
+                                desc: this.$t('bbjyCancelMsg'),
+                            });
+                        }
+                        //隐藏密码框
+                        this.closePassWordPage()
+                    },(error) =>{
+                            //错误提示
+                            // this.$Notice.warning({
+                            //     title: this.$t('tsTips'),
+                            //     desc: this.$t(data['code']),
+                            // });
+                            this.sellDisabled = false;
+                            this.buyDisabled = false;
+                            this.closePassWordPage()
+                        }
+                    );
+                }
+            },
         },
         watch: {
             'pushOrderData':{
@@ -1892,6 +1933,8 @@
             this.$store.commit('changeHeaderColor', '#15232C');
             this.$store.commit('changeFooterColor', '#15232C');
             //  this.loginToken = Cookies.get('loginToken')
+            //获取交易密码开关
+            this.$store.dispatch("getTradePassWordStatus");
             //是否设置过交易密码
             if(localStorage.getItem('tradingPasswordFlag')==='true'){
                 this.setTradePassword = true

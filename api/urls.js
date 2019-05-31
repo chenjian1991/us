@@ -37,7 +37,8 @@ export const deleteFavoritesPair = `${proxyURL}/sso/favorites-pair/delete` //收
 export const historicalTrailing = `${proxyURL}/quote-historical/quote/historical.trailing`//交易日级别以上行情数据 (追溯查询)
 export const historicalTimeRange = `${proxyURL}/quote-historical/quote/historical.timeRange`//交易日级别以上行情数据 ((起止时间查询))
 export const summarizedTimeRange = `${proxyURL}/quote-summarized/quote/summarized.timeRange`//交易日级别以下行情数据 (起止时间查询)
-
+//查询交易密码设置
+export const queryTradePassWordURL = `${proxyURL}/sso/new-user/query-open-trade-password`
 //= ======= 币币交易 end========
 
 

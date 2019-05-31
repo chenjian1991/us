@@ -3,7 +3,12 @@ import {
    setLocalStorage as setValue,
 } from '@/lib/utils.js'
 import store from '@/store/index'
-import {clearLocalStorage} from '@/config'
+import { clearLocalStorage } from '@/config'
+import {
+   Message,
+   Notice
+} from 'iview'
+import i18n from '@/locale/index.js'
 import {
    getCreateAccount,
    getAccountInfo,
@@ -37,6 +42,7 @@ import {
    queryGroupDetail,
    queryMiningflag
 } from '_api/exchange.js'
+import Cookies from 'js-cookie'
 //韩国挖矿
 import {queryIncoming, listPersonal, listTeam, listBonus} from '_api/miningKo.js'
 import _ from 'lodash'
@@ -47,7 +53,7 @@ export function Exchange(ssoProvider) {
    if (!this.ssoProvider["getSsoToken"]) {
       this.ssoProvider["getSsoToken"] = new Function();
    }
-   this.ssoProvider["getExtension"] = undefined;
+   // this.ssoProvider["getExtension"] = undefined;
    this.ssoProvider["getWithdrawExtension"] = undefined;
 
    //page cache
@@ -55,7 +61,9 @@ export function Exchange(ssoProvider) {
    this.tokenCache = {};//ExpireAbleValue
    this.sessionCache = {};
    this.orderTicket = undefined;
-   this.tradePassword = undefined;//交易密码
+   this.tradePassword = undefined;//交易密码Token
+   this.userPassWord = undefined
+
 }
 
 Exchange.TokenType = {
@@ -251,19 +259,24 @@ Exchange.prototype.getSession = function (tokenType, fn) {
    if (expiredAbleSession) {
       fn(expiredAbleSession);
       return;
-   } else if (getValue(tokenType + "_SESSION")) {
+   }
+    else if (getValue(tokenType + "_SESSION")) {
       fn(getValue(tokenType + "_SESSION"));
       return;
    }
    _this.getAccountId(function (_accountId) {
       _this.getToken(tokenType, function (_typeToken) {
-         getCreateSession({'token': _typeToken}, {
-            'accountId': _accountId,
-            'extension': _this.ssoProvider["getExtension"]
-         }).then(data => {
-            _this.sessionCache[tokenType] = data;
-            setValue(tokenType + "_SESSION", data);
-            fn(data["value"]);
+         _this.issuedTradePassword(Cookies.get('loginToken'),_this.userPassWord,function(passwordToken){
+            getCreateSession({'token': _typeToken}, {
+               'accountId': _accountId,
+               'extension':passwordToken
+            }).then(data => {
+               _this.sessionCache[tokenType] = data;
+               setValue(tokenType + "_SESSION", data);
+               fn(data["value"]);
+            }).catch(error=>{
+               console.log('签发session error')
+            })
          })
       })
    })
@@ -275,10 +288,30 @@ Exchange.prototype.issuedTradePassword = function (token, password, fn) {
    if (expiredAblepassword) {
       fn(expiredAblepassword);
       return;
+   }else if(getValue("PASSWORDTOKEN")){
+      fn(getValue("PASSWORDTOKEN"))
+      return;
    }
-   getCreatePasswordToken(token, {"password": password}).then(data => {
-      _this.tradePassword = data;
-      fn(data);
+   getCreatePasswordToken(token, {"password": password,"tradePasswordType":"TRADE_PASSWORD"}).then(data => {
+      if(data.code == "10018" || data.code == "10011"|| data.code == "10017"|| data.code == "10018"){
+         //全局错误弹窗
+         Notice.warning({
+            title: i18n.t('tsTips'),
+            desc: i18n.t(data['code']),
+         });
+         return
+      }else{
+         //passwordToken保存到本地存储
+         let obj = {}
+         obj.expiredAt = data.expiredTime
+         obj.value = data.token
+         setValue("PASSWORDTOKEN", obj);
+         fn(data.token);
+      }
+      // _this.tradePassword = data;
+   }).catch(error=>{
+      console.log('签发密码token error')
+    
    })
 };
 Exchange.prototype.listOpenOrder = function (fn) {
@@ -331,12 +364,14 @@ Exchange.prototype.listFilledOrder = function (fn) {
    })
 };
 
-Exchange.prototype.createNewOrder = function (orderInfo, fn, errorFn) {
+Exchange.prototype.createNewOrder = function (orderInfo,userpassword, fn, errorFn) {
    var _this = this;
+   if(userpassword){
+      _this.userPassWord = userpassword
+   }
    _this.getAccountId(function (_accountId) {
       _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
          _this.getOrderTicket(function (_orderId) {
-
             getCreateOrder({"session": _orderSession}, {
                "accountId": _accountId,
                "orderId": _orderId,
@@ -353,8 +388,11 @@ Exchange.prototype.createNewOrder = function (orderInfo, fn, errorFn) {
    })
 };
 
-Exchange.prototype.cancelOrder = function (orderId, fn) {
+Exchange.prototype.cancelOrder = function (orderId,userpassword, fn) {
    var _this = this;
+   if(userpassword){
+      _this.userPassWord = userpassword
+   }
    _this.getAccountId(function (_accountId) {
       _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
          getCancelOrder({"session": _orderSession}, {"accountId": _accountId, "orderId": orderId}).then(data => {
@@ -398,43 +436,7 @@ Exchange.prototype.queryRewardFilledBuyBrief = function (fn) {
    })
 };
 
-// Exchange.prototype.activityList = function (type, actionType, status, startTimeDate, endTimeDate, page, limit, currency, fn) {
-//    var params = {}
-//    var _this = this;
-//    _this.getAccountId(function (_accountId) {
-//       _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-//          params = {
-//             "token": _assetToken,
-//             "accountId": _accountId,
-//             'page': page,
-//             'limit': limit,
-//          }
-//          if (type) {
-//             params['type'] = type
-//          }
-//          if (actionType) {
-//             params['actionType'] = actionType
-//          }
-//          if (status) {
-//             params['status'] = status
-//          }
-//          if (startTimeDate) {
-//             params['startTimeDate'] = startTimeDate
-//          }
-//          if (endTimeDate) {
-//             params['endTimeDate'] = endTimeDate
-//          }
-//          if (currency) {
-//             params[currency] = 'USD'
-//          }
-//          getActivityList(params).then(data => {
-//             fn(data);
-//          })
-//       })
-//    })
-// };
-
-Exchange.prototype.activityList = function (activity, currency, fn) {
+Exchange.prototype.activityList = function (type, actionType, status, startTimeDate, endTimeDate, page, limit, fn) {
    var params = {}
    var _this = this;
    _this.getAccountId(function (_accountId) {
@@ -442,23 +444,25 @@ Exchange.prototype.activityList = function (activity, currency, fn) {
          params = {
             "token": _assetToken,
             "accountId": _accountId,
-            type: activity.type,
-            page: activity.page,
-            limit: activity.limit,
+            'page': page,
+            'limit': limit
          }
-         params[currency] = 'USD'
-         if (activity.actionType) {
-            params['actionType'] = activity.actionType
+         if (type) {
+            params['type'] = type
          }
-         if (activity.status) {
-            params['status'] = activity.status
+         if (actionType) {
+            params['actionType'] = actionType
          }
-         if (activity.startTimeDate) {
-            params['startTimeDate'] = activity.startTimeDate
+         if (status) {
+            params['status'] = status
          }
-         if (activity.endTimeDate) {
-            params['endTimeDate'] = activity.endTimeDate
+         if (startTimeDate) {
+            params['startTimeDate'] = startTimeDate
          }
+         if (endTimeDate) {
+            params['endTimeDate'] = endTimeDate
+         }
+
          getActivityList(params).then(data => {
             fn(data);
          })
@@ -567,24 +571,6 @@ Exchange.prototype.deposit = function (currency, fn, errorFn) {
       })
    })
 };
-//USD充值地址
-Exchange.prototype.depositUSD = function (currency, amount, fn, errorFn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-         address({
-            "token": _assetToken,
-            "currency": currency,
-            "amount": amount,
-            "accountId": _accountId
-         }).then(data => {
-            fn(data);
-         }).catch(data => {
-            errorFn(data)
-         })
-      })
-   })
-};
 //提现地址列表
 Exchange.prototype.withdrawAddress = function (currency, fn) {
    var _this = this;
@@ -601,7 +587,7 @@ Exchange.prototype.withdrawAddress = function (currency, fn) {
    })
 };
 //添加提现地址
-Exchange.prototype.createWithdrawAddress = function (currency, friendlyName, address, fn,errorFn) {
+Exchange.prototype.createWithdrawAddress = function (currency, friendlyName, address, fn) {
    var _this = this;
    _this.getAccountId(function (_accountId) {
       _this.getToken(Exchange.TokenType.UTIL, function (_utilToken) {
@@ -613,8 +599,6 @@ Exchange.prototype.createWithdrawAddress = function (currency, friendlyName, add
             "address": address,
          }).then(data => {
             fn(data);
-         }).catch(data => {
-            errorFn(data);
          })
       })
    })
@@ -665,6 +649,31 @@ Exchange.prototype.getAssetTicket = function (fn) {
    })
 };
 //提现
+// Exchange.prototype.withdraw = function (currency, address, amount, fee, fn, errorFn) {
+//    var _this = this;
+//    _this.ssoProvider.getSsoToken(function (_ssoToken) {
+//       _this.getAccountId(function (_accountId) {
+//          _this.getWithdrawSession(Exchange.TokenType.ASSET, function (_assetSession) {
+//             _this.getAssetTicket(function (_assetTicket) {
+//                withdraw({"ssoToken": _ssoToken, "session": _assetSession}, {
+//                   "currency": currency,
+//                   "accountId": _accountId,
+//                   "ticket": _assetTicket,
+//                   "address": address,
+//                   "amount": amount,
+//                   "fee": fee
+//                }).then(data => {
+//                   fn(data);
+//                }).catch(data => {
+//                   errorFn(data);
+//                });
+//             })
+//          })
+//       })
+//    })
+// };
+
+
 Exchange.prototype.withdraw = function (currency, address, amount, fee, fn, errorFn) {
    var _this = this;
    _this.ssoProvider.getSsoToken(function (_ssoToken) {
@@ -688,28 +697,7 @@ Exchange.prototype.withdraw = function (currency, address, amount, fee, fn, erro
       })
    })
 };
-//USD提现
-Exchange.prototype.withdrawUSD = function (currency, address, amount, fee, fn, errorFn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-         _this.getAssetTicket(function (_assetTicket) {
-            withdraw({"token": _assetToken}, {
-               "currency": currency,
-               "accountId": _accountId,
-               "ticket": _assetTicket,
-               "address": address,
-               "amount": amount,
-               "fee": fee
-            }).then(data => {
-               fn(data);
-            }).catch(data => {
-               errorFn(data);
-            });
-         })
-      })
-   })
-};
+
 
 //韩货挖矿活动
 //import {queryIncoming,listPersonal,listTeam,listBonus} from '_api/miningKo.js'
