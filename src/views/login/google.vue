@@ -227,5 +227,5 @@ import {setCookies} from '@/config'
 </style>
 
 <style lang='less'>
-    // @import './mediaLogin.less';
+    @import './mediaLogin.less';
 </style>
