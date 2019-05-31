@@ -23,7 +23,8 @@ export const cancelOrder = `${proxyURL}/spot/order/openOrder.cancel` //撤单
 export const createOrder = `${proxyURL}/spot/order/newOrder.create` //创建订单
 export const completedList = `${proxyURL}/spot/order/completed.list` //查询完全成交和已经撤单 /sso
 export const filled = `${proxyURL}/spot/order/detail/filled.list` //查询交易明细
-
+export const completedList_v2 = `${proxyURL}/spot/order/completed.list_v2` //完成订单筛选
+export const filledList_v2 = `${proxyURL}/spot/order/detail/filled.list_v2` //完成订单筛选
 
 export const fabiCost = `${proxyURL}/content/rate/front/info.query` //法币估值
 //收藏币种

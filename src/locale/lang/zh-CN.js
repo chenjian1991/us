@@ -1008,6 +1008,17 @@ export default {
    orderOpen: '当前委托',
    orderComplete: '历史委托',
    orderDetail: '交易明细',
+   orderSideAll: '全部方向',
+   orderSearch: '搜索',
+   orderReset: '重置',
+   orderHide: '隐藏已撤销',
+   orderStartTime: '开始时间',
+   orderEndTime: '结束时间',
+   orderCoin:'币种',
+   orderAll: '全部',
+   orderPagePrev:'上一页',
+   orderPageNext:'下一页',
+
    //资产
    zcExchangeAccount: '全部通证',
    zcBSiteAccount: '区块链通证',

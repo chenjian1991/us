@@ -1046,6 +1046,17 @@ export default {
    orderOpen: 'Pedidos actuales',
    orderComplete: 'Mis pedidos',
    orderDetail: 'Mis transacciones',
+   orderSideAll: "Side",
+   orderSearch: "Search",
+   orderReset: "Reset",
+   orderHide: "Hide cancelled orders",
+   orderStartTime: "Start time",
+   orderEndTime: "End time",
+   orderCoin: "Coin",
+   orderAll: "All",
+   orderPagePrev: 'Previous',
+   orderPageNext: 'Next',
+
    //资产
    zcExchangeAccount: 'All Token',
    zcBSiteAccount: 'Blockchain Token',
