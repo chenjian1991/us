@@ -81,6 +81,9 @@ export const emailRegister = `${proxyURL}/sso/new-user/email-register`// 邮箱�
 //交易密码
 export const TradingPasswordVerify = `${proxyURL}/sso/user/sso.restTradePasswordVerify`//验证code是否正确
 export const setTradingPassword = `${proxyURL}/sso/user/set_trade_password`//设置交易密码
+export const queryTradePasswordOpen = `${proxyURL}/sso/new-user/query-open-trade-password`// 查询是否开启交易密码
+export const setOpenTradePassword = `${proxyURL}/sso/new-user/set-open-trade-password`// 设置开启与否
+
 //绑定谷歌
 export const queryGoogleURL = `${proxyURL}/sso/security/bindGoogle`//查询二维码
 export const bindGoogle = `${proxyURL}/sso/security/bindingSecretKey`//绑定谷歌

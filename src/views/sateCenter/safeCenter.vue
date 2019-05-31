@@ -73,6 +73,20 @@
                            <router-link v-else to='/originTradePassword?origin=safecenter'>{{$t('aqzxModify')}}
                            </router-link>
                         </li>
+                         <li class="set_trade_password"  v-if="setTradingPassword" >
+                           <span class="trading_pass">
+                              <em>{{$t('交易密码失效')}}</em>
+                           </span>
+                           <span class="pass_tips">{{$t('仅应用于币币交易')}}</span>
+                           <RadioGroup @on-change='passwordSetTime' v-model="passwordTime">
+                                        <Radio label="1">
+                                             <span >{{$t('每两小时输入')}}</span>
+                                        </Radio>
+                                        <Radio class="radio_item" label="0">
+                                             <span>{{$t('不输入')}}</span>
+                                        </Radio>
+                           </RadioGroup>
+                        </li>
                      </ul>
                   </div>
                </div>
@@ -173,22 +187,92 @@
 
       </div>
       <Modal :modal='showModal' :text="text"></Modal>
+       <Modal
+        :mask-closable='false'
+        :closable="false"
+        v-model="modal1"
+        :title="this.$t('safeVerify')"
+        class="passwordPup"
+        @on-ok="okSubmit"
+       >
+      <Form class="clearfix form_container" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
+               <!-- 发送手机验证码 -->
+               <div v-if="phoneFlage"  class="clearfix">
+                  <div class="span-label">
+                     <span>{{$t('aqzxtsendsma')}}</span><em>{{phoneNumber}}</em>
+                  </div>
+                  <FormItem class="form_item smsCode" prop='smsCode'>
+                        <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('SMSPlacehodler')"></Input>
+                        <sendBtn   @sendCick= 'sendSMSfun' :empty='false' :tradePassPhone='tradePassPhone'></sendBtn>
+                  </FormItem>
+               </div>
+               <!-- 发送邮箱验证码 -->
+               <div v-if="emailFlage"   class="clearfix">
+                  <div class="span-label">
+                     <span>{{$t('aqzxsendemail')}}</span><span>&nbsp</span> <em>{{email}}</em>
+                  </div>
+                  <div>
+                     <FormItem class="form_item smsCode" prop='emailCode'>
+                        <Input :maxlength="6" v-model="formValidate.emailCode" :placeholder="$t('emialCodePlaceholder')"></Input>
+                        <sendBtn   @sendCick= 'sendSMSfun' :empty="false" :tradePassEmail='tradePassEmail'></sendBtn>
+                     </FormItem>
+                  </div>
+               </div>
+               <!-- 谷歌验证 -->
+               <div v-if="googleFlag"  class="clearfix">
+                  <div class=" span-label">
+                     <span>{{$t("googleCodenumCode")}}</span>
+                  </div>
+                  <FormItem class="form_item google_input" prop='googleNumber'>
+                     <Input :maxlength="6" v-model="formValidate.googleNumber" :placeholder="$t('goolePlaceholder')"></Input>
+                  </FormItem>
+               </div>
+           
+         </Form>
+      <p slot="footer">
+         <button class="cancelBtn" style="margin-right:74px;cursor:pointer"  @click="cancelbtn">{{$t('cancel')}}</button>
+         <button  v-if="loaded"  class="loginbtn"  @click="handleSubmit('formValidate')" size="large" type="primary">{{$t('confrim')}}</button>
+         <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button> 
+      </p>
+    </Modal>
    </div>
 </template>
 
 <script>
-   import {userInfo, identify,amlqueryState} from '../../../api/urls.js';
+   import {userInfo, identify,amlqueryState,queryTradePasswordOpen,setOpenTradePassword} from '../../../api/urls.js';
    import {postBaseApi, postHeaderTokenBodyApi, getHeaderTokenApi} from '../../../api/axios.js';
-   import Modal from '@/components/Modal';
+   import Modaltips from '@/components/Modal';
    import Cookies from 'js-cookie';
    import {Exchange} from '@/interface/exchange.js'
+   import sendBtn from '../../components/sendBtn';
 
    export default {
       name: 'login',
       components: {
-         Modal
+         Modaltips,
+         sendBtn
       },
       data() {
+            const validateSms = (rule,value,callback) => {
+                if(value === ''){
+                    callback(new Error(this.$t('phoneNumberRequier')))
+                }else{
+                    callback()
+                }
+            };
+             const validateGoogle = (rule,value,callback) =>{
+                if(value === ''){
+                    callback(new Error(this.$t('phoneNumberRequier')))
+                }else{
+                    let pattern =/[^\d]/;
+                    if(pattern.test(value)){
+                        callback(new Error(this.$t('googleMust')))
+                    }else{
+                        
+                    }
+                    callback()
+                }
+            };
          return {
             empty: true,
             token: '',
@@ -218,14 +302,50 @@
             switch1: null,//手续费折扣开关
             exchange: null,//交易接口函数
             discountPercent: '',//手续费折扣系数
-            enable: true
+            enable: true,
+            passwordTime:'',
+            modal1:false,
+            loaded:true,
+            googleFlag:false,
+            phoneFlage:false,
+            emailFlage:false,
+            switchFlag:true,
+            formValidate:{//必须有这个字段，验证的时候才可以验出是否符合规则
+                    smsCode:'',
+                    emailCode:'',
+                    googleNumber:'',
+
+            },
+               tradePassPhone:{
+                    "operateType":"SET_OPEN_TRADE_PASSWORD",
+                    "codeType":"PHONE"
+                },
+            tradePassEmail:{
+                    codeType: "EMAIL",
+                    language: localStorage.getItem('countryLanguage'),
+                    operateType: "SET_OPEN_TRADE_PASSWORD"
+                
+            },
+            ruleValidate: {
+                    smsCode: [
+                        { validator: validateSms, trigger: 'blur' }
+                    ],
+                    emailCode:[
+                        { validator: validateSms, trigger: 'blur' }
+                    ],
+                     googleNumber:[
+                        {validator: validateGoogle, trigger: 'blur'}
+                    ],
+                    
+                },
+
          }
       },
       methods: {
          handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                if (valid) {
-
+                      this.okSubmit()
                } else {
                   //this.$Message.error('Fail!');
                }
@@ -262,7 +382,21 @@
                   localStorage.setItem('ifEmail', this.email);
                   localStorage.setItem('securitPhone', this.phoneNumber);
                   localStorage.setItem('ifsetgoogle', this.googleFlag);
-
+                  if(this.phoneNumber==null){
+                           this.phoneFlage = false;
+                     }else{
+                           this.phoneFlage = true;
+                     }
+                      if(this.email==null){                                                                                                           
+                           this.emailFlage = false;
+                     }else{
+                           this.emailFlage = true;
+                     }
+                     if(this.googleFlag==false){
+                           this.googleFlag = false;
+                     }else{
+                           this.googleFlag = true;
+                     }
                   if (level == "WEAK") {
                      this.imgSrc = require('../../assets/images/safety/Weak.png')
                      this.Weak = true;
@@ -286,6 +420,71 @@
                }else{
                   this.$router.push('amlkycResult')
                }
+         },
+         passwordSetTime(value){
+            this.passwordTime = value;
+            this.modal1 = true;
+            this.formValidate.smsCode='';
+            this.formValidate.googleNumber='';
+            this.formValidate.emailCode='';
+            // console.log(value)
+         },
+           queryOpenTradepassword(){
+                  getHeaderTokenApi(queryTradePasswordOpen,"",Cookies.get('loginToken')).then((res)=>{
+                     console.log(res)
+                     this.switchFlag = res.data.result;
+                     if(this.switchFlag){
+                        this.passwordTime = '1'
+                     }else{
+                        this.passwordTime = '0'
+                     }
+                  })
+
+         },
+          sendSMSfun(callback){
+                    this.tradePassPhone = { //手机发送
+                        "operateType":"SET_OPEN_TRADE_PASSWORD",
+                        "codeType":"PHONE"
+                    }
+                    this.tradePassEmail = {//邮箱发送
+                        "codeType": "EMAIL",
+                        "operateType": "SET_OPEN_TRADE_PASSWORD"
+                    }
+                    if(callback){//callback是从子组件传递过来的参数
+                        this.showModal = !this.showModal;
+                        this.text = callback;
+                    }
+
+            },
+              okSubmit(){
+                      let params = {
+                           "googleCode":this.formValidate.googleNumber,
+                           "phoneCode":this.formValidate.smsCode,
+                           "emailCode":this.formValidate.emailCode,
+                           openTradePassword:this.passwordTime
+                        }
+                        postHeaderTokenBodyApi(setOpenTradePassword,Cookies.get('loginToken'),params).then((res)=>{
+                                 console.log(res)
+                                 if(res.code){
+                                    this.$Notice.error({
+                                       title: this.$t(res.code),
+                                       desc:this.$t(res.code)
+                                    });
+                              }else{
+                                    this.modal1 = false;
+                                    this.queryOpenTradepassword();
+                                    localStorage.removeItem("ORDER_SESSION");
+                                    localStorage.removeItem("PASSWORDTOKEN")
+                                    this.$Notice.success({
+                                       title: this.$t('11001'),
+                                       desc:this.$t('11001')
+                                    });
+                              }
+                        })
+         },
+         cancelbtn(){
+                this.queryOpenTradepassword();
+                this.modal1 = false;
          },
          L2queryState(token){
                 getHeaderTokenApi(amlqueryState,'',token).then((res)=>{
@@ -386,10 +585,12 @@
          this.exchange = null
       },
       mounted() {
+         console.log()
          let loginToken = Cookies.get('loginToken');
          this.getUserInfo(loginToken)
          this.getRealNameIdentify(loginToken)
           this.L2queryState(loginToken)
+          this.queryOpenTradepassword()
          localStorage.setItem('curPage', 0)//只有在安全中心页面设置0，才会在交易密码页面显示正确的发送验证码页面
          var ssoProvider = {};
          //创建实例
@@ -419,10 +620,83 @@
    .ff-fee .ivu-switch:focus {
       box-shadow: none;
    }
+    .passwordPup{
+        .form_container{
+            .span-label{
+               color:#949DA6;
+               font-size: 14px;
+               padding-bottom: 10px;
+            }
+            .smsCode{
+               position: relative !important;
+               .btn_contain{
+                     position: absolute;
+                     right: 0px;
+                     top: 0px;
+                     .sendMs{
+                        width: 90px;
+                        height: 40px;
+                     }
+               }
+            }
+            .form_item{
+               .ivu-input-wrapper{
+                  width: 250px;
+                  .ivu-input{
+                     height: 40px;
+
+                  }
+               }
+               
+            }
+            .google_input{
+               .ivu-input-wrapper{
+                  width: 340px;
+               }
+            }
+         }
+      .ivu-modal-body{
+         width: 368px;
+         margin: 0 auto;
+          .clearfix{
+         margin-top: 20px;
+      }
+      }
+      .ivu-modal-footer{
+         text-align: center;
+         padding-bottom: 30px;
+         p{
+            button{
+               background: #12869A;
+               color:#fff;
+               width: 120px;
+               height: 40px;
+               line-height: 40px;
+               outline:none;
+            }
+            .cancelBtn{
+               background: none;
+               color: #12869A;
+               border:1px solid #12869A;
+               &:hover{
+                  background: #12869A;
+                  color:#fff;
+               }
+            }
+         }
+      }
+   }
    #safeCenter{
       .alert{
          padding: 0px;
          margin-bottom: 0px;
+      }
+       .ivu-radio-checked .ivu-radio-inner{
+         border-color: #2d8cf0;
+      }
+      .ivu-radio-inner:after{
+         background-color: #12869A;
+         border: 1px solid #12869A;
       }
    }
 

@@ -775,6 +775,11 @@ export default {
    aqzxIdentity: 'L1 Verification',
    aqzxPhoneExplain: "alterar os ajustes de segurança e verificar ao gerir API.",
    aqzxPhoneExplaintwo: 'Used to promote the withdraw amount, And for retrieving account information.',
+   交易密码失效:'Trading password Validity',
+   仅应用于币币交易:'Vaild for Crypto-to-Crypto Trade',
+   每两小时输入:'Every 2 hours',
+   不输入:'Never',
+   safeVerify:'Security Verification',
    //修改密码
    aqzxchangepassword: "Change Login Password",
    aqzxtips: "*For security purposes no withdrawals are permitted for 24 hours after modification of security methods.",
