@@ -13,6 +13,7 @@ const resolve = dir => {
 // 比如你打包的文件放到服务器的my-app文件夹，域名为a.com，则应改为
 // http(s)://a.com/my-app/
 const BASE_URL = '/'
+
 const targetUrl = 'https://uat.us.55gm.co/' // us测试环境
 //   const targetUrl='http://www.test_uat.55.exchange:5555/' // 测试本地环境
 //  const targetUrl='http://uspc.55.exchange:8880/' // us测试环境
