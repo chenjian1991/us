@@ -60,7 +60,7 @@ export default {
 
             // },
             download(){
-                window.open('https://55link.de.com/#/download')
+                window.open('https://55link.de.com/download')
             },
               gotoSocial(){
                 let loginFlag = Cookies.get('loginToken');

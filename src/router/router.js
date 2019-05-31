@@ -114,7 +114,9 @@ Vue.use(Router)
 
 
 const router = new Router({
-   
+   //history 路由 
+   mode:'history',
+
    routes: [
       {
          path: '/activeEmail',
