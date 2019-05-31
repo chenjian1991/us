@@ -109,19 +109,13 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                           if(this.fromSocial==undefined){
-                                    this.$router.push('/home');  
-                            }else{//说明来自social
-                                    this.gotoSocial(token)
-                            }
-
+                        // this.$router.push('/home');  
+                          this.$router.go(-2)
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                          if(this.fromSocial==undefined){
-                                    this.$router.push('/home');  
-                            }else{//说明来自social
-                                    this.gotoSocial(token)
-                            }
+                        // this.$router.push('/home');  
+                          this.$router.go(-2)
+
 
                     }
                 }).catch((res) =>{
