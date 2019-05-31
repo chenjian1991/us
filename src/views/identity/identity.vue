@@ -232,7 +232,7 @@
                                 <p v-if='VALID_IDENTITY_CARD'>{{$t('sfrzSelfieID')}}</p>
                                 <p v-else>{{$t('sfrzSelfiePhotoID')}}</p>
                                 <div class="identityCard-three">
-                                    <img src="../../assets/images/identify/kycThree.png" alt="">
+                                    <img src="../../assets/images/identify/yourselfImage.png" alt="">
                                     <img class="identity-hover-img" src="../../assets/images/identify/hoverPictutre.png" alt="">
                                       <div class="upload-img-contain" style="visibility:show;">
                                                <div v-if="item.status === 'finished'&& urlPathTHREE" class="demo-upload-list" v-for="item in uploadListThree">
