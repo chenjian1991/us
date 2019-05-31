@@ -735,16 +735,16 @@
                         </div>
                     </span>
                   </div>
-                  <!-- <a href="https://global.55gm.co/#/fatoSubscription" target="_blank">
+                  <a href="https://global.55gm.co/#/fatoSubscription" target="_blank">
                       <button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Open on 21st May 13:00 (UTC+8)</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token through ATO</strong></span></span></button>
                   </a>
-                  &nbsp; -->
+                  &nbsp;
                   <button type="button" style="background:#59616B" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">coming soon</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token</strong></span></span></button> &nbsp;
                   <a :href="supremeURL" target="_blank"><button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Know more about Supreme</span><strong data-v-d1e1e420="" class="font-size-14">Join Supreme Community</strong></span></span></button></a>
                 </div>
               </div>
              </div>
-           </div> -->
+           </div>
             <!-- supreme end -->
 
             <!-- Front in Frames Section -->
