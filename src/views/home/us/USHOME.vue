@@ -673,7 +673,7 @@
           </div>
         <!-- End ATO -->   
             <!-- supreme start -->
-            <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
+            <!-- <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
                 <div class="container u-space-2">
                   <div class="col-md-12 col-lg-12 col-xl-12">
                     <div class="text-center mb-4">
@@ -683,7 +683,6 @@
                   </div>
                 <br>
               <div class="row justify-content-md-between">
-                <!-- Item Image -->
                 <div class="col-md-6 mb-7 mb-md-0">
                   <div class="js-slick-carousel u-slick"
                       data-infinite="true"
@@ -699,9 +698,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- End Item Image -->
-
-                <!-- Content -->
                 <div class="col-md-5">
                   <div class="mb-5">
                     <h3 class="text-white font-weight-normal">Supreme Swarovski Box Logo Hooded Sweatshirt</h3>
@@ -712,7 +708,6 @@
                     <span class="d-block h6 text-white mb-2">ATO Token Price：$0.1</span>
                     <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：59,800 Supreme Tokens</span>
                     <span class="d-block h6 text-white mb-2">ATO Starts in：
-                         <!-- Countdown -->
                         <div class="js-countdown row mb-5"
                             data-end-date="2019/05/21 13:00:00"
                             data-month-format="%m"
@@ -738,7 +733,6 @@
                             <span class="h5 font-weight-normal mb-0">Secs</span>
                           </div>
                         </div>
-                        <!-- End Countdown -->
                     </span>
                   </div>
 
@@ -748,10 +742,9 @@
                   </router-link>
                   <a :href="supremeURL" target="_blank"><button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Know more about Supreme</span><strong data-v-d1e1e420="" class="font-size-14">Join Supreme Community</strong></span></span></button></a>
                 </div>
-                <!-- End Content -->
               </div>
              </div>
-           </div>
+           </div> -->
             <!-- supreme end -->
 
             <!-- Front in Frames Section -->
