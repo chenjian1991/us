@@ -639,6 +639,8 @@ Exchange.prototype.createWithdrawAddress = function (currency, friendlyName, add
             "address": address,
          }).then(data => {
             fn(data);
+         }).catch(data=>{
+            fn(data);
          })
       })
    })
