@@ -1462,7 +1462,7 @@
                 //     // showError("account-error");
                 //     this.$Message.warning(this.$t('bbjyAccountError'));
                 // } else 
-                if (this.setTradePassword == true) {
+                if (this.setTradePassword == false) {
                     //交易密码是否设置
                     this.$Notice.warning({
                         title: this.$t('bbjyNoPasswordError'),
