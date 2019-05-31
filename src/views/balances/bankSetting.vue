@@ -349,6 +349,7 @@
                   if (result.data.code) {
                      this.loading = false
                   }else{
+                     this.loading = false
                      this.showModal = false
                      this.getWithdrawAddress()
                      this.cancel()
