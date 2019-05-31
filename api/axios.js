@@ -52,6 +52,18 @@ axios.interceptors.response.use(
       if (error.response) {
          if (error.response.status === 400) {
             let code = error.response.data.code;
+            let url = error.response.config.url
+            if(url ===  "/ato/token.subscribe"){
+               return Promise.reject(error.response)
+            }
+
+            //ato error message
+            let pattern=/\/(.+?)\//
+            let str=url.match(pattern)[1]
+            if(str==='ato'){
+               code=`ato_${code}`
+            }
+
             if(code ==196634 || code ==196666 || code ==196650){
                //token错误 session失效等场景
             }else{
@@ -62,37 +74,54 @@ axios.interceptors.response.use(
                }
                //全局错误弹窗
                Notice.warning({
-                  title: i18n.t(code),
+                  title: i18n.t('tsTips'),
+                  desc: i18n.t(code),
                });
             }
-            
+
             // if (code == 196682) {
             //    let protocol = window.location.protocol; //协议
             //    let host = window.location.host; //主机名+端口号
             //    let targetUrl = protocol + "//" + host;
             //    window.location.href = targetUrl + '/#/login'
             //    //清除cookie 和 本地存储
-               // clearLocalStorage()
+            // clearLocalStorage()
             // }
             // // removePending(error.response.config);
-            return Promise.reject(error.response) 
+            return Promise.reject(error.response)
+         }else if(error.response.status === 401){
+            Notice.error({
+               title: i18n.t('tsTips'),
+               desc: i18n.t(401),
+            });
+            clearLocalStorage()
+            store.commit('changeLoingStatus', false);
+
+         }else if(error.response.status === 403){
+            Notice.error({
+               title: i18n.t('tsTips'),
+               desc: i18n.t(403),
+            });
          } else if (error.response.status === 502) {
             // Message.error(error.response.data.message)
          } else if (error.response.status === 503) {
-            // Message.error(error.response.data.message)
+            Notice.error({
+               title: i18n.t('tsTips'),
+               desc: i18n.t(503),
+            });
          } else if (error.response.status === 504) {
             // Message.error(error.response.data.message)
          } else if (error.response.status === 500) {
-            // Message.error(i18n.t(500))
+            Notice.error({
+               title: i18n.t('tsTips'),
+               desc: i18n.t(500),
+            });
          }
-         // console.log(error.response)
          return Promise.reject(error.response) // 返回接口返回的错误信息
       }else{
          return {}
       }
    })
-
-
 
 
 /**
