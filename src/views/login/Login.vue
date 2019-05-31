@@ -195,11 +195,14 @@ import {setCookies} from '@/config'
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                          this.$router.push('/home');  
+                        //   this.$router.push('/home');  
+                          this.$router.go(-1)
 
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                         this.$router.push('/home');  
+                        //  this.$router.push('/home');  
+                          this.$router.go(-1)
+
                     }
                     //请求自选的币种
                     this.$store.dispatch("getMarkSymbol");

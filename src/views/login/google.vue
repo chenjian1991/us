@@ -95,11 +95,13 @@ import {setCookies} from '@/config'
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                        this.$router.push('/home');  
-
+                        // this.$router.push('/home');  
+                          this.$router.go(-2)
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                        this.$router.push('/home');  
+                        // this.$router.push('/home');  
+                          this.$router.go(-2)
+
 
                     }
                 }).catch((res) =>{
