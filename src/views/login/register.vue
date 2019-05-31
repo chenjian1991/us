@@ -972,6 +972,5 @@ const clickoutside = {
     @import './register.less';
 </style>
 <style lang='less'>
-
-   // @import './mediaRegister.less';
+//    @import './mediaRegister.less';
 </style>

@@ -1691,7 +1691,7 @@ export default {
    l2mgmtAuditRR2:"您上传的地址证明文件与您填写地址不一致",
    l2mgmtAuditRR3:"您上传的证件照片不清晰，请重新上传",
    l2mgmtAuditRR4:"你填写的姓名与您的证件照显示姓名不一致",
-
+   l2mgmtAuditRR5:"您的地址信息太宽泛，需要精确到房间号",
 
       //国际汇款
       transT:"汇款",

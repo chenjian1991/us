@@ -1732,6 +1732,8 @@ tongzheng58:"Proportion",
 l2mgmtAuditRR2:"Your address file does not match with your address info.",
 l2mgmtAuditRR3:"ID certificate file is not clear,please upload a better one.",
 l2mgmtAuditRR4:"your name does not match your ID certificate.",
+   l2mgmtAuditRR5:"your address should be more specific, accurate to room number.",
+
    //   USD 充值提现
    balanceAvailable:"Balance",
    balanceDSPT:"Deposit",
