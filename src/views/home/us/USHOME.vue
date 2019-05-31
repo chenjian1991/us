@@ -673,7 +673,7 @@
           </div>
         <!-- End ATO -->   
             <!-- supreme start -->
-            <!-- <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
+             <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
                 <div class="container u-space-2">
                   <div class="col-md-12 col-lg-12 col-xl-12">
                     <div class="text-center mb-4">
@@ -707,7 +707,9 @@
                     <span class="d-block h6 text-white mb-2">Tokens Required for Redemption：5980 Tokens/Hoodie</span>
                     <span class="d-block h6 text-white mb-2">ATO Token Price：$0.1</span>
                     <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：59,800 Supreme Tokens</span>
-                    <span class="d-block h6 text-white mb-2">ATO Starts in：
+                    <span class="d-block h6 text-white mb-2">ATO Total Pre-order Amount：</span>
+                    <br> <span style="font-size:28px;color:#fff;background-color:#DB3545;font-weight:700;">$128,263</span>
+                    <!-- <span class="d-block h6 text-white mb-2">ATO Starts in：
                         <div class="js-countdown row mb-5"
                             data-end-date="2019/05/21 13:00:00"
                             data-month-format="%m"
@@ -733,18 +735,19 @@
                             <span class="h5 font-weight-normal mb-0">Secs</span>
                           </div>
                         </div>
-                    </span>
+                    </span> -->
                   </div>
                   <!-- <a href="https://global.55gm.co/#/fatoSubscription" target="_blank">
                       <button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Open on 21st May 13:00 (UTC+8)</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token through ATO</strong></span></span></button>
                   </a>
                   &nbsp; -->
-                  <button type="button" style="background:#59616B" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">coming soon</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token</strong></span></span></button> &nbsp;
+                  <!-- <button type="button" style="background:#59616B" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">coming soon</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token</strong></span></span></button> &nbsp; -->
+                  <button type="button" style="background:#DB3545;height:57px" @click="$router.push('/redeemsupreme')" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block"> </span><strong data-v-d1e1e420="" class="font-size-14">Redeem Supreme</strong></span></span></button> &nbsp;
                   <a :href="supremeURL" target="_blank"><button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Know more about Supreme</span><strong data-v-d1e1e420="" class="font-size-14">Join Supreme Community</strong></span></span></button></a>
                 </div>
               </div>
              </div>
-           </div> -->
+           </div>
             <!-- supreme end -->
 
             <!-- Front in Frames Section -->
