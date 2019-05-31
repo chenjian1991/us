@@ -17,7 +17,7 @@
 <script>
    export default {
       name: "usModal",
-      props: ['value', 'width', 'okText', 'cancelText', 'className', 'title', 'okText', 'cancelText', 'showBtn','loading'],
+      props: ['value', 'width', 'okText', 'cancelText', 'className', 'title', 'okText', 'cancelText', 'showBtn', 'loading'],
       data() {
          return {
             showModal: false,
@@ -49,6 +49,9 @@
 
 <style lang="less">
    .us-modal {
+      ul {
+         margin-bottom: 0 !important;
+      }
       .main {
          padding: 54px 100px 55px 80px;
          .title {
@@ -105,6 +108,14 @@
             color: #12869A;
 
          }
+      }
+      /*tooltip*/
+      .ivu-tooltip-popper {
+         top: -190px;
+      }
+      .ivu-tooltip-inner {
+         width: 250px;
+         white-space: normal;
       }
    }
 

@@ -219,7 +219,7 @@
                this.information = JSON.parse(JSON.stringify(this.information))
             } else {
                getIdentify(Cookies.get('loginToken')).then(res => {
-                  localStorage.setItem('bankAccountName', res.data.firstName + res.data.lastName)
+                  localStorage.setItem('bankAccountName', `${res.data.firstName} ${res.data.lastName}`)
                   this.information[0].value = this.bankAccountName = localStorage.getItem('bankAccountName')
                   this.information = JSON.parse(JSON.stringify(this.information))
                })
