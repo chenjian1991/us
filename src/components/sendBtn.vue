@@ -69,6 +69,12 @@ import { debuglog } from 'util';
                 getApi(ipQuery,'').then((res)=>{
                     if(res.resultcode==200){
                         this.ipCountry = res.result.Country;
+                        if(this.ipCountry=='中国'){
+                            
+                        }else{//只有非中国都时候才实例化谷歌都方法
+                             this.onloadCallback();
+                        }
+                        
                         console.log('uuu',this.ipCountry)
                     }else{
                         this.ipCountry = '';//查询失败
@@ -338,7 +344,7 @@ import { debuglog } from 'util';
         },
         mounted() {
             this.ipQueryFun();
-            this.onloadCallback();
+           
             // console.log(this.empty)
             if(this.ssoEmail||this.tradePassEmail){
               
