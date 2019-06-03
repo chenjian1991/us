@@ -55,12 +55,9 @@ import { debuglog } from 'util';
                 if(this.ssoEmail||this.tradePassEmail){//邮箱不需要人机验证
                     this.noMachineBtnPost();
                 }
-                //   this.captchaIns && this.captchaIns.popUp()
                 if(this.ipCountry=='中国'){
-                    debugger
                      this.captchaIns && this.captchaIns.popUp()//弹出人机验证
                 }else{
-                    debugger
                       this.robotModalflag = true;
                 }
 
@@ -74,12 +71,11 @@ import { debuglog } from 'util';
                         }else{//只有非中国都时候才实例化谷歌都方法
                              this.onloadCallback();
                         }
-                        
                         console.log('uuu',this.ipCountry)
                     }else{
+                        this.onloadCallback()//当ip获取失败都时候默认是谷歌验证
                         this.ipCountry = '';//查询失败
                     }
-                    console.log(res)
                 })
             },
             onloadCallback(){//谷歌人机验证方法
