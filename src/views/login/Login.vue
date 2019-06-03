@@ -174,6 +174,8 @@ import { setTimeout } from 'timers';
                                     }
                             }
                          }
+                            // this.paramsObj = params;
+                            //  this.captchaIns && this.captchaIns.popUp()
                          if(this.ipCountry=='中国'){
                              console.log('中国')
                               this.paramsObj = params;
