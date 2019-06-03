@@ -34,6 +34,24 @@
                         <p class="font-weight">{{$t('sitetradefee')}}</p>
                         <table  class="fees" style="width:500px;">
                             <thead>
+                                <th>TYPE OF FIAT</th>
+                                <th>Trading Fee</th>
+                                
+                            </thead>
+                            <tbody>
+                                <!-- <tr>
+                                    <td>FF(Fifty-five Token)</td>
+                                    <td>0.15%</td>
+                                </tr> -->
+                                 <tr>
+                                    <td>USD</td>
+                                    <td>0.2%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </br>
+                        <table  class="fees" style="width:500px;">
+                            <thead>
                                 <th>{{$t('feename')}}</th>
                                 <th>{{$t('exchangefee')}}</th>
                             </thead>
@@ -77,6 +95,10 @@
                                 </tr> -->
                                  <tr>
                                     <td>YEEZY (YEEZY)</td>
+                                    <td>0.1%</td>
+                                </tr>
+                                <tr>
+                                    <td>SUPREME (SUP)</td>
                                     <td>0.1%</td>
                                 </tr>
                                  <!-- <tr>
@@ -143,8 +165,22 @@
                         <p>{{$t('chargefree')}}</p>
                         <p class="font-weight">{{$t('withdrawfee')}}</p>
                         <p>{{$t('nomaterwithfive')}}</p>
-                        <p>{{$t('feetable')}}</p>
+                        <!-- <p>{{$t('feetable')}}</p> -->
                         <table class="fees"  style="width:500px;margin-top:15px;">
+                            <thead>
+                                <th>TYPE OF FIAT</th>
+                                <th>Withdrawl Fee(per transaction)</th>
+                                <!-- <th></th> -->  
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>USD</td>
+                                    <td>5 USD</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </br>
+                        <table class="fees"  style="width:500px;">
                             <thead>
                                 <th>{{$t('assetname')}}</th>
                                 <th>{{$t('feestandard')}} <span>({{$t('Everypen')}})</span></th>
@@ -190,6 +226,10 @@
                                 <tr>
                                     <td>YEEZY (YEEZY)</td>
                                     <td>1 YEEZY</td>
+                                </tr>
+                                <tr>
+                                    <td>SUPREME (SUP)</td>
+                                    <td>1 SUP</td>
                                 </tr>
                                 <!-- <tr>
                                     <td>KYBERNETWORK(KNC)</td>
