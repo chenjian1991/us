@@ -431,7 +431,7 @@ const clickoutside = {
         methods:{
             handleSubmit (name) {
                 //注册按钮埋点统计
-                window._czc.push(["_trackEvent",'注册按钮','注册新用户','统计55全球市场注册','5','registerBtn']);
+                // window._czc.push(["_trackEvent",'注册按钮','注册新用户','统计55全球市场注册','5','registerBtn']);
                 this.srcCode = getUrlKey('src') //获取韩国空投的渠道ID
                 this.$refs[name].validate((valid) => {
                     if (valid) {
@@ -475,7 +475,7 @@ const clickoutside = {
             sendSMSfun(callback){
                 let itc = this.countryNumber;
                 if(this.shows==1){
-                    this.phoneMessage = {
+                    this.phoneMessage = {//手机注册发送验证
                         itc:itc,
                         phone:this.formValidate.phoneNumber,
                         codeType:"PHONE",

@@ -77,6 +77,7 @@ export const logout = `${proxyURL}/sso/new-user/logout`//退出接口
 export const register = `${proxyURL}/sso/new-user/phone-register`//手机注册
 export const userNameUnique = `${proxyURL}/sso/new-user/query-unique-name/`//登录
 export const emailRegister = `${proxyURL}/sso/new-user/email-register`// 邮箱注册
+export const ipQuery = `${proxyURL}/content/request-ip-query`//ip查询
 //交易密码
 export const TradingPasswordVerify = `${proxyURL}/sso/user/sso.restTradePasswordVerify`//验证code是否正确
 export const setTradingPassword = `${proxyURL}/sso/user/set_trade_password`//设置交易密码

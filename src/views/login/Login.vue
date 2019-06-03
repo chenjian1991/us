@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl,socialToken} from '../../../api/urls.js';
+import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl,socialToken,ipQuery} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
 import Modaltips from '@/components/Modal';
 import { duration } from 'moment';
@@ -108,12 +108,13 @@ import { setTimeout } from 'timers';
                 },
                 hashFlag:false,
                 showModal:false,
-                googleRobotFlag:false,
+                // googleRobotFlag:true,
                 text:'',
                 responseSocialToken:'',
                 domain:'',
                 fromSocial:'',
                 robotModalflag:false,
+                ipCountry:'',
                 ruleValidate: {
                     phoneNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -173,10 +174,14 @@ import { setTimeout } from 'timers';
                                     }
                             }
                          }
-                            // this.googleRobotFlag = true;
-                            // console.log(this)
-                            this.paramsObj = params;
-                            this.captchaIns && this.captchaIns.popUp()
+                         if(this.ipCountry=='中国'){
+                             debugger
+                              this.paramsObj = params;
+                             this.captchaIns && this.captchaIns.popUp()
+                         }else{
+                             debugger
+                            this.robotModalflag = true;
+                         }
                         }).catch((error)=>{
                                 this.$Message.error('server error')
                             })
@@ -200,6 +205,17 @@ import { setTimeout } from 'timers';
                 let pw = '::'+ sha256(passwrod)//要加密的密码
                 return pw;
             },
+            ipQueryFun(){//ip所在国家查询
+                getApi(ipQuery,'').then((res)=>{
+                    if(res.resultcode==200){
+                        this.ipCountry = res.result.Country;
+                        console.log('uuu',this.ipCountry)
+                    }else{
+                        this.ipCountry = '';//查询失败
+                    }
+                    console.log(res)
+                })
+            },
             getUserInfo(token){
                 postHeaderTokenBodyApi(userInfo,token,{}).then((res) =>{
                     let tradingPasswordFlag = res.isSetTradePasswrod;
@@ -370,7 +386,6 @@ import { setTimeout } from 'timers';
                 return captchaIns;
             },
             onloadCallback(){
-                console.log(this)
                 let _that = this;
                 console.log("grecaptcha is ready!");
                 let widgetId=grecaptcha.render('robot', {
@@ -492,7 +507,8 @@ import { setTimeout } from 'timers';
            this.initRobot();
             this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
-            this.onloadCallback()
+            this.onloadCallback();
+            this.ipQueryFun()
 
         },
         created(){
