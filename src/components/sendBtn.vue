@@ -55,6 +55,7 @@ import { debuglog } from 'util';
                 if(this.ssoEmail||this.tradePassEmail){//邮箱不需要人机验证
                     this.noMachineBtnPost();
                 }
+               //this.captchaIns && this.captchaIns.popUp()//弹出人机验证
                 if(this.ipCountry=='中国'){
                      this.captchaIns && this.captchaIns.popUp()//弹出人机验证
                 }else{
@@ -88,14 +89,21 @@ import { debuglog } from 'util';
                     "size":'normal',
                     'callback': function (data) {//验证成功回调函数
                         if(data.length!==0){
-                            if(_that.phoneMessage){//手机注册发送验证码
-                                let obj = {
+                            let obj = {
                                      captchaValidateStr:data,
                                      captchaValidateType:'google'
                                 }
+                            if(_that.phoneMessage){//手机注册发送验证码
                                 let registerParams = Object.assign(_that.phoneMessage,obj)// 对象组合
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
+                            }else if(_that.tradePassPhone){//修改交易密码发送手机验证码
+                                let registerParams = Object.assign(_that.tradePassPhone,obj)// 对象组合
+                                 _that.SSOpostRequest(registerParams,_that);
+                            }else if(_that.ssoPhone){//绑定手机发送验证码
+                                let registerParams = Object.assign(_that.ssoPhone,obj)// 对象组合
+                                 _that.phonePostVerifyMethod(registerParams)
                             }
+
                             setTimeout(()=>{
                                 _that.robotModalflag= false;
                             },2000)
@@ -144,11 +152,11 @@ import { debuglog } from 'util';
                             let captchaValidateStr = {
                                 captchaValidateStr:value
                             }
-                            if(_that.phoneMessage){//手机注册发送验证码
-                                let obj = {
+                             let obj = {
                                      captchaValidateStr:value,
                                      captchaValidateType:'wangyi'
                                 }
+                            if(_that.phoneMessage){//手机注册发送验证码
                                 let registerParams = Object.assign(_that.phoneMessage,obj)// 对象组合
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
@@ -157,11 +165,11 @@ import { debuglog } from 'util';
                             }else if(_that.ForgotPhonePassworMessage){//手机找回密码发送验证码
                                     let registerParams = Object.assign(_that.ForgotPhonePassworMessage,captchaValidateStr)// 对象组合
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
-                            }else if(_that.ssoPhone){//绑定手机
-                                let registerParams = Object.assign(_that.ssoPhone,captchaValidateStr)// 对象组合
+                            }else if(_that.ssoPhone){//绑定手机发送验证码
+                                let registerParams = Object.assign(_that.ssoPhone,obj)// 对象组合
                                 _that.phonePostVerifyMethod(registerParams)//验证手机
                             }else if(_that.tradePassPhone){//修改交易密码发送手机短信
-                                let registerParams = Object.assign(_that.tradePassPhone,captchaValidateStr)// 对象组合
+                                let registerParams = Object.assign(_that.tradePassPhone,obj)// 对象组合
                                  _that.SSOpostRequest(registerParams,_that);
                             }
                             
