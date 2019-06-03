@@ -1,8 +1,16 @@
 <template>
     <div  id="registerHtml" class="root">
         <div  class="wrapper">
+            <Modal
+                    class="robotModal"
+                    v-model="robotModalflag"
+                    title="验证"
+                    :mask-closable="false"
+                   >
+                    <div id="robot"></div>
+                    <p slot="footer"></p>
+                </Modal>
             <div  class="register_wraper">
-                <!-- <div class="title">{{$t('regPhone')}}</div> -->
                 <div v-clickoutside="handleClose" class="inner_input">
                     <div class="register-title">
                         <ul>    
@@ -163,10 +171,6 @@
                           </div>
                             <Button v-if="loaded"  :disabled='registerbtn' id="registerBtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('regSignup')}}</Button>
                             <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
-                             
-                        
-
-
                         </Form>
                         <div class="register_bottom">
                             <span><span style="color:#51809F;margin-right:5px;">{{$t('regAlreadyReg')}}</span> <router-link  to='./login'>{{$t('regLogin')}}</router-link></span>
@@ -339,9 +343,7 @@ const clickoutside = {
                 modal2:false,
                 loaded:true,
                 nameFlag:false,
-                //agreeAbleUrl:'',
-               // agreeAbleUrlEn:'https://55support.zendesk.com/hc/en-us/articles/360004716273-Terms-of-User',
-                //agreeAbleUrlCH:'https://55support.zendesk.com/hc/zh-cn/articles/360004716273-Terms-of-User',
+                robotModalflag:false,
                 phoneMessage:{
                     itc:"",
                     phone:"",
@@ -429,7 +431,7 @@ const clickoutside = {
         methods:{
             handleSubmit (name) {
                 //注册按钮埋点统计
-                window._czc.push(["_trackEvent",'注册按钮','注册新用户','统计55全球市场注册','5','registerBtn']);
+                // window._czc.push(["_trackEvent",'注册按钮','注册新用户','统计55全球市场注册','5','registerBtn']);
                 this.srcCode = getUrlKey('src') //获取韩国空投的渠道ID
                 this.$refs[name].validate((valid) => {
                     if (valid) {
@@ -471,14 +473,13 @@ const clickoutside = {
 
             },
             sendSMSfun(callback){
-                //let len = this.countryNumber.length;
                 let itc = this.countryNumber;
                 if(this.shows==1){
-                    this.phoneMessage = {
-                    itc:itc,
-                    phone:this.formValidate.phoneNumber,
-                    codeType:"PHONE",
-                    operateType:"REGISTER",
+                    this.phoneMessage = {//手机注册发送验证
+                        itc:itc,
+                        phone:this.formValidate.phoneNumber,
+                        codeType:"PHONE",
+                        operateType:"REGISTER",
                     }
                 }
                 if(callback){//callback是从子组件传递过来的参数
@@ -579,7 +580,35 @@ const clickoutside = {
 
                 return captchaIns;
             },
+                onloadCallback(){
+                console.log(this)
+                let _that = this;
+                console.log("grecaptcha is ready!");
+                let widgetId=grecaptcha.render('robot', {
+                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
+                    "theme":'light',
+                    "size":'normal',
+                    'callback': function (data) {//验证成功回调函数
+                        console.log(data)
+                        if(data.length!==0){
+                            setTimeout(()=>{
+                                _that.robotModalflag= false;
+                            },2000)
+                         console.log('Verified: not robot');
+                        }
+                    },
+                    "expired-callback":function(){//验证失效回调函数
+                        console.log('expired-callback')
+                    },
+                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
+                        console.log('error-callback')
+                    },
 
+                    });
+                    console.log(widgetId)
+                    return widgetId;
+
+            },
 
 
             phoneRegisterFun(){//手机注册方法

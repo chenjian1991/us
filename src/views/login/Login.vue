@@ -2,6 +2,15 @@
     <div class="root">
         <div id="login" class="wrapper">
             <div class="register_wraper">
+                  <Modal
+                    class="robotModal"
+                    v-model="robotModalflag"
+                    title="验证"
+                    :mask-closable="false"
+                   >
+                    <div id="robot"></div>
+                    <p slot="footer"></p>
+                </Modal>
                 <div class="inner_input_login">
                     <div class="login_title">{{$t('dlWelcome')}}</div>
                      <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
@@ -28,7 +37,8 @@
             </div>
 
         </div>
-        <Modal :modal='showModal' :text="text"></Modal>
+        
+        <Modaltips :modal='showModal' :text="text"></Modaltips>
            <div v-if="modal2" class="alert dis-n">
                 <div class="title"><i class="iconfont">&#xe604;</i></div>
                 <div class="notice" name="syNotice">
@@ -44,21 +54,19 @@
 </template>
 
 <script>
-import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl,socialToken} from '../../../api/urls.js';
+import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl,socialToken,ipQuery} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
-import Modal from '@/components/Modal';
+import Modaltips from '@/components/Modal';
 import { duration } from 'moment';
 import {setCookies} from '@/config';
 import {getUrlKeyandEncode} from '@/lib/utils.js';
 import {getCommouityBaseURL} from '../../config/index.js';
-
-
-
+import { setTimeout } from 'timers';
 
     export default {
         name:'login',
         components:{
-            Modal
+            Modaltips,
         },
         data() {
                const validatePhone = (rule,value,callback) =>{
@@ -100,10 +108,13 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 },
                 hashFlag:false,
                 showModal:false,
+                // googleRobotFlag:true,
                 text:'',
                 responseSocialToken:'',
                 domain:'',
                 fromSocial:'',
+                robotModalflag:false,
+                ipCountry:'',
                 ruleValidate: {
                     phoneNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -163,8 +174,14 @@ import {getCommouityBaseURL} from '../../config/index.js';
                                     }
                             }
                          }
-                            this.paramsObj = params;
-                            this.captchaIns && this.captchaIns.popUp()
+                         if(this.ipCountry=='中国'){
+                             debugger
+                              this.paramsObj = params;
+                             this.captchaIns && this.captchaIns.popUp()
+                         }else{
+                             debugger
+                            this.robotModalflag = true;
+                         }
                         }).catch((error)=>{
                                 this.$Message.error('server error')
                             })
@@ -188,6 +205,17 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 let pw = '::'+ sha256(passwrod)//要加密的密码
                 return pw;
             },
+            ipQueryFun(){//ip所在国家查询
+                getApi(ipQuery,'').then((res)=>{
+                    if(res.resultcode==200){
+                        this.ipCountry = res.result.Country;
+                        console.log('uuu',this.ipCountry)
+                    }else{
+                        this.ipCountry = '';//查询失败
+                    }
+                    console.log(res)
+                })
+            },
             getUserInfo(token){
                 postHeaderTokenBodyApi(userInfo,token,{}).then((res) =>{
                     let tradingPasswordFlag = res.isSetTradePasswrod;
@@ -352,6 +380,34 @@ import {getCommouityBaseURL} from '../../config/index.js';
 
                 return captchaIns;
             },
+            onloadCallback(){
+                let _that = this;
+                console.log("grecaptcha is ready!");
+                let widgetId=grecaptcha.render('robot', {
+                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
+                    "theme":'light',
+                    "size":'normal',
+                    'callback': function (data) {//验证成功回调函数
+                        console.log(data)
+                        if(data.length!==0){
+                            setTimeout(()=>{
+                                _that.robotModalflag= false;
+                            },2000)
+                         console.log('Verified: not robot');
+                        }
+                    },
+                    "expired-callback":function(){//验证失效回调函数
+                        console.log('expired-callback')
+                    },
+                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
+                        console.log('error-callback')
+                    },
+
+                    });
+                    console.log(widgetId)
+                    return widgetId;
+
+            },
             requestGoogleFun(){//绑定手机的验证
                 let phoneNumber = this.formValidate.phoneNumber;
                 let phone = {
@@ -445,8 +501,10 @@ import {getCommouityBaseURL} from '../../config/index.js';
            this.$store.commit('changeLoingStatus',false)
            this.initRobot();
             this.fromSocial = getUrlKeyandEncode('socialback');
-            console.log(this.fromSocial)
            this.domain = getCommouityBaseURL();
+            this.onloadCallback();
+            this.ipQueryFun()
+
         },
         created(){
             var _this = this;
@@ -547,4 +605,9 @@ import {getCommouityBaseURL} from '../../config/index.js';
 
 <style lang='less'>
     @import './mediaLogin.less';
+    .robotModal{
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
 </style>

@@ -4,13 +4,23 @@
         <Button :disabled='!show' v-show="!show"  class="sendMs" type="primary">{{count}}s</Button>
          <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
         <div id="captcha"></div>
+         <Modal
+            class="robotModal"
+            v-model="robotModalflag"
+            title="验证"
+            :mask-closable="false"
+            >
+            <div id="robot"></div>
+            <p slot="footer"></p>
+        </Modal>
     </div>
 </template>
 
 <script>
-    import {sendSms,ssoSend,verifyEmail,userVerify} from '../../api/urls.js';
-    import {postBaseApi,postHeaderTokenBodyApi} from '../../api/axios.js';
+    import {sendSms,ssoSend,verifyEmail,userVerify,ipQuery} from '../../api/urls.js';
+    import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../api/axios.js';
     import Cookies from 'js-cookie'
+import { debuglog } from 'util';
     export default {
         name:'sendBtn',
         props:{
@@ -33,20 +43,77 @@
                 count:'',
                 timer:null,
                 captchaIns:'',
+                robotModalflag:false,
+                ipCountry:'',
+
 
             }
         },
         methods: {
             sendCode(){
                 this.$emit('sendCick')//触发父组件的方法
-                if(this.ssoEmail||this.tradePassEmail){
+                if(this.ssoEmail||this.tradePassEmail){//邮箱不需要人机验证
                     this.noMachineBtnPost();
                 }
-                this.captchaIns && this.captchaIns.popUp()
+                //   this.captchaIns && this.captchaIns.popUp()
+                if(this.ipCountry=='中国'){
+                    debugger
+                     this.captchaIns && this.captchaIns.popUp()//弹出人机验证
+                }else{
+                    debugger
+                      this.robotModalflag = true;
+                }
+
+            },
+             ipQueryFun(){//ip所在国家查询
+                getApi(ipQuery,'').then((res)=>{
+                    if(res.resultcode==200){
+                        this.ipCountry = res.result.Country;
+                        console.log('uuu',this.ipCountry)
+                    }else{
+                        this.ipCountry = '';//查询失败
+                    }
+                    console.log(res)
+                })
+            },
+            onloadCallback(){//谷歌人机验证方法
+                let _that = this;
+                console.log("grecaptcha is ready!");
+                console.log(grecaptcha)
+                let widgetId=grecaptcha.render('robot', {
+                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
+                    "theme":'light',
+                    "size":'normal',
+                    'callback': function (data) {//验证成功回调函数
+                        if(data.length!==0){
+                            if(_that.phoneMessage){//手机注册发送验证码
+                                let obj = {
+                                     captchaValidateStr:data,
+                                     captchaValidateType:'google'
+                                }
+                                let registerParams = Object.assign(_that.phoneMessage,obj)// 对象组合
+                                _that.$options.methods.sendPostRequest(registerParams,_that);
+                            }
+                            setTimeout(()=>{
+                                _that.robotModalflag= false;
+                            },2000)
+                             console.log('Verified: not robot');
+                        }
+                    },
+                    "expired-callback":function(){//验证失效回调函数
+                        console.log('expired-callback')
+                    },
+                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
+                        console.log('error-callback')
+                    },
+
+                    });
+                    console.log(widgetId)
+                    return widgetId;
 
             },
             initRobot(){
-                let _that = this;
+                let _that = this;　
                 let captchaIns;
                 if (captchaIns) {
                     captchaIns.destroy()
@@ -75,15 +142,13 @@
                             let captchaValidateStr = {
                                 captchaValidateStr:value
                             }
-                            // if(_that.emailMessage){//邮箱注册发送验证码
-                            //     let registerParams = Object.assign(_that.emailMessage,captchaValidateStr)// 对象组合
-                            //      _that.$options.methods.sendPostRequest(registerParams,_that);
-
-                            // }
                             if(_that.phoneMessage){//手机注册发送验证码
-                                let registerParams = Object.assign(_that.phoneMessage,captchaValidateStr)// 对象组合
+                                let obj = {
+                                     captchaValidateStr:value,
+                                     captchaValidateType:'wangyi'
+                                }
+                                let registerParams = Object.assign(_that.phoneMessage,obj)// 对象组合
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
-
                             }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
                                     let registerParams = Object.assign(_that.ForgotEmailPassworMessage,captchaValidateStr)// 对象组合
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
@@ -110,6 +175,9 @@
 
                 return captchaIns;
             },
+            machineVerifyPass(){
+
+            },
             noMachineBtnPost(){//不需要人机验证
                 if(this.ssoEmail){//绑定邮箱发送验证码
                     this.emaiPostVerifyMethod()//验证邮箱
@@ -123,7 +191,11 @@
                         if(res.code){
                             let code = res.code;
                             _that.$emit('sendCick',_that.$t(code))//触发父组件的方法，并传递参数给父组件；
-                            _that.initRobot()
+                             if(this.ipCountry=='中国'){
+                                    _that.initRobot();
+                                }else{
+                                     _that.onloadCallback();
+                                }   
                         }else{
                              _that.show = false;
                             const TIME_COUNT = 60;
@@ -138,14 +210,22 @@
                                         clearInterval(_that.timer);
                                         _that.timer = null;
                                          _that.captchaIns='';
-                                         _that.initRobot()
-                                    }
+                                        if(this.ipCountry=='中国'){
+                                                _that.initRobot();
+                                        }else{
+                                                _that.onloadCallback();
+                                        } 
+                                }
                                 },1000)
                             }
                         }
                  
                 }).catch((res) =>{
-                    _that.initRobot()
+                   if(this.ipCountry=='中国'){
+                            _that.initRobot();
+                    }else{
+                        _that.onloadCallback();
+                    } 
                     console.log('error')
                 })
             },
@@ -257,6 +337,9 @@
             }
         },
         mounted() {
+            this.ipQueryFun();
+            this.onloadCallback();
+            // console.log(this.empty)
             if(this.ssoEmail||this.tradePassEmail){
               
             }else{
