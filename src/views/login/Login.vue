@@ -300,6 +300,7 @@ import { setTimeout } from 'timers';
                     let registerParams = Object.assign(_that.paramsObj,captchaValidateStr)// 对象组合
                     postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
                     if(res.code){
+                        debugger
                         _that.initRobot()
                         _that.onloadCallback();
                         _that.loaded = true;
@@ -513,6 +514,7 @@ import { setTimeout } from 'timers';
            this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
            this.ipQueryFun()
+           console.log('gogogogogogogogogo')
 
         },
         created(){
