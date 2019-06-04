@@ -182,6 +182,7 @@ import { setTimeout } from 'timers';
                              this.captchaIns && this.captchaIns.popUp()
                          }else{
                              console.log('外国')
+                            this.paramsObj = params;
                             this.robotModalflag = true;
                          }
                         }).catch((error)=>{
@@ -305,6 +306,7 @@ import { setTimeout } from 'timers';
                     postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
                     if(res.code){
                         _that.initRobot()
+                        _that.onloadCallback();
                         _that.loaded = true;
                         if(res.code == '10044'){//用户未激活，则跳转到重新发送页面
                             let emailaddress = _that.formValidate.phoneNumber;
@@ -318,6 +320,7 @@ import { setTimeout } from 'timers';
                         }
                         _that.showModal = !(_that.showModal);//！取非解决了弹出只谈一次的bug
                         _that.text = _that.$t(res.code);
+
                         
                     }else{//如果绑定了谷歌验证码
                         localStorage.setItem('userAccount',_that.formValidate.phoneNumber)
