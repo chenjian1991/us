@@ -4,13 +4,23 @@
         <Button :disabled='!show' v-show="!show"  class="sendMs" type="primary">{{count}}s</Button>
          <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
         <div id="captcha"></div>
+         <Modal
+            class-name="vertical-center-modal"
+            v-model="robotModalflag"
+            title="验证"
+            :mask-closable="false"
+            >
+            <div id="robotDiv"></div>
+            <p slot="footer"></p>
+        </Modal>
     </div>
 </template>
 
 <script>
-    import {sendSms,ssoSend,verifyEmail,userVerify} from '../../api/urls.js';
-    import {postBaseApi,postHeaderTokenBodyApi} from '../../api/axios.js';
+    import {sendSms,ssoSend,verifyEmail,userVerify,ipQuery} from '../../api/urls.js';
+    import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../api/axios.js';
     import Cookies from 'js-cookie'
+import { debuglog } from 'util';
     export default {
         name:'sendBtn',
         props:{
@@ -33,20 +43,91 @@
                 count:'',
                 timer:null,
                 captchaIns:'',
+                robotModalflag:false,
+                ipCountry:'',
+                googleID:"",
+
 
             }
         },
         methods: {
             sendCode(){
                 this.$emit('sendCick')//触发父组件的方法
-                if(this.ssoEmail||this.tradePassEmail){
+                if(this.ssoEmail||this.tradePassEmail){//邮箱不需要人机验证
                     this.noMachineBtnPost();
                 }
-                this.captchaIns && this.captchaIns.popUp()
+               //this.captchaIns && this.captchaIns.popUp()//弹出人机验证
+                if(this.ipCountry=='中国'){
+                     this.captchaIns && this.captchaIns.popUp()//弹出人机验证
+                }else{
+                      this.robotModalflag = true;
+                }
+
+            },
+             ipQueryFun(){//ip所在国家查询
+                getApi(ipQuery,'').then((res)=>{
+                    if(res.resultcode==200){
+                        this.ipCountry = res.result.Country;
+                        if(this.ipCountry=='中国'){
+                            
+                        }else{//只有非中国都时候才实例化谷歌都方法
+                             this.onloadCallback();
+                        }
+                    }else{
+                        this.onloadCallback()//当ip获取失败都时候默认是谷歌验证
+                        this.ipCountry = '';//查询失败
+                    }
+                })
+            },
+            onloadCallback(){//谷歌人机验证方法
+                let _that = this;
+                // console.log("grecaptcha is ready!");
+                let widgetId=grecaptcha.render('robotDiv', {
+                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
+                    "theme":'light',
+                    "size":'normal',
+                    'callback': function (data) {//验证成功回调函数
+                        if(data.length!==0){
+                            let obj = {
+                                     captchaValidateStr:data,
+                                     captchaValidateType:'google'
+                                }
+                            if(_that.phoneMessage){//手机注册发送验证码
+                                let registerParams = Object.assign(_that.phoneMessage,obj)
+                                _that.$options.methods.sendPostRequest(registerParams,_that);
+                            }else if(_that.tradePassPhone){//修改交易密码发送手机验证码
+                                let registerParams = Object.assign(_that.tradePassPhone,obj)
+                                 _that.SSOpostRequest(registerParams,_that);
+                            }else if(_that.ssoPhone){//绑定手机发送验证码
+                                let registerParams = Object.assign(_that.ssoPhone,obj)
+                                 _that.phonePostVerifyMethod(registerParams)
+                            }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
+                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,obj)
+                                    _that.$options.methods.sendPostRequest(registerParams,_that);
+                            }else if(_that.ForgotPhonePassworMessage){//手机找回密码发送验证码
+                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,obj)
+                                    _that.$options.methods.sendPostRequest(registerParams,_that);
+                            }
+
+                            setTimeout(()=>{
+                                _that.robotModalflag= false;
+                            },2000)
+                        }
+                    },
+                    "expired-callback":function(){//验证失效回调函数
+                        console.log('expired-callback')
+                    },
+                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
+                        console.log('error-callback')
+                    },
+
+                    });
+                    _that.googleID = widgetId;
+                    return widgetId;
 
             },
             initRobot(){
-                let _that = this;
+                let _that = this;　
                 let captchaIns;
                 if (captchaIns) {
                     captchaIns.destroy()
@@ -75,26 +156,24 @@
                             let captchaValidateStr = {
                                 captchaValidateStr:value
                             }
-                            // if(_that.emailMessage){//邮箱注册发送验证码
-                            //     let registerParams = Object.assign(_that.emailMessage,captchaValidateStr)// 对象组合
-                            //      _that.$options.methods.sendPostRequest(registerParams,_that);
-
-                            // }
+                             let obj = {
+                                     captchaValidateStr:value,
+                                     captchaValidateType:'wangyi'
+                                }
                             if(_that.phoneMessage){//手机注册发送验证码
-                                let registerParams = Object.assign(_that.phoneMessage,captchaValidateStr)// 对象组合
+                                let registerParams = Object.assign(_that.phoneMessage,obj)
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
-
                             }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
-                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,captchaValidateStr)// 对象组合
+                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,captchaValidateStr)
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.ForgotPhonePassworMessage){//手机找回密码发送验证码
-                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,captchaValidateStr)// 对象组合
+                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,captchaValidateStr)
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
-                            }else if(_that.ssoPhone){//绑定手机
-                                let registerParams = Object.assign(_that.ssoPhone,captchaValidateStr)// 对象组合
+                            }else if(_that.ssoPhone){//绑定手机发送验证码
+                                let registerParams = Object.assign(_that.ssoPhone,obj)
                                 _that.phonePostVerifyMethod(registerParams)//验证手机
                             }else if(_that.tradePassPhone){//修改交易密码发送手机短信
-                                let registerParams = Object.assign(_that.tradePassPhone,captchaValidateStr)// 对象组合
+                                let registerParams = Object.assign(_that.tradePassPhone,obj)
                                  _that.SSOpostRequest(registerParams,_that);
                             }
                             
@@ -110,6 +189,9 @@
 
                 return captchaIns;
             },
+            machineVerifyPass(){
+
+            },
             noMachineBtnPost(){//不需要人机验证
                 if(this.ssoEmail){//绑定邮箱发送验证码
                     this.emaiPostVerifyMethod()//验证邮箱
@@ -120,10 +202,15 @@
             },
             sendPostRequest(params,_that){//登录注册发送验证码 send
                     postBaseApi(sendSms,'',params).then((res) =>{
-                        if(res.code){
+                        if(res.code){// 发送失败
                             let code = res.code;
                             _that.$emit('sendCick',_that.$t(code))//触发父组件的方法，并传递参数给父组件；
-                            _that.initRobot()
+                             if(_that.ipCountry=='中国'){
+                                    _that.initRobot();
+                                }else{
+                                    //  _that.onloadCallback();
+                                    grecaptcha.reset(_that.googleID);
+                                }   
                         }else{
                              _that.show = false;
                             const TIME_COUNT = 60;
@@ -138,15 +225,23 @@
                                         clearInterval(_that.timer);
                                         _that.timer = null;
                                          _that.captchaIns='';
-                                         _that.initRobot()
-                                    }
+                                        if(_that.ipCountry=='中国'){
+                                                _that.initRobot();
+                                        }else{
+                                             grecaptcha.reset(_that.googleID);
+                                                // _that.onloadCallback();
+                                        } 
+                                }
                                 },1000)
                             }
                         }
                  
                 }).catch((res) =>{
-                    _that.initRobot()
-                    console.log('error')
+                   if(this.ipCountry=='中国'){
+                            _that.initRobot();
+                    }else{
+                        _that.onloadCallback();
+                    } 
                 })
             },
               SSOpostRequest(params,_that){//sso.send 发送短信验证码
@@ -163,7 +258,11 @@
                           if(this.ssoEmail||this.tradePassEmail){
                                 // 不需要初始化人机验证
                             }else{
-                                _that.initRobot();//倒计时结束后重新初始化人机验证
+                                if(this.ipCountry=='中国'){
+                                        this.initRobot()//注册失败后是实利化人机验证
+                                }else{
+                                        grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                                    }
                             }
                         }else{
                              _that.show = false;
@@ -182,7 +281,12 @@
                                             if(this.ssoEmail||this.tradePassEmail){
                                                 // 不需要初始化人机验证
                                             }else{
-                                                _that.initRobot();//倒计时结束后重新初始化人机验证
+                                                 if(_that.ipCountry=='中国'){
+                                                     _that.initRobot()//注册失败后是实利化人机验证
+                                                 }else{
+                                                    grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                                                 }
+
                                             }
                                     }
                                 },1000)
@@ -191,7 +295,6 @@
                  
                 }).catch((res) =>{
                     _that.initRobot()
-                    console.log('error')
                 })
             },
 
@@ -221,6 +324,7 @@
                     "phone":this.$store.state.app.bandPhoneObj.phone,
                 }
                 postBaseApi(userVerify,'',params).then((res) =>{
+                    debugger
                     if(res.code==10014){//只有此种情况才允许绑定邮箱,手机不存在
                         let objParams;
                         if(this.ssoPhone){
@@ -232,10 +336,18 @@
 
                     }else if(res.code&&res.code!==10014){//其他错误情况，比如参数错误，手机格式错误
                         this.$emit('sendCick',this.$t(res.code));
-                         this.initRobot()
+                         if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                             grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                     }else{//手机已经存在了，不允许绑定，提示给用户
                         this.$emit('sendCick',this.$t(11003));
-                        this.initRobot()
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                             grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                     }
 
                 })
@@ -257,6 +369,9 @@
             }
         },
         mounted() {
+            this.ipQueryFun();
+           
+            // console.log(this.empty)
             if(this.ssoEmail||this.tradePassEmail){
               
             }else{
@@ -280,4 +395,17 @@
         border: none;
     }
 }
+</style>
+<style lang='less'>
+ .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
 </style>

@@ -2,6 +2,16 @@
     <div class="root">
         <div id="login" class="wrapper">
             <div class="register_wraper">
+                  <Modal
+                    class-name="vertical-center-modal"
+                    v-model="robotModalflag"
+                    :title="this.$t('yanzheng')"
+                    :mask-closable="false"
+                   
+                   >
+                    <div id="robot"></div>
+                    <p slot="footer"></p>
+                </Modal>
                 <div class="inner_input_login">
                     <div class="login_title">{{$t('dlWelcome')}}</div>
                      <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
@@ -28,7 +38,8 @@
             </div>
 
         </div>
-        <Modal :modal='showModal' :text="text"></Modal>
+        
+        <Modaltips :modal='showModal' :text="text"></Modaltips>
            <div v-if="modal2" class="alert dis-n">
                 <div class="title"><i class="iconfont">&#xe604;</i></div>
                 <div class="notice" name="syNotice">
@@ -44,21 +55,19 @@
 </template>
 
 <script>
-import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl,socialToken} from '../../../api/urls.js';
+import {login,userInfo,userVerify,verifyEmail,loginHistory,hashUrl,socialToken,ipQuery} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
-import Modal from '@/components/Modal';
+import Modaltips from '@/components/Modal';
 import { duration } from 'moment';
 import {setCookies} from '@/config';
 import {getUrlKeyandEncode} from '@/lib/utils.js';
 import {getCommouityBaseURL} from '../../config/index.js';
-
-
-
+import { setTimeout } from 'timers';
 
     export default {
         name:'login',
         components:{
-            Modal
+            Modaltips,
         },
         data() {
                const validatePhone = (rule,value,callback) =>{
@@ -100,10 +109,14 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 },
                 hashFlag:false,
                 showModal:false,
+                // googleRobotFlag:true,
                 text:'',
                 responseSocialToken:'',
                 domain:'',
                 fromSocial:'',
+                robotModalflag:false,
+                ipCountry:'',
+                googleID:"",
                 ruleValidate: {
                     phoneNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -163,11 +176,20 @@ import {getCommouityBaseURL} from '../../config/index.js';
                                     }
                             }
                          }
+                            // this.paramsObj = params;
+                            //  this.captchaIns && this.captchaIns.popUp()
+                         if(this.ipCountry=='中国'){
+                            //  console.log('中国')
+                              this.paramsObj = params;
+                             this.captchaIns && this.captchaIns.popUp()
+                         }else{
+                            //  console.log('外国')
                             this.paramsObj = params;
-                            this.captchaIns && this.captchaIns.popUp()
+                            this.robotModalflag = true;
+                         }
                         }).catch((error)=>{
                                 this.$Message.error('server error')
-                            })
+                        })
                         
                     } else {
                         //this.$Message.error('Fail!');
@@ -188,6 +210,22 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 let pw = '::'+ sha256(passwrod)//要加密的密码
                 return pw;
             },
+            ipQueryFun(){//ip所在国家查询
+                getApi(ipQuery,'').then((res)=>{
+                    if(res.resultcode==200){
+                        this.ipCountry = res.result.Country;
+                        if(this.ipCountry=='中国'){
+                             
+                         }else{//只有非中国的时候才实例化谷歌都方法
+                                this.onloadCallback();
+                         }
+                        // console.log('uuu',this.ipCountry)
+                    }else{
+                        this.onloadCallback();//当ip获取失败都时候默认是谷歌验证
+                        this.ipCountry = '';//查询失败
+                    }
+                })
+            },
             getUserInfo(token){
                 postHeaderTokenBodyApi(userInfo,token,{}).then((res) =>{
                     let tradingPasswordFlag = res.isSetTradePasswrod;
@@ -252,6 +290,64 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     localStorage.removeItem("Emailtoken");
                     localStorage.removeItem("phoneToken");
             },
+            verifiyedMethod(value,validType){
+                     let _that = this;
+                     _that.loaded = false;
+                    let captchaValidateStr = {
+                        captchaValidateStr:value,
+                        captchaValidateType:validType
+                    }
+                    let registerParams = Object.assign(_that.paramsObj,captchaValidateStr)// 对象组合
+                    postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
+                    if(res.code){
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                            grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
+                        _that.loaded = true;
+                        if(res.code == '10044'){//用户未激活，则跳转到重新发送页面
+                            let emailaddress = _that.formValidate.phoneNumber;
+                            localStorage.setItem('emailAdderss',emailaddress);
+                            setTimeout(() => {
+                                _that.$router.push('/verfifyEmail');
+                            }, 1500);
+                        }else if(res.code == '10047'){//美国ip登录提示
+                            _that.modal2 = true;
+                            return false;
+                        }
+                        _that.showModal = !(_that.showModal);//！取非解决了弹出只谈一次的bug
+                        _that.text = _that.$t(res.code);
+
+                        
+                    }else{//如果绑定了谷歌验证码
+                        localStorage.setItem('userAccount',_that.formValidate.phoneNumber)
+                        localStorage.setItem('hashFlag',_that.hashFlag);
+                        let needGoogle = res.needGoogleCode;
+                        if(needGoogle){
+                                localStorage.setItem('googleToken',res.token)
+                                let acountNumber  = _that.formValidate.phoneNumber;
+                                if(acountNumber.indexOf('@')!==-1){//邮箱登录
+                                    _that.requestGoogleFunEmail()
+                                }else{//手机登录
+                                    _that.requestGoogleFun()
+                                    
+                                }
+                        }else{//没有绑定谷歌验证直接登录
+                            let token = res.token;//没有绑定谷歌的情况下token才是登录token
+                                setCookies(token)
+                                _that.getUserInfo(token)
+                                _that.gitlogHistory(token);
+                            _that.$store.commit('changeLoingStatus',true)// 登录后把token 复制给 isLogin
+                            _that.removeALLtoken();//每次登录成功之后都需要清楚所有token
+                        }
+                        
+                    }
+                    }).catch((res)=>{//500
+                    _that.initRobot()
+                    _that.loaded = true;
+                    })
+            },
             initRobot(){
                 let _that = this;
                 let captchaIns;
@@ -264,7 +360,6 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 }else{
                     lan = 'en'
                 }
-             
                 initNECaptcha({
                     element: '#captcha',
                     captchaId: 'a3cd39c172284133a3470b7ec05a2bb0',
@@ -283,63 +378,9 @@ import {getCommouityBaseURL} from '../../config/index.js';
                         if(err){
                         //
                         }
-                        if(data){
-                            _that.loaded = false;
+                        if(data){//网易人机验证通过
                             let value = document.getElementsByName('NECaptchaValidate')[0].value;
-                            let captchaValidateStr = {
-                                captchaValidateStr:value
-                            }
-                            let registerParams = Object.assign(_that.paramsObj,captchaValidateStr)// 对象组合
-                            postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
-                            if(res.code){
-                                _that.initRobot()
-                                _that.loaded = true;
-                                if(res.code == '10044'){//用户未激活，则跳转到重新发送页面
-                                  let emailaddress = _that.formValidate.phoneNumber;
-                                  localStorage.setItem('emailAdderss',emailaddress);
-                                    setTimeout(() => {
-                                        _that.$router.push('/verfifyEmail')
-                                    }, 1500);
-                                }else if(res.code == '10047'){//美国ip登录提示
-                                    _that.modal2 = true;
-                                    return false;
-                                }
-                                _that.showModal = !(_that.showModal);//！取非解决了弹出只谈一次的bug
-                                _that.text = _that.$t(res.code);
-                                
-                            }else{//如果绑定了谷歌验证码
-                                localStorage.setItem('userAccount',_that.formValidate.phoneNumber)
-                                localStorage.setItem('hashFlag',_that.hashFlag);
-                                let needGoogle = res.needGoogleCode;
-                                if(needGoogle){
-                                    //_that.loaded = true;
-                                    localStorage.setItem('googleToken',res.token)
-                                       let acountNumber  = _that.formValidate.phoneNumber;
-                                        if(acountNumber.indexOf('@')!==-1){//邮箱登录
-                                            _that.requestGoogleFunEmail()
-                                        }else{//手机登录
-                                             _that.requestGoogleFun()
-                                            
-                                        }
-
-
-
-                                }else{//没有绑定谷歌验证直接登录
-                                    //_that.loaded = true;
-                                    let token = res.token;//没有绑定谷歌的情况下token才是登录token
-                                    setCookies(token)
-                                     _that.getUserInfo(token)
-                                     _that.gitlogHistory(token);
-                                    _that.$store.commit('changeLoingStatus',true)// 登录后把token 复制给 isLogin
-                                    _that.removeALLtoken();//每次登录成功之后都需要清楚所有token
-                                }
-                               
-                            }
-                         }).catch((res)=>{//500
-                            _that.initRobot()
-                            _that.loaded = true;
-                         })
-
+                             _that.verifiyedMethod(value,'wangyi')
                         }
                     }
                 }, function (instance) {
@@ -351,6 +392,34 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 })//初始化函数结尾
 
                 return captchaIns;
+            },
+            onloadCallback(){
+                let _that = this;
+                // console.log("grecaptcha is ready!");
+                let widgetId=grecaptcha.render('robot', {
+                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
+                    "theme":'light',
+                    "size":'normal',
+                    'callback': function (data) {//验证成功回调函数
+                        if(data.length!==0){
+                            _that.verifiyedMethod(data,'google')
+                            setTimeout(()=>{
+                                _that.robotModalflag= false;
+                            },2000)
+                        }
+                    },
+                    "expired-callback":function(){//验证失效回调函数
+                        console.log('expired-callback')
+                    },
+                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
+                        console.log('error-callback')
+                    },
+
+                    });
+                    // console.log('ccc',widgetId)
+                    _that.googleID = widgetId;
+                    return widgetId;
+
             },
             requestGoogleFun(){//绑定手机的验证
                 let phoneNumber = this.formValidate.phoneNumber;
@@ -415,7 +484,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
             },
             judgePCorMoble(){
                 let u = navigator.userAgent;
-                console.log(u)
+                // console.log(u)
                 if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// 移动端
                     window.location.href='http://47.75.120.27:8030/mobile/#/login';
                 } else {
@@ -444,9 +513,10 @@ import {getCommouityBaseURL} from '../../config/index.js';
             //初始化为未登录状态
            this.$store.commit('changeLoingStatus',false)
            this.initRobot();
-            this.fromSocial = getUrlKeyandEncode('socialback');
-            console.log(this.fromSocial)
+           this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
+           this.ipQueryFun()
+
         },
         created(){
             var _this = this;
@@ -494,6 +564,17 @@ import {getCommouityBaseURL} from '../../config/index.js';
 .ivu-btn>.ivu-icon{
     line-height:1 !important;
 }
+ .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
     .main_container{
         min-height:100%;
         display: flex;
@@ -546,5 +627,6 @@ import {getCommouityBaseURL} from '../../config/index.js';
 </style>
 
 <style lang='less'>
-    // @import './mediaLogin.less';
+    @import './mediaLogin.less';
+   
 </style>
