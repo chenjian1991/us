@@ -3,10 +3,11 @@
         <div id="login" class="wrapper">
             <div class="register_wraper">
                   <Modal
-                    class="robotModal"
+                    class-name="vertical-center-modal"
                     v-model="robotModalflag"
-                    title="验证"
+                    :title="this.$t('yanzheng')"
                     :mask-closable="false"
+                   
                    >
                     <div id="robot"></div>
                     <p slot="footer"></p>
@@ -309,7 +310,7 @@ import { setTimeout } from 'timers';
                             let emailaddress = _that.formValidate.phoneNumber;
                             localStorage.setItem('emailAdderss',emailaddress);
                             setTimeout(() => {
-                                _that.$router.push('/verfifyEmail')
+                                _that.$router.push('/verfifyEmail');
                             }, 1500);
                         }else if(res.code == '10047'){//美国ip登录提示
                             _that.modal2 = true;
@@ -566,6 +567,17 @@ import { setTimeout } from 'timers';
 .ivu-btn>.ivu-icon{
     line-height:1 !important;
 }
+ .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
     .main_container{
         min-height:100%;
         display: flex;
@@ -619,9 +631,5 @@ import { setTimeout } from 'timers';
 
 <style lang='less'>
     @import './mediaLogin.less';
-    .robotModal{
-        .ivu-modal-footer{
-            border-top: none;
-        }
-    }
+   
 </style>
