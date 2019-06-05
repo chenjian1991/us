@@ -73,7 +73,6 @@ import { debuglog } from 'util';
                         }else{//只有非中国都时候才实例化谷歌都方法
                              this.onloadCallback();
                         }
-                        console.log('uuu',this.ipCountry)
                     }else{
                         this.onloadCallback()//当ip获取失败都时候默认是谷歌验证
                         this.ipCountry = '';//查询失败
@@ -82,8 +81,7 @@ import { debuglog } from 'util';
             },
             onloadCallback(){//谷歌人机验证方法
                 let _that = this;
-                console.log("grecaptcha is ready!");
-                console.log(grecaptcha)
+                // console.log("grecaptcha is ready!");
                 let widgetId=grecaptcha.render('robotDiv', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
@@ -114,7 +112,6 @@ import { debuglog } from 'util';
                             setTimeout(()=>{
                                 _that.robotModalflag= false;
                             },2000)
-                             console.log('Verified: not robot');
                         }
                     },
                     "expired-callback":function(){//验证失效回调函数
@@ -125,7 +122,6 @@ import { debuglog } from 'util';
                     },
 
                     });
-                    console.log(widgetId)
                     _that.googleID = widgetId;
                     return widgetId;
 
@@ -246,7 +242,6 @@ import { debuglog } from 'util';
                     }else{
                         _that.onloadCallback();
                     } 
-                    console.log('error')
                 })
             },
               SSOpostRequest(params,_that){//sso.send 发送短信验证码
@@ -304,7 +299,6 @@ import { debuglog } from 'util';
                  
                 }).catch((res) =>{
                     _that.initRobot()
-                    console.log('error')
                 })
             },
 
@@ -408,4 +402,17 @@ import { debuglog } from 'util';
         border: none;
     }
 }
+</style>
+<style lang='less'>
+ .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
 </style>

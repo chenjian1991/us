@@ -180,11 +180,11 @@ import { setTimeout } from 'timers';
                             // this.paramsObj = params;
                             //  this.captchaIns && this.captchaIns.popUp()
                          if(this.ipCountry=='中国'){
-                             console.log('中国')
+                            //  console.log('中国')
                               this.paramsObj = params;
                              this.captchaIns && this.captchaIns.popUp()
                          }else{
-                             console.log('外国')
+                            //  console.log('外国')
                             this.paramsObj = params;
                             this.robotModalflag = true;
                          }
@@ -220,12 +220,11 @@ import { setTimeout } from 'timers';
                          }else{//只有非中国的时候才实例化谷歌都方法
                                 this.onloadCallback();
                          }
-                        console.log('uuu',this.ipCountry)
+                        // console.log('uuu',this.ipCountry)
                     }else{
                         this.onloadCallback();//当ip获取失败都时候默认是谷歌验证
                         this.ipCountry = '';//查询失败
                     }
-                    console.log(res)
                 })
             },
             getUserInfo(token){
@@ -411,7 +410,7 @@ import { setTimeout } from 'timers';
             },
             onloadCallback(){
                 let _that = this;
-                console.log("grecaptcha is ready!");
+                // console.log("grecaptcha is ready!");
                 let widgetId=grecaptcha.render('robot', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
@@ -422,7 +421,7 @@ import { setTimeout } from 'timers';
                             setTimeout(()=>{
                                 _that.robotModalflag= false;
                             },2000)
-                             console.log('Verified: not robot');
+                            //  console.log('Verified: not robot');
                         }
                     },
                     "expired-callback":function(){//验证失效回调函数
@@ -433,7 +432,7 @@ import { setTimeout } from 'timers';
                     },
 
                     });
-                    console.log('ccc',widgetId)
+                    // console.log('ccc',widgetId)
                     _that.googleID = widgetId;
                     return widgetId;
 
@@ -501,7 +500,7 @@ import { setTimeout } from 'timers';
             },
             judgePCorMoble(){
                 let u = navigator.userAgent;
-                console.log(u)
+                // console.log(u)
                 if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// 移动端
                     window.location.href='http://47.75.120.27:8030/mobile/#/login';
                 } else {
@@ -545,8 +544,6 @@ import { setTimeout } from 'timers';
            this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
            this.ipQueryFun()
-           console.log(this.$router)
-           console.log('gogogogogogogogogo')
 
         },
         created(){
