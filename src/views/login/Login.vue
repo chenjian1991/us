@@ -3,10 +3,11 @@
         <div id="login" class="wrapper">
             <div class="register_wraper">
                   <Modal
-                    class="robotModal"
+                    class-name="vertical-center-modal"
                     v-model="robotModalflag"
-                    title="验证"
+                    :title="this.$t('yanzheng')"
                     :mask-closable="false"
+                   
                    >
                     <div id="robot"></div>
                     <p slot="footer"></p>
@@ -115,6 +116,7 @@ import { setTimeout } from 'timers';
                 fromSocial:'',
                 robotModalflag:false,
                 ipCountry:'',
+                googleID:"",
                 ruleValidate: {
                     phoneNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -182,6 +184,7 @@ import { setTimeout } from 'timers';
                              this.captchaIns && this.captchaIns.popUp()
                          }else{
                              console.log('外国')
+                            this.paramsObj = params;
                             this.robotModalflag = true;
                          }
                         }).catch((error)=>{
@@ -289,7 +292,6 @@ import { setTimeout } from 'timers';
                     localStorage.removeItem("phoneToken");
             },
             verifiyedMethod(value,validType){
-                debugger
                      let _that = this;
                      _that.loaded = false;
                     let captchaValidateStr = {
@@ -300,12 +302,15 @@ import { setTimeout } from 'timers';
                     postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
                     if(res.code){
                         _that.initRobot()
+                        // _that.onloadCallback();
+                        console.log('ddd',_that.googleID)
+                        grecaptcha.reset(_that.googleID);
                         _that.loaded = true;
                         if(res.code == '10044'){//用户未激活，则跳转到重新发送页面
                             let emailaddress = _that.formValidate.phoneNumber;
                             localStorage.setItem('emailAdderss',emailaddress);
                             setTimeout(() => {
-                                _that.$router.push('/verfifyEmail')
+                                _that.$router.push('/verfifyEmail');
                             }, 1500);
                         }else if(res.code == '10047'){//美国ip登录提示
                             _that.modal2 = true;
@@ -313,6 +318,7 @@ import { setTimeout } from 'timers';
                         }
                         _that.showModal = !(_that.showModal);//！取非解决了弹出只谈一次的bug
                         _that.text = _that.$t(res.code);
+
                         
                     }else{//如果绑定了谷歌验证码
                         localStorage.setItem('userAccount',_that.formValidate.phoneNumber)
@@ -411,7 +417,8 @@ import { setTimeout } from 'timers';
                     },
 
                     });
-                    console.log(widgetId)
+                    console.log('ccc',widgetId)
+                    _that.googleID = widgetId;
                     return widgetId;
 
             },
@@ -510,6 +517,8 @@ import { setTimeout } from 'timers';
            this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
            this.ipQueryFun()
+           console.log(this.$router)
+           console.log('gogogogogogogogogo')
 
         },
         created(){
@@ -558,6 +567,17 @@ import { setTimeout } from 'timers';
 .ivu-btn>.ivu-icon{
     line-height:1 !important;
 }
+ .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
     .main_container{
         min-height:100%;
         display: flex;
@@ -611,9 +631,5 @@ import { setTimeout } from 'timers';
 
 <style lang='less'>
     @import './mediaLogin.less';
-    .robotModal{
-        .ivu-modal-footer{
-            border-top: none;
-        }
-    }
+   
 </style>

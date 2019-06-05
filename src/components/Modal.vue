@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Modal v-model="isShow" class-name="vertical-center-modal">
+        <Modal v-model="isShow" class-name="vertical-center-modal-tips">
             <p>{{text}}</p>
          </Modal>
     </div>
@@ -48,7 +48,7 @@
 
 <style  lang="less">
 
-.vertical-center-modal{
+.vertical-center-modal-tips{
         display: flex;
         align-items: center;
         justify-content: center;

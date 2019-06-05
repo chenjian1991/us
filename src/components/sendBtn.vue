@@ -5,12 +5,12 @@
          <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
         <div id="captcha"></div>
          <Modal
-            class="robotModal"
+            class-name="vertical-center-modal"
             v-model="robotModalflag"
             title="验证"
             :mask-closable="false"
             >
-            <div id="robot"></div>
+            <div id="robotDiv"></div>
             <p slot="footer"></p>
         </Modal>
     </div>
@@ -45,6 +45,7 @@ import { debuglog } from 'util';
                 captchaIns:'',
                 robotModalflag:false,
                 ipCountry:'',
+                googleID:"",
 
 
             }
@@ -83,7 +84,7 @@ import { debuglog } from 'util';
                 let _that = this;
                 console.log("grecaptcha is ready!");
                 console.log(grecaptcha)
-                let widgetId=grecaptcha.render('robot', {
+                let widgetId=grecaptcha.render('robotDiv', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
                     "size":'normal',
@@ -94,14 +95,20 @@ import { debuglog } from 'util';
                                      captchaValidateType:'google'
                                 }
                             if(_that.phoneMessage){//手机注册发送验证码
-                                let registerParams = Object.assign(_that.phoneMessage,obj)// 对象组合
+                                let registerParams = Object.assign(_that.phoneMessage,obj)
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.tradePassPhone){//修改交易密码发送手机验证码
-                                let registerParams = Object.assign(_that.tradePassPhone,obj)// 对象组合
+                                let registerParams = Object.assign(_that.tradePassPhone,obj)
                                  _that.SSOpostRequest(registerParams,_that);
                             }else if(_that.ssoPhone){//绑定手机发送验证码
-                                let registerParams = Object.assign(_that.ssoPhone,obj)// 对象组合
+                                let registerParams = Object.assign(_that.ssoPhone,obj)
                                  _that.phonePostVerifyMethod(registerParams)
+                            }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
+                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,obj)
+                                    _that.$options.methods.sendPostRequest(registerParams,_that);
+                            }else if(_that.ForgotPhonePassworMessage){//手机找回密码发送验证码
+                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,obj)
+                                    _that.$options.methods.sendPostRequest(registerParams,_that);
                             }
 
                             setTimeout(()=>{
@@ -119,6 +126,7 @@ import { debuglog } from 'util';
 
                     });
                     console.log(widgetId)
+                    _that.googleID = widgetId;
                     return widgetId;
 
             },
@@ -157,19 +165,19 @@ import { debuglog } from 'util';
                                      captchaValidateType:'wangyi'
                                 }
                             if(_that.phoneMessage){//手机注册发送验证码
-                                let registerParams = Object.assign(_that.phoneMessage,obj)// 对象组合
+                                let registerParams = Object.assign(_that.phoneMessage,obj)
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
-                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,captchaValidateStr)// 对象组合
+                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,captchaValidateStr)
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.ForgotPhonePassworMessage){//手机找回密码发送验证码
-                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,captchaValidateStr)// 对象组合
+                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,captchaValidateStr)
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.ssoPhone){//绑定手机发送验证码
-                                let registerParams = Object.assign(_that.ssoPhone,obj)// 对象组合
+                                let registerParams = Object.assign(_that.ssoPhone,obj)
                                 _that.phonePostVerifyMethod(registerParams)//验证手机
                             }else if(_that.tradePassPhone){//修改交易密码发送手机短信
-                                let registerParams = Object.assign(_that.tradePassPhone,obj)// 对象组合
+                                let registerParams = Object.assign(_that.tradePassPhone,obj)
                                  _that.SSOpostRequest(registerParams,_that);
                             }
                             
@@ -198,13 +206,14 @@ import { debuglog } from 'util';
             },
             sendPostRequest(params,_that){//登录注册发送验证码 send
                     postBaseApi(sendSms,'',params).then((res) =>{
-                        if(res.code){
+                        if(res.code){// 发送失败
                             let code = res.code;
                             _that.$emit('sendCick',_that.$t(code))//触发父组件的方法，并传递参数给父组件；
                              if(this.ipCountry=='中国'){
                                     _that.initRobot();
                                 }else{
-                                     _that.onloadCallback();
+                                    //  _that.onloadCallback();
+                                    grecaptcha.reset(_that.googleID);
                                 }   
                         }else{
                              _that.show = false;
@@ -223,7 +232,8 @@ import { debuglog } from 'util';
                                         if(this.ipCountry=='中国'){
                                                 _that.initRobot();
                                         }else{
-                                                _that.onloadCallback();
+                                             grecaptcha.reset(_that.googleID);
+                                                // _that.onloadCallback();
                                         } 
                                 }
                                 },1000)
@@ -254,6 +264,7 @@ import { debuglog } from 'util';
                                 // 不需要初始化人机验证
                             }else{
                                 _that.initRobot();//倒计时结束后重新初始化人机验证
+                                grecaptcha.reset(_that.googleID);
                             }
                         }else{
                              _that.show = false;
@@ -273,6 +284,8 @@ import { debuglog } from 'util';
                                                 // 不需要初始化人机验证
                                             }else{
                                                 _that.initRobot();//倒计时结束后重新初始化人机验证
+                                                grecaptcha.reset(_that.googleID);
+
                                             }
                                     }
                                 },1000)
@@ -323,9 +336,11 @@ import { debuglog } from 'util';
                     }else if(res.code&&res.code!==10014){//其他错误情况，比如参数错误，手机格式错误
                         this.$emit('sendCick',this.$t(res.code));
                          this.initRobot()
+                         grecaptcha.reset(_that.googleID);
                     }else{//手机已经存在了，不允许绑定，提示给用户
                         this.$emit('sendCick',this.$t(11003));
                         this.initRobot()
+                        grecaptcha.reset(_that.googleID);
                     }
 
                 })

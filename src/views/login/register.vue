@@ -2,7 +2,7 @@
     <div  id="registerHtml" class="root">
         <div  class="wrapper">
             <Modal
-                    class="robotModal"
+                    class-name="vertical-center-modal"
                     v-model="robotModalflag"
                     title="验证"
                     :mask-closable="false"
@@ -407,6 +407,7 @@ const clickoutside = {
                 phoneCountryName:"",
                 comonUseCountry:[],
                 ipCountry:'',
+                googleID:'',
                 
 
 
@@ -438,15 +439,14 @@ const clickoutside = {
                     if (valid) {
                         if(this.emailRegister){//如果是邮箱注册
                             // this.captchaIns && this.captchaIns.popUp()
+                            if(this.ipCountry=='中国'){
+                                console.log('中国')
+                                this.paramsObj = params;
                                 this.captchaIns && this.captchaIns.popUp()
-                            // if(this.ipCountry=='中国'){
-                            //     console.log('中国')
-                            //     this.paramsObj = params;
-                            //     this.captchaIns && this.captchaIns.popUp()
-                            // }else{
-                            //         console.log('外国')
-                            //         this.robotModalflag = true;
-                            //     }
+                            }else{
+                                    console.log('外国')
+                                    this.robotModalflag = true;
+                                }
 
                         }else{//如果是手机注册
                             this.loaded = false;
@@ -652,6 +652,7 @@ const clickoutside = {
                     },
 
                     });
+                    _that.googleID = widgetId;
                     console.log(widgetId)
                     return widgetId;
 
@@ -708,14 +709,13 @@ const clickoutside = {
                 })
             },
             emailRegisterFun(){//邮箱注册
-                 debugger
                 let params;
                 params = this.emailParams;
                 postBaseApi(emailRegister,'',params).then((res) =>{
-                    debugger
                     if(res.code){
                         this.loaded = true;
                         this.initRobot()//注册失败后是实利化人机验证
+                        grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
                         if(res.code=='10044'){//改用户未激活
                              setTimeout(() => {
                                 this.$router.push('/verfifyEmail')
@@ -902,6 +902,17 @@ const clickoutside = {
 </script>
 
 <style lang='less'>
+    .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
     .ivu-form{
             .ivu-input{
                 width: 580px;
@@ -977,7 +988,6 @@ const clickoutside = {
      .headerbox{
         flex: 0 0 auto;
      }
-   
     .footerBox{
          flex: 0 0 auto;
      }
