@@ -263,7 +263,7 @@ import { debuglog } from 'util';
                                 if(this.ipCountry=='中国'){
                                         this.initRobot()//注册失败后是实利化人机验证
                                 }else{
-                                        grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                                        grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
                                     }
                             }
                         }else{
@@ -283,8 +283,8 @@ import { debuglog } from 'util';
                                             if(this.ssoEmail||this.tradePassEmail){
                                                 // 不需要初始化人机验证
                                             }else{
-                                                 if(this.ipCountry=='中国'){
-                                                     this.initRobot()//注册失败后是实利化人机验证
+                                                 if(_that.ipCountry=='中国'){
+                                                     _that.initRobot()//注册失败后是实利化人机验证
                                                  }else{
                                                     grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
                                                  }
@@ -328,6 +328,7 @@ import { debuglog } from 'util';
                     "phone":this.$store.state.app.bandPhoneObj.phone,
                 }
                 postBaseApi(userVerify,'',params).then((res) =>{
+                    debugger
                     if(res.code==10014){//只有此种情况才允许绑定邮箱,手机不存在
                         let objParams;
                         if(this.ssoPhone){
@@ -344,7 +345,7 @@ import { debuglog } from 'util';
                          if(this.ipCountry=='中国'){
                             this.initRobot()//注册失败后是实利化人机验证
                         }else{
-                             grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                             grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
                         }
                     }else{//手机已经存在了，不允许绑定，提示给用户
                         this.$emit('sendCick',this.$t(11003));
@@ -353,7 +354,7 @@ import { debuglog } from 'util';
                         if(this.ipCountry=='中国'){
                             this.initRobot()//注册失败后是实利化人机验证
                         }else{
-                             grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                             grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
                         }
                     }
 
