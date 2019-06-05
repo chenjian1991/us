@@ -14,7 +14,8 @@ const resolve = dir => {
 // http(s)://a.com/my-app/
 const BASE_URL = '/'
 
-  const targetUrl='http://www.test_uat.55.exchange:5555/' // 测试本地环境
+  const targetUrl='http://www.dev_test_uat.55.exchange:5555/' // 测试本地环境
+  
  //const targetUrl='http://uspc.55.exchange:8880/' // us测试环境
  //const targetUrl='https://www.55gm.co/' //生产
 

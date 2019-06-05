@@ -115,6 +115,7 @@ import { setTimeout } from 'timers';
                 fromSocial:'',
                 robotModalflag:false,
                 ipCountry:'',
+                googleID:"",
                 ruleValidate: {
                     phoneNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -307,7 +308,9 @@ import { setTimeout } from 'timers';
                     if(res.code){
                         debugger
                         _that.initRobot()
-                        _that.onloadCallback();
+                        // _that.onloadCallback();
+                        console.log('ddd',_that.googleID)
+                        grecaptcha.reset(_that.googleID);
                         _that.loaded = true;
                         if(res.code == '10044'){//用户未激活，则跳转到重新发送页面
                             let emailaddress = _that.formValidate.phoneNumber;
@@ -420,7 +423,8 @@ import { setTimeout } from 'timers';
                     },
 
                     });
-                    console.log(widgetId)
+                    console.log('ccc',widgetId)
+                    _that.googleID = widgetId;
                     return widgetId;
 
             },

@@ -407,6 +407,7 @@ const clickoutside = {
                 phoneCountryName:"",
                 comonUseCountry:[],
                 ipCountry:'',
+                googleID:'',
                 
 
 
@@ -652,6 +653,7 @@ const clickoutside = {
                     },
 
                     });
+                    _that.googleID = widgetId;
                     console.log(widgetId)
                     return widgetId;
 
@@ -716,6 +718,7 @@ const clickoutside = {
                     if(res.code){
                         this.loaded = true;
                         this.initRobot()//注册失败后是实利化人机验证
+                        grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
                         if(res.code=='10044'){//改用户未激活
                              setTimeout(() => {
                                 this.$router.push('/verfifyEmail')
