@@ -1001,10 +1001,16 @@
             this.showNoBank = false
          },
          ok1() {
-            this.$router.push('identiy')
+            this.showNoVerification1 = false
+            setTimeout( ()=> {
+               this.$router.push('identiy')
+            },500)
          },
          ok2() {//跳转实名认证2
-            this.$router.push('amlKyc')
+            this.showNoVerification2 = false
+            setTimeout( ()=> {
+               this.$router.push('amlKyc')
+            },500)
          },
       },
       beforeMount() {

@@ -176,6 +176,7 @@
                   this.loading = false
                }.bind(this));
             } catch (e) {
+               console.log(e)
                if (typeof e === 'string') {
                   this.warning(e)
                } else {
