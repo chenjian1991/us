@@ -441,7 +441,6 @@ const clickoutside = {
                             // this.captchaIns && this.captchaIns.popUp()
                             if(this.ipCountry=='中国'){
                                 console.log('中国')
-                                this.paramsObj = params;
                                 this.captchaIns && this.captchaIns.popUp()
                             }else{
                                     console.log('外国')
