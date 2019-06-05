@@ -1,8 +1,16 @@
 <template>
     <div  id="registerHtml" class="root">
         <div  class="wrapper">
+            <Modal
+                    class="robotModal"
+                    v-model="robotModalflag"
+                    title="验证"
+                    :mask-closable="false"
+                   >
+                    <div id="robot"></div>
+                    <p slot="footer"></p>
+                </Modal>
             <div  class="register_wraper">
-                <!-- <div class="title">{{$t('regPhone')}}</div> -->
                 <div v-clickoutside="handleClose" class="inner_input">
                     <div class="register-title">
                         <ul>    
@@ -163,10 +171,6 @@
                           </div>
                             <Button v-if="loaded"  :disabled='registerbtn' id="registerBtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('regSignup')}}</Button>
                             <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
-                             
-                        
-
-
                         </Form>
                         <div class="register_bottom">
                             <span><span style="color:#51809F;margin-right:5px;">{{$t('regAlreadyReg')}}</span> <router-link  to='./login'>{{$t('regLogin')}}</router-link></span>
@@ -194,7 +198,7 @@
             </div>
             <div v-if="modal2" class="mask dis-n"></div>
 
-        <Modal :modal='showModal' :text="text"></Modal>
+        <Modaltips :modal='showModal' :text="text"></Modaltips>
        
 
         </div>
@@ -208,9 +212,9 @@ import {countrylist} from '../login/country.js'
 import {getUrlKey} from '@/lib/utils.js'
 import '../../lib/utils.js'
 import sendBtn from '../../components/sendBtn'
-import {codeVerify,register,emailRegister,ossjson,userNameUnique} from '../../../api/urls.js';
+import {codeVerify,register,emailRegister,ossjson,userNameUnique,ipQuery} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
-import Modal from '@/components/Modal';
+import Modaltips from '@/components/Modal';
 const clickoutside = {
     // 初始化指令
     bind(el, binding, vnode) {
@@ -339,9 +343,7 @@ const clickoutside = {
                 modal2:false,
                 loaded:true,
                 nameFlag:false,
-                //agreeAbleUrl:'',
-               // agreeAbleUrlEn:'https://55support.zendesk.com/hc/en-us/articles/360004716273-Terms-of-User',
-                //agreeAbleUrlCH:'https://55support.zendesk.com/hc/zh-cn/articles/360004716273-Terms-of-User',
+                robotModalflag:false,
                 phoneMessage:{
                     itc:"",
                     phone:"",
@@ -404,6 +406,7 @@ const clickoutside = {
                 EmailcountryName:"",
                 phoneCountryName:"",
                 comonUseCountry:[],
+                ipCountry:'',
                 
 
 
@@ -416,7 +419,7 @@ const clickoutside = {
         directives: {clickoutside},
         components:{
             sendBtn,
-            Modal,
+            Modaltips,
             'remote-json':{
                 render(createElement){
                     return createElement('script',{attrs:{type:"text/javascript",src:this.src}})
@@ -429,12 +432,22 @@ const clickoutside = {
         methods:{
             handleSubmit (name) {
                 //注册按钮埋点统计
-                window._czc.push(["_trackEvent",'注册按钮','注册新用户','统计55全球市场注册','5','registerBtn']);
+                // window._czc.push(["_trackEvent",'注册按钮','注册新用户','统计55全球市场注册','5','registerBtn']);
                 this.srcCode = getUrlKey('src') //获取韩国空投的渠道ID
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         if(this.emailRegister){//如果是邮箱注册
-                            this.captchaIns && this.captchaIns.popUp()
+                            // this.captchaIns && this.captchaIns.popUp()
+                                this.captchaIns && this.captchaIns.popUp()
+                            // if(this.ipCountry=='中国'){
+                            //     console.log('中国')
+                            //     this.paramsObj = params;
+                            //     this.captchaIns && this.captchaIns.popUp()
+                            // }else{
+                            //         console.log('外国')
+                            //         this.robotModalflag = true;
+                            //     }
+
                         }else{//如果是手机注册
                             this.loaded = false;
                              this.codeVerifyFun();
@@ -471,14 +484,13 @@ const clickoutside = {
 
             },
             sendSMSfun(callback){
-                //let len = this.countryNumber.length;
                 let itc = this.countryNumber;
                 if(this.shows==1){
-                    this.phoneMessage = {
-                    itc:itc,
-                    phone:this.formValidate.phoneNumber,
-                    codeType:"PHONE",
-                    operateType:"REGISTER",
+                    this.phoneMessage = {//手机注册发送验证
+                        itc:itc,
+                        phone:this.formValidate.phoneNumber,
+                        codeType:"PHONE",
+                        operateType:"REGISTER",
                     }
                 }
                 if(callback){//callback是从子组件传递过来的参数
@@ -516,6 +528,24 @@ const clickoutside = {
 
 
             },
+             ipQueryFun(){//ip所在国家查询
+                getApi(ipQuery,'').then((res)=>{
+                    if(res.resultcode==200){
+                        this.ipCountry = res.result.Country;
+                        console.log( this.ipCountry)
+                        if(this.ipCountry=='中国'){
+                             
+                         }else{//只有非中国的时候才实例化谷歌都方法
+                                this.onloadCallback();
+                         }
+                        console.log('uuu',this.ipCountry)
+                    }else{
+                        this.onloadCallback();//当ip获取失败都时候默认是谷歌验证
+                        this.ipCountry = '';//查询失败
+                    }
+                    console.log(res)
+                })
+            },
              initRobot(){
                 let _that = this;
                 let captchaIns;
@@ -547,6 +577,7 @@ const clickoutside = {
                             let value = document.getElementsByName('NECaptchaValidate')[0].value;
                             _that.emailParams = {//邮箱注册
                                     "personCode":value,//人机校验码
+                                    "personCodeType":'wangyi',
                                     "profileEmail":_that.formValidate.emailNumber,
                                     "uniqueName":_that.formValidate.userName,
                                     "inviteCode":_that.formValidate.referrId,
@@ -564,9 +595,6 @@ const clickoutside = {
                                         }
                             }
                             _that.emailRegisterFun();
-                            
-
-
                         }
                     }
                 }, function (instance) {
@@ -579,7 +607,55 @@ const clickoutside = {
 
                 return captchaIns;
             },
+            onloadCallback(){
+                let _that = this;
+                console.log("grecaptcha is ready!");
+                let widgetId=grecaptcha.render('robot', {
+                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
+                    "theme":'light',
+                    "size":'normal',
+                    'callback': function (data) {//验证成功回调函数
+                        console.log(data)
+                        if(data.length!==0){
+                             _that.loaded=false;
+                            _that.emailParams = {//邮箱注册
+                                    "personCode":data,//人机校验码
+                                    "personCodeType":'google',
+                                    "profileEmail":_that.formValidate.emailNumber,
+                                    "uniqueName":_that.formValidate.userName,
+                                    "inviteCode":_that.formValidate.referrId,
+                                    "password":_that.setSha(_that.formValidate.confrimPassword),
+                                    'country':_that.EmailcountryName,
+                                    "site":"B",
+                                    "activityCode":getUrlKey('src'),
+                                     "userClientInfo":{
+                                        "deviceModel":"MI 2S",
+                                        "deviceId": "xxxsllsj",
+                                        "resolution":"1920*1080",
+                                        "os":"Android",
+                                        "netType":"4G",
+                                        "operator":"China Mobile"
+                                        }
+                            }
+                            _that.emailRegisterFun();
+                            setTimeout(()=>{
+                                _that.robotModalflag= false;
+                            },2000)
+                         console.log('Verified: not robot');
+                        }
+                    },
+                    "expired-callback":function(){//验证失效回调函数
+                        console.log('expired-callback')
+                    },
+                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
+                        console.log('error-callback')
+                    },
 
+                    });
+                    console.log(widgetId)
+                    return widgetId;
+
+            },
 
 
             phoneRegisterFun(){//手机注册方法
@@ -632,9 +708,11 @@ const clickoutside = {
                 })
             },
             emailRegisterFun(){//邮箱注册
+                 debugger
                 let params;
                 params = this.emailParams;
                 postBaseApi(emailRegister,'',params).then((res) =>{
+                    debugger
                     if(res.code){
                         this.loaded = true;
                         this.initRobot()//注册失败后是实利化人机验证
@@ -783,6 +861,7 @@ const clickoutside = {
         mounted(){
             this.initRobot()
             this.countryCode();
+            this.ipQueryFun()
             // this.formValidate.interest=['ddd'];
             let inviteCode = getUrlKey('invite_code');
             this.formValidate.referrId = inviteCode;

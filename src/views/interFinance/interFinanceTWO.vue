@@ -27,7 +27,7 @@
                                         <Input  type="text"  v-model="formValidate.Name" :placeholder="this.$t('transInputb')"></Input>
                                     </FormItem>
                                 </div>
-                                 <div v-if="BankNameflag||AccountType||accountNumber||swiftCode||IBAN||abartn||BSB" class="clearfix">
+                                <div v-if="BankNameflag||AccountType||accountNumber||swiftCode||IBAN||abartn||BSB" class="clearfix">
                                     <div class="pull-left span-label ">
                                         <span></span>
                                     </div>
