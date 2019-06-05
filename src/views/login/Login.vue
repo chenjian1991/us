@@ -305,10 +305,6 @@ import { setTimeout } from 'timers';
                     let registerParams = Object.assign(_that.paramsObj,captchaValidateStr)// 对象组合
                     postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
                     if(res.code){
-                        // _that.initRobot()
-                        // _that.onloadCallback();
-                        // console.log('ddd',_that.googleID)
-                        // grecaptcha.reset(_that.googleID);
                         if(this.ipCountry=='中国'){
                             this.initRobot()//注册失败后是实利化人机验证
                         }else{
@@ -415,7 +411,6 @@ import { setTimeout } from 'timers';
                             setTimeout(()=>{
                                 _that.robotModalflag= false;
                             },2000)
-                            //  console.log('Verified: not robot');
                         }
                     },
                     "expired-callback":function(){//验证失效回调函数
