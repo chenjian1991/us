@@ -476,7 +476,7 @@ Exchange.prototype.queryRewardFilledBuyBrief = function (fn) {
    })
 };
 
-Exchange.prototype.activityList = function (type, actionType, status, startTimeDate, endTimeDate, page, limit, fn) {
+Exchange.prototype.activityList = function (activity, currency, fn) {
    var params = {}
    var _this = this;
    _this.getAccountId(function (_accountId) {
@@ -484,25 +484,23 @@ Exchange.prototype.activityList = function (type, actionType, status, startTimeD
          params = {
             "token": _assetToken,
             "accountId": _accountId,
-            'page': page,
-            'limit': limit
+            type: activity.type,
+            page: activity.page,
+            limit: activity.limit,
          }
-         if (type) {
-            params['type'] = type
+         params[currency] = 'USD'
+         if (activity.actionType) {
+            params['actionType'] = activity.actionType
          }
-         if (actionType) {
-            params['actionType'] = actionType
+         if (activity.status) {
+            params['status'] = activity.status
          }
-         if (status) {
-            params['status'] = status
+         if (activity.startTimeDate) {
+            params['startTimeDate'] = activity.startTimeDate
          }
-         if (startTimeDate) {
-            params['startTimeDate'] = startTimeDate
+         if (activity.endTimeDate) {
+            params['endTimeDate'] = activity.endTimeDate
          }
-         if (endTimeDate) {
-            params['endTimeDate'] = endTimeDate
-         }
-
          getActivityList(params).then(data => {
             fn(data);
          })
@@ -611,6 +609,26 @@ Exchange.prototype.deposit = function (currency, fn, errorFn) {
       })
    })
 };
+
+//USD充值地址
+Exchange.prototype.depositUSD = function (currency, amount, fn, errorFn) {
+   var _this = this;
+   _this.getAccountId(function (_accountId) {
+      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
+         address({
+            "token": _assetToken,
+            "currency": currency,
+            "amount": amount,
+            "accountId": _accountId
+         }).then(data => {
+            fn(data);
+         }).catch(data => {
+            errorFn(data)
+         })
+      })
+   })
+};
+
 //提现地址列表
 Exchange.prototype.withdrawAddress = function (currency, fn) {
    var _this = this;
@@ -735,6 +753,29 @@ Exchange.prototype.withdraw = function (currency, address, amount, fee, fn, erro
                   errorFn(data);
                });
             })
+         })
+      })
+   })
+};
+
+//USD提现
+Exchange.prototype.withdrawUSD = function (currency, address, amount, fee, fn, errorFn) {
+   var _this = this;
+   _this.getAccountId(function (_accountId) {
+      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
+         _this.getAssetTicket(function (_assetTicket) {
+            withdraw({"token": _assetToken}, {
+               "currency": currency,
+               "accountId": _accountId,
+               "ticket": _assetTicket,
+               "address": address,
+               "amount": amount,
+               "fee": fee
+            }).then(data => {
+               fn(data);
+            }).catch(data => {
+               errorFn(data);
+            });
          })
       })
    })
