@@ -10,7 +10,7 @@
             title="验证"
             :mask-closable="false"
             >
-            <div id="robot"></div>
+            <div id="robotDiv"></div>
             <p slot="footer"></p>
         </Modal>
     </div>
@@ -45,7 +45,7 @@ import { debuglog } from 'util';
                 captchaIns:'',
                 robotModalflag:false,
                 ipCountry:'',
-                googleID:'',
+                googleID:"",
 
 
             }
@@ -84,7 +84,7 @@ import { debuglog } from 'util';
                 let _that = this;
                 console.log("grecaptcha is ready!");
                 console.log(grecaptcha)
-                let widgetId=grecaptcha.render('robot', {
+                let widgetId=grecaptcha.render('robotDiv', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
                     "size":'normal',
@@ -119,8 +119,8 @@ import { debuglog } from 'util';
                     },
 
                     });
-                    _that.googleID = widgetId;
                     console.log(widgetId)
+                    _that.googleID = widgetId;
                     return widgetId;
 
             },
@@ -204,10 +204,10 @@ import { debuglog } from 'util';
                             let code = res.code;
                             _that.$emit('sendCick',_that.$t(code))//触发父组件的方法，并传递参数给父组件；
                              if(this.ipCountry=='中国'){
-                                    _that.initRobot();//发送验证码失败后实利化人机验证
+                                    _that.initRobot();
                                 }else{
-                                grecaptcha.reset(_that.googleID);
                                     //  _that.onloadCallback();
+                                    grecaptcha.reset(_that.googleID);
                                 }   
                         }else{
                              _that.show = false;
@@ -257,7 +257,7 @@ import { debuglog } from 'util';
                                 // 不需要初始化人机验证
                             }else{
                                 _that.initRobot();//倒计时结束后重新初始化人机验证
-                                 grecaptcha.reset(_that.googleID);//倒计时结束后重新初始化人机验证
+                                grecaptcha.reset(_that.googleID);
                             }
                         }else{
                              _that.show = false;
@@ -327,11 +327,11 @@ import { debuglog } from 'util';
                     }else if(res.code&&res.code!==10014){//其他错误情况，比如参数错误，手机格式错误
                         this.$emit('sendCick',this.$t(res.code));
                          this.initRobot()
-                          grecaptcha.reset(_that.googleID);//失败后实例化谷歌人机验证
+                         grecaptcha.reset(_that.googleID);
                     }else{//手机已经存在了，不允许绑定，提示给用户
                         this.$emit('sendCick',this.$t(11003));
                         this.initRobot()
-                         grecaptcha.reset(_that.googleID);//失败后实例化谷歌人机验证
+                        grecaptcha.reset(_that.googleID);
                     }
 
                 })

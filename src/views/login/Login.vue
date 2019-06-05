@@ -296,7 +296,6 @@ import { setTimeout } from 'timers';
                     localStorage.removeItem("phoneToken");
             },
             verifiyedMethod(value,validType){
-                debugger
                      let _that = this;
                      _that.loaded = false;
                     let captchaValidateStr = {
@@ -306,7 +305,6 @@ import { setTimeout } from 'timers';
                     let registerParams = Object.assign(_that.paramsObj,captchaValidateStr)// 对象组合
                     postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
                     if(res.code){
-                        debugger
                         _that.initRobot()
                         // _that.onloadCallback();
                         console.log('ddd',_that.googleID)
