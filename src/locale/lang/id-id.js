@@ -4,6 +4,7 @@ export default {
     regOpen: 'buka pendaftaran',
     coming: 'yang akan datang',
     letFly: 'One World, One Exchange！',
+    yanzheng:'Verify',
     //首页
     HomeGlobal: '55 Situs-B',
     HomeGlobaltitle: 'Bursa Token Blockchain',

@@ -2,7 +2,7 @@
     <div  id="registerHtml" class="root">
         <div  class="wrapper">
             <Modal
-                    class="robotModal"
+                    class-name="vertical-center-modal"
                     v-model="robotModalflag"
                     title="验证"
                     :mask-closable="false"
@@ -902,7 +902,17 @@ const clickoutside = {
 </script>
 
 <style lang='less'>
-
+    .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
     .ivu-form{
               .ivu-input{
                 width: 580px;
@@ -979,9 +989,6 @@ const clickoutside = {
      .headerbox{
         flex: 0 0 auto;
      }
-    //  #app{
-    //      height: 100%;
-    //  }
     .footerBox{
          flex: 0 0 auto;
      }

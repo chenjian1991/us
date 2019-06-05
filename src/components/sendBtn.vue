@@ -5,7 +5,7 @@
          <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
         <div id="captcha"></div>
          <Modal
-            class="robotModal"
+            class-name="vertical-center-modal"
             v-model="robotModalflag"
             title="验证"
             :mask-closable="false"
