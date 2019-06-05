@@ -109,12 +109,21 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                        // this.$router.push('/home');  
-                          this.$router.go(-2)
+                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login',''];
+                        if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                            this.$router.push('/safeCenter')
+                        }else{
+                             this.$router.go(-2)
+                        }
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                        // this.$router.push('/home');  
-                          this.$router.go(-2)
+                        let aa = this.previousRouterName;
+                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login',''];
+                        if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                            this.$router.push('/safeCenter')
+                        }else{
+                             this.$router.go(-2)
+                        }
 
 
                     }
@@ -172,6 +181,9 @@ import {getCommouityBaseURL} from '../../config/index.js';
             },
             googleNumberlength(){
                 return this.formValidate.googleNumber.length;
+            },
+             previousRouterName(){
+                return this.$store.state.app.routerHistory;
             }
            
             
@@ -182,6 +194,9 @@ import {getCommouityBaseURL} from '../../config/index.js';
             },
             googleNumberlength(val,oldVal){
                 if(val==6){
+                    debugger
+                    // console.log( this.previousRouterName);
+                    let aa = this.previousRouterName
                     this.handleSubmit('formValidate');
                 }
             }
