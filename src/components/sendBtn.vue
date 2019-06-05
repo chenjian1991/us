@@ -95,14 +95,20 @@ import { debuglog } from 'util';
                                      captchaValidateType:'google'
                                 }
                             if(_that.phoneMessage){//手机注册发送验证码
-                                let registerParams = Object.assign(_that.phoneMessage,obj)// 对象组合
+                                let registerParams = Object.assign(_that.phoneMessage,obj)
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.tradePassPhone){//修改交易密码发送手机验证码
-                                let registerParams = Object.assign(_that.tradePassPhone,obj)// 对象组合
+                                let registerParams = Object.assign(_that.tradePassPhone,obj)
                                  _that.SSOpostRequest(registerParams,_that);
                             }else if(_that.ssoPhone){//绑定手机发送验证码
-                                let registerParams = Object.assign(_that.ssoPhone,obj)// 对象组合
+                                let registerParams = Object.assign(_that.ssoPhone,obj)
                                  _that.phonePostVerifyMethod(registerParams)
+                            }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
+                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,obj)
+                                    _that.$options.methods.sendPostRequest(registerParams,_that);
+                            }else if(_that.ForgotPhonePassworMessage){//手机找回密码发送验证码
+                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,obj)
+                                    _that.$options.methods.sendPostRequest(registerParams,_that);
                             }
 
                             setTimeout(()=>{
@@ -159,19 +165,19 @@ import { debuglog } from 'util';
                                      captchaValidateType:'wangyi'
                                 }
                             if(_that.phoneMessage){//手机注册发送验证码
-                                let registerParams = Object.assign(_that.phoneMessage,obj)// 对象组合
+                                let registerParams = Object.assign(_that.phoneMessage,obj)
                                 _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.ForgotEmailPassworMessage){//邮箱找回密码发送验证码
-                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,captchaValidateStr)// 对象组合
+                                    let registerParams = Object.assign(_that.ForgotEmailPassworMessage,captchaValidateStr)
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.ForgotPhonePassworMessage){//手机找回密码发送验证码
-                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,captchaValidateStr)// 对象组合
+                                    let registerParams = Object.assign(_that.ForgotPhonePassworMessage,captchaValidateStr)
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
                             }else if(_that.ssoPhone){//绑定手机发送验证码
-                                let registerParams = Object.assign(_that.ssoPhone,obj)// 对象组合
+                                let registerParams = Object.assign(_that.ssoPhone,obj)
                                 _that.phonePostVerifyMethod(registerParams)//验证手机
                             }else if(_that.tradePassPhone){//修改交易密码发送手机短信
-                                let registerParams = Object.assign(_that.tradePassPhone,obj)// 对象组合
+                                let registerParams = Object.assign(_that.tradePassPhone,obj)
                                  _that.SSOpostRequest(registerParams,_that);
                             }
                             
@@ -200,7 +206,7 @@ import { debuglog } from 'util';
             },
             sendPostRequest(params,_that){//登录注册发送验证码 send
                     postBaseApi(sendSms,'',params).then((res) =>{
-                        if(res.code){
+                        if(res.code){// 发送失败
                             let code = res.code;
                             _that.$emit('sendCick',_that.$t(code))//触发父组件的方法，并传递参数给父组件；
                              if(this.ipCountry=='中国'){
@@ -226,7 +232,8 @@ import { debuglog } from 'util';
                                         if(this.ipCountry=='中国'){
                                                 _that.initRobot();
                                         }else{
-                                                _that.onloadCallback();
+                                             grecaptcha.reset(_that.googleID);
+                                                // _that.onloadCallback();
                                         } 
                                 }
                                 },1000)
@@ -277,6 +284,8 @@ import { debuglog } from 'util';
                                                 // 不需要初始化人机验证
                                             }else{
                                                 _that.initRobot();//倒计时结束后重新初始化人机验证
+                                                grecaptcha.reset(_that.googleID);
+
                                             }
                                     }
                                 },1000)
