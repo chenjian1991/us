@@ -137,6 +137,7 @@ import { setTimeout } from 'timers';
       
         methods:{
             handleSubmit (name) {
+             console.log( this.previousRouterName);
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.empty = false;
@@ -251,12 +252,22 @@ import { setTimeout } from 'timers';
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
                         //   this.$router.push('/home');  
-                          this.$router.go(-1)
-
+                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login','','null'];
+                        if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                            this.$router.push('/safeCenter')
+                        }else{
+                             this.$router.go(-1)
+                        }
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                        //  this.$router.push('/home');  
-                          this.$router.go(-1)
+                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login','','null'];
+                        if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                        debugger
+                            this.$router.push('/safeCenter')
+                        }else{
+                            debugger
+                             this.$router.go(-1)
+                        }
 
                     }
                     //请求自选的币种
@@ -490,6 +501,13 @@ import { setTimeout } from 'timers';
                 } else {
 
                 }
+            },
+            beforeRouteEnter (to, from, next) {
+                next(vm => {
+                    console.log(from)
+                // 通过 `vm` 访问组件实例
+
+                })
             }
 
 
@@ -501,6 +519,9 @@ import { setTimeout } from 'timers';
              languageChange(){
                 return  this.$store.state.app.countryLanguage;//  返回全局state的状态值
             },
+            previousRouterName(){
+                return this.$store.state.app.routerHistory;
+            }
             
         },
         watch:{
@@ -511,6 +532,8 @@ import { setTimeout } from 'timers';
         },
         mounted(){
             //初始化为未登录状态
+            // this.beforeRouteEnter()
+            
            this.$store.commit('changeLoingStatus',false)
            this.initRobot();
            this.fromSocial = getUrlKeyandEncode('socialback');

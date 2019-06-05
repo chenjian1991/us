@@ -26,6 +26,7 @@ export default {
     backgroundFooter:"",
     ssoToken:Cookies.get('loginToken'),
     ip_status:'',//IP限制提示 RESTRICT,UNKNOWN, PASSED
+    routerHistory:""//前一个页面的路由地址
 
   },
   getters: {
@@ -100,6 +101,9 @@ export default {
     },
     changeIPwaring(state,value){
       state.ip_status = value;
+    },
+    CHANGEHISTORYROUTER(state,value){
+      state.routerHistory = value;
     },
   },
 }
