@@ -438,7 +438,7 @@ const clickoutside = {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         if(this.emailRegister){//如果是邮箱注册
-                            // this.captchaIns && this.captchaIns.popUp()
+                            //  this.captchaIns && this.captchaIns.popUp()
                             if(this.ipCountry=='中国'){
                                 console.log('中国')
                                 this.captchaIns && this.captchaIns.popUp()
@@ -713,8 +713,11 @@ const clickoutside = {
                 postBaseApi(emailRegister,'',params).then((res) =>{
                     if(res.code){
                         this.loaded = true;
-                        this.initRobot()//注册失败后是实利化人机验证
-                        grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                            grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                         if(res.code=='10044'){//改用户未激活
                              setTimeout(() => {
                                 this.$router.push('/verfifyEmail')

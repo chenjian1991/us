@@ -306,10 +306,15 @@ import { setTimeout } from 'timers';
                     let registerParams = Object.assign(_that.paramsObj,captchaValidateStr)// 对象组合
                     postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
                     if(res.code){
-                        _that.initRobot()
+                        // _that.initRobot()
                         // _that.onloadCallback();
-                        console.log('ddd',_that.googleID)
-                        grecaptcha.reset(_that.googleID);
+                        // console.log('ddd',_that.googleID)
+                        // grecaptcha.reset(_that.googleID);
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                            grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                         _that.loaded = true;
                         if(res.code == '10044'){//用户未激活，则跳转到重新发送页面
                             let emailaddress = _that.formValidate.phoneNumber;
