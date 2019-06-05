@@ -209,7 +209,7 @@ import { debuglog } from 'util';
                         if(res.code){// 发送失败
                             let code = res.code;
                             _that.$emit('sendCick',_that.$t(code))//触发父组件的方法，并传递参数给父组件；
-                             if(this.ipCountry=='中国'){
+                             if(_that.ipCountry=='中国'){
                                     _that.initRobot();
                                 }else{
                                     //  _that.onloadCallback();
@@ -229,7 +229,7 @@ import { debuglog } from 'util';
                                         clearInterval(_that.timer);
                                         _that.timer = null;
                                          _that.captchaIns='';
-                                        if(this.ipCountry=='中国'){
+                                        if(_that.ipCountry=='中国'){
                                                 _that.initRobot();
                                         }else{
                                              grecaptcha.reset(_that.googleID);
@@ -263,8 +263,13 @@ import { debuglog } from 'util';
                           if(this.ssoEmail||this.tradePassEmail){
                                 // 不需要初始化人机验证
                             }else{
-                                _that.initRobot();//倒计时结束后重新初始化人机验证
-                                grecaptcha.reset(_that.googleID);
+                                // _that.initRobot();//倒计时结束后重新初始化人机验证
+                                // grecaptcha.reset(_that.googleID);
+                                if(this.ipCountry=='中国'){
+                                        this.initRobot()//注册失败后是实利化人机验证
+                                }else{
+                                        grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                                    }
                             }
                         }else{
                              _that.show = false;
@@ -283,8 +288,13 @@ import { debuglog } from 'util';
                                             if(this.ssoEmail||this.tradePassEmail){
                                                 // 不需要初始化人机验证
                                             }else{
-                                                _that.initRobot();//倒计时结束后重新初始化人机验证
-                                                grecaptcha.reset(_that.googleID);
+                                                 if(this.ipCountry=='中国'){
+                                                     this.initRobot()//注册失败后是实利化人机验证
+                                                 }else{
+                                                    grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                                                 }
+                                                // _that.initRobot();//倒计时结束后重新初始化人机验证
+                                                // grecaptcha.reset(_that.googleID);
 
                                             }
                                     }
@@ -335,12 +345,22 @@ import { debuglog } from 'util';
 
                     }else if(res.code&&res.code!==10014){//其他错误情况，比如参数错误，手机格式错误
                         this.$emit('sendCick',this.$t(res.code));
-                         this.initRobot()
-                         grecaptcha.reset(_that.googleID);
+                        //  this.initRobot()
+                        //  grecaptcha.reset(_that.googleID);
+                         if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                             grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                        }
                     }else{//手机已经存在了，不允许绑定，提示给用户
                         this.$emit('sendCick',this.$t(11003));
-                        this.initRobot()
-                        grecaptcha.reset(_that.googleID);
+                        // this.initRobot()
+                        // grecaptcha.reset(_that.googleID);
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                             grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                        }
                     }
 
                 })
