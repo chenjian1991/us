@@ -10,7 +10,7 @@
             title="验证"
             :mask-closable="false"
             >
-            <div id="robot"></div>
+            <div id="robotDiv"></div>
             <p slot="footer"></p>
         </Modal>
     </div>
@@ -45,6 +45,7 @@ import { debuglog } from 'util';
                 captchaIns:'',
                 robotModalflag:false,
                 ipCountry:'',
+                googleID:"",
 
 
             }
@@ -83,7 +84,7 @@ import { debuglog } from 'util';
                 let _that = this;
                 console.log("grecaptcha is ready!");
                 console.log(grecaptcha)
-                let widgetId=grecaptcha.render('robot', {
+                let widgetId=grecaptcha.render('robotDiv', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
                     "size":'normal',
@@ -119,6 +120,7 @@ import { debuglog } from 'util';
 
                     });
                     console.log(widgetId)
+                    _that.googleID = widgetId;
                     return widgetId;
 
             },
@@ -204,7 +206,8 @@ import { debuglog } from 'util';
                              if(this.ipCountry=='中国'){
                                     _that.initRobot();
                                 }else{
-                                     _that.onloadCallback();
+                                    //  _that.onloadCallback();
+                                    grecaptcha.reset(_that.googleID);
                                 }   
                         }else{
                              _that.show = false;
@@ -254,6 +257,7 @@ import { debuglog } from 'util';
                                 // 不需要初始化人机验证
                             }else{
                                 _that.initRobot();//倒计时结束后重新初始化人机验证
+                                grecaptcha.reset(_that.googleID);
                             }
                         }else{
                              _that.show = false;
@@ -323,9 +327,11 @@ import { debuglog } from 'util';
                     }else if(res.code&&res.code!==10014){//其他错误情况，比如参数错误，手机格式错误
                         this.$emit('sendCick',this.$t(res.code));
                          this.initRobot()
+                         grecaptcha.reset(_that.googleID);
                     }else{//手机已经存在了，不允许绑定，提示给用户
                         this.$emit('sendCick',this.$t(11003));
                         this.initRobot()
+                        grecaptcha.reset(_that.googleID);
                     }
 
                 })
