@@ -516,6 +516,7 @@ import { setTimeout } from 'timers';
            this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
            this.ipQueryFun()
+           console.log(this.$router)
            console.log('gogogogogogogogogo')
 
         },
