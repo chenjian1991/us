@@ -314,7 +314,7 @@ import { setTimeout } from 'timers';
                             let emailaddress = _that.formValidate.phoneNumber;
                             localStorage.setItem('emailAdderss',emailaddress);
                             setTimeout(() => {
-                                _that.$router.push('/verfifyEmail')
+                                _that.$router.push('/verfifyEmail');
                             }, 1500);
                         }else if(res.code == '10047'){//美国ip登录提示
                             _that.modal2 = true;
