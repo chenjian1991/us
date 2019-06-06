@@ -12,6 +12,7 @@ export default {
    regOpen: "다시 시작하다",
    coming: "coming",
    letFly: "One World,One Exchange!",
+   yanzheng:'Verify',
    //55全球市场新首页
    MarketTradeCenter: '거래소',
    BExchange: '블록체인 거래',

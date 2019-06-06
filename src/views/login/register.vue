@@ -2,7 +2,7 @@
     <div  id="registerHtml" class="root">
         <div  class="wrapper">
             <Modal
-                    class="robotModal"
+                    class-name="vertical-center-modal"
                     v-model="robotModalflag"
                     title="验证"
                     :mask-closable="false"
@@ -198,7 +198,7 @@
             </div>
             <div v-if="modal2" class="mask dis-n"></div>
 
-        <Modal :modal='showModal' :text="text"></Modal>
+        <Modaltips :modal='showModal' :text="text"></Modaltips>
        
 
         </div>
@@ -212,9 +212,9 @@ import {countrylist} from '../login/country.js'
 import {getUrlKey} from '@/lib/utils.js'
 import '../../lib/utils.js'
 import sendBtn from '../../components/sendBtn'
-import {codeVerify,register,emailRegister,ossjson,userNameUnique} from '../../../api/urls.js';
+import {codeVerify,register,emailRegister,ossjson,userNameUnique,ipQuery} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
-import Modal from '@/components/Modal';
+import Modaltips from '@/components/Modal';
 const clickoutside = {
     // 初始化指令
     bind(el, binding, vnode) {
@@ -406,6 +406,8 @@ const clickoutside = {
                 EmailcountryName:"",
                 phoneCountryName:"",
                 comonUseCountry:[],
+                ipCountry:'',
+                googleID:'',
                 
 
 
@@ -418,7 +420,7 @@ const clickoutside = {
         directives: {clickoutside},
         components:{
             sendBtn,
-            Modal,
+            Modaltips,
             'remote-json':{
                 render(createElement){
                     return createElement('script',{attrs:{type:"text/javascript",src:this.src}})
@@ -436,7 +438,13 @@ const clickoutside = {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         if(this.emailRegister){//如果是邮箱注册
-                            this.captchaIns && this.captchaIns.popUp()
+                            //  this.captchaIns && this.captchaIns.popUp()
+                            if(this.ipCountry=='中国'){
+                                this.captchaIns && this.captchaIns.popUp()
+                            }else{
+                                    this.robotModalflag = true;
+                                }
+
                         }else{//如果是手机注册
                             this.loaded = false;
                              this.codeVerifyFun();
@@ -517,6 +525,21 @@ const clickoutside = {
 
 
             },
+             ipQueryFun(){//ip所在国家查询
+                getApi(ipQuery,'').then((res)=>{
+                    if(res.resultcode==200){
+                        this.ipCountry = res.result.Country;
+                        if(this.ipCountry=='中国'){
+                             
+                         }else{//只有非中国的时候才实例化谷歌都方法
+                                this.onloadCallback();
+                         }
+                    }else{
+                        this.onloadCallback();//当ip获取失败都时候默认是谷歌验证
+                        this.ipCountry = '';//查询失败
+                    }
+                })
+            },
              initRobot(){
                 let _that = this;
                 let captchaIns;
@@ -548,6 +571,7 @@ const clickoutside = {
                             let value = document.getElementsByName('NECaptchaValidate')[0].value;
                             _that.emailParams = {//邮箱注册
                                     "personCode":value,//人机校验码
+                                    "personCodeType":'wangyi',
                                     "profileEmail":_that.formValidate.emailNumber,
                                     "uniqueName":_that.formValidate.userName,
                                     "inviteCode":_that.formValidate.referrId,
@@ -565,9 +589,6 @@ const clickoutside = {
                                         }
                             }
                             _that.emailRegisterFun();
-                            
-
-
                         }
                     }
                 }, function (instance) {
@@ -580,21 +601,41 @@ const clickoutside = {
 
                 return captchaIns;
             },
-                onloadCallback(){
-                console.log(this)
+            onloadCallback(){
                 let _that = this;
-                console.log("grecaptcha is ready!");
+                // console.log("grecaptcha is ready!");
                 let widgetId=grecaptcha.render('robot', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
                     "size":'normal',
                     'callback': function (data) {//验证成功回调函数
-                        console.log(data)
+                        // console.log(data)
                         if(data.length!==0){
+                             _that.loaded=false;
+                            _that.emailParams = {//邮箱注册
+                                    "personCode":data,//人机校验码
+                                    "personCodeType":'google',
+                                    "profileEmail":_that.formValidate.emailNumber,
+                                    "uniqueName":_that.formValidate.userName,
+                                    "inviteCode":_that.formValidate.referrId,
+                                    "password":_that.setSha(_that.formValidate.confrimPassword),
+                                    'country':_that.EmailcountryName,
+                                    "site":"B",
+                                    "activityCode":getUrlKey('src'),
+                                     "userClientInfo":{
+                                        "deviceModel":"MI 2S",
+                                        "deviceId": "xxxsllsj",
+                                        "resolution":"1920*1080",
+                                        "os":"Android",
+                                        "netType":"4G",
+                                        "operator":"China Mobile"
+                                        }
+                            }
+                            _that.emailRegisterFun();
                             setTimeout(()=>{
                                 _that.robotModalflag= false;
                             },2000)
-                         console.log('Verified: not robot');
+                        //  console.log('Verified: not robot');
                         }
                     },
                     "expired-callback":function(){//验证失效回调函数
@@ -605,7 +646,7 @@ const clickoutside = {
                     },
 
                     });
-                    console.log(widgetId)
+                    _that.googleID = widgetId;
                     return widgetId;
 
             },
@@ -666,7 +707,11 @@ const clickoutside = {
                 postBaseApi(emailRegister,'',params).then((res) =>{
                     if(res.code){
                         this.loaded = true;
-                        this.initRobot()//注册失败后是实利化人机验证
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                            grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                         if(res.code=='10044'){//改用户未激活
                              setTimeout(() => {
                                 this.$router.push('/verfifyEmail')
@@ -812,6 +857,7 @@ const clickoutside = {
         mounted(){
             this.initRobot()
             this.countryCode();
+            this.ipQueryFun()
             // this.formValidate.interest=['ddd'];
             let inviteCode = getUrlKey('invite_code');
             this.formValidate.referrId = inviteCode;
@@ -852,6 +898,17 @@ const clickoutside = {
 </script>
 
 <style lang='less'>
+    .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
     .ivu-form{
             .ivu-input{
                 width: 580px;

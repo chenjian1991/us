@@ -153,7 +153,6 @@ import sendBtn from '../../components/sendBtn';
                     codeType: "EMAIL",
                     language: localStorage.getItem('countryLanguage'),
                     operateType: "SET_TRADE_PASSWORD"
-                
                 },
                 ruleValidate: {
                     passwordNumber: [
