@@ -80,7 +80,19 @@ export const getDeleteFavoritesPair = (arr) => {
 }
 //行情交易对
 export const getSymbolList_realtime = () => {
-   return getApi(symbolList_realtime)
+   return new Promise((resolve,reject) =>{
+      getApi(symbolList_realtime).then(res=>{
+         let arr = res.filter(item => {
+            if(item.quoteAsset == 'USDT'){
+               return false
+            }
+            return true
+         })
+         resolve(arr)
+      }).catch(err =>{
+         reject(err)
+      })
+   })
 }
 
 export const getdepthList = (params) => {

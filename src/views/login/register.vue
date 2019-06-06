@@ -984,6 +984,7 @@ const clickoutside = {
      .headerbox{
         flex: 0 0 auto;
      }
+   
     .footerBox{
          flex: 0 0 auto;
      }

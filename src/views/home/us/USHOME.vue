@@ -673,7 +673,7 @@
           </div>
         <!-- End ATO -->   
             <!-- supreme start -->
-             <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
+             <!-- <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
                 <div class="container u-space-2">
                   <div class="col-md-12 col-lg-12 col-xl-12">
                     <div class="text-center mb-4">
@@ -709,45 +709,14 @@
                     <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：59,800 Supreme Tokens</span>
                     <span class="d-block h6 text-white mb-2">ATO Total Pre-order Amount：</span>
                     <br> <span style="font-size:28px;color:#fff;background-color:#DB3545;font-weight:700;">$128,263</span>
-                    <!-- <span class="d-block h6 text-white mb-2">ATO Starts in：
-                        <div class="js-countdown row mb-5"
-                            data-end-date="2019/05/21 13:00:00"
-                            data-month-format="%m"
-                            data-days-format="%D"
-                            data-hours-format="%H"
-                            data-minutes-format="%M"
-                            data-seconds-format="%S"
-                            style="padding-top:20px">
-                          <div  style="background:#d93649;margin-left:15px">
-                            <strong class="js-cd-days h3 text-white font-weight-bold mb-0"></strong>
-                            <span class="h5 font-weight-normal mb-0">Days</span>
-                          </div>
-                          <div style="background:#d93649;margin-left:15px">
-                            <strong class="js-cd-hours h3 text-white font-weight-bold mb-0"></strong>
-                            <span class="h5 font-weight-normal mb-0">Hours</span>
-                          </div>
-                          <div style="background:#d93649;margin-left:15px">
-                            <strong class="js-cd-minutes h3 text-white font-weight-bold mb-0"></strong>
-                            <span class="h5 font-weight-normal mb-0">Mins</span>
-                          </div>
-                          <div style="background:#d93649;margin-left:15px">
-                            <strong class="js-cd-seconds h3 text-white font-weight-bold mb-0"></strong>
-                            <span class="h5 font-weight-normal mb-0">Secs</span>
-                          </div>
-                        </div>
-                    </span> -->
+                    
                   </div>
-                  <!-- <a href="https://global.55gm.co/#/fatoSubscription" target="_blank">
-                      <button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Open on 21st May 13:00 (UTC+8)</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token through ATO</strong></span></span></button>
-                  </a>
-                  &nbsp; -->
-                  <!-- <button type="button" style="background:#59616B" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">coming soon</span><strong data-v-d1e1e420="" class="font-size-14">Buy Supreme Token</strong></span></span></button> &nbsp; -->
                   <button type="button" style="background:#DB3545;height:57px" @click="$router.push('/redeemsupreme')" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block"> </span><strong data-v-d1e1e420="" class="font-size-14">Redeem Supreme</strong></span></span></button> &nbsp;
                   <a :href="supremeURL" target="_blank"><button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Know more about Supreme</span><strong data-v-d1e1e420="" class="font-size-14">Join Supreme Community</strong></span></span></button></a>
                 </div>
               </div>
              </div>
-           </div>
+           </div> -->
             <!-- supreme end -->
 
             <!-- Front in Frames Section -->
@@ -761,7 +730,7 @@
                           
                           <h2 class="text-primary">55 <span class="font-weight-bold">Debit Card</span></h2>
                           
-                          <p>Seamlessly integrated with 55 GBBO, your cryptocurrencies can be converted to fiat currency almost in real time. 55, in collaboration with major payment service providers, will allow you to pay at millions of storefronts or POS terminals.</p >
+                          <p>Your cryptocurrencies can be converted to fiat currency almost in real time. 55, in collaboration with major payment service providers, will allow you to pay at millions of storefronts or POS terminals.</p >
                         </div>
                         <!-- End Title -->
                         
@@ -815,7 +784,7 @@
                         <div class="col-5 px-2 mb-3">
                           <!-- Fancybox -->
                           <a>
-                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/bottomright.jpg" alt="Image Description">
+                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/visa.png" alt="Image Description">
 
                           </a >
                           <!-- End Fancybox -->
@@ -970,7 +939,7 @@
                                       </div>
                                       <div class="media-body">
                                       <h4 class="d-inline-block mb-0">
-                                          <a class="d-block font-size-13" href="javascrip:;">David Weild</a>
+                                          <a class="d-block font-size-13" :href="DavidURL" target="_blank">David Weild</a>
                                       </h4>
                                       </div>
                                   </div>
@@ -1025,7 +994,7 @@
                                       </div>
                                       <div class="media-body">
                                       <h4 class="d-inline-block mb-0">
-                                          <a class="d-block font-size-13" href="javascrip:;">Lisa Loud</a>
+                                          <a class="d-block font-size-13" :href="LisaURL" target="_blank">Lisa Loud</a>
                                       </h4>
                                       </div>
                                   </div>
@@ -1424,6 +1393,7 @@
               LisaURL:'',
               LoganURL:'',
               GeoffURL:'',
+              DavidURL:'',
               supremeURL:'',
               loginToken:Cookies.get('loginToken'),
               chatToken:'',
@@ -1457,6 +1427,7 @@
                       this.JasonURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
                       this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
                       this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
+                      this.DavidURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
                   })
                 }else{
                       this.chatToken = 'null/'
@@ -1466,11 +1437,11 @@
                       this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
                       this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
                       this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
-                      this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
                       this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
                       this.JasonURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
                       this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
                       this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
+                      this.DavidURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
                 }
             },
             transfer(){
