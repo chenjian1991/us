@@ -137,6 +137,7 @@ import { setTimeout } from 'timers';
       
         methods:{
             handleSubmit (name) {
+             console.log( this.previousRouterName);
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.empty = false;
@@ -179,11 +180,11 @@ import { setTimeout } from 'timers';
                             // this.paramsObj = params;
                             //  this.captchaIns && this.captchaIns.popUp()
                          if(this.ipCountry=='中国'){
-                             console.log('中国')
+                            //  console.log('中国')
                               this.paramsObj = params;
                              this.captchaIns && this.captchaIns.popUp()
                          }else{
-                             console.log('外国')
+                            //  console.log('外国')
                             this.paramsObj = params;
                             this.robotModalflag = true;
                          }
@@ -219,12 +220,11 @@ import { setTimeout } from 'timers';
                          }else{//只有非中国的时候才实例化谷歌都方法
                                 this.onloadCallback();
                          }
-                        console.log('uuu',this.ipCountry)
+                        // console.log('uuu',this.ipCountry)
                     }else{
                         this.onloadCallback();//当ip获取失败都时候默认是谷歌验证
                         this.ipCountry = '';//查询失败
                     }
-                    console.log(res)
                 })
             },
             getUserInfo(token){
@@ -252,12 +252,22 @@ import { setTimeout } from 'timers';
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
                         //   this.$router.push('/home');  
-                          this.$router.go(-1)
-
+                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login','','null'];
+                        if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                            this.$router.push('/safeCenter')
+                        }else{
+                             this.$router.go(-1)
+                        }
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                        //  this.$router.push('/home');  
-                          this.$router.go(-1)
+                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login','','null'];
+                        if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                        debugger
+                            this.$router.push('/safeCenter')
+                        }else{
+                            debugger
+                             this.$router.go(-1)
+                        }
 
                     }
                     //请求自选的币种
@@ -301,10 +311,15 @@ import { setTimeout } from 'timers';
                     let registerParams = Object.assign(_that.paramsObj,captchaValidateStr)// 对象组合
                     postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
                     if(res.code){
-                        _that.initRobot()
+                        // _that.initRobot()
                         // _that.onloadCallback();
-                        console.log('ddd',_that.googleID)
-                        grecaptcha.reset(_that.googleID);
+                        // console.log('ddd',_that.googleID)
+                        // grecaptcha.reset(_that.googleID);
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                            grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                         _that.loaded = true;
                         if(res.code == '10044'){//用户未激活，则跳转到重新发送页面
                             let emailaddress = _that.formValidate.phoneNumber;
@@ -395,7 +410,7 @@ import { setTimeout } from 'timers';
             },
             onloadCallback(){
                 let _that = this;
-                console.log("grecaptcha is ready!");
+                // console.log("grecaptcha is ready!");
                 let widgetId=grecaptcha.render('robot', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
@@ -406,7 +421,7 @@ import { setTimeout } from 'timers';
                             setTimeout(()=>{
                                 _that.robotModalflag= false;
                             },2000)
-                             console.log('Verified: not robot');
+                            //  console.log('Verified: not robot');
                         }
                     },
                     "expired-callback":function(){//验证失效回调函数
@@ -417,7 +432,7 @@ import { setTimeout } from 'timers';
                     },
 
                     });
-                    console.log('ccc',widgetId)
+                    // console.log('ccc',widgetId)
                     _that.googleID = widgetId;
                     return widgetId;
 
@@ -485,12 +500,19 @@ import { setTimeout } from 'timers';
             },
             judgePCorMoble(){
                 let u = navigator.userAgent;
-                console.log(u)
+                // console.log(u)
                 if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// 移动端
                     window.location.href='http://47.75.120.27:8030/mobile/#/login';
                 } else {
 
                 }
+            },
+            beforeRouteEnter (to, from, next) {
+                next(vm => {
+                    console.log(from)
+                // 通过 `vm` 访问组件实例
+
+                })
             }
 
 
@@ -502,6 +524,9 @@ import { setTimeout } from 'timers';
              languageChange(){
                 return  this.$store.state.app.countryLanguage;//  返回全局state的状态值
             },
+            previousRouterName(){
+                return this.$store.state.app.routerHistory;
+            }
             
         },
         watch:{
@@ -512,13 +537,13 @@ import { setTimeout } from 'timers';
         },
         mounted(){
             //初始化为未登录状态
+            // this.beforeRouteEnter()
+            
            this.$store.commit('changeLoingStatus',false)
            this.initRobot();
            this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
            this.ipQueryFun()
-           console.log(this.$router)
-           console.log('gogogogogogogogogo')
 
         },
         created(){

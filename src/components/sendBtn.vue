@@ -73,7 +73,6 @@ import { debuglog } from 'util';
                         }else{//只有非中国都时候才实例化谷歌都方法
                              this.onloadCallback();
                         }
-                        console.log('uuu',this.ipCountry)
                     }else{
                         this.onloadCallback()//当ip获取失败都时候默认是谷歌验证
                         this.ipCountry = '';//查询失败
@@ -82,8 +81,7 @@ import { debuglog } from 'util';
             },
             onloadCallback(){//谷歌人机验证方法
                 let _that = this;
-                console.log("grecaptcha is ready!");
-                console.log(grecaptcha)
+                // console.log("grecaptcha is ready!");
                 let widgetId=grecaptcha.render('robotDiv', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
@@ -114,7 +112,6 @@ import { debuglog } from 'util';
                             setTimeout(()=>{
                                 _that.robotModalflag= false;
                             },2000)
-                             console.log('Verified: not robot');
                         }
                     },
                     "expired-callback":function(){//验证失效回调函数
@@ -125,7 +122,6 @@ import { debuglog } from 'util';
                     },
 
                     });
-                    console.log(widgetId)
                     _that.googleID = widgetId;
                     return widgetId;
 
@@ -209,7 +205,7 @@ import { debuglog } from 'util';
                         if(res.code){// 发送失败
                             let code = res.code;
                             _that.$emit('sendCick',_that.$t(code))//触发父组件的方法，并传递参数给父组件；
-                             if(this.ipCountry=='中国'){
+                             if(_that.ipCountry=='中国'){
                                     _that.initRobot();
                                 }else{
                                     //  _that.onloadCallback();
@@ -229,7 +225,7 @@ import { debuglog } from 'util';
                                         clearInterval(_that.timer);
                                         _that.timer = null;
                                          _that.captchaIns='';
-                                        if(this.ipCountry=='中国'){
+                                        if(_that.ipCountry=='中国'){
                                                 _that.initRobot();
                                         }else{
                                              grecaptcha.reset(_that.googleID);
@@ -246,7 +242,6 @@ import { debuglog } from 'util';
                     }else{
                         _that.onloadCallback();
                     } 
-                    console.log('error')
                 })
             },
               SSOpostRequest(params,_that){//sso.send 发送短信验证码
@@ -263,8 +258,13 @@ import { debuglog } from 'util';
                           if(this.ssoEmail||this.tradePassEmail){
                                 // 不需要初始化人机验证
                             }else{
-                                _that.initRobot();//倒计时结束后重新初始化人机验证
-                                grecaptcha.reset(_that.googleID);
+                                // _that.initRobot();//倒计时结束后重新初始化人机验证
+                                // grecaptcha.reset(_that.googleID);
+                                if(this.ipCountry=='中国'){
+                                        this.initRobot()//注册失败后是实利化人机验证
+                                }else{
+                                        grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                                    }
                             }
                         }else{
                              _that.show = false;
@@ -283,8 +283,13 @@ import { debuglog } from 'util';
                                             if(this.ssoEmail||this.tradePassEmail){
                                                 // 不需要初始化人机验证
                                             }else{
-                                                _that.initRobot();//倒计时结束后重新初始化人机验证
-                                                grecaptcha.reset(_that.googleID);
+                                                 if(_that.ipCountry=='中国'){
+                                                     _that.initRobot()//注册失败后是实利化人机验证
+                                                 }else{
+                                                    grecaptcha.reset(_that.googleID);//注册失败后是实利化人机验证
+                                                 }
+                                                // _that.initRobot();//倒计时结束后重新初始化人机验证
+                                                // grecaptcha.reset(_that.googleID);
 
                                             }
                                     }
@@ -294,7 +299,6 @@ import { debuglog } from 'util';
                  
                 }).catch((res) =>{
                     _that.initRobot()
-                    console.log('error')
                 })
             },
 
@@ -324,6 +328,7 @@ import { debuglog } from 'util';
                     "phone":this.$store.state.app.bandPhoneObj.phone,
                 }
                 postBaseApi(userVerify,'',params).then((res) =>{
+                    debugger
                     if(res.code==10014){//只有此种情况才允许绑定邮箱,手机不存在
                         let objParams;
                         if(this.ssoPhone){
@@ -335,12 +340,22 @@ import { debuglog } from 'util';
 
                     }else if(res.code&&res.code!==10014){//其他错误情况，比如参数错误，手机格式错误
                         this.$emit('sendCick',this.$t(res.code));
-                         this.initRobot()
-                         grecaptcha.reset(_that.googleID);
+                        //  this.initRobot()
+                        //  grecaptcha.reset(_that.googleID);
+                         if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                             grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                     }else{//手机已经存在了，不允许绑定，提示给用户
                         this.$emit('sendCick',this.$t(11003));
-                        this.initRobot()
-                        grecaptcha.reset(_that.googleID);
+                        // this.initRobot()
+                        // grecaptcha.reset(_that.googleID);
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                             grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                     }
 
                 })
@@ -388,4 +403,17 @@ import { debuglog } from 'util';
         border: none;
     }
 }
+</style>
+<style lang='less'>
+ .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ivu-modal{
+            top: 0;
+        }
+        .ivu-modal-footer{
+            border-top: none;
+        }
+    }
 </style>

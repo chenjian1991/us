@@ -438,13 +438,10 @@ const clickoutside = {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         if(this.emailRegister){//如果是邮箱注册
-                            // this.captchaIns && this.captchaIns.popUp()
+                            //  this.captchaIns && this.captchaIns.popUp()
                             if(this.ipCountry=='中国'){
-                                console.log('中国')
-                                this.paramsObj = params;
                                 this.captchaIns && this.captchaIns.popUp()
                             }else{
-                                    console.log('外国')
                                     this.robotModalflag = true;
                                 }
 
@@ -532,18 +529,15 @@ const clickoutside = {
                 getApi(ipQuery,'').then((res)=>{
                     if(res.resultcode==200){
                         this.ipCountry = res.result.Country;
-                        console.log( this.ipCountry)
                         if(this.ipCountry=='中国'){
                              
                          }else{//只有非中国的时候才实例化谷歌都方法
                                 this.onloadCallback();
                          }
-                        console.log('uuu',this.ipCountry)
                     }else{
                         this.onloadCallback();//当ip获取失败都时候默认是谷歌验证
                         this.ipCountry = '';//查询失败
                     }
-                    console.log(res)
                 })
             },
              initRobot(){
@@ -609,13 +603,13 @@ const clickoutside = {
             },
             onloadCallback(){
                 let _that = this;
-                console.log("grecaptcha is ready!");
+                // console.log("grecaptcha is ready!");
                 let widgetId=grecaptcha.render('robot', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
                     "size":'normal',
                     'callback': function (data) {//验证成功回调函数
-                        console.log(data)
+                        // console.log(data)
                         if(data.length!==0){
                              _that.loaded=false;
                             _that.emailParams = {//邮箱注册
@@ -641,7 +635,7 @@ const clickoutside = {
                             setTimeout(()=>{
                                 _that.robotModalflag= false;
                             },2000)
-                         console.log('Verified: not robot');
+                        //  console.log('Verified: not robot');
                         }
                     },
                     "expired-callback":function(){//验证失效回调函数
@@ -653,7 +647,6 @@ const clickoutside = {
 
                     });
                     _that.googleID = widgetId;
-                    console.log(widgetId)
                     return widgetId;
 
             },
@@ -714,8 +707,11 @@ const clickoutside = {
                 postBaseApi(emailRegister,'',params).then((res) =>{
                     if(res.code){
                         this.loaded = true;
-                        this.initRobot()//注册失败后是实利化人机验证
-                        grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        if(this.ipCountry=='中国'){
+                            this.initRobot()//注册失败后是实利化人机验证
+                        }else{
+                            grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
+                        }
                         if(res.code=='10044'){//改用户未激活
                              setTimeout(() => {
                                 this.$router.push('/verfifyEmail')
