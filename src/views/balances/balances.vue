@@ -41,9 +41,10 @@
                            </router-link>
                         </span>
                         <a target="_blank" href="https://www.gcodigital.com/">
-                           <img style="width:156px;height:16px;float:right;" src="../../assets/images/balances/gco-logo@2x.png" alt="">
+                           <img style="width:156px;height:16px;float:right;"
+                                src="../../assets/images/balances/gco-logo@2x.png" alt="">
                         </a>
-                        
+
                      </div>
                      <div class="space-between">
                         <div><em>{{USD}}</em>&nbsp;&nbsp;<span>USD</span></div>
@@ -428,6 +429,10 @@
                   // width: 350,
                   align: 'right',
                   render: (h, params) => {
+                     console.log(params.row)
+
+                     console.log(params.row['list'])
+                     let exchange = params.row['list'] && params.row['list'].length !== 0 ? true : false
                      let url = ''
                      let siteType = params.row.siteType
                      siteType.map(v => {//充值提现的URL 注意5站域名
@@ -543,8 +548,11 @@
                                  h('div', {
                                     'class': {'balancesBtn': true},
                                     style: {
-                                       color: '#0E7DFF',
-                                       borderColor: '#0E7DFF'
+                                       // color: '#0E7DFF',
+                                       // borderColor: '#0E7DFF',
+                                       color: exchange ? '#0E7DFF' : '#949DA6',
+                                       borderColor: exchange ? '#0E7DFF' : '#949DA6',
+                                       cursor: exchange ? 'pointer' : 'not-allowed'
                                     },
                                  }, this.$t('zcTrade')),
                                  h('dl', {
@@ -1067,8 +1075,8 @@
       .ivu-table-header {
          border-top: 1px solid #F5F5F5;
       }
-      .ivu-table-wrapper{
-         overflow:visible;
+      .ivu-table-wrapper {
+         overflow: visible;
       }
       /*table 样式 end*/
 
