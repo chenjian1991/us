@@ -210,7 +210,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
                         //   this.$router.push('/home');  
-                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login','','null'];
+                        let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                             this.$router.push('/safeCenter')
                         }else{
@@ -218,7 +218,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
                         }
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login','','null'];
+                        let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                         debugger
                             this.$router.push('/safeCenter')
