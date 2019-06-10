@@ -1144,27 +1144,12 @@
                                     <p class="font-size-14">Jeremy Xue is the Senior VP of Technology of 55. Xue previously founded a cryptocurrency exchange BitChain Exchange and served as Chief Technology Officer. Xue implemented the latest trading platform for the New York Stock Exchange.</p>
                                     </div>
                                     <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/Andrew.jpeg" alt="Image Description">
-                                    </div>
-                                </div>
-                            <!-- End Team -->
-                            </div>
-                            <div class="js-slide px-3">
-                            <!-- Team -->
-                                <div class="row pb-6">
-                                    <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Andrew Bandhini</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Head of Research and Technology Sales</span>
-                                    <p class="font-size-14">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
-                                    </div>
-                                    <div class="col-sm-6">
                                       <img class="img-fluid rounded mx-auto" src="assets/svg/bg/JeremyXue.jpeg" alt="Image Description">
                                     </div>
                                 </div>
                             <!-- End Team -->
                             </div>
-
-                            <div class="js-slide px-3">
+                             <div class="js-slide px-3">
                             <!-- Team -->
                                 <div class="row pb-6">
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
@@ -1178,23 +1163,22 @@
                                 </div>
                             <!-- End Team -->
                             </div>
-
-
                             <div class="js-slide px-3">
                             <!-- Team -->
                                 <div class="row pb-6">
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Geoff Shearer</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Director of Global Marketing</span>
-                                    <p class="font-size-14">Geoff comes to 55 as the Director of Global Marketing and Community. Geoff joins 55 from Crypto Media Group where he oversaw business operations, strategy, and development as Chief Operating Officer.</p>
+                                    <h3 class="h5 mb-4">Andrew Bandhini</h3>
+                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Head of Research and Technology Sales</span>
+                                    <p class="font-size-14">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
                                     </div>
                                     <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_8.jpg" alt="Image Description">
+                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/Andrew.jpeg" alt="Image Description">
                                     </div>
                                 </div>
                             <!-- End Team -->
                             </div>
 
+                           
                         </div>
                         <!-- End Slick Carousel -->
                     </div>
