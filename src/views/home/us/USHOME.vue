@@ -462,8 +462,7 @@
                               </div>
                           <!-- End Authors -->
                         </a>
-                        <a class="js-slide rounded-pill p-2" :href="LoganURL" target="_blank">
-                              <!-- Authors -->
+                        <!-- <a class="js-slide rounded-pill p-2" :href="LoganURL" target="_blank">
                               <div class="media align-items-center">
                                   <div class="d-flex mr-3">
                                   <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
@@ -473,8 +472,7 @@
                                   <p class="small u-slick--pagination-testimonials-v1__text mb-0">CEO of Crypto Media Group</p>
                                   </div>
                               </div>
-                              <!-- End Authors -->
-                        </a>
+                        </a> -->
                         
                         <a class="js-slide rounded-pill p-2" :href="GeoffURL" target="_blank">
                             <!-- Authors -->
@@ -948,19 +946,15 @@
                               </div>
                               <!-- End Blog Grid -->
 
-                              <!-- Blog Grid -->
-                              <div class="js-slide d-flex align-items-start flex-column w-100 bg-white rounded p-5">
-                                  <!-- Info -->
+                              <!-- Blog Grid  Logan-->
+                              <!-- <div class="js-slide d-flex align-items-start flex-column w-100 bg-white rounded p-5">
                                   <h3 class="h5">
                                     <a href="#">Connect people in crypto world!</a>
                                   </h3>
-                                  <!-- <p>GBBO 101?</p> -->
                                   <p>55 Social is a built-in social trading platform that will change the landscape of the trading world.</p>
-                                  <!-- End Info -->
 
                                   <div class="w-100 mt-auto">
                                   <hr>
-                                  <!-- Author -->
                                   <div class="media">
                                       <div class="d-flex mr-3">
                                       <img class="img-fluid u-sm-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
@@ -971,9 +965,8 @@
                                       </h4>
                                       </div>
                                   </div>
-                                  <!-- End Author -->
                                   </div>
-                              </div>
+                              </div> -->
                               <!-- End Blog Grid -->
 
                               <!-- Blog Grid -->
@@ -1146,12 +1139,26 @@
                             <!-- Team -->
                                 <div class="row pb-6">
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Logan Schauer</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">VP of Marketing</span>
-                                    <p class="font-size-14">Logan is the Vice President of Global Marketing at 55. Logan joins 55 from Crypto Media Group, where he was the CEO. Crypto Media Group was a marketing firm providing blockchain visionaries with access to fintech marketing specialists.</p>
+                                    <h3 class="h5 mb-4">Jeremy Xue</h3>
+                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">SVP of Technology</span>
+                                    <p class="font-size-14">Jeremy Xue is the Senior VP of Technology of 55. Xue previously founded a cryptocurrency exchange BitChain Exchange and served as Chief Technology Officer. Xue implemented the latest trading platform for the New York Stock Exchange.</p>
                                     </div>
                                     <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_5.jpg" alt="Image Description">
+                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/Andrew.jpeg" alt="Image Description">
+                                    </div>
+                                </div>
+                            <!-- End Team -->
+                            </div>
+                            <div class="js-slide px-3">
+                            <!-- Team -->
+                                <div class="row pb-6">
+                                    <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+                                    <h3 class="h5 mb-4">Andrew Bandhini</h3>
+                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Head of Research and Technology Sales</span>
+                                    <p class="font-size-14">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/JeremyXue.jpeg" alt="Image Description">
                                     </div>
                                 </div>
                             <!-- End Team -->

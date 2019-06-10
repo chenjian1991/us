@@ -185,7 +185,7 @@
         </a>
         <!-- End Logo -->
         <p class="small text-white"><a style="color:#fff;" target="_blank" href="https://www.55.com/MSB.pdf">MSB No.31000146897405</a> </p>
-        <p class="small text-white">12 East 49th Street,11th floor, New York, NYC 10017</p>
+        <p class="small text-white">2500 Plaza 5, Unit 2553, Jersey City, NJ 07311</p>
         <p class="small text-white">&copy; 2017-2019 55. All rights reserved.</p>
       </div>
       <!-- End Copyright -->
