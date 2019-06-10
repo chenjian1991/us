@@ -462,8 +462,7 @@
                               </div>
                           <!-- End Authors -->
                         </a>
-                        <a class="js-slide rounded-pill p-2" :href="LoganURL" target="_blank">
-                              <!-- Authors -->
+                        <!-- <a class="js-slide rounded-pill p-2" :href="LoganURL" target="_blank">
                               <div class="media align-items-center">
                                   <div class="d-flex mr-3">
                                   <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
@@ -473,8 +472,7 @@
                                   <p class="small u-slick--pagination-testimonials-v1__text mb-0">CEO of Crypto Media Group</p>
                                   </div>
                               </div>
-                              <!-- End Authors -->
-                        </a>
+                        </a> -->
                         
                         <a class="js-slide rounded-pill p-2" :href="GeoffURL" target="_blank">
                             <!-- Authors -->
