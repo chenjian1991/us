@@ -186,13 +186,13 @@
 
 
       </div>
-      <Modal :modal='showModal' :text="text"></Modal>
+      <Modaltips :modal='showModal' :text="text"></Modaltips>
        <Modal
         :mask-closable='false'
         :closable="false"
         v-model="modal1"
         :title="this.$t('safeVerify')"
-        class="passwordPup"
+        class-name="passwordPup"
         @on-ok="okSubmit"
        >
       <Form class="clearfix form_container" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
@@ -644,6 +644,8 @@
                   width: 250px;
                   .ivu-input{
                      height: 40px;
+                     width: 100%;
+                   background-color: #fff;
 
                   }
                }
