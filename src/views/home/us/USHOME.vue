@@ -782,7 +782,7 @@
                         <div class="col-5 px-2 mb-3">
                           <!-- Fancybox -->
                           <a>
-                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/visa.png" alt="Image Description">
+                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/bottomright.jpg" alt="Image Description">
 
                           </a >
                           <!-- End Fancybox -->
