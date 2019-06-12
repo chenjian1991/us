@@ -262,10 +262,8 @@ import { setTimeout } from 'timers';
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
                         let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
-                        debugger
                             this.$router.push('/safeCenter')
                         }else{
-                            debugger
                              this.$router.go(-1)
                         }
 
