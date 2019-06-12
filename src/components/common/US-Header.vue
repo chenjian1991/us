@@ -245,7 +245,7 @@
                         <div class="py-4">
                             <div class="mb-4">
                             <strong class="d-block u-header__banner-v2-title mb-2 text-primary-55">Supreme Token</strong>
-                            <span class="d-block u-header__banner-v2-text">Asset backed token supported by Supreme products</span>
+                            <span class="d-block u-header__banner-v2-text">Tokens redeemable for Supreme products</span>
                             </div>
                             <!-- <button data-v-de088f66="" type="button" class="btn btn-xs btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2"><span><span data-v-de088f66="" class="d-flex mr-3"><span data-v-de088f66=""></span></span><span data-v-de088f66="" class="media-body"><strong data-v-de088f66="" class="font-size-14">Buy Supreme Token</strong></span></span></button> -->
                             <a class="btn btn-sm btn-primary  transition-3d-hover text-white" @click="gotoYEEZY" >Buy Supreme Token <span class="fa fa-angle-right ml-2"></span></a>
