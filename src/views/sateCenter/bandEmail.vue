@@ -126,7 +126,6 @@ import Modal from '@/components/Modal';
                      "codeType":"EMAIL",
                      "email":'',
                      "language":localStorage.getItem('countryLanguage')
-
                 },
                 showModal:false,
                 text:'',

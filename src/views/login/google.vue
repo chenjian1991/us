@@ -109,7 +109,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login','','null'];
+                        let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                             this.$router.push('/safeCenter')
                         }else{
@@ -118,7 +118,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
                         let aa = this.previousRouterName;
-                        let arr = ['resetNewpass','newPassword','activeEmail','Register','login','','null'];
+                        let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                             this.$router.push('/safeCenter')
                         }else{

@@ -60,7 +60,11 @@ import { debuglog } from 'util';
                 if(this.ipCountry=='中国'){
                      this.captchaIns && this.captchaIns.popUp()//弹出人机验证
                 }else{
-                      this.robotModalflag = true;
+                    if(this.ssoEmail||this.tradePassEmail){//不需要人机验证
+
+                    }else{
+                         this.robotModalflag = true;
+                    }
                 }
 
             },

@@ -462,8 +462,7 @@
                               </div>
                           <!-- End Authors -->
                         </a>
-                        <a class="js-slide rounded-pill p-2" :href="LoganURL" target="_blank">
-                              <!-- Authors -->
+                        <!-- <a class="js-slide rounded-pill p-2" :href="LoganURL" target="_blank">
                               <div class="media align-items-center">
                                   <div class="d-flex mr-3">
                                   <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
@@ -473,8 +472,7 @@
                                   <p class="small u-slick--pagination-testimonials-v1__text mb-0">CEO of Crypto Media Group</p>
                                   </div>
                               </div>
-                              <!-- End Authors -->
-                        </a>
+                        </a> -->
                         
                         <a class="js-slide rounded-pill p-2" :href="GeoffURL" target="_blank">
                             <!-- Authors -->
@@ -623,7 +621,7 @@
               <div class="col-lg-5 order-lg-2 mb-9 mb-lg-0">
                 <!-- Description -->
                 <h2 class="font-weight-medium">Asset Token Onboarding</h2>
-                <p>55 has designed and implemented a new generation of issuance and supervision mechanisms known as the Asset Token Onboarding (ATO). ATO is designed to protect the investor’s right to know and will be applied throughout the whole lifecycle of a token from listing to delisting. </p >
+                <p>55 has designed and implemented a new generation of issuance and supervision mechanisms known as the Asset Token Onboarding (ATO). ATO is designed to protect the right to know and will be applied throughout the whole lifecycle of a token from listing to delisting. </p >
                 <!-- End Description -->
 
                 <!-- List -->
@@ -784,7 +782,7 @@
                         <div class="col-5 px-2 mb-3">
                           <!-- Fancybox -->
                           <a>
-                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/visa.png" alt="Image Description">
+                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/new_no_visa.png" alt="Image Description">
 
                           </a >
                           <!-- End Fancybox -->
@@ -948,19 +946,15 @@
                               </div>
                               <!-- End Blog Grid -->
 
-                              <!-- Blog Grid -->
-                              <div class="js-slide d-flex align-items-start flex-column w-100 bg-white rounded p-5">
-                                  <!-- Info -->
+                              <!-- Blog Grid  Logan-->
+                              <!-- <div class="js-slide d-flex align-items-start flex-column w-100 bg-white rounded p-5">
                                   <h3 class="h5">
                                     <a href="#">Connect people in crypto world!</a>
                                   </h3>
-                                  <!-- <p>GBBO 101?</p> -->
                                   <p>55 Social is a built-in social trading platform that will change the landscape of the trading world.</p>
-                                  <!-- End Info -->
 
                                   <div class="w-100 mt-auto">
                                   <hr>
-                                  <!-- Author -->
                                   <div class="media">
                                       <div class="d-flex mr-3">
                                       <img class="img-fluid u-sm-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
@@ -971,9 +965,8 @@
                                       </h4>
                                       </div>
                                   </div>
-                                  <!-- End Author -->
                                   </div>
-                              </div>
+                              </div> -->
                               <!-- End Blog Grid -->
 
                               <!-- Blog Grid -->
@@ -1021,7 +1014,7 @@
                                       </div>
                                       <div class="media-body">
                                       <h4 class="d-inline-block mb-0">
-                                          <a class="d-block font-size-13" href="javascrip:;">Ashu Swami</a>
+                                          <a class="d-block font-size-13" target="_blank" :href="AshuURL">Ashu Swami</a>
                                       </h4>
                                       </div>
                                   </div>
@@ -1146,18 +1139,17 @@
                             <!-- Team -->
                                 <div class="row pb-6">
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Logan Schauer</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">VP of Marketing</span>
-                                    <p class="font-size-14">Logan is the Vice President of Global Marketing at 55. Logan joins 55 from Crypto Media Group, where he was the CEO. Crypto Media Group was a marketing firm providing blockchain visionaries with access to fintech marketing specialists.</p>
+                                    <h3 class="h5 mb-4">Jeremy Xue</h3>
+                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">SVP of Technology</span>
+                                    <p class="font-size-14">Jeremy Xue is the Senior VP of Technology of 55. Xue previously founded a cryptocurrency exchange BitChain Exchange and served as Chief Technology Officer. Xue implemented the latest trading platform for the New York Stock Exchange.</p>
                                     </div>
                                     <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_5.jpg" alt="Image Description">
+                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/JeremyXue.jpeg" alt="Image Description">
                                     </div>
                                 </div>
                             <!-- End Team -->
                             </div>
-
-                            <div class="js-slide px-3">
+                             <div class="js-slide px-3">
                             <!-- Team -->
                                 <div class="row pb-6">
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
@@ -1171,66 +1163,37 @@
                                 </div>
                             <!-- End Team -->
                             </div>
-
-
                             <div class="js-slide px-3">
                             <!-- Team -->
                                 <div class="row pb-6">
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Geoff Shearer</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Director of Global Marketing</span>
-                                    <p class="font-size-14">Geoff comes to 55 as the Director of Global Marketing and Community. Geoff joins 55 from Crypto Media Group where he oversaw business operations, strategy, and development as Chief Operating Officer.</p>
+                                    <h3 class="h5 mb-4">Andrew Bandhini</h3>
+                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Head of Research and Technology Sales</span>
+                                    <p class="font-size-14">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
                                     </div>
                                     <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_8.jpg" alt="Image Description">
+                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/Andrew.jpeg" alt="Image Description">
                                     </div>
                                 </div>
                             <!-- End Team -->
                             </div>
 
+                           
                         </div>
                         <!-- End Slick Carousel -->
                     </div>
             <!-- End Team Section -->
-
+            
             <!-- Features Section 下载APP -->
                 <div style="background:#f6f9fc">
                     <div class="position-relative u-space-3 u-space-4--lg">
-                    <!-- SVG Image Gradient -->
-                      <div class="col-lg-6 u-content-centered-y--lg">
-                        
-
-                        <!-- SVG Phone Mockup -->
-                        <figure class="u-devices-v3">
-                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 317.5 665" style="enable-background:new 0 0 317.5 665;" xml:space="preserve">
-                            <path class="u-fill-white" d="M263,666H54c-29.7,0-54-24.3-54-54V55C0,25.3,24.3,1,54,1h209c29.7,0,54,24.3,54,54v557
-                              C317,641.7,292.7,666,263,666z"></path>
-                            <circle class="u-fill-gray-75" cx="159.5" cy="619.5" r="25.5"></circle>
-                            <path class="u-fill-gray-75" fill-rule="evenodd" clip-rule="evenodd" d="M180,52h-42c-2.2,0-4-1.8-4-4v0c0-2.2,1.8-4,4-4h42c2.2,0,4,1.8,4,4v0C184,50.2,182.2,52,180,52z"></path>
-                            <g>
-                              <defs>
-                                <rect id="phoneFrameID1" x="19.4" y="81.3" width="280" height="500"></rect>
-                              </defs>
-                              <clipPath id="phoneFrameID2">
-                                <use xlink:href="#phoneFrameID1" style="overflow:visible;"></use>
-                              </clipPath>
-                              <g style="clip-path:url(#phoneFrameID2);">
-                                <!-- Apply your (282px width to 500px height) image here -->
-                                <image style="overflow:visible;" width="282" height="500" xlink:href="assets/app@2x.png" transform="matrix(1 0 0 1 18 81)"></image>
-                              </g>
-                              <use class="u-fill-none u-stroke-light-blue-125" xlink:href="#phoneFrameID1" stroke-miterlimit="10" style="overflow: visible;"></use>
-                            </g>
-                          </svg>
-                        </figure>
-                        <!-- End SVG Phone Mockup -->
-                      </div>
-
-                      <div class="container">
+                   <!-- 文案 -->
+                    <div class="container">
                         <div class="row justify-content-lg-end">
                           <div class="col-lg-5">
                             <!-- Title -->
                             <div class="pl-lg-4">
-                              <div class="mb-5">
+                              <div id="power-hands" class="mb-5 hidden-sm">
                                 <h2 class="font-weight-medium">We put power in your hands!</h2>
                                 <p>
                                   All your tokenized assets in one place</br>
@@ -1277,6 +1240,35 @@
                           </div>
                         </div>
                       </div>
+                      
+                    <!-- SVG Image Gradient -->
+                      <div class="col-lg-6 u-content-centered-y--lg">
+                        <!-- SVG Phone Mockup -->
+                        <figure class="u-devices-v3">
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 317.5 665" style="enable-background:new 0 0 317.5 665;" xml:space="preserve">
+                            <path class="u-fill-white" d="M263,666H54c-29.7,0-54-24.3-54-54V55C0,25.3,24.3,1,54,1h209c29.7,0,54,24.3,54,54v557
+                              C317,641.7,292.7,666,263,666z"></path>
+                            <circle class="u-fill-gray-75" cx="159.5" cy="619.5" r="25.5"></circle>
+                            <path class="u-fill-gray-75" fill-rule="evenodd" clip-rule="evenodd" d="M180,52h-42c-2.2,0-4-1.8-4-4v0c0-2.2,1.8-4,4-4h42c2.2,0,4,1.8,4,4v0C184,50.2,182.2,52,180,52z"></path>
+                            <g>
+                              <defs>
+                                <rect id="phoneFrameID1" x="19.4" y="81.3" width="280" height="500"></rect>
+                              </defs>
+                              <clipPath id="phoneFrameID2">
+                                <use xlink:href="#phoneFrameID1" style="overflow:visible;"></use>
+                              </clipPath>
+                              <g style="clip-path:url(#phoneFrameID2);">
+                                <!-- Apply your (282px width to 500px height) image here -->
+                                <image style="overflow:visible;" width="282" height="500" xlink:href="assets/app@2x.png" transform="matrix(1 0 0 1 18 81)"></image>
+                              </g>
+                              <use class="u-fill-none u-stroke-light-blue-125" xlink:href="#phoneFrameID1" stroke-miterlimit="10" style="overflow: visible;"></use>
+                            </g>
+                          </svg>
+                        </figure>
+                        <!-- End SVG Phone Mockup -->
+                      </div>
+
+                      
                     </div>
                 </div>
             <!-- End Features Section -->
@@ -1323,6 +1315,9 @@
                     </div>
                      <div class="js-slide">
                       <img class="u-clients"  src="../../../assets/images/gco_logo.png" alt="Image Description">
+                    </div>
+                     <div class="js-slide">
+                      <img class="u-clients"  src="../../../assets/images/parnter5.png" alt="Image Description">
                     </div>
                     <div class="js-slide">
                       <img class="u-clients" src="assets/svg/logos/parnter/partner-logo3.png" alt="Image Description">
@@ -1391,12 +1386,14 @@
               yeezyCommunityURL:'',
               JasonURL:'',
               LisaURL:'',
+              AshuURL:'',
               LoganURL:'',
               GeoffURL:'',
               DavidURL:'',
               supremeURL:'',
               loginToken:Cookies.get('loginToken'),
               chatToken:'',
+              
             }
         },
         components:{
@@ -1428,6 +1425,7 @@
                       this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
                       this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
                       this.DavidURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
+                      this.AshuURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
                   })
                 }else{
                       this.chatToken = 'null/'
@@ -1442,6 +1440,7 @@
                       this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
                       this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
                       this.DavidURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
+                      this.AshuURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
                 }
             },
             transfer(){
@@ -1669,6 +1668,13 @@
 @media screen and (min-width:320px) and(max-width:970px){
     #gbbo_container{
         display: none;
+    }
+    .u-devices-v3{
+        display: none;
+
+    }
+    #power-hands{
+      // display: none;
     }
 }
 </style>
