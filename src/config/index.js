@@ -42,19 +42,11 @@ export function clearLocalStorage(){
     // window.location.reload();
   }, 100)
 }
-//获取域名的一级域名
-export const getFirstDomain = {
-  '55link.de.com':'55link.de.com',
-  'otc.55link.de.com':'55link.de.com',
-  'us.55link.de.com' : '55link.de.com',
-}
 //种cookies 
 export function setCookies(token){
-  if(getFirstDomain[document.domain]){
-    Cookies.set('loginToken',token,{expires:2,domain:getFirstDomain[document.domain]})
-  }else{
-      Cookies.set('loginToken',token,{expires:2,domain:document.domain.split('.').slice(-2).join('.')})
-  }
+  let index = document.domain.indexOf('.')+1
+  let siteDoamin = document.domain.substr(index)
+  Cookies.set('loginToken',token,{expires:2,domain:siteDoamin})
 }
 
 //币币交易页面聊天服务地址
@@ -77,20 +69,11 @@ export const CHAT_URL = {
  * Header 获取社区链接
  */
 export  function getCommouityBaseURL() {
-  let domain = document.domain
-  if(domain == "55gm.co" || domain == "www.55gm.co" || domain == "us.55gm.co"){
-      return 'https://social.55gm.co/'
-  }else if(domain == "www.test_uat.55.exchange" || domain == "uat.55.com" || domain == "localhost" || domain == "uat.55gm.co" || domain =='uspc.55.exchange' || domain == 'uat.us.55gm.co'){
-      return 'http://47.245.56.224/'
-  }else if(domain == "55.com" || domain == "www.55.com"){
-      return 'https://social.55.com/'
-  }else if(domain == "www.55ex.co" || domain == "55ex.co" || domain == "us.55ex.co"){
-      return 'https://social.55ex.co/'
-  }else if(domain == "www.55link.de.com" || domain == "55link.de.com" || domain == "us.55link.de.com"){
-    return 'https://social.55link.de.com/'
+  var domainArr = document.domain.split('.')
+  domainArr[0] = 'social'
+  if(document.location.port){
+    return document.location.protocol+'//'+domainArr.join('.')+':'+document.location.port
   }else{
-      return 'https://social.55.com/'
+    return document.location.protocol+'//'+domainArr.join('.')
   }
-
-  
 }
