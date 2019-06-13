@@ -15,7 +15,10 @@ export default {
 
 export function clearLocalStorage(){
   setTimeout(function () {
-    Cookies.remove('loginToken',{domain:document.domain.split('.').slice(-2).join('.')})
+    let index = document.domain.indexOf('.')+1
+    let siteDoamin = document.domain.substr(index)
+    Cookies.remove('loginToken',{domain:siteDoamin})
+    
     localStorage.removeItem("ACCOUNT_TOKEN");
     localStorage.removeItem("ORDER_TOKEN");
     localStorage.removeItem("ASSET_TOKEN");
