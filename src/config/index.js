@@ -49,7 +49,6 @@ export function clearLocalStorage(){
 export function setCookies(token){
   let index = document.domain.indexOf('.')+1
   let siteDoamin = document.domain.substr(index)
-  console.log(1111,siteDoamin)
   Cookies.set('loginToken',token,{expires:2,domain:siteDoamin})
 }
 
