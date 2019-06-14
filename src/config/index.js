@@ -75,8 +75,8 @@ export  function getCommouityBaseURL() {
   var domainArr = document.domain.split('.')
   domainArr[0] = 'social'
   if(document.location.port){
-    return document.location.protocol+'//'+domainArr.join('.')+':'+document.location.port
+    return document.location.protocol+'//'+domainArr.join('.')+':'+document.location.port+'/'
   }else{
-    return document.location.protocol+'//'+domainArr.join('.')
+    return document.location.protocol+'//'+domainArr.join('.') + "/"
   }
 }
