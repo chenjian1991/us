@@ -2,7 +2,7 @@
     <!-- ========== MAIN ========== -->
   <main id="content" role="main">
    <!-- Hero Section -->
-    <div class="d-lg-flex align-items-lg-center position-relative min-height-100vh--lg u-bg-img-hero u-space-3 u-space-5-top--md u-space-0--lg" style="background-image: url(assets/svg/bg/img32.jpg);">
+    <div class="d-lg-flex align-items-lg-center position-relative min-height-100vh--lg u-bg-img-hero u-space-3 u-space-5-top--md u-space-0--lg" style="background-image: url(assets/svg/bg/img32.jpeg);">
       <div class="container mt-lg-5">
         <div class="w-lg-35 mb-5">
           <h1 class="display-4 text-white">55 <strong class="font-weight-bold">Asset Network</strong> </h1>
