@@ -18,7 +18,7 @@
                         <FormItem v-if="phoneFlage" class="form_item smsCode" prop='smsCode'>
                             <img src="../../assets/images/register/code.svg" alt="">
                             <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('SMSPlacehodler')"></Input>
-                            <sendBtn   @sendCick= 'sendSMSfun' :empty='empty' :ForgotPhonePassworMessage='ForgotPhonePassworMessage'></sendBtn>
+                            <sendBtn  robotDiv='robotDiv'  @sendCick= 'sendSMSfun' :empty='empty' :ForgotPhonePassworMessage='ForgotPhonePassworMessage'></sendBtn>
                         </FormItem>
                         <!-- 邮箱 -->
                          <FormItem v-if="emailFlage" class="form_item" prop='EmailName'>
@@ -28,7 +28,7 @@
                           <FormItem v-if="emailFlage" class="form_item smsCode" prop='EmailCode'>
                             <img src="../../assets/images/register/code.svg" alt="">
                             <Input :maxlength="6" v-model="formValidate.EmailCode" :placeholder="$t('emialCodePlaceholder')"></Input>
-                            <sendBtn   @sendCick= 'sendSMSfun' :empty='empty' :ForgotEmailPassworMessage='ForgotEmailPassworMessage'></sendBtn>
+                            <sendBtn robotDiv='robotsecondDiv'   @sendCick= 'sendSMSfun' :empty='empty' :ForgotEmailPassworMessage='ForgotEmailPassworMessage'></sendBtn>
                         </FormItem>
                         <!--  google-->
                         <FormItem v-if="isBingGoogle" class="form_item" prop='googleCode'>

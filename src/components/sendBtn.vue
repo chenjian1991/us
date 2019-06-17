@@ -10,7 +10,7 @@
             title="验证"
             :mask-closable="false"
             >
-            <div id="robotDiv"></div>
+            <div :id="robotDiv"></div>
             <p slot="footer"></p>
         </Modal>
     </div>
@@ -32,8 +32,8 @@ import { debuglog } from 'util';
             ForgotPhonePassworMessage:Object,//忘记密码手机发送验证码
             ForgotEmailPassworMessage:Object,//忘记密码邮箱发送验证码
             tradePassPhone:Object,//设置交易密码手机发送验证码
-            tradePassEmail:Object//设置交易密码邮箱发送验证码
-
+            tradePassEmail:Object,//设置交易密码邮箱发送验证码
+            robotDiv:'',
         },
         data() {
             return {
@@ -86,7 +86,7 @@ import { debuglog } from 'util';
             onloadCallback(){//谷歌人机验证方法
                 let _that = this;
                 // console.log("grecaptcha is ready!");
-                let widgetId=grecaptcha.render('robotDiv', {
+                let widgetId=grecaptcha.render(this.robotDiv, {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
                     "size":'normal',
@@ -374,8 +374,7 @@ import { debuglog } from 'util';
         },
         mounted() {
             this.ipQueryFun();
-           
-            // console.log(this.empty)
+            //  console.log('ccc',this.robotDiv)
             if(this.ssoEmail||this.tradePassEmail){
               
             }else{
