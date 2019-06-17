@@ -4,7 +4,7 @@
             <div class="register_wraper">
                 <div class="inner_input_login">
                     <div class="login_title">{{$t('zhmmSetNewPassword')}}</div>
-                     <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
+                     <Form onsubmit="return false;" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='password'>
                             <img src="../../assets/images/register/security.svg" alt="">
                             <Input type="password" v-model="formValidate.password" :placeholder="$t('signPasswordPlaceholder')"></Input>
@@ -13,7 +13,6 @@
                             <img src="../../assets/images/register/password.svg" alt="">
                             <Input type="password" v-model="formValidate.confrimPassword" :placeholder="$t('confirmPasswordPlacehodler')"></Input>
                         </FormItem>
-
                         <Button v-if="loaded"  class="loginbtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('zhmmSetSubmit')}}</Button>
                         <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
 

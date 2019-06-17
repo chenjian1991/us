@@ -4,7 +4,7 @@
             <div class="register_wraper">
                 <div class="inner_input_login">
                     <div class="login_title">{{$t('googleVerify')}}</div>
-                     <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
+                     <Form onsubmit="return false;" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='googleNumber'>
                             <img src="../../assets/images/register/accountnew.svg" alt="">
                             <Input :maxlength="6" v-model="formValidate.googleNumber" :placeholder="$t('goolePlaceholder')"></Input>
@@ -194,9 +194,6 @@ import {getCommouityBaseURL} from '../../config/index.js';
             },
             googleNumberlength(val,oldVal){
                 if(val==6){
-                    debugger
-                    // console.log( this.previousRouterName);
-                    let aa = this.previousRouterName
                     this.handleSubmit('formValidate');
                 }
             }
