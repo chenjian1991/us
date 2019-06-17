@@ -813,7 +813,6 @@ function checkSSOToken(to,next) {
 router.beforeEach((to, from, next) => {
    /* 路由发生变化修改页面title */
     store.commit('CHANGEHISTORYROUTER',from.name);
-   console.log('cc',from.name)
    if (to.meta.title) {
       document.title = i18n.t(to.meta.title)
    }else{
