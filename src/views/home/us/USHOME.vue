@@ -266,8 +266,8 @@
                       <span class="row_right" :class="{up:BTCUSDTWaveArray[2] === 1,down:BTCUSDTWaveArray[2] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[2]*USDTUSDD).toFixed(2):"-"}}</span>
                     </div>
                     <div class="row">
-                      <span class="row_left"  :class="{up:BTCUSDTWaveArray[6] === 1,down:BTCUSDTWaveArray[6] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]*USDTUSDD).toFixed(2): "-"}}</span>
-                      <span class="row_right" :class="{up:BTCUSDTWaveArray[4] === 1,down:BTCUSDTWaveArray[4] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]*USDTUSDD).toFixed(2): "-"}}</span>
+                      <span class="row_left"  :class="{up:BTCUSDTWaveArray[6] === 1,down:BTCUSDTWaveArray[6] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]*USDTUSDD).toFixed(2): "-"}}</span>
+                      <span class="row_right" :class="{up:BTCUSDTWaveArray[4] === 1,down:BTCUSDTWaveArray[4] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]*USDTUSDD).toFixed(2): "-"}}</span>
                     </div>
                     <div class="row">
                       <span class="row_left"  :class="{up:BTCUSDTWaveArray[8] === 1,down:BTCUSDTWaveArray[8] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[0]*USDTUSDD).toFixed(2): "-"}}</span>

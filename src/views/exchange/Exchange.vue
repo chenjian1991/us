@@ -846,18 +846,26 @@
             },
             //交易对的交易历史列表
             updateSymbolHistory() {
-                if(this.SSEHistory){
-                    this.SSEHistory.close()
+                if(this.WSHistory){
+                    this.WSHistory.close()
                      //清空交易历史
                     this.tradeHistoryArr = []
                 }
-                let baseURL = window.location.protocol+'//'+window.location.host
-                this.SSEHistory = new EventSource(`${baseURL}/quote/realTime.stream?symbol=${this.currentSymbol}&${this.currentSymbol}_least=22`)
-                this.SSEHistory.onopen = function(e) {
+                const baseURL =  (window.location.protocol == 'http:') ? 'ws://' : 'wss://';
+                const host =  window.location.host;
+                this.WSHistory = new ReconnectingWebSocket(`${baseURL}${host}/quote/realTime.ws?symbol=${this.currentSymbol}&${this.currentSymbol}_least=22`)
+                this.WSHistory.onopen = function(e) {
+                    // console.log('his open')
                 };
-                this.SSEHistory.addEventListener('_RESULT', (e) =>{
+                this.WSHistory.onmessage = (e) =>{
                     //每次推送一条记录
                     let result = JSON.parse(e.data)
+                    if (result.ping != undefined) {
+                        var pongResponse = {};
+                        pongResponse.pong = result.ping;
+                        this.WSHistory.send(JSON.stringify(pongResponse))
+                        return;
+                    }
                     let arr = this.tradeHistoryArr
                     let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
                     let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
@@ -886,14 +894,15 @@
                         arr.unshift(obj)
                     }
                     this.tradeHistoryArr = arr
-                })
-                this.SSEHistory.addEventListener('_ERROR', (e) => {
-
-                })
-                this.SSEHistory.onerror = (e) => {
-                    
+                }
+                this.WSHistory.onerror= (e) => {
+                    // console.log('history ws error')
+                }
+                this.WSHistory.onclose = (e) => {
+                    // console.log('history ws colose')
                 };
             },
+
             //展示最新的交易资产行情信息
             //v symbol 行情合并后的对象
             showCurrentPriceInfo(v) {
@@ -1078,22 +1087,29 @@
             //获取推送行情
             getSSERealTime(url) {
                 let SSEcache = null
-                let baseURL = window.location.protocol+'//'+window.location.host
-                
-                this.SSEsource = new EventSource(`${baseURL}/quote/realTime.stream?${url}`)
-                this.SSEsource.onopen = function(e) {
+                const baseURL =  (window.location.protocol == 'http:') ? 'ws://' : 'wss://';
+                const host =  window.location.host;
+                this.quoteWS = new ReconnectingWebSocket(`${baseURL}${host}/quote/realTime.ws?${url}`)
+                this.quoteWS.onopen = (e) => {
+                    // console.log(111,e, this.quoteWS.readyState)
                     // console.log("行情推送连接已经建立：", this.readyState);
                 };
-                this.SSEsource.addEventListener('_RESULT', (e) =>{
+                this.quoteWS.onmessage = (e) =>{
                     //每次推送一条记录
                     let result = JSON.parse(e.data)
+                    if (result.ping != undefined) {
+                        var pongResponse = {};
+                        pongResponse.pong = result.ping;
+                        this.quoteWS.send(JSON.stringify(pongResponse))
+                        return;
+                    }
                     allNowPriceObject[result.symbol] = result
                     //快照去重
                     if(SSEcache && SSEcache.dateTime == result.dateTime && SSEcache.volume == result.volume){
                         return;
                     }else{
                         let v = {} //快照的涨跌幅
-                        if (result) {
+                        if (result && this.symbolList_quote[result.symbol]) {
                             let long = getDecimalsNum(this.symbolList_quote[result.symbol].priceTickSize)
                             let diff = '';
                             let a = '';
@@ -1128,37 +1144,37 @@
                             if (this.currentSymbol == result.symbol ) {
                                 this.currentSymbolObj = Object.assign(result,v,this.symbolList_quote[result.symbol])
                                 this.showCurrentPriceInfo(this.currentSymbolObj)
-                                this.getCurrencyData()
                             }
+                            this.getCurrencyData()
                         }
                         //处理币种列表行情
-                        let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
-                        let siteType = this.symbolList_quote[result.symbol].siteType[0]
-                        // console.log('SSE event',siteType,this.symbolListSelf)
-                        this.symbolListSelf[siteType][quoteAsset] && this.symbolListSelf[siteType][quoteAsset].map((item,i)=>{
-                            if(item.symbol===result.symbol){
-                                this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v,item,result)
-                                return
-                            }
-                        })
-                        //板块部分双向绑定
-                        this.symbolListSelf = Object.assign({},this.symbolListSelf)
-                        //处理当前
-                        SSEcache = result
+                        if(this.symbolList_quote[result.symbol]){
+                            let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
+                            let siteType = this.symbolList_quote[result.symbol].siteType[0]
+                            // console.log('SSE event',siteType,this.symbolListSelf)
+                            this.symbolListSelf[siteType][quoteAsset].map((item,i)=>{
+                                if(item.symbol===result.symbol){
+                                    this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v,item,result)
+                                    return
+                                }
+                            })
+                            //计算法币估值
+                            //板块部分双向绑定
+                            this.symbolListSelf = Object.assign({},this.symbolListSelf)
+                            //处理当前
+                            SSEcache = result
+                        }
                     }
-                })
-                this.SSEsource.addEventListener('_ERROR', (e) => {
-                    console.log('触发了_ERROR,重新请求=====>')
-                    this.getSymbolListRealtimeData()
-                })
-                this.SSEsource.onerror = (e) => {
-                    console.log('tv推送连接断开')
-                    setTimeout(() =>{
-                        // this.SSEsource = new EventSource(`${baseURL}/quote/realTime.stream?${url}`)
-                        this.getSymbolListRealtimeData()
-                    },3000)
+                }
+                this.quoteWS.onerror = (e) => {
+                    // console.log('exchange ws error')
+                }
+                //关闭时候触发
+                this.quoteWS.onclose = (e) => {
+                    // console.log('exchange ws close===')
                 };
             },
+            
             //**********************组装处理盘口展示数据 */
             getClickBuyPrice(price,count){
                 if(price){
