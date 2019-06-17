@@ -147,13 +147,13 @@ export default {
                 this.getInviteCode();
             },
             gotoLogin(){
-                window.location.href='https://m.55link.de.com/#/login?from=atoInivteplus'
+                window.location.href='https://m.55link.de.com/#/login?fromWhere=atoInivteplus'
             },
             joinTelegram(){
                   if(Cookies.get('loginToken')){//登陆了
                          window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
                   }else{
-                       window.location.href='https://m.55link.de.com/#/login?from=atoInivteplus'
+                       window.location.href='https://m.55link.de.com/#/login?fromWhere=atoInivteplus'
                   }
             },
              getInviteCode() {
@@ -164,7 +164,7 @@ export default {
                             if(data.data.code){
                                 if(data.data.code='10013'){
                                     this.$Message.success(this.$t('10013'));
-                                    window.location.href='https://m.55link.de.com/#/login?from=atoInivteplus';
+                                    window.location.href='https://m.55link.de.com/#/login?fromWhere=atoInivteplus';
                                 }else{
                                     this.$Message.success(this.$t(data.data.code));
                                 }
