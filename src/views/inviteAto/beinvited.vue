@@ -94,7 +94,7 @@ export default {
         },
         methods:{
             register(){
-                window.location.href='https://m.55link.de.com/#/phoneRegister?from=bevited&invite_code='+this.invitedCode;
+                window.location.href='https://m.55link.de.com/#/phoneRegister?fromWhere=bevited&invite_code='+this.invitedCode;
             },
             // joinTelegram(){
             //      window.open('https://social.55link.de.com/groups/profile/973135123669061637/feed')
@@ -107,7 +107,7 @@ export default {
                                 if(data.data.code='10013'){
                                   this.$Message.success(this.$t('10013'));
                                   setTimeout(() => {
-                                       window.location.href='https://m.55link.de.com/#/login?from=inviteATO';
+                                       window.location.href='https://m.55link.de.com/#/login?fromWhere=inviteATO';
                                   }, 2000);
                                 }else{
                                     this.$Message.success(this.$t(data.data.code));
