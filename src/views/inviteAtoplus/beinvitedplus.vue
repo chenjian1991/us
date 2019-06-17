@@ -94,7 +94,7 @@ export default {
         },
         methods:{
             register(){
-                window.location.href='https://m.55link.de.com/#/phoneRegister?from=bevited&invite_code='+this.invitedCode;
+                window.location.href='https://m.55link.de.com/#/phoneRegister?fromWhere=bevited&invite_code='+this.invitedCode;
 
             },
             joinTelegram(){
