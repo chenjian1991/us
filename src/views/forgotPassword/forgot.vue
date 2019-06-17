@@ -7,7 +7,7 @@
                         <h2>{{$t('zhmmResetPassword')}}</h2>
                         <p>{{$t('zhmmResetExplain')}}</p>
                     </div>
-                     <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
+                     <Form onsubmit="return false;" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='phoneNumber'>
                             <img src="../../assets/images/register/accountnew.svg" alt="">
                             <Input v-model="formValidate.phoneNumber" :placeholder="$t('zhmmInputAccount')"></Input>

@@ -7,7 +7,7 @@
                     <p>{{$t('zhmmSecurityExplain')}}</p>
                 </div>
                 <div  class="inner_input inner_input_login">
-                    <Form v-if="phoneFlage" ref="formValidateDisable" :model='formValidateDisable' :rules='ruleValidate'>
+                    <Form onsubmit="return false;" v-if="phoneFlage" ref="formValidateDisable" :model='formValidateDisable' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='phoneNumber'>
                             <img src="../../assets/images/register/accountnew.svg" alt="">
                             <Input :disabled="true"  type="text"  :maxlength="30" v-model="formValidateDisable.phoneNumber"  :placeholder="$t('phonePlacehodler')"></Input>
