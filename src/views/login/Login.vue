@@ -184,9 +184,15 @@ import { setTimeout } from 'timers';
                               this.paramsObj = params;
                              this.captchaIns && this.captchaIns.popUp()
                          }else{
-                            //  console.log('外国')
-                            this.paramsObj = params;
-                            this.robotModalflag = true;
+                             let test = document.domain;
+                             if(test.indexOf('localhost')||test.indexOf('test')){
+                                this.paramsObj = params;
+                                this.captchaIns && this.captchaIns.popUp()
+                             }else{
+                                 this.paramsObj = params;
+                                this.robotModalflag = true;
+                             }
+                            
                          }
                         }).catch((error)=>{
                                 this.$Message.error('server error')
