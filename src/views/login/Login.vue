@@ -185,7 +185,7 @@ import { setTimeout } from 'timers';
                              this.captchaIns && this.captchaIns.popUp()
                          }else{
                              let test = document.domain;
-                             if(test.indexOf('localhost')||test.indexOf('test')){
+                             if(test.indexOf('localhost')||test.indexOf('test')){//如果是本地或者是测试地址就用网易的验证
                                 this.paramsObj = params;
                                 this.captchaIns && this.captchaIns.popUp()
                              }else{
