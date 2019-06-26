@@ -1468,7 +1468,6 @@
             },
             initConnect(){
               const domain = document.domain;
-              console.log(domain)
               if(domain.startsWith('www.') || domain.startsWith('us.')){
                 let socket = new SockJS('https://'+ domain +'/xchange/marketdata');
                 this.stompClient = Stomp.over(socket);

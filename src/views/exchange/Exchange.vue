@@ -48,6 +48,7 @@
                                                         <Icon type="ios-star" color="#12869A" size="14" v-if="v.marked" @click.stop="addMarkCoin(v,key,false)"/>
                                                         <Icon type="ios-star" color="#374853" size="14" v-else @click.stop="addMarkCoin(v,key,true)"/>
                                                         {{v.baseAsset}}
+                                                        <i class="gbbo-img" v-if="v.symbol==='BTCUSD'"></i>
                                                     </div>
                                                     <div class="priceItme">{{v.last?v.last:'--'  | scientificToNumber}}</div>
                                                     <div class="priceItme redText" v-if="v.showColor == -1">{{v.percent || '--'}}</div>
@@ -547,6 +548,8 @@
     import PasswordInput from '@/components/PasswordInput.vue'
     import CHAT from '@/components/exchange/CHAT.vue'
     import TVChartContainer from '@/components/KLine/TVChartContainer.vue'
+    import SockJS from  'sockjs-client';  
+    import  Stomp from 'stompjs';
     import _ from 'lodash'
     import moment, { isMoment } from 'moment'
     import Cookies from 'js-cookie'
@@ -644,6 +647,8 @@
                 isShowStockPage:false, //股票通证详情页入口
                 //隐藏已撤单
                 hideCancleOrder:false,
+                //GBBO业务相关
+                stompClient:null,
 
             }
         },
@@ -1074,6 +1079,31 @@
                             this.getDethTableData()
                     },3000)
                 })
+            },
+            //获取GBBO盘口深度
+            getGBBODepth(){
+                if(!this.stompClient){
+                    const domain = document.domain;
+                    if(domain.startsWith('www.') || domain.startsWith('us.')){
+                        let socket = new SockJS('https://'+ domain +'/xchange/marketdata');
+                        this.stompClient = Stomp.over(socket);
+                        this.stompClient.debug = null
+                    }else {
+                        let socket = new SockJS('https://www.55gm.co/xchange/marketdata');
+                        this.stompClient = Stomp.over(socket);
+                        this.stompClient.debug = null
+                    }
+                }
+                 this.stompClient.connect({}, (frame)=> {
+                    this.stompClient.subscribe('/topic/orderbook/BTCUSDT/HUOBI',(message) => {
+                        console.log(111,JSON.parse(message.body))
+                    });
+                },(error)=>{
+                    console.log('erroro')
+                });
+            },
+            connection(symbol) {
+               
             },
             //获取推送行情
             getSSERealTime(url) {
@@ -1927,6 +1957,8 @@
 
             //行情相关的交易对>>>>>>
             this.getSymbolListRealtimeData();
+
+            this.getGBBODepth();
             
         },
         mounted() {
