@@ -2123,7 +2123,7 @@
         beforeDestroy() {
             this.stompClient.disconnect(function() {
                 })
-            this.stompClient = nullzan
+            this.stompClient = null
             //关闭SSE行情推送
             this.SSEsource && this.SSEsource.close();
             this.SSE_order && this.SSE_order.close();
