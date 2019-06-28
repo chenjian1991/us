@@ -1136,16 +1136,16 @@
             },
             //获取GBBO盘口深度
             getGBBODepth(){
-                const domain = document.domain;
-                if(domain.startsWith('www.') || domain.startsWith('us.')){
-                    let socket = new SockJS('https://'+ domain +'/xchange/marketdata');
-                    this.stompClient = Stomp.over(socket);
-                    this.stompClient.debug = null
-                }else {
+                // const domain = document.domain;
+                // if(domain.startsWith('www.') || domain.startsWith('us.')){
+                //     let socket = new SockJS('https://'+ domain +'/xchange/marketdata');
+                //     this.stompClient = Stomp.over(socket);
+                //     this.stompClient.debug = null
+                // }else {
+                //     }
                     let socket = new SockJS('https://www.55gm.co/xchange/marketdata');
                     this.stompClient = Stomp.over(socket);
                     this.stompClient.debug = null
-                }
 
                  this.stompClient.connect({}, (frame)=> {
                     this.stompClient.subscribe('/topic/orderbook/BTCUSD/COINBASEPRO',(message) => {
