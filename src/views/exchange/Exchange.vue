@@ -169,6 +169,7 @@
                                                         <span  v-else>--</span>&nbsp;
                                                         <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
                                                 </div>
+                                            {{bestSellPrice}}
                                             <div class="trade-msg">
                                                 <div class="price-box">
                                                     <div class="price-box-label">
@@ -1187,14 +1188,14 @@
                      this.gbbo_asksArr = [...sortedMapAsk.entries()]
                      if(!this.buyLock){
                          this.bestSellPrice = [...sortedMapAsk.entries()][0][0]
-                         this.buyPriceInput = this.bestSellPrice
-                         this.$refs.buyInput.value = this.bestSellPrice
+                        //  this.buyPriceInput = this.bestSellPrice
+                        //  this.$refs.buyInput.value = this.bestSellPrice
                      }
                      this.gbbo_bidsArr = [...sortedMapBid.entries()]
                      if(!this.sellLock){
                          this.bestSellPrice = [...sortedMapBid.entries()][0][0]
-                          this.sellPriceInput = this.bestSellPrice
-                         this.$refs.sellInput.value = this.bestSellPrice
+                        //  this.sellPriceInput = this.bestSellPrice
+                        //  this.$refs.sellInput.value = this.bestSellPrice
                      }
             },
             //获取推送行情
