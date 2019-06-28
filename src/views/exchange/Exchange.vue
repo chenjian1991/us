@@ -704,7 +704,7 @@
                     this.isGBBO= false
                     if(this.stompClient){
                         this.stompClient.disconnect(function() {
-                            console.log("See you next time!");
+                            // console.log("See you next time!");
                             // this.stompClient = null
                         })
                     }
@@ -1140,7 +1140,6 @@
 
                  this.stompClient.connect({}, (frame)=> {
                     this.stompClient.subscribe('/topic/orderbook/BTCUSD/COINBASEPRO',(message) => {
-                        console.log(JSON.parse(message.body))
                        this.sortOrderBook(JSON.parse(message.body))
                     });
                     this.stompClient.subscribe('/topic/orderbook/BTCUSD/KRAKEN',(message) => {
