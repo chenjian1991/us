@@ -486,7 +486,6 @@
                         // this.iframeURL = `${CHAT_URL.baseURL}${this.chatToken}/`+encodeURIComponent(`${CHAT_URL.englishURL}`)
                         //社区链接
                         this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
-                        console.log(1111,this.ethCommunityURL )
                         this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
                         this.socialURL =  getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken
                     })
