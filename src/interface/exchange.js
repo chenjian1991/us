@@ -21,6 +21,7 @@ import {
    getCreateOrderId,
    getCreatePasswordToken,
    getCreateOrder,
+   getCreateGBBOOrder,
    getFilled,
    //挖矿
    getQueryRewardFilledBuyBrief,
@@ -413,6 +414,29 @@ Exchange.prototype.createNewOrder = function (orderInfo,userpassword, fn, errorF
       _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
          _this.getOrderTicket(function (_orderId) {
             getCreateOrder({"session": _orderSession}, {
+               "accountId": _accountId,
+               "orderId": _orderId,
+               "orderInfo": orderInfo
+            }).then(
+               data => {
+                  fn(data)
+               }
+            ).catch(data => {
+               errorFn(data)
+            })
+         })
+      })
+   })
+};
+Exchange.prototype.createGBBOOrder = function (orderInfo,userpassword, fn, errorFn) {
+   var _this = this;
+   if(userpassword){
+      _this.userPassWord = userpassword
+   }
+   _this.getAccountId(function (_accountId) {
+      _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
+         _this.getOrderTicket(function (_orderId) {
+            getCreateGBBOOrder({"session": _orderSession}, {
                "accountId": _accountId,
                "orderId": _orderId,
                "orderInfo": orderInfo
