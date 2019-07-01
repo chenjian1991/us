@@ -48,7 +48,7 @@
                                                         <Icon type="ios-star" color="#12869A" size="14" v-if="v.marked" @click.stop="addMarkCoin(v,key,false)"/>
                                                         <Icon type="ios-star" color="#374853" size="14" v-else @click.stop="addMarkCoin(v,key,true)"/>
                                                         {{v.baseAsset}}
-                                                        <i class="gbbo-img" v-if="v.symbol==='BTCUSD'"></i>
+                                                        <i class="gbbo-img" v-if="v.symbol==='ETHBTC'"></i>
                                                     </div>
                                                     <div class="priceItme">{{v.last?v.last:'--'  | scientificToNumber}}</div>
                                                     <div class="priceItme redText" v-if="v.showColor == -1">{{v.percent || '--'}}</div>
@@ -169,7 +169,13 @@
                                                         <span  v-else>--</span>&nbsp;
                                                         <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
                                                 </div>
-                                            {{bestSellPrice}}
+                                                <div v-if="isGBBO" class="gbboPrice">
+                                                    <span>Buy at best price</span>
+                                                    <span class="logobox">
+                                                        <i :class="buy_exchange_logo" ></i>
+                                                        {{bestSellPrice}} {{currentInfo.quoteAsset}}
+                                                    </span>
+                                                </div>
                                             <div class="trade-msg">
                                                 <div class="price-box">
                                                     <div class="price-box-label">
@@ -179,8 +185,17 @@
                                                     <div class="input_container">
                                                         <div class="inputbox">
                                                             <input  @input="handleBuyPriceInput" type="text" ref="buyInput" maxlength="14" :class="{'input-empty-color':buyPriceEmpty}"  class="input-price" autocomplete="off"  style="ime-mode:disabled"   ondragenter="return false">
-                                                            <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                                                            <div class="currencyInput"> ≈ {{buyPriceCurrency | scientificToNumber}} {{currencyName}}</div>
+                                                            <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div><i v-if="isGBBO" :class="[buy_input_change?'gbbo_unlock':'gbbo_lock']"/>
+                                                            <div class="currencyInput" v-if="!isGBBO"> ≈ {{buyPriceCurrency | scientificToNumber}} {{currencyName}}</div>
+                                                            <div class="currencyInput" v-else>
+                                                                <span v-if="buy_input_change">limit price</span>
+                                                                <div v-else>
+                                                                    Best Price From 55 Prime Routing 
+                                                                    <Tooltip placement="top" max-width="400" content="55 prime routing routes your order to the exchange with the best price" >
+                                                                        <Icon type="md-help-circle"/>
+                                                                    </Tooltip>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="inputbox">
                                                             <input  @input="handleBuyCountInput" type="text" maxlength="14" ref="buyCountInputRef" :class="{'input-empty-color':buyCountEmpty}"  class="input-num" autocomplete="off"  style="ime-mode:disabled"   ondragenter="return false">
@@ -240,6 +255,13 @@
                                                         <span  v-else>--</span>&nbsp;
                                                         <span class="baseAsset">{{currentInfo.baseAsset}}</span>
                                                 </div>
+                                                <div v-if="isGBBO" class="gbboPrice">
+                                                    <span>Sell at best price</span>
+                                                    <span class="logobox">
+                                                        <i :class="sell_exchange_logo" ></i>
+                                                        {{bestBuyPrice}} {{currentInfo.baseAsset}}
+                                                    </span>
+                                                </div>
                                             <div class="trade-msg">
                                                 <div class="price-box">
                                                     <div class="price-box-label">
@@ -254,7 +276,17 @@
                                                                 ondragenter="return false"
                                                             />
                                                             <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                                                            <div class="currencyInput"> ≈ {{sellPriceCurrency | scientificToNumber}} {{currencyName}}</div>
+                                                            <i v-if="isGBBO" :class="[sell_input_change?'gbbo_unlock':'gbbo_lock']"/>
+                                                            <div class="currencyInput" v-if="!isGBBO"> ≈ {{sellPriceCurrency | scientificToNumber}} {{currencyName}}</div>
+                                                            <div class="currencyInput" v-else>
+                                                                <span v-if="sell_input_change">limit price</span>
+                                                                <div v-else>
+                                                                    Best Price From 55 Prime Routing 
+                                                                    <Tooltip placement="top" max-width="400" content="55 prime routing routes your order to the exchange with the best price" >
+                                                                        <Icon type="md-help-circle"/>
+                                                                    </Tooltip>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="inputbox">
                                                             <input  @input="handleSellCountInput" type="text" ref="sellCountInputRef"  maxlength="14" :class="{'input-empty-color':sellCountEmpty}" class="input-price"
@@ -384,9 +416,16 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="current">
+                                <div class="current" v-if="!isGBBO">
                                     <span class="current-price pointer" :class="[currentSymbolObj.showColor == -1?'redText':'greenText']" @click="getClickPrice(currentSymbolObj.last)">{{this.currentSymbolObj.last | scientificToNumber}}</span>
                                     <span class="currencyRate"> ≈ {{symbolCurrency | scientificToNumber}} {{currencyName}}</span>
+                                </div>
+                                <div class="current gbboDethBoard" v-else>
+                                    <div>
+                                        <span>{{subNumber}}</span>
+                                        <span class="costMoney"> {{currentInfo.quoteAsset}} ≈ {{GBBO_rate}}{{currencyName}}</span>
+                                    </div>
+                                    <span v-if="isShowARB">ARB</span>
                                 </div>
                                 <div class="sell-buy-orders">
                                     <ul class="orders-body buy-orders-body" v-if="!isGBBO">
@@ -671,10 +710,15 @@
                 stompClient:null,
                 gbbo_asksArr:[],
                 gbbo_bidsArr:[],
-                bestSellPrice:'',
-                bestBuyPrice:'',
-                buyLock:false,//关
-                sellLock:false,
+                bestSellPrice:null,
+                bestBuyPrice:null,
+                subNumber:0,//差值
+                isShowARB:false,
+                GBBO_rate:0,
+                sell_exchange_logo:'',
+                buy_exchange_logo:'',
+                buy_input_change:false,//是否输入
+                sell_input_change:false,
 
             }
         },
@@ -702,7 +746,7 @@
                     }
                 })
                 //是否是GBBO
-                if(v.symbol == 'BTCUSD'){
+                if(v.symbol == 'ETHBTC'){
                     this.isGBBO = true
                     this.getGBBODepth()
                 }else{
@@ -1093,7 +1137,7 @@
                     if(this.currentSymbolObj){
                         this.getCoinInfoLinks(this.currentSymbolObj.baseAsset)
                         this.isInitPage = true
-                         if(this.currentSymbol == 'BTCUSD'){
+                         if(this.currentSymbol == 'ETHBTC'){
                             this.isGBBO = true
                             this.getGBBODepth()
                         }else{
@@ -1144,16 +1188,16 @@
                     this.stompClient.debug = null
 
                  this.stompClient.connect({}, (frame)=> {
-                    this.stompClient.subscribe('/topic/orderbook/BTCUSD/COINBASEPRO',(message) => {
+                    this.stompClient.subscribe('/topic/orderbook/ETHBTC/COINBASEPRO',(message) => {
                        this.sortOrderBook(JSON.parse(message.body))
                     });
-                    this.stompClient.subscribe('/topic/orderbook/BTCUSD/KRAKEN',(message) => {
+                    this.stompClient.subscribe('/topic/orderbook/ETHBTC/KRAKEN',(message) => {
                         this.sortOrderBook(JSON.parse(message.body))
                     });
-                    this.stompClient.subscribe('/topic/orderbook/BTCUSD/GEMINI',(message) => {
+                    this.stompClient.subscribe('/topic/orderbook/ETHBTC/GEMINI',(message) => {
                         this.sortOrderBook(JSON.parse(message.body))
                     });
-                    this.stompClient.subscribe('/topic/orderbook/BTCUSD/BITTREX',(message) => {
+                    this.stompClient.subscribe('/topic/orderbook/ETHBTC/BITTREX',(message) => {
                         this.sortOrderBook(JSON.parse(message.body))
                     });
                 },(error)=>{
@@ -1161,6 +1205,8 @@
                 });
             },
             sortOrderBook(data) {
+                    let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
+                    let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
                     const tempEntryAskArray = [...askPriceLevelVenueMap.entries()].filter((entry) => {
                         return entry[1].provider !== data.provider;
                     });
@@ -1186,16 +1232,29 @@
                     askPriceLevelVenueMap = sortedMapAsk;
                     bidPriceLevelVenueMap = sortedMapBid;
                      this.gbbo_asksArr = [...sortedMapAsk.entries()]
-                     if(!this.buyLock){
-                         this.bestSellPrice = [...sortedMapAsk.entries()][0][0]
-                        //  this.buyPriceInput = this.bestSellPrice
-                        //  this.$refs.buyInput.value = this.bestSellPrice
+                     if(!this.buy_input_change){
+                         this.bestSellPrice = [...askPriceLevelVenueMap.entries()].sort()[0][0]
+                         this.buy_exchange_logo = [...askPriceLevelVenueMap.entries()].sort()[0][1].provider
+                        //  console.log(111,this.bestSellPrice)
+                         this.buyPriceInput = this.bestSellPrice
+                         this.$refs.buyInput.value = this.bestSellPrice
                      }
                      this.gbbo_bidsArr = [...sortedMapBid.entries()]
-                     if(!this.sellLock){
-                         this.bestSellPrice = [...sortedMapBid.entries()][0][0]
-                        //  this.sellPriceInput = this.bestSellPrice
-                        //  this.$refs.sellInput.value = this.bestSellPrice
+                     if(!this.sell_input_change){
+                         this.bestBuyPrice = [...sortedMapBid.entries()][0][0]
+                         this.sell_exchange_logo = [...sortedMapBid.entries()][0][1].provider // 交易所logo
+                            //  console.log(111,this.bestBuyPrice)
+                         this.sellPriceInput = this.bestBuyPrice
+                         this.$refs.sellInput.value = this.bestBuyPrice
+
+                     }
+                     var diff = this.bestSellPrice - this.bestBuyPrice
+                     this.subNumber = bigDecimal.round(Math.abs(diff),priceLong)
+                     this.GBBO_rate = bigDecimal.round(new BigNumber(this.subNumber) * new BigNumber(this.currencyRate),4)
+                     if(diff<0){
+                         this.showARB = true
+                     }else{
+                         this.showARB = false
                      }
             },
             //获取推送行情
@@ -1396,6 +1455,8 @@
                 if(!this.symbolList[this.currentSymbol]){
                     return 
                 }
+                //GBBO 锁图标打开
+                this.buy_input_change = true
                 //重置为空样式
                this.buyPriceEmpty = false
                let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
@@ -1417,6 +1478,8 @@
                 if(!this.symbolList[this.currentSymbol]){
                     return 
                 }
+                //GBBO 锁图标打开
+                this.sell_input_change = true
                 //重置为空样式
                 this.sellPriceEmpty = false
                 let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
@@ -2020,6 +2083,7 @@
                 }
             },
             buyPriceInput:function(newV,oldV){ //监听下单输入价格 计算法币估值
+                if(this.isGBBO) return //GBBO交易对下面不估值
                 if(this.currentSymbolObj.quoteAsset == 'USDT' || this.currentSymbolObj.quoteAsset == 'USDD' || this.currentSymbolObj.quoteAsset == 'USD'){
                     this.buyPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.currencyRate),4)
                 }else{
@@ -2029,6 +2093,7 @@
                 }
             },
             sellPriceInput:function(newV,oldV){ //监听下单卖出价格 计算法币估值
+                if(this.isGBBO) return
                 if(this.currentSymbolObj.quoteAsset == 'USDT' || this.currentSymbolObj.quoteAsset == 'USDD' || this.currentSymbolObj.quoteAsset == 'USD'){
                     this.sellPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.currencyRate),4)
                 }else{
@@ -2082,6 +2147,11 @@
                         return item
                     }
                 })
+            }
+        },
+        filters:{
+            abs:function (value) {
+                return Math.abs(value)
             }
         },
         beforeMount(){
