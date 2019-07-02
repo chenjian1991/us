@@ -425,7 +425,7 @@
                                         <span>{{subNumber}}</span>
                                         <span class="costMoney"> {{currentInfo.quoteAsset}} ≈ {{GBBO_rate}}{{currencyName}}</span>
                                     </div>
-                                    <span v-if="isShowARB">ARB</span>
+                                    <span>{{isShowARB}}</span>
                                 </div>
                                 <div class="sell-buy-orders">
                                     <ul class="orders-body buy-orders-body" v-if="!isGBBO">
@@ -713,7 +713,7 @@
                 bestSellPrice:null,
                 bestBuyPrice:null,
                 subNumber:0,//差值
-                isShowARB:false,
+                isShowARB:'SPREAD',
                 GBBO_rate:0,
                 sell_exchange_logo:'',
                 buy_exchange_logo:'',
@@ -1262,9 +1262,9 @@
                      this.subNumber = bigDecimal.round(Math.abs(diff),priceLong)
                      this.GBBO_rate = bigDecimal.round(new BigNumber(this.subNumber) * new BigNumber(this.currencyRate),4)
                      if(diff<0){
-                         this.showARB = true
+                         this.isShowARB = "ARB"
                      }else{
-                         this.showARB = false
+                         this.isShowARB = "SPREAD"
                      }
             },
             //获取推送行情
