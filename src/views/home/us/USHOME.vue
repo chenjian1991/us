@@ -616,15 +616,12 @@
                 </div> -->
             <!-- yezi end -->
           <!-- ATO -->
-          <div class="container u-space-3" id="atoRow">
+          <!-- <div class="container u-space-3" id="atoRow">
             <div class="row justify-content-lg-between align-items-lg-center">
               <div class="col-lg-5 order-lg-2 mb-9 mb-lg-0">
-                <!-- Description -->
                 <h2 class="font-weight-medium">Asset Token Onboarding</h2>
                 <p>55 has designed and implemented a new generation of issuance and supervision mechanisms known as the Asset Token Onboarding (ATO). ATO is designed to protect the right to know and will be applied throughout the whole lifecycle of a token from listing to delisting. </p >
-                <!-- End Description -->
 
-                <!-- List -->
                 <ul class="list-unstyled text-secondary">
                   <li class="media my-3">
                     <div class="d-flex mt-1 mr-2">
@@ -651,7 +648,6 @@
                     </div>
                   </li>
                 </ul>
-                <!-- End List -->
                 </br>
                 For ATO, please send email to 
                 <a  href="mailto:ato@55.com">
@@ -668,7 +664,7 @@
 
               </div>
             </div>
-          </div>
+          </div> -->
         <!-- End ATO -->   
             <!-- supreme start -->
              <!-- <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
@@ -718,7 +714,7 @@
             <!-- supreme end -->
 
             <!-- Front in Frames Section -->
-           <div style="background:#f6f9fc" id="55card">
+           <div style="background:#fff" id="55card">
                 <div class="container u-space-3 " >
                   <div class="row justify-content-between align-items-center">
                     <div class="col-lg-5 mb-7 mb-lg-0">
@@ -806,37 +802,23 @@
             <!-- End Front in Frames Section -->
 
             <!-- Subscribe Section transfer 国际汇款-->
-                <div class="position-relative u-gradient-half-primary-v1 u-space-3-top u-space-3-bottom" style="background-image: url(assets/svg/bg/transfer_bg.jpg);" >
+                <!-- <div class="position-relative u-gradient-half-primary-v1 u-space-3-top u-space-3-bottom" style="background-image: url(assets/svg/bg/transfer_bg.jpg);" >
                   <div class="container">
                     <div class="row justify-content-md-center">
                       <div class="col-md-12 col-lg-12 col-xl-12">
-                        <!-- Title -->
                         <div class="text-center mb-4">
                           <h2 class="h1 text-white font-weight-normal">Transfer Bitcoin to a bank account with no hassle</h2>
                           <p class="lead u-text-light">You can now convert your BTC or other major cryptocurrencies to fiat and send to a bank account with a few clicks.</p>
                         </div>
-                        <!-- End Title -->
 
                        
                       </div>
 
                       <div class="col-xl-2 d-none d-xl-inline-block mt-auto mb-7">
                         <div class="position-relative p-3">
-                          <!-- <p class="small u-text-light mb-0">Be the lucky user to earn <span class="text-white font-weight-bold">$1000</span> bonus now!</p> -->
-
-                          <!-- SVG Shape -->
-                          <!-- <figure class="position-absolute-top-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                viewBox="0 0 254 204.2" style="enable-background:new 0 0 254 204.2;" xml:space="preserve">
-                              <path class="u-fill-none u-stroke-white" opacity=".5" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="10" d="M0.5,171V6.5c0-3.3,3.3-6,7.3-6h238.6c3.9,0,7.1,2.6,7.1,5.8v164c0,3.6-3.5,6.5-7.9,6.5H61.4
-                                c-3,0-5.6,1.4-6.8,3.7l-22,22.6l-0.2-22.4c-1.1-2.3-3.8-3.9-6.8-3.9H7.6C3.7,176.8,0.5,174.2,0.5,171z"/>
-                            </svg>
-                          </figure> -->
-                          <!-- End SVG Shape -->
                         </div>
                       </div>
                     </div>
-                     <!-- Form -->
                         <form class="js-validate js-form-message mb-2">
                           <div class="js-focus-state input-group input-group-lg u-form u-form--lg u-form--white-brd">
                             <div class="row align-items-md-center u-space-1 m-auto">
@@ -864,7 +846,6 @@
                                     <option value="more to come">more to come</option>
                                   </select>
                                 </div>
-                                 <!-- End Language -->
                                 <div class="input-group-append u-form__append">
                                   <div  class="btn btn-warning u-btn-wide" @click="transfer">Withdraw Now</div>
                                 </div>
@@ -872,11 +853,10 @@
                            
                           </div>
                         </form>
-                        <!-- End Form -->
                   </div>
 
                
-                </div>
+                </div> -->
             <!-- End Subscribe Section -->
 
                
