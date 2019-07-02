@@ -185,7 +185,7 @@
                                                     <div class="input_container">
                                                         <div class="inputbox">
                                                             <input  @input="handleBuyPriceInput" type="text" ref="buyInput" maxlength="14" :class="{'input-empty-color':buyPriceEmpty}"  class="input-price" autocomplete="off"  style="ime-mode:disabled"   ondragenter="return false">
-                                                            <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div><i v-if="isGBBO" :class="[buy_input_change?'gbbo_unlock':'gbbo_lock']"/>
+                                                            <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div><i v-if="isGBBO" :class="[buy_input_change?'gbbo_lock':'gbbo_unlock']"/>
                                                             <div class="currencyInput" v-if="!isGBBO"> ≈ {{buyPriceCurrency | scientificToNumber}} {{currencyName}}</div>
                                                             <div class="currencyInput" v-else>
                                                                 <span v-if="buy_input_change">limit price</span>
@@ -276,7 +276,7 @@
                                                                 ondragenter="return false"
                                                             />
                                                             <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                                                            <i v-if="isGBBO" :class="[sell_input_change?'gbbo_unlock':'gbbo_lock']"/>
+                                                            <i v-if="isGBBO" :class="[sell_input_change?'gbbo_lock':'gbbo_unlock']"/>
                                                             <div class="currencyInput" v-if="!isGBBO"> ≈ {{sellPriceCurrency | scientificToNumber}} {{currencyName}}</div>
                                                             <div class="currencyInput" v-else>
                                                                 <span v-if="sell_input_change">limit price</span>
@@ -660,7 +660,7 @@
                 asksArr:[],
                 //****交易相关 */
                 exchange:null,//交易接口函数
-                loginToken:'',//登陆token
+                loginToken:Cookies.get('loginToken'),//登陆token
                 // ***** 买入 卖出 ******//
                 FFDeductible:0,//1 开启手续费折扣 2.FF余额低 3.手续费折扣中
                 commissionTemplateId:false,//开启折扣开关 true 开启
@@ -760,6 +760,8 @@
                      //更新盘口深度
                     this.getDethTableData();
                 }
+                this.buy_input_change = false
+                this.sell_input_change = false
                  //清空盘口深度
                 this.bidsArr = []
                 this.asksArr = []
@@ -1025,7 +1027,7 @@
             //获取交易对 下单专用
             getSymbolListData() {
                 getSymbolList().then(res => {
-                    this.loginToken = Cookies.get('loginToken')
+                    // this.loginToken = Cookies.get('loginToken')
                     if(this.$store.state.app.isLogin || this.loginToken){
                         this.isLogin = true
                     }
@@ -1776,23 +1778,44 @@
                 }else if (this.$store.state.exchange.inputTradePassWordStatus){
                     //需要输入密码
                     if (getValue("ORDER_SESSION")) {
-                        this.exchange.createNewOrder({
-                            "symbol": this.currentSymbol,
-                            "orderType": "LIMIT",
-                            "orderSide": this.orderType,
-                            "quantity": this.buyCountInput,
-                            "limitPrice": this.buyPriceInput
-                        },null, (data)=> {
-                            this.buyDisabled = false
-                            this.$Notice.success({
-                                title: this.$t('tsTips'),
-                                desc:this.$t('bbjyOrderSuccess'),
-                            });
-                        },
-                           (data)=> {
-                                this.buyDisabled = false;
-                            }
-                        );
+                        if(this.isGBBO){
+                            this.exchange.createGBBOOrder({
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.buyCountInput,
+                                "limitPrice": this.buyPriceInput
+                            },null, (data)=> {
+                                this.buyDisabled = false
+                                this.$Notice.success({
+                                    title: this.$t('tsTips'),
+                                    desc:this.$t('bbjyOrderSuccess'),
+                                });
+                            },
+                               (data)=> {
+                                    this.buyDisabled = false;
+                                }
+                            );
+                        }else{
+                            this.exchange.createNewOrder({
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.buyCountInput,
+                                "limitPrice": this.buyPriceInput
+                            },null, (data)=> {
+                                this.buyDisabled = false
+                                this.$Notice.success({
+                                    title: this.$t('tsTips'),
+                                    desc:this.$t('bbjyOrderSuccess'),
+                                });
+                            },
+                               (data)=> {
+                                    this.buyDisabled = false;
+                                }
+                            );
+
+                        }
                     } else {
                          this.openPassWordPage();
                     }
@@ -1889,27 +1912,51 @@
                     //需要输入交易密码
                     if (getValue("ORDER_SESSION")) {
                         this.sellDisabled = true;
-                        this.exchange.createNewOrder({
-                            "symbol": this.currentSymbol,
-                            "orderType": "LIMIT",
-                            "orderSide": this.orderType,
-                            "quantity": this.sellCountInput,
-                            "limitPrice": this.sellPriceInput
-                        },
-                        null,
-                        (data) =>{
-                            // orderComplete();
-                            this.sellDisabled = false;
-                            this.$Notice.success({
-                                title: this.$t('tsTips'),
-                                desc: this.$t('bbjyOrderSuccess'),
-                            });
-                        },
-                        (data)=> {
-                            this.sellDisabled = false;
-                            
+                        if(this.isGBBO){
+                            this.exchange.createGBBOOrder({
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.sellCountInput,
+                                "limitPrice": this.sellPriceInput
+                            },
+                            null,
+                            (data) =>{
+                                // orderComplete();
+                                this.sellDisabled = false;
+                                this.$Notice.success({
+                                    title: this.$t('tsTips'),
+                                    desc: this.$t('bbjyOrderSuccess'),
+                                });
+                            },
+                            (data)=> {
+                                this.sellDisabled = false;
+                                
+                            }
+                            );
+                        }else{
+                            this.exchange.createNewOrder({
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.sellCountInput,
+                                "limitPrice": this.sellPriceInput
+                            },
+                            null,
+                            (data) =>{
+                                // orderComplete();
+                                this.sellDisabled = false;
+                                this.$Notice.success({
+                                    title: this.$t('tsTips'),
+                                    desc: this.$t('bbjyOrderSuccess'),
+                                });
+                            },
+                            (data)=> {
+                                this.sellDisabled = false;
+                                
+                            }
+                            );
                         }
-                        );
                     } else {
                         this.openPassWordPage();
                     }
