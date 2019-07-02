@@ -635,7 +635,7 @@
                 symbolList: {},//交易接口的symbolList 接口
                 symbolList_quote:{},//行情快照需要的symboList
                 symbolListSelf: {},
-                SSEsource: null,
+                quoteWS: null,
                 noPadding: '--',
                 // currentQuoteCoin: 0, //选中的计价资产
                 quoteCoinList: {}, //计价资产
@@ -945,9 +945,8 @@
                 const host =  window.location.host;
                 this.WSHistory = new ReconnectingWebSocket(`${baseURL}${host}/quote/realTime.ws?symbol=${this.currentSymbol}&${this.currentSymbol}_least=22`)
                 this.WSHistory.onopen = function(e) {
-                    // console.log('his open')
                 };
-                this.WSHistory.onmessage = (e) =>{
+                this.WSHistory.onmessage = (e) => {
                     //每次推送一条记录
                     let result = JSON.parse(e.data)
                     if (result.ping != undefined) {
@@ -986,10 +985,10 @@
                     this.tradeHistoryArr = arr
                 }
                 this.WSHistory.onerror= (e) => {
-                    // console.log('history ws error')
+                    console.log('history ws error')
                 }
                 this.WSHistory.onclose = (e) => {
-                    // console.log('history ws colose')
+                    console.log('history ws colose')
                 };
             },
 
@@ -1268,6 +1267,7 @@
             },
             //获取推送行情
             getSSERealTime(url) {
+
                 let SSEcache = null
                 const baseURL =  (window.location.protocol == 'http:') ? 'ws://' : 'wss://';
                 const host =  window.location.host;
@@ -1276,6 +1276,13 @@
                     // console.log(111,e, this.quoteWS.readyState)
                     // console.log("行情推送连接已经建立：", this.readyState);
                 };
+                /* let SSEcache = null
+                let baseURL = window.location.protocol+'//'+window.location.host
+                
+                this.SSEsource = new EventSource(`${baseURL}/quote/realTime.stream?${url}`)
+                this.SSEsource.onopen = function(e) {
+                    // console.log("行情推送连接已经建立：", this.readyState);
+                }; */
                 this.quoteWS.onmessage = (e) =>{
                     //每次推送一条记录
                     let result = JSON.parse(e.data)
@@ -1349,12 +1356,13 @@
                     }
                 }
                 this.quoteWS.onerror = (e) => {
-                    // console.log('exchange ws error')
+                    console.log('exchange ws error')
                 }
                 //关闭时候触发
                 this.quoteWS.onclose = (e) => {
-                    // console.log('exchange ws close===')
+                    console.log('exchange ws close===')
                 };
+
             },
             
             //**********************组装处理盘口展示数据 */
@@ -2226,7 +2234,7 @@
                 })
             this.stompClient = null
             //关闭SSE行情推送
-            this.SSEsource && this.SSEsource.close();
+            this.quoteWS && this.quoteWS.close();
             this.SSE_order && this.SSE_order.close();
             this.SSEHistory && this.SSEHistory.close();
 

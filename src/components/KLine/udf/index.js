@@ -283,43 +283,50 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 Datafeeds.UDFCompatibleDatafeed.prototype.subscribeBars = function(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback) {
     let SSEcache = null
     let url= ''
-    let baseURL = window.location.protocol+'//'+window.location.host
+    const baseURL =  (window.location.protocol == 'http:') ? 'ws://' : 'wss://';
+    const host =  window.location.host;
     switch (resolution) {
         case "1":
-            url = `${baseURL}/quote/summarized.stream?symbol=${symbolInfo.description}&interval=MINUTE_1`
+            url = `${baseURL}${host}/quote/summarized.ws?symbol=${symbolInfo.description}&interval=MINUTE_1`
             break;
         case "60":
-            url = `${baseURL}/quote/summarized.stream?symbol=${symbolInfo.description}&interval=HOUR_1`
+            url = `${baseURL}${host}/quote/summarized.ws?symbol=${symbolInfo.description}&interval=HOUR_1`
             break;
         case "120":
-            url = `${baseURL}/quote/summarized.stream?symbol=${symbolInfo.description}&interval=HOUR_2`
+            url = `${baseURL}${host}/quote/summarized.ws?symbol=${symbolInfo.description}&interval=HOUR_2`
             break;
         case "240":
-            url = `${baseURL}/quote/summarized.stream?symbol=${symbolInfo.description}&interval=HOUR_4`
+            url = `${baseURL}${host}/quote/summarized.ws?symbol=${symbolInfo.description}&interval=HOUR_4`
             break;
         case "360":
-            url = `${baseURL}/quote/summarized.stream?symbol=${symbolInfo.description}&interval=HOUR_6`
+            url = `${baseURL}${host}/quote/summarized.ws?symbol=${symbolInfo.description}&interval=HOUR_6`
             break;
         case "480":
-            url = `${baseURL}/quote/summarized.stream?symbol=${symbolInfo.description}&interval=HOUR_8`
+            url = `${baseURL}${host}/quote/summarized.ws?symbol=${symbolInfo.description}&interval=HOUR_8`
             break;
         case "720":
-            url = `${baseURL}/quote/summarized.stream?symbol=${symbolInfo.description}&interval=HOUR_12`
+            url = `${baseURL}${host}/quote/summarized.ws?symbol=${symbolInfo.description}&interval=HOUR_12`
             break;       
         case "D":
-            url = `${baseURL}/quote/historical.stream?symbol=${symbolInfo.description}&interval=DAY`
+            url = `${baseURL}${host}/quote/historical.ws?symbol=${symbolInfo.description}&interval=DAY`
             break;
         default:
             break;
     }
     KlineSSE && KlineSSE.close()
-    KlineSSE = new EventSource(url)
+    KlineSSE = new ReconnectingWebSocket(url)
     KlineSSE.onopen = function(e) {
         //  console.log("K线行情推送连接已经建立：", this.readyState);
     };
-    KlineSSE.addEventListener('_RESULT', function(e) {
+    KlineSSE.onmessage = (e) => {
         //每次推送一条记录
         let data = JSON.parse(e.data)
+        if (data.ping != undefined) {
+            var pongResponse = {};
+            pongResponse.pong = data.ping;
+            KlineSSE.send(JSON.stringify(pongResponse))
+            return;
+        }
             //快照去重
         if(SSEcache && SSEcache.dateTime == data.dateTime && SSEcache.volume == data.volume){
             return;
@@ -335,11 +342,11 @@ Datafeeds.UDFCompatibleDatafeed.prototype.subscribeBars = function(symbolInfo, r
             SSEcache = lastK
             onRealtimeCallback(lastK)
         }
-    }.bind(this))
+    }
 
-    KlineSSE.onerror = function (event) {
+    KlineSSE.onerror = (event) => {
         setTimeout(function(){
-            KlineSSE = new EventSource(url)
+            KlineSSE = new ReconnectingWebSocket(url)
         }.bind(this),3000)
     };
 }
