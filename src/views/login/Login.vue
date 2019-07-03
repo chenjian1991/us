@@ -194,6 +194,10 @@ import { setTimeout } from 'timers';
                              }
                             
                          }
+                            //  console.log('外国')
+                            this.paramsObj = params;
+                            this.robotModalflag = true;
+                         } */
                         }).catch((error)=>{
                                 this.$Message.error('server error')
                         })
