@@ -48,6 +48,7 @@
                                                         <Icon type="ios-star" color="#12869A" size="14" v-if="v.marked" @click.stop="addMarkCoin(v,key,false)"/>
                                                         <Icon type="ios-star" color="#374853" size="14" v-else @click.stop="addMarkCoin(v,key,true)"/>
                                                         {{v.baseAsset}}
+                                                        <i class="gbbo-img" v-if="v.symbol==='BTCUSDD'"></i>
                                                     </div>
                                                     <div class="priceItme">{{v.last?v.last:'--'  | scientificToNumber}}</div>
                                                     <div class="priceItme redText" v-if="v.showColor == -1">{{v.percent || '--'}}</div>
@@ -168,6 +169,13 @@
                                                         <span  v-else>--</span>&nbsp;
                                                         <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
                                                 </div>
+                                                <div v-if="isGBBO" class="gbboPrice">
+                                                    <span>Buy at best price</span>
+                                                    <span class="logobox">
+                                                        <i :class="buy_exchange_logo" ></i>
+                                                        {{bestSellPrice}} {{currentInfo.quoteAsset}}
+                                                    </span>
+                                                </div>
                                             <div class="trade-msg">
                                                 <div class="price-box">
                                                     <div class="price-box-label">
@@ -177,8 +185,17 @@
                                                     <div class="input_container">
                                                         <div class="inputbox">
                                                             <input  @input="handleBuyPriceInput" type="text" ref="buyInput" maxlength="14" :class="{'input-empty-color':buyPriceEmpty}"  class="input-price" autocomplete="off"  style="ime-mode:disabled"   ondragenter="return false">
-                                                            <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                                                            <div class="currencyInput"> ≈ {{buyPriceCurrency | scientificToNumber}} {{currencyName}}</div>
+                                                            <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div><i v-if="isGBBO" :class="[buy_input_change?'gbbo_lock':'gbbo_unlock']"/>
+                                                            <div class="currencyInput" v-if="!isGBBO"> ≈ {{buyPriceCurrency | scientificToNumber}} {{currencyName}}</div>
+                                                            <div class="currencyInput" v-else>
+                                                                <span v-if="buy_input_change">limit price</span>
+                                                                <div v-else>
+                                                                    Best Price From 55 Prime Routing 
+                                                                    <Tooltip placement="top" max-width="400" content="55 prime routing routes your order to the exchange with the best price" >
+                                                                        <Icon type="md-help-circle"/>
+                                                                    </Tooltip>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="inputbox">
                                                             <input  @input="handleBuyCountInput" type="text" maxlength="14" ref="buyCountInputRef" :class="{'input-empty-color':buyCountEmpty}"  class="input-num" autocomplete="off"  style="ime-mode:disabled"   ondragenter="return false">
@@ -238,6 +255,13 @@
                                                         <span  v-else>--</span>&nbsp;
                                                         <span class="baseAsset">{{currentInfo.baseAsset}}</span>
                                                 </div>
+                                                <div v-if="isGBBO" class="gbboPrice">
+                                                    <span>Sell at best price</span>
+                                                    <span class="logobox">
+                                                        <i :class="sell_exchange_logo" ></i>
+                                                        {{bestBuyPrice}} {{currentInfo.baseAsset}}
+                                                    </span>
+                                                </div>
                                             <div class="trade-msg">
                                                 <div class="price-box">
                                                     <div class="price-box-label">
@@ -252,7 +276,17 @@
                                                                 ondragenter="return false"
                                                             />
                                                             <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                                                            <div class="currencyInput"> ≈ {{sellPriceCurrency | scientificToNumber}} {{currencyName}}</div>
+                                                            <i v-if="isGBBO" :class="[sell_input_change?'gbbo_lock':'gbbo_unlock']"/>
+                                                            <div class="currencyInput" v-if="!isGBBO"> ≈ {{sellPriceCurrency | scientificToNumber}} {{currencyName}}</div>
+                                                            <div class="currencyInput" v-else>
+                                                                <span v-if="sell_input_change">limit price</span>
+                                                                <div v-else>
+                                                                    Best Price From 55 Prime Routing 
+                                                                    <Tooltip placement="top" max-width="400" content="55 prime routing routes your order to the exchange with the best price" >
+                                                                        <Icon type="md-help-circle"/>
+                                                                    </Tooltip>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="inputbox">
                                                             <input  @input="handleSellCountInput" type="text" ref="sellCountInputRef"  maxlength="14" :class="{'input-empty-color':sellCountEmpty}" class="input-price"
@@ -364,8 +398,8 @@
                                 </li>
                             </ul>
                             <div class="order-book-content">
-                                <div class="sell-buy-orders">
-                                    <ul class="orders-body sell-orders-body"  ref="buyOrderContainer">
+                                <div class="sell-buy-orders" >
+                                    <ul class="orders-body sell-orders-body"  ref="buyOrderContainer" v-if="!isGBBO">
                                         <li v-for="v in asksArr" @click="getClickSellPrice(v.price,v.quantity)">
                                             <span class=" redText pointer">{{v.price}}</span>
                                             <span>{{v.quantity}}</span>
@@ -373,18 +407,41 @@
                                             <b class="sell-order-color" :style="{width:v.width+'px'}"></b>
                                         </li>
                                     </ul>
+                                    <ul class="orders-body sell-orders-body"  ref="buyOrderContainer" v-else>
+                                        <li v-for="v in gbbo_asksArr" @click="getClickSellPrice(v[0],v[1].qty)">
+                                            <span class=" redText pointer">{{v[0]}}</span>
+                                            <span>{{v[1].qty}}</span>
+                                            <span>{{v[1].provider}}</span>
+                                            <!-- <b class="sell-order-color" :style="{width:v.width+'px'}"></b> -->
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="current">
+                                <div class="current" v-if="!isGBBO">
                                     <span class="current-price pointer" :class="[currentSymbolObj.showColor == -1?'redText':'greenText']" @click="getClickPrice(currentSymbolObj.last)">{{this.currentSymbolObj.last | scientificToNumber}}</span>
                                     <span class="currencyRate"> ≈ {{symbolCurrency | scientificToNumber}} {{currencyName}}</span>
                                 </div>
+                                <div class="current gbboDethBoard" v-else>
+                                    <div>
+                                        <span>{{subNumber}}</span>
+                                        <span class="costMoney"> {{currentInfo.quoteAsset}} ≈ {{GBBO_rate}}{{currencyName}}</span>
+                                    </div>
+                                    <span>{{isShowARB}}</span>
+                                </div>
                                 <div class="sell-buy-orders">
-                                    <ul class="orders-body buy-orders-body">
+                                    <ul class="orders-body buy-orders-body" v-if="!isGBBO">
                                         <li v-for="v in bidsArr" @click="getClickBuyPrice(v.price,v.quantity)">
                                             <span class="greenText">{{v.price}}</span>
                                             <span>{{v.quantity}}</span>
                                             <span>{{v.total}}</span>
                                             <b class="buy-order-color" :style="{width:v.width+'px'}"></b>
+                                        </li>
+                                    </ul>
+                                    <ul class="orders-body buy-orders-body" v-else>
+                                        <li v-for="v in gbbo_bidsArr" @click="getClickBuyPrice(v[0],v[1].qty)">
+                                            <span class="greenText">{{v[0]}}</span>
+                                            <span>{{v[1].qty}}</span>
+                                            <span>{{v[1].provider}}</span>
+                                            <!-- <b class="buy-order-color" :style="{width:v.width+'px'}"></b> -->
                                         </li>
                                     </ul>
                                 </div>
@@ -547,12 +604,16 @@
     import PasswordInput from '@/components/PasswordInput.vue'
     import CHAT from '@/components/exchange/CHAT.vue'
     import TVChartContainer from '@/components/KLine/TVChartContainer.vue'
+    import SockJS from  'sockjs-client';  
+    import  Stomp from 'stompjs';
     import _ from 'lodash'
     import moment, { isMoment } from 'moment'
     import Cookies from 'js-cookie'
     import bigDecimal from 'js-big-decimal' //除法失效
     import {BigNumber} from 'bignumber.js';
     let allNowPriceObject = {}//所有币种快照的最新价格的对象
+    let askPriceLevelVenueMap = new Map();
+    let bidPriceLevelVenueMap = new Map();
     export default {
         data() {
             return {
@@ -599,7 +660,7 @@
                 asksArr:[],
                 //****交易相关 */
                 exchange:null,//交易接口函数
-                loginToken:'',//登陆token
+                loginToken:Cookies.get('loginToken'),//登陆token
                 // ***** 买入 卖出 ******//
                 FFDeductible:0,//1 开启手续费折扣 2.FF余额低 3.手续费折扣中
                 commissionTemplateId:false,//开启折扣开关 true 开启
@@ -644,6 +705,20 @@
                 isShowStockPage:false, //股票通证详情页入口
                 //隐藏已撤单
                 hideCancleOrder:false,
+                //GBBO业务相关
+                isGBBO:false,
+                stompClient:null,
+                gbbo_asksArr:[],
+                gbbo_bidsArr:[],
+                bestSellPrice:null,
+                bestBuyPrice:null,
+                subNumber:0,//差值
+                isShowARB:'SPREAD',
+                GBBO_rate:0,
+                sell_exchange_logo:'',
+                buy_exchange_logo:'',
+                buy_input_change:false,//是否输入
+                sell_input_change:false,
 
             }
         },
@@ -670,6 +745,23 @@
                         // symbol:''
                     }
                 })
+                //是否是GBBO
+                if(v.symbol == 'BTCUSDD'){
+                    this.isGBBO = true
+                    this.getGBBODepth()
+                }else{
+                    this.isGBBO= false
+                    if(this.stompClient){
+                        this.stompClient.disconnect(function() {
+                            // console.log("See you next time!");
+                            // this.stompClient = null
+                        })
+                    }
+                     //更新盘口深度
+                    this.getDethTableData();
+                }
+                this.buy_input_change = false
+                this.sell_input_change = false
                  //清空盘口深度
                 this.bidsArr = []
                 this.asksArr = []
@@ -687,8 +779,7 @@
                 this.sellDisabled = false
                 //更新交易历史 传入v 获取精度
                 this.updateSymbolHistory()
-                //更新盘口深度
-                this.getDethTableData();
+               
                 //刷新可用资产
                 this.getMyAssetData();
                 //判断是否展示交易蒙层
@@ -720,6 +811,7 @@
                 }else{
                     this.isShowStockPage = false
                 }
+                
             },
              getFilterList: function (rows) {
                 return rows.filter((row)=> {
@@ -907,6 +999,7 @@
             },
             //处理法币估值
             getCurrencyData(){
+                // debugger;
                 if(!this.currentSymbolObj){
                     return
                 }
@@ -920,8 +1013,9 @@
                     this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(this.currencyRate),4)
                 }else if(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDT"] || allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"]){
                     //是否存在 计价资产/USDT的交易对
-                    if(allNowPriceObject[this.currentSymbol].last && allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDT"].last){
-                        this.currentSymbolRate = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDT"].last),4)
+                    // console.log(222,allNowPriceObject[this.currentSymbol],allNowPriceObject[this.currentSymbol].last,allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"].last)
+                    if(allNowPriceObject[this.currentSymbol] && allNowPriceObject[this.currentSymbol].last && allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"].last){
+                        this.currentSymbolRate = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"].last),4)
                         this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolRate) * new BigNumber(this.currencyRate),4)
                     }
                 }
@@ -933,7 +1027,7 @@
             //获取交易对 下单专用
             getSymbolListData() {
                 getSymbolList().then(res => {
-                    this.loginToken = Cookies.get('loginToken')
+                    // this.loginToken = Cookies.get('loginToken')
                     if(this.$store.state.app.isLogin || this.loginToken){
                         this.isLogin = true
                     }
@@ -967,7 +1061,7 @@
                     sortArr.map((v, i) => {
                         v.siteType.map((site,i) => {
                             if(site=='B'){
-                                if(v.quoteAsset=='BTC'||v.quoteAsset=='ETH' || v.quoteAsset=='USD'){
+                                if(v.quoteAsset=='BTC'||v.quoteAsset=='ETH' || v.quoteAsset=='USD'|| v.quoteAsset=='USDD'){
                                     if(v.baseAsset=='BTC'||v.baseAsset=='LTC'||v.baseAsset=='ETH'||v.baseAsset=='XLM'){
                                         // v 每个站
                                         if (siteObj[site]) {
@@ -1039,13 +1133,20 @@
                         this.currentSymbol =  sortArr[0].symbol //默认排序后的第一个交易对
                         this.currentSymbolObj = sortArr[0]
                     }
+                   
                     //K线基本数据配置使用
                     storage.set('currentSymbolObj',this.currentSymbolObj)
                     if(this.currentSymbolObj){
                         this.getCoinInfoLinks(this.currentSymbolObj.baseAsset)
                         this.isInitPage = true
-                         // //盘口深度轮询查询
-                        this.getDethTableData()
+                         if(this.currentSymbol == 'BTCUSDD'){
+                            this.isGBBO = true
+                            this.getGBBODepth()
+                        }else{
+                            this.isGBBO = false
+                            // //盘口深度轮询查询
+                           this.getDethTableData()
+                        }
                         //获取我的可用资产 1分钟轮询一次
                         this.getMyAssetData();
                     }
@@ -1074,6 +1175,89 @@
                             this.getDethTableData()
                     },3000)
                 })
+            },
+            //获取GBBO盘口深度
+            getGBBODepth(){
+                // const domain = document.domain;
+                // if(domain.startsWith('www.') || domain.startsWith('us.')){
+                //     let socket = new SockJS('https://'+ domain +'/xchange/marketdata');
+                //     this.stompClient = Stomp.over(socket);
+                //     this.stompClient.debug = null
+                // }else {
+                //     }
+                    let socket = new SockJS('https://www.55gm.co/xchange/marketdata');
+                    this.stompClient = Stomp.over(socket);
+                    this.stompClient.debug = null
+
+                 this.stompClient.connect({}, (frame)=> {
+                    this.stompClient.subscribe('/topic/orderbook/BTCUSDD/COINBASEPRO',(message) => {
+                       this.sortOrderBook(JSON.parse(message.body))
+                    });
+                    this.stompClient.subscribe('/topic/orderbook/BTCUSDD/KRAKEN',(message) => {
+                        this.sortOrderBook(JSON.parse(message.body))
+                    });
+                    this.stompClient.subscribe('/topic/orderbook/BTCUSDD/GEMINI',(message) => {
+                        this.sortOrderBook(JSON.parse(message.body))
+                    });
+                    this.stompClient.subscribe('/topic/orderbook/BTCUSDD/BITTREX',(message) => {
+                        this.sortOrderBook(JSON.parse(message.body))
+                    });
+                },(error)=>{
+                    console.log('erroro')
+                });
+            },
+            sortOrderBook(data) {
+                    let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
+                    let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
+                    const tempEntryAskArray = [...askPriceLevelVenueMap.entries()].filter((entry) => {
+                        return entry[1].provider !== data.provider;
+                    });
+
+                    const tempEntryBidArray = [...bidPriceLevelVenueMap.entries()].filter((entry) => {
+                        return entry[1].provider !== data.provider;
+                    });
+
+                    askPriceLevelVenueMap = new Map(tempEntryAskArray);
+                    bidPriceLevelVenueMap = new Map(tempEntryBidArray);
+
+                    data.asks.forEach(priceLevel => {
+                        askPriceLevelVenueMap.set(priceLevel.priceWithFee , {  qty: priceLevel.qty  , provider: data.provider }  );
+                    });
+
+                    data.bids.forEach(priceLevel => {
+                        bidPriceLevelVenueMap.set(priceLevel.priceWithFee , {  qty: priceLevel.qty  , provider: data.provider });
+                    });
+
+                    const sortedMapAsk = new Map([...askPriceLevelVenueMap.entries()].sort().reverse().slice(0, 20));
+                    const sortedMapBid = new Map([...bidPriceLevelVenueMap.entries()].sort().reverse().slice(0, 20));
+
+                    askPriceLevelVenueMap = sortedMapAsk;
+                    bidPriceLevelVenueMap = sortedMapBid;
+                     this.gbbo_asksArr = [...sortedMapAsk.entries()]
+                     if(!this.buy_input_change){
+                         this.bestSellPrice = [...askPriceLevelVenueMap.entries()].sort()[0][0]
+                         this.buy_exchange_logo = [...askPriceLevelVenueMap.entries()].sort()[0][1].provider
+                        //  console.log(111,this.bestSellPrice)
+                         this.buyPriceInput = this.bestSellPrice
+                         this.$refs.buyInput.value = this.bestSellPrice
+                     }
+                     this.gbbo_bidsArr = [...sortedMapBid.entries()]
+                     if(!this.sell_input_change){
+                         this.bestBuyPrice = [...sortedMapBid.entries()][0][0]
+                         this.sell_exchange_logo = [...sortedMapBid.entries()][0][1].provider // 交易所logo
+                            //  console.log(111,this.bestBuyPrice)
+                         this.sellPriceInput = this.bestBuyPrice
+                         this.$refs.sellInput.value = this.bestBuyPrice
+
+                     }
+                     var diff = this.bestSellPrice - this.bestBuyPrice
+                     this.subNumber = bigDecimal.round(Math.abs(diff),priceLong)
+                     this.GBBO_rate = bigDecimal.round(new BigNumber(this.subNumber) * new BigNumber(this.currencyRate),4)
+                     if(diff<0){
+                         this.isShowARB = "ARB"
+                     }else{
+                         this.isShowARB = "SPREAD"
+                     }
             },
             //获取推送行情
             getSSERealTime(url) {
@@ -1273,6 +1457,8 @@
                 if(!this.symbolList[this.currentSymbol]){
                     return 
                 }
+                //GBBO 锁图标打开
+                this.buy_input_change = true
                 //重置为空样式
                this.buyPriceEmpty = false
                let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
@@ -1294,6 +1480,8 @@
                 if(!this.symbolList[this.currentSymbol]){
                     return 
                 }
+                //GBBO 锁图标打开
+                this.sell_input_change = true
                 //重置为空样式
                 this.sellPriceEmpty = false
                 let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
@@ -1590,23 +1778,44 @@
                 }else if (this.$store.state.exchange.inputTradePassWordStatus){
                     //需要输入密码
                     if (getValue("ORDER_SESSION")) {
-                        this.exchange.createNewOrder({
-                            "symbol": this.currentSymbol,
-                            "orderType": "LIMIT",
-                            "orderSide": this.orderType,
-                            "quantity": this.buyCountInput,
-                            "limitPrice": this.buyPriceInput
-                        },null, (data)=> {
-                            this.buyDisabled = false
-                            this.$Notice.success({
-                                title: this.$t('tsTips'),
-                                desc:this.$t('bbjyOrderSuccess'),
-                            });
-                        },
-                           (data)=> {
-                                this.buyDisabled = false;
-                            }
-                        );
+                        if(this.isGBBO){
+                            this.exchange.createGBBOOrder({
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.buyCountInput,
+                                "limitPrice": this.buyPriceInput
+                            },null, (data)=> {
+                                this.buyDisabled = false
+                                this.$Notice.success({
+                                    title: this.$t('tsTips'),
+                                    desc:this.$t('bbjyOrderSuccess'),
+                                });
+                            },
+                               (data)=> {
+                                    this.buyDisabled = false;
+                                }
+                            );
+                        }else{
+                            this.exchange.createNewOrder({
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.buyCountInput,
+                                "limitPrice": this.buyPriceInput
+                            },null, (data)=> {
+                                this.buyDisabled = false
+                                this.$Notice.success({
+                                    title: this.$t('tsTips'),
+                                    desc:this.$t('bbjyOrderSuccess'),
+                                });
+                            },
+                               (data)=> {
+                                    this.buyDisabled = false;
+                                }
+                            );
+
+                        }
                     } else {
                          this.openPassWordPage();
                     }
@@ -1703,27 +1912,51 @@
                     //需要输入交易密码
                     if (getValue("ORDER_SESSION")) {
                         this.sellDisabled = true;
-                        this.exchange.createNewOrder({
-                            "symbol": this.currentSymbol,
-                            "orderType": "LIMIT",
-                            "orderSide": this.orderType,
-                            "quantity": this.sellCountInput,
-                            "limitPrice": this.sellPriceInput
-                        },
-                        null,
-                        (data) =>{
-                            // orderComplete();
-                            this.sellDisabled = false;
-                            this.$Notice.success({
-                                title: this.$t('tsTips'),
-                                desc: this.$t('bbjyOrderSuccess'),
-                            });
-                        },
-                        (data)=> {
-                            this.sellDisabled = false;
-                            
+                        if(this.isGBBO){
+                            this.exchange.createGBBOOrder({
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.sellCountInput,
+                                "limitPrice": this.sellPriceInput
+                            },
+                            null,
+                            (data) =>{
+                                // orderComplete();
+                                this.sellDisabled = false;
+                                this.$Notice.success({
+                                    title: this.$t('tsTips'),
+                                    desc: this.$t('bbjyOrderSuccess'),
+                                });
+                            },
+                            (data)=> {
+                                this.sellDisabled = false;
+                                
+                            }
+                            );
+                        }else{
+                            this.exchange.createNewOrder({
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.sellCountInput,
+                                "limitPrice": this.sellPriceInput
+                            },
+                            null,
+                            (data) =>{
+                                // orderComplete();
+                                this.sellDisabled = false;
+                                this.$Notice.success({
+                                    title: this.$t('tsTips'),
+                                    desc: this.$t('bbjyOrderSuccess'),
+                                });
+                            },
+                            (data)=> {
+                                this.sellDisabled = false;
+                                
+                            }
+                            );
                         }
-                        );
                     } else {
                         this.openPassWordPage();
                     }
@@ -1784,44 +2017,85 @@
                         })
                     });
                 } else {
-                    this.exchange.createNewOrder(
-                    {
-                        "symbol": this.currentSymbol,
-                        "orderType": "LIMIT",
-                        "orderSide": this.orderType,
-                        "quantity": this.orderType=="BUY"?this.buyCountInput:this.sellCountInput,
-                        "limitPrice":this.orderType=="BUY"?this.buyPriceInput:this.sellPriceInput,
-                    },
-                    this.exchangePassWord,
-                    (data)=> {
-                        this.orderType=="BUY" ? this.buyDisabled = false : this.sellDisable= false
-                        if(this.orderType=="BUY" || this.orderType=="SELL"){
-                            this.sellDisabled = false;
-                            this.buyDisabled = false;
-                            this.$Notice.success({
-                                title: this.$t('tsTips'),
-                                desc:this.$t('bbjyOrderSuccess'),
-                            });
-                        }else{
-                            //撤单成功
-                            this.$Notice.success({
-                                title: this.$t('tsTips'),
-                                desc: this.$t('bbjyCancelMsg'),
-                            });
-                        }
-                        //隐藏密码框
-                        this.closePassWordPage()
-                    },(error) =>{
-                            //错误提示
-                            // this.$Notice.warning({
-                            //     title: this.$t('tsTips'),
-                            //     desc: this.$t(data['code']),
-                            // });
-                            this.sellDisabled = false;
-                            this.buyDisabled = false;
-                            this.closePassWordPage()
-                        }
-                    );
+                    if(this.isGBBO){
+                            this.exchange.createGBBOOrder(
+                            {
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.orderType=="BUY"?this.buyCountInput:this.sellCountInput,
+                                "limitPrice":this.orderType=="BUY"?this.buyPriceInput:this.sellPriceInput,
+                            },
+                            this.exchangePassWord,
+                            (data)=> {
+                                this.orderType=="BUY" ? this.buyDisabled = false : this.sellDisable= false
+                                if(this.orderType=="BUY" || this.orderType=="SELL"){
+                                    this.sellDisabled = false;
+                                    this.buyDisabled = false;
+                                    this.$Notice.success({
+                                        title: this.$t('tsTips'),
+                                        desc:this.$t('bbjyOrderSuccess'),
+                                    });
+                                }else{
+                                    //撤单成功
+                                    this.$Notice.success({
+                                        title: this.$t('tsTips'),
+                                        desc: this.$t('bbjyCancelMsg'),
+                                    });
+                                }
+                                //隐藏密码框
+                                this.closePassWordPage()
+                            },(error) =>{
+                                    //错误提示
+                                    // this.$Notice.warning({
+                                    //     title: this.$t('tsTips'),
+                                    //     desc: this.$t(data['code']),
+                                    // });
+                                    this.sellDisabled = false;
+                                    this.buyDisabled = false;
+                                    this.closePassWordPage()
+                                }
+                        );
+                    }else{
+                        this.exchange.createNewOrder(
+                            {
+                                "symbol": this.currentSymbol,
+                                "orderType": "LIMIT",
+                                "orderSide": this.orderType,
+                                "quantity": this.orderType=="BUY"?this.buyCountInput:this.sellCountInput,
+                                "limitPrice":this.orderType=="BUY"?this.buyPriceInput:this.sellPriceInput,
+                            },
+                            this.exchangePassWord,
+                            (data)=> {
+                                this.orderType=="BUY" ? this.buyDisabled = false : this.sellDisable= false
+                                if(this.orderType=="BUY" || this.orderType=="SELL"){
+                                    this.sellDisabled = false;
+                                    this.buyDisabled = false;
+                                    this.$Notice.success({
+                                        title: this.$t('tsTips'),
+                                        desc:this.$t('bbjyOrderSuccess'),
+                                    });
+                                }else{
+                                    //撤单成功
+                                    this.$Notice.success({
+                                        title: this.$t('tsTips'),
+                                        desc: this.$t('bbjyCancelMsg'),
+                                    });
+                                }
+                                //隐藏密码框
+                                this.closePassWordPage()
+                            },(error) =>{
+                                    //错误提示
+                                    // this.$Notice.warning({
+                                    //     title: this.$t('tsTips'),
+                                    //     desc: this.$t(data['code']),
+                                    // });
+                                    this.sellDisabled = false;
+                                    this.buyDisabled = false;
+                                    this.closePassWordPage()
+                                }
+                        );
+                    }
                 }
             },
         },
@@ -1856,6 +2130,7 @@
                 }
             },
             buyPriceInput:function(newV,oldV){ //监听下单输入价格 计算法币估值
+                if(this.isGBBO) return //GBBO交易对下面不估值
                 if(this.currentSymbolObj.quoteAsset == 'USDT' || this.currentSymbolObj.quoteAsset == 'USDD' || this.currentSymbolObj.quoteAsset == 'USD'){
                     this.buyPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.currencyRate),4)
                 }else{
@@ -1865,6 +2140,7 @@
                 }
             },
             sellPriceInput:function(newV,oldV){ //监听下单卖出价格 计算法币估值
+                if(this.isGBBO) return
                 if(this.currentSymbolObj.quoteAsset == 'USDT' || this.currentSymbolObj.quoteAsset == 'USDD' || this.currentSymbolObj.quoteAsset == 'USD'){
                     this.sellPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.currencyRate),4)
                 }else{
@@ -1920,6 +2196,11 @@
                 })
             }
         },
+        filters:{
+            abs:function (value) {
+                return Math.abs(value)
+            }
+        },
         beforeMount(){
            
             //交易相关的交易对
@@ -1927,6 +2208,8 @@
 
             //行情相关的交易对>>>>>>
             this.getSymbolListRealtimeData();
+
+            // this.getGBBODepth();
             
         },
         mounted() {
@@ -1969,8 +2252,10 @@
                 })()
             }
         },
-        destroyed() {
-            
+        beforeDestroy() {
+            this.stompClient.disconnect(function() {
+                })
+            this.stompClient = null
             //关闭SSE行情推送
             this.SSEsource && this.SSEsource.close();
             this.SSE_order && this.SSE_order.close();
