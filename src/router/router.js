@@ -6,6 +6,7 @@ import store from '../store/index'
 import { getCreateAccount } from '_api/exchange.js'
 import { clearLocalStorage } from '@/config'
 const HomePageMain = () => import(/* webpackChunkName: "home" */ '../views/home/Home.vue')
+const ExchangeGBBO = () => import(/* webpackChunkName: "exchangeGBBO" */ '../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import(/* webpackChunkName: "exchange" */ '../views/exchange/Exchange.vue')
 import download from "../views/download/download.vue";
 // import Login from '../views/login/Login.vue';
@@ -206,7 +207,18 @@ const router = new Router({
          component: Layout,
          children: [
             {
-               path: 'exchange',
+               path: '/exchangeGBBO',
+               name: 'exchangeGBBO',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to,next)
+               },
+               meta: {
+                  // title:'HomeTokenExchange'
+               },
+               component: ExchangeGBBO,
+            },
+            {
+               path: '/exchange',
                name: 'exchange',
                beforeEnter: (to, from, next) => {
                   checkSSOToken(to,next)
