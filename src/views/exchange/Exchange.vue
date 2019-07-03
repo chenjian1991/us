@@ -19,7 +19,7 @@
                                         <li  data-site="BTC"  siteName="B">{{$t('headerblockexchange')}}</li>
                                         <!-- <li  data-site="USDT" siteName="S">{{$t('headerstockexchange')}}</li> -->
                                         <!-- <li  data-site="USDD" siteName="F">{{$t('headerfranceexchange')}}</li> -->
-                                        <li  data-site="USDT" siteName="C">{{$t('headercustomerexchange')}}</li>
+                                        <!-- <li  data-site="USDT" siteName="C">{{$t('headercustomerexchange')}}</li> -->
                                     </ul>
                                 </div>
                                 <div class="myCoin" @click="openMyCoin" :class="[isShowMainBoard? '' : 'markActive']">

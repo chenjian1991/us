@@ -7,7 +7,7 @@
          <!-- <Alert banner closable type="warning">Notice: notification contents...</Alert> -->
          <div class="m-auto py-2" id="transfer_container">
             <!-- Form -->
-                <form class="js-validate js-form-message">
+                <!-- <form class="js-validate js-form-message">
                     <div class="js-focus-state input-group input-group-lg u-form u-form--lg u-form--white-brd">
                     <div class="row align-items-md-center m-auto">
                         <div class="col-lg-4 mb-4 mb-lg-0">
@@ -35,14 +35,13 @@
                             <option value="more to come">more to come</option>
                             </select>
                         </div>
-                            <!-- End Language -->
                         <div class="input-group-append u-form__append">
                             <div class="btn btn-warning u-btn-wide" @click="gotoTransfer">Withdraw Now</div>
                         </div>
                         </div>
                     
                     </div>
-                </form>
+                </form> -->
             <!-- End Form -->
          </div>
       <div id="logoAndNav" class="container">
@@ -50,8 +49,8 @@
         <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar">
           <!-- Logo -->
           <router-link class="navbar-brand u-header__navbar-brand" to="/home" aria-label="Front">
-            <img class="u-header__navbar-brand-default" src="../../assets/images/logo2@x2.png" alt="Logo" style="width:154px;height:45px">
-            <img class="u-header__navbar-brand-on-scroll" src="../../assets/images/logo1@x2.png" alt="Logo" style="width:154px;height:45px">
+            <img class="u-header__navbar-brand-default" src="../../assets/images/logo02.png" alt="Logo" style="width:120px;height:auto">
+            <img class="u-header__navbar-brand-on-scroll" src="../../assets/images/logo01.png" alt="Logo" style="width:120px;height:auto">
           </router-link>
           <!-- End Logo -->
 
@@ -223,7 +222,7 @@
                 <!-- End 币币交易 -->
 
                 <!-- 椰子 -->
-                <li class="nav-item hs-has-mega-menu u-header__nav-item"
+<!--                 <li class="nav-item hs-has-mega-menu u-header__nav-item"
                     data-event="hover"
                     data-animation-in="slideInUp"
                     data-animation-out="fadeOut"
@@ -236,9 +235,7 @@
                     <span class="fa fa-angle-down u-header__nav-link-icon"></span>
                     </a>
 
-                    <!-- Shop - Mega Menu -->
                     <div class="hs-mega-menu u-header__sub-menu u-header__mega-menu-position-right-fix" aria-labelledby="shopMegaMenu">
-                    <!-- Mega Menu Banner -->
                     <div class="d-none d-md-block u-header__banner-v2 pr-4">
                         <div class="d-flex align-items-end">
                         <img class="img-fluid mr-4" src="assets/svg/bg/supreme.png" alt="Image Description" style="width: 200px;">
@@ -247,16 +244,13 @@
                             <strong class="d-block u-header__banner-v2-title mb-2 text-primary-55">Supreme Token</strong>
                             <span class="d-block u-header__banner-v2-text">Tokens redeemable for Supreme products</span>
                             </div>
-                            <!-- <button data-v-de088f66="" type="button" class="btn btn-xs btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2"><span><span data-v-de088f66="" class="d-flex mr-3"><span data-v-de088f66=""></span></span><span data-v-de088f66="" class="media-body"><strong data-v-de088f66="" class="font-size-14">Buy Supreme Token</strong></span></span></button> -->
                             <a class="btn btn-sm btn-primary  transition-3d-hover text-white" @click="gotoYEEZY" >Buy Supreme Token <span class="fa fa-angle-right ml-2"></span></a>
                         </div>
                         </div>
                     </div>
-                    <!-- End Mega Menu Banner -->
                     </div>
-                    <!-- End Shop - Mega Menu -->
                 </li>
-                <!-- End 椰子 -->
+ -->                <!-- End 椰子 -->
 
                 <!-- Starter - Link -->
                 <li class="nav-item">

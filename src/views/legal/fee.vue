@@ -93,14 +93,14 @@
                                     <td>ZCASH (ZEC)</td>
                                     <td>0.1%</td>
                                 </tr> -->
-                                 <tr>
+                                 <!-- <tr>
                                     <td>YEEZY (YEEZY)</td>
                                     <td>0.1%</td>
                                 </tr>
                                 <tr>
                                     <td>SUPREME (SUP)</td>
                                     <td>0.1%</td>
-                                </tr>
+                                </tr> -->
                                  <!-- <tr>
                                     <td>KYBERNETWORK(KNC)</td>
                                     <td>0.1%</td>
@@ -223,14 +223,14 @@
                                     <td>ZCASH (ZEC)</td>
                                     <td>0.025 ZEC</td>
                                 </tr> -->
-                                <tr>
+                                <!-- <tr>
                                     <td>YEEZY (YEEZY)</td>
                                     <td>1 YEEZY</td>
                                 </tr>
                                 <tr>
                                     <td>SUPREME (SUP)</td>
                                     <td>1 SUP</td>
-                                </tr>
+                                </tr> -->
                                 <!-- <tr>
                                     <td>KYBERNETWORK(KNC)</td>
                                     <td>9KNC</td>
