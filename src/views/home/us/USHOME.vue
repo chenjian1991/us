@@ -32,11 +32,11 @@
                                       <h1 class="text-white display-4 font-size-48--md-down mp-0"
                                           data-scs-animation-in="fadeInUp"
                                           data-scs-animation-delay="200">
-                                          <span class="font-weight-bold">Asset Network</span>
+                                          <span class="font-weight-bold" style="font-size: 2.1rem;">A Better Way to Buy/Sell Bitcoin</span>
                                       </h1>
                                       <span class="d-block h4 text-white font-weight-light mb-2 mt-2"
-                                              data-scs-animation-in="fadeInUp">
-                                          Global asset access & liquidity for everyone
+                                              data-scs-animation-in="fadeInUp" style="font-size: 1.2rem;">
+                                          Buy and sell with best price and deepest liquidity at one single point of access to global markets.
                                       </span>
                                   </div>
                                   <div class=" position-absolute" style="top:0;right:0" id="gbbo_container">
@@ -225,10 +225,10 @@
             <!-- GBBO start -->
             <div class="container  u-space-3-top pb-4">
                 <div class="row justify-content-center text-primary-55 h2 text-center">
-                    GBBO - Global Best Bid and Offer
+                    Buy and sell with best price and deepest liquidity
                 </div>
                 <div class="row justify-content-center text-secondary text-center">
-                    Buy and sell at best rates on a network of trading platforms 
+                     at one single point of access to global markets
                 </div>
                 </br>
                 <div id="gbbo_detail">
@@ -714,25 +714,20 @@
             <!-- supreme end -->
 
             <!-- Front in Frames Section -->
-           <div style="background:#fff" id="55card">
+<!--            <div style="background:#fff" id="55card">
                 <div class="container u-space-3 " >
                   <div class="row justify-content-between align-items-center">
                     <div class="col-lg-5 mb-7 mb-lg-0">
                       <div class="pr-md-4">
-                        <!-- Title -->
                         <div class="mb-7">
                           
                           <h2 class="text-primary">55 <span class="font-weight-bold">Debit Card</span></h2>
                           
                           <p>Your cryptocurrencies can be converted to fiat currency almost in real time. 55, in collaboration with major payment service providers, will allow you to pay at millions of storefronts or POS terminals.</p >
                         </div>
-                        <!-- End Title -->
                         
                         <button type="button" @click="$router.push('/card')" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2">
                             <span class="media align-items-center">
-                              <!-- <span class="d-flex mr-3">
-                                <span class="fab fa-cc-visa font-size-26"></span>
-                              </span> -->
                               <span class="media-body">
                                 <span class="d-block">Pre-order Now</span>
                                 <strong class="font-size-14">55 Debit Card</strong>
@@ -743,50 +738,39 @@
                     </div>
 
                     <div class="col-lg-6 position-relative">
-                      <!-- Image Gallery -->
                       <div class="row mx-gutters-2">
                         <div class="col-5 align-self-end px-2 mb-3">
-                          <!-- Fancybox -->
                           <a>
                             <img class="img-fluid rounded" src="assets/svg/bg/topleft.jpg" alt="Image Description">
 
 
                           </a >
-                          <!-- End Fancybox -->
                         </div>
 
                         <div class="col-7 px-2 mb-3">
-                          <!-- Fancybox -->
                           <a>
                             <img class="img-fluid rounded" src="../../../assets/images/home/usHome/topright.jpeg" alt="Image Description">
 
 
                           </a >
-                          <!-- End Fancybox -->
                         </div>
 
                         <div class="col-5 offset-1 px-2 mb-3">
-                          <!-- Fancybox -->
                           <a>
                             <img class="img-fluid rounded" src="assets/svg/bg/bottomleft.jpg" alt="Image Description">
 
 
                           </a >
-                          <!-- End Fancybox -->
                         </div>
 
                         <div class="col-5 px-2 mb-3">
-                          <!-- Fancybox -->
                           <a>
                             <img class="img-fluid rounded" src="../../../assets/images/home/usHome/new_no_visa.png" alt="Image Description">
 
                           </a >
-                          <!-- End Fancybox -->
                         </div>
                       </div>
-                      <!-- End Image Gallery -->
 
-                      <!-- SVG Background Shape -->
                       <figure class="w-100 u-content-centered-y z-index-minus-1">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 1109.8 797.1" style="enable-background:new 0 0 1109.8 797.1;" xml:space="preserve">
@@ -794,12 +778,11 @@
                             c-4-3.9-7.9-7.9-11.7-12L761.9,104.8C639.4-27.6,432.5-35.6,299.9,87L105.1,267.1z"/>
                         </svg>
                       </figure>
-                      <!-- End SVG Background Shape -->
                     </div>
                   </div>
                 </div>
             </div>
-            <!-- End Front in Frames Section -->
+ -->            <!-- End Front in Frames Section -->
 
             <!-- Subscribe Section transfer 国际汇款-->
                 <!-- <div class="position-relative u-gradient-half-primary-v1 u-space-3-top u-space-3-bottom" style="background-image: url(assets/svg/bg/transfer_bg.jpg);" >
@@ -862,150 +845,6 @@
                
 
             <!-- Blog Grid Section Read our news & -->
-                <div class="u-bg-light-blue-50">
-                    <div class="container u-space-3">
-                        <!-- Title -->
-                        <div class="w-md-80 w-lg-50 text-center mx-auto mb-9">
-                        <h2 class="text-primary-55">Read our <span class="font-weight-bold">news &amp; blogs</span></h2>
-                        <!-- <p>Our duty towards you is to share our experience we're reaching in our work path with you.</p> -->
-                        </br>
-                        </div>
-                        <!-- End Title -->
-
-                        <!-- News Carousel -->
-                        <div class="js-slick-carousel u-slick u-slick--equal-height u-slick--gutters-2"
-                            data-slides-show="4"
-                            data-slides-scroll="1"
-                            data-pagi-classes="text-center u-slick__pagination mt-7 mb-0"
-                            data-responsive='[{
-                            "breakpoint": 1200,
-                            "settings": {
-                                "slidesToShow": 3
-                            }
-                            }, {
-                            "breakpoint": 992,
-                            "settings": {
-                                "slidesToShow": 2
-                            }
-                            }, {
-                            "breakpoint": 768,
-                            "settings": {
-                                "slidesToShow": 2
-                            }
-                            }, {
-                            "breakpoint": 554,
-                            "settings": {
-                                "slidesToShow": 1
-                            }
-                            }]'>
-                              <!-- Blog Grid -->
-                              <div class="js-slide d-flex align-items-start flex-column w-100 bg-white rounded p-5">
-                                  <!-- Info -->
-                                  <h3 class="h5">
-                                    <a href="#">A Letter from David Weild  </a>
-                                  </h3>
-                                  <!-- <p>GBBO 101?</p> -->
-                                  <p>55 aims to reshape the way that purchases and sales of assets are conducted using blockchain technology.</p>
-                                  <!-- End Info -->
-
-                                  <div class="w-100 mt-auto">
-                                  <hr>
-                                  <!-- Author -->
-                                  <div class="media">
-                                      <div class="d-flex mr-3">
-                                      <img class="img-fluid u-sm-avatar rounded-circle" src="assets/img/100x100/1.png" alt="Image Description">
-                                      </div>
-                                      <div class="media-body">
-                                      <h4 class="d-inline-block mb-0">
-                                          <a class="d-block font-size-13" :href="DavidURL" target="_blank">David Weild</a>
-                                      </h4>
-                                      </div>
-                                  </div>
-                                  <!-- End Author -->
-                                  </div>
-                              </div>
-                              <!-- End Blog Grid -->
-
-                              <!-- Blog Grid  Logan-->
-                              <!-- <div class="js-slide d-flex align-items-start flex-column w-100 bg-white rounded p-5">
-                                  <h3 class="h5">
-                                    <a href="#">Connect people in crypto world!</a>
-                                  </h3>
-                                  <p>55 Social is a built-in social trading platform that will change the landscape of the trading world.</p>
-
-                                  <div class="w-100 mt-auto">
-                                  <hr>
-                                  <div class="media">
-                                      <div class="d-flex mr-3">
-                                      <img class="img-fluid u-sm-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
-                                      </div>
-                                      <div class="media-body">
-                                      <h4 class="d-inline-block mb-0">
-                                          <a class="d-block font-size-13" href="javascrip:;">Logan Schauer</a>
-                                      </h4>
-                                      </div>
-                                  </div>
-                                  </div>
-                              </div> -->
-                              <!-- End Blog Grid -->
-
-                              <!-- Blog Grid -->
-                              <div class="js-slide d-flex align-items-start flex-column w-100 bg-white rounded p-5">
-                                  <!-- Info -->
-                                  <h3 class="h5">
-                                  <a href="#">Why ATO Protocol？</a>
-                                  </h3>
-                                  <p>The widespread problem with many ICOs at the time and the following year was that  many were riddled with fraudulent activity</p>
-                                  <!-- End Info -->
-
-                                  <div class="w-100 mt-auto">
-                                  <hr>
-                                  <!-- Author -->
-                                  <div class="media">
-                                      <div class="d-flex mr-3">
-                                      <img class="img-fluid u-sm-avatar rounded-circle" src="assets/img/100x100/2.png" alt="Image Description">
-                                      </div>
-                                      <div class="media-body">
-                                      <h4 class="d-inline-block mb-0">
-                                          <a class="d-block font-size-13" :href="LisaURL" target="_blank">Lisa Loud</a>
-                                      </h4>
-                                      </div>
-                                  </div>
-                                  <!-- End Author -->
-                                  </div>
-                              </div>
-                              <!-- End Blog Grid -->
-
-                              <!-- Blog Grid -->
-                              <div class="js-slide d-flex align-items-start flex-column w-100 bg-white rounded p-5">
-                                  <!-- Info -->
-                                  <h3 class="h5">
-                                  <a href="#">One stop for global best price</a>
-                                  </h3>
-                                  <p>An essential aspect of what makes our network specialized is perhaps one of our greatest pillars GBBO</p>
-                                  <!-- End Info -->
-
-                                  <div class="w-100 mt-auto">
-                                  <hr>
-                                  <!-- Author -->
-                                  <div class="media">
-                                      <div class="d-flex mr-3">
-                                      <img class="img-fluid u-sm-avatar rounded-circle" src="assets/img/100x100/3.png" alt="Image Description">
-                                      </div>
-                                      <div class="media-body">
-                                      <h4 class="d-inline-block mb-0">
-                                          <a class="d-block font-size-13" target="_blank" :href="AshuURL">Ashu Swami</a>
-                                      </h4>
-                                      </div>
-                                  </div>
-                                  <!-- End Author -->
-                                  </div>
-                              </div>
-                              <!-- End Blog Grid -->
-                        </div>
-                        <!-- End News Carousel -->
-                    </div>
-                </div>
             <!-- End Blog Grid Section -->
 
             <!-- Team Section 高管团队 -->
@@ -1165,95 +1004,9 @@
             <!-- End Team Section -->
             
             <!-- Features Section 下载APP -->
-                <div style="background:#f6f9fc">
-                    <div class="position-relative u-space-3 u-space-4--lg">
-                   <!-- 文案 -->
-                    <div class="container">
-                        <div class="row justify-content-lg-end">
-                          <div class="col-lg-5">
-                            <!-- Title -->
-                            <div class="pl-lg-4">
-                              <div id="power-hands" class="mb-5 hidden-sm">
-                                <h2 class="font-weight-medium">We put power in your hands!</h2>
-                                <p>
-                                  All your tokenized assets in one place</br>
-                                  Clear overview of all markets live data</br>
-                                  Secure, Fast, and Seamless integration with 55.com
-                                </p>
-                              </div>
-
-                              <!-- Button -->
-                              <!-- <button type="button" class="btn btn-xs  btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2 mr-sm-1">
-                                <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1442483182" target="_new" class=" text-white">
-                                  <span class="media align-items-center">
-                                    <span class="d-flex mr-3">
-                                      <span class="fab fa-apple font-size-26"></span>
-                                    </span>
-                                    <span class="media-body">
-                                      <span class="d-block">Download on the</span>
-                                      <strong class="font-size-14">App Store</strong>
-                                    </span>
-                                  </span>
-                                </a>
-                              </button> -->
-                              <!-- End Button -->
-                              <button data-v-2e45a3aa="" type="button" class="btn btn-xs  btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2 mr-sm-1"><a data-v-2e45a3aa="" href="javascript:;" target="_new" class=" text-white"><span data-v-2e45a3aa="" class="media align-items-center"><span data-v-2e45a3aa="" class="d-flex mr-3"><span data-v-2e45a3aa="" class="fab fa-apple font-size-26"></span></span><span data-v-2e45a3aa="" class="media-body"><span data-v-2e45a3aa="" class="d-block">Coming soon
-                              </span><strong data-v-2e45a3aa="" class="font-size-14">App Store</strong></span></span></a ></button>
-
-                              <!-- Button -->
-                              <button type="button" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2">
-                                <a href="https://play.google.com/store/apps/details?id=com.ex55us.app" target="_new" class="text-white">
-                                  <span class="media align-items-center">
-                                    <span class="d-flex mr-3">
-                                      <span class="fab fa-google-play font-size-26"></span>
-                                    </span>
-                                    <span class="media-body">
-                                      <span class="d-block">Get it on</span>
-                                      <strong class="font-size-14">Google Play</strong>
-                                    </span>
-                                  </span>
-                                </a>
-                              </button>
-                              <!-- End Button -->
-                            </div>
-                            <!-- End Title -->
-                          </div>
-                        </div>
-                      </div>
-                      
-                    <!-- SVG Image Gradient -->
-                      <div class="col-lg-6 u-content-centered-y--lg">
-                        <!-- SVG Phone Mockup -->
-                        <figure class="u-devices-v3">
-                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 317.5 665" style="enable-background:new 0 0 317.5 665;" xml:space="preserve">
-                            <path class="u-fill-white" d="M263,666H54c-29.7,0-54-24.3-54-54V55C0,25.3,24.3,1,54,1h209c29.7,0,54,24.3,54,54v557
-                              C317,641.7,292.7,666,263,666z"></path>
-                            <circle class="u-fill-gray-75" cx="159.5" cy="619.5" r="25.5"></circle>
-                            <path class="u-fill-gray-75" fill-rule="evenodd" clip-rule="evenodd" d="M180,52h-42c-2.2,0-4-1.8-4-4v0c0-2.2,1.8-4,4-4h42c2.2,0,4,1.8,4,4v0C184,50.2,182.2,52,180,52z"></path>
-                            <g>
-                              <defs>
-                                <rect id="phoneFrameID1" x="19.4" y="81.3" width="280" height="500"></rect>
-                              </defs>
-                              <clipPath id="phoneFrameID2">
-                                <use xlink:href="#phoneFrameID1" style="overflow:visible;"></use>
-                              </clipPath>
-                              <g style="clip-path:url(#phoneFrameID2);">
-                                <!-- Apply your (282px width to 500px height) image here -->
-                                <image style="overflow:visible;" width="282" height="500" xlink:href="assets/app@2x.png" transform="matrix(1 0 0 1 18 81)"></image>
-                              </g>
-                              <use class="u-fill-none u-stroke-light-blue-125" xlink:href="#phoneFrameID1" stroke-miterlimit="10" style="overflow: visible;"></use>
-                            </g>
-                          </svg>
-                        </figure>
-                        <!-- End SVG Phone Mockup -->
-                      </div>
-
-                      
-                    </div>
-                </div>
             <!-- End Features Section -->
             <!-- Clients Section -->
-                <div class="container u-space-2">
+                <div class=" u-space-2" style="background-color:#F6F9FC">
                       <div class="title" style="text-align:center;font-size:22px;color:#12869a !important;padding:22px">Partners</div>
 
                   <div class="js-slick-carousel u-slick"
