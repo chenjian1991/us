@@ -1685,7 +1685,6 @@
       width 142px
   .gbbo_right
     width 100%
-    overflow-x scroll
     overflow auto
     .pair_wrap
       display flex
