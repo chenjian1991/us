@@ -1688,8 +1688,9 @@
     overflow auto
     .pair_wrap
       display flex
-      width 968px
+      width 900px
       justify-content space-around
+      margin 0 auto
       .pair
         .row
           width 212px
