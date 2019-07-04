@@ -41,7 +41,7 @@ User Agreement</span></b></p>
 
 <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">This User Agreement (hereinafter “<b style="mso-bidi-font-weight:normal">Agreement</b>”)
 is a binding contract governing your use of the U.S. 55 Asset Network at
-us.55.com, any associated APIs and any mobile applications (collectively, the “<b style="mso-bidi-font-weight:normal">55Sites</b>”) operated by 55 Asset Network
+55.trade, any associated APIs and any mobile applications (collectively, the “<b style="mso-bidi-font-weight:normal">55Sites</b>”) operated by 55 Asset Network
 Inc. (“<b style="mso-bidi-font-weight:normal">55</b>”). By signing up to use an
 account through the 55Sites, you agree that you have read, understood, and
 accept all of the terms and conditions contained in this User Agreement, as
@@ -78,7 +78,7 @@ normal">Digital Asset Walle</b>t”) that allow users to transfer, track and
 store certain supported Digital Assets (“<b style="mso-bidi-font-weight:normal">Digital
 Asset</b>”), and (ii) a Digital Asset exchange platform that allows for the
 trading of supported Digital Assets for other Digital Assets, accessible at
-us.55.com, through our API or mobile application (the “<b style="mso-bidi-font-weight:
+55.trade, through our API or mobile application (the “<b style="mso-bidi-font-weight:
 normal">Marketplace</b>”). </span></p>
 
 <p class="MsoNormal"><span lang="EN"></span></p>
@@ -474,7 +474,7 @@ Asset deposit or withdrawal methods. All such fees will be displayed in your
 <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">4.8 <u>Trading Fees</u>. By placing an order on the Marketplace, you
 agree to pay all applicable fees, which are payable in Digital Assets, and you
 authorize 55 to automatically deduct fees directly from your 55Account. Trading
-Fees are set forth in our Fee Schedule available at us.55.com.</span></p>
+Fees are set forth in our Fee Schedule available at 55.trade.</span></p>
 
 <p class="MsoNormal"><span lang="EN"></span></p>
 
@@ -624,7 +624,7 @@ weekly and monthly). To view your limits, login to your 55Account. Your
 transaction limits may vary depending on your identity verification level and
 other factors. 55 reserves the right to change applicable limits as we deem
 necessary in our sole discretion. If you wish to raise your limits beyond the
-posted amounts, you may submit a request at service@55.com. We may require you
+posted amounts, you may submit a request at service@55.trade. We may require you
 to submit additional information about yourself or your business, provide
 records, and arrange for meetings with 55 staff (such process, <b style="mso-bidi-font-weight:normal">“Enhanced Due Diligence</b>”). 55 reserves
 the right to charge you costs and fees associated with Enhanced Due Diligence,
@@ -752,7 +752,7 @@ alerts that we may send you. We assume no responsibility for any loss that you
 may sustain due to compromise of account login credentials due to no fault of
 55and/or failure to follow or act on any notices or alerts that we may send to
 you. In the event you believe your 55Account information has been compromised,
-contact 55Support immediately at service@55.com. </span></p>
+contact 55Support immediately at service@55.trade. </span></p>
 
 <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN"></span></p>
 
@@ -787,11 +787,11 @@ permitted by applicable law. </span></p>
 
 <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">6.1. <u>Contact 55</u>. If you have any feedback, questions, or
 complaints, contact us via our Customer Support webpage at or write to us at
-service@55.com. When you contact us please provide us with your name, address,
+service@55.trade. When you contact us please provide us with your name, address,
 and any other information we may need to identify you, your 55Account, and the
 transaction on which you have feedback, questions, or complaints. If you
 believe your account has been compromised, you may also report your claim by
-contacting service@55.com. </span></p>
+contacting service@55.trade. </span></p>
 
 <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN"></span></p>
 
@@ -1031,7 +1031,7 @@ activity (“<b style="mso-bidi-font-weight:normal">Prohibited Uses</b>”). The
 specific types of use listed below are representative, but not exhaustive. If
 you are uncertain as to whether or not your use of 55Services involves a
 Prohibited Use, or have questions about how these requirements apply to you,
-please contact us at service@55.com. By opening an 55Account, you confirm that
+please contact us at service@55.trade. By opening an 55Account, you confirm that
 you will not use your Account to do any of the following:</span></p>
 
 <p class="MsoNormal" style="margin-left:36.0pt;text-align:justify;text-justify:
@@ -1207,7 +1207,7 @@ procedures for the referenced 55Services, 55may require you to provide or
 verify additional information, or to wait some amount of time after completion
 of a transaction, before permitting you to use any 55Services and/or before permitting
 you to engage in transactions beyond certain volume limits. You may contact us
-at service@55.com to request larger limits. 55may require you to submit to
+at service@55.trade to request larger limits. 55may require you to submit to
 Enhanced Due Diligence. Additional fees and costs may apply, and 55does not
 guarantee that we will raise your limits. </span></p>
 
@@ -1300,7 +1300,7 @@ but you do not receive it because your primary email address on file is
 incorrect, out of date, blocked by your service provider, or you are otherwise
 unable to receive electronic Communications, 55 will be deemed to have provided
 the Communication to you. You may update your information by logging into your
-account and visiting settings or by contacting our support team at <u><span style="color:#1155CC"><a href="mailto:service@55.com"><span style="color:#1155CC">service@55.com</span></a></span></u>.</span></p>
+account and visiting settings or by contacting our support team at <u><span style="color:#1155CC"><a href="mailto:service@55.trade"><span style="color:#1155CC">service@55.trade</span></a></span></u>.</span></p>
 
 <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN"></span></p>
 
