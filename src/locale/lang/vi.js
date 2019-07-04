@@ -1738,7 +1738,7 @@ export default {
    fromAccount:"From account name",
    depositCon1:"Wire deposits will require you to contact your approved bank on file, and have funds sent to Prime Trust.",
    depositCon2:"Please fill out the form above to get the necessary instructions on the wire transfer.",
-   depositSubmit:"Get instructions",
+   depositSubmit:"Get Instructions",
    depositCon3:"Prime Trust does not accept wire transfers from third parties on behalf of the user.",
    depositCon4:"Wire transfer must originate from a bank account owned by the user above, or Prime Trust will return the funds to the originating bank.",
    depositHis:"Go to deposit history",
