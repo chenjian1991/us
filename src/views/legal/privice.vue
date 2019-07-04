@@ -56,8 +56,8 @@ style='font-size:14.0pt;line-height:115%;color:#3D85C6'></span></b></p>
 <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
 lang=EN>1.1 55 Asset Network Inc. (the “<b style='mso-bidi-font-weight:normal'>Company</b>”)
 is a company incorporated in Delaware under the laws of the United States, and
-operates the Website <u><span style='color:#1155CC'><a href="https://www.55.com"><span
-style='color:#1155CC'>https://www.55.com</span></a></span></u> (the “<b
+operates the Website <u><span style='color:#1155CC'><a href="javascrip:;"><span
+style='color:#1155CC'>55 Trade</span></a></span></u> (the “<b
 style='mso-bidi-font-weight:normal'>Website</b>”), which is a platform
 dedicated to the transaction of digital assets and the provision of related
 services (hereinafter referred to as the “<b style='mso-bidi-font-weight:normal'>Service</b>”).

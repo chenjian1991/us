@@ -234,7 +234,7 @@
                 <div id="gbbo_detail">
                   <div class="logo">
                     <div class="logo_item">
-                      <img src="../../../assets/images/index/55_big@2x.png" style="width:80px;height:19px" alt="">
+                      <img src="../../../assets/images/index/55.png" style="width:32px;height:auto" alt="">
                     </div>
                     <div class="logo_item">
                       <img src="../../../assets/images/index/binance_big.png" style="width:112px;height:22px" alt="">
@@ -1041,19 +1041,19 @@
                         }
                       }]'>
                     <div class="js-slide">
-                      <img class="u-clients" src="assets/svg/logos/parnter/partner-logo4.png" alt="Image Description">
+                      <img class="u-clients" src="../../../assets/images/logo1@2x.png" alt="Image Description">
                     </div>
                     <div class="js-slide">
-                      <img class="u-clients" src="../../../assets/images/fenwick_logo.png" alt="Image Description">
+                      <img class="u-clients" src="../../../assets/images/logo2@2x.png" alt="Image Description">
                     </div>
                      <div class="js-slide">
-                      <img class="u-clients"  src="../../../assets/images/gco_logo.png" alt="Image Description">
+                      <img class="u-clients"  src="../../../assets/images/logo3@2x.png" alt="Image Description">
                     </div>
                      <div class="js-slide">
-                      <img class="u-clients"  src="../../../assets/images/parnter5.png" alt="Image Description">
+                      <img class="u-clients"  src="../../../assets/images/logo4@2x.png" alt="Image Description">
                     </div>
                     <div class="js-slide">
-                      <img class="u-clients" src="assets/svg/logos/parnter/partner-logo3.png" alt="Image Description">
+                      <img class="u-clients" src="../../../assets/images/logo5@2x.png" alt="Image Description">
                     </div>
                     <!-- <div class="js-slide">
                       <img class="u-clients" src="assets/svg/logos/parnter/partner-logo4.png" alt="Image Description">
@@ -1464,7 +1464,7 @@
           width 20px
           height 20px
 #gbbo_detail
-  width 100%
+  width 978px
   margin 70px auto 100px 
   overflow hidden
   display flex
