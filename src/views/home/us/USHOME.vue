@@ -1006,7 +1006,7 @@
             <!-- Features Section 下载APP -->
             <!-- End Features Section -->
             <!-- Clients Section -->
-                <div class="container u-space-2" style="background-color:#F6F9FC">
+                <div class=" u-space-2" style="background-color:#F6F9FC">
                       <div class="title" style="text-align:center;font-size:22px;color:#12869a !important;padding:22px">Partners</div>
 
                   <div class="js-slick-carousel u-slick"
