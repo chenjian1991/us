@@ -22,10 +22,10 @@
                <Table :columns="columns3" :data="data4"></Table>
                <Page :total="totalPage4" :page-size="1" show-elevator class="page" @on-change="onChangePage4"/>
             </TabPane>
-            <TabPane :label="$t('transHis')" name="name5">
+<!--             <TabPane :label="$t('transHis')" name="name5">
                <Table height='680' :columns="columns5" :data="data5"></Table>
             </TabPane>
-         </Tabs>
+ -->         </Tabs>
       </div>
       <us-modal v-model="showModal" className="depositModal" width="750px" title="depositInstruction"
                 okText="depositSubmit2" cancelText="depositCancel" :showBtn="false">
