@@ -599,7 +599,7 @@
                 asksArr:[],
                 //****交易相关 */
                 exchange:null,//交易接口函数
-                loginToken:'',//登陆token
+                loginToken:Cookies.get('loginToken'),//登陆token
                 // ***** 买入 卖出 ******//
                 FFDeductible:0,//1 开启手续费折扣 2.FF余额低 3.手续费折扣中
                 commissionTemplateId:false,//开启折扣开关 true 开启
@@ -941,7 +941,7 @@
             //获取交易对 下单专用
             getSymbolListData() {
                 getSymbolList().then(res => {
-                    this.loginToken = Cookies.get('loginToken')
+                    // this.loginToken = Cookies.get('loginToken')
                     if(this.$store.state.app.isLogin || this.loginToken){
                         this.isLogin = true
                     }
