@@ -1056,9 +1056,9 @@
                      <div class="js-slide">
                       <img class="u-clients"  src="../../../assets/images/logo4@2x.png" alt="Image Description">
                     </div>
-                    <div class="js-slide">
+                    <!-- <div class="js-slide">
                       <img class="u-clients" src="../../../assets/images/logo5@2x.png" alt="Image Description">
-                    </div>
+                    </div> -->
                     <!-- <div class="js-slide">
                       <img class="u-clients" src="assets/svg/logos/parnter/partner-logo4.png" alt="Image Description">
                     </div> -->
@@ -1077,7 +1077,7 @@
               data-offset-top="400"
               data-compensation="#header"
               data-show-effect="slideInUp"
-              data-hide-effect="slideOutDown">
+              data-hide-effect="slideOutDown" style="z-index:0;">
               <span class="fa fa-arrow-up u-go-to__inner"></span>
             </a>
         <!-- End Go to Top -->
