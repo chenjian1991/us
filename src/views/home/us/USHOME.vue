@@ -1471,22 +1471,18 @@
               }, 5000);
             },
             initConnect(){
-/*               const domain = document.domain;
+              const domain = document.domain;
               console.log(domain)
               if(domain.startsWith('www.') || domain.startsWith('us.')){
                 let socket = new SockJS('https://'+ domain +'/xchange/marketdata');
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }else {
-                let socket = new SockJS('https://www.55.com/xchange/marketdata');
+                let socket = new SockJS('https://www.55ex.co/xchange/marketdata');
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }
- */              
-                let socket = new SockJS('http://52.193.195.1:8090/xchange/marketdata');
-                this.stompClient = Stomp.over(socket);
-                this.stompClient.debug = null
-                this.connection('btc_usd');
+              this.connection('btc_usd');
             },
             connection(symbol) {
                 const sym2 = symbol.toUpperCase().replace(/_/, '');
