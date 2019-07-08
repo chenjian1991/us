@@ -249,139 +249,143 @@
                       <img src="../../../assets/images/index/cinbase_big.png" style="width:100px;height:21px" alt="">
                     </div>
                   </div>
-                  <div class="pair">
-                    <div class="title row">
-                      <div class="pairName">
-                        <span class="front">BTC</span>
-                        <span class="back">/USD</span>
+                  <div class="gbbo_right">
+                    <div class="pair_wrap">
+                      <div class="pair">
+                        <div class="title row">
+                          <div class="pairName">
+                            <span class="front">BTC</span>
+                            <span class="back">/USD</span>
+                          </div>
+                          <div class="tradeBtn" @click="$router.push('/exchange?symbol=BTCUSD')">Trade</div>
+                        </div>
+                        <div class="row">
+                          <span>Best Ask</span>
+                          <span>Best Bid</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[0] === 1,down:BTCUSDTWaveArray[0] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[0]*USDTUSDD).toFixed(2):"-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDTWaveArray[2] === 1,down:BTCUSDTWaveArray[2] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[2]*USDTUSDD).toFixed(2):"-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[6] === 1,down:BTCUSDTWaveArray[6] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]*USDTUSDD).toFixed(2): "-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDTWaveArray[4] === 1,down:BTCUSDTWaveArray[4] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]*USDTUSDD).toFixed(2): "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[8] === 1,down:BTCUSDTWaveArray[8] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[0]*USDTUSDD).toFixed(2): "-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDTWaveArray[10] === 1,down:BTCUSDTWaveArray[10] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[2]*USDTUSDD).toFixed(2): "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:BTCUSDWaveArray[0] === 1,down:BTCUSDWaveArray[0] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[0]).toFixed(2): "-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDWaveArray[2] === 1,down:BTCUSDWaveArray[2] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[2]).toFixed(2): "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:BTCUSDWaveArray[4] === 1,down:BTCUSDWaveArray[4] === -1}">{{BTCUSD.COINBASEPRO?(BTCUSD.COINBASEPRO[0]).toFixed(2): "-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDWaveArray[6] === 1,down:BTCUSDWaveArray[6] === -1}">{{BTCUSD.COINBASEPRO?(BTCUSD.COINBASEPRO[2]).toFixed(2): "-"}}</span>
+                        </div>
                       </div>
-                      <div class="tradeBtn" @click="$router.push('/exchange?symbol=BTCUSD')">Trade</div>
-                    </div>
-                    <div class="row">
-                      <span>Best Ask</span>
-                      <span>Best Bid</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:BTCUSDTWaveArray[0] === 1,down:BTCUSDTWaveArray[0] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[0]*USDTUSDD).toFixed(2):"-"}}</span>
-                      <span class="row_right" :class="{up:BTCUSDTWaveArray[2] === 1,down:BTCUSDTWaveArray[2] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[2]*USDTUSDD).toFixed(2):"-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:BTCUSDTWaveArray[6] === 1,down:BTCUSDTWaveArray[6] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]*USDTUSDD).toFixed(2): "-"}}</span>
-                      <span class="row_right" :class="{up:BTCUSDTWaveArray[4] === 1,down:BTCUSDTWaveArray[4] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]*USDTUSDD).toFixed(2): "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:BTCUSDTWaveArray[8] === 1,down:BTCUSDTWaveArray[8] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[0]*USDTUSDD).toFixed(2): "-"}}</span>
-                      <span class="row_right" :class="{up:BTCUSDTWaveArray[10] === 1,down:BTCUSDTWaveArray[10] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[2]*USDTUSDD).toFixed(2): "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:BTCUSDWaveArray[0] === 1,down:BTCUSDWaveArray[0] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[0]).toFixed(2): "-"}}</span>
-                      <span class="row_right" :class="{up:BTCUSDWaveArray[2] === 1,down:BTCUSDWaveArray[2] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[2]).toFixed(2): "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:BTCUSDWaveArray[4] === 1,down:BTCUSDWaveArray[4] === -1}">{{BTCUSD.COINBASEPRO?(BTCUSD.COINBASEPRO[0]).toFixed(2): "-"}}</span>
-                      <span class="row_right" :class="{up:BTCUSDWaveArray[6] === 1,down:BTCUSDWaveArray[6] === -1}">{{BTCUSD.COINBASEPRO?(BTCUSD.COINBASEPRO[2]).toFixed(2): "-"}}</span>
+                      <div class="pair">
+                        <div class="title row">
+                          <div class="pairName">
+                            <span class="front">ETH</span>
+                            <span class="back">/BTC</span>
+                          </div>
+                          <div class="tradeBtn" @click="$router.push('/exchange?symbol=ETHBTC')">Trade</div>
+                        </div>
+                        <div class="row">
+                          <span>Best Ask</span>
+                          <span>Best Bid</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ETHBTCWaveArray[0] === 1,down:ETHBTCWaveArray[0] === -1}">{{ETHBTC.E55?ETHBTC.E55[0].toFixed(6):"-"}}</span>
+                          <span class="row_right" :class="{up:ETHBTCWaveArray[2] === 1,down:ETHBTCWaveArray[2] === -1}">{{ETHBTC.E55?ETHBTC.E55[2].toFixed(6):"-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ETHBTCWaveArray[4] === 1,down:ETHBTCWaveArray[4] === -1}">{{ETHBTC.BINANCE?ETHBTC.BINANCE[0].toFixed(6): "-"}}</span>
+                          <span class="row_right" :class="{up:ETHBTCWaveArray[6] === 1,down:ETHBTCWaveArray[6] === -1}">{{ETHBTC.BINANCE?ETHBTC.BINANCE[2].toFixed(6): "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ETHBTCWaveArray[8] === 1,down:ETHBTCWaveArray[8] === -1}">{{ETHBTC.HUOBI?ETHBTC.HUOBI[0].toFixed(6): "-"}}</span>
+                          <span class="row_right" :class="{up:ETHBTCWaveArray[10] === 1,down:ETHBTCWaveArray[10] === -1}">{{ETHBTC.HUOBI?ETHBTC.HUOBI[2].toFixed(6): "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ETHBTCWaveArray[12] === 1,down:ETHBTCWaveArray[12] === -1}">{{ETHBTC.BITTREX?ETHBTC.BITTREX[0].toFixed(6): "-"}}</span>
+                          <span class="row_right" :class="{up:ETHBTCWaveArray[14] === 1,down:ETHBTCWaveArray[14] === -1}">{{ETHBTC.BITTREX?ETHBTC.BITTREX[2].toFixed(6): "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ETHBTCWaveArray[16] === 1,down:ETHBTCWaveArray[16] === -1}">{{ETHBTC.COINBASEPRO?ETHBTC.COINBASEPRO[0].toFixed(6): "-"}}</span>
+                          <span class="row_right" :class="{up:ETHBTCWaveArray[18] === 1,down:ETHBTCWaveArray[18] === -1}">{{ETHBTC.COINBASEPRO?ETHBTC.COINBASEPRO[2].toFixed(6): "-"}}</span>
+                        </div>
+                      </div>
+                      <div class="pair">
+                        <div class="title row">
+                          <div class="pairName">
+                            <span class="front">LTC</span>
+                            <span class="back">/ETH</span>
+                          </div>
+                          <div class="tradeBtn" @click="$router.push('/exchange?symbol=LTCETH')">Trade</div>
+                        </div>
+                        <div class="row">
+                          <span>Best Ask</span>
+                          <span>Best Bid</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:LTCBTCWaveArray[0] === 1,down:LTCBTCWaveArray[0] === -1}">{{LTCBTC.E55?(LTCBTC.E55[0]/ETHBTCRate).toFixed(6):"-"}}</span>
+                          <span class="row_right" :class="{up:LTCBTCWaveArray[2] === 1,down:LTCBTCWaveArray[2] === -1}">{{LTCBTC.E55?(LTCBTC.E55[2]/ETHBTCRate).toFixed(6):"-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:LTCBTCWaveArray[4] === 1,down:LTCBTCWaveArray[4] === -1}">{{LTCBTC.BINANCE?(LTCBTC.BINANCE[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:LTCBTCWaveArray[6] === 1,down:LTCBTCWaveArray[6] === -1}">{{LTCBTC.BINANCE?(LTCBTC.BINANCE[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:LTCBTCWaveArray[8] === 1,down:LTCBTCWaveArray[8] === -1}">{{LTCBTC.HUOBI?(LTCBTC.HUOBI[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:LTCBTCWaveArray[10] === 1,down:LTCBTCWaveArray[10] === -1}">{{LTCBTC.HUOBI?(LTCBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:LTCBTCWaveArray[12] === 1,down:LTCBTCWaveArray[12] === -1}">{{LTCBTC.BITTREX?(LTCBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:LTCBTCWaveArray[14] === 1,down:LTCBTCWaveArray[14] === -1}">{{LTCBTC.BITTREX?(LTCBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:LTCBTCWaveArray[16] === 1,down:LTCBTCWaveArray[16] === -1}">{{LTCBTC.COINBASEPRO?(LTCBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:LTCBTCWaveArray[18] === 1,down:LTCBTCWaveArray[18] === -1}">{{LTCBTC.COINBASEPRO?(LTCBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                      </div>
+                      <!-- <div class="pair">
+                        <div class="title row">
+                          <div class="pairName">
+                            <span class="front">ZEC</span>
+                            <span class="back">/ETH</span>
+                          </div>
+                          <div class="tradeBtn" @click="$router.push('/exchange??symbol=ZECETH')">Trade</div>
+                        </div>
+                        <div class="row">
+                          <span>Best Ask</span>
+                          <span>Best Bid</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ZECBTCWaveArray[0] === 1,down:ZECBTCWaveArray[0] === -1}">{{ZECBTC.E55?(ZECBTC.E55[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:ZECBTCWaveArray[2] === 1,down:ZECBTCWaveArray[2] === -1}">{{ZECBTC.E55?(ZECBTC.E55[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ZECBTCWaveArray[4] === 1,down:ZECBTCWaveArray[4] === -1}">{{ZECBTC.BINANCE?(ZECBTC.BINANCE[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:ZECBTCWaveArray[6] === 1,down:ZECBTCWaveArray[6] === -1}">{{ZECBTC.BINANCE?(ZECBTC.BINANCE[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ZECBTCWaveArray[8] === 1,down:ZECBTCWaveArray[8] === -1}">{{ZECBTC.HUOBI?(ZECBTC.HUOBI[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:ZECBTCWaveArray[10] === 1,down:ZECBTCWaveArray[10] === -1}">{{ZECBTC.HUOBI?(ZECBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ZECBTCWaveArray[12] === 1,down:ZECBTCWaveArray[12] === -1}">{{ZECBTC.BITTREX?(ZECBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:ZECBTCWaveArray[14] === 1,down:ZECBTCWaveArray[14] === -1}">{{ZECBTC.BITTREX?(ZECBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="row_left"  :class="{up:ZECBTCWaveArray[16] === 1,down:ZECBTCWaveArray[16] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                          <span class="row_right" :class="{up:ZECBTCWaveArray[18] === 1,down:ZECBTCWaveArray[18] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
+                        </div>
+                      </div> -->
                     </div>
                   </div>
-                  <div class="pair">
-                    <div class="title row">
-                      <div class="pairName">
-                        <span class="front">ETH</span>
-                        <span class="back">/BTC</span>
-                      </div>
-                      <div class="tradeBtn" @click="$router.push('/exchange?symbol=ETHBTC')">Trade</div>
-                    </div>
-                    <div class="row">
-                      <span>Best Ask</span>
-                      <span>Best Bid</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ETHBTCWaveArray[0] === 1,down:ETHBTCWaveArray[0] === -1}">{{ETHBTC.E55?ETHBTC.E55[0].toFixed(6):"-"}}</span>
-                      <span class="row_right" :class="{up:ETHBTCWaveArray[2] === 1,down:ETHBTCWaveArray[2] === -1}">{{ETHBTC.E55?ETHBTC.E55[2].toFixed(6):"-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ETHBTCWaveArray[4] === 1,down:ETHBTCWaveArray[4] === -1}">{{ETHBTC.BINANCE?ETHBTC.BINANCE[0].toFixed(6): "-"}}</span>
-                      <span class="row_right" :class="{up:ETHBTCWaveArray[6] === 1,down:ETHBTCWaveArray[6] === -1}">{{ETHBTC.BINANCE?ETHBTC.BINANCE[2].toFixed(6): "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ETHBTCWaveArray[8] === 1,down:ETHBTCWaveArray[8] === -1}">{{ETHBTC.HUOBI?ETHBTC.HUOBI[0].toFixed(6): "-"}}</span>
-                      <span class="row_right" :class="{up:ETHBTCWaveArray[10] === 1,down:ETHBTCWaveArray[10] === -1}">{{ETHBTC.HUOBI?ETHBTC.HUOBI[2].toFixed(6): "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ETHBTCWaveArray[12] === 1,down:ETHBTCWaveArray[12] === -1}">{{ETHBTC.BITTREX?ETHBTC.BITTREX[0].toFixed(6): "-"}}</span>
-                      <span class="row_right" :class="{up:ETHBTCWaveArray[14] === 1,down:ETHBTCWaveArray[14] === -1}">{{ETHBTC.BITTREX?ETHBTC.BITTREX[2].toFixed(6): "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ETHBTCWaveArray[16] === 1,down:ETHBTCWaveArray[16] === -1}">{{ETHBTC.COINBASEPRO?ETHBTC.COINBASEPRO[0].toFixed(6): "-"}}</span>
-                      <span class="row_right" :class="{up:ETHBTCWaveArray[18] === 1,down:ETHBTCWaveArray[18] === -1}">{{ETHBTC.COINBASEPRO?ETHBTC.COINBASEPRO[2].toFixed(6): "-"}}</span>
-                    </div>
                   </div>
-                  <div class="pair">
-                    <div class="title row">
-                      <div class="pairName">
-                        <span class="front">LTC</span>
-                        <span class="back">/ETH</span>
-                      </div>
-                      <div class="tradeBtn" @click="$router.push('/exchange?symbol=LTCETH')">Trade</div>
-                    </div>
-                    <div class="row">
-                      <span>Best Ask</span>
-                      <span>Best Bid</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:LTCBTCWaveArray[0] === 1,down:LTCBTCWaveArray[0] === -1}">{{LTCBTC.E55?(LTCBTC.E55[0]/ETHBTCRate).toFixed(6):"-"}}</span>
-                      <span class="row_right" :class="{up:LTCBTCWaveArray[2] === 1,down:LTCBTCWaveArray[2] === -1}">{{LTCBTC.E55?(LTCBTC.E55[2]/ETHBTCRate).toFixed(6):"-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:LTCBTCWaveArray[4] === 1,down:LTCBTCWaveArray[4] === -1}">{{LTCBTC.BINANCE?(LTCBTC.BINANCE[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:LTCBTCWaveArray[6] === 1,down:LTCBTCWaveArray[6] === -1}">{{LTCBTC.BINANCE?(LTCBTC.BINANCE[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:LTCBTCWaveArray[8] === 1,down:LTCBTCWaveArray[8] === -1}">{{LTCBTC.HUOBI?(LTCBTC.HUOBI[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:LTCBTCWaveArray[10] === 1,down:LTCBTCWaveArray[10] === -1}">{{LTCBTC.HUOBI?(LTCBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:LTCBTCWaveArray[12] === 1,down:LTCBTCWaveArray[12] === -1}">{{LTCBTC.BITTREX?(LTCBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:LTCBTCWaveArray[14] === 1,down:LTCBTCWaveArray[14] === -1}">{{LTCBTC.BITTREX?(LTCBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:LTCBTCWaveArray[16] === 1,down:LTCBTCWaveArray[16] === -1}">{{LTCBTC.COINBASEPRO?(LTCBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:LTCBTCWaveArray[18] === 1,down:LTCBTCWaveArray[18] === -1}">{{LTCBTC.COINBASEPRO?(LTCBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                  </div>
-                  <!-- <div class="pair">
-                    <div class="title row">
-                      <div class="pairName">
-                        <span class="front">ZEC</span>
-                        <span class="back">/ETH</span>
-                      </div>
-                      <div class="tradeBtn" @click="$router.push('/exchange??symbol=ZECETH')">Trade</div>
-                    </div>
-                    <div class="row">
-                      <span>Best Ask</span>
-                      <span>Best Bid</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ZECBTCWaveArray[0] === 1,down:ZECBTCWaveArray[0] === -1}">{{ZECBTC.E55?(ZECBTC.E55[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:ZECBTCWaveArray[2] === 1,down:ZECBTCWaveArray[2] === -1}">{{ZECBTC.E55?(ZECBTC.E55[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ZECBTCWaveArray[4] === 1,down:ZECBTCWaveArray[4] === -1}">{{ZECBTC.BINANCE?(ZECBTC.BINANCE[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:ZECBTCWaveArray[6] === 1,down:ZECBTCWaveArray[6] === -1}">{{ZECBTC.BINANCE?(ZECBTC.BINANCE[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ZECBTCWaveArray[8] === 1,down:ZECBTCWaveArray[8] === -1}">{{ZECBTC.HUOBI?(ZECBTC.HUOBI[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:ZECBTCWaveArray[10] === 1,down:ZECBTCWaveArray[10] === -1}">{{ZECBTC.HUOBI?(ZECBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ZECBTCWaveArray[12] === 1,down:ZECBTCWaveArray[12] === -1}">{{ZECBTC.BITTREX?(ZECBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:ZECBTCWaveArray[14] === 1,down:ZECBTCWaveArray[14] === -1}">{{ZECBTC.BITTREX?(ZECBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                    <div class="row">
-                      <span class="row_left"  :class="{up:ZECBTCWaveArray[16] === 1,down:ZECBTCWaveArray[16] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                      <span class="row_right" :class="{up:ZECBTCWaveArray[18] === 1,down:ZECBTCWaveArray[18] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                    </div>
-                  </div> -->
-                </div>
             </div>
             <!-- GBBO end -->
 
@@ -1467,7 +1471,7 @@
               }, 5000);
             },
             initConnect(){
-              const domain = document.domain;
+/*               const domain = document.domain;
               console.log(domain)
               if(domain.startsWith('www.') || domain.startsWith('us.')){
                 let socket = new SockJS('https://'+ domain +'/xchange/marketdata');
@@ -1478,7 +1482,11 @@
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }
-              this.connection('btc_usd');
+ */              
+                let socket = new SockJS('http://52.193.195.1:8090/xchange/marketdata');
+                this.stompClient = Stomp.over(socket);
+                this.stompClient.debug = null
+                this.connection('btc_usd');
             },
             connection(symbol) {
                 const sym2 = symbol.toUpperCase().replace(/_/, '');
@@ -1743,57 +1751,65 @@
       height 48px
       line-height 48px
       width 142px
-  .pair
-    .row
-      width 212px
-      height 48px
-      margin 0
-      padding 0 20px
-      box-sizing border-box
-      line-height 48px
-      text-align center
+  .gbbo_right
+    width 100%
+    overflow auto
+    .pair_wrap
       display flex
-      justify-content space-between
-      color #535C64
-      .up
-        background-color #edf8ef
-        color #66B76D
-      .down
-        background-color #fff1f3
-        color #EA4853
-      .row_left
-        padding 0 10px
-        margin-left -10px
-      .row_right
-        padding 0 10px
-        margin-right -10px
-      &:nth-child(2n+1)
-        background-color #F8FAFD
-      &:nth-child(1)
-        background-color #fff
-      &:nth-child(2)
-        color #1E2022
-      &:nth-child(3)
-        color #12869A
-    .title
-      width 212px
-      height 48px
-      .pairName
-        .front
-          font-size:20px;
-          font-weight:500;
-          color:rgba(30,32,34,1);
-        .back
-          font-size:14px;
-          font-weight:400;
-          color #1E2022
-      .tradeBtn
-        width:72px;
-        height:30px;
-        background:rgba(18,134,154,1);
-        border-radius:2px;
-        line-height 30px
-        margin-top 10px
-        color #fff
-        cursor pointer
+      width 900px
+      justify-content space-around
+      margin 0 auto
+      .pair
+        .row
+          width 212px
+          height 48px
+          margin 0
+          padding 0 20px
+          box-sizing border-box
+          line-height 48px
+          text-align center
+          display flex
+          justify-content space-between
+          color #535C64
+          .up
+            background-color #edf8ef
+            color #66B76D
+          .down
+            background-color #fff1f3
+            color #EA4853
+          .row_left
+            padding 0 10px
+            margin-left -10px
+          .row_right
+            padding 0 10px
+            margin-right -10px
+          &:nth-child(2n+1)
+            background-color #F8FAFD
+          &:nth-child(1)
+            background-color #fff
+          &:nth-child(2)
+            color #1E2022
+          &:nth-child(3)
+            color #12869A
+        .title
+          width 212px
+          height 48px
+          .pairName
+            .front
+              font-size:20px;
+              font-weight:500;
+              color:rgba(30,32,34,1);
+            .back
+              font-size:14px;
+              font-weight:400;
+              color #1E2022
+          .tradeBtn
+            width:72px;
+            height:30px;
+            background:rgba(18,134,154,1);
+            border-radius:2px;
+            line-height 30px
+            margin-top 10px
+            color #fff
+            cursor pointer
 </style>
