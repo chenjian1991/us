@@ -1432,7 +1432,7 @@
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }else {
-                let socket = new SockJS('https://www.55.com/xchange/marketdata');
+                let socket = new SockJS('https://www.55ex.co/xchange/marketdata');
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }
