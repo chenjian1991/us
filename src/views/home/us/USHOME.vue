@@ -986,7 +986,7 @@
                             <!-- Team -->
                                 <div class="row pb-6">
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Andrew Bandhini</h3>
+                                    <h3 class="h5 mb-4"> Andrew Banhidi</h3>
                                     <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Head of Research and Technology Sales</span>
                                     <p class="font-size-14">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
                                     </div>
