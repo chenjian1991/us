@@ -32,11 +32,11 @@
                                       <h1 class="text-white display-4 font-size-48--md-down mp-0"
                                           data-scs-animation-in="fadeInUp"
                                           data-scs-animation-delay="200">
-                                          <span class="font-weight-bold" style="font-size: 2.1rem;">A Better Way to Buy/Sell Bitcoin</span>
+                                          <span class="font-weight-bold" style="font-size: 4.1rem;">A Better Way to Buy/Sell Crypto</span>
                                       </h1>
                                       <span class="d-block h4 text-white font-weight-light mb-2 mt-2"
                                               data-scs-animation-in="fadeInUp" style="font-size: 1.2rem;">
-                                          Buy and sell with best price and deepest liquidity at one single point of access to global markets.
+                                          Trade Bitcoin, Ether, Litecoin, DASH and more, including our premium stable coin USDD
                                       </span>
                                   </div>
                                   <div class=" position-absolute" style="top:0;right:0" id="gbbo_container">
