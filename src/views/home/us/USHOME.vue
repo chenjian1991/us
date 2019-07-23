@@ -461,7 +461,7 @@
                                   </div>
                                   <div class="media-body">
                                   <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Lisa Loud</h4>
-                                  <p class="small u-slick--pagination-testimonials-v1__text mb-0">BitMEX - Head of Marketing</p>
+                                  <p class="small u-slick--pagination-testimonials-v1__text mb-0">SVP of Strategic Partnerships</p>
                                   </div>
                               </div>
                           <!-- End Authors -->
@@ -918,8 +918,8 @@
                             <div class="row">
                                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                 <h3 class="h5 mb-4">Ashu Swami</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">CEO of 55 Prime</span>
-                                <p class="font-size-14">Ashu is the CEO of 55 Prime. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
+                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">CTO</span>
+                                <p class="font-size-14">Ashu is the CTO of 55. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
 
                                 </div>
                                 <div class="col-sm-6">
