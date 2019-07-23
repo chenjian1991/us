@@ -141,7 +141,33 @@
         <!-- End Logo -->
         <p class="small text-white"><a style="color:#fff;" target="_blank" href="https://www.55.com/MSB.pdf">MSB No.31000146897405</a> </p>
         <p class="small text-white">2500 Plaza 5, Unit 2553, Jersey City, NJ 07311</p>
-        <p class="small text-white">&copy; 2017-2019 55. All rights reserved.</p>
+        <p class="small text-white">&copy; 2017-2019 55.trade All rights reserved.</p>
+        <div class="col-lg-6 text-lg-right" style="max-width:100%">
+          <!-- Social Networks -->
+          <ul class="list-inline mb-0" style="text-align:center">
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://www.facebook.com/55AssetNetwork/" target="_blank">
+                <span class="fab fa-facebook-f btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://twitter.com/55AssetNetwork" target="_blank">
+                <span class="fab fa-twitter btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://www.linkedin.com/company/55-global/" target="_blank">
+                <span class="fab fa-linkedin btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="javascript:;" target="_blank">
+                <span class="fab fa-youtube btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+          </ul>
+          <!-- End Social Networks -->
+        </div>      
       </div>
       <!-- End Copyright -->
     </footer>
