@@ -27,7 +27,8 @@ var isEmpty = function isEmpty(f) {
       onkeyup: function(element){$(element).valid()},
       errorPlacement: function(){},
       highlight: function(){},
-      unhighlight: function(){}
+      unhighlight: function(){},
+      submitHandler: function(){}
     },
 
     /**
@@ -86,14 +87,19 @@ var isEmpty = function isEmpty(f) {
           errorClass: config['errorClass'],
           rules: config['rules'],
           onkeyup: config['onkeyup'],
-          errorPlacement: isEmpty(config['errorPlacement']) == true ? $self.errorPlacement : config['errorPlacement'],
-          highlight: isEmpty(config['highlight']) == true ? $self.highlight : config['highlight'],
-          unhighlight: isEmpty(config['unhighlight']) == true ? $self.unHighlight : config['unhighlight']
+          errorPlacement: isEmpty(config['errorPlacement']) === true ? $self.errorPlacement : config['errorPlacement'],
+          highlight: isEmpty(config['highlight']) === true ? $self.highlight : config['highlight'],
+          unhighlight: isEmpty(config['unhighlight']) === true ? $self.unHighlight : config['unhighlight'],
+          submitHandler: isEmpty(config['submitHandler']) === true ? $self.submitHandler : config['submitHandler']
         });
 
-        $('select').change(function () {
-          $(this).valid();
-        });
+        if($this.find('select').length) {
+
+          $('select').change(function () {
+            $(this).valid();
+          });
+
+        }
 
         //Actions
         collection = collection.add($this);
@@ -102,7 +108,7 @@ var isEmpty = function isEmpty(f) {
 
     errorPlacement: function (error, element) {
       var $this = $(element),
-        errorMsgClasses = $this.data('msg-classes');
+        errorMsgClasses = $this.data('error-msg-classes');
 
       error.addClass(errorMsgClasses);
       error.appendTo(element.parents('.js-form-message'));
@@ -122,6 +128,10 @@ var isEmpty = function isEmpty(f) {
         successClass = $this.data('success-class');
 
       $this.parents('.js-form-message').removeClass(errorClass).addClass(successClass);
+    },
+
+    submitHandler: function (form) {
+      form.submit();
     }
   }
 })(jQuery);

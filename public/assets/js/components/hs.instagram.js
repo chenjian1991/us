@@ -16,6 +16,7 @@
      * @var Object _baseConfig
      */
     _baseConfig: {
+      resolution: 'standard_resolution',
       get: 'user',
       limit: '12',
       template: '<div class="col-md-3"><a href="{{link}}" target="_blank"><img class="img-fluid" src="{{image}}" /></a></div>'
@@ -74,6 +75,7 @@
           template = $this.data('template'),
 
           instaFeed = new Instafeed({
+            resolution: config.resolution,
             get: get != undefined ? get : config.get,
             limit: limit != undefined ? limit : config.limit,
             template: template != undefined ? template : config.template,

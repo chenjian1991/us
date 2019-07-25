@@ -15,9 +15,7 @@
      *
      * @var Object _baseConfig
      */
-    _baseConfig: {
-      oneClick: function() {}
-    },
+    _baseConfig: {},
 
     /**
      *
@@ -54,32 +52,72 @@
     videoPlayerInit: function () {
       //Variables
       var $self = this,
-        config = $self.config,
         collection = $self.pageCollection;
 
       //Actions
       this.collection.each(function (i, el) {
         //Variables
         var $this = $(el),
-          $target = $($this.data('target')),
+          parent = $this.data('parent'),
+          target = $this.data('target'),
+          SRC = $this.data('video-id'),
+          videoType = $this.data('video-type'),
           classes = $this.data('classes'),
-          i2 = 0;
+          isAutoPlay = Boolean($this.data('is-autoplay'));
 
-        $this.on('click', function(e) {
-          $target.toggleClass(classes);
+        if (videoType !== 'vimeo') {
 
-          if(i2 < 1) {
-            config.oneClick();
+          $self.youTubeAPIReady();
 
-            i2++;
-          }
+        }
 
+        $this.on('click', function (e) {
           e.preventDefault();
+
+          $('#' + parent).toggleClass(classes);
+
+          if (videoType === 'vimeo') {
+
+            $self.vimeoPlayer(target, SRC, isAutoPlay);
+
+          } else {
+
+            $self.youTubePlayer(target, SRC, isAutoPlay);
+
+          }
         });
 
         //Actions
         collection = collection.add($this);
       });
+    },
+
+    youTubeAPIReady: function () {
+      var YTScriptTag = document.createElement('script');
+      YTScriptTag.src = '//www.youtube.com/player_api';
+
+      var DOMfirstScriptTag = document.getElementsByTagName('script')[0];
+      DOMfirstScriptTag
+        .parentNode
+        .insertBefore(YTScriptTag, DOMfirstScriptTag);
+    },
+
+    youTubePlayer: function (target, src, autoplay) {
+      var YTPlayer = new YT.Player(target, {
+        videoId: src,
+        playerVars: {
+          origin: window.location.origin,
+          autoplay: autoplay === true ? 1 : 0
+        }
+      });
+    },
+
+    vimeoPlayer: function (target, src, autoplay) {
+      var vimeoIframe = document.getElementById(target),
+        vimeoPlayer = new Vimeo.Player(vimeoIframe, {
+          id: src,
+          autoplay: autoplay === true ? 1 : 0
+        });
     }
   }
 
