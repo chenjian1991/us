@@ -24,10 +24,61 @@
             
              <p> In collaboration with Prime Trust - A chartered, regulated, insured trust company, 55 also allows using fiat to buy major cryptocurrencies.</p>
 
-             <p><a href="">Learn about our Team Here</a></p>
+             <p><router-link to="/team" href="">Learn about our Team Here</router-link></p>
                       
-             <h2 class="h4">Partners</h2> 
-             <p>logo们 </p>
+             <!-- Clients Section -->
+                <div class="container u-space-2">
+                      <div class="title" style="text-align:center;font-size:22px;color:#12869a !important;padding:22px">Partners</div>
+
+                  <div class="js-slick-carousel u-slick"
+                      data-autoplay="true"
+                      data-speed="5000"
+                      data-infinite="true"
+                      data-slides-show="6"
+                      data-responsive='[{
+                        "breakpoint": 1200,
+                        "settings": {
+                          "slidesToShow": 4
+                        }
+                      }, {
+                        "breakpoint": 992,
+                        "settings": {
+                          "slidesToShow": 4
+                        }
+                      }, {
+                        "breakpoint": 768,
+                        "settings": {
+                          "slidesToShow": 3
+                        }
+                      }, {
+                        "breakpoint": 576,
+                        "settings": {
+                          "slidesToShow": 3
+                        }
+                      }, {
+                        "breakpoint": 480,
+                        "settings": {
+                          "slidesToShow": 2
+                        }
+                      }]'>
+                    <div class="js-slide">
+                      <img class="u-clients" src="assets/svg/logos/parnter/partner-logo4.png" alt="Image Description">
+                    </div>
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../assets/images/fenwick_logo.png" alt="Image Description">
+                    </div>
+                     <div class="js-slide">
+                      <img class="u-clients"  src="../../assets/images/gco_logo.png" alt="Image Description">
+                    </div>
+                     <div class="js-slide">
+                      <img class="u-clients"  src="../../assets/images/parnter5.png" alt="Image Description">
+                    </div>
+                    <div class="js-slide">
+                      <img class="u-clients" src="assets/svg/logos/parnter/partner-logo3.png" alt="Image Description">
+                    </div>
+                  </div>
+                </div>
+            <!-- End Clients Section -->
         
         </div>
         </div>
@@ -72,7 +123,9 @@
             },
         },
         mounted(){
-            
+                $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+                $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
 
         },
     
