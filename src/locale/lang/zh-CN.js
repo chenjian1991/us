@@ -1011,6 +1011,8 @@ export default {
    fronthomefootAPP:"随时随地多端交易！",
    fronthomefootAPPios:"下载IOS",
    fronthomefootAPPandroid:"下载安卓版",
+   helpURL:'https://55support.zendesk.com/hc/zh-cn',
+
    //About 55
    aboutTitle: '关于55',
    aboutInfo1: '55是全球首家以通证为载体实现全球优质资产无缝高效流动的资产交易平台。55旨在用区块链技术和通证经济模型构建一个全球连通的、连续的、透明的、低摩擦的、无歧视的资产交易网络。全球优选的资产品类包括区块链通证、股票通证、外汇通证、贵金属通证、国债通证、房地产通证、限量商品通证、本地商业服务通证以及个人通证。',

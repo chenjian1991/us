@@ -1138,6 +1138,8 @@ export default {
    fronthomefootAPP:"We put power in your hands! Trade anytime anywhere!",
    fronthomefootAPPios:"Download on the",
    fronthomefootAPPandroid:"Get it on",
+   helpURL:'https://55support.zendesk.com/hc/en-us',
+
 
    //关于55页面
    aboutTitle: 'About 55',

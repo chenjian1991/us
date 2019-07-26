@@ -62,6 +62,8 @@
                         <li><router-link to="/terms"  class="list-group-item list-group-item-action">{{$t('UserAgreement')}}</router-link></li>
                         <li><router-link to="/privacy" class="list-group-item list-group-item-action">{{$t('fronthomefootPrivacy')}}</router-link></li>
                         <li><router-link to="/fee" class="list-group-item list-group-item-action">{{$t('fronthomefootFee')}}</router-link></li>
+                        <li><router-link to="/tradingRules" class="list-group-item list-group-item-action">Trading Rules</router-link></li>
+                        
                         <!-- <li><router-link to="/tradingRules" class="list-group-item list-group-item-action">Trading Rules</router-link></li> -->
                     </ul>
                     <!-- End List Group -->
@@ -77,30 +79,19 @@
                         <li>
                             <a class="list-group-item list-group-item-action" :href="englishCommunityURL" target="_blank">{{$t('fronthomefootSocialtrading')}}</a>
                         </li>
-                        <!-- <li>
-                            <router-link  class="list-group-item list-group-item-action" to="/capital">55 Capital</router-link>
-                        </li> -->
                         <li>
-                            <router-link to='/fatoRule' class="list-group-item list-group-item-action" >{{$t('fronthomefootATO')}}</router-link>
+                            <router-link  class="list-group-item list-group-item-action" to="/capital">55 Capital</router-link>
                         </li>
-                         <li>
-                            <a target="_blank" href="https://github.com/55official/55com-official-api-docs/blob/master/quote_open_api.md" class="list-group-item list-group-item-action" >{{$t('fronthomefootAPI')}}</a>
-                        </li>
+                       
                     </ul>
                     <!-- End List Group -->
                     </div>
 
                     <div class="col-sm-4 col-lg-2 mb-4 mb-lg-0">
-                    <!-- List Group -->
-                     
-                    <!-- End List Group -->
                     </div>
                         <div class="col-md-6 col-lg-4">
-                            <!-- Button -->
-                         
-                              
                         <div>
-                             <img src="../../assets/images/foot_code.png" alt="Logo" style="width: 300px;">
+                             <img src="../../assets/images/foot_code.png" alt="Logo" style="width:100%;height:auto;">
                         </div>
                         </div>
                         
@@ -111,18 +102,41 @@
 
             <!-- Copyright -->
            <div style="padding-bottom:30px;" class="container text-center u-space-1">
-                <!-- Logo -->
                 <a class="d-inline-block mb-2" href="../home/index.html" aria-label="Front">
-                <!-- <img src="../../assets/images/footer/logo-white-footer.svg" alt="Logo" style="width: 50px;"> -->
+                <img src="assets/svg/logos/logo-white-footer.svg" alt="Logo" style="width: 50px;">
                 </a>
-                <!-- End Logo -->
                 <p class="small text-white"><a style="color:#fff;" target="_blank" href="https://www.55.com/MSB.pdf">MSB No.31000146897405</a> </p>
                 <p class="small text-white">2500 Plaza 5, Unit 2553, Jersey City, NJ 07311</p>
-                <p class="small text-white">&copy; 2017-2019 55. All rights reserved.</p>
+                <p class="small text-white">&copy; 2017-2019 55.trade All rights reserved.</p>
+                <div class="col-lg-6 text-lg-right" style="max-width:100%">
+          <!-- Social Networks -->
+          <ul class="list-inline mb-0" style="text-align:center">
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://www.facebook.com/55AssetNetwork/" target="_blank">
+                <span class="fab fa-facebook-f btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://twitter.com/55AssetNetwork" target="_blank">
+                <span class="fab fa-twitter btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://www.linkedin.com/company/55-global/" target="_blank">
+                <span class="fab fa-linkedin btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="javascript:;" target="_blank">
+                <span class="fab fa-youtube btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+          </ul>
+          <!-- End Social Networks -->
+        </div> 
             </div>
-            <!-- End Copyright -->
             </footer>
-            <!-- ========== END FOOTER ========== -->
+<!-- ========== END FOOTER ========== -->
             
     </div>
 </template>
