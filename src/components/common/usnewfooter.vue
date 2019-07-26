@@ -100,7 +100,7 @@
                          
                               
                         <div>
-                             <img src="assets/svg/logos/logo-white-footer.svg" alt="Logo" style="width: 300px;">
+                             <img src="../../assets/images/foot_code.png" alt="Logo" style="width: 300px;">
                         </div>
                         </div>
                         
