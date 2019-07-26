@@ -1,7 +1,7 @@
 /*!
  * Cube Portfolio - Responsive jQuery Grid Plugin
  *
- * version: 4.3.1 (15 January, 2018)
+ * version: 4.4.0 (1 August, 2018)
  * require: jQuery v1.8+
  *
  * Copyright 2013-2018, Mihai Buricea (http://scriptpie.com/cubeportfolio/live-preview/)
@@ -9,7 +9,7 @@
  *
  */
 .cbp-l-filters-alignCenter .cbp-filter-counter:after, .cbp-l-filters-alignRight .cbp-filter-counter:after, .cbp-l-filters-button .cbp-filter-counter:after, .cbp-l-filters-buttonCenter .cbp-filter-counter:after, .cbp-l-filters-text .cbp-filter-counter:after, .cbp, .cbp *,
-.cbp *:after, .cbp:after, .cbp-l-filters-dropdownHeader:after, .cbp-popup-wrap, .cbp-popup-wrap *, .cbp-popup-wrap:before, .cbp-popup-loadingBox:after, .cbp-l-direction:after {
+.cbp *:after, .cbp:after, .cbp-l-filters-dropdownHeader:after, .cbp-popup-wrap, .cbp-popup-wrap *, .cbp-popup-wrap:before, .cbp-popup-loadingBox:after, .cbp-search *, .cbp-l-direction:after {
   box-sizing: border-box; }
 
 .cbp-l-grid-agency-title, .cbp-l-grid-agency-desc, .cbp-l-grid-work-title, .cbp-l-grid-work-desc, .cbp-l-grid-blog-title, .cbp-l-grid-projects-title, .cbp-l-grid-projects-desc, .cbp-l-grid-masonry-projects-title, .cbp-l-grid-masonry-projects-desc {
@@ -17,7 +17,7 @@
   overflow: hidden;
   text-overflow: ellipsis; }
 
-.cbp-l-filters-alignCenter, .cbp-l-filters-alignCenter *, .cbp-l-filters-alignLeft, .cbp-l-filters-alignLeft *, .cbp-l-filters-alignRight, .cbp-l-filters-alignRight *, .cbp-l-filters-button, .cbp-l-filters-button *, .cbp-l-filters-buttonCenter, .cbp-l-filters-buttonCenter *, .cbp-l-filters-dropdown, .cbp-l-filters-dropdown *, .cbp-l-filters-list, .cbp-l-filters-list *, .cbp-l-filters-work, .cbp-l-filters-work *, .cbp-l-filters-big, .cbp-l-filters-big *, .cbp-l-filters-text, .cbp-l-filters-text *, .cbp-l-filters-underline, .cbp-l-filters-underline *, .cbp-l-loadMore-bgbutton, .cbp-l-loadMore-bgbutton *, .cbp-l-loadMore-button, .cbp-l-loadMore-button *, .cbp-l-loadMore-text, .cbp-l-loadMore-text *, .cbp-search, .cbp-search *, .cbp-l-dropdown, .cbp-l-dropdown * {
+.cbp-l-filters-alignCenter, .cbp-l-filters-alignCenter *, .cbp-l-filters-alignLeft, .cbp-l-filters-alignLeft *, .cbp-l-filters-alignRight, .cbp-l-filters-alignRight *, .cbp-l-filters-button, .cbp-l-filters-button *, .cbp-l-filters-buttonCenter, .cbp-l-filters-buttonCenter *, .cbp-l-filters-dropdown, .cbp-l-filters-dropdown *, .cbp-l-filters-list, .cbp-l-filters-list *, .cbp-l-filters-work, .cbp-l-filters-work *, .cbp-l-filters-big, .cbp-l-filters-big *, .cbp-l-filters-text, .cbp-l-filters-text *, .cbp-l-filters-underline, .cbp-l-filters-underline *, .cbp-l-filters-holder, .cbp-l-filters-holder *, .cbp-l-loadMore-bgbutton, .cbp-l-loadMore-bgbutton *, .cbp-l-loadMore-button, .cbp-l-loadMore-button *, .cbp-l-loadMore-text, .cbp-l-loadMore-text *, .cbp-search, .cbp-l-dropdown, .cbp-l-dropdown * {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -882,7 +882,7 @@
   position: relative; }
 
 .cbp-l-filters-dropdownHeader:after {
-  border-color: #FFFFFF transparent;
+  border-color: #FFFFFF rgba(0, 0, 0, 0);
   border-style: solid;
   border-width: 5px 5px 0;
   content: "";
@@ -1129,6 +1129,74 @@
 @media only screen and (max-width: 480px) {
   .cbp-l-filters-underline {
     text-align: center; } }
+
+.cbp-l-filters-holder {
+  text-align: center; }
+  .cbp-l-filters-holder .cbp-filter-item {
+    cursor: pointer;
+    font: 600 16px/21px "Open Sans", sans-serif;
+    padding: 8px 10px;
+    position: relative;
+    overflow: visible;
+    margin: 0 10px 10px 10px;
+    display: inline-block;
+    color: #555;
+    -webkit-transition: color .25s ease-in-out;
+    transition: color .25s ease-in-out;
+    letter-spacing: 0.3px; }
+    .cbp-l-filters-holder .cbp-filter-item:hover {
+      color: #d8b345; }
+    .cbp-l-filters-holder .cbp-filter-item.cbp-filter-item-active {
+      color: #d8b345;
+      cursor: default; }
+    .cbp-l-filters-holder .cbp-filter-item:first-child {
+      margin-left: 0; }
+    .cbp-l-filters-holder .cbp-filter-item:last-child {
+      margin-right: 0; }
+  .cbp-l-filters-holder .cbp-filter-counter {
+    display: inline; }
+
+@media only screen and (max-width: 480px) {
+  .cbp-l-filters-holder {
+    text-align: center; } }
+
+.cbp-l-subfilters {
+  display: none;
+  opacity: 0;
+  margin-bottom: 40px;
+  text-align: center; }
+  .cbp-l-subfilters .cbp-filter-item {
+    position: relative;
+    font: 13px "Open Sans", sans-serif;
+    display: inline-block;
+    color: #9e9e9e;
+    margin: 0 15px;
+    cursor: pointer;
+    margin: 0 10px 10px 10px;
+    letter-spacing: 0.3px; }
+    .cbp-l-subfilters .cbp-filter-item:hover {
+      color: #555; }
+    .cbp-l-subfilters .cbp-filter-item:after {
+      content: '';
+      background-color: #dfb947;
+      width: 0;
+      height: 2px;
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      -webkit-transition: width .3s;
+      transition: width .3s; }
+  .cbp-l-subfilters .cbp-filter-item-active {
+    color: #555; }
+    .cbp-l-subfilters .cbp-filter-item-active:after {
+      width: 100%; }
+
+.cbp-l-subfilters--active {
+  display: block;
+  -webkit-animation: fadeIn .5s ease both;
+  animation: fadeIn .5s ease both; }
 
 .cbp-animation-quicksand {
   -webkit-transition: height .6s ease-in-out;
@@ -2661,6 +2729,15 @@
   font-weight: 600;
   min-width: 100px; }
 
+.cbp-l-project-details-item {
+  display: flex; }
+
+.cbp-l-project-details-name {
+  color: #696969;
+  font-weight: 600;
+  min-width: 80px;
+  margin-right: 20px; }
+
 .cbp-l-project-details-visit {
   color: #FFFFFF;
   float: right;
@@ -3091,7 +3168,7 @@
     transition: background .5s ease-in-out; }
 
 .cbp-pagination-active:after {
-  background: transparent; }
+  background: rgba(0, 0, 0, 0); }
 
 .cbp-slider-wrap,
 .cbp-slider-item {
@@ -3732,7 +3809,7 @@
   position: relative; }
 
 .cbp-l-direction:after {
-  border-color: #FFFFFF transparent;
+  border-color: #FFFFFF rgba(0, 0, 0, 0);
   border-style: solid;
   border-width: 5px 5px 0;
   content: "";

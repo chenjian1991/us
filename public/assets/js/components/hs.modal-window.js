@@ -24,6 +24,8 @@
 			speed: 400,
 			type: 'onscroll', // onscroll, beforeunload, hashlink, ontarget, aftersometime
 			effect: 'fadein',
+			modalIsClosingByEsc: true,
+			modalIsClosingByOverlay: true,
 			onOpen: function() {},
 			onClose: function() {},
 			onComplete: function() {}
@@ -80,7 +82,9 @@
 
 	      var $this = $(this),
 	          target = $this.data('modal-target'),
-	          effect = $this.data('modal-effect') || config['effect'];
+	          effect = $this.data('modal-effect') || config['effect'],
+					  isClosingByEsc = $this.data('modal-is-closing-by-esc') !== undefined ? Boolean($this.data('modal-is-closing-by-esc')) : config['modalIsClosingByEsc'],
+					  isClosingByOverlay = $this.data('modal-is-closing-by-overlay') !== undefined ? Boolean($this.data('modal-is-closing-by-overlay')) : config['modalIsClosingByOverlay'];
 
 	      if(!target || !$(target).length) return;
 
@@ -89,6 +93,7 @@
 						content: {
 							target: target,
 							effect: effect,
+							close: isClosingByEsc,
 							onOpen: function() {
 								config['onOpen'].call($(target));
 							},
@@ -102,6 +107,7 @@
 						overlay: {
 							color: $this.data('overlay-color') || config['overlayColor'],
 							opacity: $this.data('overlay-opacity') || config['overlayOpacity'],
+							close: isClosingByOverlay,
 							speedIn: $this.data('speed') || config['speed'],
 							speedOut: $this.data('speed') || config['speed']
 						}

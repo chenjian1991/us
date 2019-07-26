@@ -11,9 +11,10 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 import {scientificToNumber} from '@/lib/utils.js';
 import MetaInfo from 'vue-meta-info';
 import VueClipboard from 'vue-clipboard2'//剪切板
+// import '../public/assets/css/theme.css';
 // front 框架;
-import "../public/assets/vendor/bootstrap/bootstrap.css"
-import "../public/assets/css/front.css";
+// import "../public/assets/vendor/bootstrap/bootstrap.css"
+// import "../public/assets/css/front.css";
 
 //import 'babel-polyfill';
 
