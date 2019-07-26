@@ -108,6 +108,14 @@ const tokenizeyeezy = () => import(/* webpackChunkName: "chome" */ '../views/tok
 const Supreme = () => import(/* webpackChunkName: "chome" */ '../views/Supreme.vue')
 //header toggle
 const whyus = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/whyus.vue')
+const crypto = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/criptoTrading.vue')
+const smartexecution = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/smartexecution.vue')
+const termsfront = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/terms.vue')
+const faqs = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/faqs.vue')
+const ourcompany = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/ourcompany.vue')
+const team = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/TheTeam.vue')
+
+
 
 
 
@@ -234,6 +242,54 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: whyus,
+            },
+            {
+               path: 'crypto',
+               name: 'crypto',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: crypto,
+            },
+            {
+               path: 'smartexecution',
+               name: 'smartexecution',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: smartexecution,
+            },
+            {
+               path: 'termsfront',
+               name: 'termsfront',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: termsfront,
+            },
+            {
+               path: 'faqs',
+               name: 'faqs',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: faqs,
+            },
+            {
+               path: 'ourcompany',
+               name: 'ourcompany',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: ourcompany,
+            },
+            {
+               path: 'team',
+               name: 'team',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: team,
             },
 
             {

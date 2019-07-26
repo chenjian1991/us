@@ -59,8 +59,8 @@
 
             <!-- Dropdown - Submenu -->
             <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Crypto Trading</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">API Trading</a></li>
+              <li><router-link to="/crypto" class="nav-link u-header__sub-menu-nav-link">Crypto Trading</router-link></li>
+              <li><a target="_blank"  class="nav-link u-header__sub-menu-nav-link" href="http://55.trade/doc/#introduction">API Trading</a></li>
             </ul>
             <!-- End Dropdown - Submenu -->
           </li>
@@ -74,9 +74,9 @@
 
             <!-- Dropdown - Submenu -->
             <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Why Us?</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">GBBO</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">FAQs</a></li>
+              <li><router-link  to='/whyus' class="nav-link u-header__sub-menu-nav-link">Why Us?</router-link></li>
+              <li><router-link to="/smartexecution" class="nav-link u-header__sub-menu-nav-link">Smart Execution</router-link></li>
+              <li><router-link to='/faqs' class="nav-link u-header__sub-menu-nav-link" >FAQs</router-link></li>
               <li><a class="nav-link u-header__sub-menu-nav-link" href="#"> Social Trading </a></li>
             </ul>
             <!-- End Dropdown - Submenu -->
@@ -91,11 +91,11 @@
 
             <!-- Dropdown - Submenu -->
             <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Our Company</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Another action</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">The Team</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Careers</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Contact Us</a></li>
+              <li><router-link to='/ourcompany' class="nav-link u-header__sub-menu-nav-link">Our Company</router-link></li>
+              <!-- <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Another action</a></li> -->
+              <li><router-link to="/team" class="nav-link u-header__sub-menu-nav-link">The Team</router-link></li>
+              <li><a class="nav-link u-header__sub-menu-nav-link" href="https://www.linkedin.com/company/55-global" target="_blank">Careers</a></li>
+              <li><a class="nav-link u-header__sub-menu-nav-link" href="mailto:service@55.com">Contact Us</a></li>
             </ul>
             <!-- End Dropdown - Submenu -->
           </li>
@@ -678,7 +678,7 @@ export default {
       this.isLogin = false;
     }
     //判断otc URL
-    this.OTCURL = getOTCURL();
+    // this.OTCURL = getOTCURL();
     this.mainSiteURL = getMainSite();
     //公告滚动
     // this.initAnnoucementList();
