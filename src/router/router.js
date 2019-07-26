@@ -106,6 +106,9 @@ const card = () => import(/* webpackChunkName: "chome" */ '../views/visa.vue')
 const redeemsupreme = () => import(/* webpackChunkName: "chome" */ '../views/redeemsupreme.vue')
 const tokenizeyeezy = () => import(/* webpackChunkName: "chome" */ '../views/tokenizeyeezy.vue')
 const Supreme = () => import(/* webpackChunkName: "chome" */ '../views/Supreme.vue')
+//header toggle
+const whyus = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/whyus.vue')
+
 
 
 import i18n from '@/locale/index.js';
@@ -223,6 +226,14 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: USHOME,
+            }, 
+             {
+               path: 'whyus',
+               name: 'whyus',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: whyus,
             },
 
             {
