@@ -122,7 +122,6 @@ export default {
             },
             getUserPhone(){
                   getApi(getUserName+this.userCode,{}).then((res)=>{
-                    debugger
                     this.userName =res.userName;
                   })
             },

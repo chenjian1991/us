@@ -15,13 +15,12 @@
           <!-- Nav -->
           <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
             <!-- Logo -->
-            <!-- <router-link to='/home'><img
-                src="../../assets/images/logo/55.com.png"
-                width="126px"
-                height="30px"
+            <router-link to='/home'><img
+                src="../../assets/images/logo/logo.png"
                 alt="logo"
+                width="40px" height="28px" 
               >
-            </router-link> -->
+            </router-link>
 
             <!-- End Logo -->
 
@@ -95,7 +94,7 @@
               <!-- <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Another action</a></li> -->
               <li><router-link to="/team" class="nav-link u-header__sub-menu-nav-link">The Team</router-link></li>
               <li><a class="nav-link u-header__sub-menu-nav-link" href="https://www.linkedin.com/company/55-global" target="_blank">Careers</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="mailto:service@55.com">Contact Us</a></li>
+              <li><router-link to='/contactus' class="nav-link u-header__sub-menu-nav-link">Contact Us</router-link></li>
             </ul>
             <!-- End Dropdown - Submenu -->
           </li>
@@ -171,7 +170,7 @@
                 >
 
                   <router-link
-                    to='/accountInfo'
+                    to='/safeCenter'
                     id="accountMegaMenu"
                     class="nav-link u-header__nav-link u-header__nav-link-toggle"
                     aria-haspopup="true"
@@ -190,7 +189,7 @@
                     <!-- Account -->
                     <li class="hs-has-sub-menu">
                       <router-link
-                        to='/accountInfo'
+                        to='/safeCenter'
                         class="nav-link u-header__sub-menu-nav-link"
                       >{{$t('tbdhAccountSecurity')}}</router-link>
                     </li>
@@ -200,19 +199,28 @@
                       <a
                         id="navLinkPagesCompany"
                         class="nav-link u-header__sub-menu-nav-link"
-                        href="javascript:;"
                         aria-haspopup="true"
                         aria-expanded="false"
                         aria-controls="navSubmenuPagesCompany"
                         @click="verfiy"
                       >{{$t('tbdhIDVerification')}}</a>
                     </li>
+                     <li class="hs-has-sub-menu">
+                      <a
+                        id="navLinkPagesCompany"
+                        class="nav-link u-header__sub-menu-nav-link"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="navSubmenuPagesCompany"
+                        @click="L2verify"
+                      >{{$t('kyc2')}}</a>
+                    </li>
                     <!-- Company -->
                     <!-- Company -->
-                    <li @click="inviteFriend"><a
+                    <!-- <li @click="inviteFriend"><a
                         href="javascript:;"
                         class="nav-link u-header__sub-menu-nav-link"
-                      >{{$t('invitePeople')}}</a></li>
+                      >{{$t('invitePeople')}}</a></li> -->
                     <!-- Company -->
                     <li @click="quitFun"><a
                         href="javascript:;"
@@ -311,7 +319,8 @@
     relatNameVerify,
     socialToken,
     logout,
-    identifyQueryUrl
+    identifyQueryUrl,
+    amlqueryState
     } from "../../../api/urls.js";
     import { proportion } from "_api/balances.js";
     import {
@@ -320,6 +329,7 @@
     getMainSite,
     clearLocalStorage
     } from "../../config/index";
+import { debuglog } from 'util';
 
 export default {
   data() {
@@ -507,25 +517,47 @@ export default {
         }
       );
     },
+     L2verify(){
+             this.L2queryState(Cookies.get('loginToken'))
+         },
+        L2queryState(token){
+                getHeaderTokenApi(amlqueryState,'',token).then((res)=>{
+                    if(res.data.result){
+                       this.amlStatus = res.data.result;
+                        if(this.amlStatus=='NOHAVE'){
+                              this.$router.push('amlKyc')
+                        }else{
+                              this.$router.push('amlkycResult')
+                           }
+                    }else if(res.data.code){
+                        if(res.data.code =='10013'){
+                            this.$router.push('login')
+                        }
+                        this.$Notice.error({
+                                title: this.$t(res.data.code),
+                                desc:this.$t(res.data.code)
+                         });
+                    }
+                })
+         },
     verfiy() {
       let loginToken = Cookies.get("loginToken");
       getHeaderTokenApi(identifyQueryUrl, {}, loginToken)
         .then(res => {
-          if (res.data.code) {
+          if (res.data == "" || res.data == null||res=='{}') {
+            this.$router.push("/identiy");
+            return;
+          }
+            if (res.data.code) {
             this.$Notice.error({
               title: this.$t(res.data.code),
               desc: this.$t(res.data.code)
             });
             this.$router.push("/login");
           }
-
-          if (res.data == "" || res.data == null) {
-            this.$router.push("/kyc");
-            return;
-          }
           let status = res.data.dataStatus;
           if (status == 1) {
-            this.$router.push("/kyc");
+            this.$router.push("/identiy");
           } else {
             this.$router.push("/identityResult");
           }

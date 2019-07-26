@@ -115,6 +115,7 @@ const termsfront = () => import(/* webpackChunkName: "chome" */ '../views/header
 const faqs = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/faqs.vue')
 const ourcompany = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/ourcompany.vue')
 const team = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/TheTeam.vue')
+const contactus = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/contactus.vue')
 
 
 
@@ -302,6 +303,14 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: team,
+            },
+            {
+               path: 'contactus',
+               name: 'contactus',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: contactus,
             },
 
             {
