@@ -142,9 +142,11 @@
 <script>
     export default {
         name:'login',
-        components:{
-        },
         data() {
+          return {
+                empty:true,
+
+          }
 
         },
         methods:{
@@ -152,40 +154,11 @@
         computed:{
         },
         watch:{
-            languageChange(val,oldVal){
-            },
+            
         },
         mounted(){
-    //   // initialization of HSMegaMenu component
-    //   $('.js-mega-menu').HSMegaMenu({
-    //     event: 'hover',
-    //     pageContainer: $('.container'),
-    //     breakpoint: 767.98,
-    //     hideTimeOut: 0
-    //   });
-
-      // initialization of svg injector module
-      $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
-      // initialization of header
-    //   $.HSCore.components.HSHeader.init($('#header'));
-
-      // initialization of unfold component
-    //   $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
-    //     afterOpen: function () {
-    //       $(this).find('input[type="search"]').focus();
-    //     }
-    //   });
-
-      // initialization of malihu scrollbar
-    //   $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
-
-      // initialization of show animations
-    //   $.HSCore.components.HSShowAnimation.init('.js-animation-link');
-
-      // initialization of forms
-    //   $.HSCore.components.HSFocusState.init();
-
-
+           // initialization of svg injector module
+           $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
         },
        
         

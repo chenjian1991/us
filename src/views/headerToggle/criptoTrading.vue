@@ -51,7 +51,6 @@
         components:{
         },
         data() {
-             
             return {
                 empty:true,
 

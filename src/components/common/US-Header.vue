@@ -76,8 +76,8 @@
             <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
               <li><router-link  to='/whyus' class="nav-link u-header__sub-menu-nav-link">Why Us?</router-link></li>
               <li><router-link to="/smartexecution" class="nav-link u-header__sub-menu-nav-link">Smart Execution</router-link></li>
-              <li><router-link to='/faqs' class="nav-link u-header__sub-menu-nav-link" >FAQs</router-link></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="#"> Social Trading </a></li>
+              <li><router-link to='/faqs' class="nav-link u-header__sub-menu-nav-link">FAQs</router-link></li>
+              <li><a class="nav-link u-header__sub-menu-nav-link" target="_blank" :href="englishCommunityURL"> Social Trading </a></li>
             </ul>
             <!-- End Dropdown - Submenu -->
           </li>
@@ -306,6 +306,7 @@
     import moment from "moment";
     import Cookies from "js-cookie";
     import { Exchange } from "@/interface/exchange.js";
+
     import {
     relatNameVerify,
     socialToken,
@@ -368,12 +369,31 @@ export default {
       learnMoreURL:'',
       OTCURL: "", //otcURL
       short: "$",
+      englishCommunityURL: '',
+      loginToken:'',
+      chatToken:'',
+
     };
   },
   components: {
     Loading
   },
   methods: {
+    initURL() {
+      this.loginToken = Cookies.get('loginToken')
+      if(this.loginToken){
+        postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
+            this.chatToken = data.token +'/'
+            //社区链接
+            this.englishCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/groups/profile/967250642861035532/feed')
+            this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken
+        })
+      }else{
+        this.chatToken = 'null'
+        this.englishCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' + this.chatToken+'/'+ encodeURIComponent('/groups/profile/967250642861035532/feed')
+        this.baseSocialURL = getCommouityBaseURL()
+      }
+    },
     changeLangage(e) {
       let language = e.target.getAttribute("data-value");
       if (
@@ -586,6 +606,8 @@ export default {
 
   },
   mounted() {
+    this.initURL()
+
     $(".js-mega-menu").HSMegaMenu({
       event: "hover",
       pageContainer: $(".container"),
@@ -595,16 +617,16 @@ export default {
 
     //$.HSCore.components.HSSVGIngector.init(".js-svg-injector");
     // initialization of header
-    $.HSCore.components.HSHeader.init($("#header"));
+    // $.HSCore.components.HSHeader.init($("#header"));
     // initialization of unfold component
-    $.HSCore.components.HSUnfold.init($("[data-unfold-target]"), {
-      afterOpen: function() {
-        $(this)
-          .find('input[type="search"]')
-          .focus();
-      }
-    });
-    $.HSCore.components.HSFocusState.init();
+    // $.HSCore.components.HSUnfold.init($("[data-unfold-target]"), {
+    //   afterOpen: function() {
+    //     $(this)
+    //       .find('input[type="search"]')
+    //       .focus();
+    //   }
+    // });
+    // $.HSCore.components.HSFocusState.init();
 
     let language = window.localStorage.getItem("countryLanguage") || "en";
     let currency = localStorage.getItem("currentCurrency");

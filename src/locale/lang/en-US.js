@@ -1139,6 +1139,7 @@ export default {
    fronthomefootAPPios:"Download on the",
    fronthomefootAPPandroid:"Get it on",
    helpURL:'https://55support.zendesk.com/hc/en-us',
+   账户:"账户",
 
 
    //关于55页面

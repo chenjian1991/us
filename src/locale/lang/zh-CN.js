@@ -1012,6 +1012,7 @@ export default {
    fronthomefootAPPios:"下载IOS",
    fronthomefootAPPandroid:"下载安卓版",
    helpURL:'https://55support.zendesk.com/hc/zh-cn',
+   账户:"账户",
 
    //About 55
    aboutTitle: '关于55',
