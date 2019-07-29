@@ -1,24 +1,24 @@
 <template>
   <div class="ushomecontainer">
     <!-- Hero Section -->
-    <div class="bg-img-hero" style="background-color: url(../../assets/banner.jpg)">
+    <div class="bg-img-hero" style="background-color: pink">
       <div class="container space-2">
         <div class="row justify-content-lg-between align-items-center">
           <div class="col-lg-6 mb-7 mb-lg-0">
             <div class="mb-4">
               <h1 class="font-weight-semi-bold col-lg-10" style="color:#fff;font-size:30px;padding: 0;">{{$t('fronthomeHeromain')}}{{$t('fronthomeHeromainB')}}</h1>
               <h1 class="font-weight-semi-bold" style="color:#fff;font-size:30px"></h1>
-              <p>{{$t(" fronthomeHerosub")}}</p>
+              <p>{{$t("fronthomeHerosub")}}</p>
             </div>
               <!-- Subscribe Form -->
               <form class="js-validate js-form-message">
-                <label class="sr-only" for="subscribeSrEmail">{{$t(" fronthomeHerosign")}}</label>
+                <label class="sr-only" for="subscribeSrEmail">{{$t("fronthomeHerosign")}}</label>
                 <div class="input-group input-group-lg input-group-borderless">
                   <input v-model="emailName" type="email" class="form-control" name="email" id="subscribeSrEmail" :placeholder="$t('fronthomeHerosign')" aria-label="Enter your email address" aria-describedby="subscribeButton" required
                         data-msg="Please enter a valid email address.">
                   <div class="input-group-append">
                     <button type="button" class="btn btn-success btn-wide myHover" style="background-color:#12869A;border:none" id="subscribeButton" @click="join55">
-                      {{$t(" fronthomeHerosignin")}}
+                      {{$t("fronthomeHerosignin")}}
                     </button>
                   </div>
                 </div>
