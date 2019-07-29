@@ -1,1017 +1,451 @@
 <template>
-    <div class="ushomecontainer"> 
-        <!-- Skippy -->
-        <a id="skippy" class="sr-only sr-only-focusable u-skippy" href="#content">
-            <div class="container">
-            <span class="u-skiplink-text">Skip to main content</span>
+  <div class="ushomecontainer">
+    <!-- Hero Section -->
+    <div class="bg-img-hero" style="background-image: url(../../../assets/banner.jpg)">
+      <div class="container space-2">
+        <div class="row justify-content-lg-between align-items-center">
+          <div class="col-lg-6 mb-7 mb-lg-0">
+            <div class="mb-4">
+              <h1 class="font-weight-semi-bold col-lg-11" style="color:#fff;font-size:30px;padding: 0;">BUY AND SELL CRYPTO AT OUR MOST COMPETITIVE PRICING</h1>
+              <h1 class="font-weight-semi-bold" style="color:#fff;font-size:30px"></h1>
+              <p>{{$t("fronthomeHerosub")}}</p>
             </div>
-        </a>
-        <!-- End Skippy -->
-
-       <!-- <USHeader/> -->
-
-        <!-- ========== MAIN ========== -->
-        <main id="content" role="main">
-            <!-- Hero v1 Section -->
-            <div class="u-hero-v1">
-              <!-- Hero Carousel Main -->
-              <div id="heroNav" class="js-slick-carousel u-slick"
-                  data-autoplay="true"
-                  data-speed="10000"
-                  data-arrows-classes="d-none d-lg-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
-                  data-arrow-left-classes="fa fa-arrow-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-lg-2 ml-xl-4"
-                  data-arrow-right-classes="fa fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-lg-2 mr-xl-4"
-                  data-numbered-pagination="#slickPaging"
-                  data-nav-for="#heroNavThumb">
-                  <div class="js-slide">
-                      <!-- Slide #1 -->
-                      <div class="d-flex align-items-center u-hero-v1__main" style="background-image: url(assets/svg/bg/banner.jpg);">
-                          <div class="container u-space-4-top u-space-5-top--md u-space-3-top--lg u-space-3-bottom">
-                              <div class="row position-relative">
-                                  <div class="col-md-8 col-lg-6 position-relative">
-                                      <h1 class="text-white display-4 font-size-48--md-down mp-0"
-                                          data-scs-animation-in="fadeInUp"
-                                          data-scs-animation-delay="200">
-                                          <span class="font-weight-bold" style="font-size: 4.1rem;">A Better Way to Buy/Sell Crypto</span>
-                                      </h1>
-                                      <span class="d-block h4 text-white font-weight-light mb-2 mt-2"
-                                              data-scs-animation-in="fadeInUp" style="font-size: 1.2rem;">
-                                          Trade Bitcoin, Ether, Litecoin, DASH and more, including our premium stable coin USDD
-                                      </span>
-                                  </div>
-                                  <div class=" position-absolute" style="top:0;right:0" id="gbbo_container">
-                                    <div class="title">
-                                      <span class="front">BTC</span>
-                                      <span class="back">/USD</span>
-                                    </div>
-                                    <div class="subTitle">
-                                      <div class="tab">Ask</div>
-                                      <div class="tab">Qty</div>
-                                      <div class="tab">Bid</div>
-                                      <div class="tab">Qty</div>
-                                    </div>
-                                    <div class="main">
-                                      <div class="row">
-                                        <div class="cell">
-                                          <img src="../../../assets/images/index/55_small@2x.png" alt="">
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.E55?(BTCUSDT.E55[0]*USDTUSDD).toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.E55?BTCUSDT.E55[1].toFixed(4):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.E55?(BTCUSDT.E55[2]*USDTUSDD).toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.E55?BTCUSDT.E55[3].toFixed(4):'-'}}</span>
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="cell">
-                                          <img src="../../../assets/images/index/binance_small.png" alt="">
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]*USDTUSDD).toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.BINANCE?BTCUSDT.BINANCE[1].toFixed(4):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]*USDTUSDD).toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.BINANCE?BTCUSDT.BINANCE[3].toFixed(4):'-'}}</span>
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="cell">
-                                          <img src="../../../assets/images/index/huobi_small.png" alt="">
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[0]*USDTUSDD).toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.HUOBI?BTCUSDT.HUOBI[1].toFixed(4):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[2]*USDTUSDD).toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSDT.HUOBI?BTCUSDT.HUOBI[3].toFixed(4):'-'}}</span>
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="cell">
-                                          <img src="../../../assets/images/index/bittrex_small.png" alt="">
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[0].toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[1].toFixed(4):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[2].toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[3].toFixed(4):'-'}}</span>
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="cell">
-                                          <img src="../../../assets/images/index/coinbase_small.png" alt="">
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSD.COINBASEPRO?BTCUSD.COINBASEPRO[0].toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSD.COINBASEPRO?BTCUSD.COINBASEPRO[1].toFixed(4):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSD.COINBASEPRO?BTCUSD.COINBASEPRO[2].toFixed(2):'-'}}</span>
-                                        </div>
-                                        <div class="cell">
-                                          <span>{{BTCUSD.COINBASEPRO?BTCUSD.COINBASEPRO[3].toFixed(4):'-'}}</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
-                              <div class="row ">
-                                  <!-- Form -->
-                                  <form class="js-validate js-form-message mt-4 col-md-6">
-                                      <div class="js-focus-state input-group input-group-lg u-form u-form--lg u-form--white-brd">
-                                          <input type="email" class="form-control u-form__input" name="email" required
-                                              placeholder="Enter your email address"
-                                              v-model="emailName"
-                                              aria-label="Enter your email address"
-                                              data-msg="Please enter a valid email address."
-                                              data-error-class="u-has-error"
-                                              data-success-class="u-has-success">
-                                          <div class="input-group-append u-form__append ">
-                                              <button type="submit" class="btn btn-warning u-btn-wide" @click="join55">Join 55</button>
-                                          </div>
-                                      </div>
-                                  </form>
-                                  <!-- End Form -->
-                              </div>
-                             
-                          </div>
-                      </div>
-                      <!-- End Slide #1 -->
+              <!-- Subscribe Form -->
+              <form class="js-validate js-form-message">
+                <label class="sr-only" for="subscribeSrEmail">{{$t("fronthomeHerosign")}}</label>
+                <div class="input-group input-group-lg input-group-borderless">
+                  <input v-model="emailName" type="email" class="form-control" name="email" id="subscribeSrEmail" :placeholder="$t('fronthomeHerosign')" aria-label="Enter your email address" aria-describedby="subscribeButton" required
+                        data-msg="Please enter a valid email address.">
+                  <div class="input-group-append">
+                    <button type="button" class="btn btn-success btn-wide myHover" style="background-color:#12869A;border:none" id="subscribeButton" @click="join55">
+                      {{$t("fronthomeHerosignin")}}
+                    </button>
                   </div>
-              </div>
-              <!-- End Hero Carousel Main -->
+                </div>
+              </form>
+              <!-- End Subscribe Form -->        
+          </div>
 
-              <!-- Slick Paging -->
-              <div class="container position-relative">
-                  <div id="slickPaging" class="u-slick__paging-v1" style="display:none"></div>
-              </div>
-              <!-- End Slick Paging -->
-
-              <!-- Hero Carousel Secondary -->
-              <!-- <div id="heroNavThumb" class="js-slick-carousel u-slick"
-                  data-autoplay="true"
-                  data-speed="10000"
-                  data-is-thumbs="true"
-                  data-nav-for="#heroNav">
-                  <div class="js-slide">
-                    
-                      <div class="d-flex align-items-center bg-white">
-                          <div class="w-100">
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <div class="row">
-                                              <div class="col-md-10 col-sm-11 col-xs-11 m-auto py-4">
-                                                      <h3 class="h4 mb-2">
-                                                          <span class=" h4 d-block text-primary-55 font-weight-blod font-size pl-3">Our aggregated connected exchange volume:</span>
-                                                      </h3>
-                                                      <h4 class="mt-2 pl-3">208,2323,456 USD</h4>
+          <div class="col-md-5 align-self-md-end d-none d-md-inline-block" style="height:280px">
+            <div class=" position-absolute" style="top:0;right:0" id="gbbo_container">
+                                          <div class="title">
+                                            <span class="front">BTC</span>
+                                            <span class="back">/USD</span>
+                                          </div>
+                                          <div class="subTitle">
+                                            <div class="tab">{{$t('gbbo_Ask')}}</div>
+                                            <div class="tab">{{$t('gbbo_Qty')}}</div>
+                                            <div class="tab">{{$t('gbbo_Bid')}}</div>
+                                            <div class="tab">{{$t('gbbo_Qty')}}</div>
+                                          </div>
+                                          <div class="main">
+                                            <div class="row">
+                                              <div class="cell">
+                                                <img src="../../../assets/images/index/55_small@2x.png" alt="">
                                               </div>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-6 bg-primary-55">
-                                          <div class="row">
-                                              <div class="col-md-8 col-sm-11 col-xs-11 ml-5 py-4">
-                                                      <h3 class="h4 mb-2 text-white pl-3">
-                                                          Get the lowest buy and highest sell price, all on one platform:
-                                                      </h3>
-                                                      <p class="text-white mt-2 h5 pl-3">Average arbitrage: <span style="color:#0f8">201.01 USD(+3.5%)</span></p>
-                                                      <p class="text-white mt-2 h5 pl-3">TBD what to display here for GBBO feature</p>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.E55?(BTCUSDT.E55[0]*USDTUSDD).toFixed(2):'-'}}</span>
                                               </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.E55?BTCUSDT.E55[1].toFixed(4):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.E55?(BTCUSDT.E55[2]*USDTUSDD).toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.E55?BTCUSDT.E55[3].toFixed(4):'-'}}</span>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="cell">
+                                                <img src="../../../assets/images/index/binance_small.png" alt="">
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]*USDTUSDD).toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.BINANCE?BTCUSDT.BINANCE[1].toFixed(4):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]*USDTUSDD).toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.BINANCE?BTCUSDT.BINANCE[3].toFixed(4):'-'}}</span>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="cell">
+                                                <img src="../../../assets/images/index/huobi_small.png" alt="">
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[0]*USDTUSDD).toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.HUOBI?BTCUSDT.HUOBI[1].toFixed(4):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[2]*USDTUSDD).toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSDT.HUOBI?BTCUSDT.HUOBI[3].toFixed(4):'-'}}</span>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="cell">
+                                                <img src="../../../assets/images/index/bittrex_small.png" alt="">
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[0].toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[1].toFixed(4):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[2].toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSD.BITTREX?BTCUSD.BITTREX[3].toFixed(4):'-'}}</span>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="cell">
+                                                <img src="../../../assets/images/index/coinbase_small.png" alt="">
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSD.COINBASEPRO?BTCUSD.COINBASEPRO[0].toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSD.COINBASEPRO?BTCUSD.COINBASEPRO[1].toFixed(4):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSD.COINBASEPRO?BTCUSD.COINBASEPRO[2].toFixed(2):'-'}}</span>
+                                              </div>
+                                              <div class="cell">
+                                                <span>{{BTCUSD.COINBASEPRO?BTCUSD.COINBASEPRO[3].toFixed(4):'-'}}</span>
+                                              </div>
+                                            </div>
                                           </div>
-                                      </div>
-                                  </div>
-                              <div class="w-100 h-100 d-none d-lg-inline-block bg-primary u-hero-v1__last">
-                                  <div class=" u-hero-v1__last-inner">
-                                      <h3 class="h5 text-white">
-                                          Get the lowest buy and highest sell price, all on one platform:
-                                      </h3>
-                                      <p class="text-white mb-0 h5">Average arbitrage: <span style="color:#0f8">201.01 USD(+3.5%)</span></p>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div> -->
-              <!-- End Hero Carousel Secondary -->
+                                        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Hero Section -->
+    <!-- <div class="container card-deck d-block d-lg-flex card-lg-gutters-3 space-top-1 space-top-sm-2 mx-auto" style="padding:0">
+      <div class="card card-frame mb-3" v-for="(v,i) in mainHomePriceObject" style="height:140px;border:none">
+        <div id="recommend">
+          <router-link :to="{path:'/exchange',query: {symbol:v.symbol}}">
+            <div v-if="v.showColor == 1" class="greenBackground"></div>
+            <div v-else class="redBackground"></div>
+            <div class="percent_line">
+              <div>
+                <img :url="v.imageUrl" width="28px" alt class="logo">
+                <span class="baseAsset">{{v.exCurrency}}</span>
+                <span class="quoteAsset">/{{v.baseCurrency}}</span>
               </div>
-            <!-- End Hero v1 Section -->
-
-            <hr class="my-0">
-
-            <!-- GBBO start -->
-            <div class="container  u-space-3-top pb-4">
-                <div class="row justify-content-center text-primary-55 h2 text-center">
-                    Buy and sell with best price and deepest liquidity
-                </div>
-                <div class="row justify-content-center text-secondary text-center">
-                     at one single point of access to global markets
-                </div>
-                </br>
-                <div id="gbbo_detail">
-                  <div class="logo">
-                    <div class="logo_item">
-                      <img src="../../../assets/images/index/55.png" style="width:32px;height:auto" alt="">
-                    </div>
-                    <div class="logo_item">
-                      <img src="../../../assets/images/index/binance_big.png" style="width:112px;height:22px" alt="">
-                    </div>
-                    <div class="logo_item">
-                      <img src="../../../assets/images/index/huobi_big.png" style="width:78px;height:23px" alt="">
-                    </div>
-                    <div class="logo_item">
-                      <img src="../../../assets/images/index/bittrex_big.png" style="width:89px;height:22px" alt="">
-                    </div>
-                    <div class="logo_item">
-                      <img src="../../../assets/images/index/cinbase_big.png" style="width:100px;height:21px" alt="">
-                    </div>
-                  </div>
-                  <div class="gbbo_right">
-                    <div class="pair_wrap">
-                      <div class="pair">
-                        <div class="title row">
-                          <div class="pairName">
-                            <span class="front">BTC</span>
-                            <span class="back">/USD</span>
-                          </div>
-                          <div class="tradeBtn" @click="$router.push('/exchange?symbol=BTCUSD')">Trade</div>
-                        </div>
-                        <div class="row">
-                          <span>Best Ask</span>
-                          <span>Best Bid</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[0] === 1,down:BTCUSDTWaveArray[0] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[0]*USDTUSDD).toFixed(2):"-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDTWaveArray[2] === 1,down:BTCUSDTWaveArray[2] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[2]*USDTUSDD).toFixed(2):"-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[6] === 1,down:BTCUSDTWaveArray[6] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]*USDTUSDD).toFixed(2): "-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDTWaveArray[4] === 1,down:BTCUSDTWaveArray[4] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]*USDTUSDD).toFixed(2): "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[8] === 1,down:BTCUSDTWaveArray[8] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[0]*USDTUSDD).toFixed(2): "-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDTWaveArray[10] === 1,down:BTCUSDTWaveArray[10] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[2]*USDTUSDD).toFixed(2): "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDWaveArray[0] === 1,down:BTCUSDWaveArray[0] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[0]).toFixed(2): "-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDWaveArray[2] === 1,down:BTCUSDWaveArray[2] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[2]).toFixed(2): "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDWaveArray[4] === 1,down:BTCUSDWaveArray[4] === -1}">{{BTCUSD.COINBASEPRO?(BTCUSD.COINBASEPRO[0]).toFixed(2): "-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDWaveArray[6] === 1,down:BTCUSDWaveArray[6] === -1}">{{BTCUSD.COINBASEPRO?(BTCUSD.COINBASEPRO[2]).toFixed(2): "-"}}</span>
-                        </div>
-                      </div>
-                      <div class="pair">
-                        <div class="title row">
-                          <div class="pairName">
-                            <span class="front">ETH</span>
-                            <span class="back">/BTC</span>
-                          </div>
-                          <div class="tradeBtn" @click="$router.push('/exchange?symbol=ETHBTC')">Trade</div>
-                        </div>
-                        <div class="row">
-                          <span>Best Ask</span>
-                          <span>Best Bid</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ETHBTCWaveArray[0] === 1,down:ETHBTCWaveArray[0] === -1}">{{ETHBTC.E55?ETHBTC.E55[0].toFixed(6):"-"}}</span>
-                          <span class="row_right" :class="{up:ETHBTCWaveArray[2] === 1,down:ETHBTCWaveArray[2] === -1}">{{ETHBTC.E55?ETHBTC.E55[2].toFixed(6):"-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ETHBTCWaveArray[4] === 1,down:ETHBTCWaveArray[4] === -1}">{{ETHBTC.BINANCE?ETHBTC.BINANCE[0].toFixed(6): "-"}}</span>
-                          <span class="row_right" :class="{up:ETHBTCWaveArray[6] === 1,down:ETHBTCWaveArray[6] === -1}">{{ETHBTC.BINANCE?ETHBTC.BINANCE[2].toFixed(6): "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ETHBTCWaveArray[8] === 1,down:ETHBTCWaveArray[8] === -1}">{{ETHBTC.HUOBI?ETHBTC.HUOBI[0].toFixed(6): "-"}}</span>
-                          <span class="row_right" :class="{up:ETHBTCWaveArray[10] === 1,down:ETHBTCWaveArray[10] === -1}">{{ETHBTC.HUOBI?ETHBTC.HUOBI[2].toFixed(6): "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ETHBTCWaveArray[12] === 1,down:ETHBTCWaveArray[12] === -1}">{{ETHBTC.BITTREX?ETHBTC.BITTREX[0].toFixed(6): "-"}}</span>
-                          <span class="row_right" :class="{up:ETHBTCWaveArray[14] === 1,down:ETHBTCWaveArray[14] === -1}">{{ETHBTC.BITTREX?ETHBTC.BITTREX[2].toFixed(6): "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ETHBTCWaveArray[16] === 1,down:ETHBTCWaveArray[16] === -1}">{{ETHBTC.COINBASEPRO?ETHBTC.COINBASEPRO[0].toFixed(6): "-"}}</span>
-                          <span class="row_right" :class="{up:ETHBTCWaveArray[18] === 1,down:ETHBTCWaveArray[18] === -1}">{{ETHBTC.COINBASEPRO?ETHBTC.COINBASEPRO[2].toFixed(6): "-"}}</span>
-                        </div>
-                      </div>
-                      <div class="pair">
-                        <div class="title row">
-                          <div class="pairName">
-                            <span class="front">LTC</span>
-                            <span class="back">/ETH</span>
-                          </div>
-                          <div class="tradeBtn" @click="$router.push('/exchange?symbol=LTCETH')">Trade</div>
-                        </div>
-                        <div class="row">
-                          <span>Best Ask</span>
-                          <span>Best Bid</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:LTCBTCWaveArray[0] === 1,down:LTCBTCWaveArray[0] === -1}">{{LTCBTC.E55?(LTCBTC.E55[0]/ETHBTCRate).toFixed(6):"-"}}</span>
-                          <span class="row_right" :class="{up:LTCBTCWaveArray[2] === 1,down:LTCBTCWaveArray[2] === -1}">{{LTCBTC.E55?(LTCBTC.E55[2]/ETHBTCRate).toFixed(6):"-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:LTCBTCWaveArray[4] === 1,down:LTCBTCWaveArray[4] === -1}">{{LTCBTC.BINANCE?(LTCBTC.BINANCE[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:LTCBTCWaveArray[6] === 1,down:LTCBTCWaveArray[6] === -1}">{{LTCBTC.BINANCE?(LTCBTC.BINANCE[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:LTCBTCWaveArray[8] === 1,down:LTCBTCWaveArray[8] === -1}">{{LTCBTC.HUOBI?(LTCBTC.HUOBI[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:LTCBTCWaveArray[10] === 1,down:LTCBTCWaveArray[10] === -1}">{{LTCBTC.HUOBI?(LTCBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:LTCBTCWaveArray[12] === 1,down:LTCBTCWaveArray[12] === -1}">{{LTCBTC.BITTREX?(LTCBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:LTCBTCWaveArray[14] === 1,down:LTCBTCWaveArray[14] === -1}">{{LTCBTC.BITTREX?(LTCBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:LTCBTCWaveArray[16] === 1,down:LTCBTCWaveArray[16] === -1}">{{LTCBTC.COINBASEPRO?(LTCBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:LTCBTCWaveArray[18] === 1,down:LTCBTCWaveArray[18] === -1}">{{LTCBTC.COINBASEPRO?(LTCBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                      </div>
-                      <!-- <div class="pair">
-                        <div class="title row">
-                          <div class="pairName">
-                            <span class="front">ZEC</span>
-                            <span class="back">/ETH</span>
-                          </div>
-                          <div class="tradeBtn" @click="$router.push('/exchange??symbol=ZECETH')">Trade</div>
-                        </div>
-                        <div class="row">
-                          <span>Best Ask</span>
-                          <span>Best Bid</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ZECBTCWaveArray[0] === 1,down:ZECBTCWaveArray[0] === -1}">{{ZECBTC.E55?(ZECBTC.E55[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:ZECBTCWaveArray[2] === 1,down:ZECBTCWaveArray[2] === -1}">{{ZECBTC.E55?(ZECBTC.E55[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ZECBTCWaveArray[4] === 1,down:ZECBTCWaveArray[4] === -1}">{{ZECBTC.BINANCE?(ZECBTC.BINANCE[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:ZECBTCWaveArray[6] === 1,down:ZECBTCWaveArray[6] === -1}">{{ZECBTC.BINANCE?(ZECBTC.BINANCE[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ZECBTCWaveArray[8] === 1,down:ZECBTCWaveArray[8] === -1}">{{ZECBTC.HUOBI?(ZECBTC.HUOBI[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:ZECBTCWaveArray[10] === 1,down:ZECBTCWaveArray[10] === -1}">{{ZECBTC.HUOBI?(ZECBTC.HUOBI[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ZECBTCWaveArray[12] === 1,down:ZECBTCWaveArray[12] === -1}">{{ZECBTC.BITTREX?(ZECBTC.BITTREX[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:ZECBTCWaveArray[14] === 1,down:ZECBTCWaveArray[14] === -1}">{{ZECBTC.BITTREX?(ZECBTC.BITTREX[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                        <div class="row">
-                          <span class="row_left"  :class="{up:ZECBTCWaveArray[16] === 1,down:ZECBTCWaveArray[16] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[0]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                          <span class="row_right" :class="{up:ZECBTCWaveArray[18] === 1,down:ZECBTCWaveArray[18] === -1}">{{ZECBTC.COINBASEPRO?(ZECBTC.COINBASEPRO[2]/ETHBTCRate).toFixed(6) : "-"}}</span>
-                        </div>
-                      </div> -->
-                    </div>
-                  </div>
-                  </div>
-            </div>
-            <!-- GBBO end -->
-
-            <!-- 55 social start 社区-->
-            <div style="background-image: url(assets/svg/bg/social_bg.jpg);">
-                <div class="u-bg-img-hero" >
-                    <div class="container u-space-3">
-                    <!-- Title -->
-                    <div class="text-center mb-4">
-                        <!-- SVG Quote -->
-                        <figure class="mx-auto mb-2" style="width: 50px;">
-                            <div class="d-flex justify-content-center my-2">
-                                <img src="assets/svg/bg/55social_logo.png" alt="">
-                            </div>
-                        </figure>
-                        <!-- End SVG Quote -->
-
-                        <h2 class="text-white font-weight-medium">Connect with influencers worldwide</h2>
-                        <!-- <div class=" text-white pb-4">
-                            Get real time market information from top traders
-                        </div> -->
-                    </div>
-                    <!-- End Title -->
-
-                    <!-- Slick Carousel - Testimonials Main Nav -->
-                    <div id="testimonialsNavMain" class="js-slick-carousel u-slick text-center w-lg-75 mx-lg-auto mb-7"
-                        data-adaptive-height="true"
-                        data-infinite="false"
-                        data-fade="true"
-                        data-nav-for="#testimonialsNavPagination">
-                        <div>
-                        <!-- Testimonials -->
-                        <div class="mb-4">
-                            <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" :href="siteCommunityURL" target="_blank">55 Community <span class="fa fa-angle-right ml-2"></span></a> 
-                            <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" :href="btcCommunityURL" target="_blank">BTC Community <span class="fa fa-angle-right ml-2"></span></a>   
-                            <!-- <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" href="index.html" target="_blank">EOS Commuity <span class="fa fa-angle-right ml-2"></span></a> -->
-                            <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" :href="ethCommunityURL" target="_blank">ETH Community <span class="fa fa-angle-right ml-2"></span></a> 
-                            <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" :href="supremeURL" target="_blank">Supreme Community <span class="fa fa-angle-right ml-2"></span></a>
-                        </div>
-                        <!-- End Testimonials -->
-                        </div>
-                    </div>
-                    <!-- End Slick Carousel - Testimonials Main Nav -->
-
-                    <!-- Slick Carousel - Testimonials Pagination Nav -->
-                    <div id="testimonialsNavPagination" class="js-slick-carousel u-slick u-slick--gutters-3 u-slick--pagination-testimonials-v1"
-                        data-infinite="false"
-                        data-slides-show="3"
-                        data-center-mode="false"
-                        data-focus-on-select="true"
-                     
-                        data-responsive='[{
-                            "breakpoint": 1200,
-                            "settings": {
-                            "slidesToShow": 2
-                            }
-                        }, {
-                            "breakpoint": 768,
-                            "settings": {
-                            "slidesToShow": 2
-                            }
-                        }, {
-                            "breakpoint": 554,
-                            "settings": {
-                            "slidesToShow": 1
-                            }
-                        }]'>
-                        <a class="js-slide rounded-pill p-2" :href="LisaURL" target="_blank">
-                          <!-- Authors -->
-                              <div class="media align-items-center">
-                                  <div class="d-flex mr-3">
-                                  <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img1.jpg" alt="Image Description">
-                                  </div>
-                                  <div class="media-body">
-                                  <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Lisa Loud</h4>
-                                  <p class="small u-slick--pagination-testimonials-v1__text mb-0">SVP of Strategic Partnerships</p>
-                                  </div>
-                              </div>
-                          <!-- End Authors -->
-                        </a>
-                        <!-- <a class="js-slide rounded-pill p-2" :href="LoganURL" target="_blank">
-                              <div class="media align-items-center">
-                                  <div class="d-flex mr-3">
-                                  <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img3.jpg" alt="Image Description">
-                                  </div>
-                                  <div class="media-body">
-                                  <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Logan Schauer</h4>
-                                  <p class="small u-slick--pagination-testimonials-v1__text mb-0">CEO of Crypto Media Group</p>
-                                  </div>
-                              </div>
-                        </a> -->
-                        
-                        <a class="js-slide rounded-pill p-2" :href="GeoffURL" target="_blank">
-                            <!-- Authors -->
-                            <div class="media align-items-center">
-                                <div class="d-flex mr-3">
-                                <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img4.jpg" alt="Image Description">
-                                </div>
-                                <div class="media-body">
-                                <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Geoff Shearer</h4>
-                                <p class="small u-slick--pagination-testimonials-v1__text mb-0">Director of 55 Social</p>
-                                </div>
-                            </div>
-                            <!-- End Authors -->
-                        </a>
-
-                        <a class="js-slide rounded-pill p-2" :href="JasonURL" target="_blank">
-                              <!-- Authors -->
-                              <div class="media align-items-center">
-                                  <div class="d-flex mr-3">
-                                  <img class="u-md-avatar rounded-circle" src="assets/img/100x100/img2.jpg" alt="Image Description">
-                                  </div>
-                                  <div class="media-body">
-                                  <h4 class="h6 u-slick--pagination-testimonials-v1__title mb-0">Jason Zhao</h4>
-                                  <p class="small u-slick--pagination-testimonials-v1__text mb-0">Top Crypto Trader</p>
-                                  </div>
-                              </div>
-                              <!-- End Authors -->
-                        </a>
-                    </div>
-                    <!-- End Slick Carousel - Testimonials Pagination Nav -->
-                    </div>
-                </div>
-            </div>
-            <!--  55 social end -->
-
-            <!-- yezi start -->
-                <!-- <div class="container u-space-3">
-                  <div class="h2 text-primary-55 text-center py-3">Unrestricted flow of assets</div>
-                  <div class="h6 text-center text-secondary pb-3">Buy and sell tokenized limited edition items</div>
-                  <div class="row">
-                    <div class="col-lg-7 mb-7 mb-lg-0">
-                      <div class="cbp"
-                          data-layout="grid"
-                          data-animation="quicksand"
-                          data-x-gap="32"
-                          data-y-gap="32"
-                          data-media-queries='[
-                            {"width": 300, "cols": 1}
-                          ]'>
-                        <div class="cbp-item">
-                          <div class="cbp-caption">
-                            <img class="rounded" src="assets/yeezy.jpg" alt="Image Description">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div id="stickyBlockStartPoint" class="col-lg-5">
-                      <div class="js-sticky-block pl-lg-4"
-                          data-sticky-view="lg"
-                          data-start-point="#stickyBlockStartPoint"
-                          data-end-point="#stickyBlockEndPoint"
-                          data-offset-top="80"
-                          data-offset-bottom="130">
-                        <div class="mb-6">
-                          </br>
-                          <h1 class="h4 text-primary-55 font-weight-bold">YEEZY Token</h1>
-                          <p class="mb-0">The YEEZY Token is an asset backed token supported by YEEZY 350 sneakers. Each token represents a fraction of the asset package. When you obtain sufficient tokens, you can redeem authentic Yeezy sneaker.</p>
-                        </div>
-
-                        <hr class="my-5">
-
-                        <ul class="list-unstyled mb-0">
-                          <li  class="media mb-1">
-                            <div class="d-flex w-40 w-sm-30">
-                              <h3 style="margin-top:4px;box-sizing: border-box;" class="h6 w-100">Authenticated by:</h3>
-                            </div>
-                            <div class="media-body">
-                              <small class="text-muted pl-4">
-                                <a href="https://chdaniel.com/" target="_new">LEGIT CHECK</a> 
-                              </small>
-                            </div>
-                          </li>
-
-                          <li class="media mb-1">
-                            <div class="d-flex w-40 w-sm-30">
-                              <h4 style="margin-top: 4px;box-sizing: border-box;" class="h6">Custody</h4>
-                            </div>
-                            <div class="media-body">
-                              <small class="text-muted pl-4">
-                                  DAOTrust
-                              </small>
-                            </div>
-                          </li>
-
-
-                          <li class="media">
-                            <div class="d-flex w-40 w-sm-30">
-                              <h4 class="h6">Redemption</h4>
-                            </div>
-                            <div class="media-body">
-                              <small class="d-block text-muted mb-1 pl-4">
-                                Supported
-                              </small>
-                            </div>
-                          </li>
-                          
-                        </ul>
-
-                        <hr class="my-5">
-
-                       
-                          <button data-v-de088f66="" type="button" class="btn btn-xs btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2"><span><span data-v-de088f66="" class="d-flex mr-3"><span data-v-de088f66=""></span></span><span data-v-de088f66="" class="media-body"><span data-v-de088f66="" class="d-block">coming soon</span><strong data-v-de088f66="" class="font-size-14">Buy YEEZY Tokens</strong></span></span></button>
-                          <br>
-
-                          <a :href="yeezyCommunityURL" target="_blank">
-                          <button type="button" class="btn btn-xs btn-primary u-btn-primary u-btn-wide transition-3d-hover text-left mb-2">
-                            <span class="media align-items-center">
-                              <span class="media-body">
-                                <span class="d-block"></span>
-                                <strong class="font-size-14">Go to YEEZY Community</strong>
-                              </span>
-                            </span>
-                          </button>
-                          </a>
-                          <br>
-                          <button type="button" @click="$router.push('/tokenizeyeezy')" class="btn btn-xs btn-primary u-btn-primary u-btn-wide transition-3d-hover text-left mb-2">
-                            <span class="media align-items-center">
-                              <span class="media-body">
-                                <span class="d-block"></span>
-                                <strong class="font-size-14">Tokenize Your YEEZY Sneaker</strong>
-                              </span>
-                            </span>
-                          </button>
-                                   <br>     
-                          <button data-v-de088f66="" type="button" class="btn btn-xs btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2"><span><span data-v-de088f66="" class="d-flex mr-3"><span data-v-de088f66=""></span></span><span data-v-de088f66="" class="media-body"><span data-v-de088f66="" class="d-block">coming soon</span><strong data-v-de088f66="" class="font-size-14">Redeem YEEZY Sneaker with Tokens</strong></span></span></button>
-                          
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-            <!-- yezi end -->
-          <!-- ATO -->
-          <!-- <div class="container u-space-3" id="atoRow">
-            <div class="row justify-content-lg-between align-items-lg-center">
-              <div class="col-lg-5 order-lg-2 mb-9 mb-lg-0">
-                <h2 class="font-weight-medium">Asset Token Onboarding</h2>
-                <p>55 has designed and implemented a new generation of issuance and supervision mechanisms known as the Asset Token Onboarding (ATO). ATO is designed to protect the right to know and will be applied throughout the whole lifecycle of a token from listing to delisting. </p >
-
-                <ul class="list-unstyled text-secondary">
-                  <li class="media my-3">
-                    <div class="d-flex mt-1 mr-2">
-                      <span class="fa fa-check text-success"></span>
-                    </div>
-                    <div class="media-body">
-                      A stack of tokenization utilities  
-                    </div>
-                  </li>
-                  <li class="media my-3">
-                    <div class="d-flex mt-1 mr-2">
-                      <span class="fa fa-check text-success"></span>
-                    </div>
-                    <div class="media-body">
-                      Local marketing team to bring your product to market
-                    </div>
-                  </li>
-                  <li class="media my-3">
-                    <div class="d-flex mt-1 mr-2">
-                      <span class="fa fa-check text-success"></span>
-                    </div>
-                    <div class="media-body">
-                      Token can be listed only if oversubscribed by 2.5 times during pre-sale.
-                    </div>
-                  </li>
-                </ul>
-                </br>
-                For ATO, please send email to 
-                <a  href="mailto:ato@55.com">
-                            <Icon class="email-icon" type="ios-mail-outline" />
-                            ato@55.com
-                        </a>
-              </div>
-
-              <div class="col-lg-7 order-lg-1">
-
-                <div class="text-center" >
-                  <img src="assets/25_1.png" style="width:100%;height:100%" alt="">
-                </div>
-
+              <div :class="[v.showColor == '1' ? 'percentGreen' : 'percentRed']">
+                <span v-if="v.showColor == 1">+</span>
+                {{v.percent}}
               </div>
             </div>
-          </div> -->
-        <!-- End ATO -->   
-            <!-- supreme start -->
-             <!-- <div class="u-gradient-half-warning-v3" style="background-image: url(/assets/svg/supreme/supreme.jpg); background-repeat:repeat-y;background-size: 100%,100%;">
-                <div class="container u-space-2">
-                  <div class="col-md-12 col-lg-12 col-xl-12">
-                    <div class="text-center mb-4">
-                      <h2 class="h1 text-white font-weight-normal">Successful ATO - Supreme Token <img class="img-fluid" src="/assets/svg/supreme/supremelogo.png" alt="Image Description" width="12%"></h2>
-                      <p class="lead u-text-light">Buy Supreme tokens through ATO and using tokens to redeem 100% authentic Supreme product at original retail price.</p>
-                    </div>
-                  </div>
-                <br>
-              <div class="row justify-content-md-between">
-                <div class="col-md-6 mb-7 mb-md-0">
-                  <div class="js-slick-carousel u-slick"
-                      data-infinite="true"
-                      data-arrows-classes="u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
-                      data-arrow-left-classes="fa fa-arrow-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left"
-                      data-arrow-right-classes="fa fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right"
-                      data-pagi-classes="text-center u-slick__pagination u-slick__pagination--white mt-7 mb-0">
-                    <div class="js-slide px-7 my-4">
-                      <img class="img-fluid" src="/assets/svg/supreme/img6.png" alt="Image Description">
-                    </div>
-                    <div class="js-slide px-7 my-4">
-                      <img class="img-fluid" src="/assets/svg/supreme/img7.png" alt="Image Description">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-5">
-                  <div class="mb-5">
-                    <h3 class="text-white font-weight-normal">Supreme Swarovski Box Logo Hooded Sweatshirt</h3>
-                    </br>
-                    <span class="d-block h6 text-white mb-2">Original Retail Price：$598</span>
-                    <span class="d-block h6 text-white mb-2">Market Price：$1403 - Price Quote from StockX</span>
-                    <span class="d-block h6 text-white mb-2">Tokens Required for Redemption：5980 Tokens/Hoodie</span>
-                    <span class="d-block h6 text-white mb-2">ATO Token Price：$0.1</span>
-                    <span class="d-block h6 text-white mb-2">Total ATO Sales Amount：59,800 Supreme Tokens</span>
-                    <span class="d-block h6 text-white mb-2">ATO Total Pre-order Amount：</span>
-                    <br> <span style="font-size:28px;color:#fff;background-color:#DB3545;font-weight:700;">$128,263</span>
-                    
-                  </div>
-                  <button type="button" style="background:#DB3545;height:57px" @click="$router.push('/redeemsupreme')" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block"> </span><strong data-v-d1e1e420="" class="font-size-14">Redeem Supreme</strong></span></span></button> &nbsp;
-                  <a :href="supremeURL" target="_blank"><button type="button" class="btn btn-xs btn-danger u-btn-danger u-btn-wide transition-3d-hover text-left mb-2"><span data-v-d1e1e420="" class="media align-items-center"><span data-v-d1e1e420="" class="media-body"><span data-v-d1e1e420="" class="d-block">Know more about Supreme</span><strong data-v-d1e1e420="" class="font-size-14">Join Supreme Community</strong></span></span></button></a>
-                </div>
-              </div>
-             </div>
-           </div> -->
-            <!-- supreme end -->
-
-            <!-- Front in Frames Section -->
-<!--            <div style="background:#fff" id="55card">
-                <div class="container u-space-3 " >
-                  <div class="row justify-content-between align-items-center">
-                    <div class="col-lg-5 mb-7 mb-lg-0">
-                      <div class="pr-md-4">
-                        <div class="mb-7">
-                          
-                          <h2 class="text-primary">55 <span class="font-weight-bold">Debit Card</span></h2>
-                          
-                          <p>Your cryptocurrencies can be converted to fiat currency almost in real time. 55, in collaboration with major payment service providers, will allow you to pay at millions of storefronts or POS terminals.</p >
-                        </div>
-                        
-                        <button type="button" @click="$router.push('/card')" class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2">
-                            <span class="media align-items-center">
-                              <span class="media-body">
-                                <span class="d-block">Pre-order Now</span>
-                                <strong class="font-size-14">55 Debit Card</strong>
-                              </span>
-                            </span>
-                          </button>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-6 position-relative">
-                      <div class="row mx-gutters-2">
-                        <div class="col-5 align-self-end px-2 mb-3">
-                          <a>
-                            <img class="img-fluid rounded" src="assets/svg/bg/topleft.jpg" alt="Image Description">
-
-
-                          </a >
-                        </div>
-
-                        <div class="col-7 px-2 mb-3">
-                          <a>
-                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/topright.jpeg" alt="Image Description">
-
-
-                          </a >
-                        </div>
-
-                        <div class="col-5 offset-1 px-2 mb-3">
-                          <a>
-                            <img class="img-fluid rounded" src="assets/svg/bg/bottomleft.jpg" alt="Image Description">
-
-
-                          </a >
-                        </div>
-
-                        <div class="col-5 px-2 mb-3">
-                          <a>
-                            <img class="img-fluid rounded" src="../../../assets/images/home/usHome/new_no_visa.png" alt="Image Description">
-
-                          </a >
-                        </div>
-                      </div>
-
-                      <figure class="w-100 u-content-centered-y z-index-minus-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 1109.8 797.1" style="enable-background:new 0 0 1109.8 797.1;" xml:space="preserve">
-                          <path class="u-fill-primary" opacity=".05" d="M105.1,267.1C35.5,331.5-3.5,423,0.3,517.7c5.8,145.3,110.7,314.2,588,273.1c753-64.7,481.3-358.3,440.4-398.3
-                            c-4-3.9-7.9-7.9-11.7-12L761.9,104.8C639.4-27.6,432.5-35.6,299.9,87L105.1,267.1z"/>
-                        </svg>
-                      </figure>
-                    </div>
-                  </div>
-                </div>
+            <div :class="[v.showColor == '1' ? 'textColorGreen' : 'textColorRed']">
+              <span class="price">{{v.last}}</span>
             </div>
- -->            <!-- End Front in Frames Section -->
+            <div class="legal_coin">{{currencyName}}&nbsp{{v.symbolCurrency}}</div>
+          </router-link>
+        </div>
+      </div>
+    </div> -->
+    <!-- 55 social start 社区 -->
+    <div id="SVGbgElements5" class="position-relative gradient-half-primary-v1" style="margin-top:40px;background-image: url('../../assets/svg/bg/social_bg.jpg');">
+      <div class="container position-relative z-index-2 space-2 space-md-3">
+        <!-- Title -->
+        <div class="text-center mb-4">
+          <!-- SVG Quote -->
+          <figure class="mx-auto mb-2">
+            <div class="d-flex justify-content-center my-2">
+                <img src="../../../assets/images/index/55social_logo.png" alt="">
+            </div>
+          </figure>
+          <!-- End SVG Quote -->
 
-            <!-- Subscribe Section transfer 国际汇款-->
-                <!-- <div class="position-relative u-gradient-half-primary-v1 u-space-3-top u-space-3-bottom" style="background-image: url(assets/svg/bg/transfer_bg.jpg);" >
-                  <div class="container">
-                    <div class="row justify-content-md-center">
-                      <div class="col-md-12 col-lg-12 col-xl-12">
-                        <div class="text-center mb-4">
-                          <h2 class="h1 text-white font-weight-normal">Transfer Bitcoin to a bank account with no hassle</h2>
-                          <p class="lead u-text-light">You can now convert your BTC or other major cryptocurrencies to fiat and send to a bank account with a few clicks.</p>
+          <h2 class="text-white font-weight-medium">{{$t("fronthomeSocialtitle")}}</h2>
+        </div>
+        <!-- End Title -->
+                        <!-- Slick Carousel - Testimonials Main Nav -->
+                        <div id="testimonialsNavMain" class="js-slick-carousel u-slick text-center w-lg-75 mx-lg-auto mb-7"
+                            data-adaptive-height="true"
+                            data-infinite="false"
+                            data-fade="true"
+                            data-nav-for="#testimonialsNavPagination">
+                            <div>
+                            <!-- Testimonials -->
+                            <div class="mb-4">
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="siteCommunityURL" target="_blank">{{$t("fronthomeSocialgroupEn")}} <span class="fa fa-angle-right ml-2"></span></a> 
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="btcCommunityURL" target="_blank">{{$t("fronthomeSocialgroupBtc")}} <span class="fa fa-angle-right ml-2"></span></a>   
+                                <!-- <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" href="index.html" target="_blank">EOS Commuity <span class="fa fa-angle-right ml-2"></span></a> -->
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="ethCommunityURL" target="_blank">{{$t("fronthomeSocialgroupEth")}} <span class="fa fa-angle-right ml-2"></span></a> 
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="supremeURL" target="_blank">{{$t("fronthomeSocialgroupSup")}} <span class="fa fa-angle-right ml-2"></span></a>
+                            </div>
+                            <!-- End Testimonials -->
+                            </div>
                         </div>
+                        <!-- End Slick Carousel - Testimonials Main Nav -->
 
-                       
-                      </div>
+        <!-- Slick Carousel - Testimonials Pagination Nav -->
+        <div id="testimonialsNavPaginationExample3" class="js-slick-carousel u-slick u-slick--gutters-3 u-slick--pagination-interactive"
+            data-infinite="true"
+            data-slides-show="3"
+            data-responsive='[{
+              "breakpoint": 1200,
+              "settings": {
+                "slidesToShow": 2
+              }
+            }, {
+              "breakpoint": 768,
+              "settings": {
+                "slidesToShow": 2
+              }
+            }, {
+              "breakpoint": 554,
+              "settings": {
+                "slidesToShow": 1
+              }
+            }]'>
+          <a class="js-slide rounded-pill p-2" :href="LisaURL" target="_blank">
+            <!-- Authors -->
+            <div class="media align-items-center">
+              <div class="u-avatar mr-3">
+                <img class="img-fluid rounded-circle" src="../../../assets/images/index/figure/img1.jpg" alt="Image Description">
+              </div>
+              <div class="media-body">
+                <h4 class="h6 u-slick--pagination-interactive__title mb-0">Lisa Loud</h4>
+                <p class="small u-slick--pagination-interactive__text mb-0">BitMEX - Head of Marketing</p>
+              </div>
+            </div>
+            <!-- End Authors -->
+          </a>
+          <a class="js-slide rounded-pill p-2"  :href="GeoffURL" target="_blank">
+            <!-- Authors -->
+            <div class="media align-items-center">
+              <div class="u-avatar mr-3">
+                <img class="img-fluid rounded-circle" src="../../../assets/images/index/figure/img2.jpg" alt="Image Description">
+              </div>
+              <div class="media-body">
+                <h4 class="h6 u-slick--pagination-interactive__title mb-0">Geoff Shearer</h4>
+                <p class="small u-slick--pagination-interactive__text mb-0">Director of 55 Social</p>
+              </div>
+            </div>
+            <!-- End Authors -->
+          </a>
+          <a class="js-slide rounded-pill p-2" :href="JasonURL" target="_blank">
+            <!-- Authors -->
+            <div class="media align-items-center">
+              <div class="u-avatar mr-3">
+                <img class="img-fluid rounded-circle" src="../../../assets/images/index/figure/img3.jpg" alt="Image Description">
+              </div>
+              <div class="media-body">
+                <h4 class="h6 u-slick--pagination-interactive__title mb-0">Simon </h4>
+                <p class="small u-slick--pagination-interactive__text mb-0">Top Crypto Trader</p>
+              </div>
+            </div>
+            <!-- End Authors -->
+          </a>
+        </div>
+        <!-- End Slick Carousel - Testimonials Pagination Nav -->
+      </div>
+    </div>
+    <!-- End 55 social start 社区 -->
+<!-- Team Section 高管团队 -->
+<div class="container space-top-1 space-bottom-2 space-top-sm-2 space-bottom-sm-2">
+    <!-- Title -->
+  <div class="w-md-80 w-lg-50 text-center mx-auto mb-9">
+      <h2 class="text-primary-55" style="color:#12869A;font-weight: 500">{{$t("fronthomeMteam")}}</h2>
+  </div>
+  <!-- End Title -->
 
-                      <div class="col-xl-2 d-none d-xl-inline-block mt-auto mb-7">
-                        <div class="position-relative p-3">
-                        </div>
-                      </div>
-                    </div>
-                        <form class="js-validate js-form-message mb-2">
-                          <div class="js-focus-state input-group input-group-lg u-form u-form--lg u-form--white-brd">
-                            <div class="row align-items-md-center u-space-1 m-auto">
-                                <div class="col-lg-4 mb-4 mb-lg-0">
-                                  <form class="js-focus-state input-group u-form">
-                                    <div class="input-group-prepend u-form__prepend">
-                                    <span class="input-group-text u-form__text">
-                                      I want to withdraw 
-                                    </span>
-                                    </div>
-                                    <input v-model="body_count" type="search" class="form-control u-form__input" placeholder="" aria-label="">
-                                  </form>
-                                </div>
+  <!-- Slick Carousel -->
+  <div class="js-slick-carousel u-slick u-slick--gutters-3"
+       data-slides-show="2"
+       data-slides-scroll="1"
+       data-pagi-classes="text-center u-slick__pagination mt-7 mb-0"
+       data-responsive='[{
+         "breakpoint": 992,
+         "settings": {
+           "slidesToShow": 1
+         }
+       }, {
+         "breakpoint": 768,
+         "settings": {
+           "slidesToShow": 1
+         }
+       }, {
+         "breakpoint": 554,
+         "settings": {
+           "slidesToShow": 1
+         }
+       }]'>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">David Weild</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">Co-Chairman</span>
+          </div>
+          <p class="font-size-1">David is a former Vice Chairman of Nasdaq. He priced over 1,000 equity offerings as head of a Top 10 investment bank and is renowned for his thought leadership that led him to be called the “Father of the JOBS Act.” </p>
 
-                                <div class="col-sm-6 col-lg-2 mb-4 mb-lg-0">
-                                  <select class="custom-select" v-model="body_coin">
-                                    <option value="BTC">BTC</option>
-                                    <option value="ETH">ETH</option>
-                                  </select>
-                                </div>
-                                <span class=" text-white">to</span>
-                                <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
-                                  <select class="custom-select" v-model="body_account">
-                                    <option value="Bank" >Bank Account</option>
-                                    <option value="more to come">more to come</option>
-                                  </select>
-                                </div>
-                                <div class="input-group-append u-form__append">
-                                  <div  class="btn btn-warning u-btn-wide" @click="transfer">Withdraw Now</div>
-                                </div>
-                              </div>
-                           
-                          </div>
-                        </form>
-                  </div>
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_1.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
 
-               
-                </div> -->
-            <!-- End Subscribe Section -->
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Darren Sandler</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">CCO & General Counsel</span>
+          </div>
+          <p class="font-size-1">Darren is Chief Compliance Officer and General Counsel. Previously, Darren was an attorney at Kirkland & Ellis LLP and Schulte Roth & Zabel LLP. While at Kirkland and Ellis, Darren led the firm's first blockchain client matter.</p>
 
-               
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_4.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
 
-            <!-- Blog Grid Section Read our news & -->
-            <!-- End Blog Grid Section -->
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Ashu Swami</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">CTO</span>
+          </div>
+          <p class="font-size-1">Ashu is the CTO of 55. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
 
-            <!-- Team Section 高管团队 -->
-                    <div class="container u-space-3">
-                        <!-- Title -->
-                        <div class="w-md-80 w-lg-50 text-center mx-auto mb-9">
-                            <h2 class="text-primary-55">Management Team</h2>
-                            <p></p>
-                            </br>
-                            </br>
-                        </div>
-                        <!-- End Title -->
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_3.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
 
-                        <!-- Slick Carousel -->
-                        <div class="js-slick-carousel u-slick u-slick--gutters-3"
-                            data-slides-show="2"
-                            data-slides-scroll="1"
-                            data-pagi-classes="text-center u-slick__pagination mt-7 mb-0"
-                            data-responsive='[{
-                                "breakpoint": 992,
-                                "settings": {
-                                "slidesToShow": 1
-                                }
-                            }, {
-                                "breakpoint": 768,
-                                "settings": {
-                                "slidesToShow": 1
-                                }
-                            }, {
-                                "breakpoint": 554,
-                                "settings": {
-                                "slidesToShow": 1
-                                }
-                            }]'>
-                            <div class="js-slide px-3">
-                            <!-- Team -->
-                                <div class="row pb-6">
-                                    <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">David Weild</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Co-Chairman</span>
-                                    <p class="font-size-14">David is a former Vice Chairman of Nasdaq. He priced over 1,000 equity offerings as head of a Top 10 investment bank and is renowned for his thought leadership that led him to be called the “Father of the JOBS Act.” </p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_1.jpg" alt="Image Description">
-                                    </div>
-                                </div>
-                            <!-- End Team -->
-                            </div>
-                             <div class="js-slide px-3">
-                            <!-- Team -->
-                            <div class="row">
-                                <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                <h3 class="h5 mb-4">Darren Sandler</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3" style="text-align:left">CCO & General Counsel</span>
-                                <p class="font-size-14">Darren is Chief Compliance Officer and General Counsel. Previously, Darren was an attorney at Kirkland & Ellis LLP and Schulte Roth & Zabel LLP. While at Kirkland and Ellis, Darren led the firm's first blockchain client matter.</p>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Simon Grunfeld</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">SVP of Operations</span>
+          </div>
+          <p class="font-size-1">Simon's professional background is mostly from the retail FX and IT solutions marketplace. Simon has a solid background of the inner workings of the capital markets, which came by way of the fintech experience he developed over the years.</p>
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_9.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Lisa Loud</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">SVP of Strategic Partnerships</span>
+          </div>
+          <p class="font-size-1">Lisa Loud has joined 55 as  SVP of Strategic Partnerships. Lisa led strategy at BitMEX from 2017, and during her tenure, the exchange volume reached the largest crypto volume worldwide in early 2018.</p>
 
-                                </div>
-                                <div class="col-sm-6">
-                                <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_4.jpg" alt="Image Description">
-                                </div>
-                            </div>
-                            <!-- End Team -->
-                            </div>
-                              
-                              <div class="js-slide px-3">
-                            <!-- Team -->
-                            <div class="row">
-                                <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                <h3 class="h5 mb-4">Ashu Swami</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">CTO</span>
-                                <p class="font-size-14">Ashu is the CTO of 55. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_2.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Jeremy Xue</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">SVP of Technology</span>
+          </div>
+          <p class="font-size-1">Jeremy Xue is the Senior VP of Technology of 55. Xue previously founded a cryptocurrency exchange BitChain Exchange and served as Chief Technology Officer. Xue implemented the latest trading platform for the New York Stock Exchange.</p>
 
-                                </div>
-                                <div class="col-sm-6">
-                                <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_3.jpg" alt="Image Description">
-                                </div>
-                            </div>
-                            <!-- End Team -->
-                            </div>
-                            <div class="js-slide px-3">
-                            <!-- Team -->
-                                <div class="row pb-6">
-                                    <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Simon Grunfeld</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">SVP of Operations</span>
-                                    <p class="font-size-14">Simon's professional background is mostly from the retail FX and IT solutions marketplace. Simon has a solid background of the inner workings of the capital markets, which came by way of the fintech experience he developed over the years.</p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_9.jpg" alt="Image Description">
-                                    </div>
-                                </div>
-                            <!-- End Team -->
-                            </div>
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/JeremyXue.jpeg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Danielle Frizziola</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">VP of Human Resources</span>
+          </div>
+          <p class="font-size-1">Danielle Frizziola is a seasoned Human Resources and Recruiting Executive specializing in emerging technology and creative spaces. She is a mentor to HR professionals worldwide.</p>
 
-                            <div class="js-slide px-3">
-                            <!-- Team -->
-                            <div class="row">
-                                <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                <h3 class="h5 mb-4">Lisa Loud	</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3"> SVP of Strategic Partnerships</span>
-                                <p class="font-size-14">Lisa Loud has joined 55 as  SVP of Strategic Partnerships. Lisa led strategy at BitMEX from 2017, and during her tenure, the exchange volume reached the largest crypto volume worldwide in early 2018. </p>
-                                </div>
-                                <div class="col-sm-6">
-                                <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_2.jpg" alt="Image Description">
-                                </div>
-                            </div>
-                            <!-- End Team -->
-                            </div>
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_6.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Andrew Banhidi</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">Head of Research and Technology Sales</span>
+          </div>
+          <p class="font-size-1">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
 
-                            <div class="js-slide px-3">
-                            <!-- Team -->
-                                <div class="row pb-6">
-                                    <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Jeremy Xue</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">SVP of Technology</span>
-                                    <p class="font-size-14">Jeremy Xue is the Senior VP of Technology of 55. Xue previously founded a cryptocurrency exchange BitChain Exchange and served as Chief Technology Officer. Xue implemented the latest trading platform for the New York Stock Exchange.</p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/JeremyXue.jpeg" alt="Image Description">
-                                    </div>
-                                </div>
-                            <!-- End Team -->
-                            </div>
-                             <div class="js-slide px-3">
-                            <!-- Team -->
-                                <div class="row pb-6">
-                                    <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Danielle Frizziola</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">VP of Human Resources</span>
-                                    <p class="font-size-14">Danielle Frizziola is a seasoned Human Resources and Recruiting Executive specializing in emerging technology and creative spaces. She is a mentor to HR professionals worldwide.</p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_6.jpg" alt="Image Description">
-                                    </div>
-                                </div>
-                            <!-- End Team -->
-                            </div>
-                            <div class="js-slide px-3">
-                            <!-- Team -->
-                                <div class="row pb-6">
-                                    <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4"> Andrew Banhidi</h3>
-                                    <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Head of Research and Technology Sales</span>
-                                    <p class="font-size-14">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <img class="img-fluid rounded mx-auto" src="assets/svg/bg/Andrew.jpeg" alt="Image Description">
-                                    </div>
-                                </div>
-                            <!-- End Team -->
-                            </div>
-
-                           
-                        </div>
-                        <!-- End Slick Carousel -->
-                    </div>
-            <!-- End Team Section -->
-            
-            <!-- Features Section 下载APP -->
-            <!-- End Features Section -->
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/Andrew.jpeg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+  </div>
+  <!-- End Slick Carousel -->
+</div>
+<!-- End Team Section -->
             <!-- Clients Section -->
-                <div class=" u-space-2" style="background-color:#F6F9FC">
-                      <div class="title" style="text-align:center;font-size:22px;color:#12869a !important;padding:22px">Partners</div>
+                <div class=" u-space-2" style="padding-bottom:30px;background-color:#F6F9FC">
+                      <div class="title" style="text-align:center;font-size:22px;color:#12869a !important;padding:22px">{{$t("fronthomePartners")}}</div>
 
                   <div class="js-slick-carousel u-slick"
                       data-autoplay="true"
@@ -1045,57 +479,85 @@
                         }
                       }]'>
                     <div class="js-slide">
-                      <img class="u-clients" src="../../../assets/images/logo1@2x.png" alt="Image Description">
+                      <img class="u-clients" src="../../../assets/images/index/logo1@2x.png" alt="Image Description">
                     </div>
                     <div class="js-slide">
-                      <img class="u-clients" src="../../../assets/images/logo2@2x.png" alt="Image Description">
+                      <img class="u-clients" src="../../../assets/images/index/logo2@2x.png" alt="Image Description">
                     </div>
-                     <div class="js-slide">
-                      <img class="u-clients"  src="../../../assets/images/logo3@2x.png" alt="Image Description">
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../../assets/images/index/logo3@2x.png" alt="Image Description">
                     </div>
-                     <div class="js-slide">
-                      <img class="u-clients"  src="../../../assets/images/logo4@2x.png" alt="Image Description">
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../../assets/images/index/logo4@2x.png" alt="Image Description">
                     </div>
-                    <!-- <div class="js-slide">
-                      <img class="u-clients" src="../../../assets/images/logo5@2x.png" alt="Image Description">
-                    </div> -->
-                    <!-- <div class="js-slide">
-                      <img class="u-clients" src="assets/svg/logos/parnter/partner-logo4.png" alt="Image Description">
-                    </div> -->
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../../assets/images/index/logo5@2x.png" alt="Image Description">
+                    </div>
                   </div>
                 </div>
             <!-- End Clients Section -->
-        </main>
-        <!-- ========== END MAIN ========== -->
-        <!-- ========== FOOTER ========== -->
-              <!-- <Footer/>        -->
-        <!-- ========== END FOOTER ========== -->
-        <!-- Go to Top -->
-            <a class="js-go-to u-go-to" href="#"
-              data-position='{"bottom": 15, "right": 15 }'
-              data-type="fixed"
-              data-offset-top="400"
-              data-compensation="#header"
-              data-show-effect="slideInUp"
-              data-hide-effect="slideOutDown" style="z-index:0;">
-              <span class="fa fa-arrow-up u-go-to__inner"></span>
-            </a>
-        <!-- End Go to Top -->
-    </div>
+
+  </div>
 </template>
 
 <script>
-    import Footer from '../../../components/common/US-Footer'
+    /* import Footer from '../../../components/common/US-Footer'
     import USHeader from '../../../components/common/US-Header'
     import SockJS from  'sockjs-client';  
     import  Stomp from 'stompjs';
     import {getRealtimeList} from '../../../../api/balances'
     import {getCommouityBaseURL} from '../../../config/index'
     import {postHeaderTokenBodyApi} from '_api/axios'
+    import Cookies from 'js-cookie' */
+    import SockJS from  'sockjs-client';  
+    import  Stomp from 'stompjs';
+    import {getRealtimeList} from '_api/balances.js'
+    import {CHAT_URL, getMainSite,getCommouityBaseURL} from '../../../config/index'
+    import {getHeaderTokenApi,postHeaderTokenBodyApi} from '_api/axios'
     import Cookies from 'js-cookie'
-    export default {
+    import { BannerList, getRecommendSymbol, getCurrencyImg,AnnoucementList } from "_api/home";
+    import { queryGlobal, queryConfig } from "_api/miningKo.js";
+    import market from "@/components/market.vue";
+    import {
+      getParseFloat,
+      getDecimalsNum,
+      scientificToNumber
+    } from "@/lib/utils.js";
+    import { getSymbolList_realtime } from "_api/exchange.js";
+    import bigDecimal from "js-big-decimal"; //除法失效
+    import { BigNumber } from "bignumber.js";
+    import moment from 'moment';
+    import { mapState } from "vuex";
+    let allNowPriceObject = {};
+    export default{
+        metaInfo(){
+            return{
+                title: this.pageTitle, // set a title
+                meta: [{                 // set meta
+                    name: 'keywords',
+                    content:this.pageKeyword
+                },{
+                    name:'description',
+                    content:this.pageDescription
+                }],
+            }
+        },
         data() {
             return {
+              pageTitle:this.$t(this.$route.meta.title),
+              pageKeyword : this.$t(this.$route.meta.keywords),
+              pageDescription : this.$t(this.$route.meta.description),
+              value1: 0,
+              value2: 0,
+              isAutoplay: false,
+              clientType: "PC",
+              fromSite: "ALL",
+              language: window.localStorage.getItem("countryLanguage") || "zh-CN",
+              bannerArr: [],
+              mainHomePriceObject: [],
+              currencyName: "$",
+              webSocketSource: "",
+              symbolList_quote: {},
               body_count:'',
               body_coin:'BTC',
               body_account:'Bank',
@@ -1130,17 +592,15 @@
               supremeURL:'',
               loginToken:Cookies.get('loginToken'),
               chatToken:'',
-              
+              adArr:[],
+              moreAnounce: "",
+              toLang:""
             }
-        },
-        components:{
-            Footer,
-            USHeader
         },
         methods: {
             join55() {
                 this.$router.push({
-                    path:'register',
+                    path:'/register',
                     query:{
                         email:this.emailName,
                     }
@@ -1152,37 +612,37 @@
                       this.chatToken = data.token +'/'
                       // this.iframeURL = `${CHAT_URL.baseURL}${this.chatToken}/`+encodeURIComponent(`${CHAT_URL.englishURL}`)
                       //社区链接
-                      this.siteCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
-                      this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
-                      this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
-                      this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
-                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
-                      this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
-                      this.JasonURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
-                      this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
-                      this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
-                      this.DavidURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
-                      this.AshuURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
+                      this.siteCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
+                      this.ethCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
+                      this.btcCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
+                      this.yeezyCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
+                      this.supremeURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
+                      this.LisaURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
+                      this.JasonURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
+                      this.LoganURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
+                      this.GeoffURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
+                      this.DavidURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
+                      this.AshuURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
                   })
                 }else{
                       this.chatToken = 'null/'
                       //社区链接
-                      this.siteCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
-                      this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
-                      this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
-                      this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
-                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
-                      this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
-                      this.JasonURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
-                      this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
-                      this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
-                      this.DavidURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
-                      this.AshuURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
+                      this.siteCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
+                      this.ethCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
+                      this.btcCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
+                      this.yeezyCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
+                      this.supremeURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
+                      this.LisaURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
+                      this.JasonURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
+                      this.LoganURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
+                      this.GeoffURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
+                      this.DavidURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
+                      this.AshuURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
                 }
             },
             transfer(){
                 this.$router.push({
-                    path:'interFinanceOne',
+                    path:'/interFinanceOne',
                     query:{
                         count:this.body_count,
                         coin:this.body_coin,
@@ -1205,12 +665,12 @@
             },
             initConnect(){
               const domain = document.domain;
-              if(domain.startsWith('www.') || domain.startsWith('us.')){
+              if(domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('global.') || domain.startsWith('55ex.')){
                 let socket = new SockJS('https://'+ domain +'/xchange/marketdata');
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }else {
-                let socket = new SockJS('https://www.55ex.co/xchange/marketdata');
+                let socket = new SockJS('http://gbbo.55.exchange:8090/xchange/marketdata');
                 this.stompClient = Stomp.over(socket);
                 this.stompClient.debug = null
               }
@@ -1292,7 +752,332 @@
                 })
               }
               this[_Array] = arr
+            },
+    initBannerList() {
+      this.value1 = 0;
+      this.bannerArr = [];
+      this.isAutoplay = false;
+      let params = {};
+      params.clientType = this.clientType;
+      params.fromSite = this.fromSite;
+      let language =
+        this.$store.state.app.countryLanguage ||
+        window.localStorage.getItem("countryLanguage");
+      if (
+        language == "en" ||
+        language == "vi" ||
+        language == "ko" ||
+        language == "zh-CN" ||
+        language == "id-id"
+      ) {
+        params.language =
+          this.$store.state.app.countryLanguage ||
+          window.localStorage.getItem("countryLanguage") ||
+          "zh-CN";
+      } else {
+        params.language = "en";
+      }
+      BannerList(params).then(data => {
+        data.map((v, i) => {
+          this.bannerArr.push({
+            imageUrl: v.imageUrl,
+            targetUrl: v.targetUrl,
+            subjectName: v.subjectName
+          });
+        });
+        if (this.bannerArr.length > 1) {
+          this.isAutoplay = true;
+        }
+      });
+    },
+    //币种推荐位行情
+    async initRecommendSymbol() {
+      if (this.webSocketSource) {
+        this.webSocketSource.close();
+      }
+      await getSymbolList_realtime().then(res => {
+        res.map((v, i) => {
+          this.symbolList_quote[v.symbol] = v; //拼装行情的symbol为Key的symbolList 对象
+        });
+      });
+      let SSEURl = "";
+      //调用推荐位接口
+      await getRecommendSymbol().then(data => {
+        let paramsArr = [];
+        if (data.length > 0) {
+          data.splice(0, 4).map((v, i) => {
+            paramsArr.push(v.exCurrency);
+            if (this.mainHomePriceObject.length < 4) {
+              this.mainHomePriceObject.push(v);
             }
+            //订阅行情
+            if (v.baseCurrency == "USDT" || v.baseCurrency == "USDD") {
+              SSEURl += `symbol=${v.symbol}&${v.symbol}_least=1&`; //拼装推送数据查询url
+            } else {
+              SSEURl += `symbol=${v.baseCurrency}USDT&${
+                v.baseCurrency
+              }USDT_least=1&`; //拼装推送数据查询url
+            }
+          });
+          //币种图标
+          getCurrencyImg({ currency: paramsArr.toString() }).then(info => {
+            this.mainHomePriceObject.map((v, i) => {
+              info.forEach(item => {
+                if (v.exCurrency == item.currency) {
+                  v.imageUrl = item.projectInfo.image;
+                }
+              });
+            });
+          });
+          if (!this.webSocketSource) {
+            //订阅行情
+            this.getSSERealTime(SSEURl);
+          }
+        }
+      });
+    },
+    //获取推送行情
+    getSSERealTime(url) {
+      let SSEcache = null;
+      const baseURL = window.location.protocol == "http:" ? "ws://" : "wss://";
+      const host = window.location.host;
+      //ws断开尝试重连间隔 5s
+      this.webSocketSource = new ReconnectingWebSocket(
+        `${baseURL}${host}/quote/realTime.ws?${url}`,
+        null,
+        { debug: true, reconnectInterval: 5000 }
+      );
+      this.webSocketSource.onopen = e => {
+        // console.log("open");
+      };
+      this.webSocketSource.onmessage = e => {
+        //每次推送一条记录
+        let result = JSON.parse(e.data);
+        if (result.ping != undefined) {
+          var pongResponse = {};
+          pongResponse.pong = result.ping;
+          this.webSocketSource.send(JSON.stringify(pongResponse));
+          return;
+        }
+        allNowPriceObject[result.symbol] = result;
+        //快照去重
+        if (
+          SSEcache &&
+          SSEcache.dateTime == result.dateTime &&
+          SSEcache.volume == result.volume
+        ) {
+          return;
+        } else {
+          let v = {}; //快照的涨跌幅
+          if (result.symbol) {
+            let long = getDecimalsNum(
+              this.symbolList_quote[result.symbol].priceTickSize
+            );
+            let diff = "";
+            let a = "";
+            //计算涨跌幅 percent  +
+            if (result.previousClose && result.last) {
+              diff = bigDecimal.subtract(result.last, result.previousClose);
+              a = bigDecimal.multiply(
+                new BigNumber(diff)
+                  .dividedBy(new BigNumber(result.previousClose))
+                  .toFixed(6),
+                "100"
+              );
+            } else {
+              diff = bigDecimal.subtract(
+                scientificToNumber(result.last),
+                scientificToNumber(result.open)
+              );
+              a = bigDecimal.multiply(
+                new BigNumber(diff)
+                  .dividedBy(new BigNumber(result.open))
+                  .toFixed(6),
+                "100"
+              );
+            }
+            //涨跌幅%
+            v.percent = bigDecimal.round(a, 2) + "%";
+            //绿涨红跌 1绿色 0灰色 -1红色
+            v.showColor = bigDecimal.compareTo(bigDecimal.round(a, 2), 0);
+            //计算最新价格精度
+            v.last = bigDecimal.round(scientificToNumber(result.last), long);
+            // v.last = result.last
+            //24H交易量
+            v.hour24Volume = bigDecimal.round(result.hour24Volume, 2);
+            //法币估值
+            let legalTender = JSON.parse(
+              localStorage.getItem("currentCurrency")
+            );
+            this.currencyRate = legalTender.rate;
+            this.currencyName = legalTender.shortcut
+              ? legalTender.shortcut
+              : "$";
+            if (
+              this.symbolList_quote[result.symbol].quoteAsset == "USDT" ||
+              this.symbolList_quote[result.symbol].quoteAsset == "USDD"
+            ) {
+              this.currentSymbolRate = 1;
+              v.symbolCurrency = bigDecimal.round(
+                new BigNumber(result.last) * new BigNumber(this.currencyRate),
+                4
+              );
+            } else {
+              if (allNowPriceObject(v.quoteAsset + "USDT")) {
+                this.currentSymbolRate = bigDecimal.round(
+                  new BigNumber(result.last) *
+                    new BigNumber(
+                      allNowPriceObject(v.quoteAsset + "USDT").last
+                    ),
+                  4
+                );
+                v.symbolCurrency = bigDecimal.round(
+                  new BigNumber(this.currentSymbolRate) *
+                    new BigNumber(this.currencyRate),
+                  4
+                );
+              }
+            }
+            //板块部分双向绑定
+            // this.symbolListSelf = Object.assign({},this.symbolListSelf)
+            let number = _.findIndex(this.mainHomePriceObject, {
+              symbol: result.symbol
+            });
+            this.mainHomePriceObject.splice(
+              number,
+              Object.assign(this.mainHomePriceObject[number], v)
+            );
+            //处理当前
+            SSEcache = result;
+          }
+        }
+      };
+      this.webSocketSource.onerror = e => {
+        // console.log("home ws error");
+      };
+      this.webSocketSource.onclose = e => {
+        // console.log("home ws close");
+      };
+    },
+    countTime() {
+      //获取当前时间
+      const date = new Date();
+      const now = date.getTime();
+      //获取截止时间
+      const end = 1562212800000
+      //时间差
+      const leftTime = end - now;
+      //定义变量 d,h,m,s保存倒计时的时间
+      let d, h, m, s;
+      if (leftTime > 0) {
+        d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+        h = d * 24 + Math.floor((leftTime / 1000 / 60 / 60) % 24);
+        m = Math.floor((leftTime / 1000 / 60) % 60);
+        s = Math.floor((leftTime / 1000) % 60);
+      } else {
+        return;
+      }
+      //将倒计时赋值到div中
+      //this.ref.hour.innerHTML = d+"天";
+      if (this.$refs.hour) {
+        this.$refs.hour.innerHTML = h > 9 ? h : "0" + h;
+        this.$refs.minute.innerHTML = m > 9 ? m : "0" + m;
+        this.$refs.second.innerHTML = s > 9 ? s : "0" + s;
+      }
+      //递归每秒调用countTime方法，显示动态时间效果
+      setTimeout(this.countTime, 1000);
+    },
+    gotoSocial() {
+      let loginFlag = Cookies.get("loginToken");
+      if (loginFlag) {
+        //登陆了
+        postHeaderTokenBodyApi(socialToken, loginFlag, {}).then(res => {
+          if (res.code) {
+            this.$Notice.error({
+              title: this.$t(res.message),
+              desc: this.$t(res.message)
+            });
+            if (res.code == "Bx000002") {
+              this.$router.push("/login");
+            }
+          } else {
+            let responseToken = res.token;
+            let socialURL = CHAT_URL.baseURL + responseToken;
+            let name = "/groups/profile/989838497277808642/feed";
+
+            // console.log(socialURL+'/'+encodeURIComponent(name))
+            window.open(socialURL + "/" + encodeURIComponent(name));
+          }
+        });
+      } else {
+        window.open(
+          getCommouityBaseURL() + "/groups/profile/989838497277808642/feed"
+        );
+        // console.log(getCommouityBaseURL())
+      }
+    },
+    formatNumber(str) {
+      str = str.toString()
+      var re = /(?=(?!\b)(\d{3})+$)/g;
+      return str.replace(re, ",");
+    },
+    isKYC() {
+      let loginToken = Cookies.get('loginToken');
+      if( !loginToken ){
+        this.$router.push('/login')
+        return
+      }
+      getHeaderTokenApi(identifyQueryUrl, {}, loginToken).then((res) => {
+        let status = res.data.dataStatus;
+        if(res.data==''){
+          this.$router.push('/kyc')
+          return
+        }
+        if (status == 1) {
+          this.$router.push('/kyc')
+        } else {
+          this.$router.push('/identityResult')
+        }
+      }).catch((error) => {
+          // console.log(error)
+      })
+    },
+    initAnnouncementData() {
+      this.adArr = [];
+      AnnoucementList({ language: this.language, fromSite: "ALL" }).then(
+        data => {
+          data.map((v, i) => {
+            if (v.clientType == "PC") {
+              this.adArr.push({
+                icon: v.title.substr(0, 1),
+                title: v.title,
+                targetUrl: v.targetUrl,
+                createTime: moment(v.createTime).format("MM-DD")
+              });
+            }
+          });
+        }
+      );
+    },
+    footerUrl() {
+      let lang = this.$store.state.app.countryLanguage;
+      if (lang == "en") {
+        this.moreAnounce =
+          "https://55support.zendesk.com/hc/en-us/categories/360000443513-Announcements";
+      } else if (lang == "vi") {
+        this.moreAnounce =
+          "https://55support.zendesk.com/hc/en/categories/360000443513-Announcements";
+      } else if (lang == "ko") {
+        this.moreAnounce =
+          "https://55support.zendesk.com/hc/ko/categories/360000443513";
+      } else if (lang == "zh-CN" || lang == "zh") {
+        this.moreAnounce =
+          "https://55support.zendesk.com/hc/zh-cn/categories/360000443513-Announcements";
+      }
+      this.toLang = lang === 'zh-CN' || lang === 'zh' ?'zh-cn':'en-us'
+    },
+
+
         },
         
         beforeMount(){
@@ -1300,69 +1085,57 @@
         },
         
         mounted(){
-              // initialization of HSMegaMenu component
-                $('.js-mega-menu').HSMegaMenu({
-                    event: 'hover',
-                    pageContainer: $('.container'),
-                    breakpoint: 768,
-                    hideTimeOut: 0
-                });
-                 
-            // initialization of header
-                $.HSCore.components.HSHeader.init($('#header'));
-
-                // initialization of unfold component
-                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
-
-                // initialization of fancybox
-                $.HSCore.components.HSFancyBox.init('.js-fancybox');
-
-                // initialization of slick carousel
-                $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
-
-                // initialization of form validation
-                $.HSCore.components.HSValidation.init('.js-validate');
-
-                // initialization of forms
-                $.HSCore.helpers.HSFocusState.init();
-
-                // initialization of cubeportfolio
-                $.HSCore.components.HSCubeportfolio.init('.cbp');
-
-
-                // initialization of countdowns
-                var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
-                  yearsElSelector: '.js-cd-years',
-                  daysElSelector: '.js-cd-days',
-                  hoursElSelector: '.js-cd-hours',
-                  minutesElSelector: '.js-cd-minutes',
-                  secondsElSelector: '.js-cd-seconds'
-                });
-
-                // initialization of sticky blocks
-                setTimeout(function () {
-                    $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
-                }, 300);
 
                 // initialization of go to
                 $.HSCore.components.HSGoTo.init('.js-go-to');
+                // initialization of unfold component
+                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
+                // initialization of malihu scrollbar
+                $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));     
+                // initialization of slick carousel       
+                $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');    
+                // initialization of svg injector module
+                $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
                 //获得汇率
                 getRealtimeList().then(data => this.USDTUSDD = data.find(item => item.symbol === 'USDTUSDD').last)
                 getRealtimeList().then(data => this.ETHBTCRate = data.find(item => item.symbol === 'ETHBTC').last)
                 
                 this.initWebSocket()
                 this.initURL()
-
+                this.$store.commit("changeHeaderColor", "");
+                this.$store.commit("changeFooterColor", "#15232C");
+                //Header设为透明色
+                this.initBannerList();
+                // 推荐位
+                this.initRecommendSymbol();
+                this.countTime();
+                this.$store.dispatch("getATOInfoActions", { currency: "AJ", phase: "P1" });
+                this.initAnnouncementData();
+                this.footerUrl();
         },
         beforeDestroy() {
           // 页面离开时断开连接,清除定时器
           this.disconnect();
           clearInterval(this.timer);
+          this.webSocketSource && this.webSocketSource.close();
         },
         computed: {
-         loginStatus() {
+          loginStatus() {
             return this.$store.state.app.isLogin;
-         },
+          },
+          languageChange() {
+            return this.$store.state.app.countryLanguage; //  返回全局state的状态值
+          },
+          loginStatus() {
+            return this.$store.state.app.isLogin;
+          },
+          //监听vuex中数据的变化
+          listenstage() {
+            return this.$store.state.app.currentCurrencyState;
+          },
+          ...mapState({
+            ATOInfo: state => state.app.ATOInfo
+          })
         },
         watch:{
           BTCUSD(){
@@ -1392,6 +1165,36 @@
             },1000)
             
          },
+          languageChange(val, oldVal) {
+            //监听全局语言的状态
+            this.initBannerList();
+            this.pageTitle = this.$t(this.$route.meta.title)
+            this.pageKeyword = this.$t(this.$route.meta.keywords)
+            this.pageDescription = this.$t(this.$route.meta.description)
+            if (val == 'en' || val == 'vi' || val == 'ko' || val == 'zh-CN'||val == "id-id") {
+              this.language = val;
+              this.initAnnouncementData();
+            } else {
+              this.language = "en";
+              this.initAnnouncementData();
+            }
+            this.footerUrl();
+          },
+          loginStatus(val, oldVal) {
+            if (val) {
+              this.isLogin = true;
+            } else {
+              this.isLogin = false;
+            }
+          },
+          listenstage: function(newV, oldV) {
+            // 推荐位
+            this.initRecommendSymbol();
+          }
+         
+        },
+        components:{
+          market
         }
     }
 </script>

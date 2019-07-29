@@ -1,6 +1,6 @@
 import {getApi, postHeaderTokenJsonApi, getHeaderTokenApi} from './axios'
 // postApi
-import {symbolList_realtime,announcementList,bannerList,mineing,getLastRate
+import {symbolList_realtime,announcementList,bannerList,mineing,getLastRate,recommendSymbol,currencyImg
 } from './urls'
 import { get } from 'https';
 
@@ -22,4 +22,12 @@ export const Mineing = () =>{//获取挖矿产出，流通量
 // f site add
 export const getExchangeRate = () => {
   return getApi(getLastRate)
+}
+//获取推荐位交易对
+export const getRecommendSymbol = () =>{
+  return getApi(recommendSymbol)
+}
+//获取币种图标
+export const getCurrencyImg = (params) =>{
+  return getApi(currencyImg,params)
 }
