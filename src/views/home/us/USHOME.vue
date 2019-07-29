@@ -1,12 +1,12 @@
 <template>
   <div class="ushomecontainer">
     <!-- Hero Section -->
-    <div class="bg-img-hero" style="background-color: pink">
+    <div class="bg-img-hero" style="background-image: url(../../../assets/banner.jpg)">
       <div class="container space-2">
         <div class="row justify-content-lg-between align-items-center">
           <div class="col-lg-6 mb-7 mb-lg-0">
             <div class="mb-4">
-              <h1 class="font-weight-semi-bold col-lg-10" style="color:#fff;font-size:30px;padding: 0;">{{$t('fronthomeHeromain')}}{{$t('fronthomeHeromainB')}}</h1>
+              <h1 class="font-weight-semi-bold col-lg-11" style="color:#fff;font-size:30px;padding: 0;">BUY AND SELL CRYPTO AT OUR MOST COMPETITIVE PRICING</h1>
               <h1 class="font-weight-semi-bold" style="color:#fff;font-size:30px"></h1>
               <p>{{$t("fronthomeHerosub")}}</p>
             </div>
@@ -131,6 +131,372 @@
       </div>
     </div>
     <!-- End Hero Section -->
+    <!-- <div class="container card-deck d-block d-lg-flex card-lg-gutters-3 space-top-1 space-top-sm-2 mx-auto" style="padding:0">
+      <div class="card card-frame mb-3" v-for="(v,i) in mainHomePriceObject" style="height:140px;border:none">
+        <div id="recommend">
+          <router-link :to="{path:'/exchange',query: {symbol:v.symbol}}">
+            <div v-if="v.showColor == 1" class="greenBackground"></div>
+            <div v-else class="redBackground"></div>
+            <div class="percent_line">
+              <div>
+                <img :url="v.imageUrl" width="28px" alt class="logo">
+                <span class="baseAsset">{{v.exCurrency}}</span>
+                <span class="quoteAsset">/{{v.baseCurrency}}</span>
+              </div>
+              <div :class="[v.showColor == '1' ? 'percentGreen' : 'percentRed']">
+                <span v-if="v.showColor == 1">+</span>
+                {{v.percent}}
+              </div>
+            </div>
+            <div :class="[v.showColor == '1' ? 'textColorGreen' : 'textColorRed']">
+              <span class="price">{{v.last}}</span>
+            </div>
+            <div class="legal_coin">{{currencyName}}&nbsp{{v.symbolCurrency}}</div>
+          </router-link>
+        </div>
+      </div>
+    </div> -->
+    <!-- 55 social start 社区 -->
+    <div id="SVGbgElements5" class="position-relative gradient-half-primary-v1" style="margin-top:40px;background-image: url('../../assets/svg/bg/social_bg.jpg');">
+      <div class="container position-relative z-index-2 space-2 space-md-3">
+        <!-- Title -->
+        <div class="text-center mb-4">
+          <!-- SVG Quote -->
+          <figure class="mx-auto mb-2">
+            <div class="d-flex justify-content-center my-2">
+                <img src="../../../assets/images/index/55social_logo.png" alt="">
+            </div>
+          </figure>
+          <!-- End SVG Quote -->
+
+          <h2 class="text-white font-weight-medium">{{$t("fronthomeSocialtitle")}}</h2>
+        </div>
+        <!-- End Title -->
+                        <!-- Slick Carousel - Testimonials Main Nav -->
+                        <div id="testimonialsNavMain" class="js-slick-carousel u-slick text-center w-lg-75 mx-lg-auto mb-7"
+                            data-adaptive-height="true"
+                            data-infinite="false"
+                            data-fade="true"
+                            data-nav-for="#testimonialsNavPagination">
+                            <div>
+                            <!-- Testimonials -->
+                            <div class="mb-4">
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="siteCommunityURL" target="_blank">{{$t("fronthomeSocialgroupEn")}} <span class="fa fa-angle-right ml-2"></span></a> 
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="btcCommunityURL" target="_blank">{{$t("fronthomeSocialgroupBtc")}} <span class="fa fa-angle-right ml-2"></span></a>   
+                                <!-- <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" href="index.html" target="_blank">EOS Commuity <span class="fa fa-angle-right ml-2"></span></a> -->
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="ethCommunityURL" target="_blank">{{$t("fronthomeSocialgroupEth")}} <span class="fa fa-angle-right ml-2"></span></a> 
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="supremeURL" target="_blank">{{$t("fronthomeSocialgroupSup")}} <span class="fa fa-angle-right ml-2"></span></a>
+                            </div>
+                            <!-- End Testimonials -->
+                            </div>
+                        </div>
+                        <!-- End Slick Carousel - Testimonials Main Nav -->
+
+        <!-- Slick Carousel - Testimonials Pagination Nav -->
+        <div id="testimonialsNavPaginationExample3" class="js-slick-carousel u-slick u-slick--gutters-3 u-slick--pagination-interactive"
+            data-infinite="true"
+            data-slides-show="3"
+            data-responsive='[{
+              "breakpoint": 1200,
+              "settings": {
+                "slidesToShow": 2
+              }
+            }, {
+              "breakpoint": 768,
+              "settings": {
+                "slidesToShow": 2
+              }
+            }, {
+              "breakpoint": 554,
+              "settings": {
+                "slidesToShow": 1
+              }
+            }]'>
+          <a class="js-slide rounded-pill p-2" :href="LisaURL" target="_blank">
+            <!-- Authors -->
+            <div class="media align-items-center">
+              <div class="u-avatar mr-3">
+                <img class="img-fluid rounded-circle" src="../../../assets/images/index/figure/img1.jpg" alt="Image Description">
+              </div>
+              <div class="media-body">
+                <h4 class="h6 u-slick--pagination-interactive__title mb-0">Lisa Loud</h4>
+                <p class="small u-slick--pagination-interactive__text mb-0">BitMEX - Head of Marketing</p>
+              </div>
+            </div>
+            <!-- End Authors -->
+          </a>
+          <a class="js-slide rounded-pill p-2"  :href="GeoffURL" target="_blank">
+            <!-- Authors -->
+            <div class="media align-items-center">
+              <div class="u-avatar mr-3">
+                <img class="img-fluid rounded-circle" src="../../../assets/images/index/figure/img2.jpg" alt="Image Description">
+              </div>
+              <div class="media-body">
+                <h4 class="h6 u-slick--pagination-interactive__title mb-0">Geoff Shearer</h4>
+                <p class="small u-slick--pagination-interactive__text mb-0">Director of 55 Social</p>
+              </div>
+            </div>
+            <!-- End Authors -->
+          </a>
+          <a class="js-slide rounded-pill p-2" :href="JasonURL" target="_blank">
+            <!-- Authors -->
+            <div class="media align-items-center">
+              <div class="u-avatar mr-3">
+                <img class="img-fluid rounded-circle" src="../../../assets/images/index/figure/img3.jpg" alt="Image Description">
+              </div>
+              <div class="media-body">
+                <h4 class="h6 u-slick--pagination-interactive__title mb-0">Simon </h4>
+                <p class="small u-slick--pagination-interactive__text mb-0">Top Crypto Trader</p>
+              </div>
+            </div>
+            <!-- End Authors -->
+          </a>
+        </div>
+        <!-- End Slick Carousel - Testimonials Pagination Nav -->
+      </div>
+    </div>
+    <!-- End 55 social start 社区 -->
+<!-- Team Section 高管团队 -->
+<div class="container space-top-1 space-bottom-2 space-top-sm-2 space-bottom-sm-2">
+    <!-- Title -->
+  <div class="w-md-80 w-lg-50 text-center mx-auto mb-9">
+      <h2 class="text-primary-55" style="color:#12869A;font-weight: 500">{{$t("fronthomeMteam")}}</h2>
+  </div>
+  <!-- End Title -->
+
+  <!-- Slick Carousel -->
+  <div class="js-slick-carousel u-slick u-slick--gutters-3"
+       data-slides-show="2"
+       data-slides-scroll="1"
+       data-pagi-classes="text-center u-slick__pagination mt-7 mb-0"
+       data-responsive='[{
+         "breakpoint": 992,
+         "settings": {
+           "slidesToShow": 1
+         }
+       }, {
+         "breakpoint": 768,
+         "settings": {
+           "slidesToShow": 1
+         }
+       }, {
+         "breakpoint": 554,
+         "settings": {
+           "slidesToShow": 1
+         }
+       }]'>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">David Weild</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">Co-Chairman</span>
+          </div>
+          <p class="font-size-1">David is a former Vice Chairman of Nasdaq. He priced over 1,000 equity offerings as head of a Top 10 investment bank and is renowned for his thought leadership that led him to be called the “Father of the JOBS Act.” </p>
+
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_1.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Darren Sandler</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">CCO & General Counsel</span>
+          </div>
+          <p class="font-size-1">Darren is Chief Compliance Officer and General Counsel. Previously, Darren was an attorney at Kirkland & Ellis LLP and Schulte Roth & Zabel LLP. While at Kirkland and Ellis, Darren led the firm's first blockchain client matter.</p>
+
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_4.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Ashu Swami</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">CTO</span>
+          </div>
+          <p class="font-size-1">Ashu is the CTO of 55. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
+
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_3.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Simon Grunfeld</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">SVP of Operations</span>
+          </div>
+          <p class="font-size-1">Simon's professional background is mostly from the retail FX and IT solutions marketplace. Simon has a solid background of the inner workings of the capital markets, which came by way of the fintech experience he developed over the years.</p>
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_9.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Lisa Loud</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">SVP of Strategic Partnerships</span>
+          </div>
+          <p class="font-size-1">Lisa Loud has joined 55 as  SVP of Strategic Partnerships. Lisa led strategy at BitMEX from 2017, and during her tenure, the exchange volume reached the largest crypto volume worldwide in early 2018.</p>
+
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_2.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Jeremy Xue</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">SVP of Technology</span>
+          </div>
+          <p class="font-size-1">Jeremy Xue is the Senior VP of Technology of 55. Xue previously founded a cryptocurrency exchange BitChain Exchange and served as Chief Technology Officer. Xue implemented the latest trading platform for the New York Stock Exchange.</p>
+
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/JeremyXue.jpeg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Danielle Frizziola</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">VP of Human Resources</span>
+          </div>
+          <p class="font-size-1">Danielle Frizziola is a seasoned Human Resources and Recruiting Executive specializing in emerging technology and creative spaces. She is a mentor to HR professionals worldwide.</p>
+
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_6.jpg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+    <div class="js-slide px-3">
+      <!-- Team -->
+      <div class="row">
+        <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
+          <div class="w-100">
+            <h3 class="h5 mb-4">Andrew Banhidi</h3>
+          </div>
+          <div class="d-inline-block">
+            <span class="badge badge-primary badge-pill badge-bigger mb-3">Head of Research and Technology Sales</span>
+          </div>
+          <p class="font-size-1">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
+
+        </div>
+        <div class="col-sm-6">
+          <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/Andrew.jpeg" alt="Image Description">
+        </div>
+      </div>
+      <!-- End Team -->
+    </div>
+  </div>
+  <!-- End Slick Carousel -->
+</div>
+<!-- End Team Section -->
+            <!-- Clients Section -->
+                <div class=" u-space-2" style="padding-bottom:30px;background-color:#F6F9FC">
+                      <div class="title" style="text-align:center;font-size:22px;color:#12869a !important;padding:22px">{{$t("fronthomePartners")}}</div>
+
+                  <div class="js-slick-carousel u-slick"
+                      data-autoplay="true"
+                      data-speed="5000"
+                      data-infinite="true"
+                      data-slides-show="6"
+                      data-responsive='[{
+                        "breakpoint": 1200,
+                        "settings": {
+                          "slidesToShow": 4
+                        }
+                      }, {
+                        "breakpoint": 992,
+                        "settings": {
+                          "slidesToShow": 4
+                        }
+                      }, {
+                        "breakpoint": 768,
+                        "settings": {
+                          "slidesToShow": 3
+                        }
+                      }, {
+                        "breakpoint": 576,
+                        "settings": {
+                          "slidesToShow": 3
+                        }
+                      }, {
+                        "breakpoint": 480,
+                        "settings": {
+                          "slidesToShow": 2
+                        }
+                      }]'>
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../../assets/images/index/logo1@2x.png" alt="Image Description">
+                    </div>
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../../assets/images/index/logo2@2x.png" alt="Image Description">
+                    </div>
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../../assets/images/index/logo3@2x.png" alt="Image Description">
+                    </div>
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../../assets/images/index/logo4@2x.png" alt="Image Description">
+                    </div>
+                    <div class="js-slide">
+                      <img class="u-clients" src="../../../assets/images/index/logo5@2x.png" alt="Image Description">
+                    </div>
+                  </div>
+                </div>
+            <!-- End Clients Section -->
+
   </div>
 </template>
 
@@ -162,6 +528,7 @@
     import { BigNumber } from "bignumber.js";
     import moment from 'moment';
     import { mapState } from "vuex";
+    let allNowPriceObject = {};
     export default{
         metaInfo(){
             return{

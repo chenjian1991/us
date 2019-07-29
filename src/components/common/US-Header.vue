@@ -16,9 +16,9 @@
           <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
             <!-- Logo -->
             <router-link to='/home'><img
-                src="../../assets/images/logo/logo.png"
+                src="../../assets/images/index/55trade.png"
                 alt="logo"
-                width="40px" height="28px" 
+                width="120px" height="30px" 
               >
             </router-link>
 
@@ -60,6 +60,7 @@
             <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
               <li><router-link to="/crypto" class="nav-link u-header__sub-menu-nav-link">Crypto Trading</router-link></li>
               <li><a target="_blank"  class="nav-link u-header__sub-menu-nav-link" href="http://55.trade/doc/#introduction">API Trading</a></li>
+              <li><a class="nav-link u-header__sub-menu-nav-link" target="_blank" :href="englishCommunityURL"> Social Trading </a></li>
             </ul>
             <!-- End Dropdown - Submenu -->
           </li>
@@ -76,7 +77,6 @@
               <li><router-link  to='/whyus' class="nav-link u-header__sub-menu-nav-link">Why Us?</router-link></li>
               <li><router-link to="/smartexecution" class="nav-link u-header__sub-menu-nav-link">Smart Execution</router-link></li>
               <li><router-link to='/faqs' class="nav-link u-header__sub-menu-nav-link">FAQs</router-link></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" target="_blank" :href="englishCommunityURL"> Social Trading </a></li>
             </ul>
             <!-- End Dropdown - Submenu -->
           </li>
@@ -177,7 +177,7 @@
                     aria-expanded="false"
                     aria-labelledby="accountSubMenu"
                       v-show="isLogin"
-                  >{{$t('账户')}}</router-link>
+                  >Account</router-link>
 
                   <!-- Pages - Submenu -->
                   <ul
