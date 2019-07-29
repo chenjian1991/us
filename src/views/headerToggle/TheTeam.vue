@@ -16,12 +16,12 @@
     <div class="container space-2 space-lg-0">
       <div class="row" >
         <div class="col-lg-16 space-lg-2">
-          <div class="pl-lg-4">
-             <p>Founded in December of 2017 and based in the US, 55 Trade is an asset network that provides investors with access to global investment, allowing a seamless and efficient flow of high quality assets around the world. 55 Trade is not only limited to cryptocurrencies; we use blockchain technology and tokenization to bridge traditional markets to support the trading of a variety of assets.</p>
+          <div class="pl-lg-4 ">
+             <p class="description">Founded in December of 2017 and based in the US, 55 Trade is an asset network that provides investors with access to global investment, allowing a seamless and efficient flow of high quality assets around the world. 55 Trade is not only limited to cryptocurrencies; we use blockchain technology and tokenization to bridge traditional markets to support the trading of a variety of assets.</p>
         
-             <p>A unique approach by 55, is that all our funds are held in a secured Trust account (Prime Trust, NV), and not in a typical custody account that other exchanges and brokers have traditionally used. This means that we as a fiduciary, have additional oversight from our custodian (PT) to make sure and verify that funds are allocated properly and there’s no commingling of client and company funds. This also means that our stablecoin (USDD) are 100% backed by USD managed by Prime Trust, a third party trust company.  Prime Trust confirms new funds have been received prior to minting of any new USDD.</p>
+             <p class="description">A unique approach by 55, is that all our funds are held in a secured Trust account (Prime Trust, NV), and not in a typical custody account that other exchanges and brokers have traditionally used. This means that we as a fiduciary, have additional oversight from our custodian (PT) to make sure and verify that funds are allocated properly and there’s no commingling of client and company funds. This also means that our stablecoin (USDD) are 100% backed by USD managed by Prime Trust, a third party trust company.  Prime Trust confirms new funds have been received prior to minting of any new USDD.</p>
 
-             <p>Interested in joining our team? <a target="_blank" class="text-primary" href="https://www.linkedin.com/company/55-global">Click for Career Opportunities with 55</a></p>
+             <p class="description">Interested in joining our team? <a target="_blank" class="text-primary" href="https://www.linkedin.com/company/55-global">Click for Career Opportunities with 55</a></p>
 
              <!-- <h2 class="h4">Management Team</h2>  -->
               <!-- Team Section 高管团队 -->
@@ -91,8 +91,8 @@
                             <div class="row">
                                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                 <h3 class="h5 mb-4">Ashu Swami</h3>
-                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">CEO of 55 Prime</span>
-                                <p class="font-size-14">Ashu is the CEO of 55 Prime. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
+                                <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">CTO</span>
+                                <p class="font-size-14">Ashu is the CTO of 55. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
 
                                 </div>
                                 <div class="col-sm-6">
@@ -163,7 +163,7 @@
                             <!-- Team -->
                                 <div class="row pb-6">
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
-                                    <h3 class="h5 mb-4">Andrew Bandhini</h3>
+                                    <h3 class="h5 mb-4">Andrew Banhidi</h3>
                                     <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Head of Research and Technology Sales</span>
                                     <p class="font-size-14">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
                                     </div>
@@ -261,14 +261,15 @@ a.text-primary:hover, a.text-primary:focus{
       }
     }
   } 
-    p{
+  .description{
         // margin: auto !important;
         padding: auto !important;
         color: #77838f;
         line-height: 1.7;
         margin-bottom: 1rem;
         font-size: 16px;
-    }
+  }
+    
     h1{
         font-size: 2.5rem;
     }
