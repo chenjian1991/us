@@ -2,9 +2,9 @@
    <div id="cripto" class="cripto">
           <!-- ========== MAIN ========== -->
   <main id="content" role="main">
-    <!-- Hero Section -->
-    <div class="bg-primary bg-img-hero" style="background-image: url(../../assets/svg/components/abstract-shapes-15.svg);">
-      <div class="container space-2 space-lg-3">
+           <!-- Hero Section -->
+    <div style="background:#092a30;"  class="bg-img-hero">
+      <div id="bg-img" class="container space-2 space-lg-3">
         <div class="w-lg-65 text-center mx-lg-auto">
           <h1 class="text-white font-weight-medium mb-0">Our Company</h1>
         </div>
@@ -24,7 +24,7 @@
             
              <p> In collaboration with Prime Trust - A chartered, regulated, insured trust company, 55 also allows using fiat to buy major cryptocurrencies.</p>
 
-             <p><router-link to="/team" href="">Learn about our Team Here</router-link></p>
+             <p><router-link to="/team"  class="text-primary">Learn about our Team Here</router-link></p>
                       
              <!-- Clients Section -->
                 <div class="container u-space-2">
@@ -134,6 +134,12 @@
     }
 </script>
 <style lang="less">
+.text-primary{
+      color:#12869A !important;
+  }
+a.text-primary:hover, a.text-primary:focus{
+  color:#12869A !important;
+}
 #cripto{
     p{
         // margin: auto !important;
@@ -145,6 +151,11 @@
     }
     h1{
         font-size: 2.5rem;
+    }
+    #bg-img{
+        background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
+        height: 120%;
+        background-size: cover;
     }
 }
 

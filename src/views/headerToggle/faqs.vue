@@ -3,19 +3,17 @@
               <!-- ========== MAIN ========== -->
      <!-- ========== MAIN ========== -->
   <main id="content" role="main">
-    <!-- Hero Section -->
-    <div class="gradient-overlay-half-primary-v1 bg-img-hero" style="background-image: url(../../assets/img/1920x800/img14.jpg);">
-      <div class="container space-2 space-top-md-5 space-bottom-md-3">
-        <div class="w-md-80 w-lg-60 text-center mx-auto">
-          <!-- Title -->
-          <div class="mb-5">
+   <!-- Hero Section -->
+    <div style="background:#092a30;"  class="bg-img-hero">
+      <div id="bg-img" class="container space-2 space-lg-3">
+        <div class="w-lg-65 text-center mx-lg-auto">
             <h1 class="display-4 font-size-md-down-5 text-white mb-0">How can we <span class="font-weight-semi-bold">help?</span></h1>
-          </div>
-          <!-- End Title -->
         </div>
       </div>
     </div>
     <!-- End Hero Section -->
+
+
 
     <hr class="my-0">
 
@@ -24,7 +22,7 @@
       <div class="row">
         <div id="stickyBlockStartPoint" class="col-lg-3 mb-7 mb-lg-0">
           <!-- Nav -->
-          <nav class="js-sticky-block card border-0 bg-primary"
+          <nav class="js-sticky-block card border-0 bg-primary bg-55-primary"
                data-offset-target="#logoAndNav"
                data-parent="#stickyBlockStartPoint"
                data-sticky-view="lg"
@@ -61,7 +59,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="basicsHeadingOne">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn p-3"
                             data-toggle="collapse"
                             data-target="#basicsCollapseOne"
                             aria-expanded="true"
@@ -88,7 +86,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="basicsHeadingTwo">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
                             data-target="#basicsCollapseTwo"
                             aria-expanded="false"
@@ -118,7 +116,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="basicsHeadingThree">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
                             data-target="#basicsCollapseThree"
                             aria-expanded="false"
@@ -149,7 +147,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="basicsHeadingFour">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
                             data-target="#basicsCollapseFour"
                             aria-expanded="false"
@@ -189,7 +187,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="syncingHeadingOne">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn p-3"
                             data-toggle="collapse"
                             data-target="#syncingCollapseOne"
                             aria-expanded="false"
@@ -215,7 +213,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="syncingHeadingTwo">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
                             data-target="#syncingCollapseTwo"
                             aria-expanded="false"
@@ -258,7 +256,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="accountHeadingOne">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
                             data-target="#accountCollapseTwo"
                             aria-expanded="false"
@@ -284,7 +282,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="accountHeadingTwo">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
                             data-target="#accountCollapseThree"
                             aria-expanded="false"
@@ -318,7 +316,7 @@
               <div class="card mb-3">
                 <div class="card-header card-collapse" id="accountHeadingThree">
                   <h5 class="mb-0">
-                    <button class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                    <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
                             data-target="#accountCollapseFour"
                             aria-expanded="false"
@@ -343,7 +341,7 @@
               <div class="card mb-3">
                     <div class="card-header card-collapse" id="accountHeadingFour">
                       <h5 class="mb-0">
-                        <button class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                        <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                                 data-toggle="collapse"
                                 data-target="#accountCollapseFour"
                                 aria-expanded="false"
@@ -431,6 +429,13 @@
     }
 </script>
 <style lang="less">
+.text-primary,.fa-arrow-down{
+      color:#12869A !important;
+  }
+  .bg-55-primary{
+    background:#12869A !important;
+  }
+  
 #cripto{
     p{
         // margin: auto !important;
@@ -442,6 +447,11 @@
     }
     h1{
         font-size: 2.5rem;
+    }
+     #bg-img{
+        background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
+        height: 120%;
+        background-size: cover;
     }
 }
 

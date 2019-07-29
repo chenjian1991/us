@@ -12,19 +12,13 @@
                 </Modal>
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
-    <!-- Hero Section -->
-    <div id="bg-img" class="dzsparallaxer auto-init height-is-based-on-content"
-       >
-      <!-- Apply your Parallax background image here -->
-      <div  class="divimage dzsparallaxer--target"></div>
-      <!-- Content -->
-      <div class="container position-relative space-2 space-top-md-5 space-bottom-md-3 z-index-2">
-        <div class="w-lg-80 text-center mx-auto">
-          <h1 class="display-3 font-size-md-down-5 text-white font-weight-semi-bold">Got a question?</h1>
-          <p class="lead text-white">We'd love to talk about how we can help you.</p>
+       <!-- Hero Section -->
+    <div style="background:#092a30;"  class="bg-img-hero">
+      <div id="bg-img" class="container space-2 space-lg-3">
+        <div class="w-lg-65 text-center mx-lg-auto">
+          <h1 class="text-white font-weight-medium mb-0">Got a question?</h1>
         </div>
       </div>
-      <!-- End Content -->
     </div>
     <!-- End Hero Section -->
 
@@ -127,7 +121,7 @@
           <!-- End Input -->
 
           <div class="text-center">
-            <button type="button" @click="submit" class="btn btn-primary btn-wide transition-3d-hover mb-4">Submit</button>
+            <button type="button" @click="submit" class="btn btn-55-primary btn-primary btn-wide transition-3d-hover mb-4">Submit</button>
             <p class="small">We'll get back to you in 1-2 business days.</p>
           </div>
         </form>
@@ -152,7 +146,6 @@
                 empty:true,
                 googleID:'',
                 robotModalflag:false,
-
             }
 
 
@@ -242,10 +235,16 @@
         font-size: 2.5rem;
     }
     #bg-img{
-        background: url('../../assets/images/img13.jpg') 100% 100%;
-        height: 120%;;
+        background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
+        height: 120%;
         background-size: cover;
     }
+    .btn-55-primary {
+    background:#12869A !important;
+    }
+    .text-primary{
+      color:#12869A !important;
+  }
 }
 
     
