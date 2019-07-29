@@ -115,18 +115,23 @@
                             <li>
                                 <a class="list-group-item list-group-item-action" :href="englishCommunityURL" target="_blank">Social Trading</a>
                             </li>
+                              <li>
+                                <a class="list-group-item list-group-item-action" :href="englishCommunityURL" target="_blank">
+                                    <img  src="../../assets/images/node2.png" alt="Logo" style="width:200px;height:auto;">
+                                </a>
+                            </li>
                            
                           
                         </ul>
                         <!-- End List Group -->
                     </div>
-                    <div class="col-sm-1 col-lg-1 mb-4">
+                    <!-- <div class="col-sm-1 col-lg-1 mb-4">
                       <div>
                         <div>
                              <img  src="../../assets/images/foot_code.png" alt="Logo" style="width:200px;height:auto;">
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                         
                         
                 </div>
