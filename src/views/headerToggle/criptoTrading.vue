@@ -24,15 +24,43 @@
             <p>At 55 Trade, we believe it is paramount that everyone should have the freedom to control and maximize their wealth; we strive to make this a reality by providing 24/7 trading hours and global best bid and offer which allows investors to buy and sell a variety of assets at the best available prices.</p>
 
             <p>The Asset Network consists of three sub-networks,</p>
-
-            <p>1.Trade Network
-                    Interconnect global assets & liquidity pools on a trade network</p>
-
-            <p>2.Social Network
-                    Interconnect global investors, influencers & followers on a social network</p>
-
-            <p>3.Retail Network
-                    Interconnect merchants, payment processors & consumers on a retail network</p>
+             <!-- List -->
+            <ul class="list-unstyled mb-0">
+                                    <li class="py-3">
+                                      <div class="media">
+                                        <span class="btn btn-xs btn-icon btn-soft-primary rounded-circle mr-3">
+                                          <span class="fas fa-check btn-icon__inner"></span>
+                                        </span>
+                                        <div class="media-body text-secondary">
+                                              Trade Network Interconnect global assets & liquidity pools on a trade network
+                                          </div>
+                                      </div>
+                                    </li>
+                                    <li class="py-3">
+                                      <div class="media">
+                                        <span class="btn btn-xs btn-icon btn-soft-primary rounded-circle mr-3">
+                                          <span class="fas fa-check btn-icon__inner"></span>
+                                        </span>
+                                        <div class="media-body text-secondary">
+                                           Social Network
+                    Interconnect global investors, influencers & followers on a social network
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="py-3">
+                                      <div class="media">
+                                        <span class="btn btn-xs btn-icon btn-soft-primary rounded-circle mr-3">
+                                          <span class="fas fa-check btn-icon__inner"></span>
+                                        </span>
+                                        <div class="media-body text-secondary">
+                                           Retail Network
+                    Interconnect merchants, payment processors & consumers on a retail network
+                                        </div>
+                                      </div>
+                                    </li>
+                                   
+             </ul>
+            <!-- End List -->
           </div>
         </div>
       </div>

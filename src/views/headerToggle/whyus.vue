@@ -17,10 +17,10 @@
     <!-- Privacy Section -->
     <div class="container  space-top-md-2 space-bottom-2 overflow-hidden">
       <div class="w-lg-80 mx-lg-auto">
-        <div class="card shadow-sm">
+        <div>
 
           <!-- Content -->
-          <div class="card-body p-7 p-md-9">
+          <div class="p-7 p-md-9">
             <div class="mb-7">
               <!-- Title -->
               <div class="mb-3">
@@ -94,7 +94,8 @@
              </div>
              <div class="mb-7">
                     <!-- Text -->
-                    <a href=""><p>Learn more about our management team.</p></a>
+                    <p><router-link to="/team"  class="text-primary">Learn more about our management team.</router-link></p>
+
                     <!-- End Text -->
              </div>
           </div>
@@ -106,28 +107,28 @@
 
     <!-- SVG Background Shapes - Left Side -->
     <div class="w-25 content-centered-y left-0 z-index-n1 mt-9">
-            <figure class="ie-circle-1">
+            <!-- <figure class="ie-circle-1">
               <img class="js-svg-injector" src="../../assets/images/headertoggle/circle-1.svg" alt="Image Description"
                    data-parent="#content">
-            </figure>
+            </figure> -->
           </div>
           <!-- End SVG Background Shapes - Left Side -->
       
           <!-- SVG Background Shapes - Right Side -->
           <div class="w-35 content-centered-y right-0 z-index-n1 mt-n9">
-            <figure class="ie-bg-elements-4">
+            <!-- <figure class="ie-bg-elements-4">
               <img class="js-svg-injector" src="../../assets/images/headertoggle/bg-elements-4.svg" alt="Image Description"
                    data-parent="#content">
-            </figure>
+            </figure> -->
           </div>
           <!-- End SVG Background Shapes - Right Side -->
       
           <!-- SVG Background Shapes -->
           <div class="position-absolute right-0 bottom-0 left-0 z-index-n1">
-            <figure class="ie-bg-elements-3">
+            <!-- <figure class="ie-bg-elements-3">
               <img class="js-svg-injector" src="../../assets/images/headertoggle/bg-elements-3.svg" alt="Image Description"
                    data-parent="#content">
-            </figure>
+            </figure> -->
           </div>
           <!-- End SVG Background Shapes -->
   </main>
