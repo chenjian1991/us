@@ -49,7 +49,7 @@
             <!-- Lists -->
             <div class="border-bottom">
                 <div class="container space-2">
-                <div class="row justify-content-md-between">
+                <div class="row justify-content-left">
                     <div class="col-sm-2 col-lg-2 mb-4">
                     <h4 class="h6 font-weight-semi-bold">About Us</h4>
 
@@ -115,15 +115,14 @@
                             <li>
                                 <a class="list-group-item list-group-item-action" :href="englishCommunityURL" target="_blank">Social Trading</a>
                             </li>
-                           
                           
                         </ul>
                         <!-- End List Group -->
                     </div>
-                    <div class="col-sm-1 col-lg-1 mb-4">
+                    <div class="col-sm-2 col-lg-2 mb-4">
                       <div>
                         <div>
-                             <img  src="../../assets/images/foot_code.png" alt="Logo" style="width:200px;height:auto;">
+                             <img  src="../../assets/images/foot_code.png" alt="Logo" style="width:300px;height:auto;">
                         </div>
                         </div>
                     </div>
