@@ -2,9 +2,9 @@
    <div id="cripto" class="cripto">
             <!-- ========== MAIN ========== -->
   <main id="content" role="main">
-    <!-- Hero Section -->
-    <div class="bg-primary bg-img-hero" style="background-image: url(../../assets/svg/components/abstract-shapes-15.svg);">
-      <div class="container space-2 space-lg-3">
+         <!-- Hero Section -->
+    <div style="background:#092a30;"  class="bg-img-hero">
+      <div id="bg-img" class="container space-2 space-lg-3">
         <div class="w-lg-65 text-center mx-lg-auto">
           <h1 class="text-white font-weight-medium mb-0">The Team</h1>
         </div>
@@ -21,14 +21,14 @@
         
              <p>A unique approach by 55, is that all our funds are held in a secured Trust account (Prime Trust, NV), and not in a typical custody account that other exchanges and brokers have traditionally used. This means that we as a fiduciary, have additional oversight from our custodian (PT) to make sure and verify that funds are allocated properly and there’s no commingling of client and company funds. This also means that our stablecoin (USDD) are 100% backed by USD managed by Prime Trust, a third party trust company.  Prime Trust confirms new funds have been received prior to minting of any new USDD.</p>
 
-             <p>Interested in joining our team? <a target="_blank" href="https://www.linkedin.com/company/55-global">Click for Career Opportunities with 55</a></p>
+             <p>Interested in joining our team? <a target="_blank" class="text-primary" href="https://www.linkedin.com/company/55-global">Click for Career Opportunities with 55</a></p>
 
              <!-- <h2 class="h4">Management Team</h2>  -->
               <!-- Team Section 高管团队 -->
                     <div class="container u-space-3">
                         <!-- Title -->
-                        <div class="w-md-80 w-lg-50 text-center mx-auto mb-9">
-                            <h2 class="text-primary-55">Management Team</h2>
+                        <div class="w-md-80 w-lg-50 text-center mx-auto mb-3">
+                            <h2 class="text-primary-55 mt-8">Management Team</h2>
                             <p></p>
                             </br>
                             </br>
@@ -39,7 +39,7 @@
                         <div class="js-slick-carousel u-slick u-slick--gutters-3"
                             data-slides-show="2"
                             data-slides-scroll="1"
-                            data-pagi-classes="text-center u-slick__pagination mt-7 mb-0"
+                            data-pagi-classes="text-center u-slick__pagination mb-0"
                             data-responsive='[{
                                 "breakpoint": 992,
                                 "settings": {
@@ -241,7 +241,26 @@
     }
 </script>
 <style lang="less">
+.text-primary{
+      color:#12869A !important;
+  }
+a.text-primary:hover, a.text-primary:focus{
+  color:#12869A !important;
+}
 #cripto{
+  .u-slick__pagination{
+    li{
+      span{
+          background: #12869A !important;
+      }
+    }
+    li.slick-active{
+      span{
+          background: #12869A !important;
+          border-color:#12869A !important;
+      }
+    }
+  } 
     p{
         // margin: auto !important;
         padding: auto !important;
@@ -252,6 +271,11 @@
     }
     h1{
         font-size: 2.5rem;
+    }
+     #bg-img{
+        background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
+        height: 120%;
+        background-size: cover;
     }
 }
 

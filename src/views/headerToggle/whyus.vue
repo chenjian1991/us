@@ -1,21 +1,17 @@
 <template>
     <div id='whyus'>
-            <!-- Hero Section -->
-<div id="SVGwave1BottomSMShape" class="position-relative bg-light overflow-hidden">
-        <div class="container space-3">
-          <div class="w-md-80 w-lg-60 text-center mx-auto">
-            <h1 class="display-4 space-top-md-2 font-size-md-down-3 text-primary">Why Us?</span></h1>
-          </div>
+   <!-- Hero Section -->
+    <div style="background:#092a30;"  class="bg-img-hero">
+      <div id="bg-img" class="container space-2 space-lg-3">
+        <div class="w-lg-65 text-center mx-lg-auto">
+          <h1 class="text-white font-weight-medium mb-0">Why Us?</h1>
         </div>
-      
-        <!-- SVG Background -->
-        <figure class="position-absolute right-0 bottom-0 left-0">
-          <img class="js-svg-injector" src="../../assets/images/headertoggle/wave-1-bottom-sm.svg" alt="Image Description"
-               data-parent="#SVGwave1BottomSMShape">
-        </figure>
-        <!-- End SVG Background Section -->
       </div>
-      <!-- End Hero Section -->
+    </div>
+    <!-- End Hero Section -->
+
+
+
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
     <!-- Privacy Section -->
@@ -165,5 +161,23 @@
         
     }
 </script>
+<style lang="less">
+.text-primary{
+      color:#12869A !important;
+  }
+#whyus{
+  #bg-img{
+        background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
+        height: 120%;
+        background-size: cover;
+    }
+    h1{
+        font-size: 2.5rem;
+    }
+    
+}
+   
+</style>
+
 
 

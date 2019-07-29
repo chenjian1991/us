@@ -2,15 +2,17 @@
    <div id="cripto" class="cripto">
               <!-- ========== MAIN ========== -->
   <main id="content" role="main">
-    <!-- Hero Section -->
-    <div class="bg-primary bg-img-hero" style="background-image: url(../../assets/svg/components/abstract-shapes-15.svg);">
-      <div class="container space-2 space-lg-3">
+  <!-- Hero Section -->
+    <div style="background:#092a30;"  class="bg-img-hero">
+      <div id="bg-img" class="container space-2 space-lg-3">
         <div class="w-lg-65 text-center mx-lg-auto">
-          <h1 class="text-white font-weight-medium mb-0">SMART EXECUTION</h1>
+          <h1 class="text-white font-weight-medium mb-0">Smart Execution</h1>
         </div>
       </div>
     </div>
     <!-- End Hero Section -->
+
+
 
     <!-- Content Section -->
     <div class="container space-2 space-lg-0">
@@ -213,7 +215,15 @@
     }
 </script>
 <style lang="less">
+.fa-check {
+  color:#12869A !important;
+}
 #cripto{
+   #bg-img{
+        background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
+        height: 120%;
+        background-size: cover;
+    }
     p{
         // margin: auto !important;
         padding: auto !important;
