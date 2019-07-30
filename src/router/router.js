@@ -3,8 +3,9 @@ import Router from 'vue-router';
 import Layout from '../views/main/Layout.vue';
 import Cookies from 'js-cookie'
 import store from '../store/index'
-import { getCreateAccount } from '_api/exchange.js'
-import { clearLocalStorage } from '@/config'
+import {getCreateAccount} from '_api/exchange.js'
+import {clearLocalStorage} from '@/config'
+
 const HomePageMain = () => import(/* webpackChunkName: "home" */ '../views/home/Home.vue')
 const ExchangeMain = () => import(/* webpackChunkName: "exchange" */ '../views/exchange/Exchange.vue')
 import download from "../views/download/download.vue";
@@ -91,22 +92,23 @@ const Bhome = () => import(/* webpackChunkName: "bhome" */ '../views/home/B-home
 const Shome = () => import(/* webpackChunkName: "shome" */ '../views/home/S-home/Shome.vue')
 const Lhome = () => import(/* webpackChunkName: "lhome" */ '../views/home/L-home/Lhome.vue')
 const Chome = () => import(/* webpackChunkName: "chome" */ '../views/home/C-home/Chome.vue')
-const interFinanceOne = () =>import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceOne.vue') 
-const interFinanceTWO = () =>import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceTWO.vue') 
-const interFinanceThree = () =>import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceThree.vue') 
-const inviteAto = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/inviteAto.vue') 
-const beinvited = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/beinvited.vue') 
-const registerSuccess = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/registerSuccess.vue') 
+const interFinanceOne = () => import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceOne.vue')
+const interFinanceTWO = () => import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceTWO.vue')
+const interFinanceThree = () => import(/* webpackChunkName: 'interFinance' */ '../views/interFinance/interFinanceThree.vue')
+const inviteAto = () => import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/inviteAto.vue')
+const beinvited = () => import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/beinvited.vue')
+const registerSuccess = () => import(/* webpackChunkName: 'interFinance' */ '../views/inviteAto/registerSuccess.vue')
 
-const atoInivteplus = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/inviteAtoplus.vue') 
-const beinvitedplus = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/beinvitedplus.vue') 
-const registerSuccessplus = () =>import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/registerSuccessplus.vue') 
+const atoInivteplus = () => import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/inviteAtoplus.vue')
+const beinvitedplus = () => import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/beinvitedplus.vue')
+const registerSuccessplus = () => import(/* webpackChunkName: 'interFinance' */ '../views/inviteAtoplus/registerSuccessplus.vue')
 
 const card = () => import(/* webpackChunkName: "chome" */ '../views/visa.vue')
 const redeemsupreme = () => import(/* webpackChunkName: "chome" */ '../views/redeemsupreme.vue')
 const tokenizeyeezy = () => import(/* webpackChunkName: "chome" */ '../views/tokenizeyeezy.vue')
 const Supreme = () => import(/* webpackChunkName: "chome" */ '../views/Supreme.vue')
 
+const kyc = () => import(/* webpackChunkName: "balances" */ '../views/kyc/kyc.vue')
 
 import i18n from '@/locale/index.js';
 
@@ -115,7 +117,7 @@ Vue.use(Router)
 
 const router = new Router({
    //history 路由 
-   mode:'history',
+   mode: 'history',
 
    routes: [
       {
@@ -150,55 +152,65 @@ const router = new Router({
          },
          component: Supreme
       },
-         {//inviteAto
-            path: '/inviteAto',
-            name: 'inviteAto',
-            meta: {
-               title: 'supretitle'
-            },
-            component: inviteAto
+      {//inviteAto
+         path: '/inviteAto',
+         name: 'inviteAto',
+         meta: {
+            title: 'supretitle'
          },
-         {//beinvited
-            path: '/beinvited',
-            name: 'beinvited',
-            meta: {
-               title: 'supretitle'
-            },
-            component: beinvited
+         component: inviteAto
+      },
+      {//beinvited
+         path: '/beinvited',
+         name: 'beinvited',
+         meta: {
+            title: 'supretitle'
          },
-         {//registerSuccess
-            path: '/registerSuccess',
-            name: 'registerSuccess',
-            meta: {
-               title: 'supretitle'
-            },
-            component: registerSuccess
+         component: beinvited
+      },
+      {//registerSuccess
+         path: '/registerSuccess',
+         name: 'registerSuccess',
+         meta: {
+            title: 'supretitle'
          },
-         {//atoInivtePlus
-            path: '/atoInivteplus',
-            name: 'atoInivteplus',
-            meta: {
-               title: 'supinviteplus'
-            },
-            component: atoInivteplus
+         component: registerSuccess
+      },
+      {//atoInivtePlus
+         path: '/atoInivteplus',
+         name: 'atoInivteplus',
+         meta: {
+            title: 'supinviteplus'
          },
-          {//beinvitedplus
-            path: '/beinvitedplus',
-            name: 'beinvitedplus',
-            meta: {
-               title: 'supinviteplus'
-            },
-            component: beinvitedplus
+         component: atoInivteplus
+      },
+      {//beinvitedplus
+         path: '/beinvitedplus',
+         name: 'beinvitedplus',
+         meta: {
+            title: 'supinviteplus'
          },
-          {//registerSuccessplus
-            path: '/registerSuccessplus',
-            name: 'registerSuccessplus',
-            meta: {
-               title: 'supinviteplus'
-            },
-            component: registerSuccessplus
+         component: beinvitedplus
+      },
+      {//registerSuccessplus
+         path: '/registerSuccessplus',
+         name: 'registerSuccessplus',
+         meta: {
+            title: 'supinviteplus'
          },
-       
+         component: registerSuccessplus
+      },
+      {
+         path: '/kyc',
+         name: 'kyc',
+         // beforeEnter: (to, from, next) => {
+         //    checkSSOToken(to, next)
+         // },
+         meta: {
+            title: 'KYCTitle'
+         },
+         component: kyc
+      },
       {
          path: '/',
          name: '',
@@ -209,7 +221,7 @@ const router = new Router({
                path: 'exchange',
                name: 'exchange',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   // title:'HomeTokenExchange'
@@ -317,7 +329,7 @@ const router = new Router({
                path: 'safeCenter',
                name: 'safeCenter',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'SecurityCenterTitle'
@@ -384,7 +396,7 @@ const router = new Router({
                path: 'invite',
                name: 'invite',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'InvitationProgramTitle'
@@ -439,7 +451,7 @@ const router = new Router({
                },
                component: tradingRules
             },
-            
+
             {//privacy
                path: 'privacy',
                name: 'privacy',
@@ -472,7 +484,7 @@ const router = new Router({
                },
                component: amlKyc
             },
-              {//amlkycResult
+            {//amlkycResult
                path: 'amlkycResult',
                name: 'amlkycResult',
                meta: {
@@ -488,7 +500,7 @@ const router = new Router({
                },
                component: editAmlKyc
             },
-              {//disclaimer
+            {//disclaimer
                path: 'aml',
                name: 'aml',
                meta: {
@@ -550,7 +562,7 @@ const router = new Router({
                path: 'order',
                name: 'order',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'headerOrder'
@@ -562,7 +574,7 @@ const router = new Router({
                path: 'balances',
                name: 'balances',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'headerBalances'
@@ -573,7 +585,7 @@ const router = new Router({
                path: 'deposit',
                name: 'deposit',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'DepositTitle'
@@ -584,7 +596,7 @@ const router = new Router({
                path: 'withdrawal',
                name: 'withdrawal',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'WithdrawalTitle'
@@ -595,7 +607,7 @@ const router = new Router({
                path: 'transaction_history',
                name: 'transaction_history',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'tbdhTransactionHistory'
@@ -607,7 +619,7 @@ const router = new Router({
                path: 'deposit_usd',
                name: 'deposit_usd',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'balanceDeposit'
@@ -618,7 +630,7 @@ const router = new Router({
                path: 'withdrawal_usd',
                name: 'withdrawal_usd',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'balanceWithdraw'
@@ -629,7 +641,7 @@ const router = new Router({
                path: 'bankSetting',
                name: 'bankSetting',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   title: 'balanceBank'
@@ -748,7 +760,7 @@ const router = new Router({
                },
                component: tokenizeyeezy
             },
-             {//interFinance
+            {//interFinance
                path: 'interFinanceOne',
                name: 'interFinanceOne',
                meta: {
@@ -764,7 +776,7 @@ const router = new Router({
                },
                component: interFinanceTWO
             },
-             {//interFinance
+            {//interFinance
                path: 'interFinanceThree',
                name: 'interFinanceThree',
                meta: {
@@ -772,8 +784,7 @@ const router = new Router({
                },
                component: interFinanceThree
             },
-         
-            
+
 
          ]
       },
@@ -781,11 +792,11 @@ const router = new Router({
          path: '*',
          name: 'error_404',
          component: () => import('@/views/error-page/404.vue')
-       }
+      }
    ]
 })
 
-function checkSSOToken(to,next) {
+function checkSSOToken(to, next) {
    let loginToken = Cookies.get('loginToken');
    if (loginToken) {
       getCreateAccount({'ssoToken': loginToken}, {}).then(data => {
@@ -796,14 +807,14 @@ function checkSSOToken(to,next) {
       }).catch(error => {
          //clearLocalStorage()
          // store.commit('changeLoingStatus', false);
-         if(to.name =="exchange"){
+         if (to.name == "exchange") {
             next();
-         }else{
-            next({ path: '/login' })
+         } else {
+            next({path: '/login'})
          }
          //取消登录的状态
          // clearLocalStorage()
-         
+
       })
    } else {
       next()
@@ -812,10 +823,10 @@ function checkSSOToken(to,next) {
 
 router.beforeEach((to, from, next) => {
    /* 路由发生变化修改页面title */
-    store.commit('CHANGEHISTORYROUTER',from.name);
+   store.commit('CHANGEHISTORYROUTER', from.name);
    if (to.meta.title) {
       document.title = i18n.t(to.meta.title)
-   }else{
+   } else {
       document.title = i18n.t('HomeTitle')
    }
    window.scroll(0, 0); //跳转到新页面，将页面头部置顶；
