@@ -96,7 +96,7 @@
       </us-modal>
       <!--设置银行卡-->
       <us-modal v-model="showNoBank" className="alertModal" width="750px" title="balanceNotice" okText="balanceToBank"
-                cancelText="nextTime" @ok="checkState('bankSetting')" @cancel="close" :showBtn="true">
+                cancelText="nextTime" @ok="checkState('/bankSetting')" @cancel="close" :showBtn="true">
          <div class="alert-content">
             <h4 class="notice">{{$t('balanceNoBank')}}</h4>
          </div>
@@ -297,7 +297,7 @@
          },
          next() {
             this.$router.push({
-               name: 'transaction_history',
+               name: '/transaction_history',
                params: {id: 'name4'}
             })
          },

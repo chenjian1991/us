@@ -535,7 +535,7 @@
          },
          seeRealNameDetailMethod() {
             if (this.identifyStatus == 'NOT_SET') {/*  */
-               this.$router.push('/identiy')
+               this.$router.push('/kyc')
             } else if (this.identifyStatus == 'PASSED' || this || s.identifyStatus == 'CHECKING' || this.identifyStatus == 'FAILURE') {
                this.$router.push('/identityResult')
             }

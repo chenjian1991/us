@@ -2,7 +2,7 @@
     <div id="identity" class="root">
         <div class="wrapper">
              <div class="header-title">
-                 <router-link to="/safeCenter">{{$t("tbdhAccountSecurity")}}</router-link>   <span class="arrow">></span>  <router-link to="/identiy">{{$t('sfrzIDVerification')}}</router-link>
+                 <router-link to="/safeCenter">{{$t("tbdhAccountSecurity")}}</router-link>   <span class="arrow">></span>  <router-link to="/kyc">{{$t('sfrzIDVerification')}}</router-link>
              </div>
             <div class="register_wraper">
                 <div class="warn-tips">{{$t("sfrzIDExplainone")}}</div>
