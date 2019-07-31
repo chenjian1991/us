@@ -77,7 +77,7 @@
                                      type="email" class="form-control" id="exampleInputEmail1"
                                      aria-describedby="emailHelp"/>
                               <div class="input-group-append">
-                                 <sendBtn :fatherClass='fatherClass' @sendCick='sendSMSfun' :empty='empty'
+                                 <sendBtn robotDiv='robotDiv' :fatherClass='fatherClass' @sendCick='sendSMSfun' :empty='empty'
                                           :ssoEmail='ssoEmail'></sendBtn>
                               </div>
                               <span style="color:#ed4014;position:absolute;top:40px;" v-if="emailFlag">{{$t('newK1mailpopf')}}</span>
@@ -147,8 +147,8 @@
                                      class="form-control"
                                      aria-label="Text input with segmented dropdown button"/>
                               <div class="input-group-append">
-                                 <sendBtnTwo :fatherClass='fatherClass' @sendCick='sendSMSfun' :empty='empty'
-                                             :ssoPhone='ssoPhone'></sendBtnTwo>
+                                 <sendBtn robotDiv='robotsecondDiv' :fatherClass='fatherClass' @sendCick='sendSMSfun' :empty='empty'
+                                             :ssoPhone='ssoPhone'></sendBtn>
                               </div>
                               <span v-if="phoneFlag" style="color:#ed4014;position:absolute;top:40px;">{{$t('newK1phonepopf')}}</span>
                            </div>
