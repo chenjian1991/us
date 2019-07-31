@@ -728,7 +728,6 @@
       getHeaderTokenApi
    } from '../../../api/axios.js';
    import sendBtn from '../../components/sendBtn'
-   import sendBtnTwo from '../../components/sendBtnTwo'
 
    import Modaltips from '@/components/Modal';
 
@@ -927,7 +926,6 @@
       },
       components: {
          sendBtn,
-         sendBtnTwo,
          Modaltips
       },
       methods: {
