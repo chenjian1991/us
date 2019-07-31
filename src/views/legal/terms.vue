@@ -30,7 +30,7 @@
 							
 <div class="WordSection1">
 
-<p class="MsoNormal"><b style="mso-bidi-font-weight:normal"><span lang="EN" style="font-size:14.0pt;line-height:300%;color:#3D85C6">U.S. 55 Asset Network
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal"><span lang="EN" style="font-size:14.0pt;line-height:300%;color:#3D85C6">U.S.
 User Agreement</span></b></p>
 
 
@@ -40,8 +40,8 @@ User Agreement</span></b></p>
 
 
 <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">This User Agreement (hereinafter “<b style="mso-bidi-font-weight:normal">Agreement</b>”)
-is a binding contract governing your use of the U.S. 55 Asset Network at
-55.trade, any associated APIs and any mobile applications (collectively, the “<b style="mso-bidi-font-weight:normal">55Sites</b>”) operated by 55 Asset Network
+is a binding contract governing your use  at
+55.trade, any associated APIs and any mobile applications (collectively, the “<b style="mso-bidi-font-weight:normal">55Sites</b>”) operated by 55 trade
 Inc. (“<b style="mso-bidi-font-weight:normal">55</b>”). By signing up to use an
 account through the 55Sites, you agree that you have read, understood, and
 accept all of the terms and conditions contained in this User Agreement, as
