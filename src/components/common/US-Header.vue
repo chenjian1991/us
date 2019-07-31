@@ -205,7 +205,7 @@
                         @click="verfiy"
                       >{{$t('tbdhIDVerification')}}</a>
                     </li>
-                     <li class="hs-has-sub-menu">
+                     <!-- <li class="hs-has-sub-menu">
                       <a
                         id="navLinkPagesCompany"
                         class="nav-link u-header__sub-menu-nav-link"
@@ -214,7 +214,7 @@
                         aria-controls="navSubmenuPagesCompany"
                         @click="L2verify"
                       >{{$t('kyc2')}}</a>
-                    </li>
+                    </li> -->
                     <!-- Company -->
                     <!-- Company -->
                     <!-- <li @click="inviteFriend"><a
@@ -545,7 +545,7 @@ export default {
       getHeaderTokenApi(identifyQueryUrl, {}, loginToken)
         .then(res => {
           if (res.data == "" || res.data == null||res=='{}') {
-            this.$router.push("/identiy");
+            this.$router.push("/kyc");
             return;
           }
             if (res.data.code) {
@@ -557,7 +557,7 @@ export default {
           }
           let status = res.data.dataStatus;
           if (status == 1) {
-            this.$router.push("/identiy");
+            this.$router.push("/kyc");
           } else {
             this.$router.push("/identityResult");
           }
