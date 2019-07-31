@@ -1,7 +1,7 @@
 <template>
     <div class="btn_contain">
-        <Button ref="btn"  :disabled='empty'  v-show="show" @click="sendCode" class="sendMs" type="primary">{{$t('regSend')}}</Button>
-        <Button :disabled='!show' v-show="!show"  class="sendMs" type="primary">{{count}}s</Button>
+        <Button ref="btn"  :disabled='empty'  v-show="show" @click="sendCode" :class="fatherClass" class="sendMs" type="primary">{{$t('regSend')}}</Button>
+        <Button :disabled='!show' v-show="!show" :class="fatherClass" class="sendMs" type="primary">{{count}}s</Button>
          <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
         <div id="captcha"></div>
          <Modal
@@ -34,6 +34,7 @@ import { debuglog } from 'util';
             tradePassPhone:Object,//设置交易密码手机发送验证码
             tradePassEmail:Object,//设置交易密码邮箱发送验证码
             robotDiv:'',
+            fatherClass:String
         },
         data() {
             return {
@@ -396,6 +397,10 @@ import { debuglog } from 'util';
         background: #12869a;
         border: none;
     }
+    .newBtn{
+            width:90px;
+            height:44px;
+        }
 }
 </style>
 <style lang='less'>
@@ -409,5 +414,6 @@ import { debuglog } from 'util';
         .ivu-modal-footer{
             border-top: none;
         }
+        
     }
 </style>

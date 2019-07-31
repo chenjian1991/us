@@ -148,7 +148,7 @@
                            {{$t('aqzxsee')}}
                         </span>
                      </li>
-                     <li>
+                     <!-- <li>
                         <span>
                            <Icon v-if="amlID" class="alert" type="md-alert"/>
                            <Icon v-if="amlChecking" class="warning" type="md-alert"/>
@@ -163,7 +163,7 @@
                         <span v-if="!amlID" @click="amlsetMethod" class="seeRealNameDetail">
                               {{$t('aqzxsee')}}
                         </span>
-                     </li>
+                     </li> -->
                   </ul>
                </div>
 
@@ -239,7 +239,7 @@
 </template>
 
 <script>
-   import {userInfo, identify,amlqueryState,queryTradePasswordOpen,setOpenTradePassword} from '../../../api/urls.js';
+   import {userInfo, identify,amlqueryState,queryTradePasswordOpen,setOpenTradePassword,identifyQueryUrl} from '../../../api/urls.js';
    import {postBaseApi, postHeaderTokenBodyApi, getHeaderTokenApi} from '../../../api/axios.js';
    import Modaltips from '@/components/Modal';
    import Cookies from 'js-cookie';
@@ -486,28 +486,28 @@
                 this.queryOpenTradepassword();
                 this.modal1 = false;
          },
-         L2queryState(token){
-                getHeaderTokenApi(amlqueryState,'',token).then((res)=>{
-                    if(res.data.result){
-                       this.amlStatus = res.data.result;
-                       if(res.data.result=='SUCCESS'){
-                           this.amlPassed = true;
-                       }else if(res.data.result=='FAIL'||res.data.result=='NOHAVE'){
-                           this.amlID = true;
-                       }else if(res.data.result =='SUBMIT'||res.data.result=='PENDING'){
-                          this.amlChecking  = true; 
-                       }
-                    }else if(res.data.code){
-                        if(res.data.code =='10013'){
-                            this.$router.push('login')
-                        }
-                        this.$Notice.error({
-                                title: this.$t(res.data.code),
-                                desc:this.$t(res.data.code)
-                         });
-                    }
-                })
-         },
+         // L2queryState(token){
+         //        getHeaderTokenApi(amlqueryState,'',token).then((res)=>{
+         //            if(res.data.result){
+         //               this.amlStatus = res.data.result;
+         //               if(res.data.result=='SUCCESS'){
+         //                   this.amlPassed = true;
+         //               }else if(res.data.result=='FAIL'||res.data.result=='NOHAVE'){
+         //                   this.amlID = true;
+         //               }else if(res.data.result =='SUBMIT'||res.data.result=='PENDING'){
+         //                  this.amlChecking  = true; 
+         //               }
+         //            }else if(res.data.code){
+         //                if(res.data.code =='10013'){
+         //                    this.$router.push('login')
+         //                }
+         //                this.$Notice.error({
+         //                        title: this.$t(res.data.code),
+         //                        desc:this.$t(res.data.code)
+         //                 });
+         //            }
+         //        })
+         // },
 
          getRealNameIdentify(token) {
             getHeaderTokenApi(identify, {}, token).then((res) => {
@@ -534,12 +534,38 @@
             })
          },
          seeRealNameDetailMethod() {
-            if (this.identifyStatus == 'NOT_SET') {/*  */
-               this.$router.push('/kyc')
-            } else if (this.identifyStatus == 'PASSED' || this || s.identifyStatus == 'CHECKING' || this.identifyStatus == 'FAILURE') {
-               this.$router.push('/identityResult')
-            }
+            let loginToken = Cookies.get("loginToken");
+            getHeaderTokenApi(identifyQueryUrl, {}, loginToken)
+            .then(res => {
+               if (res.data == "" || res.data == null||res=='{}') {
+                  this.$router.push("/kyc");
+                  return;
+               }
+                  if (res.data.code) {
+                  this.$Notice.error({
+                  title: this.$t(res.data.code),
+                  desc: this.$t(res.data.code)
+                  });
+                  this.$router.push("/login");
+               }
+               let status = res.data.dataStatus;
+               if (status == 1) {
+                  this.$router.push("/kyc");
+               } else {
+                  this.$router.push("/identityResult");
+               }
+            })
+            .catch(error => {
+               console.log(error)
+            });
          },
+         // seeRealNameDetailMethod() {
+         //    if (this.identifyStatus == 'NOT_SET') {/*  */
+         //       this.$router.push('/kyc')
+         //    } else if (this.identifyStatus == 'PASSED' || this || s.identifyStatus == 'CHECKING' || this.identifyStatus == 'FAILURE') {
+         //       this.$router.push('/identityResult')
+         //    }
+         // },
          //手续费折扣开关
          change(status) {
             this.ffFeesFun();
