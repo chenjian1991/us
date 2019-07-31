@@ -328,7 +328,6 @@ import { debuglog } from 'util';
                     "phone":this.$store.state.app.bandPhoneObj.phone,
                 }
                 postBaseApi(userVerify,'',params).then((res) =>{
-                    debugger
                     if(res.code==10014){//只有此种情况才允许绑定邮箱,手机不存在
                         let objParams;
                         if(this.ssoPhone){

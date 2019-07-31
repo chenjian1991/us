@@ -34,7 +34,7 @@
 <script>
     import Header2 from '@/components/common/US-Header.vue'
     import TradeCenterHeader from '@/components/common/TradeCenterHeader.vue'
-    import Footer from '../../components/common/US-Footer.vue'
+    import Footer from '../../components/common/US-NEW-Footer.vue'
     import {AndroidDownloadUrl} from '../../../api/urls.js';
     import {getApi} from '../../../api/axios.js';
     export default {
@@ -61,8 +61,8 @@
                 showTradeHeader:false,
                 androidURL:'',
                 download:true,
-                message:'Attention: Please note that residents of the state of Connecticut, Florida, Hawaii, Maine, Mississippi, New Jersey, New York, North Carolina, North Dakota, Ohio, South Dakota, Texas, Vermont, Washington are not permitted to trade on 55.com',
-                routerArr:['home','Bhome','Shome','Fhome','Chome','login','register','usdd','FF','stock','cinfo','about55','capital','card','redeemsupreme','tokenizeyeezy'],
+                message:'Attention: Please note that residents of the state of Connecticut, Florida, Hawaii, Maine, Mississippi, New Jersey, New York, North Carolina, North Dakota, Ohio, South Dakota, Texas, Vermont, Washington are not permitted to trade on 55.trade',
+                routerArr:['home','Bhome','Shome','Fhome','Chome','login','register','usdd','FF','stock','cinfo','about55','capital','card','redeemsupreme','tokenizeyeezy','whyus','crypto','smartexecution','termsfront','faqs','ourcompany','team','contactus'],
             }
            
         },
