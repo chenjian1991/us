@@ -1526,8 +1526,6 @@
                this.userFrontMessage.genderFront = res.info.words_result['性别'].words;
                this.userFrontMessage.NationalityFront = res.info.words_result['民族'].words;
             }
-
-
          },
          handleRemove(file) {
             const fileList = this.$refs.upload.fileList;
