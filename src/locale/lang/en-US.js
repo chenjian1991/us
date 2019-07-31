@@ -2129,11 +2129,5 @@ export default {
    newK1surveyq4:"Employer",
    newK1surveyselect:"Select an option",
    newK1surveyq4input:"Employer",
-   newK1Employerpop:'Please enter Employer',
-   newK1Trading:'Trading',
-   newK1Invest:'Invest',
-   newK1inherited:'inherited',
-   newK1Advertiser:'Advertiser',
-   newK1Accountant:'Accountant',
-
+   newK1Employerpop:'please input your employer name',
 };

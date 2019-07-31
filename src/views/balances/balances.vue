@@ -137,7 +137,7 @@
       getSymbolList_realtime,
    } from '_api/exchange.js'
    import {
-      getRealtimeList, queryState, getIdentify
+      getRealtimeList, queryState, getIdentify,identifyQuery
    } from '_api/balances.js'
 
    import {
@@ -429,19 +429,8 @@
                   // width: 350,
                   align: 'right',
                   render: (h, params) => {
-                     console.log(params.row)
-
-                     console.log(params.row['list'])
                      let exchange = params.row['list'] && params.row['list'].length !== 0 ? true : false
-                     let url = ''
                      let siteType = params.row.siteType
-                     siteType.map(v => {//充值提现的URL 注意5站域名
-                        if (v === 'B') {
-                           url = '../..'
-                        } else {
-                           url = `https://${v.toLowerCase()}.55.com`
-                        }
-                     })
 
                      let deposit = false
                      let withdraw = false
@@ -489,14 +478,7 @@
                               on: {
                                  click: () => {
                                     if (deposit) {
-                                       if (!this.checkStatus) {
-                                          getIdentify(Cookies.get('loginToken')).then(res => {//实名认证
-                                             this.checkStatus = res.data.checkStatus
-                                             this.dealCheckStatus(params.row.currency, 'deposit')
-                                          })
-                                       } else {
-                                          this.dealCheckStatus(params.row.currency, 'deposit')
-                                       }
+                                       this.getIdentify(params.row.currency, '/deposit')
                                     }
                                  }
                               }
@@ -518,14 +500,7 @@
                               on: {
                                  click: () => {
                                     if (withdraw) {
-                                       if (!this.checkStatus) {
-                                          getIdentify(Cookies.get('loginToken')).then(res => {//实名认证
-                                             this.checkStatus = res.data.checkStatus
-                                             this.dealCheckStatus(params.row.currency, 'withdrawal')
-                                          })
-                                       } else {
-                                          this.dealCheckStatus(params.row.currency, 'withdrawal')
-                                       }
+                                       this.getIdentify(params.row.currency, '/withdrawal')
                                     }
                                  }
                               }
@@ -938,6 +913,33 @@
                return bigDecimal.round(scientificToNumber(number), num)
             }
          },
+         getIdentify(currency, path) {
+            if (this.checkStatus) {
+               this.dealCheckStatus(currency, path)
+            } else {
+               identifyQuery(Cookies.get('loginToken')).then(res => {//实名认证
+                  if (res.data) {
+                     switch (res.data['dataStatus']) {
+                        case 1:
+                           this.checkStatus = "NOT_SET"
+                           break
+                        case 2:
+                           this.checkStatus = "RESULT"
+                           break
+                        case 3:
+                           this.checkStatus = "PASSED"
+                           break
+                        case 4:
+                           this.checkStatus = "NOT_SET"
+                           break
+                     }
+                  } else {
+                     this.checkStatus = "NOT_SET"
+                  }
+                  this.dealCheckStatus(currency, path)
+               })
+            }
+         },
          dealCheckStatus(currency, path) {
             if (this.checkStatus === "PASSED") {
                this.$router.push({
@@ -949,7 +951,7 @@
             } else if (this.checkStatus === "NOT_SET") {
                this.showNoVerification1 = true
             } else {
-               this.$router.push('identityResult')
+               this.$router.push('/identityResult')
             }
          },
          queryState() {//实名认证2
@@ -998,7 +1000,7 @@
             } else if (this.levelStatus === 'unverified') {
                this.showNoVerification2 = true
             } else {
-               this.$router.push('amlkycResult')
+               this.$router.push('/amlkycResult')
             }
          },
          cancel1() {
@@ -1010,15 +1012,15 @@
          },
          ok1() {
             this.showNoVerification1 = false
-            setTimeout( ()=> {
-               this.$router.push('identiy')
-            },500)
+            setTimeout(() => {
+               this.$router.push('/kyc')
+            }, 500)
          },
          ok2() {//跳转实名认证2
             this.showNoVerification2 = false
-            setTimeout( ()=> {
+            setTimeout(() => {
                this.$router.push('amlKyc')
-            },500)
+            }, 500)
          },
       },
       beforeMount() {

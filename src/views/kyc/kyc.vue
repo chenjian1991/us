@@ -653,24 +653,24 @@
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq1')}}</label>
                            <Select v-model="stepFourForm.goal" size="large">
-                              <Option v-for="item in goal" :value="item.value" :label="$t(item.label)">
-                                 {{$t(item.label)}}
+                              <Option v-for="item in goal" :value="item.value" :label="item.title">
+                                 {{item.title}}
                               </Option>
                            </Select>
                         </div>
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq2')}}</label>
                            <Select v-model="stepFourForm.source" size="large">
-                              <Option v-for="item in source" :value="item.value" :label="$t(item.label)">
-                                 {{$t(item.label)}}
+                              <Option v-for="item in source" :value="item.value" :label="item.title">
+                                 {{item.title}}
                               </Option>
                            </Select>
                         </div>
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq3')}}</label>
                            <Select v-model="stepFourForm.occupation" size="large">
-                              <Option v-for="item in occupation" :value="item.value" :label="$t(item.label)">
-                                 {{$t(item.label)}}
+                              <Option v-for="item in occupation" :value="item.value" :label="item.title">
+                                 {{item.title}}
                               </Option>
                            </Select>
                         </div>
@@ -716,12 +716,9 @@
       queryUserInfo, identifySubmit, identifyUpdate, identifyQuery, uploadImg,
    } from '_api/balances.js'
    import {
-      codeVerify,
-      ossjson,
       ssoCodeVerify,
       binding,
       identifyPhoto,
-      queryUserInfoUrl,
       userInfo
    } from '../../../api/urls.js';
    import {
@@ -735,11 +732,10 @@
 
    import Modaltips from '@/components/Modal';
 
-
    import {
       onlyInputNumAndPoint
    } from '@/lib/utils.js'
-   import {state, country} from './state_country.js'
+   import {state, country, goal, source, occupation} from './state_country.js'
 
    import {debuglog} from 'util';
 
@@ -777,18 +773,9 @@
                {label: 'newK1PP', value: 'passport'},
                {label: "newK1DL", value: 'license'}
             ],
-            goal: [
-               {label: 'newK1Trading', value: 'Trading'},
-               {label: 'newK1Invest', value: 'Invest'},
-            ],
-            source: [
-               {label: 'newK1Trading', value: 'Trading'},
-               {label: 'newK1inherited', value: 'inherited'},
-            ],
-            occupation: [
-               {label: 'newK1Advertiser', value: 'Advertiser'},
-               {label: 'newK1Accountant', value: 'Accountant'},
-            ],
+            goal: goal,
+            source: source,
+            occupation: occupation,
             stepOneForm: {
                emailAddress: '',
                emailCode: '',

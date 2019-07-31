@@ -103,7 +103,7 @@
                     }
                     let identifyFlag = res.data.checkStatus;
                     if(identifyFlag=='NOT_SET'){
-                            this.$router.push('/identiy')
+                            this.$router.push('/kyc')
                     }else if(identifyFlag == 'PASSED'){
                             this.passed = true;
                             this.underRivew = false;
@@ -143,7 +143,7 @@
                 })
             },
             gotoRealname(){
-                this.$router.push('/identiy')
+                this.$router.push('/kyc')
             },
           
         },

@@ -1988,9 +1988,4 @@ export default {
    newK1surveyselect:"请选择一项",
    newK1surveyq4input:"请填写公司名称",
    newK1Employerpop:'请填写公司名称',
-   newK1Trading:'',
-   newK1Invest:'',
-   newK1inherited:'',
-   newK1Advertiser:'',
-   newK1Accountant:'',
 }

@@ -178,6 +178,7 @@
       send,
       codeVerify,
       getIdentify,
+      identifyQuery,
    } from '_api/balances.js'
    import {
       scientificToNumber, subNumberPoint, onlyInputNumAndPoint
@@ -397,13 +398,9 @@
          },
          toKyc() {
             if (this.checkStatus === 'NOT_SET') {
-               this.$router.push({
-                  path: 'identiy',
-               })
+               this.$router.push('/kyc')
             } else {
-               this.$router.push({
-                  path: 'identityResult',
-               })
+               this.$router.push('/identityResult')
             }
          },
          submit() {//第一步提交
@@ -457,10 +454,11 @@
                      })
                   })
                   await new Promise(resolve => {
-                     getIdentify(this.loginToken).then(res => {//kyc
-                        this.checkStatus = res.data.checkStatus
-                        if (res.data.checkStatus === 'PASSED') {
-                           this.kyc = true//实名通过 可以提现
+                     identifyQuery(Cookies.get('loginToken')).then(res => {//实名认证
+                        if (res.data) {
+                           if (res.data['dataStatus'] === 3) {
+                              this.kyc = true//实名通过 可以提现
+                           }
                         }
                         resolve()
                      })
