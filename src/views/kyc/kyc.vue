@@ -277,7 +277,7 @@
                                        :on-error="handleError"
                                        :before-upload='beforeUploadFront'
                                        :format="['jpg','jpeg','png']"
-                                       :max-size="4096"
+                                       :max-size="6144"
                                        :on-format-error="handleFormatError"
                                        :on-exceeded-size="handleMaxSize"
                                        multiple
@@ -327,7 +327,7 @@
                                        :on-success="handleSuccessTWO"
                                        :before-upload='beforeUploadBack'
                                        :format="['jpg','jpeg','png']"
-                                       :max-size="4096"
+                                       :max-size="6144"
                                        :on-error="handleError"
                                        :on-format-error="handleFormatErrorTWO"
                                        :on-exceeded-size="handleMaxSizeTWO"
@@ -376,7 +376,7 @@
                                        :on-success="handleSuccessTHREE"
                                        :before-upload='beforeUploadSelf'
                                        :format="['jpg','jpeg','png']"
-                                       :max-size="4096"
+                                       :max-size="6144"
                                        :on-error="handleError"
                                        :on-format-error="handleFormatErrorTHREE"
                                        :on-exceeded-size="handleMaxSizeTHREE"
