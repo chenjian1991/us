@@ -284,8 +284,8 @@
                                        :data='uploadParams'
                                        :headers="headerObj"
                                        :action="uploadUrl"
-                                       style="display: inline-block;width: 304px;height:200px;z-index:150">
-                                       <div style="width: 304px;height:200px;line-height:200px;text-align:center;">
+                                       >
+                                       <div style="width: 304px;height:200px;position: absolute;top: 0px;">
                                           <span>上传</span>
                                        </div>
                                     </Upload>
@@ -335,8 +335,8 @@
                                        :data='uploadBack'
                                        :headers="headerObj"
                                        :action="uploadUrl"
-                                       style="display: inline-block;width: 304px;height:200px;z-index:150">
-                                       <div style="width: 304px;height:200px;line-height: 200px;text-align:center;">
+                                       >
+                                       <div style="width: 304px;height:200px;position: absolute;top: 0px;">
                                           <span>上传</span>
                                        </div>
                                     </Upload>
@@ -383,8 +383,8 @@
                                        multiple
                                        :headers="headerObj"
                                        :action="uploadUrlPic"
-                                       style="display: inline-block;width: 304px;height:200px;z-index:150">
-                                       <div style="width: 304px;height:200px;line-height: 200px;text-align:center;">
+                                       >
+                                       <div style="width: 304px;height:200px;position: absolute;top: 0px;">
                                           <span>上传</span>
                                        </div>
                                     </Upload>
@@ -1493,13 +1493,89 @@
             this.$router.go(-1)
          },
          // 图片上传部分
-         beforeUploadFront() {
+         beforeUploadFront(file) {
             this.uploadList = this.$refs.upload.fileList;
+            let size = file.size/1024000;
+            console.log(size)
+            if(size>1){
+                let _that = this;
+                  this.photoCompress(file,{quality: 0.6},function(base64Codes){
+                     _that.convertBase64UrlToBlob(base64Codes)
+                      console.log(_that.convertBase64UrlToBlob(base64Codes).size)
+
+                  })
+            }
+           
          },
-         beforeUploadBack() {
+         photoCompress(file,w,objDiv){
+            let _that = this;
+            var ready=new FileReader();
+            /*开始读取指定的Blob对象或File对象中的内容. 当读取操作完成时,readyState属性的值会成为DONE,如果设置了onloadend事件处理程序,则调用之.同时,result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容.*/
+            ready.readAsDataURL(file);
+            ready.onload=function(){
+                var re = this.result;
+                _that.canvasDataURL(re,w,objDiv)
+            }
+         },
+         canvasDataURL(path, obj, callback){
+            var img = new Image();
+            img.src = path;
+            img.onload = function(){
+                var that = this;
+                // 默认按比例压缩
+                var w = that.width,
+                    h = that.height,
+                    scale = w / h;
+                w = obj.width || w;
+                h = obj.height || (w / scale);
+                var quality = 0.7;  // 默认图片质量为0.7
+                //生成canvas
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext('2d');
+                // 创建属性节点
+                var anw = document.createAttribute("width");
+                anw.nodeValue = w;
+                var anh = document.createAttribute("height");
+                anh.nodeValue = h;
+                canvas.setAttributeNode(anw);
+                canvas.setAttributeNode(anh);
+                ctx.drawImage(that, 0, 0, w, h);
+                // 图像质量
+                if(obj.quality && obj.quality <= 1 && obj.quality > 0){
+                    quality = obj.quality;
+                }
+                // quality值越小，所绘制出的图像越模糊
+                var base64 = canvas.toDataURL('image/jpeg', quality);
+                // 回调函数返回base64的值
+                callback(base64);
+            }
+         },
+         convertBase64UrlToBlob(urlData){
+            var arr = urlData.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+               while(n--){
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+             return new Blob([u8arr], {type:mime});
+         },
+         beforeUploadBack(file) {
+            let size = file.size/1024000;
+            if(size>1){
+                let _that = this;
+                  this.photoCompress(file,{quality: 0.6},function(base64Codes){
+                     _that.convertBase64UrlToBlob(base64Codes)
+                  })
+            }
             this.uploadListTWO = this.$refs.uploadTwo.fileList;
          },
-         beforeUploadSelf() {
+         beforeUploadSelf(file) {
+            let size = file.size/1024000;
+            if(size>1){
+                let _that = this;
+                  this.photoCompress(file,{quality: 0.6},function(base64Codes){
+                     _that.convertBase64UrlToBlob(base64Codes)
+                  })
+            }
             this.uploadListThree = this.$refs.uploadThird.fileList;
          },
          handleSuccess(res, file) {
