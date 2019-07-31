@@ -509,22 +509,34 @@
          //        })
          // },
 
-         getRealNameIdentify(token) {
-            getHeaderTokenApi(identify, {}, token).then((res) => {
-               let aa = res.data;
-               let identifyFlag = res.data.checkStatus;
-               this.identifyStatus = identifyFlag;
-               if (identifyFlag == 'NOT_SET' || identifyFlag == 'FAILURE') {
+          getRealNameIdentify(token){
+                 getHeaderTokenApi(identifyQueryUrl, {}, token).then((res) => {
+                if (res.data.code) {
+                        this.$Notice.error({
+                            title: this.$t(res.data.code),
+                            desc: this.$t(res.data.code)
+                        });
+                        this.$router.push('/login')
+                    }
+               if(res.data==''|| res.data==null){//空
                   this.iD = true;
                   this.checking = false;
                   this.passed = false;
-
-               } else if (identifyFlag == 'PASSED') {
+                  this.identifyStatus ='';
+                  return;
+               }
+               let identifyFlag = res.data.dataStatus;
+               this.identifyStatus = identifyFlag;
+               if (identifyFlag == 1 || identifyFlag == 4) {//失败
+                  this.iD = true;
+                  this.checking = false;
+                  this.passed = false;
+               } else if (identifyFlag == 3) {//成功
                   this.iD = false;
                   this.checking = false;
                   this.passed = true;
 
-               } else if (identifyFlag == 'CHECKING') {
+               } else if (identifyFlag == 2) {//submit
                   this.checking = true;
                   this.iD = false;
                   this.passed = false;
@@ -615,7 +627,7 @@
          let loginToken = Cookies.get('loginToken');
          this.getUserInfo(loginToken)
          this.getRealNameIdentify(loginToken)
-          this.L2queryState(loginToken)
+         //  this.L2queryState(loginToken)
           this.queryOpenTradepassword()
          localStorage.setItem('curPage', 0)//只有在安全中心页面设置0，才会在交易密码页面显示正确的发送验证码页面
          var ssoProvider = {};
