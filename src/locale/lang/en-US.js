@@ -1692,9 +1692,9 @@ export default {
    balanceRejected:"L2 verification rejected",
    balanceSubmit:"L2 submitted",
    balanceNotice:"Notice",
-   balanceNoticeCon1:"Please complete Level 1 Verification before continuing",
+   balanceNoticeCon1:"Please complete ID Verification before continuing",
    balanceNoticeCon:"Please complete Level 2 verification before continuing.",
-   noticeL1:"Complete L1 verification",
+   noticeL1:"complete ID Verification",
    noticeL2:"Complete L2 verification",
    nextTime:"Cancel",
    balanceDeposit:"DEPOSIT USD",
@@ -1803,7 +1803,7 @@ export default {
 
    //aml
    kyc1Notice: "Please complete ID Verification before continuing.",
-   kyc1NoticeConfirm: "Complete ID Verification",
+   kyc1NoticeConfirm: "complete ID Verification",
    kyc2: "L2 Verification",
    kyc2Hint: "Used to enable fiat deposits and withdrawals.",
    kyc2View: "View",
