@@ -1115,7 +1115,7 @@ export default {
    // usddSendFees: "Interest Returned (in USDD)",
    usddurl: "LEARN MORE ABOUT USDD",
    //front footer
-   fronthomefootMail:"Got a question?",
+   fronthomefootMail:"Have a Question?",
    fronthomefootMailcon:"We want to answer all of your queries. Get in touch and we'll get back to you as soon as we can.",
    fronthomefootMailaction:"E-mail us",
    fronthomefootHelp:"Help",
@@ -1127,7 +1127,7 @@ export default {
    fronthomefootCareers:"Careers",
    fronthomefootUserAgree:"User Agreement",
    fronthomefootPrivacy:"Privacy Policy",
-   fronthomefootFee:"Trading Fee",
+   fronthomefootFee:"Trading Fees",
    // fronthomefootRules:"Trading Rules",
    fronthomefootProducts:"Products",
    fronthomefootMarkets:"Markets",

@@ -84,12 +84,12 @@
              <div class="mb-7">
                     <!-- Title -->
                     <div class="mb-3">
-                      <h3 class="h5 text-primary font-weight-semi-bold">Aggregated pricing and execution</h3>
+                      <h3 class="h5 text-primary font-weight-semi-bold">Top of Book pricing</h3>
                     </div>
                     <!-- End Title -->
       
                     <!-- Text -->
-                    <p>Our GBBO Engine (Global Best Bid and Offer), connects all major providers from Crypto to FX, allowing us to provide the best top of book pricing available from our network.</p>
+                    <p>Our Global best bid and offer routing engine, connects majore crypto and foreign exchange liquidity providers.</p>
                     <!-- End Text -->
              </div>
              <div class="mb-7">
