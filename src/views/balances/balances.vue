@@ -26,17 +26,17 @@
                            </div>
                         </span>
                         <span v-else-if="levelStatus==='rejected'">
-                           <router-link to="amlkycResult" class="kyc-status rejected">{{$t('balanceRejected')}}
+                           <router-link to="identityResult" class="kyc-status rejected">{{$t('balanceRejected')}}
                               <Icon type="md-close"/>
                            </router-link>
                         </span>
                         <span v-else-if="levelStatus==='unverified'">
-                           <router-link to="amlKyc" class="kyc-status unverified">{{$t('balanceUnverified')}}
+                           <router-link to="kyc" class="kyc-status unverified">{{$t('balanceUnverified')}}
                               <Icon type="ios-arrow-forward"/>
                            </router-link>
                         </span>
                         <span v-else>
-                           <router-link to="amlkycResult" class="kyc-status unverified">{{$t('balanceSubmit')}}
+                           <router-link to="identityResult" class="kyc-status unverified">{{$t('balanceSubmit')}}
                               <Icon type="ios-arrow-forward"/>
                            </router-link>
                         </span>
@@ -106,12 +106,12 @@
          </div>
       </us-modal>
       <!--实名认证2-->
-      <us-modal v-model="showNoVerification2" className="alertModal" width="750px" title="balanceNotice"
-                okText="noticeL2" cancelText="nextTime" @ok="ok2" @cancel="cancel" :showBtn="true">
-         <div class="alert-content">
-            <h4 class="notice">{{$t('balanceNoticeCon')}}</h4>
-         </div>
-      </us-modal>
+      <!--<us-modal v-model="showNoVerification2" className="alertModal" width="750px" title="balanceNotice"-->
+                <!--okText="noticeL2" cancelText="nextTime" @ok="ok2" @cancel="cancel" :showBtn="true">-->
+         <!--<div class="alert-content">-->
+            <!--<h4 class="notice">{{$t('balanceNoticeCon')}}</h4>-->
+         <!--</div>-->
+      <!--</us-modal>-->
       <!--设置银行卡-->
       <us-modal v-model="showNoBank" className="alertModal" width="750px" title="balanceNotice" okText="balanceToBank"
                 cancelText="nextTime" @ok="checkState('bankSetting')" @cancel="cancel" :showBtn="true">
@@ -137,7 +137,7 @@
       getSymbolList_realtime,
    } from '_api/exchange.js'
    import {
-      getRealtimeList, queryState, getIdentify,identifyQuery
+      getRealtimeList, queryState, getIdentify, identifyQuery
    } from '_api/balances.js'
 
    import {
@@ -146,6 +146,7 @@
       getDecimalsNum,
       storage,
       subNumberPoint,
+      dealNumber,
    } from '@/lib/utils.js'
    import {getApi} from '_api/axios'
 
@@ -478,7 +479,7 @@
                               on: {
                                  click: () => {
                                     if (deposit) {
-                                       this.getIdentify(params.row.currency, '/deposit')
+                                       this.dealCheckStatus(params.row.currency, '/deposit')
                                     }
                                  }
                               }
@@ -500,7 +501,7 @@
                               on: {
                                  click: () => {
                                     if (withdraw) {
-                                       this.getIdentify(params.row.currency, '/withdrawal')
+                                       this.dealCheckStatus(params.row.currency, '/withdrawal')
                                     }
                                  }
                               }
@@ -571,7 +572,7 @@
       },
       methods: {
          init() {
-            this.queryState()
+            this.getIdentify()
             let currencyList = new Promise(resolve => {
                getCurrencyList().then(result => {//币种
                   //过滤S站 注意 过滤不改变原数据
@@ -663,9 +664,9 @@
                      if (v['frozen'] < 0.00000001) {
                         v['frozen'] = 0
                      }
-                     v['total'] = this.transferNumber(subNumberPoint(v['available'] + v['frozen'], precision), precision) //计算总值
-                     v['available'] = this.transferNumber(subNumberPoint(v['available'], precision), precision)
-                     v['frozen'] = this.transferNumber(subNumberPoint(v['frozen'], precision), precision)
+                     v['total'] = dealNumber(v['available'] + v['frozen'], precision) //计算总值
+                     v['available'] = dealNumber(v['available'], precision)
+                     v['frozen'] = dealNumber(v['frozen'], precision)
                      this.mapCurrencyList(v, ['available', 'frozen', 'total'], [v['available'], v['frozen'], v['total']])
                   })
                }
@@ -688,11 +689,11 @@
                      v['frozen'] = 0
                   }
                   if (v.currency === 'USD') {
-                     this.USD = this.transferNumber(subNumberPoint(v['available'], 2), 2)
+                     this.USD = dealNumber(v['available'], 2)
                   }
-                  v['total'] = this.transferNumber(subNumberPoint(v['available'] + v['frozen'], precision), precision) //计算总值
-                  v['available'] = this.transferNumber(subNumberPoint(v['available'], precision), precision)
-                  v['frozen'] = this.transferNumber(subNumberPoint(v['frozen'], precision), precision)
+                  v['total'] = dealNumber(v['available'] + v['frozen'], precision) //计算总值
+                  v['available'] = dealNumber(v['available'], precision)
+                  v['frozen'] = dealNumber(v['frozen'], precision)
                   this.mapCurrencyList(v, ['available', 'frozen', 'total'], [v['available'], v['frozen'], v['total']])
                })
                this.balancesList.map(v => {
@@ -913,33 +914,66 @@
                return bigDecimal.round(scientificToNumber(number), num)
             }
          },
-         getIdentify(currency, path) {
-            if (this.checkStatus) {
-               this.dealCheckStatus(currency, path)
-            } else {
-               identifyQuery(Cookies.get('loginToken')).then(res => {//实名认证
-                  if (res.data) {
-                     switch (res.data['dataStatus']) {
-                        case 1:
-                           this.checkStatus = "NOT_SET"
-                           break
-                        case 2:
-                           this.checkStatus = "RESULT"
-                           break
-                        case 3:
-                           this.checkStatus = "PASSED"
-                           break
-                        case 4:
-                           this.checkStatus = "NOT_SET"
-                           break
-                     }
-                  } else {
-                     this.checkStatus = "NOT_SET"
+         getIdentify() {
+            identifyQuery(Cookies.get('loginToken')).then(res => {//实名认证
+               if (res.data) {
+                  res.data['dataStatus']=1
+                  switch (res.data['dataStatus']) {
+                     case 1:
+                        this.checkStatus = "NOT_SET"
+                        this.levelStatus = 'unverified'
+                        break
+                     case 2:
+                        this.checkStatus = "SUBMIT"
+                        this.levelStatus = 'submitted'
+                        break
+                     case 3:
+                        this.checkStatus = "PASSED"
+                        this.levelStatus = 'verified'
+                        break
+                     case 4:
+                        this.checkStatus = "REJECT"
+                        this.levelStatus = 'rejected'
+                        break
                   }
-                  this.dealCheckStatus(currency, path)
-               })
-            }
+               } else {
+                  this.checkStatus = "NOT_SET"
+                  this.levelStatus = 'unverified'
+               }
+            })
          },
+         // getIdentify(currency, path) {
+         //    if (this.checkStatus) {
+         //       this.dealCheckStatus(currency, path)
+         //    } else {
+         //       identifyQuery(Cookies.get('loginToken')).then(res => {//实名认证
+         //          if (res.data) {
+         //             switch (res.data['dataStatus']) {
+         //                case 1:
+         //                   this.checkStatus = "NOT_SET"
+         //                   this.levelStatus = 'unverified'
+         //                   break
+         //                case 2:
+         //                   this.checkStatus = "SUBMIT"
+         //                   this.levelStatus = 'submitted'
+         //                   break
+         //                case 3:
+         //                   this.checkStatus = "PASSED"
+         //                   this.levelStatus = 'verified'
+         //                   break
+         //                case 4:
+         //                   this.checkStatus = "NOT_SET"
+         //                   this.levelStatus = 'rejected'
+         //                   break
+         //             }
+         //          } else {
+         //             this.checkStatus = "NOT_SET"
+         //             this.levelStatus = 'unverified'
+         //          }
+         //          this.dealCheckStatus(currency, path)
+         //       })
+         //    }
+         // },
          dealCheckStatus(currency, path) {
             if (this.checkStatus === "PASSED") {
                this.$router.push({
@@ -954,31 +988,31 @@
                this.$router.push('/identityResult')
             }
          },
-         queryState() {//实名认证2
-            queryState(Cookies.get('loginToken')).then(res => {//是否实名
-               // 没有提交:NOHAVE 提交(提交数据):SUBMIT 等待(提交第三方):PENDING 失败:FAIL 成功:SUCCESS
-               switch (res.data.result) {
-                  case 'NOHAVE':
-                     this.levelStatus = 'unverified'
-                     break
-                  case 'SUBMIT':
-                     this.levelStatus = 'submitted'
-                     break
-                  case 'PENDING':
-                     this.levelStatus = 'pending'
-                     break
-                  case 'FAIL':
-                     this.levelStatus = 'rejected'
-                     break
-                  case 'SUCCESS':
-                     this.levelStatus = 'verified'
-                     break
-                  default:
-                     this.levelStatus = 'unverified'
-                     break
-               }
-            })
-         },
+         // queryState() {//实名认证2
+         //    queryState(Cookies.get('loginToken')).then(res => {//是否实名
+         //       // 没有提交:NOHAVE 提交(提交数据):SUBMIT 等待(提交第三方):PENDING 失败:FAIL 成功:SUCCESS
+         //       switch (res.data.result) {
+         //          case 'NOHAVE':
+         //             this.levelStatus = 'unverified'
+         //             break
+         //          case 'SUBMIT':
+         //             this.levelStatus = 'submitted'
+         //             break
+         //          case 'PENDING':
+         //             this.levelStatus = 'pending'
+         //             break
+         //          case 'FAIL':
+         //             this.levelStatus = 'rejected'
+         //             break
+         //          case 'SUCCESS':
+         //             this.levelStatus = 'verified'
+         //             break
+         //          default:
+         //             this.levelStatus = 'unverified'
+         //             break
+         //       }
+         //    })
+         // },
          checkState(page) {
             //充值前判断 实名认证
             if (this.levelStatus === 'verified') {
@@ -998,9 +1032,9 @@
                } catch (e) {
                }
             } else if (this.levelStatus === 'unverified') {
-               this.showNoVerification2 = true
+               this.showNoVerification1 = true
             } else {
-               this.$router.push('/amlkycResult')
+               this.$router.push('/identityResult')
             }
          },
          cancel1() {

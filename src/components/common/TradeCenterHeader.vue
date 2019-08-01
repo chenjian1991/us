@@ -144,10 +144,10 @@
            <span>Notice</span>
         </p>
         <p class="content">
-            Please complete L1 Verification before continuing.
+            Please complete ID Verification before continuing.
         </p>
         <p slot="footer">
-           <Button>complete L1 Verification</Button>
+           <Button>complete ID Verification</Button>
            <em @click="cancelModal">Next time</em>
         </p>
     </Modal>
