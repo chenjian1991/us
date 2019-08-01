@@ -145,7 +145,6 @@
       addSymbolSplitLine,
       getDecimalsNum,
       storage,
-      subNumberPoint,
       dealNumber,
    } from '@/lib/utils.js'
    import {getApi} from '_api/axios'
