@@ -46,7 +46,7 @@
                   <span class="text-danger">*</span>
                 </label>
 
-                <input type="text" class="form-control" name="name" placeholder="Jack Wayley" aria-label="Jack Wayley" required
+                <input v-model='name' type="text" class="form-control" name="name" placeholder="Jack Wayley" aria-label="Jack Wayley" required
                        data-msg="Please enter your name."
                        data-error-class="u-has-error"
                        data-success-class="u-has-success">
@@ -62,7 +62,7 @@
                   <span class="text-danger">*</span>
                 </label>
 
-                <input type="email" class="form-control" name="email" placeholder="jackwayley@gmail.com" aria-label="jackwayley@gmail.com" required
+                <input v-model='emailAddress' type="email" class="form-control" name="email" placeholder="jackwayley@gmail.com" aria-label="jackwayley@gmail.com" required
                        data-msg="Please enter a valid email address."
                        data-error-class="u-has-error"
                        data-success-class="u-has-success">
@@ -79,8 +79,8 @@
                     Phone
                 </label>
 
-                <input type="text" class="form-control" name="subject" placeholder="Web design" aria-label="Web design" required
-                       data-msg="Please enter a subject."
+                <input v-model='phone' type="text" class="form-control" name="subject" placeholder="Phone" aria-label="Phone" required
+                       data-msg="Please enter your phone number."
                        data-error-class="u-has-error"
                        data-success-class="u-has-success">
               </div>
@@ -94,9 +94,9 @@
                   Which Department are you trying to reach?
                   <span class="text-danger">*</span>
                 </label>
-                <select class="form-control">
-                    <option>Sales</option>
-                    <option>Support</option>
+                <select @change='changeSelect' class="form-control">
+                    <option value='Sales'>Sales</option>
+                    <option value='Support'>Support</option>
                   </select>
               </div>
             </div>
@@ -111,7 +111,7 @@
             </label>
 
             <div class="input-group">
-              <textarea class="form-control" rows="4" name="text" placeholder="Hi there, I would like to ..." aria-label="Hi there, I would like to ..." required
+              <textarea v-model='textarea' class="form-control" rows="4" name="text" placeholder="Hi there, I would like to ..." aria-label="Hi there, I would like to ..." required
                         data-msg="Please enter a reason."
                         data-error-class="u-has-error"
                         data-success-class="u-has-success"></textarea>
@@ -134,8 +134,8 @@
 </template>
 
 <script>
-
-
+import {postHeaderTokenBodyApi} from '../../../api/axios.js';
+import {redeemInfoUrl} from '../../../api/urls.js';
     export default {
         name:'login',
         components:{
@@ -145,17 +145,21 @@
                 empty:true,
                 googleID:'',
                 robotModalflag:false,
+                name:'',
+                emailAddress:'',
+                phone:'',
+                textarea:'',
+                selectValue:'Sales',
             }
-
-
-
         },
-      
         methods:{
-            submit(){   
+            submit(){  
                 this.robotModalflag = true;
             },
-                onloadCallback(){
+            changeSelect(event){
+              this.selectValue=event.target.value;
+            },
+            onloadCallback(){
                 let _that = this;
                 let widgetId=grecaptcha.render('robot', {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
@@ -163,10 +167,8 @@
                     "size":'normal',
                     'callback': function (data) {//验证成功回调函数
                         if(data.length!==0){
-                            // _that.verifiyedMethod(data,'google')
-                            // setTimeout(()=>{
-                            //     _that.robotModalflag= false;
-                            // },2000)
+                          _that.verify(data)
+                          
                         }
                     },
                     "expired-callback":function(){//验证失效回调函数
@@ -182,6 +184,27 @@
                     return widgetId;
 
             },
+            verify(validate){
+            postHeaderTokenBodyApi(redeemInfoUrl, validate, {
+              business: 'contactus',
+              name:this.name,
+              emailAddress:this.emailAddress,
+              phone:this.phone,
+              textarea:this.textarea,
+              selectValue:this.selectValue,
+              // uid:localStorage.getItem('loginEx55Pin')
+            }).then(data => {
+              this.robotModalflag=false;
+              // if (data.result) {
+              //   this.isSubmit = true
+              //   this.modalInfo = this.$t('redeem_提交成功')
+              // } else {
+              //   this.isSubmit = true
+              //   this.modalInfo = this.$t('redeem_提交失败')
+              // }
+            });
+
+          },
 
 
         },
