@@ -281,7 +281,7 @@ export default {
    homeBalances: 'Balances',
    tbdhTransactionHistory: 'Transaction History',
    tbdhAccountSecurity: 'Account & Security',
-   tbdhIDVerification: 'L1 Verification',
+   tbdhIDVerification: 'ID Verification',
    invitePeople: 'Invite Friends',
    tbdhLogout: 'Log Out',
    headerhome: "Home",
@@ -840,7 +840,7 @@ export default {
    aqzxPhoneNumber: 'Mobile Phone',
    aqzxEmailAdders: 'Email',
    aqzxGoogle: 'Google Authenticator',
-   aqzxIdentity: 'L1 Verification',
+   aqzxIdentity: 'ID Verification',
    aqzxPhoneExplain: "Used to withdraw, retrieve password, change security settings, and verify while managing API.",
    aqzxPhoneExplaintwo: 'Used to promote the withdraw amount, And for retrieving account information.',
    交易密码失效: 'Trading password Validity',
@@ -919,7 +919,7 @@ export default {
    ggyzEnableGA: "Enable Google Authentication",
    bindgoogleSuccess: "Google verifies the success of binding",
    //实名认证
-   sfrzIDVerification: "L1 Verification",
+   sfrzIDVerification: "ID Verification",
    sfrzIDExplainone: "In order to secure the funds of your account, please register your real name authentication information.",
    sfrzIDExplaintwo: "Please note that once the information is registered it cannot be modified.",
    sfrzIDTIPS: "Please make sure you use your real identity to do this verification. We will protect your personal information.",
@@ -978,14 +978,14 @@ export default {
    sfrzPhotoIDClearlyP: "Photo ID clearly visible",
    sfrzNote55P: 'Note with word "55.com"',
    sfrzNoteTodayP: "Note with today's date",
-   sfrzIIDVerification: "L1 Verification",
-   sfrzIDAudit: "Your L1 Verification request has been  received.",
-   IDVertification: "L1 Verification",
+   sfrzIIDVerification: "ID Verification",
+   sfrzIDAudit: "Your ID Verification request has been  received.",
+   IDVertification: "ID Verification",
    sfrzIDProblem: "If there is a problem, please send mail to",
-   sfrzIDRejected: "Your L1 Verification has been rejected",
+   sfrzIDRejected: "Your ID Verification has been rejected",
    sfrzRefusalReason: "Reason :",
    sfrzRestartSubmit: "Submit Verification Documents",
-   sfrzIDApproved: "Your L1 Verification has been approved",
+   sfrzIDApproved: "Your ID Verification has been approved",
    sfrzNationality: "Nationality：",
    sfrzIDNo: "ID No.：",
    sfrzCompleteName: "Name：",
@@ -1331,8 +1331,8 @@ export default {
 
 
    //提现kyc
-   withdrawkycalert: 'To prevent potential risks, please finish the L1 Verification before withdrawal',
-   gotokyc: 'Do L1 Verification',
+   withdrawkycalert: 'To prevent potential risks, please finish the ID Verification before withdrawal',
+   gotokyc: 'Do ID Verification',
 
    //充值历史
    czlsTransactionHistory: 'Transaction History',
@@ -1802,8 +1802,8 @@ export default {
    swiftPop: "This field should be capital letters or numbers",
 
    //aml
-   kyc1Notice: "Please complete L1 Verification before continuing.",
-   kyc1NoticeConfirm: "Complete L1 Verification",
+   kyc1Notice: "Please complete ID Verification before continuing.",
+   kyc1NoticeConfirm: "Complete ID Verification",
    kyc2: "L2 Verification",
    kyc2Hint: "Used to enable fiat deposits and withdrawals.",
    kyc2View: "View",
@@ -1977,7 +1977,7 @@ export default {
    transfer57: 'Cannot transfer yourself.',
    transfer63: 'KYC is not certified.',
    transfer53: 'User does not exist.',
-   transKyc: "Please complete L1 Verification before continuing.",
+   transKyc: "Please complete ID Verification before continuing.",
    transfee: 'Fee : ',
    userName: 'Username',
    usernameused: 'Username has been used',

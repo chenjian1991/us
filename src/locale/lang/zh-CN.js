@@ -239,7 +239,7 @@ export default {
    homeBalances: '资产',
    tbdhTransactionHistory: '充提币历史',
    tbdhAccountSecurity: '账户安全',
-   tbdhIDVerification: 'L1身份认证',
+   tbdhIDVerification: '身份认证',
    invitePeople: '邀请好友',
    tbdhLogout: '退出',
    headerhome: "首页",
@@ -723,7 +723,7 @@ export default {
    aqzxPhoneNumber: '手机号',
    aqzxEmailAdders: '邮箱',
    aqzxGoogle: '谷歌验证',
-   aqzxIdentity: 'L1身份认证',
+   aqzxIdentity: '身份认证',
    aqzxPhoneExplain: "用于提币、找回密码、修改安全设置、管理API时进行安全验证",
    aqzxPhoneExplaintwo: '用于提升提币金额，找回账户信息',
    交易密码失效:'交易密码时效',
@@ -1662,7 +1662,7 @@ export default {
    swiftPop:"仅支持大写字母及数字",
    
    //aml  翻译
-   kyc1Notice:"请您先完成L1身份认证再进行下一步",
+   kyc1Notice:"请您先完成身份认证再进行下一步",
    kyc1NoticeConfirm:"去完成",
    kyc2:"L2身份认证",
    kyc2Hint:"用于进行法币充值与提现",
