@@ -11,8 +11,7 @@
 
             </a>
         </div> -->
-        <TradeCenterHeader v-if="showTradeHeader"/>
-        <Header2 v-else/>
+        <Header2 />
         <!-- Content 内容 -->
         <div style="flex:1;height:100%;width:100%;flex-basis:auto;">
             <router-view></router-view>

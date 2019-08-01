@@ -189,29 +189,29 @@
                         <div class="title row">
                           <div class="pairName">
                             <span class="front">BTC</span>
-                            <span class="back">/USDT</span>
+                            <span class="back">/USD</span>
                           </div>
-                          <div class="tradeBtn" @click="$router.push('/exchange?symbol=BTCUSDT')">Trade</div>
+                          <div class="tradeBtn" @click="$router.push('/exchange?symbol=BTCUSD')">Trade</div>
                         </div>
                         <div class="row">
                           <span>Best Ask</span>
                           <span>Best Bid</span>
                         </div>
                         <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[0] === 1,down:BTCUSDTWaveArray[0] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[0]).toFixed(2):"-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDTWaveArray[2] === 1,down:BTCUSDTWaveArray[2] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[2]).toFixed(2):"-"}}</span>
+                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[0] === 1,down:BTCUSDTWaveArray[0] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[0]*USDTUSDD).toFixed(2):"-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDTWaveArray[2] === 1,down:BTCUSDTWaveArray[2] === -1}">{{BTCUSDT.E55?(BTCUSDT.E55[2]*USDTUSDD).toFixed(2):"-"}}</span>
                         </div>
                         <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[6] === 1,down:BTCUSDTWaveArray[6] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]).toFixed(2): "-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDTWaveArray[4] === 1,down:BTCUSDTWaveArray[4] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]).toFixed(2): "-"}}</span>
+                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[6] === 1,down:BTCUSDTWaveArray[6] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[0]*USDTUSDD).toFixed(2): "-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDTWaveArray[4] === 1,down:BTCUSDTWaveArray[4] === -1}">{{BTCUSDT.BINANCE?(BTCUSDT.BINANCE[2]*USDTUSDD).toFixed(2): "-"}}</span>
                         </div>
                         <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[8] === 1,down:BTCUSDTWaveArray[8] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[0]).toFixed(2): "-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDTWaveArray[10] === 1,down:BTCUSDTWaveArray[10] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[2]).toFixed(2): "-"}}</span>
+                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[8] === 1,down:BTCUSDTWaveArray[8] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[0]*USDTUSDD).toFixed(2): "-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDTWaveArray[10] === 1,down:BTCUSDTWaveArray[10] === -1}">{{BTCUSDT.HUOBI?(BTCUSDT.HUOBI[2]*USDTUSDD).toFixed(2): "-"}}</span>
                         </div>
                         <div class="row">
-                          <span class="row_left"  :class="{up:BTCUSDTWaveArray[0] === 1,down:BTCUSDTWaveArray[0] === -1}">{{BTCUSDT.BITTREX?(BTCUSDT.BITTREX[0]).toFixed(2): "-"}}</span>
-                          <span class="row_right" :class="{up:BTCUSDTWaveArray[2] === 1,down:BTCUSDTWaveArray[2] === -1}">{{BTCUSDT.BITTREX?(BTCUSDT.BITTREX[2]).toFixed(2): "-"}}</span>
+                          <span class="row_left"  :class="{up:BTCUSDWaveArray[0] === 1,down:BTCUSDWaveArray[0] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[0]).toFixed(2): "-"}}</span>
+                          <span class="row_right" :class="{up:BTCUSDWaveArray[2] === 1,down:BTCUSDWaveArray[2] === -1}">{{BTCUSD.BITTREX?(BTCUSD.BITTREX[2]).toFixed(2): "-"}}</span>
                         </div>
                         <div class="row">
                           <span class="row_left"  :class="{up:BTCUSDWaveArray[4] === 1,down:BTCUSDWaveArray[4] === -1}">{{BTCUSD.COINBASEPRO?(BTCUSD.COINBASEPRO[0]).toFixed(2): "-"}}</span>

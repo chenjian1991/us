@@ -733,7 +733,7 @@ export default {
     }
     //判断otc URL
     // this.OTCURL = getOTCURL();
-    this.mainSiteURL = getMainSite();
+    //this.mainSiteURL = getMainSite();
     //公告滚动
     // this.initAnnoucementList();
     // this.timer = setInterval(this.scroll, 3000);
