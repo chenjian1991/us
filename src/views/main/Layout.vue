@@ -119,11 +119,11 @@
         },
         mounted(){
             this.ifAPP = this.$store.state.app.ifAPP;
-            if(this.routerArr.join(',').lastIndexOf(this.$route.name) == -1){
-                this.showTradeHeader = true
-            }else{
-                this.showTradeHeader = false
-            }
+            // if(this.routerArr.join(',').lastIndexOf(this.$route.name) == -1){
+            //     this.showTradeHeader = true
+            // }else{
+            //     this.showTradeHeader = false
+            // }
             this.getAndroidUrl();
             this.judgePCorMoble()
 
