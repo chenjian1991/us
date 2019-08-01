@@ -101,7 +101,7 @@
 </template>
 
 <script>
-   import {getSymbolList_realtime} from '../../api/home.js'//getSymbolList的名字必须与被引入文件的名字相同；
+   import {getSymbolList_realtime} from '_api/exchange.js'
    import bigDecimal from 'js-big-decimal';
    import {BigNumber} from 'bignumber.js';
    import {getCurrencyList} from '../../api/exchange.js'//getSymbolList的名字必须与被引入文件的名字相同；
@@ -144,13 +144,6 @@
             pushData:[],//推送过来的快照
             baseAssetList:[],
             searchVal:"",
-            mainHomeCoin:{}, //大首页推荐的币种
-            tabels:[
-               {text:'1'},
-               {text:'2'},
-               {text:'3'},
-               {text:'4'},
-            ],
             currentName:[],
             currencyRate:'',
             currencyName:'$',
@@ -175,7 +168,6 @@
             this.orderCondtion = e;
             // event.preventDefault() 
             event.stopPropagation()
-             console.log(this.direction)
              if(e =='baseAsset'){  
                   if(this.ascFlagone){
                         this.order = 'desc'
@@ -313,11 +305,11 @@
                   if (nowPrice.previousClose) {
                      diff = bigDecimal.subtract(nowPrice.last, nowPrice.previousClose);
                      a = bigDecimal.multiply(new BigNumber(diff).dividedBy(new BigNumber(nowPrice.previousClose)).toFixed(6), '100')
-                     v.percent = v.last ? Number(bigDecimal.round(a, 2) ) : this.noPadding
+                     v.percent = Number(bigDecimal.round(a, 2) )
                   } else {
                      diff = bigDecimal.subtract(nowPrice.last, nowPrice.open);
                      a = bigDecimal.multiply(new BigNumber(diff).dividedBy(new BigNumber(nowPrice.open)).toFixed(6), '100')
-                     v.percent = v.last ? Number(bigDecimal.round(a, 2)) : this.noPadding
+                     v.percent =Number(bigDecimal.round(a, 2))
                      // console.log(typeof(Number(bigDecimal.round(a, 2) )))//必须是number类型才可以排序
                   }
                   v.lastprice = Number(new bigDecimal(v.last).getValue());
@@ -354,12 +346,12 @@
 
                   })
                
-               //默认写死的币种
-               if(v.symbol == "ETHBTC" ||v.symbol == "LTCBTC" || v.symbol == "LTCETH" || v.symbol == "DASHBTC"){
-                  this.mainHomeCoin[v.symbol] = Object.assign(v, nowPrice)
-                  // this.$store.commit('updateMainHomePrice', this.mainHomeCoin);
-                  this.$emit('getPrice',this.mainHomeCoin)
-               }
+               // //默认写死的币种
+               // if(v.symbol == "BTCUSDT" ||v.symbol == "FFUSDT" || v.symbol == "BTTUSDT" || v.symbol == "USDTUSDD"){
+               //    this.mainHomeCoin[v.symbol] = Object.assign(v, nowPrice)
+               //    // this.$store.commit('updateMainHomePrice', this.mainHomeCoin);
+               //    // this.$emit('getPrice',this.mainHomeCoin)
+               // }
                newArr.push(Object.assign(v, nowPrice))
                // console.log(newArr)
             })
@@ -374,6 +366,7 @@
             },
          //获取交易对的实时价格
          getSymbolNowPrice(symbol) {
+            // console.log(222,this.pushData)
             let aa = _.last(this.pushData[symbol])
             return _.last(this.pushData[symbol])
          },
@@ -386,26 +379,9 @@
                let sortArr = _.sortBy(res,['symbolType','quoteAsset']) //排序
                sortArr.map((v, i) => {
                   this.sites.map((site,i) => {
-                     if(_.indexOf(v.siteType,site) != -1){
-                        if(site=='B'){
-                           if(v.quoteAsset=='BTC'||v.quoteAsset=='ETH' || v.quoteAsset=='USD'){
-                              if(v.baseAsset=='BTC'||v.baseAsset=='LTC'||v.baseAsset=='ETH'||v.baseAsset=='ZEC'||v.baseAsset=='DASH'||v.baseAsset=='XLM'){
-                                 // v 每个站
-                                 if (siteObj[site]) {
-                                    if (siteObj[site][v.quoteAsset]) {
-                                       siteObj[site][v.quoteAsset].push(v)
-                                    } else {
-                                       siteObj[site][v.quoteAsset] = [v]
-                                    }
-                                 } else {
-                                    let obj = {};
-                                    obj[v.quoteAsset] = [v]
-                                    siteObj[site] = obj
-                                 }
-                              }
-                           }
-                        }else{
-                            // v 每个站
+                     if(_.indexOf(v.siteType,site) != -1 && v.siteType[0]!=='S' && v.quoteAsset!=='USDD'){//dwj不要usdd
+                        // v 每个站
+                        if(v.baseAsset=='LTC' || v.baseAsset=='ETH' || v.baseAsset=='BTC'){//dwj显示币种
                            if (siteObj[site]) {
                               if (siteObj[site][v.quoteAsset]) {
                                  siteObj[site][v.quoteAsset].push(v)
@@ -418,60 +394,47 @@
                               siteObj[site] = obj
                            }
                         }
-                        symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
                      }
                   })
+                  symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
                })
-               // sortArr.map((v, i) => {
-               //    this.sites.map((site,i) => {
-               //       if(_.indexOf(v.siteType,site) != -1 && v.siteType[0]!=='S'){
-               //          // v 每个站
-               //          if (siteObj[site]) {
-               //             if (siteObj[site][v.quoteAsset]) {
-               //                siteObj[site][v.quoteAsset].push(v)
-               //             } else {
-               //                siteObj[site][v.quoteAsset] = [v]
-               //             }
-               //          } else {
-               //             let obj = {};
-               //             obj[v.quoteAsset] = [v]
-               //             siteObj[site] = obj
-               //          }
-               //       }
-               //    })
-               //    symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
-               // })
                this.symbolListSelf = siteObj;
                // //更新交易对的行情  默认掉用一次  当有快照驱动时 监听数据变化
                // this.initBoardModule();
                //获取交易对的推送的行情
-               this.getSSERealTime(symbolUrl+'symbol=ETHUSDT&$ETHUSDT=1&symbol=BTCUSDT&$BTCUSDT=1&')
+               this.getSSERealTime(symbolUrl)
             })
          },
          //获取推送行情
          getSSERealTime(url) {
-            let baseURL = window.location.protocol+'//'+window.location.host
-            this.SSEsource = new EventSource(`${baseURL}/quote/realTime.stream?${url}`)
+            const baseURL =  (window.location.protocol == 'http:') ? 'ws://' : 'wss://';
+            const host =  window.location.host;
+            this.SSEsource = new ReconnectingWebSocket(`${baseURL}${host}/quote/realTime.ws?${url}`)
             this.SSEsource.onopen = function(e) {
             };
-            this.SSEsource.addEventListener('_RESULT', function(e) {
+            this.SSEsource.onmessage = (e) => {
                //每次推送一条记录
                let result = JSON.parse(e.data)
+               if (result.ping != undefined) {
+                  var pongResponse = {};
+                  pongResponse.pong = result.ping;
+                  this.SSEsource.send(JSON.stringify(pongResponse))
+                  return
+               }
                if (this.pushData[result.symbol]) {//pushData 是后台推送过来的快照数据
-                  this.pushData[result.symbol].push(result)
-                  //保持21条行情记录,
-                  if (this.pushData[result.symbol].length > 1) {
-                     this.pushData[result.symbol] = _.drop(this.pushData[result.symbol], 1)
-                  }
+                  this.pushData[result.symbol].splice(0,1,result);
                } else {
                   this.pushData[result.symbol] = [result];
                }
-               //对象变动检测
-               this.pushData = Object.assign({}, this.pushData)
-            }.bind(this))
-            this.SSEsource.addEventListener('_ERROR', function(e) {
-               console.log('连接断开', e)
-            })
+               this.initBoardModule();
+               
+            }
+            this.SSEsource.onerror = (e) =>{
+               console.log('market ws error', e)
+            }
+            //关闭时候触发
+            this.SSEsource.onclose = (e) => {
+            };
          },
          searchCoinList(value){//查询方法
             let searchList = this.baseAssetList;
@@ -524,13 +487,6 @@
             }
       },
       watch:{
-         'pushData': {
-            handler: function(newVal, oldVal) {
-               //更新交易对的行情
-               this.initBoardModule();
-            },
-            deep: true,
-         },
           listenstage:function(newV ,oldV){
                 //法币估值做相应的刷新
                 this.initBoardModule()
@@ -562,7 +518,6 @@
 
 <style scoped  lang="less">
    .plate_content{
-      width:1200px;
       min-height: 200px;
       margin:0 auto;
       margin-bottom: 40px;
@@ -610,16 +565,16 @@
             }
          }
          .bsiteFont{
-            color: #38499A;
+            color: #12869A;
          }
          .fsiteFont{
-            color: #AA935E;
+            color: #12869A;
          }
          .ssiteFont{
-            color: #268790;
+            color: #12869A;
          }
          .csiteFont{
-            color: #56646F;
+            color: #12869A;
          }
          
 
@@ -748,7 +703,9 @@
                background-size: 20px;
                transition: transform .2s linear;
                &:hover{
-                  transform: rotateZ(45deg);
+                  // transform: rotateZ(45deg);
+                  background: url('../assets/images/home/mainHome/hover-exchange.png') no-repeat center center;
+                  background-size: 20px;
                }
             }
 
@@ -816,10 +773,10 @@
 
 </style>
 <style lang='less'>
-  @bcolor:#38499A;
-  @scolor:#268790;
-  @fcolor:#AA935E;
-  @ccolor:#56646F;
+  @bcolor:#12869A;
+  @scolor:#12869A;
+  @fcolor:#12869A;
+  @ccolor:#12869A;
    #commonMarket{
       .ivu-input{
          border:1px solid #E5E5E5 !important;
@@ -835,6 +792,7 @@
       .ivu-tabs-bar{
          padding-left:220px;
          border-bottom:1px solid #f5f5f5;
+         margin-bottom:0;
       }
       .B{
          .ivu-tabs-nav .ivu-tabs-tab-active{
