@@ -986,7 +986,7 @@ export default {
    sfrzCompleteName: "Name：",
    sendEmail: "If you have any question, please contact customer support via email: service@55.com",
    invalidFormate: "Invalid file format.",
-   picIsToolarge: "File is too large, no more than 1M. ",
+   picIsToolarge: "File is too large, no more than 6M. ",
    idcardUnick:'The ID number has been used.',
    //邀请好友
    yqzyImage1: "Invite your friends",
