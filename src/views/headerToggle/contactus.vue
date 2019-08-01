@@ -76,8 +76,7 @@
             <div class="col-sm-6 mb-6">
               <div class="js-form-message">
                 <label class="form-label">
-                    Your Phone Number
-
+                    Phone
                 </label>
 
                 <input type="text" class="form-control" name="subject" placeholder="Web design" aria-label="Web design" required
@@ -122,7 +121,7 @@
 
           <div class="text-center">
             <button type="button" @click="submit" class="btn btn-55-primary btn-primary btn-wide transition-3d-hover mb-4">Submit</button>
-            <p class="small">We'll get back to you in 1-2 business days.</p>
+            <!-- <p class="small">We'll get back to you in 1-2 business days.</p> -->
           </div>
         </form>
         <!-- End Contacts Form -->
