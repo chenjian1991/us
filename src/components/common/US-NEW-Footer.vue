@@ -49,51 +49,84 @@
             <!-- Lists -->
             <div class="border-bottom">
                 <div class="container space-2">
-                <div class="row justify-content-md-between">
-                    <div class="col-sm-4 col-lg-2 mb-4 mb-lg-0">
-                    <h4 class="h6 font-weight-semi-bold">{{$t('fronthomefootCompany')}}</h4>
+                <div class="row justify-content-left">
+                    <div class="col-sm-2 col-lg-2 mb-4">
+                    <h4 class="h6 font-weight-semi-bold">About Us</h4>
 
                     <!-- List Group -->
                     <ul class="list-group list-group-flush list-group-borderless mb-0">
-                        <li><router-link class="list-group-item list-group-item-action" to="/about55">{{$t('fronthomefootAbout')}}</router-link></li>
+                        <li><router-link class="list-group-item list-group-item-action" to="/ourcompany">Our Company</router-link></li>
+                        <li><router-link to="/team"  class="list-group-item list-group-item-action">The Team</router-link></li>
                         <li>
                             <a class="list-group-item list-group-item-action" href="https://www.linkedin.com/company/55-global/jobs/" target="_blank">{{$t('fronthomefootCareers')}}</a>
                         </li>
-                        <li><router-link to="/terms"  class="list-group-item list-group-item-action">{{$t('UserAgreement')}}</router-link></li>
-                        <li><router-link to="/privacy" class="list-group-item list-group-item-action">{{$t('fronthomefootPrivacy')}}</router-link></li>
-                        <li><router-link to="/fee" class="list-group-item list-group-item-action">{{$t('fronthomefootFee')}}</router-link></li>
-                        <li><router-link to="/tradingRules" class="list-group-item list-group-item-action">Trading Rules</router-link></li>
-                        
+                        <li><router-link to="/contactus" class="list-group-item list-group-item-action">Contact Us</router-link></li>
+                    
                         <!-- <li><router-link to="/tradingRules" class="list-group-item list-group-item-action">Trading Rules</router-link></li> -->
                     </ul>
                     <!-- End List Group -->
                     </div>
-                    <div class="col-sm-4 col-lg-2 mb-4 mb-lg-0">
-                    <h4 class="h6 font-weight-semi-bold">{{$t('fronthomefootProducts')}}</h4>
-
-                    <!-- List Group -->
-                    <ul class="list-group list-group-flush list-group-borderless mb-0">
-                         <li >
-                            <router-link  class="list-group-item list-group-item-action" to="/exchange">{{$t('fronthomefootMarkets')}}</router-link>
-                        </li>
-                        <li>
-                            <a class="list-group-item list-group-item-action" :href="englishCommunityURL" target="_blank">{{$t('fronthomefootSocialtrading')}}</a>
-                        </li>
-                        <li>
-                            <router-link  class="list-group-item list-group-item-action" to="/capital">55 Capital</router-link>
-                        </li>
-                       
-                    </ul>
-                    <!-- End List Group -->
+                    <div class="col-sm-2 col-lg-2 mb-4 ">
+                        <h4 class="h6 font-weight-semi-bold">Legal</h4>
+                        <!-- List Group -->
+                        <ul class="list-group list-group-flush list-group-borderless mb-0">
+                            <li >
+                                <router-link  class="list-group-item list-group-item-action" to="/terms">User Agreement</router-link>
+                            </li>
+                            <li>
+                                <router-link  class="list-group-item list-group-item-action" to="/privacy">Privacy Policy</router-link>
+                            </li>
+                            <li><router-link to="/fee" class="list-group-item list-group-item-action">Trading Fee</router-link></li>
+                           <li><router-link to="/tradingRules" class="list-group-item list-group-item-action">Trading Rules</router-link></li>
+                        
+                            
+                            
+                          
+                        </ul>
+                        <!-- End List Group -->
                     </div>
-
-                    <div class="col-sm-4 col-lg-2 mb-4 mb-lg-0">
+                     <div class="col-sm-2 col-lg-2 mb-4">
+                        <h4 class="h6 font-weight-semi-bold">Benefits</h4>
+                        <!-- List Group -->
+                        <ul class="list-group list-group-flush list-group-borderless mb-0">
+                            <li >
+                                <router-link  class="list-group-item list-group-item-action" to="/whyus">Why Us</router-link>
+                            </li>
+                            <li>
+                                <router-link  class="list-group-item list-group-item-action" to="/smartexecution">Smart Execution</router-link>
+                            </li>
+                            <li>
+                                <router-link  class="list-group-item list-group-item-action" to="/faqs">FAQs</router-link>
+                            </li>
+                          
+                        </ul>
+                        <!-- End List Group -->
                     </div>
-                        <div class="col-md-6 col-lg-4">
+                     <div class="col-sm-2 col-lg-2 mb-4">
+                        <h4 class="h6 font-weight-semi-bold">Features</h4>
+                        <!-- List Group -->
+                        <ul class="list-group list-group-flush list-group-borderless mb-0">
+                            <li >
+                                <router-link  class="list-group-item list-group-item-action" to="/crypto">Crypto Trading</router-link>
+                            </li>
+                            <li>
+                                <a href="http://55.trade/doc/#introduction" target="_blank"  class="list-group-item list-group-item-action" >API Trading</a>
+                            </li>
+                            <li>
+                                <a class="list-group-item list-group-item-action" :href="englishCommunityURL" target="_blank">Social Trading</a>
+                            </li>
+                          
+                        </ul>
+                        <!-- End List Group -->
+                    </div>
+                    <div class="col-sm-2 col-lg-2 mb-4">
+                      <div>
                         <div>
-                             <img src="../../assets/images/foot_code.png" alt="Logo" style="width:100%;height:auto;">
+                             <img  src="../../assets/images/foot_code.png" alt="Logo" style="width:300px;height:auto;">
                         </div>
                         </div>
+                    </div>
+                        
                         
                 </div>
                 </div>

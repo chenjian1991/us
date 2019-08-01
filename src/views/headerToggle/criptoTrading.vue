@@ -2,15 +2,16 @@
    <div id="cripto" class="cripto">
          <!-- ========== MAIN ========== -->
   <main id="content" role="main">
-    <!-- Hero Section -->
-    <div class="bg-primary bg-img-hero" style="background-image: url(../../assets/svg/components/abstract-shapes-15.svg);">
-      <div class="container space-2 space-lg-3">
+       <!-- Hero Section -->
+    <div style="background:#092a30;"  class="bg-img-hero">
+      <div id="bg-img" class="container space-2 space-lg-3">
         <div class="w-lg-65 text-center mx-lg-auto">
           <h1 class="text-white font-weight-medium mb-0">Crypto Trading</h1>
         </div>
       </div>
     </div>
     <!-- End Hero Section -->
+
 
     <!-- Content Section -->
     <div class="container space-2 space-lg-0">
@@ -23,15 +24,43 @@
             <p>At 55 Trade, we believe it is paramount that everyone should have the freedom to control and maximize their wealth; we strive to make this a reality by providing 24/7 trading hours and global best bid and offer which allows investors to buy and sell a variety of assets at the best available prices.</p>
 
             <p>The Asset Network consists of three sub-networks,</p>
-
-            <p>1.Trade Network
-                    Interconnect global assets & liquidity pools on a trade network</p>
-
-            <p>2.Social Network
-                    Interconnect global investors, influencers & followers on a social network</p>
-
-            <p>3.Retail Network
-                    Interconnect merchants, payment processors & consumers on a retail network</p>
+             <!-- List -->
+            <ul class="list-unstyled mb-0">
+                                    <li class="py-3">
+                                      <div class="media">
+                                        <span class="btn btn-xs btn-icon btn-soft-primary rounded-circle mr-3">
+                                          <span class="fas fa-check btn-icon__inner"></span>
+                                        </span>
+                                        <div class="media-body text-secondary">
+                                              Trade Network Interconnect global assets & liquidity pools on a trade network
+                                          </div>
+                                      </div>
+                                    </li>
+                                    <li class="py-3">
+                                      <div class="media">
+                                        <span class="btn btn-xs btn-icon btn-soft-primary rounded-circle mr-3">
+                                          <span class="fas fa-check btn-icon__inner"></span>
+                                        </span>
+                                        <div class="media-body text-secondary">
+                                           Social Network
+                    Interconnect global investors, influencers & followers on a social network
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="py-3">
+                                      <div class="media">
+                                        <span class="btn btn-xs btn-icon btn-soft-primary rounded-circle mr-3">
+                                          <span class="fas fa-check btn-icon__inner"></span>
+                                        </span>
+                                        <div class="media-body text-secondary">
+                                           Retail Network
+                    Interconnect merchants, payment processors & consumers on a retail network
+                                        </div>
+                                      </div>
+                                    </li>
+                                   
+             </ul>
+            <!-- End List -->
           </div>
         </div>
       </div>
@@ -84,6 +113,11 @@
 </script>
 <style lang="less">
 #cripto{
+  #bg-img{
+        background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
+        height: 120%;
+        background-size: cover;
+    }
     p{
         // margin: auto !important;
         padding: auto !important;
