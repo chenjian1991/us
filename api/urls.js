@@ -202,3 +202,5 @@ export const identifySubmitUrl = `${proxyURL}/sso/form/identify/submit` //实名
 export const identifyUpdateUrl = `${proxyURL}/sso/form/identify/update` //实名认证表单修改
 export const identifyQueryUrl = `${proxyURL}/sso/form/identify/query` //实名认证状态查询
 export const queryIdentifyStatus = `${proxyURL}/sso/new-identify/query-identify-status`//实名认证是否通过
+export const redeemInfoUrl = `${proxyURL}/sso/form/submit`//赎回信息填写
+
