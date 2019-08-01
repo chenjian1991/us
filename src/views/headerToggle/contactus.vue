@@ -1,6 +1,6 @@
 <template>
    <div id="cripto" class="cripto">
-        <Modal
+        <!-- <Modal
                     class-name="vertical-center-modal"
                     v-model="robotModalflag"
                     :title="this.$t('yanzheng')"
@@ -9,9 +9,11 @@
                    >
                     <div id="robot"></div>
                     <p slot="footer"></p>
-                </Modal>
+                </Modal> -->
   <!-- ========== MAIN ========== -->
   <main id="content" role="main">
+     <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
+                         <div id="captcha"></div>
        <!-- Hero Section -->
     <div style="background:#092a30;"  class="bg-img-hero">
       <div id="bg-img" class="container space-2 space-lg-3">
@@ -150,39 +152,54 @@ import {redeemInfoUrl} from '../../../api/urls.js';
                 phone:'',
                 textarea:'',
                 selectValue:'Sales',
+                captchaIns:'',
             }
         },
         methods:{
             submit(){  
-                this.robotModalflag = true;
+                this.captchaIns && this.captchaIns.popUp()
             },
             changeSelect(event){
               this.selectValue=event.target.value;
             },
-            onloadCallback(){
+           initRobot(){
                 let _that = this;
-                let widgetId=grecaptcha.render('robot', {
-                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
-                    "theme":'light',
-                    "size":'normal',
-                    'callback': function (data) {//验证成功回调函数
-                        if(data.length!==0){
-                          _that.verify(data)
-                          
+                let captchaIns;
+                if (captchaIns) {
+                    captchaIns.destroy()
+                }
+                initNECaptcha({
+                    element: '#captcha',
+                    captchaId: 'a3cd39c172284133a3470b7ec05a2bb0',
+                    mode: 'popup',
+                    width: '320px',
+                    lang:'en',
+                    onReady: function (instance) {
+                        // 验证码一切准备就绪，此时可正常使用验证码的相关功能
+                    },
+                    onClose: function () {
+                        // 弹出关闭结束后将会触发该函数
+                        // console.log('close')
+                        // _that.loaded = true;
+                    },
+                    onVerify: function (err, data) {
+                        if(err){
+                        //
                         }
-                    },
-                    "expired-callback":function(){//验证失效回调函数
-                        console.log('expired-callback')
-                    },
-                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
-                        console.log('error-callback')
-                    },
+                        if(data){//网易人机验证通过
+                            let value = document.getElementsByName('NECaptchaValidate')[0].value;
+                             _that.verify(value)
+                        }
+                    }
+                }, function (instance) {
+                    // 初始化成功后，用户输入对应用户名和密码，以及完成验证后，直接点击登录按钮即可
+                    _that.captchaIns = instance;
+                }, function onerror(err) {
+                    _that.captchaIns = ''
+                    //验证码初始化失败处理逻辑，例如：提示用户点击按钮重新初始化
+                })//初始化函数结尾
 
-                    });
-                    // console.log('ccc',widgetId)
-                    _that.googleID = widgetId;
-                    return widgetId;
-
+                return captchaIns;
             },
             verify(validate){
             postHeaderTokenBodyApi(redeemInfoUrl, validate, {
@@ -194,14 +211,8 @@ import {redeemInfoUrl} from '../../../api/urls.js';
               selectValue:this.selectValue,
               // uid:localStorage.getItem('loginEx55Pin')
             }).then(data => {
-              this.robotModalflag=false;
-              // if (data.result) {
-              //   this.isSubmit = true
-              //   this.modalInfo = this.$t('redeem_提交成功')
-              // } else {
-              //   this.isSubmit = true
-              //   this.modalInfo = this.$t('redeem_提交失败')
-              // }
+              debugger
+         
             });
 
           },
@@ -217,7 +228,8 @@ import {redeemInfoUrl} from '../../../api/urls.js';
             },
         },
         mounted(){
-            this.onloadCallback()
+            this.initRobot()
+            
              $.HSCore.components.HSValidation.init('.js-validate', {
                     rules: {
                     confirmPassword: {
