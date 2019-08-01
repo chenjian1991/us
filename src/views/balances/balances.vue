@@ -916,7 +916,6 @@
          getIdentify() {
             identifyQuery(Cookies.get('loginToken')).then(res => {//实名认证
                if (res.data) {
-                  res.data['dataStatus']=1
                   switch (res.data['dataStatus']) {
                      case 1:
                         this.checkStatus = "NOT_SET"
