@@ -49,6 +49,21 @@
               class="collapse navbar-collapse u-header__navbar-collapse"
             >
               <ul class="navbar-nav u-header__navbar-nav">
+                <!-- exchange -->
+                <li
+                  class="nav-item hs-has-mega-menu u-header__nav-item"
+                  data-event="hover"
+                  data-animation-in="slideInUp"
+                  data-animation-out="fadeOut"
+                  data-max-width="900px"
+                  data-position="right"
+                >
+                  <router-link
+                    to='/exchange'
+                    class="nav-link u-header__nav-link "
+                  >Exchange</router-link>
+                </li>
+                <!-- exchange -->
           <!-- Features -->
           <li class="nav-item hs-has-sub-menu u-header__nav-item"
               data-event="hover"
