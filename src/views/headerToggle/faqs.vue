@@ -15,7 +15,6 @@
 
 
 
-    <hr class="my-0">
 
     <!-- FAQ Topics Section -->
     <div class="container space-2 space-md-3">
@@ -32,13 +31,13 @@
                data-offset-bottom="24">
             <ul class="js-scroll-nav list-group list-group-transparent list-group-white list-group-flush list-group-borderless py-3 px-5">
               <li>
-                <a class="list-group-item list-group-item-action py-3" href="#basics">Basics</a>
+                <a class="list-group-item list-group-item-action py-3" href="#basics">General</a>
               </li>
               <li>
-                <a class="list-group-item list-group-item-action py-3" href="#syncing">What's More</a>
+                <a class="list-group-item list-group-item-action py-3" href="#syncing">Account Creation</a>
               </li>
               <li>
-                <a class="list-group-item list-group-item-action py-3" href="#account">Account Safty</a>
+                <a class="list-group-item list-group-item-action py-3" href="#account">Account Safety</a>
               </li>
             </ul>
           </nav>
@@ -46,10 +45,10 @@
         </div>
 
         <div class="col-lg-9">
-          <div id="basics" class="space-bottom-2">
+          <div id="basics" class="space-1">
             <!-- Title -->
             <div class="mb-3">
-              <h3 class="text-primary font-weight-semi-bold">Basics</h3>
+              <h3  class="text-primary font-weight-semi-bold">General</h3>
             </div>
             <!-- End Title -->
 
@@ -76,7 +75,7 @@
                      aria-labelledby="basicsHeadingOne"
                      data-parent="#basicsAccordion">
                   <div class="card-body">
-                       Navigate to “Create Account” in the top navigation and enter your personal information according to the requested fields.
+                       Navigate to <router-link class='text-primary' to='/Register'>“Create Account” </router-link> in the top navigation and enter your personal information according to the requested fields.
                   </div>
                 </div>
                 </div>
@@ -105,8 +104,8 @@
                   <div class="card-body">
                     KYC/AML is know your customer and anti-money laundering identity verification that all users must pass to be able to perform any transacting functions on 55.trade or 55.com. 
                     KYC/AML identity verification is required for all users to operate within US compliance.
-                    Users are required to provide a images of a valid government identification of themselves including the front and back of the identification document as well as a picture of the user holding their identification with additional requirements.
-                    To complete KYC/AML verification, visit 55.trade/kyc
+                    Users are required to provide images of a valid government identification of themselves including the front and back of the identification document as well as a picture of themselves / the user holding their identification with additional requirements.
+                    To complete KYC/AML verification, visit <router-link to='/kyc'>55.trade/kyc</router-link> 
                   </div>
                 </div>
                 </div>       
@@ -133,11 +132,22 @@
                      aria-labelledby="basicsHeadingThree"
                      data-parent="#basicsAccordion">
                   <div class="card-body">
-                    you're looking for more specific inquiries and need to connect with a team at 55 Trade, please reach out directly to the appropriate channels below:
-                    For general inquiries: team@55.trade 
-                    For business and partnership inquiries: partners@55.trade
-	                  For press inquiries: media@55.trade
-                    We're also on Telegram with the following channels: Official 55.trade Telegram.
+                    Please review this FAQ for answers. If you are unable to resolve your issue through the FAQ, please contact the 55 Trade team directly at the channels listed below:
+                      <ul class='pl-3 mt-3'>
+                        <li>
+                          For general inquiries: <a class='text-primary' href='mailto:team@55.trade'>team@55.trade</a>
+                        </li>
+                        <li>
+                          For business and partnership inquiries:<a class='text-primary' href='mailto:partners@55.trade'>partners@55.trade</a> 
+                        </li>
+                         <li>
+	                        For press inquiries:<a class='text-primary' href='mailto:media@55.trade'>media@55.trade</a> 
+                        </li>
+                        <li>
+                         We're also on Telegram with the following channels: Official 55.trade Telegram. 
+                        </li>
+                        
+                      </ul>
                   </div>
                 </div>
               </div>
@@ -164,20 +174,17 @@
                      aria-labelledby="basicsHeadingFour"
                      data-parent="#basicsAccordion">
                   <div class="card-body">
-                    In the top navigation, click on “Deposit & Withdraw” from the “Balances” drop-down menu. Once at the “Deposit & Withdraw” page, click the button for the activity you are looking to complete and then follow the instructions on the following page.                  </div>
+                    In the top navigation, click on <router-link class='text-primary' to='/balances'>“Deposit & Withdraw”</router-link> from the <router-link class='text-primary' to='/balances'>“Balances” </router-link>  drop-down menu. Once at the <router-link class='text-primary' to='/balances'>“Deposit & Withdraw”</router-link> page, click the button for the activity you are looking to complete and then follow the instructions on the following page.</div>
                 </div>
                 </div>
               <!-- End Card -->
             </div>
             <!-- End Basics Accordion -->
           </div>
-
-          <hr class="my-0">
-
-          <div id="syncing" class="space-2">
+          <div id="syncing" class="space-1">
             <!-- Title -->
             <div class="mb-3">
-              <h3 class="text-primary font-weight-semi-bold">What's more</h3>
+              <h3 class="text-primary font-weight-semi-bold">Account Creation</h3>
             </div>
             <!-- End Title -->
 
@@ -192,7 +199,7 @@
                             data-target="#syncingCollapseOne"
                             aria-expanded="false"
                             aria-controls="syncingCollapseOne">
-                            My state is not currently eligible for account registration on 55 Trade. When will my state be able to use 55 Trade?
+                            My state is not currently eligible for account creation on 55 Trade. When will my state be able to use 55 Trade?
                       <span class="card-btn-arrow">
                         <span class="fas fa-arrow-down small"></span>
                       </span>
@@ -203,7 +210,7 @@
                      aria-labelledby="syncingHeadingOne"
                      data-parent="#syncingAccordion">
                   <div class="card-body">
-                    We will notify clients on updates to our company policies, as they pertain to our regulatory compliance.
+                    We will notify registrants on updates to our company policies and regulatory compliance via email. To receive updates, news, and announcements, <router-link class='text-primary' to='/Register'>join here</router-link>
                    </div>
                 </div>
               </div>
@@ -229,7 +236,7 @@
                      aria-labelledby="syncingHeadingTwo"
                      data-parent="#syncingAccordion">
                   <div class="card-body">
-                    Check your spam and junk mail accordingly. If you still require assistance, contact us.
+                    Check your spam and junk mail accordingly. If you still require assistance, <router-link class='text-primary' to='/contactus'>contact us.</router-link>
                     If a verification email is not received after creating an account, please contact 55 Live Chat Support for immediate assistance. The issue will be immediately escalated to our technology team to resolve.
                   </div>
                 </div>
@@ -240,12 +247,11 @@
             <!-- End Syncing Accordion -->
           </div>
 
-          <hr class="my-0">
 
-          <div id="account" class="space-2">
+          <div id="account" class="space-1">
             <!-- Title -->
             <div class="mb-3">
-              <h3 class="text-primary font-weight-semi-bold">Account Safty</h3>
+              <h3  class="text-primary font-weight-semi-bold">Account Safety</h3>
             </div>
             <!-- End Title -->
 
@@ -287,7 +293,7 @@
                             data-target="#accountCollapseThree"
                             aria-expanded="false"
                             aria-controls="accountCollapseThree">
-                            Why am I not receiving an SMS code?
+                            Why didn't I receive an SMS code?
 
                       <span class="card-btn-arrow">
                         <span class="fas fa-arrow-down small"></span>
@@ -299,12 +305,22 @@
                      aria-labelledby="accountHeadingTwo"
                      data-parent="#accountAccordion">
                   <div class="card-body">
-                        The SMS code error and not receiving the verification code may be caused by network congestion. Please wait and try again. If error continues, please follow these steps:
-                        1.)	Please make sure your location is on the list of SMS supported areas for the 55 Exchange.
-                        2.)	Please make sure the signal of your cellphone is stable; move to a location with good signal coverage
-                        3.)	Please cancel Firewalls and Blacklists on your phone
+                        The SMS code error and not receiving the verification code may be caused by network congestion. Please wait and try again. If you continue to experience this SMS code issue, please follow these steps:
+                              <ul class='pl-3 mt-3 mb-3'>
+                        <li>
+                            1.)	Please make sure your location is on the list of SMS supported areas for the 55 Exchange.
+                        </li>
+                        <li>
+                          2.)	Please make sure the signal of your cellphone is stable; move to a location with good signal coverage
+                        </li>
+                         <li>
+	                        3.)	Please cancel Firewalls and Blacklists on your phone
+                        </li>
+                        <li>
                         4.)	Reboot your cell phone
-                        If you still cannot receive the SMS verification code after restarting cell phone, please contact 55.com with your mobile phone model, the mobile system category (IOS, Android, etc.), country, location, and we will contact SMS suppliers as soon as possible.
+                        </li>
+                      </ul>
+                        If you still cannot receive the SMS verification code after restarting cell phone, please contact 55 with your mobile phone model, the mobile system category (IOS, Android, etc.), country, location, and we will contact SMS suppliers as soon as possible.
                         
                         55 Customer Support will then reset your Google Authenticator once your selfie photo has been reviewed, verified, and approved.
                       </div>
@@ -333,7 +349,7 @@
                      aria-labelledby="accountHeadingThree"
                      data-parent="#accountAccordion">
                   <div class="card-body">
-                        KYC verification is required for each user depositing or withdrawing funds. To complete KYC verification, please log into your account and submit the required information.</div>
+                        KYC verification is required for each user depositing or withdrawing funds. To complete <router-link class='text-primary' to='/kyc'>KYC verification </router-link>,please <router-link class='text-primary' to='/login'>log into</router-link> your account and submit the required information.</div>
                 </div>
               </div>
               <!-- End Card -->
@@ -343,9 +359,9 @@
                       <h5 class="mb-0">
                         <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                                 data-toggle="collapse"
-                                data-target="#accountCollapseFour"
+                                data-target="#accountCollapseFive"
                                 aria-expanded="false"
-                                aria-controls="accountCollapseFour">
+                                aria-controls="accountCollapseFive">
                                 How can I keep my account safe?
     
                           <span class="card-btn-arrow">
@@ -354,12 +370,12 @@
                         </button>
                       </h5>
                     </div>
-                    <div id="accountCollapseFour" class="collapse"
+                    <div id="accountCollapseFive" class="collapse"
                          aria-labelledby="accountHeadingFour"
                          data-parent="#accountAccordion">
                       <div class="card-body">
-                            55 will never ask for your account password. Do not give your password to anyone claiming to be from 55 Customer Support. Do not call any phone number for someone claiming to be from 55 Customer Support. Do not send money to any individual claiming to be from 55 Customer Support. 
-                            Lastly, as an additional security layer, please enable Google 2FA Authentication. 
+                            55 will never ask for your account password. Do not give your password to anyone claiming to be from 55 Customer Support. Do not pickup nor call any phone number from someone claiming to be from 55 Customer Support. Do not send money to any individual claiming to be from 55 Customer Support. 
+                            As an additional security layer, please enable Google 2FA Authentication. 
                           </div>
                         </div>
                   </div>
@@ -369,7 +385,6 @@
             <!-- End Account Accordion -->
           </div>
 
-          <hr class="my-0">
 
         </div>
       </div>
@@ -378,7 +393,6 @@
 
     <!-- Sticky Block End Point -->
     <div id="stickyBlockEndPoint"></div>
-    <hr class="my-0">
   <!-- ========== END MAIN ========== -->
   </main>
    </div>

@@ -1222,7 +1222,8 @@
                      FrencyCountry.push(item);
                   }
                });
-               this.countryNumber = FrencyCountry[0].code;
+               this.countryNumber = FrencyCountry[4].code;
+               console.log(FrencyCountry[3].code)
             })
 
          },

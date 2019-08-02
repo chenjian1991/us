@@ -15,7 +15,7 @@
     <!-- Content Section -->
     <div class="container space-2 space-lg-0">
       <div class="row" >
-        <div class="col-lg-16 space-lg-2">
+        <div class="col-lg-12 space-lg-2">
           <div class="pl-lg-4 ">
              <p class="description">Founded in December of 2017 and based in the US, 55 Trade is an asset network that provides investors with access to global investment, allowing a seamless and efficient flow of high quality assets around the world. 55 Trade is not only limited to cryptocurrencies; we use blockchain technology and tokenization to bridge traditional markets to support the trading of a variety of assets.</p>
         
@@ -92,7 +92,7 @@
                                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                 <h3 class="h5 mb-4">Ashu Swami</h3>
                                 <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">CTO</span>
-                                <p class="font-size-14">Ashu is the CTO of 55. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
+                                <p class="font-size-14 description">Ashu is the CTO of 55. Previously, Ashu headed a SPV of Quadeye Securities which pioneered and traded Mining Swaps, operated cloud mining datacenters, and managed a mining investment fund. </p>
 
                                 </div>
                                 <div class="col-sm-6">
@@ -107,7 +107,7 @@
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                     <h3 class="h5 mb-4">Simon Grunfeld</h3>
                                     <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">SVP of Operations</span>
-                                    <p class="font-size-14">Simon's professional background is mostly from the retail FX and IT solutions marketplace. Simon has a solid background of the inner workings of the capital markets, which came by way of the fintech experience he developed over the years.</p>
+                                    <p class="font-size-14 description">Simon's professional background is mostly from the retail FX and IT solutions marketplace. Simon has a solid background of the inner workings of the capital markets, which came by way of the fintech experience he developed over the years.</p>
                                     </div>
                                     <div class="col-sm-6">
                                       <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_9.jpg" alt="Image Description">
@@ -122,7 +122,7 @@
                                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                 <h3 class="h5 mb-4">Lisa Loud	</h3>
                                 <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3"> SVP of Strategic Partnerships</span>
-                                <p class="font-size-14">Lisa Loud has joined 55 as  SVP of Strategic Partnerships. Lisa led strategy at BitMEX from 2017, and during her tenure, the exchange volume reached the largest crypto volume worldwide in early 2018. </p>
+                                <p class="font-size-14 description">Lisa Loud has joined 55 as  SVP of Strategic Partnerships. Lisa led strategy at BitMEX from 2017, and during her tenure, the exchange volume reached the largest crypto volume worldwide in early 2018. </p>
                                 </div>
                                 <div class="col-sm-6">
                                 <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_2.jpg" alt="Image Description">
@@ -137,7 +137,7 @@
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                     <h3 class="h5 mb-4">Jeremy Xue</h3>
                                     <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">SVP of Technology</span>
-                                    <p class="font-size-14">Jeremy Xue is the Senior VP of Technology of 55. Xue previously founded a cryptocurrency exchange BitChain Exchange and served as Chief Technology Officer. Xue implemented the latest trading platform for the New York Stock Exchange.</p>
+                                    <p class="font-size-14 description">Jeremy Xue is the Senior VP of Technology of 55. Xue previously founded a cryptocurrency exchange BitChain Exchange and served as Chief Technology Officer. Xue implemented the latest trading platform for the New York Stock Exchange.</p>
                                     </div>
                                     <div class="col-sm-6">
                                       <img class="img-fluid rounded mx-auto" src="assets/svg/bg/JeremyXue.jpeg" alt="Image Description">
@@ -151,7 +151,7 @@
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                     <h3 class="h5 mb-4">Danielle Frizziola</h3>
                                     <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">VP of Human Resources</span>
-                                    <p class="font-size-14">Danielle Frizziola is a seasoned Human Resources and Recruiting Executive specializing in emerging technology and creative spaces. She is a mentor to HR professionals worldwide.</p>
+                                    <p class="font-size-14 description">Danielle Frizziola is a seasoned Human Resources and Recruiting Executive specializing in emerging technology and creative spaces. She is a mentor to HR professionals worldwide.</p>
                                     </div>
                                     <div class="col-sm-6">
                                       <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_6.jpg" alt="Image Description">
@@ -165,7 +165,7 @@
                                     <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                                     <h3 class="h5 mb-4">Andrew Banhidi</h3>
                                     <span class="badge u-badge-primary badge-pill u-badge-bigger mb-3">Head of Research and Technology Sales</span>
-                                    <p class="font-size-14">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
+                                    <p class="font-size-14 description">Andrew spent 9 years as the CTO of Global Equities, Sales, Research, and Investment Banking at Bank of America Merrill Lynch. During this time, he oversaw the build out of the entire electronic trading stack, a cross-asset, API-based messaging system for normalizing all cross-asset processing.</p>
                                     </div>
                                     <div class="col-sm-6">
                                       <img class="img-fluid rounded mx-auto" src="assets/svg/bg/Andrew.jpeg" alt="Image Description">
@@ -267,7 +267,7 @@ a.text-primary:hover, a.text-primary:focus{
         color: #77838f;
         line-height: 1.7;
         margin-bottom: 1rem;
-        font-size: 16px;
+        font-size: 14px;
   }
     
     h1{

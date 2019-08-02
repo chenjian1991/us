@@ -60,7 +60,7 @@ export default {
    sicoIntroduce: "SICO stands for Supervised Initial Coin Offering. SICO is an evaluation framework proposed by 55, it is designed with one sole purpose that is to protect investor’s interests by filtering out unqualified project tokens, only SICO certified tokens can be listed for trading. SICO framework consists of three building blocks being a) Initial SICO Test for general information collection; b) APIs, web crawler and address analyzer to push and pull real-time token information for disclosure, and c) Brain of Blockchain (a.k.a BOB), a complex data model to evaluate overall healthiness of a token.",
    sicotext: "ATTEND SICO TEST NOW",
    sicoReview: "Tokens Undergoing SICO Review for Listing",
-   HomeTitle: '55 Trade - A Better Way to Buy and Sell Bitcoin',
+   HomeTitle: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing',
    HomeDescription: '55,Blockchain Service Token Exchange,Forex Token Exchange',
    HomeKeyword: '55,55.trade',
 
@@ -356,7 +356,7 @@ export default {
    //    LoginPageTitle: 'Log In - 55 Exchange',
    //    registerPageTitle: 'Sign Up - 55 Exchange',
    ExchangeTitle: 'Log In - 55',
-   SignUPTitle: 'Sign UP - 55',
+   SignUPTitle: 'Sign Up - 55',
    ForgotPasswordTitle: 'Forgot Password - 55',
    BalancesTitle: 'Balances - 55',
    DepositTitle: 'Deposit - 55',
@@ -374,6 +374,8 @@ export default {
    InvitationProgramTitle: 'Invitation Program - 55',
    verifyEmailTitle: "Verify Email - 55",
    activeEmailTitle: "Activate mailbox - 55",
+   lawTipstitle: 'Country of Residence',
+   lawTips: 'Your account will be subject to the law of your Country of Residence',
 
    //首页最新翻译
    // HomeWorlds: "The World's First Real-time Information Disclosed Token Exchange",

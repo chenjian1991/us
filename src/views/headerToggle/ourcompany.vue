@@ -15,7 +15,7 @@
     <!-- Content Section -->
     <div class="container space-2 space-lg-0">
       <div class="row" >
-        <div class="col-lg-16 space-lg-2">
+        <div class="col-lg-12 space-lg-2">
           <div class="pl-lg-4">
              <p>Based in the US,  55.Trade supports the major crypto currencies: Bitcoin, Ether and Litecoin, against each other or the US Dollar, or our own stable coin: USDD (US Digital). 55 Trade offers its users, a range of cryptocurrencies to buy/sell and store, on our secure platform. Users have secured wallets available to them on the 55 Trade platform, and deposits or withdrawals from and to wallets is simple. Users can fund their accounts with either crypto or fiat, and we support USD deposits and withdrawals.  </p>
 
@@ -73,9 +73,9 @@
                      <div class="js-slide">
                       <img class="u-clients"  src="../../assets/images/parnter5.png" alt="Image Description">
                     </div>
-                    <div class="js-slide">
+                    <!-- <div class="js-slide">
                       <img class="u-clients" src="assets/svg/logos/parnter/partner-logo3.png" alt="Image Description">
-                    </div>
+                    </div> -->
                   </div>
                 </div>
             <!-- End Clients Section -->

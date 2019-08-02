@@ -55,7 +55,6 @@
                     type="text"
                     class="form-control"
                     name="name"
-                    placeholder="Jack Wayley"
                     aria-label="Jack Wayley"
                     required
                     data-msg="Please enter your name."
@@ -79,7 +78,6 @@
                     type="email"
                     class="form-control"
                     name="email"
-                    placeholder="jackwayley@gmail.com"
                     aria-label="jackwayley@gmail.com"
                     required
                     data-msg="Please enter a valid email address."
@@ -102,7 +100,6 @@
                     type="text"
                     class="form-control"
                     name="subject"
-                    placeholder="Phone"
                     aria-label="Phone"
                     required
                     data-msg="Please enter your phone number."
@@ -142,7 +139,6 @@
                   class="form-control"
                   rows="4"
                   name="text"
-                  placeholder="Hi there, I would like to ..."
                   aria-label="Hi there, I would like to ..."
                   required
                   data-msg="Please enter a reason."

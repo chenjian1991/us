@@ -10,18 +10,14 @@
     </div>
     <!-- End Hero Section -->
 
-
-
-  <!-- ========== MAIN ========== -->
-  <main id="content" role="main">
+    <!-- ========== MAIN ========== -->
+  <main id="content" role="main" >
     <!-- Privacy Section -->
-    <div class="container  space-top-md-2 space-bottom-2 overflow-hidden">
-      <div class="w-lg-80 mx-lg-auto">
-        <div>
-
+    <div class="container space-top-2  space-bottom-1 overflow-hidden">
+      <div class="w-lg-140 mx-lg-auto">
           <!-- Content -->
-          <div class="p-7 p-md-9">
-            <div class="mb-7">
+          <div class="row">
+            <div class="col-md-6 col-lg-6 mb-5 pr-lg-7">
               <!-- Title -->
               <div class="mb-3">
                 <h3 class="h5 text-primary font-weight-semi-bold">Deep Pool of Liquidity</h3>
@@ -33,7 +29,7 @@
               <!-- End Text -->
             </div>
 
-            <div class="mb-7">
+            <div class="col-md-6 col-lg-6 mb-5">
               <!-- Title -->
               <div class="mb-3">
                 <h3 class="h5 text-primary font-weight-semi-bold">Premium Coin Selection</h3>
@@ -45,7 +41,7 @@
               <!-- End Text -->
             </div>
 
-            <div class="mb-7">
+            <div class="col-md-6 col-lg-6 mb-5 pr-lg-7">
               <!-- Title -->
               <div class="mb-3">
                 <h3 class="h5 text-primary font-weight-semi-bold">Unparalleled Security</h3>
@@ -57,7 +53,7 @@
               <!-- End Text -->
             </div>
 
-            <div class="mb-7">
+            <div class="col-md-6 col-lg-6 mb-5">
               <!-- Title -->
               <div class="mb-3">
                 <h3 class="h5 text-primary font-weight-semi-bold">Real-Time onboarding</h3>
@@ -69,7 +65,7 @@
               <!-- End Text -->
             </div>
 
-            <div class="mb-7">
+            <div class="col-md-6 col-lg-6 mb-5 pr-lg-7">
                     <!-- Title -->
                     <div class="mb-3">
                       <h3 class="h5 text-primary font-weight-semi-bold">White glove service</h3>
@@ -81,7 +77,7 @@
                     <!-- End Text -->
              </div>
 
-             <div class="mb-7">
+             <div class="col-md-6 col-lg-6 mb-5">
                     <!-- Title -->
                     <div class="mb-3">
                       <h3 class="h5 text-primary font-weight-semi-bold">Top of Book pricing</h3>
@@ -92,47 +88,22 @@
                     <p>Our Global best bid and offer routing engine, connects majore crypto and foreign exchange liquidity providers.</p>
                     <!-- End Text -->
              </div>
-             <div class="mb-7">
+             <div class="col-md-6 col-lg-6 mb-5">
                     <!-- Text -->
-                    <p><router-link to="/team"  class="text-primary">Learn more about our management team.</router-link></p>
-
+                    <router-link to='/team' class="text-primary">Learn more about our management team.</router-link>
                     <!-- End Text -->
              </div>
           </div>
           <!-- End Content -->
-        </div>
+
       </div>
     </div>
     <!-- End Privacy Section -->
 
-    <!-- SVG Background Shapes - Left Side -->
-    <div class="w-25 content-centered-y left-0 z-index-n1 mt-9">
-            <!-- <figure class="ie-circle-1">
-              <img class="js-svg-injector" src="../../assets/images/headertoggle/circle-1.svg" alt="Image Description"
-                   data-parent="#content">
-            </figure> -->
-          </div>
-          <!-- End SVG Background Shapes - Left Side -->
-      
-          <!-- SVG Background Shapes - Right Side -->
-          <div class="w-35 content-centered-y right-0 z-index-n1 mt-n9">
-            <!-- <figure class="ie-bg-elements-4">
-              <img class="js-svg-injector" src="../../assets/images/headertoggle/bg-elements-4.svg" alt="Image Description"
-                   data-parent="#content">
-            </figure> -->
-          </div>
-          <!-- End SVG Background Shapes - Right Side -->
-      
-          <!-- SVG Background Shapes -->
-          <div class="position-absolute right-0 bottom-0 left-0 z-index-n1">
-            <!-- <figure class="ie-bg-elements-3">
-              <img class="js-svg-injector" src="../../assets/images/headertoggle/bg-elements-3.svg" alt="Image Description"
-                   data-parent="#content">
-            </figure> -->
-          </div>
-          <!-- End SVG Background Shapes -->
   </main>
   <!-- ========== END MAIN ========== -->
+
+
     </div>
 </template>
 
