@@ -374,6 +374,8 @@ export default {
    InvitationProgramTitle: 'Invitation Program - 55',
    verifyEmailTitle: "Verify Email - 55",
    activeEmailTitle: "Activate mailbox - 55",
+   lawTipstitle: 'Country of Residence',
+   lawTips: 'Your account will be subject to the law of your Country of Residence',
 
    //首页最新翻译
    // HomeWorlds: "The World's First Real-time Information Disclosed Token Exchange",
