@@ -358,7 +358,7 @@
                                 <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="btcCommunityURL" target="_blank">{{$t("fronthomeSocialgroupBtc")}} <span class="fa fa-angle-right ml-2"></span></a>   
                                 <!-- <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover" href="index.html" target="_blank">EOS Commuity <span class="fa fa-angle-right ml-2"></span></a> -->
                                 <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="ethCommunityURL" target="_blank">{{$t("fronthomeSocialgroupEth")}} <span class="fa fa-angle-right ml-2"></span></a> 
-                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="supremeURL" target="_blank">{{$t("fronthomeSocialgroupSup")}} <span class="fa fa-angle-right ml-2"></span></a>
+                                <a class="btn m-1 btn-primary u-btn-primary u-btn-wide u-btn-pill transition-3d-hover myHover" :href="cryURL" target="_blank">Crypto News<span class="fa fa-angle-right ml-2"></span></a>
                             </div>
                             <!-- End Testimonials -->
                             </div>
@@ -777,32 +777,34 @@
                       this.chatToken = data.token +'/'
                       // this.iframeURL = `${CHAT_URL.baseURL}${this.chatToken}/`+encodeURIComponent(`${CHAT_URL.englishURL}`)
                       //社区链接
-                      this.siteCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
-                      this.ethCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
-                      this.btcCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
-                      this.yeezyCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
-                      this.supremeURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
-                      this.LisaURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
-                      this.JasonURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
-                      this.LoganURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
-                      this.GeoffURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
-                      this.DavidURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
-                      this.AshuURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
+                      this.siteCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
+                      this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
+                      this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
+                      this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
+                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
+                      this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
+                      this.JasonURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wjyfst')
+                      this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
+                      this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
+                      this.DavidURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
+                      this.AshuURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
+                      this.cryURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/Crypto_News')
                   })
                 }else{
                       this.chatToken = 'null/'
                       //社区链接
-                      this.siteCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
-                      this.ethCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
-                      this.btcCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
-                      this.yeezyCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
-                      this.supremeURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
-                      this.LisaURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
-                      this.JasonURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj6g6b')
-                      this.LoganURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
-                      this.GeoffURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
-                      this.DavidURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
-                      this.AshuURL= getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
+                      this.siteCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
+                      this.ethCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252480964431879/feed')
+                      this.btcCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' +this.chatToken+encodeURIComponent('/groups/profile/967252342116192258/feed')
+                      this.yeezyCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/968138529123078148/feed')
+                      this.supremeURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/973135123669061637/feed')
+                      this.LisaURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wj73vs')
+                      this.JasonURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/wjyfst')
+                      this.LoganURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/w8sswa')
+                      this.GeoffURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/gfs9968')
+                      this.DavidURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/davidweild')
+                      this.AshuURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/ashuswami')
+                      this.cryURL= getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/Crypto_News')
                 }
             },
             transfer(){

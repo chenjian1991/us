@@ -73,9 +73,9 @@
                      <div class="js-slide">
                       <img class="u-clients"  src="../../assets/images/parnter5.png" alt="Image Description">
                     </div>
-                    <div class="js-slide">
+                    <!-- <div class="js-slide">
                       <img class="u-clients" src="assets/svg/logos/parnter/partner-logo3.png" alt="Image Description">
-                    </div>
+                    </div> -->
                   </div>
                 </div>
             <!-- End Clients Section -->
