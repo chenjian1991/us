@@ -51,7 +51,7 @@ export const mineing = `${proxyURL}/content/portal/transaction.query`//昨日挖
 export const bannerList = `${proxyURL}/content/content/banner-list`//轮播图
 // 首页banner图
 export const userInfo = `${proxyURL}/sso/user/get_user_info`//用户信息
-export const recommendSymbol = `${proxyURL}/content/content/portal/front/symbol.list`//推荐交易对
+export const recommendSymbol = `${proxyURL}/content/content/portal/front/symbol.list?siteName=TRADE`//推荐交易对
 //=****************首页 end *******************//
 //=============注册  start=============
 export const hashUrl = `${proxyURL}/sso/user/hash-password`//判断是否hash
