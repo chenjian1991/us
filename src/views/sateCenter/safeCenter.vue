@@ -203,7 +203,7 @@
                   </div>
                   <FormItem class="form_item smsCode" prop='smsCode'>
                         <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('SMSPlacehodler')"></Input>
-                        <sendBtn   @sendCick= 'sendSMSfun' :empty='false' :tradePassPhone='tradePassPhone'></sendBtn>
+                        <sendBtn robotDiv='robotDiv'  @sendCick= 'sendSMSfun' :empty='false' :tradePassPhone='tradePassPhone'></sendBtn>
                   </FormItem>
                </div>
                <!-- 发送邮箱验证码 -->
@@ -214,7 +214,7 @@
                   <div>
                      <FormItem class="form_item smsCode" prop='emailCode'>
                         <Input :maxlength="6" v-model="formValidate.emailCode" :placeholder="$t('emialCodePlaceholder')"></Input>
-                        <sendBtn   @sendCick= 'sendSMSfun' :empty="false" :tradePassEmail='tradePassEmail'></sendBtn>
+                        <sendBtn  robotDiv='robotDivSecond'  @sendCick= 'sendSMSfun' :empty="false" :tradePassEmail='tradePassEmail'></sendBtn>
                      </FormItem>
                   </div>
                </div>
