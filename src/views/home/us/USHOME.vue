@@ -167,7 +167,7 @@
                 <div id="gbbo_detail">
                   <div class="logo">
                     <div class="logo_item">
-                      <img src="../../../assets/images/index/55_big@2x.png" style="width:auto;height:56%" alt="">
+                      <img src="../../../assets/images/index/55_big_1@2x.png" style="width:auto;height:56%" alt="">
                     </div>
                     <div class="logo_item">
                       <img src="../../../assets/images/index/binance_big.png" style="width:112px;height:22px" alt="">
