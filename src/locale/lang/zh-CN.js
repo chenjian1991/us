@@ -5,6 +5,7 @@ export default {
    coming: '即将上线',
    letFly: '让世界自由流动!',
    yanzheng:'验证',
+   输入框不能为空:'输入框不能为空',
    //首页
    HomeGlobal: '55 B站',
    HomeGlobaltitle: '全球首家实时信披通证交易所',

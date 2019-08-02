@@ -14,6 +14,7 @@ export default {
    coming: 'coming',
    letFly: 'One World,One Exchange！',
    yanzheng:'Verify',
+   输入框不能为空:'some of the fields are empty',
 
    //55全球市场新首页
    // MarketTradeCenter: '交易中心',
