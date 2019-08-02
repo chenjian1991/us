@@ -297,7 +297,7 @@
          },
          next() {
             this.$router.push({
-               name: '/transaction_history',
+               name: 'transaction_history',
                params: {id: 'name4'}
             })
          },
