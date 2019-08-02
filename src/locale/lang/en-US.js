@@ -356,7 +356,7 @@ export default {
    //    LoginPageTitle: 'Log In - 55 Exchange',
    //    registerPageTitle: 'Sign Up - 55 Exchange',
    ExchangeTitle: 'Log In - 55',
-   SignUPTitle: 'Sign UP - 55',
+   SignUPTitle: 'Sign Up - 55',
    ForgotPasswordTitle: 'Forgot Password - 55',
    BalancesTitle: 'Balances - 55',
    DepositTitle: 'Deposit - 55',

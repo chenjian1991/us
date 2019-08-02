@@ -264,7 +264,7 @@ const router = new Router({
                path: 'whyus',
                name: 'whyus',
                meta: {
-                  title: 'HomeTitle'
+                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
                },
                component: whyus,
             },
@@ -272,7 +272,7 @@ const router = new Router({
                path: 'crypto',
                name: 'crypto',
                meta: {
-                  title: 'HomeTitle'
+                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
                },
                component: crypto,
             },
@@ -280,7 +280,7 @@ const router = new Router({
                path: 'smartexecution',
                name: 'smartexecution',
                meta: {
-                  title: 'HomeTitle'
+                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
                },
                component: smartexecution,
             },
@@ -288,7 +288,7 @@ const router = new Router({
                path: 'termsfront',
                name: 'termsfront',
                meta: {
-                  title: 'HomeTitle'
+                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
                },
                component: termsfront,
             },
@@ -296,7 +296,7 @@ const router = new Router({
                path: 'faqs',
                name: 'faqs',
                meta: {
-                  title: 'HomeTitle'
+                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
                },
                component: faqs,
             },
@@ -304,7 +304,7 @@ const router = new Router({
                path: 'ourcompany',
                name: 'ourcompany',
                meta: {
-                  title: 'HomeTitle'
+                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
                },
                component: ourcompany,
             },
@@ -312,7 +312,7 @@ const router = new Router({
                path: 'team',
                name: 'team',
                meta: {
-                  title: 'HomeTitle'
+                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
                },
                component: team,
             },
@@ -320,7 +320,7 @@ const router = new Router({
                path: 'contactus',
                name: 'contactus',
                meta: {
-                  title: 'HomeTitle'
+                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
                },
                component: contactus,
             },
