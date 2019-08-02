@@ -239,7 +239,7 @@ import { all } from 'q';
             },
             completeID(){
                  if(this.realnameStatus=='NOT_SET'){
-                        this.$router.push('/identiy')
+                        this.$router.push('/kyc')
                     }else if(this.realnameStatus=='CHECKING'||this.realnameStatus=='FAILURE'){
                         this.$router.push('/identityResult')
                     }

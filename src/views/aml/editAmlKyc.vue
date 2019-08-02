@@ -739,7 +739,7 @@ import moment from 'moment';
                   return
                }
                if (status == 'NOT_SET') {
-                  this.$router.push('/identiy')
+                  this.$router.push('/kyc')
                } else {
                   this.$router.push('/identityResult')
                }

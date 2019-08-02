@@ -5,16 +5,18 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,user-scalable=yes">
+    <!--<meta name="viewport" content="width=device-width,user-scalable=yes">-->
 
     <!-- <meat name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,max-scale=1.0,min-scale=1.0"></meat> -->
     <!-- <meta name="viewport" content="width=device-width,user-scalable=yes"> -->
     <meta name="keywords" content="cryptocurrencies, digital assets, crypto, bitcoin, ether">
     <meta name="description" content="55 is a secure platform that makes it easy to buy, sell, and store cryptocurrency like Bitcoin, Ethereum, and more.">
-   
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS Front Template -->
     <!-- font start -->
-    <!--move to main.js <link href="<%= BASE_URL %>assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet"> -->
-     <!-- CSS Implementing Plugins -->
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/font-awesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/animate.css/animate.min.css">
     <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/hs-megamenu/src/hs.megamenu.css">
@@ -23,111 +25,122 @@
     <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/cubeportfolio/css/cubeportfolio.min.css">
     <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/custombox/dist/custombox.min.css">
-    <!-- CSS Front Template  move to main.js-->
-    <!-- <link rel="stylesheet" href="<%= BASE_URL %>assets/css/front.css"> -->
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/css/theme.css">
     <!-- font end -->
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-T3MGGQK');</script>
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T3MGGQK');</script>
     <!-- End Google Tag Manager -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136337302-1"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136337302-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
 
-    gtag('config', 'UA-136337302-1');
+       gtag('config', 'UA-136337302-1');
     </script>
 
 
 </head>
 <body>
-    <div id="app">
-        <!-- <div class="lds-css ng-scope homeLoading">
-            <div style="width:100%;height:100%" class="lds-double-ring">
-              <div></div>
-              <div></div>
-            </div>
-          </div> -->
-    </div>
-    <!-- <script>u
-        !(function(c,b,d,a){c[a]||(c[a]={});c[a].config={pid:"1las32bt7w2@88b20c723bd1118",imgUrl:"https://arms-retcode-sg.aliyuncs.com/r.png?",enableSPA:true};
-        with(b)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("crossorigin","",src=d)
-        })(window,document,"https://laz-g-cdn.alicdn.com/retcode/cloud-sdk/bl.js","__bl");
-    </script> -->
-    <noscript>
-        <strong>We're sorry but vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <!-- built files will be auto injected -->
-    <!-- <script src="<%= BASE_URL %>assets/js/jquery.min.js"></script>
-    <script src="<%= BASE_URL %>assets/plugins/bootstrap/bootstrap.min.js"></script> -->
-    <!-- font js start -->
-    <!-- JS Global Compulsory -->
-    <script src="<%= BASE_URL %>assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/bootstrap/bootstrap.min.js"></script>
+<div id="app">
+    <!-- <div class="lds-css ng-scope homeLoading">
+        <div style="width:100%;height:100%" class="lds-double-ring">
+          <div></div>
+          <div></div>
+        </div>
+      </div> -->
+</div>
+<!-- <script>u
+    !(function(c,b,d,a){c[a]||(c[a]={});c[a].config={pid:"1las32bt7w2@88b20c723bd1118",imgUrl:"https://arms-retcode-sg.aliyuncs.com/r.png?",enableSPA:true};
+    with(b)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("crossorigin","",src=d)
+    })(window,document,"https://laz-g-cdn.alicdn.com/retcode/cloud-sdk/bl.js","__bl");
+</script> -->
+<noscript>
+    <strong>We're sorry but vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+</noscript>
+<!-- built files will be auto injected -->
+<!-- <script src="<%= BASE_URL %>assets/js/jquery.min.js"></script>
+<script src="<%= BASE_URL %>assets/plugins/bootstrap/bootstrap.min.js"></script> -->
+<!-- font js start -->
+<!-- built files will be auto injected -->
+<script src="<%= BASE_URL %>datafeeds/udf/dist/polyfills.js"></script>
+<script src="<%= BASE_URL %>datafeeds/udf/dist/bundle.js"></script>
+<!-- font js start -->
+<!-- JS Global Compulsory -->
+<script src="<%= BASE_URL %>assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/bootstrap/bootstrap.min.js"></script>
 
-    <!-- JS Implementing Plugins -->
-    <script src="<%= BASE_URL %>assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/fancybox/jquery.fancybox.min.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/slick-carousel/slick/slick.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/jquery.countdown.min.js"></script>
-    <script src="<%= BASE_URL %>assets/vendor/custombox/dist/custombox.min.js"></script>
-    <!-- JS Front -->
-    <script src="<%= BASE_URL %>assets/js/hs.core.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.header.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.unfold.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.fancybox.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.slick-carousel.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.validation.js"></script>
-    <script src="<%= BASE_URL %>assets/js/helpers/hs.focus-state.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.cubeportfolio.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.go-to.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.malihu-scrollbar.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.show-animation.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.sticky-block.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.modal-window.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.countdown.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.video-player.js"></script>
-    <script src="<%= BASE_URL %>assets/js/components/hs.fancybox.js"></script>
-    <!-- <script src="<%= BASE_URL %>assets/js/helpers/hs.countdown.js"></script> -->
-    
-    <!-- font js end -->
-    <script src="<%= BASE_URL %>datafeeds/udf/dist/polyfills.js"></script>
-    <script src="<%= BASE_URL %>datafeeds/udf/dist/bundle.js"></script>
-    <!-- tradingview -->
-    <script src="<%= BASE_URL %>charting_library/charting_library.min.js"></script>
-    <script src="https://cstaticdun.126.net/load.min.js"></script>
-    <!-- <script src="https://www.google.com/recaptcha/api.js?onloadCallback&render=explicit" async defer></script> -->
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
-    <script type="text/javascript">
-        var cnzz_s_tag = document.createElement('script');
-        cnzz_s_tag.type = 'text/javascript';
-        cnzz_s_tag.async = true;
-        cnzz_s_tag.charset = 'utf-8';
-        cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1274712423&async=1';
-        var root_s = document.getElementsByTagName('script')[0];
-        root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
-    // var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    // document.write(unescape("%3Cspan id='cnzz_stat_icon_1274712423'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274712423%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <!-- Start of 55support Zendesk Widget script -->
-    <!-- <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=69f32b76-8e80-47d6-a763-0637044fc440"></script> -->
-    
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3MGGQK"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    </body>
+<!-- JS Implementing Plugins -->
+<script src="<%= BASE_URL %>assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/svg-injector/dist/svg-injector.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/slick-carousel/slick/slick.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/jquery.countdown.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/custombox/dist/custombox.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/typed.js/lib/typed.min.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/slick-carousel/slick/slick.js"></script>
+<script src="<%= BASE_URL %>assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
+<!-- JS Front -->
+<script src="<%= BASE_URL %>assets/js/hs.core.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.header.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.unfold.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.fancybox.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.slick-carousel.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.validation.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.focus-state.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.cubeportfolio.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.go-to.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.malihu-scrollbar.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.show-animation.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.sticky-block.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.modal-window.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.countdown.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.svg-injector.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.video-player.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.fancybox.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.selectpicker.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.step-form.js"></script>
+<script src="<%= BASE_URL %>assets/js/components/hs.scroll-nav.js"></script>
+
+
+
+<!-- tradingview -->
+<script src="<%= BASE_URL %>charting_library/charting_library.min.js"></script>
+<script src="https://cstaticdun.126.net/load.min.js"></script>
+<script src="https://www.recaptcha.net/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
+<script type="text/javascript">
+   var cnzz_s_tag = document.createElement('script');
+   cnzz_s_tag.type = 'text/javascript';
+   cnzz_s_tag.async = true;
+   cnzz_s_tag.charset = 'utf-8';
+   cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1274712423&async=1';
+   var root_s = document.getElementsByTagName('script')[0];
+   root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+   // var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+   // document.write(unescape("%3Cspan id='cnzz_stat_icon_1274712423'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274712423%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- Start of 55support Zendesk Widget script -->
+<!-- <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=69f32b76-8e80-47d6-a763-0637044fc440"></script> -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3MGGQK"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+</body>
 </html>
+

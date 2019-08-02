@@ -1,0 +1,27 @@
+.board_Background{
+    background-color: #15232C;
+}
+.u-header__nav-link{
+    color: #fff;
+}
+.u-header__navbar-link{
+    color: #fff;
+}
+.btn-text-secondary{
+    color: #fff;
+}
+.mainGreen{
+    color: #12869A
+}
+/*a:hover{*/
+    /*color: #12869A !important;*/
+/*}*/
+.u-header__sub-menu{
+    border-top: 0.1875rem solid #12869A !important;
+}
+.u-header--bg-transparent .u-header__navbar-nav{
+    background-color: #15232C;
+}
+.u-header__section{
+    background-color: #15232C;
+}

@@ -19,7 +19,7 @@
         $.data(t.obj, 'cubeportfolio', t);
 
         // rename options
-        if (options.sortToPreventGaps !== undefined) {
+        if (options && (options.sortToPreventGaps !== undefined)) {
             options.sortByDimension = options.sortToPreventGaps;
             delete options.sortToPreventGaps;
         }
@@ -954,6 +954,7 @@
     CubePortfolio.plugins = {};
     $.fn.cubeportfolio.constructor = CubePortfolio;
 })(jQuery, window, document);
+
 (function($, window, document, undefined) {
     'use strict';
 
@@ -1880,7 +1881,6 @@ jQuery.fn.cubeportfolio.options = {
 
             return supportedProp;
         },
-
     };
 
     CubePortfolio.private.browserInfo();
@@ -3337,11 +3337,12 @@ if (typeof Object.create !== 'function') {
 
             t.filters.each(function(index, el) {
                 var items = $(el).find('.cbp-filter-item');
+                items.removeClass('cbp-filter-item-active');
 
                 $.each(arr, function(index, val) {
                     var item = items.filter('[data-filter="' + val + '"]');
                     if (item.length) {
-                        item.addClass('cbp-filter-item-active').siblings().removeClass('cbp-filter-item-active');
+                        item.addClass('cbp-filter-item-active');
                         arr.splice(index, 1);
                         return false;
                     }
@@ -3355,7 +3356,6 @@ if (typeof Object.create !== 'function') {
     Plugin.prototype.registerFilter = function() {
         var t = this,
             parent = t.parent,
-            filtersCallback,
             arr = parent.defaultFilter.split('|');
 
         t.wrap = t.filters.find('.cbp-l-filters-dropdownWrap')
@@ -3394,7 +3394,16 @@ if (typeof Object.create !== 'function') {
             $.data(el, 'filterName', filterName);
             t.filterData.push(el);
 
-            t.filtersCallback(dropdown, items.filter('[data-filter="' + filterName + '"]'));
+            t.filtersCallback(dropdown, items.filter('[data-filter="' + filterName + '"]'), items);
+
+            var subFilterParent = el.getAttribute('data-filter-parent');
+            if (subFilterParent) {
+                filter.removeClass('cbp-l-subfilters--active');
+
+                if (subFilterParent === t.parent.defaultFilter) {
+                    filter.addClass('cbp-l-subfilters--active');
+                }
+            }
 
             items.on('click.cbp', function() {
                 var item = $(this);
@@ -3403,11 +3412,24 @@ if (typeof Object.create !== 'function') {
                     return;
                 }
 
-                t.filtersCallback(dropdown, item);
+                t.filtersCallback(dropdown, item, items);
 
                 $.data(el, 'filterName', item.data('filter'));
 
                 var name = $.map(t.filterData, function(el, index) {
+                    var $el = $(el);
+
+                    var isSubfilter = el.getAttribute('data-filter-parent');
+                    if (isSubfilter) {
+                        if (isSubfilter === $.data(t.filterData[0], 'filterName')) {
+                            $el.addClass('cbp-l-subfilters--active');
+                        } else {
+                            $el.removeClass('cbp-l-subfilters--active');
+                            $.data(el, 'filterName', '*');
+                            $el.find('.cbp-filter-item').removeClass('cbp-filter-item-active');
+                        }
+                    }
+
                     var f = $.data(el, 'filterName');
                     return (f !== "" && f !== '*') ? f : null;
                 });
@@ -3426,7 +3448,7 @@ if (typeof Object.create !== 'function') {
         });
     };
 
-    Plugin.prototype.filtersCallback = function(dropdown, item) {
+    Plugin.prototype.filtersCallback = function(dropdown, item, items) {
         if (!$.isEmptyObject(dropdown)) {
             dropdown.wrap.trigger('mouseleave.cbp');
 
@@ -3437,7 +3459,8 @@ if (typeof Object.create !== 'function') {
             }
         }
 
-        item.addClass('cbp-filter-item-active').siblings().removeClass('cbp-filter-item-active');
+        items.removeClass('cbp-filter-item-active');
+        item.addClass('cbp-filter-item-active');
     };
 
     /**
@@ -3466,6 +3489,7 @@ if (typeof Object.create !== 'function') {
         return new Plugin(parent);
     };
 })(jQuery, window, document);
+
 (function($, window, document, undefined) {
     'use strict';
 
@@ -3771,7 +3795,7 @@ if (typeof Object.create !== 'function') {
 
         parent.registerEvent('filterStart', function(filter) {
             t.populateItems().then(function() {
-                var itemsLen = t.items.filter(filter).length;
+                var itemsLen = t.items.filter(t.parent.filterConcat(filter)).length;
 
                 if (itemsLen > 0) {
                     t.loadMore.removeClass('cbp-l-loadMore-stop');
@@ -3842,7 +3866,7 @@ if (typeof Object.create !== 'function') {
 
                 foundItem++;
             } else {
-                if ($(el).filter(filter).length) {
+                if ($(el).filter(t.parent.filterConcat(filter)).length) {
                     insertItems.push(el);
                     t.items[index] = null;
 
@@ -3892,7 +3916,7 @@ if (typeof Object.create !== 'function') {
             if (!filter || (filter === '*')) {
                 itemsInLoadMore = t.items.length;
             } else {
-                itemsInLoadMore = t.items.filter(filter).length;
+                itemsInLoadMore = t.items.filter(t.parent.filterConcat(filter)).length;
             }
 
             // check if we have more loadMore
@@ -3970,7 +3994,7 @@ if (typeof Object.create !== 'function') {
             if (!filter || (filter === '*')) {
                 itemsInLoadMore = t.items.length;
             } else {
-                itemsInLoadMore = t.items.filter(filter).length;
+                itemsInLoadMore = t.items.filter(t.parent.filterConcat(filter)).length;
             }
 
             // check if we have more loadMore
@@ -4850,60 +4874,62 @@ if (typeof Object.create !== 'function') {
                 t.blocksToMove = $();
                 t.top = t.cubeportfolio.height;
             } else if (t.options.singlePageInlinePosition === 'above') {
-                var currentEl = $(blocks[t.current]);
-                var top = currentEl.data('cbp').top;
-                var end = top + currentEl.height();
-
+                var top = $(blocks[t.current]).data('cbp').top;
                 t.top = top;
 
-                t.blocksToMove = $();
+                // set the top value
+                blocks.each(function(index, block) {
+                    var data = $(block).data('cbp');
+                    var topBlock = data.top;
+                    var bottomBlock = topBlock + data.heightAndGap;
 
-                blocks.each(function(index, el) {
-                    var element = $(el);
-
-                    var topEl = element.data('cbp').top;
-                    var endEl = topEl + element.height();
-
-                    if (endEl <= top) {
+                    if (topBlock >= top) {
                         return;
                     }
 
-                    if (topEl >= top) {
-                        t.blocksToMove = t.blocksToMove.add(el);
+                    if (bottomBlock > t.top) {
+                        t.top = bottomBlock;
+                        t.topDifference = t.top - top;
+                    }
+                });
+
+                // set moving blocks
+                t.blocksToMove = $();
+                blocks.each(function(index, block) {
+                    if (index === t.current) {
+                        t.blocksToMove = t.blocksToMove.add(block);
+                        return;
                     }
 
-                    if ((topEl < top) && (endEl > top)) {
-                        t.top = endEl + t.options.gapHorizontal;
+                    var data = $(block).data('cbp');
+                    var bottomBlock = data.top + data.heightAndGap;
 
-                        if ((endEl - top) > t.topDifference) {
-                            t.topDifference = endEl - top + t.options.gapHorizontal;
-                        }
+                    if (bottomBlock > t.top) {
+                        t.blocksToMove = t.blocksToMove.add(block);
                     }
                 });
 
                 t.top = Math.max(t.top - t.options.gapHorizontal, 0);
             } else { // below
                 var currentEl = $(blocks[t.current]);
-                var top = currentEl.data('cbp').top;
-                var end = top + currentEl.height();
+                var data = currentEl.data('cbp');
+                var end = data.top + data.heightAndGap;
 
                 t.top = end;
 
                 t.blocksToMove = $();
 
-                blocks.each(function(index, el) {
-                    var element = $(el);
-                    var height = element.height();
-
-                    var topEl = element.data('cbp').top;
-                    var endEl = topEl + height;
+                blocks.each(function(index, block) {
+                    var data = $(block).data('cbp');
+                    var topEl = data.top;
+                    var endEl = topEl + data.height;
 
                     if (endEl <= end) {
                         return;
                     }
 
-                    if (topEl >= (end - height / 2)) {
-                        t.blocksToMove = t.blocksToMove.add(el);
+                    if (topEl >= (end - data.height / 2)) {
+                        t.blocksToMove = t.blocksToMove.add(block);
                         return;
                     }
 
@@ -5534,8 +5560,6 @@ if (typeof Object.create !== 'function') {
             } else if (t.type === 'singlePage') {
                 t.resetWrap();
 
-                $(window).scrollTop(t.scrollTop);
-
                 t.stopScroll = true;
 
                 t.wrap.removeClass('cbp-popup-ready cbp-popup-transitionend cbp-popup-singlePage-open cbp-popup-singlePage-sticky');
@@ -5545,6 +5569,8 @@ if (typeof Object.create !== 'function') {
                     marginRight: '',
                     position: ''
                 });
+
+                $(window).scrollTop(t.scrollTop);
 
                 if (CubePortfolio.private.browser === 'ie8' || CubePortfolio.private.browser === 'ie9') {
                     // remove resize event
