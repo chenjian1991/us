@@ -8,7 +8,6 @@
             <div class="mb-4">
               <h1 class="font-weight-semi-bold col-lg-11" style="color:#fff;font-size:30px;padding: 0;">Buy and Sell Crypto at Our Most Competitive Pricing</h1>
               <h1 class="font-weight-semi-bold" style="color:#fff;font-size:30px"></h1>
-              <p>{{$t("fronthomeHerosub")}}</p>
             </div>
               <!-- Subscribe Form -->
               <form class="js-validate js-form-message">
@@ -168,7 +167,7 @@
                 <div id="gbbo_detail">
                   <div class="logo">
                     <div class="logo_item">
-                      <img src="../../../assets/images/index/55_big@2x.png" style="width:80px;height:19px" alt="">
+                      <img src="../../../assets/images/index/55_big@2x.png" style="width:auto;height:56%" alt="">
                     </div>
                     <div class="logo_item">
                       <img src="../../../assets/images/index/binance_big.png" style="width:112px;height:22px" alt="">
@@ -325,9 +324,9 @@
         </main>
         <!-- ========== end gbbo ========== -->
     <section class="container">
-      <div class="row justify-content-center text-primary-55 h2 text-center" style="color:#12869A;font-weight: 500;width:100%">
+      <!-- <div class="row justify-content-center text-primary-55 h2 text-center" style="color:#12869A;font-weight: 500;width:100%">
                     {{$t("fronthomeMarkettitle")}}
-                </div> <br><br>
+                </div> <br><br> -->
       <market :sites="['B']"/>
     </section>
     <!-- 55 social start 社区 -->
@@ -664,9 +663,9 @@
                     <div class="js-slide">
                       <img class="u-clients" src="../../../assets/images/index/logo4@2x.png" alt="Image Description">
                     </div>
-                    <div class="js-slide">
+                    <!-- <div class="js-slide">
                       <img class="u-clients" src="../../../assets/images/index/logo5@2x.png" alt="Image Description">
-                    </div>
+                    </div> -->
                   </div>
                 </div>
             <!-- End Clients Section -->
