@@ -1215,6 +1215,7 @@
          },
          getOSSfunc() {
             getApi('https://oss.55gm.co/content/country/55-country.json', {}).then((res) => {
+               debugger
                this.ossJSON = res;
                let FrencyCountry = [];
                res.forEach(item => {
@@ -1222,7 +1223,8 @@
                      FrencyCountry.push(item);
                   }
                });
-               this.countryNumber = FrencyCountry[0].code;
+               this.countryNumber = FrencyCountry[3].code;
+               console.log(FrencyCountry[3].code)
             })
 
          },

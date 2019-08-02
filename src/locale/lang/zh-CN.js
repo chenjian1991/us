@@ -294,6 +294,9 @@ export default {
    registerAnd:'和',
    隐私条款:'隐私条款',
    usNotice: "55 Global Markets, including all products and services offered hereby, is currently not available to any citizens or residents of the United States and its affiliated territories. We are not offering, soliciting, promoting, or otherwise holding out as being able to provide any service or product to any citizens or residents of the United States. Please see our Terms of Use for more information.",
+   lawTipstitle: 'Country of Residence',
+   lawTips: 'Your account will be subject to the law of your Country of Residence',
+
    //5站title翻译
    HomePageTitle: '55 - 让世界自由流动!',
    ExchangeTitle: '登录 - 55',

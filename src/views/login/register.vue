@@ -22,6 +22,7 @@
                         <div  class="phone">
                             <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                             <div v-if="phoneRegister">
+                                <div style="color:#fff;margin-bottom:10px;font-size:14px;">{{$t('lawTipstitle')}}</div>
                                 <FormItem class="form_item">
                                     <div class="country_container country">
                                         <div @click="controCountrylSelect">
@@ -46,6 +47,8 @@
                                             </div>
                                         </transition>
                                     </div>
+                                    <div style="color:#fff;font-size:14px;margin-top:10px;">{{$t('lawTips')}}</div>
+
                                 </FormItem>
                                 <FormItem class="form_item" prop='userName'>
                                     <img  style="top:18px;" src="../../assets/images/register/yonghu.svg" alt="">
@@ -108,6 +111,7 @@
                             <div v-if="emailRegister" class="email">
                                 <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
                                  <div id="captcha"></div>
+                                <div style="color:#fff;margin-bottom:10px;font-size:14px;">{{$t('lawTipstitle')}}</div>
                                   <FormItem class="form_item">
                                     <div class="country_container country">
                                         <div @click="controCountrylSelect">
@@ -132,6 +136,7 @@
                                             </div>
                                         </transition>
                                     </div>
+                                        <div style="color:#fff;font-size:14px;margin-top:10px;">{{$t('lawTips')}}</div>
                                 </FormItem>
                                  <FormItem class="form_item" prop='userName'>
                                     <img  style="top:18px;" src="../../assets/images/register/yonghu.svg" alt="">
@@ -373,7 +378,7 @@ const clickoutside = {
                         { validator: validateEmail, trigger: 'blur' }
                     ],
                     userName:[{
-                        validator: validateUsername, trigger: 'blur'
+                        validator: validateUsername, trigger: 'change'
                     }],
                     smsCode: [
                         { validator: validateSms, trigger: 'blur' }

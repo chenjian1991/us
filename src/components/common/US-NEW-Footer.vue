@@ -76,7 +76,7 @@
                             <li>
                                 <router-link  class="list-group-item list-group-item-action" to="/privacy">Privacy Policy</router-link>
                             </li>
-                            <li><router-link to="/fee" class="list-group-item list-group-item-action">Trading Fee</router-link></li>
+                            <li><router-link to="/fee" class="list-group-item list-group-item-action">Trading Fees</router-link></li>
                            <li><router-link to="/tradingRules" class="list-group-item list-group-item-action">Trading Rules</router-link></li>
                         
                             
