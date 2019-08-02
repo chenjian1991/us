@@ -359,9 +359,9 @@
                       <h5 class="mb-0">
                         <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                                 data-toggle="collapse"
-                                data-target="#accountCollapseFour"
+                                data-target="#accountCollapseFive"
                                 aria-expanded="false"
-                                aria-controls="accountCollapseFour">
+                                aria-controls="accountCollapseFive">
                                 How can I keep my account safe?
     
                           <span class="card-btn-arrow">
@@ -370,7 +370,7 @@
                         </button>
                       </h5>
                     </div>
-                    <div id="accountCollapseFour" class="collapse"
+                    <div id="accountCollapseFive" class="collapse"
                          aria-labelledby="accountHeadingFour"
                          data-parent="#accountAccordion">
                       <div class="card-body">

@@ -15,7 +15,7 @@
     <!-- Content Section -->
     <div class="container space-2 space-lg-0">
       <div class="row" >
-        <div class="col-lg-16 space-lg-2">
+        <div class="col-lg-12 space-lg-2">
           <div class="pl-lg-4 ">
              <p class="description">Founded in December of 2017 and based in the US, 55 Trade is an asset network that provides investors with access to global investment, allowing a seamless and efficient flow of high quality assets around the world. 55 Trade is not only limited to cryptocurrencies; we use blockchain technology and tokenization to bridge traditional markets to support the trading of a variety of assets.</p>
         
