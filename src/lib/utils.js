@@ -362,7 +362,7 @@ export function parseUrl(str) {
    return obj//{a:1,b:2}
 }
 
-export function dealNumber(number, long) {
+export function dealNumber(number, long=8) {
    number = number.toString()
    if (number.includes('e')) {
       let reg = /^(\d+(?:\.\d+)?)(e)([\-]?\d+)$/;//匹配科学计数法正则

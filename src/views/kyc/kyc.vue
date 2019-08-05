@@ -55,7 +55,6 @@
             <div class="row no-gutters flex-center">
                <div class="col-md-8 col-lg-10 col-xl-8 p-2 pb-6 pt-7" style="margin-left: auto;margin-right: auto">
                   <h4 class="mt-2 mb-3">{{$t('newK1title')}}</h4>
-                  <h6 class="red-color mb-2 mt-3">*&nbsp;{{$t('newK1upgrade')}}</h6>
                   <h6 class="red-color mb-4">{{$t('newK1notice')}}</h6>
                   <div class="btn-group btn-group-toggle card-group d-block d-md-flex">
                      <a class="btn btn-outline-secondary u-btn-wide--xm col-lg-3 step-color"

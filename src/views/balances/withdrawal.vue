@@ -181,7 +181,7 @@
       identifyQuery,
    } from '_api/balances.js'
    import {
-      scientificToNumber, subNumberPoint, onlyInputNumAndPoint
+      scientificToNumber, onlyInputNumAndPoint,dealNumber
    } from '@/lib/utils.js'
 
    export default {
@@ -331,9 +331,9 @@
                         if (v['frozen'] < 0.00000001) {
                            v['frozen'] = 0
                         }
-                        this.withdrawData['available'] = this.available = this.transferNumber(subNumberPoint(v.available, precision), precision)
-                        this.withdrawData['frozen'] = this.transferNumber(subNumberPoint(v.frozen, precision), precision)
-                        this.withdrawData['total'] = this.transferNumber(subNumberPoint(bigDecimal.add(v.available, v.frozen), precision), precision)
+                        this.withdrawData['available'] = this.available = dealNumber(v.available, precision)
+                        this.withdrawData['frozen'] = dealNumber(v.frozen, precision)
+                        this.withdrawData['total'] = dealNumber(bigDecimal.add(v.available, v.frozen), precision)
                      }
                   })
                   if (this.available === '--') {
