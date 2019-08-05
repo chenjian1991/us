@@ -144,7 +144,7 @@
 	                        For press inquiries:<a class='text-primary' href='mailto:media@55.trade'>media@55.trade</a> 
                         </li>
                         <li>
-                         We're also on Telegram with the following channels: Official 55.trade Telegram. 
+                         We're also on Telegram with the following channels: <a class='text-primary' href="https://t.me/English_55GlobalMarkets">Official 55.trade Telegram.</a> 
                         </li>
                         
                       </ul>
@@ -246,8 +246,6 @@
             </div>
             <!-- End Syncing Accordion -->
           </div>
-
-
           <div id="account" class="space-1">
             <!-- Title -->
             <div class="mb-3">
@@ -264,9 +262,9 @@
                   <h5 class="mb-0">
                     <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
-                            data-target="#accountCollapseTwo"
+                            data-target="#accountCollapseOne"
                             aria-expanded="false"
-                            aria-controls="accountCollapseTwo">
+                            aria-controls="accountCollapseOne">
                             What is Google 2Factor Authentication (2FA)?
 
                       <span class="card-btn-arrow">
@@ -275,7 +273,7 @@
                     </button>
                   </h5>
                 </div>
-                <div id="accountCollapseTwo" class="collapse"
+                <div id="accountCollapseOne" class="collapse show"
                      aria-labelledby="accountHeadingOne"
                      data-parent="#accountAccordion">
                   <div class="card-body">
@@ -290,9 +288,9 @@
                   <h5 class="mb-0">
                     <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
-                            data-target="#accountCollapseThree"
+                            data-target="#accountCollapseTwo"
                             aria-expanded="false"
-                            aria-controls="accountCollapseThree">
+                            aria-controls="accountCollapseTwo">
                             Why didn't I receive an SMS code?
 
                       <span class="card-btn-arrow">
@@ -301,7 +299,7 @@
                     </button>
                   </h5>
                 </div>
-                <div id="accountCollapseThree" class="collapse"
+                <div id="accountCollapseTwo" class="collapse"
                      aria-labelledby="accountHeadingTwo"
                      data-parent="#accountAccordion">
                   <div class="card-body">
@@ -334,9 +332,9 @@
                   <h5 class="mb-0">
                     <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                             data-toggle="collapse"
-                            data-target="#accountCollapseFour"
+                            data-target="#accountCollapseThree"
                             aria-expanded="false"
-                            aria-controls="accountCollapseFour">
+                            aria-controls="accountCollapseThree">
                             Is KYC required for depositing or withdrawing funds?
 
                       <span class="card-btn-arrow">
@@ -345,7 +343,7 @@
                     </button>
                   </h5>
                 </div>
-                <div id="accountCollapseFour" class="collapse"
+                <div id="accountCollapseThree" class="collapse"
                      aria-labelledby="accountHeadingThree"
                      data-parent="#accountAccordion">
                   <div class="card-body">
@@ -359,9 +357,9 @@
                       <h5 class="mb-0">
                         <button class="btn  btn-block d-flex justify-content-between card-btn collapsed p-3"
                                 data-toggle="collapse"
-                                data-target="#accountCollapseFive"
+                                data-target="#accountCollapseFour"
                                 aria-expanded="false"
-                                aria-controls="accountCollapseFive">
+                                aria-controls="accountCollapseFour">
                                 How can I keep my account safe?
     
                           <span class="card-btn-arrow">
@@ -370,7 +368,7 @@
                         </button>
                       </h5>
                     </div>
-                    <div id="accountCollapseFive" class="collapse"
+                    <div id="accountCollapseFour" class="collapse"
                          aria-labelledby="accountHeadingFour"
                          data-parent="#accountAccordion">
                       <div class="card-body">
@@ -384,8 +382,6 @@
             </div>
             <!-- End Account Accordion -->
           </div>
-
-
         </div>
       </div>
     </div>
@@ -442,7 +438,7 @@
         
     }
 </script>
-<style lang="less">
+<style lang="less" >
 .text-primary,.fa-arrow-down{
       color:#12869A !important;
   }

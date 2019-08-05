@@ -81,7 +81,7 @@
                       <span class="btn btn-xs btn-icon btn-soft-primary rounded-circle mr-3">
                         <span class="fas fa-check btn-icon__inner"></span>
                       </span>
-                      <div class="media-body text-secondary">Get the best available price for XYZ</div>
+                      <div class="media-body text-secondary">Get the best available price for cryptocurrencies and assets</div>
                     </div>
                   </li>
                   <li class="py-3">

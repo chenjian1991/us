@@ -134,7 +134,7 @@
             <!-- End Lists -->
 
             <!-- Copyright -->
-           <div style="padding-bottom:30px;" class="container text-center u-space-1">
+           <div style="padding-bottom:30px;" class="container text-center space-1">
                 <a class="d-inline-block mb-2" href="../home/index.html" aria-label="Front">
                 <img src="assets/svg/logos/logo-white-footer.svg" alt="Logo" style="width: 50px;">
                 </a>
@@ -159,11 +159,11 @@
                 <span class="fab fa-linkedin btn-icon__inner" style="color:#fff"></span>
               </a>
             </li>
-            <li class="list-inline-item mb-2 mb-sm-0">
+            <!-- <li class="list-inline-item mb-2 mb-sm-0">
               <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="javascript:;" target="_blank">
                 <span class="fab fa-youtube btn-icon__inner" style="color:#fff"></span>
               </a>
-            </li>
+            </li> -->
           </ul>
           <!-- End Social Networks -->
         </div> 
