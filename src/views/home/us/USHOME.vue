@@ -163,8 +163,7 @@
                 <div class="row justify-content-center text-primary-55 h2 text-center" style="color:#12869A;font-weight: 500">
                     {{$t("fronthomeGBBOtitle")}}
                 </div>
-                </br>
-                <div id="gbbo_detail">
+                <div id="gbbo_detail" class="space-top-1">
                   <div class="logo">
                     <div class="logo_item">
                       <img src="../../../assets/images/index/55_big_1@2x.png" style="width:auto;height:56%" alt="">
@@ -1528,7 +1527,6 @@
           height 20px
 #gbbo_detail
   width 100%
-  margin 70px auto 100px 
   overflow hidden
   display flex
   justify-content space-between
