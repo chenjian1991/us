@@ -17,7 +17,7 @@
     <div class="container space-2 space-lg-0">
       <div class="row" >
         <div class="col-lg-12 space-lg-2">
-          <div class="pl-lg-4">
+          <div>
             <h2 class="h4">55Trade offers top of book pricing for Bitcoin, Ether, Litecoin and Bitcoin Cash.</h2>
             <p>Our primary goal is to give investors and asset owners from all over the world access to a global platform that is designed to remove the barriers of time, currency, and language making asset trading and investing accessible to everyone no matter who they are or where they are.</p>
 

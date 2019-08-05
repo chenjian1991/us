@@ -47,7 +47,7 @@
 
 
             <!-- Lists -->
-            <div class="border-bottom">
+            <div>
                 <div class="container space-2">
                 <div class="row justify-content-left">
                     <div class="col-sm-2 col-lg-2 mb-4">
