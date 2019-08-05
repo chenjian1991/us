@@ -322,7 +322,7 @@
             <!-- GBBO end -->
         </main>
         <!-- ========== end gbbo ========== -->
-    <section class="container">
+    <section class="container space-top-2">
       <!-- <div class="row justify-content-center text-primary-55 h2 text-center" style="color:#12869A;font-weight: 500;width:100%">
                     {{$t("fronthomeMarkettitle")}}
                 </div> <br><br> -->
@@ -754,6 +754,7 @@
               GeoffURL:'',
               DavidURL:'',
               supremeURL:'',
+              cryURL:'',
               loginToken:Cookies.get('loginToken'),
               chatToken:'',
               adArr:[],
