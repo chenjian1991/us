@@ -27,7 +27,7 @@
              <p><router-link to="/team"  class="text-primary">Learn about our Team Here</router-link></p>
                       
              <!-- Clients Section -->
-                <div class="container u-space-2">
+                <div class="container space-2">
                       <div class="title" style="text-align:center;font-size:22px;color:#12869a !important;padding:22px">Partners</div>
 
                   <div class="js-slick-carousel u-slick"
