@@ -16,7 +16,7 @@
           <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
             <!-- Logo -->
             <router-link to='/home'><img
-                src="../../assets/images/index/55trade.png"
+                src="../../assets/images/index/55trade.svg"
                 alt="logo"
                 width="120px" height="30px" 
               >
@@ -49,6 +49,21 @@
               class="collapse navbar-collapse u-header__navbar-collapse"
             >
               <ul class="navbar-nav u-header__navbar-nav">
+                <!-- exchange -->
+                <li
+                  class="nav-item hs-has-mega-menu u-header__nav-item"
+                  data-event="hover"
+                  data-animation-in="slideInUp"
+                  data-animation-out="fadeOut"
+                  data-max-width="900px"
+                  data-position="right"
+                >
+                  <router-link
+                    to='/exchange'
+                    class="nav-link u-header__nav-link "
+                  >Exchange</router-link>
+                </li>
+                <!-- exchange -->
           <!-- Features -->
           <li class="nav-item hs-has-sub-menu u-header__nav-item"
               data-event="hover"
@@ -93,7 +108,7 @@
               <li><router-link to='/ourcompany' class="nav-link u-header__sub-menu-nav-link">Our Company</router-link></li>
               <!-- <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Another action</a></li> -->
               <li><router-link to="/team" class="nav-link u-header__sub-menu-nav-link">The Team</router-link></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" href="https://www.linkedin.com/company/55-global" target="_blank">Careers</a></li>
+              <li><a class="nav-link u-header__sub-menu-nav-link" href=" https://www.linkedin.com/company/55-global/jobs/" target="_blank">Careers</a></li>
               <li><router-link to='/contactus' class="nav-link u-header__sub-menu-nav-link">Contact Us</router-link></li>
             </ul>
             <!-- End Dropdown - Submenu -->
@@ -395,12 +410,12 @@ export default {
         postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
             this.chatToken = data.token +'/'
             //社区链接
-            this.englishCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/groups/profile/967250642861035532/feed')
-            this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken
+            this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/groups/profile/967250642861035532/feed')
+            this.baseSocialURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken
         })
       }else{
         this.chatToken = 'null'
-        this.englishCommunityURL = getCommouityBaseURL()+'/api/v1/memberinterface/' + this.chatToken+'/'+ encodeURIComponent('/groups/profile/967250642861035532/feed')
+        this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+ encodeURIComponent('/groups/profile/967250642861035532/feed')
         this.baseSocialURL = getCommouityBaseURL()
       }
     },
@@ -733,7 +748,7 @@ export default {
     }
     //判断otc URL
     // this.OTCURL = getOTCURL();
-    this.mainSiteURL = getMainSite();
+    //this.mainSiteURL = getMainSite();
     //公告滚动
     // this.initAnnoucementList();
     // this.timer = setInterval(this.scroll, 3000);

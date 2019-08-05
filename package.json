@@ -27,6 +27,7 @@
     "natty-storage": "^2.2.0",
     "qrcodejs2": "0.0.2",
     "qs": "^6.5.2",
+    "reconnectingwebsocket": "^1.0.0",
     "smart-app-banner": "^2.0.0",
     "sockjs-client": "^1.3.0",
     "stompjs": "^2.3.3",
