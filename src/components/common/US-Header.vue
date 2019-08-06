@@ -409,13 +409,13 @@ export default {
       if(this.loginToken){
         postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
             this.chatToken = data.token +'/'
-            //社区链接
-            this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+encodeURIComponent('/groups/profile/967250642861035532/feed')
+            //广场链接
+            this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
             this.baseSocialURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken
         })
       }else{
         this.chatToken = 'null'
-        this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+ encodeURIComponent('/groups/profile/967250642861035532/feed')
+        this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
         this.baseSocialURL = getCommouityBaseURL()
       }
     },
