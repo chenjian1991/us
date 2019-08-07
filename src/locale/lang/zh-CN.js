@@ -39,7 +39,7 @@ export default {
    sicoIntroduce: "SICO 是 Supervised Initial Coin Offering 的首字母简写。SICO是由55设计推出的新一代通证发行与监督机制。SICO机制的设计初衷只有一个，即通过信息的主动和被动披露结合数据模型分析，以技术驱动通证信息的实时披露，杜绝劣币挂牌交易市场以最大化保护投资者利益。 SICO 机制有以下三个部分组成，a) SICO在线测试 – 项目方主动填写项目信息；b) 由API接口、钱包分析工具、智能合约分析工具和网络爬虫组成的实时信披模块，c) Brain of Blockchain (a.k.a BOB链脑) – 一个多维度数据模型用于评估项目健康度。",
    sicotext: "参加SICO测试",
    sicoReview: "当前正在SICO机制下被评估的项目",
-   HomeTitle: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing',
+   HomeTitle: '55 TRADE - Buy and Sell Crypto at Our Most Competitive Pricing',
    HomeDescription: '55,区块链服务通证交易所,外汇通证交易所',
    HomeKeyword: '55,55.com',
    HomeSafetyAt: '安全合作伙伴',

@@ -17,14 +17,14 @@
       <div class="row" >
         <div class="col-lg-12 space-lg-2">
           <div>
-             <p>Based in the US,  55.Trade supports the major crypto currencies: Bitcoin, Ether and Litecoin, against each other or the US Dollar, or our own stable coin: USDD (US Digital). 55 Trade offers its users, a range of cryptocurrencies to buy/sell and store, on our secure platform. Users have secured wallets available to them on the 55 Trade platform, and deposits or withdrawals from and to wallets is simple. Users can fund their accounts with either crypto or fiat, and we support USD deposits and withdrawals.  </p>
+             <p>Based in the US,  55.TRADE supports the major crypto currencies: Bitcoin, Ether and Litecoin, against each other or the US Dollar, or our own stable coin: USDD (US Digital). 55 TRADE offers its users, a range of cryptocurrencies to buy/sell and store, on our secure platform. Users have secured wallets available to them on the 55 TRADE platform, and deposits or withdrawals from and to wallets is simple. Users can fund their accounts with either crypto or fiat, and we support USD deposits and withdrawals.  </p>
 
              <h2 class="h4">Our Compliance</h2> 
-             <p> 55 Trade is officially registered as a Money Service Business (MSB) with U.S. regulators, administered by the Financial Crimes Enforcement Network (FinCEN).</p>
+             <p> 55 TRADE is officially registered as a Money Service Business (MSB) with U.S. regulators, administered by the Financial Crimes Enforcement Network (FinCEN).</p>
             
-             <p> In collaboration with Prime Trust - A chartered, regulated, insured trust company, 55 also allows using fiat to buy major cryptocurrencies.</p>
+             <p> In collaboration with Prime Trust—a chartered, regulated, insured trust company—55 also allows using fiat to buy major cryptocurrencies.</p>
 
-             <p><router-link to="/team"  class="text-primary">Learn about our Team Here</router-link></p>
+             <p><router-link to="/team"  class="text-primary">Learn more about our Team, here.</router-link></p>
                       
              <!-- Clients Section -->
                 <div class="container space-2">

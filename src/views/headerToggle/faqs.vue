@@ -120,7 +120,7 @@
                             data-target="#basicsCollapseThree"
                             aria-expanded="false"
                             aria-controls="basicsCollapseThree">
-                            How do I contact 55 Trade?
+                            How do I contact 55 TRADE?
 
                       <span class="card-btn-arrow">
                         <span class="fas fa-arrow-down small"></span>
@@ -199,7 +199,7 @@
                             data-target="#syncingCollapseOne"
                             aria-expanded="false"
                             aria-controls="syncingCollapseOne">
-                            My state is not currently eligible for account creation on 55 Trade. When will my state be able to use 55 Trade?
+                            My state is not currently eligible for account creation on 55 TRADE. When will my state be able to use 55 TRADE?
                       <span class="card-btn-arrow">
                         <span class="fas fa-arrow-down small"></span>
                       </span>
