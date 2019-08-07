@@ -967,6 +967,8 @@ const clickoutside = {
 
             }
             .ivu-checkbox-inner{
+                width:18px;
+                height:18px;
                 border-color: #51809F;
                 background: #111E26;
             }
@@ -974,13 +976,46 @@ const clickoutside = {
                 .ivu-checkbox-inner{
                         border-color: #12869A;
                         background-color: #12869A;
+
                 }
+            }
+            .ivu-checkbox-inner:after{
+                content: '';
+                display: table;
+                width: 8px;
+                height: 12px;
+                position: absolute;
+                top: 0px;
+                left: 4px;
+                border: 2px solid #fff;
+                border-top: 0;
+                border-left: 0;
             } 
         }
-          
 </style>
 
 <style scoped lang='less'>
+    .ivu-checkbox+span, .ivu-checkbox-wrapper+span{
+        margin-right:4px;
+        margin-left:10px;
+    }
+    .ivu-checkbox-checked .ivu-checkbox-inner:after{
+        display: table;
+        width: 8px;
+        height: 12px;
+        position: absolute;
+        top: 0px;
+        left: 4px;
+        content: '';
+        border: 2px solid #fff;
+        border-top: 0;
+        border-left: 0;
+        -webkit-transform: rotate(45deg) scale(1);
+        -ms-transform: rotate(45deg) scale(1);
+        transform: rotate(45deg) scale(1);
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
     .main_container{
         min-height: 100%;
         display: flex;
@@ -1044,9 +1079,6 @@ const clickoutside = {
                     left: 0px !important;;
              }
          }
-
-
-
 }
 }
 

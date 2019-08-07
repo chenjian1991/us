@@ -978,7 +978,7 @@
               this.mainHomePriceObject.push(v);
             }
             //订阅行情
-            if (v.baseCurrency == "USDT" || v.baseCurrency == "USDD") {
+            if (v.baseCurrency == "USD" || v.baseCurrency == "BTC" || v.baseCurrency == "ETH") {
               SSEURl += `symbol=${v.symbol}&${v.symbol}_least=1&`; //拼装推送数据查询url
             } else {
               SSEURl += `symbol=${v.baseCurrency}USDT&${
@@ -1081,8 +1081,9 @@
               ? legalTender.shortcut
               : "$";
             if (
-              this.symbolList_quote[result.symbol].quoteAsset == "USDT" ||
-              this.symbolList_quote[result.symbol].quoteAsset == "USDD"
+              this.symbolList_quote[result.symbol].quoteAsset == "USD" ||
+              this.symbolList_quote[result.symbol].quoteAsset == "BTC" ||
+              this.symbolList_quote[result.symbol].quoteAsset == "ETH" 
             ) {
               this.currentSymbolRate = 1;
               v.symbolCurrency = bigDecimal.round(

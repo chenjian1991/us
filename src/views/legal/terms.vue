@@ -1101,7 +1101,7 @@ right of publicity or privacy or any other proprietary right under the law,
 including but not limited to sales, distribution, or access to counterfeit
 music, movies, software, or other licensed materials without the appropriate
 authorization from the rights holder; use of 55 intellectual property, name, or
-logo, including use of 55 trade or service marks, without express consent from
+logo, including use of 55 TRADE or service marks, without express consent from
 55 or in a manner that otherwise harms 55 or the 55 brand; any action that
 implies an untrue endorsement by or affiliation with 55. </span></p>
 
