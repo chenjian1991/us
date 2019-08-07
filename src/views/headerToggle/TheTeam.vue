@@ -269,19 +269,6 @@ a.text-primary:hover, a.text-primary:focus{
   color:#12869A !important;
 }
 #team{
-  .u-slick__pagination{
-    li{
-      span{
-        background: #12869A !important;
-      }
-    }
-    li.slick-active{
-      span{
-        background: #12869A !important;
-        border-color:#12869A !important;
-      }
-    }
-  } 
   .description{
     // margin: auto !important;
     padding: auto !important;
