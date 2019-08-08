@@ -282,7 +282,7 @@ a.text-primary:hover, a.text-primary:focus{
     font-size: 2.5rem;
   }
   #bg-img{
-    background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
+    background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat center;
     height: 120%;
     background-size: cover;
   }
