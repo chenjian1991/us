@@ -181,8 +181,7 @@ export default {
 }
 #cripto {
   #bg-img {
-    background: url("../../assets/images/headertoggle/common_hero.jpeg")
-      no-repeat;
+    background: url("../../assets/images/headertoggle/common_hero.jpeg") no-repeat center;
     height: 120%;
     background-size: cover;
   }
