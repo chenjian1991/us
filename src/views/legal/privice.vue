@@ -4,7 +4,6 @@
          <div class="row">
 
 						   <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                <div class="title">Articles in this section</div>
                                 <ul>
                                     <li>
                                         <router-link to='/terms'> · User Agreement</router-link>
