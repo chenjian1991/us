@@ -7,7 +7,6 @@
                     
                     <div class="box-container">
 						   <div  class="right-part hidden-xs">
-								<div class="title">Articles in this section</div>
 								<ul>
 									<li>
 										<router-link  to='/terms'> · User Agreement</router-link>
