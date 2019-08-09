@@ -23,9 +23,8 @@
                         </ul>
                 </div>
 
-
                 <div class="panel-body paddong_30_left col-lg-10 col-md-9 col-sm-12 col-xs-12">
-                        <div class="WordSection1">
+                        <div class=WordSection1>
 
                         <p class="MsoNormal">
                             <b style="mso-bidi-font-weight:normal">
@@ -800,7 +799,7 @@
                         that any dispute arising under this Agreement shall be finally settled in
                         binding arbitration, on an individual basis, in accordance with the American
                         Arbitration Association's rules for arbitration of consumer-related disputes
-                        (accessible at https://www.adr.org/sites/default/files/Consumer%20Rules.pdf)
+                        (accessible at <a href="https://www.adr.org/sites/default/files/Consumer/Rules.pdf" style="cursor:pointer;border-bottom:solid 1px #2D8CF0;">rules</a>)
                         and you and 55 hereby expressly waive trial by jury and right to participate in
                         a class action lawsuit or class-wide arbitration. The arbitration will be
                         conducted by a single, neutral arbitrator and shall take place in New York
@@ -1480,11 +1479,6 @@
             font-weight: bold;
 			padding: 15px 0px 0px;
 			font-size: 17px;
-        }
-    }
-@media screen and (max-width: 768px) {
-        .titletop{
-            height:24px;
         }
     }
 </style>
