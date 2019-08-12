@@ -4,7 +4,7 @@
             <Modal
                     class-name="vertical-center-modal"
                     v-model="robotModalflag"
-                    title="验证"
+                    :title="this.$t('yanzheng')"
                     :mask-closable="false"
                    >
                     <div id="robot"></div>
@@ -84,7 +84,7 @@
                                 <FormItem class="form_item smsCode" prop='smsCode'>
                                     <img src="../../assets/images/register/code.svg" alt="">
                                     <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('SMSPlacehodler')"></Input>
-                                    <sendBtn   @sendCick= 'sendSMSfun' :empty='empty' :phoneMessage='phoneMessage'></sendBtn>
+                                    <sendBtn  robotDiv='robotPhoneRegister'   @sendCick= 'sendSMSfun' :empty='empty' :phoneMessage='phoneMessage'></sendBtn>
                                 </FormItem>
                                 <FormItem class="form_item" prop='password'>
                                     <img src="../../assets/images/register/password.svg" alt="">
@@ -147,11 +147,7 @@
                                     <img  style="top:18px;" src="../../assets/images/register/email.svg" alt="">
                                     <Input  type="text"   v-model="formValidate.emailNumber"  :placeholder="$t('emailPlacehodler')"></Input>
                                 </FormItem>
-                                <!-- <FormItem class="form_item smsCode" prop='smsCode'>
-                                    <img src="../../assets/images/register/code.svg" alt="">
-                                    <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('emialCodePlaceholder')"></Input>
-                                    <sendBtn   @sendCick= 'sendSMSfun' :empty='empty' :emailMessage='emailMessage'></sendBtn>
-                                </FormItem> -->
+                              
                                 <FormItem class="form_item" prop='password'>
                                     <img src="../../assets/images/register/password.svg" alt="">
                                     <Input type="password" v-model="formValidate.password" :placeholder="$t('passwordPlacehodler')"></Input>
