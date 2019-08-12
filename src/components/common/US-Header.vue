@@ -645,11 +645,11 @@ export default {
       }
     },
     loginStatus(val, oldVal) {
-      // if (val) {
-      //   this.isLogin = true;
-      // } else {
-      //   this.isLogin = false;
-      // }
+      if (val) {
+        this.isLogin = true;
+      } else {
+        this.isLogin = false;
+      }
       setTimeout(()=>{
                 this.initURL()
       },500)
