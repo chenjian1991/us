@@ -394,8 +394,7 @@ export default {
       learnMoreURL:'',
       OTCURL: "", //otcURL
       short: "$",
-      englishCommunityURL: '',
-      baseSocialURL:'',
+      // englishCommunityURL: '',
       loginToken:'',
       chatToken:'',
       baseSocialURL:'',
@@ -406,21 +405,18 @@ export default {
     Loading
   },
   methods: {
-    initURL() {
+     initURL() {
       this.loginToken = Cookies.get('loginToken')
       if(this.loginToken){
         postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
             this.chatToken = data.token +'/'
-            //广场链接
-            this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
-            this.baseSocialURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken
-            console.log(this.baseSocialURL)
+            this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken;
+            console.log('social-tokne',this.baseSocialURL)
         })
       }else{
-        this.chatToken = 'null'
-        this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
         this.baseSocialURL = getCommouityBaseURL()
-        console.log(this.baseSocialURL)
+        console.log('social-tokne',this.baseSocialURL)
+        
       }
     },
     changeLangage(e) {
