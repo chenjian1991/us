@@ -75,7 +75,7 @@
             <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
               <li><router-link to="/crypto" class="nav-link u-header__sub-menu-nav-link">Crypto Trading</router-link></li>
               <li><a target="_blank"  class="nav-link u-header__sub-menu-nav-link" href="http://55.trade/doc/#introduction">API Trading</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" target="_blank" :href="englishCommunityURL"> Social Trading </a></li>
+              <li><a class="nav-link u-header__sub-menu-nav-link" target="_blank" :href="baseSocialURL"> Social Trading </a></li>
             </ul>
             <!-- End Dropdown - Submenu -->
           </li>
@@ -408,12 +408,14 @@ export default {
       this.loginToken = Cookies.get('loginToken')
       if(this.loginToken){
         postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
+          debugger
             this.chatToken = data.token +'/'
             //广场链接
             this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
             this.baseSocialURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken
         })
       }else{
+        debugger
         this.chatToken = 'null'
         this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
         this.baseSocialURL = getCommouityBaseURL()

@@ -35,7 +35,7 @@
                         <h4 class="h6 text-secondary font-weight-normal mb-0 text-white">{{$t('fronthomefootSocial')}}</h4>
                         <span class="d-block font-size-1 text-white">{{$t('fronthomefootSocialsub')}}</span>
                          </br>
-                        <a class="font-size-14 text-white mt-6" :href="englishCommunityURL" target="_blank">
+                        <a class="font-size-14 text-white mt-6" :href="baseSocialURL" target="_blank">
                             {{$t('fronthomefootSocialact')}}
                             <span class="fa fa-angle-right align-middle ml-2"></span>
                         </a>
@@ -113,7 +113,7 @@
                                 <a href="http://55.trade/doc/#introduction" target="_blank"  class="list-group-item list-group-item-action" >API Trading</a>
                             </li>
                             <li>
-                                <a class="list-group-item list-group-item-action" :href="englishCommunityURL" target="_blank">Social Trading</a>
+                                <a class="list-group-item list-group-item-action" :href="baseSocialURL" target="_blank">Social Trading</a>
                             </li>
                           
                         </ul>
