@@ -397,6 +397,7 @@ export default {
       englishCommunityURL: '',
       loginToken:'',
       chatToken:'',
+      baseSocialURL:'',
 
     };
   },
@@ -408,14 +409,12 @@ export default {
       this.loginToken = Cookies.get('loginToken')
       if(this.loginToken){
         postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
-          debugger
             this.chatToken = data.token +'/'
             //广场链接
             this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
             this.baseSocialURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken
         })
       }else{
-        debugger
         this.chatToken = 'null'
         this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
         this.baseSocialURL = getCommouityBaseURL()
