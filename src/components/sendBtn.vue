@@ -7,7 +7,7 @@
          <Modal
             class-name="vertical-center-modal"
             v-model="robotModalflag"
-            title="验证"
+            :title="this.$t('yanzheng')"
             :mask-closable="false"
             >
             <div :id="robotDiv"></div>
