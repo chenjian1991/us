@@ -395,6 +395,7 @@ export default {
       OTCURL: "", //otcURL
       short: "$",
       englishCommunityURL: '',
+      baseSocialURL:'',
       loginToken:'',
       chatToken:'',
 
