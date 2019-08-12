@@ -203,6 +203,7 @@ export default {
             //社区链接
             this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/groups/profile/967250642861035532/feed')
             this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken
+            console.log('footer-token',this.baseSocialURL)
         })
       }else{
         this.chatToken = 'null'
