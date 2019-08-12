@@ -38,13 +38,12 @@
 
                         <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">This User Agreement (hereinafter “<b style="mso-bidi-font-weight:normal">Agreement</b>”)
                         is a binding contract governing your use  at
-                        55.trade, any associated APIs and any mobile applications (collectively, the “<b style="mso-bidi-font-weight:normal">55Sites</b>”) operated by 55 TRADE
-                        Inc. (“<b style="mso-bidi-font-weight:normal">55</b>”). By signing up to use an
-                        account through the 55Sites, you agree that you have read, understood, and
+                        55.trade, any associated APIs and any mobile applications (collectively, the “<b style="mso-bidi-font-weight:normal">55Sites</b>”) operated by 55 Asset Network Inc. (“<b style="mso-bidi-font-weight:normal">55</b>”). By signing up to use an
+                        account through the 55 Sites, you agree that you have read, understood, and
                         accept all of the terms and conditions contained in this User Agreement, as
                         well as our Privacy Policy and E-Sign Consent. If you do not agree to or accept
                         all of the terms of this Agreement, please immediately discontinue access to,
-                        and use of, the 55Sites.</span></p>
+                        and use of, the 55 Sites.</span></p>
 
                         <p class="MsoNormal"><span lang="EN"></span></p>
 

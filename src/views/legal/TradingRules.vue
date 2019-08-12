@@ -32,7 +32,7 @@
 
                 <p class=MsoNormal><span lang=EN-US>The following set of Trading Rules governs
                 orders placed by Traders on the 55 TRADE at 55.trade operated by
-                55 TRADE Inc. (“55”). Capitalized terms not defined herein shall have
+                55 Asset Network Inc. (“55”). Capitalized terms not defined herein shall have
                 the meanings ascribed to them in the 55 TRADE User Agreement</span></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>

@@ -49,7 +49,7 @@
                                 <p class=MsoNormal><span lang=EN></span></p>
 
                                 <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>1.1 55 TRADE Inc. (the “<b style='mso-bidi-font-weight:normal'>Company</b>”)
+                                lang=EN>1.1  55 Asset Network Inc. (the “<b style='mso-bidi-font-weight:normal'>Company</b>”)
                                 is a company incorporated in Delaware under the laws of the United States, and
                                 operates the Website <u><span style='color:#1155CC'><a href="javascrip:;"><span
                                 style='color:#1155CC'>55.trade</span></a></span></u> (the “<b
