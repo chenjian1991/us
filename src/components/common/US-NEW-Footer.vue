@@ -135,7 +135,7 @@
 
             <!-- Copyright -->
            <div style="padding-bottom:30px;" class="container text-center space-1">
-                <a class="d-inline-block mb-2" href="../home/index.html" aria-label="Front">
+                <a class="d-inline-block mb-2" href="../home" aria-label="Front">
                 <!-- <img src="assets/svg/logos/logo-white-footer.svg" alt="Logo" style="width: 50px;"> -->
                 <img src="../../assets/images/kyc/logo-white-footer.svg" alt="Logo" style="width: 50px;">
                 
