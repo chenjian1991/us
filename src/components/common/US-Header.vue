@@ -404,18 +404,7 @@ export default {
   components: {
     Loading
   },
-  computed: {
-        loginStatus() {
-          return this.$store.state.app.isLogin;
-        },
-    },
-    watch: {
-         loginStatus(val, oldVal) {
-            setTimeout(()=>{
-                this.initURL()
-            },500)
-         },
-      },
+
   methods: {
      initURL() {
       this.loginToken = Cookies.get('loginToken')
@@ -656,11 +645,14 @@ export default {
       }
     },
     loginStatus(val, oldVal) {
-      if (val) {
-        this.isLogin = true;
-      } else {
-        this.isLogin = false;
-      }
+      // if (val) {
+      //   this.isLogin = true;
+      // } else {
+      //   this.isLogin = false;
+      // }
+      setTimeout(()=>{
+                this.initURL()
+      },500)
     },
 
   },
