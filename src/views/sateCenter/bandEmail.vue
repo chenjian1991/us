@@ -29,7 +29,7 @@
                                     <div>
                                         <FormItem class="form_item smsCode" prop='smsCode'>
                                         <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('emialCodePlaceholder')"></Input>
-                                        <sendBtn   @sendCick= 'sendSMSfun' :empty='empty' :ssoEmail='ssoEmail'></sendBtn>
+                                        <sendBtn  robotDiv='robotBandemail' @sendCick= 'sendSMSfun' :empty='empty' :ssoEmail='ssoEmail'></sendBtn>
                                         </FormItem>
                                     </div>
                                 </div>

@@ -45,7 +45,7 @@
                                         <div>
                                             <FormItem class="form_item smsCode" prop='smsCode'>
                                             <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('SMSPlacehodler')"></Input>
-                                            <sendBtn   @sendCick= 'sendSMSfun' :empty='empty' :ssoPhone='ssoPhone'></sendBtn>
+                                            <sendBtn robotDiv='robotSendPhone'  @sendCick= 'sendSMSfun' :empty='empty' :ssoPhone='ssoPhone'></sendBtn>
                                             </FormItem>
                                         </div>
                                     </div>
