@@ -180,6 +180,9 @@
   import {getCommouityBaseURL} from '../../config/index'
   import {postHeaderTokenBodyApi} from '_api/axios'
   import Cookies from 'js-cookie'
+  import {
+    socialToken,
+    } from "../../../api/urls.js";
 export default {
   data() {
     return {
@@ -193,7 +196,7 @@ export default {
     initURL() {
       this.loginToken = Cookies.get('loginToken')
       if(this.loginToken){
-        postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
+        postHeaderTokenBodyApi(socialToken,this.loginToken,null).then(data => {
             this.chatToken = data.token +'/'
             //社区链接
             this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/groups/profile/967250642861035532/feed')
@@ -213,15 +216,15 @@ export default {
     },
     watch: {
          loginStatus(val, oldVal) {
-            if (val) {
-               this.isLogin = true;
-            } else {
-               this.isLogin = false;
+            // if (val) {
+            //    this.isLogin = true;
+            // } else {
+            //    this.isLogin = false;
 
-            }
+            // }
             setTimeout(()=>{
                 this.initURL()
-            },1000)
+            },500)
             
          },
       },
