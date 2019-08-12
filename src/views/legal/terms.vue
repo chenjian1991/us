@@ -38,7 +38,7 @@
 
                         <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">This User Agreement (hereinafter “<b style="mso-bidi-font-weight:normal">Agreement</b>”)
                         is a binding contract governing your use  at
-                        55.trade, any associated APIs and any mobile applications (collectively, the “<b style="mso-bidi-font-weight:normal">55Sites</b>”) operated by 55 Asset Network Inc. (“<b style="mso-bidi-font-weight:normal">55</b>”). By signing up to use an
+                        55.trade, any associated APIs and any mobile applications (collectively, the “<b style="mso-bidi-font-weight:normal">55 Sites</b>”) operated by 55 Asset Network Inc. (“<b style="mso-bidi-font-weight:normal">55</b>”). By signing up to use an
                         account through the 55 Sites, you agree that you have read, understood, and
                         accept all of the terms and conditions contained in this User Agreement, as
                         well as our Privacy Policy and E-Sign Consent. If you do not agree to or accept
@@ -436,7 +436,7 @@
                         <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">4.3 <u>Market Data</u>. 55 compiles and discloses certain market data,
                         including bid prices, ask prices, trading prices and volume etc. You
                         understand, acknowledge and agree that, due to technical and other
-                        restrictions, the Digital Asset values displayed on the 55Sites may be delayed
+                        restrictions, the Digital Asset values displayed on the 55 Sites may be delayed
                         and therefore not reflect the current, live market value of such Digital Asset.
                         Nonetheless, you agree that we are not responsible for any adverse consequences
                         that you may experience, or costs that you may incur, arising from any
@@ -556,16 +556,16 @@
 
                         <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">5.1. Limited License. We grant you a limited, nonexclusive,
                         nontransferable license, subject to the terms of this Agreement, to access and
-                        use the 55Sites, and related content, materials and information (collectively,
+                        use the 55 Sites, and related content, materials and information (collectively,
                         the “<b style="mso-bidi-font-weight:normal">Content</b>”) solely for approved
-                        purposes as permitted by 55 from time to time. Any other use of the 55Sites or
+                        purposes as permitted by 55 from time to time. Any other use of the 55 Sites or
                         Content is expressly prohibited and all other right, title, and interest in the
-                        55Sites or Content is exclusively the property of 55 and its licensors. You
+                        55 Sites or Content is exclusively the property of 55 and its licensors. You
                         agree you will not copy, transmit, distribute, sell, license, reverse engineer,
                         modify, publish, or participate in the transfer or sale of, create derivative
                         works from, or in any other way exploit any of the Content, in whole or in
                         part. “Fifty Five”, “55” and all logos related to the 55 Services or displayed
-                        on the 55Sites are either trademarks or registered marks of 55 or its
+                        on the 55 Sites are either trademarks or registered marks of 55 or its
                         licensors. You may not copy, imitate or use them without 55's prior written
                         consent. </span></p>
 
@@ -711,7 +711,7 @@
                         DIGITAL ASSET, RESULTING FROM THE SUSPENSION OR CLOSING OF YOUR ACCOUNT FOR ANY
                         OF THE REASONS LISTED ABOVE. YOU AGREE THAT NEITHER US NOR ANY THIRD PARTY
                         ACTING ON OUR BEHALF SHALL BE LIABLE TO YOU FOR ANY TERMINATION OF YOUR ACCESS
-                        TO ANY PART OF THE 55SITES OR SERVICES OR THE MARKETPLACE IN ACCORDANCE WITH
+                        TO ANY PART OF THE 55 SITES OR SERVICES OR THE MARKETPLACE IN ACCORDANCE WITH
                         THIS AGREEMENT. </span></p>
 
                         <p class="MsoNormal"><span lang="EN"></span></p>
@@ -850,25 +850,25 @@
                         joint venturers, employees and representatives (collectively, the “Indemnified
                         Parties”), harmless from any claim or demand (including attorneys' fees and any
                         fines, fees or penalties imposed by any regulatory authority) arising out of or
-                        related to (i) your use, misuse, or inability to use the 55Sites, the
+                        related to (i) your use, misuse, or inability to use the 55 Sites, the
                         Marketplace and the 55 Services; (ii) your breach of this Agreement, or (iii)
                         your violation of any law, rule or regulation, or the rights of any third
                         party. To the maximum extent permitted by applicable law, you hereby discharge,
                         acquit, and otherwise release the Indemnified Parties, from any claim or demand
                         (including attorneys’ fees and any fines, fees or penalties imposed by any
-                        regulatory authority) arising out of or related to the use of the 55Sites, the
+                        regulatory authority) arising out of or related to the use of the 55 Sites, the
                         Marketplace, and the 55 Services, including, but not limited to, claims relating
                         to the following: negligence, gross negligence, intentional interference with
                         contract or advantageous business relationship, defamation, privacy, publicity,
-                        misrepresentation, any financial loss not due to the fault of 55, the 55Sites
+                        misrepresentation, any financial loss not due to the fault of 55, the 55 Sites
                         or the Marketplace, false identities, fraudulent acts by others, invasion of
                         privacy, release or misuse of personal information, disputes with other users
                         of the 55 Services, failed transactions, purchases or functionality of the
-                        55Sites, unavailability of the 55Sites, its functions and/or the 55 Services and
-                        any other technical failure that may result in inaccessibility to the 55Sites,
+                        55 Sites, unavailability of the 55 Sites, its functions and/or the 55 Services and
+                        any other technical failure that may result in inaccessibility to the 55 Sites,
                         the Marketplace, or the 55 Services, or any claim based on vicarious liability
                         for torts committed by users encountered or transacted with or through the
-                        55Sites, the Marketplace or the 55 Services, including, but not limited to,
+                        55 Sites, the Marketplace or the 55 Services, including, but not limited to,
                         fraud, computer hacking, theft or misuse of personal information, assault,
                         battery, stalking, rape, cheating, perjury, manslaughter, or murder. The above
                         list is intended to be illustrative only, and not exhaustive of the types or
@@ -918,7 +918,7 @@
                         MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, 55SPECIFICALLY DISCLAIMS ANY
                         IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
                         AND/OR NON-INFRINGEMENT. 55 DOES NOT MAKE ANY REPRESENTATIONS OR WARRANTIES
-                        THAT ACCESS TO THE 55SITES, ANY PART OF THE 55 SERVICES, OR ANY OF THE MATERIALS
+                        THAT ACCESS TO THE 55 SITES, ANY PART OF THE 55 SERVICES, OR ANY OF THE MATERIALS
                         CONTAINED THEREIN, WILL BE CONTINUOUS, UNINTERRUPTED, TIMELY, OR ERROR-FREE. 55
                         IS NOT RESPONSIBLE FOR ANY DIGITAL ASSET MARKET, AND 55 MAKES NO
                         REPRESENTATIONS OR WARRANTIES CONCERNING THE VALUE OF ANY DIGITAL ASSET. 55
@@ -944,9 +944,9 @@
                         <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN"></span></p>
 
                         <p class="MsoNormal" style="text-align:justify;text-justify:inter-ideograph"><span lang="EN">7.6. <u>Amendments</u>. We may amend or modify this Agreement by
-                        posting on the 55Sites or emailing to you the revised Agreement, and the
+                        posting on the 55 Sites or emailing to you the revised Agreement, and the
                         revised Agreement shall be effective at such time. It is your responsibility to
-                        review the 55Sites and this Agreement on a regular basis. If you do not agree
+                        review the 55 Sites and this Agreement on a regular basis. If you do not agree
                         with any such modification, your sole and exclusive remedy is to terminate your
                         use of the Services and close your account. You agree that we shall not be
                         liable to you or any third party for any modification or termination of the
@@ -1049,9 +1049,9 @@
                         information; transmit or upload any material to the 55Site that contains
                         viruses, Trojan horses, worms, or any other harmful or deleterious programs;
                         attempt to gain unauthorized access to the 55Site, other 55Accounts, computer
-                        systems or networks connected to the 55Sites, through password mining or any
+                        systems or networks connected to the 55 Sites, through password mining or any
                         other means; use 55Account information of another party to access or use the
-                        55Sites, except in the case of specific authorizations by a user to access such
+                        55 Sites, except in the case of specific authorizations by a user to access such
                         user's 55Account and information; or transfer your account access or rights to
                         your account to a third party, unless by operation of law or with the express
                         permission of FF; </span></p>
@@ -1066,7 +1066,7 @@
                         legal rights (such as, but not limited to, rights of privacy, publicity and
                         intellectual property) of others; incite, threaten, facilitate, promote, or
                         encourage hate, racial intolerance, or violent acts against others; harvest or
-                        otherwise collect information from the 55Sites about others, including without
+                        otherwise collect information from the 55 Sites about others, including without
                         limitation email addresses, without proper consent;</span></p>
 
                         <p class="MsoNormal" style="margin-left:36.0pt;text-align:justify;text-justify:
