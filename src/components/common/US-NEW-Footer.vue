@@ -205,6 +205,7 @@ export default {
         this.chatToken = 'null'
         this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+ encodeURIComponent('/groups/profile/967250642861035532/feed')
         this.baseSocialURL = getCommouityBaseURL()
+        console.log(this.baseSocialURL)
       }
     }
   },
