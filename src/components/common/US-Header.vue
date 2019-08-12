@@ -404,18 +404,30 @@ export default {
   components: {
     Loading
   },
+  computed: {
+        loginStatus() {
+          return this.$store.state.app.isLogin;
+        },
+    },
+    watch: {
+         loginStatus(val, oldVal) {
+            setTimeout(()=>{
+                this.initURL()
+            },500)
+         },
+      },
   methods: {
      initURL() {
       this.loginToken = Cookies.get('loginToken')
       if(this.loginToken){
-        postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
+        postHeaderTokenBodyApi(socialToken,this.loginToken,null).then(data => {
             this.chatToken = data.token +'/'
             this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken;
             console.log('social-tokne',this.baseSocialURL)
         })
       }else{
         this.baseSocialURL = getCommouityBaseURL()
-        console.log('social-tokne',this.baseSocialURL)
+        console.log('token',this.baseSocialURL)
         
       }
     },
