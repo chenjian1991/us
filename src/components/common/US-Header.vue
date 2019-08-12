@@ -414,11 +414,13 @@ export default {
             //广场链接
             this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
             this.baseSocialURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken
+            console.log(this.baseSocialURL)
         })
       }else{
         this.chatToken = 'null'
         this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+encodeURIComponent('/newsfeed/subscriptions')
         this.baseSocialURL = getCommouityBaseURL()
+        console.log(this.baseSocialURL)
       }
     },
     changeLangage(e) {
