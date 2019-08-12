@@ -80,7 +80,7 @@
                                         aria-describedby="emailHelp"/>
                                  <!-- <input required="" v-model.trim='emailAddress' placeholder='请输入邮箱' type="text" class="form-control" aria-label="Text input with segmented dropdown button" /> -->
                                  <div class="input-group-append">
-                                    <sendBtn :fatherClass='fatherClass' @sendCick='sendSMSfun' :empty='empty'
+                                    <sendBtn  :fatherClass='fatherClass' @sendCick='sendSMSfun' :empty='empty'
                                              :ssoEmail='ssoEmail'></sendBtn>
                                  </div>
                               </div>
