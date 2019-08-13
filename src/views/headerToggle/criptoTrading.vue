@@ -112,21 +112,21 @@
 <style lang="less">
 #cripto{
   #bg-img{
-        background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat;
-        height: 120%;
-        background-size: cover;
-    }
-    p{
-        // margin: auto !important;
-        padding: auto !important;
-        color: #77838f;
-        line-height: 1.7;
-        margin-bottom: 1rem;
-        font-size: 16px;
-    }
-    h1{
-        font-size: 2.5rem;
-    }
+      background: url('../../assets/images/headertoggle/common_hero.jpeg') no-repeat center;
+      height: 120%;
+      background-size: cover;
+  }
+  p{
+      // margin: auto !important;
+      padding: auto !important;
+      color: #77838f;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      font-size: 16px;
+  }
+  h1{
+      font-size: 2.5rem;
+  }
 }
 
     
