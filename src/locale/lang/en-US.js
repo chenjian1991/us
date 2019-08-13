@@ -2055,8 +2055,8 @@ export default {
 
 //   kyc
    newK1title: "Identity Verification",
-   newK1lefttext1: "All 55.com users must pass KYC/AML user identity verification before engaging in any deposit, withdrawal, trade, and all other fund, token, and currency functions both implied and explicit.",
-   newK1lefttext2: "55.com's KYC/AML user identity verification seeks to comply with global anti-money laundering and anti-terrorism funding laws pursuant to the Bank Secrets Act (BSA), Title III of the USA Patriot Act, and the compliance laws and regulations of each operating region of 55.com.",
+   newK1lefttext1: "All 55.trade users must pass KYC/AML user identity verification before engaging in any deposit, withdrawal, trade, and all other fund, token, and currency functions both implied and explicit.",
+   newK1lefttext2: "55.trade's KYC/AML user identity verification seeks to comply with global anti-money laundering and anti-terrorism funding laws pursuant to the Bank Secrets Act (BSA), Title III of the USA Patriot Act, and the compliance laws and regulations of each operating region of 55.com.",
    newK1buttonN: "Next",
    newK1buttonP: "Previous",
    newK1buttonUP: "Upload",
