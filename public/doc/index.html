@@ -1,0 +1,508 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="./stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="./stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="./javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="./images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="./images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#restful-endpoint" class="toc-h2 toc-link" data-title="RESTFul Endpoint">RESTFul Endpoint</a>
+                  </li>
+                  <li>
+                    <a href="#websocket-endpoint" class="toc-h2 toc-link" data-title="WebSocket Endpoint">WebSocket Endpoint</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#market-data-orderbook-snapshot" class="toc-h1 toc-link" data-title="Market Data orderbook Snapshot">Market Data orderbook Snapshot</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-whole-snapshot-for-symbol" class="toc-h2 toc-link" data-title="Get Whole Snapshot for symbol">Get Whole Snapshot for symbol</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-venue-39-s-top-5-orderbook-for-a-specific-symbol" class="toc-h2 toc-link" data-title="Get a Specific Venue's Top 5 orderbook for a specific symbol">Get a Specific Venue's Top 5 orderbook for a specific symbol</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#market-data-best-ask-and-best-bid-aka-bbo-snapshot" class="toc-h1 toc-link" data-title="Market Data Best Ask and Best Bid (Aka.BBO) Snapshot">Market Data Best Ask and Best Bid (Aka.BBO) Snapshot</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-whole-bbo-snapshot-for-symbol" class="toc-h2 toc-link" data-title="Get Whole BBO Snapshot for symbol">Get Whole BBO Snapshot for symbol</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-venue-39-s-bbo-for-a-specific-symbol" class="toc-h2 toc-link" data-title="Get a Specific Venue's BBO for a specific symbol">Get a Specific Venue's BBO for a specific symbol</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the 55 Trade API</p>
+
+<p>Currently, we support Websocket and RESTful API for Market Data retrival.</p>
+<h1 id='endpoints'>Endpoints</h1>
+<p>We offer both Websocket (Stomp) and RESTful Endpoints.</p>
+<h3 id='restful-endpoint'>RESTFul Endpoint</h3>
+<p><code>http://api.55.trade/v1</code></p>
+<h3 id='websocket-endpoint'>WebSocket Endpoint</h3>
+<p><code>http://ws.55.trade/v1/exchange/marketdata</code></p>
+<h1 id='market-data-orderbook-snapshot'>Market Data orderbook Snapshot</h1><h2 id='get-whole-snapshot-for-symbol'>Get Whole Snapshot for symbol</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.55.trade/orderbook/BTCUSD"</span>
+  -H <span class="s2">"Authorization: DeveloperKey"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"asks"</span><span class="p">:[{</span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">2.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}],</span><span class="w">
+      </span><span class="s2">"bids"</span><span class="p">:[{</span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">2.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}],</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updateAt"</span><span class="p">:</span><span class="mi">1532994078139</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"asks"</span><span class="p">:[{</span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">2.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}],</span><span class="w">
+      </span><span class="s2">"bids"</span><span class="p">:[{</span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">2.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}],</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="s2">"HUOBI"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updateAt"</span><span class="p">:</span><span class="mi">1532994078139</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all venues top five orderbook market data snapshot.</p>
+<h3 id='http-request-via-restful'>HTTP Request via RESTful</h3>
+<p><code>GET /orderbook/&lt;SymbolPair&gt;</code></p>
+<h3 id='subscribtion-to-get-real-time-update-via-websocket'>Subscribtion to get real-time update via WebSocket</h3>
+<p><code>/topic/orderbook/&lt;SymbolPair&gt;</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SymbolPair</td>
+<td>false</td>
+<td>The symbol pair that you want to take a snapshot from.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — All requests made to Unsupported Symbol Pairs would cause the endpoint to return an error code!
+</aside>
+<h2 id='get-a-specific-venue-39-s-top-5-orderbook-for-a-specific-symbol'>Get a Specific Venue&#39;s Top 5 orderbook for a specific symbol</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.55.trade/orderbook/BTCUSD/BINANCE"</span>
+  -H <span class="s2">"Authorization: DeveloperKey"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"asks"</span><span class="p">:[{</span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">2.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"bids"</span><span class="p">:[{</span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">2.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"provider"</span><span class="p">:</span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updateAt"</span><span class="p">:</span><span class="mi">1532994078139</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific top 5 orderbook for specific venue and symbol pair.</p>
+
+<aside class="warning">All our websocket endpoints only support StompClient <code>&lt;Aka, SockJS over Websocket&gt;</code> be sure to using correct library.</aside>
+<h3 id='http-request-via-restful-2'>HTTP Request via RESTful</h3>
+<p><code>GET /orderbook/&lt;SymbolPair&gt;/&lt;VenueName&gt;</code></p>
+<h3 id='subscribtion-to-get-real-time-update-via-websocket-2'>Subscribtion to get real-time update via WebSocket</h3>
+<p><code>/topic/orderbook/&lt;SymbolPair&gt;/&lt;VenueName&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SymbolPair</td>
+<td>false</td>
+<td>The symbol pair that you want to take a snapshot from.</td>
+</tr>
+<tr>
+<td>VenueName</td>
+<td>false</td>
+<td>The venue name that you want to take a snapshot from.</td>
+</tr>
+</tbody></table>
+<h1 id='market-data-best-ask-and-best-bid-aka-bbo-snapshot'>Market Data Best Ask and Best Bid (Aka.BBO) Snapshot</h1><h2 id='get-whole-bbo-snapshot-for-symbol'>Get Whole BBO Snapshot for symbol</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.55.trade/bbo/BTCUSD"</span> 
+  -H <span class="s2">"Authorization: DeveloperKey"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="s2">"1532994078139"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bidLevel"</span><span class="p">:{</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"askLevel"</span><span class="p">:{</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HUOBI"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="s2">"1532994078139"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bidLevel"</span><span class="p">:{</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">},</span><span class="w">
+    </span><span class="s2">"askLevel"</span><span class="p">:{</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all venues top five orderbook market data snapshot.</p>
+<h3 id='http-request-via-restful-3'>HTTP Request via RESTful</h3>
+<p><code>GET /bbo/&lt;SymbolPair&gt;</code></p>
+<h3 id='subscribtion-to-get-real-time-update-via-websocket-3'>Subscribtion to get real-time update via WebSocket</h3>
+<p><code>/topic/bbo/&lt;SymbolPair&gt;</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SymbolPair</td>
+<td>false</td>
+<td>The symbol pair that you want to take a snapshot from.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+ Remember — All requests made to Unsupported Symbol Pairs would cause the endpoint to return an error code!
+</aside>
+<h2 id='get-a-specific-venue-39-s-bbo-for-a-specific-symbol'>Get a Specific Venue&#39;s BBO for a specific symbol</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.55.trade/bbo/BTCUSD/BINANCE"</span>
+  -H <span class="s2">"Authorization: DeveloperKey"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="s2">"1532994078139"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"bidLevel"</span><span class="p">:{</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">},</span><span class="w">
+  </span><span class="s2">"askLevel"</span><span class="p">:{</span><span class="s2">"price"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"qty"</span><span class="p">:</span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="s2">"priceWithFee"</span><span class="p">:</span><span class="mf">2.11</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific top 5 orderbook for specific venue and symbol pair.</p>
+
+<aside class="warning">All our websocket endpoints only support StompClient <code>&lt;Aka, SockJS over Websocket&gt;</code> be sure to using correct library.</aside>
+<h3 id='http-request-via-restful-4'>HTTP Request via RESTful</h3>
+<p><code>GET /bbo/&lt;SymbolPair&gt;/&lt;VenueName&gt;</code></p>
+<h3 id='subscribtion-to-get-real-time-update-via-websocket-4'>Subscribtion to get real-time update via WebSocket</h3>
+<p><code>/topic/bbo/&lt;SymbolPair&gt;/&lt;VenueName&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SymbolPair</td>
+<td>false</td>
+<td>The symbol pair that you want to take a snapshot from.</td>
+</tr>
+<tr>
+<td>VenueName</td>
+<td>false</td>
+<td>The venue name that you want to take a snapshot from.</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">
+This error section is stored to describe possible error codes returned by our services.
+</aside>
+
+<p>The 55 Trade API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The resources requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified resources could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a resource with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The resources requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many resources! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
