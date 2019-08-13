@@ -179,12 +179,12 @@ import { setTimeout } from 'timers';
                          }
                             // this.paramsObj = params;
                             //  this.captchaIns && this.captchaIns.popUp()
+                             console.log(this.ipCountry)
+
                          if(this.ipCountry=='中国'){
-                            //  console.log('中国')
                               this.paramsObj = params;
                              this.captchaIns && this.captchaIns.popUp()
                          }else{
-                            //  console.log('外国')
                             this.paramsObj = params;
                             this.robotModalflag = true;
                          }
