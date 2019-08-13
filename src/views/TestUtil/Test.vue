@@ -21,7 +21,11 @@
             
         },
         mounted(){
-            
+            const map  = new Map()
+            map.set('aaa',{name:121,age:12})
+            map.set('bbb',{name:121,age:12})
+            map.set('ccc',{name:121,age:12})
+            console.log([...map.entries()])
         },
         computed: {
            

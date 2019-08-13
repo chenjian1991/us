@@ -23,10 +23,10 @@
                   <router-link :to="{path:'/exchange',query: {site: 'F'}}"><i class="icon exchangeIcon"></i> <span>{{$t('headerfranceexchange')}}</span>
                   </router-link>
                </li> -->
-               <li>
+               <!-- <li>
                   <router-link :to="{path:'/exchange',query: {site: 'C'}}"><i class="icon logoIcon"></i> <span>{{$t('headercoustomerchain')}}</span>
                   </router-link>
-               </li>
+               </li> -->
                <!-- <li><router-link :to="{path:'/Bhome',query: {site: 'B'}}"><i class="icon personIcon"></i> <span>个人交易</span></router-link></li>
                <li><router-link :to="{path:'/Bhome',query: {site: 'B'}}"><i class="icon shopIcon"></i> <span>本地商业交易</span></router-link></li> -->
             </ul>

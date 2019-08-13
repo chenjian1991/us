@@ -18,7 +18,7 @@
 
 <script>
     import {sendSms,ssoSend,verifyEmail,userVerify,ipQuery} from '../../api/urls.js';
-    import {postBaseApi,postHeaderTokenBodyApi,getApi} from '../../api/axios.js';
+    import {postBaseApi,postHeaderTokenBodyApi,getApi,getApiLoin} from '../../api/axios.js';
     import Cookies from 'js-cookie'
 import { debuglog } from 'util';
     export default {
@@ -69,19 +69,35 @@ import { debuglog } from 'util';
                 }
 
             },
-             ipQueryFun(){//ip所在国家查询
-                getApi(ipQuery,'').then((res)=>{
+            //  ipQueryFun(){//ip所在国家查询
+            //     getApi(ipQuery,'').then((res)=>{
+            //         if(res.resultcode==200){
+            //             this.ipCountry = res.result.Country;
+            //             if(this.ipCountry=='中国'){
+                            
+            //             }else{//只有非中国都时候才实例化谷歌都方法
+            //                  this.onloadCallback();
+            //             }
+            //         }else{
+            //             this.onloadCallback()//当ip获取失败都时候默认是谷歌验证
+            //             this.ipCountry = '';//查询失败
+            //         }
+            //     })
+            // },
+            ipQueryFun(){//ip所在国家查询
+                getApiLoin(ipQuery,'').then((res)=>{
                     if(res.resultcode==200){
                         this.ipCountry = res.result.Country;
                         if(this.ipCountry=='中国'){
-                            
-                        }else{//只有非中国都时候才实例化谷歌都方法
-                             this.onloadCallback();
-                        }
+                             
+                         }else{//只有非中国的时候才实例化谷歌都方法
+                                 this.onloadCallback();
+                         }
                     }else{
-                        this.onloadCallback()//当ip获取失败都时候默认是谷歌验证
-                        this.ipCountry = '';//查询失败
+                          this.ipCountry='美国'//ip查询失败的时候默认美国
                     }
+                }).catch((error)=>{//当ip获取失败都时候默认是谷歌验证
+                    this.ipCountry='美国'// 请求超时的还是把ip写死美国
                 })
             },
             onloadCallback(){//谷歌人机验证方法

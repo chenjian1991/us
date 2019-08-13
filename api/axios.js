@@ -348,3 +348,27 @@ export function getApi(url, params) {
       })
    })
 }
+
+
+// 登陆请求ip单独处理
+export function getApiLoin(url, params) {
+   return new Promise((resolve, reject) => {
+      // if (appendToken) {
+      //     let token = Cookies.get('TOKEN')
+      //     if (token != '') {
+      //         params['token'] = token
+      //     }
+      // }
+      axios.get(url, {
+         params: params,
+         paramsSerializer: params => {
+            return qs.stringify(params, { indices: false })//处理参数有数组问题
+         },
+         timeout:1500
+      }).then(response => {
+         resolve(response.data)
+      }).catch((error) => {
+         reject(error)
+      })
+   })
+}

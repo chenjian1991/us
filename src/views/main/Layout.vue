@@ -184,6 +184,7 @@
         }
         .ipBox{
             width: 100%;
+            height: 100%;
             background: rgba(33,40,48,.9);
             padding:10px 35px !important;
             text-align: left;

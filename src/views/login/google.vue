@@ -100,6 +100,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     let tradingPasswordFlag = res.isSetTradePasswrod;
                     localStorage.setItem('tradingPasswordFlag',tradingPasswordFlag);
                     localStorage.setItem('userPhone',res.phone);
+                    console.log(res.isSetTradePasswrod);
                 }).catch((res) =>{
                     console.log(res)
                 })

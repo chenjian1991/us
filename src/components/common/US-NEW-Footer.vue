@@ -110,7 +110,9 @@
                                 <router-link  class="list-group-item list-group-item-action" to="/crypto">Crypto Trading</router-link>
                             </li>
                             <li>
-                                <a href="http://55.trade/doc/#introduction" target="_blank"  class="list-group-item list-group-item-action" >API Trading</a>
+                              <!-- http://55.trade/doc/#introduction -->
+                              <!-- ../../../public/doc/index.html -->
+                                <a href="http://55.trade/doc/index.html#introduction" target="_blank" class="list-group-item list-group-item-action" >API Trading</a> 
                             </li>
                             <li>
                                 <a class="list-group-item list-group-item-action" :href="baseSocialURL" target="_blank">Social Trading</a>
@@ -135,7 +137,7 @@
 
             <!-- Copyright -->
            <div style="padding-bottom:30px;" class="container text-center space-1">
-                <a class="d-inline-block mb-2" href="../home" aria-label="Front">
+                <a class="d-inline-block mb-2" href="../home/index.html" aria-label="Front">
                 <!-- <img src="assets/svg/logos/logo-white-footer.svg" alt="Logo" style="width: 50px;"> -->
                 <img src="../../assets/images/kyc/logo-white-footer.svg" alt="Logo" style="width: 50px;">
                 
@@ -210,6 +212,7 @@ export default {
         this.chatToken = 'null'
         this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+ encodeURIComponent('/groups/profile/967250642861035532/feed')
         this.baseSocialURL = getCommouityBaseURL()
+        console.log(this.baseSocialURL)
       }
     }
   },

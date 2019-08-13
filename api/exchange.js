@@ -16,6 +16,7 @@ import {
    createOrderId,
    createPasswordToken,
    createOrder,
+   createGBBOOrder,
    historicalTrailing,
    historicalTimeRange,
    summarizedTimeRange,
@@ -225,6 +226,10 @@ export const getCreateOrderId = (params, data) => {
 //创建订单
 export const getCreateOrder = (params, data) => {
    return postBaseApi(createOrder, params, data)
+}
+//创建GBBO订单
+export const getCreateGBBOOrder = (params, data) => {
+   return postBaseApi(createGBBOOrder, params, data)
 }
 
 

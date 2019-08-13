@@ -103,73 +103,28 @@
               <li>
                 <router-link  class="u-list__link text-white" to="/capital">55 Capital</router-link>
               </li>
-              <li>
+              <!-- <li>
                 <a class="u-list__link text-white" href="#atoRow">ATO - For Listing</a>
-              </li>
+              </li> -->
             </ul>
             <!-- End List -->
           </div>
 
 
-          <div class="col-sm-4 col-lg-2 mb-4 mb-lg-0">
+          <!-- <div class="col-sm-4 col-lg-2 mb-4 mb-lg-0">
             <h3 class="h6 text-white">
               <strong>Social Media</strong>
             </h3>
 
-            <!-- List -->
             <ul class="list-unstyled mb-0 text-white">
               <li><a target="_blank" class="u-list__link text-white" href="https://t.me/English_55GlobalMarkets">Telegram</a></li>
               <li><a target="_blank" class="u-list__link text-white" href="https://www.facebook.com/55AssetNetwork/">Facebook</a></li>
               <li><a target="_blank" class="u-list__link text-white" href="https://twitter.com/55AssetNetwork">Twitter</a></li>
             </ul>
-            <!-- End List -->
-          </div>
+          </div> -->
 
           <div class="col-md-6 col-lg-4">
-            <h3 class="h6 mb-4 text-white">
-              <strong>We put power in your hands! Trade anytime anywhere!</strong>
-            </h3>
-
-            <!-- Button -->
-            <!-- <button
-              type="button"
-              class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"
-            >
-            <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1442483182" target="_new" class=" text-white">
-              <span class="media align-items-center">
-                <span class="d-flex mr-3">
-                  <span class="fab fa-apple font-size-26"></span>
-                </span>
-                <span class="media-body">
-                  <span class="d-block">Download on the</span>
-                  <strong class="font-size-14">App Store</strong>
-                </span>
-              </span>
-            </a>
-            </button> -->
-            <button data-v-2e45a3aa="" type="button" class="btn btn-xs  btn-secondary u-btn-secondary u-btn-wide transition-3d-hover text-left mb-2 mr-sm-1"><a data-v-2e45a3aa="" href="javascript:;" target="_new" class=" text-white"><span data-v-2e45a3aa="" class="media align-items-center"><span data-v-2e45a3aa="" class="d-flex mr-3"><span data-v-2e45a3aa="" class="fab fa-apple font-size-26"></span></span><span data-v-2e45a3aa="" class="media-body"><span data-v-2e45a3aa="" class="d-block">Coming soon
-            </span><strong data-v-2e45a3aa="" class="font-size-14">App Store</strong></span></span></a ></button>
-            &nbsp;
-            <!-- End Button -->
-
-            <!-- Button -->
-            <button
-              type="button"
-              class="btn btn-xs btn-dark u-btn-dark u-btn-wide transition-3d-hover text-left mb-2"
-            >
-            <a href="https://play.google.com/store/apps/details?id=com.ex55us.app" target="_new" class=" text-white">
-              <span class="media align-items-center">
-                <span class="d-flex mr-3">
-                  <span class="fab fa-google-play font-size-26"></span>
-                </span>
-                <span class="media-body">
-                  <span class="d-block">Get it on</span>
-                  <strong class="font-size-14">Google Play</strong>
-                </span>
-              </span>
-            </a>
-            </button>
-            <!-- End Button -->
+            <img src="../../assets/images/foot_code.png" style="width:100%;height:auto" alt="">
           </div>
         </div>
       </div>
@@ -186,7 +141,33 @@
         <!-- End Logo -->
         <p class="small text-white"><a style="color:#fff;" target="_blank" href="https://www.55.com/MSB.pdf">MSB No.31000146897405</a> </p>
         <p class="small text-white">2500 Plaza 5, Unit 2553, Jersey City, NJ 07311</p>
-        <p class="small text-white">&copy; 2017-2019 55. All rights reserved.</p>
+        <p class="small text-white">&copy; 2017-2019 55.trade All rights reserved.</p>
+        <div class="col-lg-6 text-lg-right" style="max-width:100%">
+          <!-- Social Networks -->
+          <ul class="list-inline mb-0" style="text-align:center">
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://www.facebook.com/55AssetNetwork/" target="_blank">
+                <span class="fab fa-facebook-f btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://twitter.com/55AssetNetwork" target="_blank">
+                <span class="fab fa-twitter btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="https://www.linkedin.com/company/55-global/" target="_blank">
+                <span class="fab fa-linkedin btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+            <li class="list-inline-item mb-2 mb-sm-0">
+              <a class="btn btn-sm btn-icon btn-soft-indigo rounded-circle" href="javascript:;" target="_blank">
+                <span class="fab fa-youtube btn-icon__inner" style="color:#fff"></span>
+              </a>
+            </li>
+          </ul>
+          <!-- End Social Networks -->
+        </div>      
       </div>
       <!-- End Copyright -->
     </footer>
