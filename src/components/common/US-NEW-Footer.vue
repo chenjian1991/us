@@ -112,9 +112,7 @@
                             <li>
                               <!-- http://55.trade/doc/#introduction -->
                               <!-- ../../../public/doc/index.html -->
-                                <a href="http://55.trade/doc/#introduction" target="_blank" class="list-group-item list-group-item-action" >API Trading</a>
-                                
-                                <!-- <router-link to="/apitrading" class="list-group-item list-group-item-action" >API Trading</router-link> -->
+                                <a href="http://55.trade/doc/index.html#introduction" target="_blank" class="list-group-item list-group-item-action" >API Trading</a> 
                             </li>
                             <li>
                                 <a class="list-group-item list-group-item-action" :href="baseSocialURL" target="_blank">Social Trading</a>
