@@ -999,7 +999,6 @@
             },
             //处理法币估值
             getCurrencyData(){
-                // debugger;
                 if(!this.currentSymbolObj){
                     return
                 }

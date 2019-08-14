@@ -262,7 +262,6 @@ export default {
               return captchaIns;
           },
           verify(validate){
-              //debugger
               postApplyCardInfo(validate,{
                   business:"TOKENISEYEEZY",
                   select:this.select,

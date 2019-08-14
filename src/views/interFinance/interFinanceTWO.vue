@@ -441,7 +441,6 @@ import timeout from '../../components/timeOut';
                    this.buttonflag = true;
                     this.stepflag = true;
                     this.spinShow = false;
-                    // debugger
                     let arr = res.data.entityList;
                     console.log(arr)
                     // console.log()

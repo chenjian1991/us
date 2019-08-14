@@ -50,7 +50,6 @@
                         }
             },
             getRate(sendSelect,receiveSelect,countryId,tokenId,lockId){
-                // debugger
                  let paramsobj = {
                     symbol : sendSelect+"/"+receiveSelect,
                     countryId :countryId,

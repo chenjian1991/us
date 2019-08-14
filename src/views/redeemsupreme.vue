@@ -652,7 +652,6 @@ export default {
               return captchaIns;
           },
           verify(validate){
-              //debugger
               postApplyCardInfo(validate,{
                   business:"redeemsupreme",
                   firstName:this.firstName,
