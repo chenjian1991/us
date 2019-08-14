@@ -923,13 +923,20 @@
                 let legalTender = JSON.parse(localStorage.getItem('currentCurrency'))
                 this.currencyRate = legalTender.rate
                 this.currencyName = legalTender.name
-                if(this.currentSymbolObj.quoteAsset=="USDT" || this.currentSymbolObj.quoteAsset=="USDD" || this.currentSymbolObj.quoteAsset == 'USD'){
-                    this.currentSymbolRate = 1
+                if(this.currentSymbolObj.quoteAsset=="USDD" || this.currentSymbolObj.quoteAsset=="USDD" || this.currentSymbolObj.quoteAsset == 'USD'){
+                   this.currentSymbolRate = 1
                     this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(this.currencyRate),4)
-                }else if(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDT"] || allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"]){
-                    //是否存在 计价资产/USDT的交易对
-                    if(allNowPriceObject[this.currentSymbol].last && allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDT"].last){
-                        this.currentSymbolRate = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDT"].last),4)
+                }else if(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"] || allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"]){
+                   console.log(1)
+                   console.log(allNowPriceObject)
+                   console.log(allNowPriceObject[this.currentSymbol])
+
+                   //是否存在 计价资产/USDT的交易对
+                    if(allNowPriceObject[this.currentSymbol].last && allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"].last){
+                       console.log(2)
+
+                       this.currentSymbolRate = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"].last),4)
+                       console.log(new BigNumber(this.currentSymbolRate),new BigNumber(this.currencyRate))
                         this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolRate) * new BigNumber(this.currencyRate),4)
                     }
                 }
@@ -1010,6 +1017,7 @@
                         this.symbolList_quote[v.symbol] = v //拼装行情的symbol为Key的symbolList 对象
                     })
                     this.symbolListSelf = siteObj
+
                     // console.log(siteObj)
                     //只有站点默认展示第一个交易对
                     let siteRouter = this.$route.query.site
@@ -1044,10 +1052,24 @@
                             this.isShowTradeMask()
                         }
                     }else{
-                        this.currentSymbol =  sortArr[0].symbol //默认排序后的第一个交易对
-                        this.currentSymbolObj = sortArr[0]
+                       let key1=Object.keys(siteObj)[0]
+                       let key2=Object.keys(siteObj[key1])[0]
+
+                       let firstSymbol=siteObj[key1][key2][0]
+                       let defaultSymbol=[]
+                       sortArr.map(v=>{
+                          if(v.symbol===`${firstSymbol.baseAsset}${firstSymbol.quoteAsset}`){
+                             defaultSymbol=v
+                          }
+                       })
+
+                       this.currentSymbol =  defaultSymbol.symbol //默认排序后的第一个交易对
+                        this.currentSymbolObj = defaultSymbol
                     }
-                    //K线基本数据配置使用
+
+                   // console.log(defaultSymbol)
+
+                   //K线基本数据配置使用
                     storage.set('currentSymbolObj',this.currentSymbolObj)
                     if(this.currentSymbolObj){
                         this.getCoinInfoLinks(this.currentSymbolObj.baseAsset)
@@ -1150,6 +1172,7 @@
                             //展示当前的交易对的大盘上方行情
                             if (this.currentSymbol == result.symbol ) {
                                 this.currentSymbolObj = Object.assign(result,v,this.symbolList_quote[result.symbol])
+                               console.log(this.currentSymbolObj)
                                 this.showCurrentPriceInfo(this.currentSymbolObj)
                             }
                             this.getCurrencyData()
