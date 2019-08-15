@@ -177,10 +177,7 @@ import { setTimeout } from 'timers';
                                     }
                             }
                          }
-                            // this.paramsObj = params;
-                            //  this.captchaIns && this.captchaIns.popUp()
                              console.log(this.ipCountry)
-
                          if(this.ipCountry=='中国'){
                               this.paramsObj = params;
                              this.captchaIns && this.captchaIns.popUp()
@@ -197,15 +194,6 @@ import { setTimeout } from 'timers';
                     }
                 })
             },
-            // getHashFlag(account){
-            //     let params = {
-            //         account:account
-            //     }
-            //     getApi(hashUrl,params).then((res)=>{
-            //         this.hashFlag = res;
-            //         console.log(res);
-            //     })
-            // },
             setSha(passwrod){
                 let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
                 let pw = '::'+ sha256(passwrod)//要加密的密码
@@ -240,6 +228,7 @@ import { setTimeout } from 'timers';
               if(loginToken){//登陆了
                   postHeaderTokenBodyApi(socialToken,loginToken,{}).then((res)=>{
                          this.responseSocialToken = res.token;
+                         console.log(this.responseSocialToken)
                          window.location.href= this.domain+'api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
                   }) 
               }else{
