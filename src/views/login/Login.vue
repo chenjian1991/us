@@ -229,6 +229,7 @@ import { setTimeout } from 'timers';
                   postHeaderTokenBodyApi(socialToken,loginToken,{}).then((res)=>{
                          this.responseSocialToken = res.token;
                          console.log(this.responseSocialToken)
+                         debugger
                          window.location.href= this.domain+'api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
                   }) 
               }else{
