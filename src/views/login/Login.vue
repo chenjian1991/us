@@ -177,31 +177,16 @@ import { setTimeout } from 'timers';
                                     }
                             }
                          }
-                             this.paramsObj = params;
-                              this.captchaIns && this.captchaIns.popUp()
-                         /* if(this.ipCountry=='中国'){
-                            //  console.log('中国')
+                        if(this.ipCountry=='中国'){
                               this.paramsObj = params;
                              this.captchaIns && this.captchaIns.popUp()
                          }else{
-                             let test = document.domain;
-                             if(test.indexOf('localhost')||test.indexOf('test')){//如果是本地或者是测试地址就用网易的验证
-                                this.paramsObj = params;
-                                this.captchaIns && this.captchaIns.popUp()
-                             }else{
-                                 this.paramsObj = params;
-                                this.robotModalflag = true;
-                             }
-                            
-                         }
-                            //  console.log('外国')
                             this.paramsObj = params;
                             this.robotModalflag = true;
-                         } */
+                         }
                         }).catch((error)=>{
-                                this.$Message.error('server error')
+                            this.$Message.error('server error')
                         })
-                        
                     } else {
                         //this.$Message.error('Fail!');
                     }
