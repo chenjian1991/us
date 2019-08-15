@@ -56,6 +56,7 @@ export default {
         openChatDialog() {
             this.isShowChatBtn = false
             this.chatDialog = true
+            this.initChat()
 
         },
         closeChat(){
@@ -82,7 +83,6 @@ export default {
         }
     },
     mounted(){
-        this.initChat()
     }
 };
 </script>
