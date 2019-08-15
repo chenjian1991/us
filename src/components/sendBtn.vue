@@ -20,7 +20,7 @@
     import {sendSms,ssoSend,verifyEmail,userVerify,ipQuery} from '../../api/urls.js';
     import {postBaseApi,postHeaderTokenBodyApi,getApi,getApiLoin} from '../../api/axios.js';
     import Cookies from 'js-cookie'
-import { debuglog } from 'util';
+    import { debuglog } from 'util';
     export default {
         name:'sendBtn',
         props:{
