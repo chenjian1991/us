@@ -240,6 +240,8 @@ import { setTimeout } from 'timers';
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
+                          this.$store.commit('changeLoingStatus', true);
+
                         //   this.$router.push('/home');  
                         let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
@@ -249,6 +251,7 @@ import { setTimeout } from 'timers';
                         }
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
+                          this.$store.commit('changeLoingStatus', true);
                         let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                             this.$router.push('/safeCenter')
