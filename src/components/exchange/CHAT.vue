@@ -35,6 +35,8 @@
 import { CHAT_URL} from "../../config/index";
  import Cookies from 'js-cookie'
  import {postHeaderTokenBodyApi} from '_api/axios'
+import {socialToken} from '../../../api/urls.js';
+
 export default {
     data() {
         return {
@@ -73,7 +75,7 @@ export default {
         },
         initChat(){
             if(this.isLogin){
-                postHeaderTokenBodyApi('api/sso/social/get-token',this.loginToken,null).then(data => {
+                postHeaderTokenBodyApi(socialToken,this.loginToken,null).then(data => {
                     this.chatToken = data.token
                     this.iframeURL = `${CHAT_URL.baseURL}${this.chatToken}/`+encodeURIComponent(`${CHAT_URL.englishURL}`)
                 })
