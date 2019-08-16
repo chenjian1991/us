@@ -35,7 +35,7 @@
                         <h4 class="h6 text-secondary font-weight-normal mb-0 text-white">{{$t('fronthomefootSocial')}}</h4>
                         <span class="d-block font-size-1 text-white">{{$t('fronthomefootSocialsub')}}</span>
                          </br>
-                        <a class="font-size-14 text-white mt-6" :href="englishCommunityURL" target="_blank">
+                        <a class="font-size-14 text-white mt-6" @click="initURL('socialGroup')">
                             {{$t('fronthomefootSocialact')}}
                             <span class="fa fa-angle-right align-middle ml-2"></span>
                         </a>
@@ -115,7 +115,7 @@
                                 <a href="http://55.trade/doc/#introduction" target="_blank" class="list-group-item list-group-item-action" >API Trading</a> 
                             </li>
                             <li>
-                                <a class="list-group-item list-group-item-action" :href="baseSocialURL" target="_blank">Social Trading</a>
+                                <a class="list-group-item list-group-item-action" @click="initURL('baseSocial')">Social Trading</a>
                             </li>
                           
                         </ul>
@@ -197,21 +197,31 @@ export default {
     }
   },
   methods: {
-    initURL() {
+    initURL(item) {
       this.loginToken = Cookies.get('loginToken')
       if(this.loginToken){
         postHeaderTokenBodyApi(socialToken,this.loginToken,null).then(data => {
             this.chatToken = data.token +'/'
             //社区链接
-            this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/groups/profile/967250642861035532/feed')
-            this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken
-            console.log('footer-token',this.baseSocialURL)
+            if(item=='baseSocial'){
+                this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken
+                window.open(this.baseSocialURL)
+                console.log(this.baseSocialURL)
+            }else{
+                this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/groups/profile/967250642861035532/feed')
+                window.open(this.englishCommunityURL)
+                 console.log(this.englishCommunityURL)
+            }
         })
       }else{
         this.chatToken = 'null'
-        this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+ encodeURIComponent('/groups/profile/967250642861035532/feed')
-        this.baseSocialURL = getCommouityBaseURL()
-        console.log(this.baseSocialURL)
+           if(item=='baseSocial'){
+                  this.baseSocialURL = getCommouityBaseURL()
+                window.open(this.baseSocialURL)
+            }else{
+                this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/' + this.chatToken+'/'+ encodeURIComponent('/groups/profile/967250642861035532/feed')
+                window.open(this.englishCommunityURL)
+            }
       }
     }
   },
@@ -228,14 +238,11 @@ export default {
                this.isLogin = false;
 
             }
-            setTimeout(()=>{
-                this.initURL()
-            },500)
             
          },
       },
   mounted(){
-    this.initURL()
+
   }
 };
 </script>

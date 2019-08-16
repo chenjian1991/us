@@ -75,7 +75,7 @@
             <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
               <li><router-link to="/crypto" class="nav-link u-header__sub-menu-nav-link">Crypto Trading</router-link></li>
               <li><a target="_blank"  class="nav-link u-header__sub-menu-nav-link" href="http://55.trade/doc/#introduction">API Trading</a></li>
-              <li><a class="nav-link u-header__sub-menu-nav-link" target="_blank" :href="baseSocialURL"> Social Trading </a></li>
+              <li><a class="nav-link u-header__sub-menu-nav-link"  @click="initURL"> Social Trading </a></li>
             </ul>
             <!-- End Dropdown - Submenu -->
           </li>
@@ -412,11 +412,12 @@ export default {
         postHeaderTokenBodyApi(socialToken,this.loginToken,null).then(data => {
             this.chatToken = data.token +'/'
             this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken;
-            console.log('social-tokne',this.baseSocialURL)
+            console.log(this.baseSocialURL)
+            window.open(this.baseSocialURL)
         })
       }else{
-        this.baseSocialURL = getCommouityBaseURL()
-        console.log('token',this.baseSocialURL)
+        this.baseSocialURL = getCommouityBaseURL();
+         window.open(this.baseSocialURL)
         
       }
     },
@@ -582,21 +583,21 @@ export default {
           // console.log(error)
         });
     },
-    gotoSocial() {
-      let loginFlag = Cookies.get("loginToken");
-      if (loginFlag) {
-        //登陆了
-        postHeaderTokenBodyApi(socialToken, loginFlag, {}).then(res => {
-          let responseToken = res.token;
-          let socialURL = CHAT_URL.baseURL + responseToken;
-          let url = socialURL;
-          window.open(url, "_blank");
-        });
-      } else {
-        var url = getCommouityBaseURL();
-        window.open(url, "_blank");
-      }
-    },
+    // gotoSocial() {
+    //   let loginFlag = Cookies.get("loginToken");
+    //   if (loginFlag) {
+    //     //登陆了
+    //     postHeaderTokenBodyApi(socialToken, loginFlag, {}).then(res => {
+    //       let responseToken = res.token;
+    //       let socialURL = CHAT_URL.baseURL + responseToken;
+    //       let url = socialURL;
+    //       window.open(url, "_blank");
+    //     });
+    //   } else {
+    //     var url = getCommouityBaseURL();
+    //     window.open(url, "_blank");
+    //   }
+    // },
     quitFun() {
       postHeaderTokenBodyApi(logout, Cookies.get("loginToken"), {}).then(
         res => {
@@ -650,15 +651,11 @@ export default {
       } else {
         this.isLogin = false;
       }
-      setTimeout(()=>{
-                this.initURL()
-      },500)
+   
     },
 
   },
   mounted() {
-    this.initURL()
-
     $(".js-mega-menu").HSMegaMenu({
       event: "hover",
       pageContainer: $(".container"),

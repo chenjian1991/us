@@ -57,6 +57,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 showModal:false,
                 text:'',
                 fromSocial:"",
+                fromSite:'',
                 responseSocialToken:'',
                 domain:'',
                 ruleValidate: {
@@ -85,11 +86,13 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     }
                 })
             },
-             gotoSocial(loginToken){//拿登陆token去换取social token
+            gotoSocial(loginToken){//拿登陆token去换取social token
               if(loginToken){//登陆了
                   postHeaderTokenBodyApi(socialToken,loginToken,{}).then((res)=>{
                          this.responseSocialToken = res.token;
-                         window.location.href= this.domain+'api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
+                         console.log('social-token',this.responseSocialToken)
+                        window.location.href= this.domain+'/api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
+                    
                   }) 
               }else{
               
@@ -105,32 +108,60 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     console.log(res)
                 })
             },
-            gitlogHistory(token){//登录历史接口
+             gitlogHistory(token){//登录历史接口
                   postHeaderTokenBodyApi(loginHistory,token,{}).then((res) =>{
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                        let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
-                        if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
-                            this.$router.push('/safeCenter')
-                        }else{
-                             this.$router.go(-2)
-                        }
+                          this.$store.commit('changeLoingStatus', true);
+                          if(this.fromSocial=="null"&&this.fromSite==undefined){//既不是social也不是ato
+                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,''];
+                                if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                                     this.$router.push('/safeCenter')
+                                }else{
+                                    this.$router.go(-1)
+                                }
+                          }else if(this.fromSite){//来自ato
+                                this.$router.push(this.fromSite)
+                          }else{//来自social
+                                 this.gotoSocial(token)
+                          }
+                        // let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
+                        // if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                        //     this.$router.push('/safeCenter')
+                        // }else{
+                        //      this.$router.go(-1)
+                        // }
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                        let aa = this.previousRouterName;
-                        let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
-                        if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
-                            this.$router.push('/safeCenter')
-                        }else{
-                             this.$router.go(-2)
-                        }
-
+                          this.$store.commit('changeLoingStatus', true);
+                          if(this.fromSocial=="null"&&this.fromSite==undefined){//既不是social也不是ato
+                                let router = this.previousRouterName;
+                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,''];
+                                if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                                    this.$router.push('/safeCenter')
+                                }else{
+                                    this.$router.go(-1)
+                                }
+                            }else if(this.fromSite){//如果是ato
+                                this.$router.push(this.fromSite)
+                          }else{//如果是social
+                                 this.gotoSocial(token)
+                          }
+                        // let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
+                        // if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                        //     this.$router.push('/safeCenter')
+                        // }else{
+                        //      this.$router.go(-1)
+                        // }
 
                     }
+                    //请求自选的币种
+                    this.$store.dispatch("getMarkSymbol");
+
                 }).catch((res) =>{
-                    this.loaded = true;
                     console.log(res)
+                    this.loaded=true;
                 })
             },
             loginFun(){//绑定谷歌后的登录，走的是谷歌验证的接口
@@ -201,6 +232,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
         },
         mounted(){
             this.fromSocial = this.$route.query.fromSocial;
+             this.fromSite = this.$route.query.fromWhere;
             this.domain = getCommouityBaseURL();
         }
         
