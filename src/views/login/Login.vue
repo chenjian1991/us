@@ -230,12 +230,7 @@ import { setTimeout } from 'timers';
                   postHeaderTokenBodyApi(socialToken,loginToken,{}).then((res)=>{
                          this.responseSocialToken = res.token;
                          console.log('social-token',this.responseSocialToken)
-                         if(this.responseSocialToken){
-                                window.location.href= this.domain+'/api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
-                         }else{
-                             this.$router.push('safeCenter');
-                              console.log('social-token',this.responseSocialToken)
-                         }
+                         window.location.href= this.domain+'/api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
                   }) 
               }else{
               
