@@ -5,10 +5,10 @@
       <div class="container space-2">
         <div class="row justify-content-lg-between align-items-center">
           <div class="col-lg-6 mb-7 mb-lg-0">
-            <!-- <div class="mb-4">
+            <div class="mb-4">
               <h1 class="font-weight-semi-bold col-lg-11" style="color:#fff;font-size:30px;padding: 0;">Buy and Sell Crypto at Our Most Competitive Pricing</h1>
               <h1 class="font-weight-semi-bold" style="color:#fff;font-size:30px"></h1>
-            </div> -->
+            </div>
               <!-- Subscribe Form -->
               <form class="js-validate js-form-message">
                 <label class="sr-only" for="subscribeSrEmail">{{$t("fronthomeHerosign")}}</label>
@@ -160,9 +160,9 @@
         <main id="content" role="main">
             <!-- GBBO start -->
             <div class="container  u-space-3-top">
-                <div class="row justify-content-center text-primary-55 h2 text-center" style="color:#12869A;font-weight: 500">
+                <!-- <div class="row justify-content-center text-primary-55 h2 text-center" style="color:#12869A;font-weight: 500">
                     {{$t("fronthomeGBBOtitle")}}
-                </div>
+                </div> -->
                 <div id="gbbo_detail" class="space-top-1">
                   <div class="logo">
                     <div class="logo_item">
