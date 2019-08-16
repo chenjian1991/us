@@ -202,9 +202,11 @@ export default {
             if(item=='baseSocial'){
                 this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken
                 window.open(this.baseSocialURL)
+                console.log(this.baseSocialURL)
             }else{
                 this.englishCommunityURL = getCommouityBaseURL()+'api/v1/memberinterface/'+this.chatToken+'/'+encodeURIComponent('/groups/profile/967250642861035532/feed')
                 window.open(this.englishCommunityURL)
+                 console.log(this.englishCommunityURL)
             }
         })
       }else{
