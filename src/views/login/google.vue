@@ -57,6 +57,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 showModal:false,
                 text:'',
                 fromSocial:"",
+                fromSite:'',
                 responseSocialToken:'',
                 domain:'',
                 ruleValidate: {
@@ -230,6 +231,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
         },
         mounted(){
             this.fromSocial = this.$route.query.fromSocial;
+             this.fromSite = this.$route.query.fromWhere;
             this.domain = getCommouityBaseURL();
         }
         
