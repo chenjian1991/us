@@ -127,8 +127,7 @@
               <!-- End Team -->
             </div>
 
-            <div class="js-slide px-3">
-              <!-- Team -->
+            <!-- <div class="js-slide px-3">
               <div class="row">
                 <div class="col-sm-6 d-sm-flex align-items-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
                   <div class="w-100">                                
@@ -143,8 +142,7 @@
                   <img class="img-fluid rounded mx-auto" src="assets/svg/bg/leader_2.jpg" alt="Image Description">
                 </div>
               </div>
-              <!-- End Team -->
-            </div>
+            </div> -->
 
             <div class="js-slide px-3">
               <!-- Team -->

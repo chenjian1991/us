@@ -5,10 +5,10 @@
       <div class="container space-2">
         <div class="row justify-content-lg-between align-items-center">
           <div class="col-lg-6 mb-7 mb-lg-0">
-            <div class="mb-4">
+            <!-- <div class="mb-4">
               <h1 class="font-weight-semi-bold col-lg-11" style="color:#fff;font-size:30px;padding: 0;">Buy and Sell Crypto at Our Most Competitive Pricing</h1>
               <h1 class="font-weight-semi-bold" style="color:#fff;font-size:30px"></h1>
-            </div>
+            </div> -->
               <!-- Subscribe Form -->
               <form class="js-validate js-form-message">
                 <label class="sr-only" for="subscribeSrEmail">{{$t("fronthomeHerosign")}}</label>
@@ -384,8 +384,7 @@
                 "slidesToShow": 1
               }
             }]'>
-          <a class="js-slide rounded-pill p-2" :href="LisaURL" target="_blank">
-            <!-- Authors -->
+          <!-- <a class="js-slide rounded-pill p-2" :href="LisaURL" target="_blank">
             <div class="media align-items-center">
               <div class="u-avatar mr-3">
                 <img class="img-fluid rounded-circle" src="../../../assets/images/index/figure/img1.jpg" alt="Image Description">
@@ -395,8 +394,7 @@
                 <p class="small u-slick--pagination-interactive__text mb-0">SVP of Strategic Partnerships</p>
               </div>
             </div>
-            <!-- End Authors -->
-          </a>
+          </a> -->
           <a class="js-slide rounded-pill p-2"  :href="GeoffURL" target="_blank">
             <!-- Authors -->
             <div class="media align-items-center">
@@ -535,8 +533,7 @@
       </div>
       <!-- End Team -->
     </div>
-    <div class="js-slide px-3">
-      <!-- Team -->
+    <!-- <div class="js-slide px-3">
       <div class="row">
         <div class="col-sm-6 d-sm-flex align-content-sm-start flex-sm-column text-center text-sm-left mb-7 mb-sm-0">
           <div class="w-100">
@@ -552,8 +549,7 @@
           <img class="img-fluid rounded mx-auto" src="../../../assets/images/index/figure/leader_2.jpg" alt="Image Description">
         </div>
       </div>
-      <!-- End Team -->
-    </div>
+    </div> -->
     <div class="js-slide px-3">
       <!-- Team -->
       <div class="row">
