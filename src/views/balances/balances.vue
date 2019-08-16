@@ -92,9 +92,9 @@
                <TabPane :label="$t('zcBSiteAccount')" name="name2">
                   <Table :columns="columns1" :data="dataB"></Table>
                </TabPane>
-               <TabPane :label="$t('headercoustomerchain')" name="name5">
-                  <Table :columns="columns1" :data="dataC"></Table>
-               </TabPane>
+               <!--<TabPane :label="$t('headercoustomerchain')" name="name5">-->
+                  <!--<Table :columns="columns1" :data="dataC"></Table>-->
+               <!--</TabPane>-->
             </Tabs>
          </div>
       </div>
