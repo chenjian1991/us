@@ -243,7 +243,7 @@ import { setTimeout } from 'timers';
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
                           this.$store.commit('changeLoingStatus', true);
                           if(this.fromSocial=="null"&&this.fromSite==undefined){//既不是social也不是ato
-                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,''];
+                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot'];
                                 if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                                      this.$router.push('/safeCenter')
                                 }else{
@@ -265,7 +265,7 @@ import { setTimeout } from 'timers';
                           this.$store.commit('changeLoingStatus', true);
                           if(this.fromSocial=="null"&&this.fromSite==undefined){//既不是social也不是ato
                                 let router = this.previousRouterName;
-                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,''];
+                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot'];
                                 if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                                     this.$router.push('/safeCenter')
                                 }else{
@@ -350,10 +350,24 @@ import { setTimeout } from 'timers';
                         localStorage.setItem('hashFlag',_that.hashFlag);
                         let needGoogle = res.needGoogleCode;
                         if(needGoogle){
+                            debugger
                                 localStorage.setItem('googleToken',res.token)
                                 let acountNumber  = _that.formValidate.phoneNumber;
                                 if(acountNumber.indexOf('@')!==-1){//邮箱登录
-                                    _that.requestGoogleFunEmail()
+                                    // _that.requestGoogleFunEmail()
+                                    let ex55Pin = res.ex55Pin;
+                                    localStorage.setItem('ex55Pin',ex55Pin)
+                                    _that.ex55Pin = ex55Pin;
+                                    if(_that.fromSocial=='null'){
+                                            _that.$router.push('/google');
+                                    }else{//说明是从social跳过来的
+                                        _that.$router.push({
+                                                path:'/google',
+                                                query:{
+                                                    fromSocial:_that.fromSocial
+                                                }
+                                            })
+                                    }
                                 }else{//手机登录
                                     _that.requestGoogleFun()
                                     

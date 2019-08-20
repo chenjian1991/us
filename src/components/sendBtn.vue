@@ -54,14 +54,13 @@
         methods: {
             sendCode(){
                 this.$emit('sendCick')//触发父组件的方法
-                if(this.ssoEmail||this.tradePassEmail){//邮箱不需要人机验证
+                if(this.tradePassEmail){//邮箱不需要人机验证
                     this.noMachineBtnPost();
                 }
-               //this.captchaIns && this.captchaIns.popUp()//弹出人机验证
                 if(this.ipCountry=='中国'){
                      this.captchaIns && this.captchaIns.popUp()//弹出人机验证
                 }else{
-                    if(this.ssoEmail||this.tradePassEmail){//不需要人机验证
+                    if(this.tradePassEmail){//不需要人机验证
 
                     }else{
                          this.robotModalflag = true;
@@ -69,21 +68,7 @@
                 }
 
             },
-            //  ipQueryFun(){//ip所在国家查询
-            //     getApi(ipQuery,'').then((res)=>{
-            //         if(res.resultcode==200){
-            //             this.ipCountry = res.result.Country;
-            //             if(this.ipCountry=='中国'){
-                            
-            //             }else{//只有非中国都时候才实例化谷歌都方法
-            //                  this.onloadCallback();
-            //             }
-            //         }else{
-            //             this.onloadCallback()//当ip获取失败都时候默认是谷歌验证
-            //             this.ipCountry = '';//查询失败
-            //         }
-            //     })
-            // },
+         
             ipQueryFun(){//ip所在国家查询
                 getApiLoin(ipQuery,'').then((res)=>{
                     if(res.resultcode==200){
@@ -128,6 +113,9 @@
                             }else if(_that.ForgotPhonePassworMessage){//手机找回密码发送验证码
                                     let registerParams = Object.assign(_that.ForgotPhonePassworMessage,obj)
                                     _that.$options.methods.sendPostRequest(registerParams,_that);
+                            }else if(_that.ssoEmail){//绑定邮箱发送验证码
+                                    let registerParams = Object.assign(_that.ssoEmail,obj)
+                                    _that.$options.methods.emaiPostVerifyMethod(registerParams,_that);
                             }
 
                             setTimeout(()=>{
@@ -196,6 +184,9 @@
                             }else if(_that.tradePassPhone){//修改交易密码发送手机短信
                                 let registerParams = Object.assign(_that.tradePassPhone,obj)
                                  _that.SSOpostRequest(registerParams,_that);
+                            }else if(_that.ssoEmail){//绑定邮箱发送验证码
+                                let registerParams = Object.assign(_that.ssoEmail,obj)
+                                 _that.emaiPostVerifyMethod(registerParams,_that);
                             }
                             
                         }
@@ -214,9 +205,13 @@
 
             },
             noMachineBtnPost(){//不需要人机验证
-                if(this.ssoEmail){//绑定邮箱发送验证码
-                    this.emaiPostVerifyMethod()//验证邮箱
-                }else if(this.tradePassEmail){//交易密码邮箱发送验证码
+                // if(this.ssoEmail){//绑定邮箱发送验证码
+                //     this.emaiPostVerifyMethod()//验证邮箱
+                // }else if(this.tradePassEmail){//交易密码邮箱发送验证码
+                //     this.SSOpostRequest(this.tradePassEmail,this);
+                // }
+
+                if(this.tradePassEmail){
                     this.SSOpostRequest(this.tradePassEmail,this);
                 }
                
@@ -276,7 +271,7 @@
                                 this.$router.push('/login');
                             }, 2000);
                         }
-                          if(this.ssoEmail||this.tradePassEmail){
+                          if(this.tradePassEmail){
                                 // 不需要初始化人机验证
                             }else{
                                 if(this.ipCountry=='中国'){
@@ -299,7 +294,7 @@
                                         clearInterval(_that.timer);
                                         _that.timer = null;
                                          _that.captchaIns='';
-                                            if(this.ssoEmail||this.tradePassEmail){
+                                            if(this.tradePassEmail){
                                                 // 不需要初始化人机验证
                                             }else{
                                                  if(_that.ipCountry=='中国'){
@@ -319,24 +314,22 @@
                 })
             },
 
-            emaiPostVerifyMethod(){// 验证邮箱是否存在
-                let params = {
-                    "email":this.$store.state.app.bandEmail.email,
-                }
+            emaiPostVerifyMethod(params,_that){// 验证邮箱是否存在
+                
                 postBaseApi(verifyEmail,'',params).then((res) =>{
                     
                     if(res.code==10014){//只有此种情况才允许绑定邮箱
                         let objParams;
-                        if(this.ssoPhone){
-                              objParams = this.$store.state.app.bandPhoneObj;
-                        }else if(this.ssoEmail){
-                              objParams = this.$store.state.app.bandEmail;
+                        if(_that.ssoPhone){
+                              objParams = _that.$store.state.app.bandPhoneObj;
+                        }else if(_that.ssoEmail){
+                              objParams = _that.$store.state.app.bandEmail;
                         }
-                        this.SSOpostRequest(objParams,this)
+                        _that.SSOpostRequest(objParams,_that)
                     }else if(res.code&&res.code!==10014){// 其他错误情况，比如参数错误，邮箱格式错误
-                        this.$emit('sendCick',this.$t(res.code))
+                        _that.$emit('sendCick',_that.$t(res.code))
                     }else{//邮箱已经存在了，不允许绑定，提示给用户
-                        this.$emit('sendCick',this.$t(11002))
+                        _that.$emit('sendCick',_that.$t(11002))
                     }
                 })
             },
@@ -380,7 +373,7 @@
         },
         watch:{
             languageChange(val,olaVal){
-                    if(this.ssoEmail||this.tradePassEmail){
+                    if(this.tradePassEmail){
                         //切换语言的实利化了人际验证，导致点击发送的时候弹出了人机验证，这样是错误的
                     }else{
                       this.initRobot()  //这个地方才需要实力化人机验证
@@ -391,7 +384,7 @@
         mounted() {
             this.ipQueryFun();
             //  console.log('ccc',this.robotDiv)
-            if(this.ssoEmail||this.tradePassEmail){
+            if(this.tradePassEmail){
               
             }else{
                 this.initRobot()
