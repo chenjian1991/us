@@ -13,7 +13,7 @@
                         <h4 class="h6 text-secondary font-weight-normal mb-0 text-white">{{$t('fronthomefootMail')}}</h4>
                         <span class="d-block font-size-1 text-white">{{$t('fronthomefootMailcon')}}</span>
                         </br>
-                         <a class="font-size-14 text-white" href="mailto:service@55.com">
+                         <a class="font-size-14 text-white" href="mailto:service@55.trade">
                             {{$t('fronthomefootMailaction')}}
                             <span class="fa fa-angle-right align-middle ml-2"></span>
                         </a>

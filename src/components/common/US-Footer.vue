@@ -17,7 +17,7 @@
               <p
                 class="mb-1 text-white"
               >We want to answer all of your queries. Get in touch and we'll get back to you as soon as we can.</p>
-              <a class="font-size-14 text-white" href="mailto:service@55.com">
+              <a class="font-size-14 text-white" href="mailto:service@55.trade">
                   E-mail us
                   <span class="fa fa-angle-right align-middle ml-2"></span>
               </a>

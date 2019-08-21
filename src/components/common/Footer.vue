@@ -7,10 +7,10 @@
                         <h3>{{$t('footercustomerservice')}}</h3>
                         <p>{{$t('footeralladyservice')}}</p>
                         <p>{{$t('footersendeamil')}}</p>
-                        <p class="email">service@55.com</p>
+                        <p class="email">service@55.trade</p>
                     </div>
                     <div class="email-btn">
-                        <a style="color:#fff;" href="mailto:service@55.com">
+                        <a style="color:#fff;" href="mailto:service@55.trade">
                             <Icon class="email-icon" type="ios-mail-outline" />
                             E-mail us
                         </a>
