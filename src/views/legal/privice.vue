@@ -762,7 +762,7 @@
                                 your data (the registration process) or at any other time by logging into the
                                 Website and adjusting your user preferences in your account profile by checking
                                 or unchecking the relevant boxes or by sending us an email stating your request
-                                to service@55.com. If we have sent you a promotional email, you may send us a
+                                to service@55.trade. If we have sent you a promotional email, you may send us a
                                 return email asking to be omitted from future email distributions. This opt out
                                 does not apply to information provided to the Company as a result of a product
                                 purchase, warranty registration, product service experience or other
@@ -779,7 +779,7 @@
                                 located on the form on which we collect your data (the registration process) or
                                 at any other time by logging into the Website and adjusting your user
                                 preferences in your account profile by checking or unchecking the relevant
-                                boxes or by sending us an email stating your request to service@55.com. For this
+                                boxes or by sending us an email stating your request to service@55.trade. For this
                                 opt-out to function, you must have your browser set to accept all browser
                                 cookies.</span></p>
 
@@ -816,7 +816,7 @@
                                 <p class=MsoNormal><span lang=EN></span></p>
 
                                 <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>You may also send us an email at service@55.com to request access to,
+                                lang=EN>You may also send us an email at service@55.trade to request access to,
                                 correct or delete any personal information that you have provided to us. We
                                 cannot delete your personal information except by also deleting your user
                                 account. We may not accommodate a request to change information if we believe
@@ -856,7 +856,7 @@
                                 Website that are California residents to request certain information regarding
                                 our disclosure of personal information to third parties for their direct
                                 marketing purposes. To make such a request, please send an email to
-                                service@55.com.</span></p>
+                               service@55.trade.</span></p>
 
                                 <p class=MsoNormal><span lang=EN></span></p>
 
@@ -1010,7 +1010,7 @@
                                 lang=EN>To ask questions or comment about this privacy policy and our privacy
                                 practices, contact us at:</span></p>
 
-                                <p class=MsoNormal><span lang=EN>service@55.com</span></p>
+                                <p class=MsoNormal><span lang=EN>service@55.trade</span></p>
 
                                 <p class=MsoNormal><span lang=EN></span></p>
 

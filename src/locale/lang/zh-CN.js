@@ -1031,7 +1031,7 @@ export default {
    Formedia: '媒体垂询: media@55.com',
    Forrecruitment: '人才招募: hr@55.com',
    franchising: '设立分支: franchising@55.com',
-   general: '客户服务: service@55.com',
+   general: '客户服务: ',
    Legal: '法务相关',
    SocialPresence: '社交媒体',
    //订单
