@@ -112,10 +112,11 @@ import {getCommouityBaseURL} from '../../config/index.js';
                   postHeaderTokenBodyApi(loginHistory,token,{}).then((res) =>{
                     let loginHistory = res.length;
                     if(loginHistory==1){//首次登录
+                    
                           this.$store.commit('CHANGEFIRSTLOGIIN',true);
                           this.$store.commit('changeLoingStatus', true);
-                          if(this.fromSocial=="null"&&this.fromSite==undefined){//既不是social也不是ato
-                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,''];
+                          if(this.fromSocial==undefined&&this.fromSite==undefined){//既不是social也不是ato
+                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot'];
                                 if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                                      this.$router.push('/safeCenter')
                                 }else{
@@ -135,9 +136,9 @@ import {getCommouityBaseURL} from '../../config/index.js';
                     }else{//非首次登录
                           this.$store.commit('CHANGEFIRSTLOGIIN',false);
                           this.$store.commit('changeLoingStatus', true);
-                          if(this.fromSocial=="null"&&this.fromSite==undefined){//既不是social也不是ato
+                          if(this.fromSocial==undefined&&this.fromSite==undefined){//既不是social也不是ato
                                 let router = this.previousRouterName;
-                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,''];
+                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot'];
                                 if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                                     this.$router.push('/safeCenter')
                                 }else{
@@ -233,6 +234,8 @@ import {getCommouityBaseURL} from '../../config/index.js';
         mounted(){
             this.fromSocial = this.$route.query.fromSocial;
              this.fromSite = this.$route.query.fromWhere;
+             console.log('this.fromSocial',this.fromSocial)
+             console.log(' this.fromSite', this.fromSite)
             this.domain = getCommouityBaseURL();
         }
         
