@@ -287,6 +287,13 @@ const clickoutside = {
                     let pattern = /^[A-Za-z0-9_]{4,20}$/
                     if(!pattern.test(value)){
                          callback(new Error(this.$t('usernameexg')))
+                          getApi(userNameUnique+value,'').then((res)=>{
+                            if(res.result){//true,可以设置
+                                this.nameFlag = false;
+                            }else{//名字重复
+                                this.nameFlag = true;
+                            }
+                        })
                     }else{
                         callback()
                          getApi(userNameUnique+value,'').then((res)=>{
