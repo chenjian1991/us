@@ -73,22 +73,21 @@
                 getApiLoin(ipQuery,'').then((res)=>{
                     if(res.resultcode==200){
                         this.ipCountry = res.result.Country;
-                        if(this.ipCountry=='中国'){
-                             
-                         }else{//只有非中国的时候才实例化谷歌都方法
-                                 this.onloadCallback();
-                         }
+                        this.onloadCallback();
                     }else{
                           this.ipCountry='美国'//ip查询失败的时候默认美国
+                          this.onloadCallback();
                     }
                 }).catch((error)=>{//当ip获取失败都时候默认是谷歌验证
+                    this.onloadCallback();
                     this.ipCountry='美国'// 请求超时的还是把ip写死美国
                 })
             },
             onloadCallback(){//谷歌人机验证方法
                 let _that = this;
-                // console.log("grecaptcha is ready!");
-                let widgetId=grecaptcha.render(this.robotDiv, {
+                if(grecaptcha.render){
+                    console.log("render success!");
+                    let widgetId=grecaptcha.render(this.robotDiv, {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
                     "theme":'light',
                     "size":'normal',
@@ -133,7 +132,10 @@
                     });
                     _that.googleID = widgetId;
                     return widgetId;
-
+                }else{
+                     _that.ipCountry='中国';
+                     console.log('render error');
+                }
             },
             initRobot(){
                 let _that = this;　
@@ -224,7 +226,6 @@
                              if(_that.ipCountry=='中国'){
                                     _that.initRobot();
                                 }else{
-                                    //  _that.onloadCallback();
                                     grecaptcha.reset(_that.googleID);
                                 }   
                         }else{
@@ -245,7 +246,6 @@
                                                 _that.initRobot();
                                         }else{
                                              grecaptcha.reset(_that.googleID);
-                                                // _that.onloadCallback();
                                         } 
                                 }
                                 },1000)
