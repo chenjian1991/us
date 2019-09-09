@@ -138,7 +138,7 @@
             <div v-else class="redBackground"></div>
             <div class="percent_line">
               <div>
-                <img :url="v.imageUrl" width="28px" alt class="logo">
+                <img :src="v.imageUrl" width="28px" alt class="logo">
                 <span class="baseAsset">{{v.exCurrency}}</span>
                 <span class="quoteAsset">/{{v.baseCurrency}}</span>
               </div>
@@ -150,7 +150,7 @@
             <div :class="[v.showColor == '1' ? 'textColorGreen' : 'textColorRed']">
               <span class="price">{{v.last}}</span>
             </div>
-            <div class="legal_coin">{{currencyName}}&nbsp{{v.symbolCurrency}}</div>
+            <!-- <div class="legal_coin">{{currencyName}}&nbsp{{v.symbolCurrency}}</div> -->
           </router-link>
         </div>
       </div>
