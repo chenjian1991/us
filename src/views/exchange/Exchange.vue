@@ -865,6 +865,10 @@
                         this.WSHistory.send(JSON.stringify(pongResponse))
                         return;
                     }
+                   //断网重连的问题
+                   if (result.code) {
+                      return;
+                   }
                     let arr = this.tradeHistoryArr
                     let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
                     let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
@@ -1604,6 +1608,13 @@
                         desc:this.$t('bbjyBuyVolumeNotLess')+minQuantity,
                     });
                     this.buyDisabled = false
+                } else if (Number(this.buyInTotal) > Number(this.quoteCoinAvailable)) {
+                   // this.$Message.warning('买入总额不能超过'+可用资产);
+                   this.$Notice.warning({
+                      title: this.$t('tsTips'),
+                      desc: this.$t('bbjyBuyTotalNotMore') + ' ' + this.$t('bbjyBuyAvailable').toLowerCase(),
+                   });
+                   this.buyDisabled = false
                 } else if (!isPriceSize) {
                     // 价格整数倍于
                     this.$Notice.warning({
@@ -1720,6 +1731,12 @@
                         title: this.$t('bbjySellVolumeNotLess')+minQuantity,
                     });
                     this.sellDisabled = false;
+                } else if (Number(this.sellCountInput) > Number(this.baseAssetAvailable)) {
+                   // this.$Message.warning('卖出数量不能超过'+可用资产);
+                   this.$Notice.warning({
+                      title: this.$t('bbjySellVolumeNotMore') + ' ' + this.$t('bbjyBuyAvailable').toLowerCase(),
+                   });
+                   this.sellDisabled = false;
                 }else if (!isPriceSize) {
                     // 价格整数倍于
                     this.$Notice.warning({

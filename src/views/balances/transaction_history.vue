@@ -8,7 +8,7 @@
          <Tabs v-model="tabName" :animated="false">
             <TabPane :label="$t('transactionHisCD')" name="name1">
                <Table :columns="columns1" :data="data1"></Table>
-               <Page :total="totalPage1" :page-size="1" show-elevator class="page" @on-change="onChangePage1(current)"/>
+               <Page :total="totalPage1" :page-size="1" show-elevator class="page" @on-change="onChangePage1"/>
             </TabPane>
             <TabPane :label="$t('transactionHisCW')" name="name2">
                <Table :columns="columns1" :data="data2"></Table>
@@ -617,7 +617,9 @@
                   createTime:'',
          }
            postHeaderKeyIdBodyApi(commonRemite,{"url":'/api/pay/remtrade/getRemittanceTradesList',"params":JSON.stringify(params)}).then((res)=>{
-                            this.data5 = res.data.entity.remTradesList;
+              if(!res.status){
+                 this.data5 = res.data.entity.remTradesList;
+              }
                         })
       }
 
