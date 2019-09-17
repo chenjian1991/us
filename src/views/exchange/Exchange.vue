@@ -1056,14 +1056,10 @@
                   this.symbolList_quote[v.symbol] = v //拼装行情的symbol为Key的symbolList 对象
                })
                this.symbolListSelf = siteObj
-               console.log(this.symbolListSelf)
-
                //只有站点默认展示第一个交易对
                let siteRouter = this.$route.query.site
                //url 只有site
                if (siteRouter && !this.$route.query.symbol) {
-                  console.log(1)
-
                   let index = getIndexInObject(siteObj, siteRouter)
                   this.siteIndexNumber = index
                   this.siteName = siteRouter
@@ -1077,8 +1073,6 @@
                   //增加蒙层逻辑
                   this.isShowTradeMask()
                } else if (this.$route.query.symbol || (storage.has('currentSymbol') && this.symbolList_quote[storage.get('currentSymbol')])) { //根据url展示默认的交易对
-                  console.log(2)
-
                   this.currentSymbol = this.$route.query.symbol || storage.get('currentSymbol')
                   if (this.currentSymbol) {
                      this.currentSymbolObj = this.symbolList_quote[this.currentSymbol]
@@ -1096,7 +1090,6 @@
                   }
                } else {
                   storage.remove('currentSymbol')
-                  console.log(3)
                   let key1 = Object.keys(siteObj)[0]
                   let key2 = Object.keys(siteObj[key1])[0]
 
@@ -1107,8 +1100,6 @@
                         defaultSymbol = v
                      }
                   })
-
-                  console.log(defaultSymbol)
 
                   this.currentSymbol = defaultSymbol.symbol //默认排序后的第一个交易对
                   this.currentSymbolObj = defaultSymbol
