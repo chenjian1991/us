@@ -58,7 +58,7 @@
                                     </Tabs>
                                 </CarouselItem>
                             </Carousel>
-                            <div class="markBox" v-else>   
+                            <div class="markBox" v-else>
                                 <ul class="nav">
                                     <li>{{$t('bbjyChooseType')}}</li>
                                     <li>{{$t('bbjyChoosePrice')}}</li>
@@ -89,7 +89,7 @@
                     <!--右边图表及交易与盘口信息-->
                     <div class="main">
                         <div class="page-content" :class="{main_mask:isShowMask}" >
-                           
+
                             <div class="trading-chart">
                                 <!--大盘信息-->
                                 <div class="trading-box">
@@ -134,7 +134,7 @@
                                     <TVChartContainer :symbol="currentSymbol"/>
                                 </div>
                             </div>
-                            
+
                             <div class="trade-wrap clearfix">
 
                                 <!--左侧下单交易信息-->
@@ -309,7 +309,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="quickNav" v-if="isShowMask">
@@ -492,7 +492,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -561,7 +561,7 @@
                 siteIndexNumber:0,//站点序号 数字
                 quoteIndexName:'',//计价币种tab页签 币种名称 字符串格式
                 currentQuoteCoinName:'',//左侧币种列表计价资产币
-                //左侧币种选择栏 
+                //左侧币种选择栏
                 isShowMainBoard:true,//切换主板 自选
                 searchCoin:'',//币种搜索
                 markSymbolArr:[],//自选币种列表
@@ -630,7 +630,7 @@
                 noOrder:true,
                 noMyDealOrder:true,
                 SSE_order:null,//订单推送
-                sseInitArr : [], //订阅推送刚开始接受的快照 
+                sseInitArr : [], //订阅推送刚开始接受的快照
                 pushOrderData:null,
                 myOpenList:[],//未成交订单
                 myCompletedList:[],//完成成交和已经撤单
@@ -675,7 +675,7 @@
                 this.asksArr = []
                 //loading
                 // clearTimeout(this.depthListTimer)
-               
+
                 ////K线基本数据配置使用
                 storage.set('currentSymbolObj',v)
                 this.currentSymbol = v.symbol
@@ -789,7 +789,7 @@
             isShowTradeMask(){
                 this.isStopTrade = false
                 this.isShowMask = false
-                if(JSON.stringify(this.symbolList) != "{}" && this.symbolList[this.currentSymbol]){ 
+                if(JSON.stringify(this.symbolList) != "{}" && this.symbolList[this.currentSymbol]){
                     //下单服务正常运行
                     let orderSymbolObj = this.symbolList[this.currentSymbol]
                     if(orderSymbolObj.status === 'HALT' && orderSymbolObj.nextStatus && orderSymbolObj.nextStatusAt){
@@ -811,7 +811,6 @@
             },
             //未开放交易对 倒计时
              refreashTime(targetDate) {
-                //  console.log(object)
                 targetDate = targetDate+10*1000
                 this.maskInterval &&  clearInterval(this.maskInterval)
                  if(targetDate && typeof targetDate === 'number'){
@@ -828,9 +827,9 @@
                          }else{
                              var ts = (targetDate - today);
                              this.day = parseInt(ts / 1000 / 60 / 60 / 24, 10);
-                             this.hour =  parseInt(ts / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数  
-                             this.minutes= parseInt(ts / 1000 / 60 % 60, 10);//计算剩余的分钟数 
-                             this.second = parseInt(ts / 1000 % 60, 10);//计算剩余的秒数  
+                             this.hour =  parseInt(ts / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数
+                             this.minutes= parseInt(ts / 1000 / 60 % 60, 10);//计算剩余的分钟数
+                             this.second = parseInt(ts / 1000 % 60, 10);//计算剩余的秒数
                          }
                      },1000)
                  }
@@ -895,10 +894,8 @@
                     this.tradeHistoryArr = arr
                 }
                 this.WSHistory.onerror= (e) => {
-                    console.log('history ws error')
                 }
                 this.WSHistory.onclose = (e) => {
-                    console.log('history ws colose')
                 };
             },
 
@@ -927,16 +924,9 @@
                    this.currentSymbolRate = 1
                     this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(this.currencyRate),4)
                 }else if(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"] || allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"]){
-                   console.log(1)
-                   console.log(allNowPriceObject)
-                   console.log(allNowPriceObject[this.currentSymbol])
-
                    //是否存在 计价资产/USDT的交易对
                     if(allNowPriceObject[this.currentSymbol].last && allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"].last){
-                       console.log(2)
-
                        this.currentSymbolRate = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDD"].last),4)
-                       console.log(new BigNumber(this.currentSymbolRate),new BigNumber(this.currencyRate))
                         this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolRate) * new BigNumber(this.currencyRate),4)
                     }
                 }
@@ -967,10 +957,6 @@
             //获取K线行情交易对
             getSymbolListRealtimeData(){
                 getSymbolList_realtime().then(res => {
-                    // this.loginToken = Cookies.get('loginToken')
-                    // if(this.$store.state.app.isLogin || this.loginToken){
-                    //     this.isLogin = true
-                    // }
                     // this.symbolList_quote = {};
                     let siteObj = {}  //只按照站区分数据
                     let symbolUrl = ''
@@ -1018,12 +1004,12 @@
                     })
                     this.symbolListSelf = siteObj
 
-                    // console.log(siteObj)
+
                     //只有站点默认展示第一个交易对
                     let siteRouter = this.$route.query.site
-                    //url 只有site
+                   //url 只有site
                     if(siteRouter && !this.$route.query.symbol){
-                        let index = getIndexInObject(siteObj,siteRouter)
+                       let index = getIndexInObject(siteObj,siteRouter)
                         this.siteIndexNumber = index
                         this.siteName = siteRouter
                         if(siteRouter == 'S'){
@@ -1035,14 +1021,14 @@
                         this.currentQuoteCoinName =this.currentSymbolObj &&  this.currentSymbolObj.quoteAsset
                         //增加蒙层逻辑
                         this.isShowTradeMask()
-                    }else if(this.$route.query.symbol || storage.has('currentSymbol')){ //根据url展示默认的交易对
-                        this.currentSymbol = this.$route.query.symbol  || storage.get('currentSymbol')  
-                        this.currentSymbolObj =this.symbolList_quote[this.currentSymbol]
-                        if(this.currentSymbolObj){
+                    }else if(this.$route.query.symbol || (storage.has('currentSymbol')&&this.symbolList_quote[storage.get('currentSymbol')])){ //根据url展示默认的交易对
+                       this.currentSymbol = this.$route.query.symbol  || storage.get('currentSymbol')
+                       if(this.currentSymbol){
+                          this.currentSymbolObj =this.symbolList_quote[this.currentSymbol]
                             this.siteName = this.currentSymbolObj.siteType[0]
-                            //站点的顺序
+                           //站点的顺序
                             this.siteIndexNumber = getIndexInObject(siteObj,this.currentSymbolObj.siteType[0])
-                            //股票详情入口
+                           //股票详情入口
                             if(this.siteName=='S'){
                                 this.isShowStockPage = true
                             }
@@ -1066,8 +1052,6 @@
                        this.currentSymbol =  defaultSymbol.symbol //默认排序后的第一个交易对
                         this.currentSymbolObj = defaultSymbol
                     }
-
-                   // console.log(defaultSymbol)
 
                    //K线基本数据配置使用
                     storage.set('currentSymbolObj',this.currentSymbolObj)
@@ -1099,7 +1083,6 @@
                         },3000)
                     }
                 }).catch(e => {
-                    // console.log(e.data)
                     this.depthListTimer = setTimeout(()=>{
                             this.getDethTableData()
                     },3000)
@@ -1107,18 +1090,15 @@
             },
             //获取推送行情
             getSSERealTime(url) {
-
                 let SSEcache = null
                 const baseURL =  (window.location.protocol == 'http:') ? 'ws://' : 'wss://';
                 const host =  window.location.host;
                 this.quoteWS = new ReconnectingWebSocket(`${baseURL}${host}/quote/realTime.ws?${url}`)
                 this.quoteWS.onopen = (e) => {
-                    // console.log(111,e, this.quoteWS.readyState)
-                    // console.log("行情推送连接已经建立：", this.readyState);
                 };
                 /* let SSEcache = null
                 let baseURL = window.location.protocol+'//'+window.location.host
-                
+
                 this.SSEsource = new EventSource(`${baseURL}/quote/realTime.stream?${url}`)
                 this.SSEsource.onopen = function(e) {
                     // console.log("行情推送连接已经建立：", this.readyState);
@@ -1142,7 +1122,7 @@
                             let long = getDecimalsNum(this.symbolList_quote[result.symbol].priceTickSize)
                             let diff = '';
                             let a = '';
-                            //计算涨跌幅 percent  + 
+                            //计算涨跌幅 percent  +
                             if (result.previousClose && result.last) {
                                 diff = bigDecimal.subtract(result.last, result.previousClose);
                                 a = bigDecimal.multiply(new BigNumber(diff).dividedBy(new BigNumber(result.previousClose)).toFixed(6), '100')
@@ -1172,7 +1152,6 @@
                             //展示当前的交易对的大盘上方行情
                             if (this.currentSymbol == result.symbol ) {
                                 this.currentSymbolObj = Object.assign(result,v,this.symbolList_quote[result.symbol])
-                               console.log(this.currentSymbolObj)
                                 this.showCurrentPriceInfo(this.currentSymbolObj)
                             }
                             this.getCurrencyData()
@@ -1181,13 +1160,14 @@
                         if(this.symbolList_quote[result.symbol]){
                             let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
                             let siteType = this.symbolList_quote[result.symbol].siteType[0]
-                            // console.log('SSE event',siteType,this.symbolListSelf)
-                            this.symbolListSelf[siteType][quoteAsset].map((item,i)=>{
-                                if(item.symbol===result.symbol){
+                           if(this.symbolListSelf[siteType][quoteAsset]){
+                              this.symbolListSelf[siteType][quoteAsset].map((item,i)=>{
+                                 if(item.symbol===result.symbol){
                                     this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v,item,result)
                                     return
-                                }
-                            })
+                                 }
+                              })
+                           }
                             //计算法币估值
                             //板块部分双向绑定
                             this.symbolListSelf = Object.assign({},this.symbolListSelf)
@@ -1197,15 +1177,13 @@
                     }
                 }
                 this.quoteWS.onerror = (e) => {
-                    console.log('exchange ws error')
                 }
                 //关闭时候触发
                 this.quoteWS.onclose = (e) => {
-                    console.log('exchange ws close===')
                 };
 
             },
-            
+
             //**********************组装处理盘口展示数据 */
             getClickBuyPrice(price,count){
                 if(price){
@@ -1282,7 +1260,7 @@
                     let  buyInput =subNumberPoint(scientificToNumber(asks[0].price), priceLong)
                     this.buyPriceInput = buyInput
                     this.$refs.buyInput.value = buyInput
-                    
+
                     // let  buy_count = bigDecimal.round(scientificToNumber(asks[0].quantity), volumeLong)
                     // this.buyCountInput = buy_count
                     // this.$refs.buyCountInputRef.value = buy_count
@@ -1318,43 +1296,43 @@
             },
             handleBuyPriceInput(e){
                 if(!this.symbolList[this.currentSymbol]){
-                    return 
+                    return
                 }
                 //重置为空样式
                this.buyPriceEmpty = false
                let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
             //    e.target.value = onlyInputNumAndPoint(e.target.value,6)  
-               e.target.value = onlyInputNumAndPoint(e.target.value,pricelong)  
+               e.target.value = onlyInputNumAndPoint(e.target.value,pricelong)
                this.buyPriceInput = e.target.value
             },
             handleBuyCountInput(e){
                 if(!this.symbolList[this.currentSymbol]){
-                    return 
+                    return
                 }
                //重置样式
                this.buyCountEmpty = false
                let quantityStepSize = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-               e.target.value = onlyInputNumAndPoint(e.target.value,quantityStepSize)  
+               e.target.value = onlyInputNumAndPoint(e.target.value,quantityStepSize)
                this.buyCountInput = e.target.value
             },
             handleSellPriceInput(e){
                 if(!this.symbolList[this.currentSymbol]){
-                    return 
+                    return
                 }
                 //重置为空样式
                 this.sellPriceEmpty = false
                 let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
-                e.target.value = onlyInputNumAndPoint(e.target.value,pricelong)  
+                e.target.value = onlyInputNumAndPoint(e.target.value,pricelong)
                 this.sellPriceInput = e.target.value
-            },  
+            },
             handleSellCountInput(e){
                 if(!this.symbolList[this.currentSymbol]){
-                    return 
+                    return
                 }
                  //重置样式
                 this.sellCountEmpty = false
                 let quantityStepSize = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-                e.target.value = onlyInputNumAndPoint(e.target.value,quantityStepSize)  
+                e.target.value = onlyInputNumAndPoint(e.target.value,quantityStepSize)
                 this.sellCountInput = e.target.value
             },
             //展示可用的资产
@@ -1368,7 +1346,7 @@
                 }
                 let baseAssetQuantityLong = this.symbolList_quote && this.symbolList_quote[this.currentSymbol]['baseAssetPrecision']
                 let quoteAssetQuantityLong = this.symbolList_quote && this.symbolList_quote[this.currentSymbol]['quoteAssetPrecision']
-                
+
                 //查询账户资产
                 this.exchange.balance(function (data){
                     this.baseAssetAvailable = '--'
@@ -1389,9 +1367,9 @@
             },
             /****
              * 委托单 我的成交记录
-             * 
-             * 
-             * 
+             *
+             *
+             *
              */
             //获取推送的订单
             getSSEOrderList(){
@@ -1402,22 +1380,19 @@
                 this.updateOpenListAndCompletedList();
                 this.exchange.listFilledOrder((token,accountId) =>{
                     let baseURL = window.location.protocol+'//'+window.location.host
-                    //判断orderId 
+                    //判断orderId
                     this.SSE_order = new EventSource(`${baseURL}/api/spot/order/detail.stream?token=${token}&accountId=${accountId}`)
                     this.SSE_order.onopen = function(e) {
-                        // console.log("订单推送连接已经建立：", this.readyState);
                     };
                     this.SSE_order.addEventListener('_RESULT', (e) => {
                         let result = JSON.parse(e.data)
                         if(result){
                             this.pushOrderData = result
-                        }  
+                        }
                     })
                     this.SSE_order.addEventListener('_ERROR', function(e) {
-                        console.log('触发了SSE_order [_ERROR]')
                     })
                     this.SSE_order.onerror =(e) => {
-                        console.log('订单推送连接断开 3s重连:',e)
                         setTimeout(() =>{
                             this.SSE_order = new EventSource(`${baseURL}/api/spot/order/detail.stream?token=${token}&accountId=${accountId}`)
                         },3000)
@@ -1508,7 +1483,7 @@
                 //     //账户停止
                 //     // showError("account-error");
                 //     this.$Message.warning(this.$t('bbjyAccountError'));
-                // } else 
+                // } else
                 if (this.setTradePassword == false) {
                     //交易密码是否设置
                     this.$Notice.warning({
@@ -1537,7 +1512,7 @@
                 }else{
                     this.submitPassWord()
                 }
-  
+
             },
             buyBtn(){
                 window._czc.push(["_trackEvent",'买入按钮','点击','币币交易页面',0,'buyBtn']);
@@ -1768,7 +1743,7 @@
                         },
                         (data)=> {
                             this.sellDisabled = false;
-                            
+
                         }
                         );
                     } else {
@@ -1882,7 +1857,7 @@
                 },
                 deep: true,
             },
-            $route(to,from){ //路由site变化 
+            $route(to,from){ //路由site变化
                 if(this.$route.query && this.$route.query.site){
                     let site = this.$route.query.site
                     this.siteName = site
@@ -1906,8 +1881,8 @@
                 if(this.currentSymbolObj.quoteAsset == 'USDT' || this.currentSymbolObj.quoteAsset == 'USDD' || this.currentSymbolObj.quoteAsset == 'USD'){
                     this.buyPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.currencyRate),4)
                 }else{
-                    if(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USDT")){
-                        this.buyPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USDT").last) * new BigNumber(this.currencyRate),4)
+                    if(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USD")){
+                        this.buyPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USD").last) * new BigNumber(this.currencyRate),4)
                     }
                 }
             },
@@ -1915,8 +1890,8 @@
                 if(this.currentSymbolObj.quoteAsset == 'USDT' || this.currentSymbolObj.quoteAsset == 'USDD' || this.currentSymbolObj.quoteAsset == 'USD'){
                     this.sellPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.currencyRate),4)
                 }else{
-                    if(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USDT")){
-                        this.sellPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USDT").last) * new BigNumber(this.currencyRate),4)
+                    if(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USD")){
+                        this.sellPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USD").last) * new BigNumber(this.currencyRate),4)
                     }
                 }
             },
@@ -1927,8 +1902,8 @@
                     this.buyPriceCurrency = bigDecimal.round(new BigNumber(this.buyPriceInput) * new BigNumber(this.currencyRate),4)
                     this.sellPriceCurrency = bigDecimal.round(new BigNumber(this.sellPriceInput) * new BigNumber(this.currencyRate),4)
                 }else{
-                    this.sellPriceCurrency = bigDecimal.round(new BigNumber(this.sellPriceInput) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USDT").last) * new BigNumber(this.currencyRate),4)
-                    this.buyPriceCurrency = bigDecimal.round(new BigNumber(this.buyPriceInput) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USDT").last) * new BigNumber(this.currencyRate),4)
+                    this.sellPriceCurrency = bigDecimal.round(new BigNumber(this.sellPriceInput) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USD").last) * new BigNumber(this.currencyRate),4)
+                    this.buyPriceCurrency = bigDecimal.round(new BigNumber(this.buyPriceInput) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset+"USD").last) * new BigNumber(this.currencyRate),4)
                 }
             }
         },
@@ -1940,7 +1915,7 @@
                 return bigDecimal.multiply(this.sellPriceInput,this.sellCountInput);
             },
             buyBallTotal:function(){ //能买入的总数量
-                return  this.buyPriceInput == 0?'': new BigNumber(this.quoteCoinAvailable).dividedBy(new BigNumber(this.buyPriceInput)).toNumber() 
+                return  this.buyPriceInput == 0?'': new BigNumber(this.quoteCoinAvailable).dividedBy(new BigNumber(this.buyPriceInput)).toNumber()
             },
             sellBallTotal:function(){ //能卖出的总数量
                 return this.baseAssetAvailable
@@ -1968,13 +1943,13 @@
             }
         },
         beforeMount(){
-           
+
             //交易相关的交易对
             this.getSymbolListData();
 
             //行情相关的交易对>>>>>>
             this.getSymbolListRealtimeData();
-            
+
         },
         mounted() {
             this.$store.commit('changeHeaderColor', '#15232C');
@@ -2017,7 +1992,7 @@
             }
         },
         destroyed() {
-            
+
             //关闭SSE行情推送
             this.quoteWS && this.quoteWS.close();
             this.SSE_order && this.SSE_order.close();
@@ -2027,7 +2002,7 @@
             clearTimeout(this.depthListTimer)
             clearTimeout(this.myBanalceTimer)
         }
-    
+
     }
 </script>
 <style lang='less'>
@@ -2089,7 +2064,7 @@
                 box-shadow: none;
             }
         }
-       
+
     }
 }
 </style>

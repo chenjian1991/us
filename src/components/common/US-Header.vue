@@ -412,12 +412,9 @@ export default {
         postHeaderTokenBodyApi(socialToken,this.loginToken,null).then(data => {
             this.chatToken = data.token +'/'
             this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken;
-            console.log('social-tokne',this.baseSocialURL)
         })
       }else{
         this.baseSocialURL = getCommouityBaseURL()
-        console.log('token',this.baseSocialURL)
-        
       }
     },
     changeLangage(e) {
