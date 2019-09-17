@@ -1035,6 +1035,7 @@
                                  obj[v.quoteAsset] = [v]
                                  siteObj[site] = obj
                               }
+                              symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
                            }
                         }
                      } else {
@@ -1051,15 +1052,18 @@
                            siteObj[site] = obj
                         }
                      }
-                     symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
+                     // symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
                   })
                   this.symbolList_quote[v.symbol] = v //拼装行情的symbol为Key的symbolList 对象
                })
                this.symbolListSelf = siteObj
+               console.log(this.symbolListSelf)
                //只有站点默认展示第一个交易对
                let siteRouter = this.$route.query.site
                //url 只有site
                if (siteRouter && !this.$route.query.symbol) {
+                  console.log(siteRouter,this.$route.query.symbol)
+
                   let index = getIndexInObject(siteObj, siteRouter)
                   this.siteIndexNumber = index
                   this.siteName = siteRouter
@@ -1073,6 +1077,9 @@
                   //增加蒙层逻辑
                   this.isShowTradeMask()
                } else if (this.$route.query.symbol || (storage.has('currentSymbol') && this.symbolList_quote[storage.get('currentSymbol')])) { //根据url展示默认的交易对
+                  console.log(storage.get('currentSymbol'))
+                  console.log(this.symbolList_quote[storage.get('currentSymbol')])
+
                   this.currentSymbol = this.$route.query.symbol || storage.get('currentSymbol')
                   if (this.currentSymbol) {
                      this.currentSymbolObj = this.symbolList_quote[this.currentSymbol]
@@ -1101,6 +1108,7 @@
                      }
                   })
 
+                  console.log(defaultSymbol)
                   this.currentSymbol = defaultSymbol.symbol //默认排序后的第一个交易对
                   this.currentSymbolObj = defaultSymbol
                }
