@@ -1033,6 +1033,7 @@
                                  obj[v.quoteAsset] = [v]
                                  siteObj[site] = obj
                               }
+                              this.symbolList_quote[v.symbol] = v //拼装行情的symbol为Key的symbolList 对象
                            }
                         }
                      } else {
@@ -1051,7 +1052,7 @@
                      }
                      symbolUrl += `symbol=${v.symbol}&${v.symbol}_least=1&` //拼装推送数据查询url
                   })
-                  this.symbolList_quote[v.symbol] = v //拼装行情的symbol为Key的symbolList 对象
+                  // this.symbolList_quote[v.symbol] = v //拼装行情的symbol为Key的symbolList 对象
                })
                this.symbolListSelf = siteObj
                //只有站点默认展示第一个交易对
@@ -1098,11 +1099,9 @@
                         defaultSymbol = v
                      }
                   })
-
                   this.currentSymbol = defaultSymbol.symbol //默认排序后的第一个交易对
                   this.currentSymbolObj = defaultSymbol
                }
-
                //K线基本数据配置使用
                storage.set('currentSymbolObj', this.currentSymbolObj)
                if (this.currentSymbolObj) {
