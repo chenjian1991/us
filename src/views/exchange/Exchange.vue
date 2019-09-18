@@ -1089,6 +1089,7 @@
                   }
                } else {
                   storage.remove('currentSymbol')
+                  console.log(siteObj)
                   let key1 = Object.keys(siteObj)[0]
                   let key2 = Object.keys(siteObj[key1])[0]
 
