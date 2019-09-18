@@ -1019,7 +1019,7 @@
                sortArr.map((v, i) => {
                   v.siteType.map((site, i) => {
                      if (site == 'B') {
-                        if (v.quoteAsset == 'BTC' || v.quoteAsset == 'ETH' || v.quoteAsset == 'USD') {
+                        if (v.quoteAsset == 'BTC' || v.quoteAsset == 'ETH' || v.quoteAsset == 'USD'||v.quoteAsset == 'USDD') {
                            if (v.baseAsset == 'BTC' || v.baseAsset == 'LTC' || v.baseAsset == 'ETH' || v.baseAsset == 'XLM') {
                               // v 每个站
                               if (siteObj[site]) {
@@ -1931,8 +1931,8 @@
             if (this.currentSymbolObj.quoteAsset == 'USDT' || this.currentSymbolObj.quoteAsset == 'USDD' || this.currentSymbolObj.quoteAsset == 'USD') {
                this.buyPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.currencyRate), 4)
             } else {
-               if (this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USD")) {
-                  this.buyPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USD").last) * new BigNumber(this.currencyRate), 4)
+               if (this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USDD")) {
+                  this.buyPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USDD").last) * new BigNumber(this.currencyRate), 4)
                }
             }
          },
@@ -1940,8 +1940,8 @@
             if (this.currentSymbolObj.quoteAsset == 'USDT' || this.currentSymbolObj.quoteAsset == 'USDD' || this.currentSymbolObj.quoteAsset == 'USD') {
                this.sellPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.currencyRate), 4)
             } else {
-               if (this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USD")) {
-                  this.sellPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USD").last) * new BigNumber(this.currencyRate), 4)
+               if (this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USDD")) {
+                  this.sellPriceCurrency = bigDecimal.round(new BigNumber(newV) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USDD").last) * new BigNumber(this.currencyRate), 4)
                }
             }
          },
@@ -1952,8 +1952,8 @@
                this.buyPriceCurrency = bigDecimal.round(new BigNumber(this.buyPriceInput) * new BigNumber(this.currencyRate), 4)
                this.sellPriceCurrency = bigDecimal.round(new BigNumber(this.sellPriceInput) * new BigNumber(this.currencyRate), 4)
             } else {
-               this.sellPriceCurrency = bigDecimal.round(new BigNumber(this.sellPriceInput) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USD").last) * new BigNumber(this.currencyRate), 4)
-               this.buyPriceCurrency = bigDecimal.round(new BigNumber(this.buyPriceInput) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USD").last) * new BigNumber(this.currencyRate), 4)
+               this.sellPriceCurrency = bigDecimal.round(new BigNumber(this.sellPriceInput) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USDD").last) * new BigNumber(this.currencyRate), 4)
+               this.buyPriceCurrency = bigDecimal.round(new BigNumber(this.buyPriceInput) * new BigNumber(this.getSymbolNowPrice(this.currentSymbolObj.quoteAsset + "USDD").last) * new BigNumber(this.currencyRate), 4)
             }
          }
       },
