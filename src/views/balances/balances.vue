@@ -634,7 +634,7 @@
                this.currencyPrecision[v.currency] = v.currencyPrecision//小数位数
             })
             //美国站6种币
-            const bSite = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM']
+            const bSite = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM','USDD']
             this.allAccount['B'] = this.allAccount['B'].filter(v => {
                let flag = false
                bSite.map(value => {
@@ -741,7 +741,8 @@
                res.map((v) => {
                   this.exchangeList.map(value => {
                      if (v['baseAsset'] === value['currency']) {
-                        if (v.quoteAsset === 'USDT' || v.quoteAsset === 'USDD') {//过滤 USDT和USDD的右侧币
+                        // if (v.quoteAsset === 'USDT' || v.quoteAsset === 'USDD') {//过滤 USDT和USDD的右侧币
+                        if (v.quoteAsset === 'USDT') {//过滤 USDT的右侧币
                            return
                         } else {
                            value['list'].push(`${v.baseAsset}/${v.quoteAsset}`)//exchangeList加入交易对
