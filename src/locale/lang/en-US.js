@@ -2206,4 +2206,7 @@ gbbo_Bid:"Bid",
    newK1surveyselect:"Select an option",
    newK1surveyq4input:"Employer",
    newK1Employerpop:'please input your employer name',
+   //用户重构
+   confirmbtn:'Confirm'
+
 };

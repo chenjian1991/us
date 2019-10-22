@@ -2065,4 +2065,6 @@ export default {
    newK1surveyselect:"请选择一项",
    newK1surveyq4input:"请填写公司名称",
    newK1Employerpop:'请填写公司名称',
+   //用户系统
+   confirmbtn:'确认'
 }

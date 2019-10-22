@@ -1,4 +1,8 @@
 let proxyURL = '/api'
+let proxyURLUser='/api/sso/user'
+let proxyURLUcenter='/api/sso'
+
+
 let finaceURL = 'http://172.17.3.2:8081';// 李成涛
 //= ======= 币币交易 start========
 export const symbolList = `${proxyURL}/spot/util/symbol.list`// 获取交易对
@@ -50,48 +54,48 @@ export const announcementList =`${proxyURL}/content/content/announcement-list`//
 export const mineing = `${proxyURL}/content/portal/transaction.query`//昨日挖矿产出及全栈流通量
 export const bannerList = `${proxyURL}/content/content/banner-list`//轮播图
 // 首页banner图
-export const userInfo = `${proxyURL}/sso/user/get_user_info`//用户信息
+// export const userInfo = `${proxyURL}/sso/user/get_user_info`//用户信息
 export const recommendSymbol = `${proxyURL}/content/content/portal/front/symbol.list?siteName=TRADE`//推荐交易对
 //=****************首页 end *******************//
 //=============注册  start=============
 export const hashUrl = `${proxyURL}/sso/user/hash-password`//判断是否hash
-export const  sendSms =  `${proxyURL}/sso/user/send`//发送验证码
+// export const  sendSms =  `${proxyURL}/sso/user/send`//发送验证码
 export const ssoSend = `${proxyURL}/sso/user/sso.send`//登录后发送验证码
 export const codeVerify = `${proxyURL}/sso/user/code_verify`//验证验证码
 export const ssoCodeVerify = `${proxyURL}/sso/user/sso.codeVerify`//sso验证码验证
 export const ssoGoogleVerify = `${proxyURL}/sso/user/sso.googleVerify`//发送 API申请 谷歌验证码
 // export const register = `${proxyURL}/sso/user/register`//注册
-export const login = `${proxyURL}/sso/user/login`//登录
+// export const login = `${proxyURL}/sso/user/login`//登录
 export const relatNameVerify = `${proxyURL}/sso/user/identify.query`//获取用户信息
 export const userVerify = `${proxyURL}/sso/user/user_verify`//验证用户是否存在
-export const googleLogin = `${proxyURL}/sso/user/googleCodeLogin`//谷歌验证
+// export const googleLogin = `${proxyURL}/sso/user/googleCodeLogin`//谷歌验证
 export const resetNewpass = `${proxyURL}/sso/user/reset`//重置密码
 export const identify = `${proxyURL}/sso/user/identify.query`//查询实名认证状态
 export const binding = `${proxyURL}/sso/security/bindingAccount`//绑定手机号或邮箱
 export const verifyEmail = `${proxyURL}/sso/user/verify_user_new_email`//查询邮箱是否存在
 export const restPasswordVerify = `${proxyURL}/sso/user/restPasswordVerify`//查询邮箱是否存在
-export const resetLoginPasswordVerify = `${proxyURL}/sso/user/resetVerify`// 修改登录密码第一步
-export const resetLoginPassword = `${proxyURL}/sso/user/reset`// 修改登录密码
+// export const resetLoginPasswordVerify = `${proxyURL}/sso/user/resetVerify`// 修改登录密码第一步
+// export const resetLoginPassword = `${proxyURL}/sso/user/reset`// 修改登录密码
 // export const emailRegister = `${proxyURL}/sso/user/register.email`// 邮箱注册
-export const reSendEmail = `${proxyURL}/sso/user/register.reSendEmail`// 重新发送验证码
-export const activationEmail = `${proxyURL}/sso/user/register.activation`// 激活成功
+// export const reSendEmail = `${proxyURL}/sso/user/register.reSendEmail`// 重新发送验证码
+// export const activationEmail = `${proxyURL}/sso/user/register.activation`// 激活成功
 //export const alreadyDividend = `${proxyURL}/content/portal/usdd/dividend.query`// 已经派的利息
 export const loginHistory = `${proxyURL}/sso/log/login`//登录历史查询
 export const logout = `${proxyURL}/sso/new-user/logout`//退出接口
-export const register = `${proxyURL}/sso/new-user/phone-register`//手机注册
+// export const register = `${proxyURL}/sso/new-user/phone-register`//手机注册
 export const userNameUnique = `${proxyURL}/sso/new-user/query-unique-name/`//登录
-export const emailRegister = `${proxyURL}/sso/new-user/email-register`// 邮箱注册
+// export const emailRegister = `${proxyURL}/sso/new-user/email-register`// 邮箱注册
 export const ipQuery = `${proxyURL}/content/request-ip-query`//ip查询
 //交易密码
 export const TradingPasswordVerify = `${proxyURL}/sso/user/sso.restTradePasswordVerify`//验证code是否正确
-export const setTradingPassword = `${proxyURL}/sso/user/set_trade_password`//设置交易密码
+// export const setTradingPassword = `${proxyURL}/sso/user/set_trade_password`//设置交易密码
 export const queryTradePasswordOpen = `${proxyURL}/sso/new-user/query-open-trade-password`// 查询是否开启交易密码
 export const setOpenTradePassword = `${proxyURL}/sso/new-user/set-open-trade-password`// 设置开启与否
 
 //绑定谷歌
-export const queryGoogleURL = `${proxyURL}/sso/security/bindGoogle`//查询二维码
-export const bindGoogle = `${proxyURL}/sso/security/bindingSecretKey`//绑定谷歌
-export const unbindGoogle = `${proxyURL}/sso/security/unbindingSecretKey`//解绑
+// export const queryGoogleURL = `${proxyURL}/sso/security/bindGoogle`//查询二维码
+// export const bindGoogle = `${proxyURL}/sso/security/bindingSecretKey`//绑定谷歌
+// export const unbindGoogle = `${proxyURL}/sso/security/unbindingSecretKey`//解绑
 export const AndroidDownloadUrl = `${proxyURL}/content/app/getNewestVersion`//设置交易密码
 // 国际汇款
 export const getRemittanceDict =`${finaceURL}/wallet/api/pay/remtrade/getRemittanceDict` // 第一步初始化页面接口
@@ -110,13 +114,37 @@ export const commonRemite =`${proxyURL}/spot/exchangeRemittance/common` //中原
 //实名认证
 export const createRealName = `${proxyURL}/sso/user/identify`//创建实名认证
 export const uploadPic = `${proxyURL}/sso/user/identify.upload`//上传图片
-export const identifyPhoto = `${proxyURL}/sso/user/identify.photo`//查询图片地址
+// export const identifyPhoto = `${proxyURL}/sso/user/identify.photo`//查询图片地址
 export const cardEffective = `${proxyURL}/sso/new-identify/card-effective/`// 身份证号是否唯一
 /* f site add 货币交换汇率 start */
 export const getLastRate = `https://f.daocoin.money/api/trust_publish/getLastCurrencyRate` //获取最新的汇率
 /* 货币交换汇率 end*/
 
 
+//****************新的用户系统重构接口 */
+export const emailRegister = `${proxyURLUser}/email-register`// 邮箱注册
+export const register = `${proxyURLUser}/phone-register`//手机注册
+export const sendSms = `${proxyURLUser}/register-phone-code`//注册发送验证码
+export const reSendEmail = `${proxyURLUser}/resend-register-email`// 重新发送邮件
+export const activationEmail = `${proxyURLUser}/email-activation`// 激活成功
+export const userStatus = `${proxyURLUser}/get-user-state`// 查询用户状态
+export const login = `${proxyURLUser}/login`//登录
+export const googleLogin = `${proxyURLUser}/login-google`//登录
+export const businessSend = `${proxyURLUser}/send-business-code`//业务发送验证码
+export const queryGoogleURL = `${proxyURLUser}/get-google-key`//查询二维码
+export const verifyBusinessCode = `${proxyURLUser}/verify-business-code`//验证验证码
+export const resetLoginPassword = `${proxyURLUser}/reset-password`//重置登录密码
+export const bindGoogle = `${proxyURLUser}/bind-google`//绑定谷歌
+export const unbindGoogle = `${proxyURLUser}/unbind-google`//解绑
+export const resetLoginPasswordVerify = `${proxyURLUser}/verify-password`// 验证原登录密码是否正确
+export const bindSend = `${proxyURLUser}/send-bind-code`//绑定手机，邮箱发送验证码
+// export const bindAccount = `${proxyURL}/sso/user/bind-unbind-account`//绑定方法
+export const userInfo = `${proxyURLUser}/get-user-info`//查询用户信息
+export const setTradingPassword = `${proxyURLUser}/set-trade-password`//设置交易密码
+export const switchTradingPassword = `${proxyURLUser}/switch-trade-password`//开启交易密码
+// export const logout = `${proxyURLUser}/logout`//退出
+export const identifyInfo = `${proxyURLUcenter}/identify/get-info`//实名认证查询
+export const identifyPhoto = `${proxyURLUcenter}/identify/get-pub-url`//查询图片地址
 
 
 
