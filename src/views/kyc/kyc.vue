@@ -920,6 +920,7 @@
             phoneFlag: false,
             banddingGoogleFlag: true,
             val: '',
+            userId: '',
 
          }
       },
@@ -929,15 +930,19 @@
       },
       methods: {
          init() {
-            identifyQuery(this.loginToken).then(res => {
+            identifyQuery({
+               userId: this.userId,
+               nameList: 'THIRD_ADMIN,THIRD_IDM,THIRD_PT'
+            }, this.loginToken).then(res => {
                //有数据
-               if (res.data) {
-                  const formJson = JSON.parse(res.data['formJson'])
-                  if (res.data.dataStatus === 1 || res.data.dataStatus === 4) {
+               if (res.data.length) {
+                  const formJson = res.data[0].data
+                  const identifyState = res.data[0]['thirdState']
+                  if (identifyState === 'INIT' || identifyState === 'FAIL') {
                      this.formJson = formJson
                      this.stepTwoForm = {
                         idNumber: formJson.idNumber,
-                        expireDate: formJson.expireDate,
+                        expireDate: formJson.expireDate === 'Invalid date' ? '' : formJson.expireDate,
                         country: formJson.country || country[0].locale,
                         idType: formJson.idType || this.idType[0].value,
                      }
@@ -946,7 +951,7 @@
                         middleName: formJson['middleName'],
                         lastName: formJson.lastName,
                         gender: formJson.gender || '男',
-                        birthday: formJson.birthday,
+                        birthday: formJson.birthday === 'Invalid date' ? '' : formJson.birthday,
                         street: formJson.street,
                         city: formJson.city,
                         address: formJson.address || 'home',
@@ -988,6 +993,7 @@
                      this.userSelf = {
                         selfPathSelf: formJson.selfPathSelf,
                      }
+
                      //今天
                      let frontUrl = formJson.frontPathFront;
                      let backUrl = formJson.backPathBack;
@@ -998,11 +1004,8 @@
                      this.imgFallBack(frontUrl, "front")
                      this.imgFallBack(backUrl, "back")
                      this.imgFallBack(selfUrl, "self")
-                     if (res.data.dataStatus === 1 && this.showCN === true) {
-                        this.dealData()
-                     }
-                  } else if (res.data.dataStatus === 2 || res.data.dataStatus === 3) {
-                     // this.$router.push('/identityResult')
+                  } else if (identifyState === 'SUBMIT' || identifyState === 'SUCCESS') {
+                     this.$router.push('/identityResult')
                   }
                }
             })
@@ -1011,8 +1014,10 @@
             let file = e.target.files[0]
             let param = new FormData() // 创建form对象
             param.append('file', file)// 通过append向form对象添加数据
+            param.append('userId', localStorage.getItem('loginUserId'))// 通过append向form对象添加数据
+
             uploadImg(this.loginToken, param).then(res => {
-               this.file = {filePath: res.filePath, fileName: res.originalName}
+               this.getPubUrl(res.result)
             })
          },
          previous() {
@@ -1029,26 +1034,33 @@
                      throw this.stepTwoError[v]
                   }
                })
+
                let idNumber = /^[A-Z0-9]{0,20}$/;
                if (!idNumber.test(this[name].idNumber)) {
                   throw 'newK1idNopopf'
                }
                this[name].expireDate = this.transitTimestamp(this[name].expireDate)
-               let params = {}
-               Object.assign(params, this[name]);
+               if (this[name].expireDate === 'Invalid date') {
+                  throw this.stepTwoError['expireDate']
+               }
                //判断图片非空   最新更改
                if (this.urlPath && this.urlPathTWO && this.urlPathTHREE) {//全部填完
                } else {
                   throw 'newK1Imgrequired'
                }
                this.step2Params = {}
+               Object.assign(this.step2Params, this.stepTwoForm, {frontPathFront: this.userFrontMessage.frontPathFront}, {backPathBack: this.userBackMessage.backPathBack}, {selfPathSelf: this.userSelf.selfPathSelf});
 
-               Object.assign(this.step2Params, params, this.userFrontMessage, this.userBackMessage, this.userSelf);
-
-               let stepParams = {}
-               Object.assign(stepParams, this.formJson, this.step2Params);
-               //   调接口
-               identifyUpdate(this.loginToken, stepParams).then(res => {
+               let newParams = {
+                  userId: this.userId,
+                  identifyCode: this.stepTwoForm.idNumber,
+                  identifyThirdNameList: ['THIRD_ADMIN'],
+                  identifyData: this.step2Params,
+                  deviceType: this.getDeviceType(),
+                  deviceCode: this.deviceCode,
+               }
+               // 调接口
+               identifyUpdate(this.loginToken, newParams).then(res => {
                   if (res.result) {
                      this.goStep()
                      //能识别
@@ -1128,8 +1140,16 @@
                let stepParams = {}
                Object.assign(stepParams, this.step2Params, params, {deviceCode: localStorage.getItem('deviceID')});
                this.step3Params = stepParams
+               let newParams = {
+                  userId: this.userId,
+                  identifyCode: this.stepTwoForm.idNumber,
+                  identifyThirdNameList: ['THIRD_ADMIN'],
+                  identifyData: stepParams,
+                  deviceType: this.getDeviceType(),
+                  deviceCode: this.deviceCode,
+               }
                //   调接口
-               identifyUpdate(this.loginToken, stepParams).then(res => {
+               identifyUpdate(this.loginToken, newParams).then(res => {
                   if (res.result) {
                      this.goStep()
                   }
@@ -1175,6 +1195,14 @@
                let stepParams = {}
                Object.assign(stepParams, this.step2Params, params, {deviceCode: localStorage.getItem('deviceID')});
                this.step3Params = stepParams
+               let newParams = {
+                  userId: this.userId,
+                  identifyCode: this.stepTwoForm.idNumber,
+                  identifyThirdNameList: ['THIRD_ADMIN'],
+                  identifyData: stepParams,
+                  deviceType: this.getDeviceType(),
+                  deviceCode: this.deviceCode,
+               }
                //   调接口
                identifyUpdate(this.loginToken, stepParams).then(res => {
                   if (res.result) {
@@ -1196,6 +1224,22 @@
                this.currentStep++
                this[`showStep${this.currentStep}`] = true
             }
+         },
+         getDeviceType() {
+            const userAgentInfo = navigator.userAgent;
+            const agents = ["Android", "iPhone"];
+            let deviceType = 'WEB';
+            for (let i = 0; i < agents.length; i++) {
+               if (userAgentInfo.indexOf(agents[i]) > 0) {
+                  if (userAgentInfo.indexOf('iPhone') > 0) {
+                     deviceType = 'IOS'
+                  } else {
+                     deviceType = agents[i];
+                  }
+                  break;
+               }
+            }
+            return deviceType;
          },
          transitTimestamp(date) {
             return moment(new Date(date).getTime()).format('MM-DD-YYYY')
@@ -1733,21 +1777,27 @@
          //图片上传结束
          //查询用户信息
          getUserInfo(token) {
-            postHeaderTokenBodyApi(userInfo, token, {}).then((res) => {
-               if (res.code) {
-                  this.showModal = !(this.showModal);//！取非解决了弹出只谈一次的bug
-                  this.text = this.$t(res.code);
-                  if (res.code == '10013') {
-                     setTimeout(() => {
-                        this.$router.push('/login');
-                     }, 2000);
-                  }
-               } else {
-                  this.banddingGoogleFlag = res.isBindingGoogle;
-                  // this.banddingGoogleFlag = true;
+            let params = {
+               "userId": this.userId,
+            }
+            getHeaderTokenApi(userInfo, params, token).then((res) => {
+               let userInfo = res.data;
+               this.banddingEmailFlag = res.data.email ? true : false;
+               this.banddingPhoneFlag = res.data.phone ? true : false;
+               this.email = res.data.email;
+               this.phone = res.data.phone;
+               if (this.banddingEmailFlag && this.banddingPhoneFlag) {
+                  this.disabledFlag = false;
                }
-
+               if (userInfo.country === 'CN') {
+                  this.showCN = true
+               } else if (userInfo.country === 'US') {
+                  this.isUS = true
+                  this.state = state
+                  this.dataUS.region = this.state[0].locale
+               }
             }).catch((res) => {
+
             })
          },
       },
@@ -1772,46 +1822,28 @@
                };
             } else {
                this.$router.push({
-                  path: '/login',
+                  // path: '/login',
                })
                return
             }
          }
-         this.type = this.$route.query['type']
+         this.userId = this.$route.query['userId']?this.$route.query['userId']:localStorage.getItem('loginUserId');
+         localStorage.setItem('loginUserId',this.userId);
+         this.deviceCode = this.$route.query['deviceCode']?this.$route.query['deviceCode']:localStorage.getItem('deviceCode');
+         localStorage.setItem('deviceCode',this.deviceCode);
+         this.type = this.$route.query['type']?this.$route.query['type']:localStorage.getItem('mobile');
+         localStorage.setItem('mobile',this.type);
          this.showHeader = (this.type === 'ios' || this.type === 'android') ? false : true
          const language = this.$route.query['language']
          if (language) {
             this.$store.commit('changeCurentLange', language);
          }
-         queryUserInfo(this.loginToken).then(res => {
-            let obj = res.data;//今天
-            this.userInfoObj = obj;
-            obj.profileEmail ? this.banddingEmailFlag = false : this.banddingEmailFlag = true;
-            obj.profilePhone ? this.banddingPhoneFlag = false : this.banddingPhoneFlag = true;
-            if (obj.profileEmail && obj.profilePhone) {
-               this.disabledFlag = false;
-            }
-            localStorage.setItem('kycCountry', res.data.country)
-            this.stepTwoForm.country = res.data.country
-
-            if (res.data.country === 'CN') {
-               this.showCN = true
-            } else if (res.data.country === 'US') {
-               this.isUS = true
-               this.state = state
-               this.dataUS.region = this.state[0].locale
-            }
-            //非美国人仅可选择护照
-            if (res.data.country !== 'US') {
-               this.idType = [{label: 'newK1PP', value: 'passport'},]
-            }
-            this.stepTwoForm.idType = this.idType[0].value
-         })
+         this.getUserInfo(this.loginToken)
          this.init();
          this.getOSSfunc()
          this.uploadUrl = `/api/sso/new-identify/upload-front`;//新添加
          this.uploadUrlPic = `/api/sso/user/identify.upload`;//新添加
-         this.getUserInfo(this.loginToken)
+         this.stepTwoForm.idType = this.idType[0].value
          this.stepThreeForm.gender = '男'
          this.stepThreeForm.address = 'home'
          this.stepFourForm = {

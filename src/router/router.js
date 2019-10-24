@@ -885,28 +885,28 @@ const router = new Router({
 })
 
 function checkSSOToken(to, next) {
-   let loginToken = Cookies.get('loginToken');
-   if (loginToken) {
-      getCreateAccount({'ssoToken': loginToken}, {}).then(data => {
-         if (data) {
-            // window.localStorage.setItem("ACCOUNT_TOKEN", JSON.stringify(data));
-            next()
-         }
-      }).catch(error => {
-         //clearLocalStorage()
-         // store.commit('changeLoingStatus', false);
-         if (to.name == "exchange") {
-            next();
-         } else {
-            next({path: '/login'})
-         }
-         //取消登录的状态
-         // clearLocalStorage()
-
-      })
-   } else {
+   // let loginToken = Cookies.get('loginToken');
+   // if (loginToken) {
+   //    getCreateAccount({'ssoToken': loginToken}, {}).then(data => {
+   //       if (data) {
+   //          // window.localStorage.setItem("ACCOUNT_TOKEN", JSON.stringify(data));
+   //          next()
+   //       }
+   //    }).catch(error => {
+   //       //clearLocalStorage()
+   //       // store.commit('changeLoingStatus', false);
+   //       if (to.name == "exchange") {
+   //          next();
+   //       } else {
+   //          next({path: '/login'})
+   //       }
+   //       //取消登录的状态
+   //       // clearLocalStorage()
+   //
+   //    })
+   // } else {
       next()
-   }
+   // }
 }
 
 router.beforeEach((to, from, next) => {

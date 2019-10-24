@@ -1,5 +1,12 @@
 let proxyURL = '/api'
 let finaceURL = 'http://172.17.3.2:8081';// 李成涛
+
+//新
+let proxyURLUser='/api/sso/user'
+let proxyURLUcenter='/api/sso'
+
+
+
 //= ======= 币币交易 start========
 export const symbolList = `${proxyURL}/spot/util/symbol.list`// 获取交易对
 export const symbolList_realtime = `${proxyURL}/quote-realtime/util/symbol.list`// 获取行情交易对
@@ -11,7 +18,7 @@ export const createAccount = `${proxyURL}/spot/auth/token/account.create`//创�
 export const createToken = `${proxyURL}/spot/auth/token.create`//创建token
 export const createSession = `${proxyURL}/spot/auth/session.create`//创建Sesssion
 export const createOrderId = `${proxyURL}/spot/order/orderId.create`//创建orderId
-export const createPasswordToken = `${proxyURL}/sso/user/trade_password_verify` //签发交易密码token
+// export const createPasswordToken = `${proxyURL}/sso/user/trade_password_verify` //签发交易密码token
 
 export const accountInfo = `${proxyURL}/spot/account/info.query` //查询账户信息
 
@@ -196,13 +203,20 @@ export const queryStateUrl = `${proxyURL}/sso/identify-tp/query-state` //实名�
 //visa card
 export const postVisaCardInfoUrl = `${proxyURL}/sso/form/submit` //首页申请信用卡
 
-//获取国籍
-export const queryUserInfoUrl = `${proxyURL}/sso/new-user/query-user-info` //获取国籍
 
 // kyc
-export const identifySubmitUrl = `${proxyURL}/sso/form/identify/submit` //实名认证表单提交
-export const identifyUpdateUrl = `${proxyURL}/sso/form/identify/update` //实名认证表单修改
-export const identifyQueryUrl = `${proxyURL}/sso/form/identify/query` //实名认证状态查询
-export const queryIdentifyStatus = `${proxyURL}/sso/new-identify/query-identify-status`//实名认证是否通过
+// export const identifySubmitUrl = `${proxyURL}/sso/form/identify/submit` //实名认证表单提交
+// export const identifyUpdateUrl = `${proxyURL}/sso/form/identify/update` //实名认证表单修改
 export const redeemInfoUrl = `${proxyURL}/sso/form/submit`//赎回信息填写
+
+
+
+//交易密码
+export const createPasswordToken = `${proxyURLUser}/verify-trade-password` //验证交易密码
+//邀请好友
+export const usersCountUrl = `${proxyURLUser}/query-invitation-persons` //邀请总人数
+export const userListUrl = `${proxyURLUser}/query-invitation-record` //邀请好友列表
+//实名认证
+export const identifySubmitUrl = `${proxyURLUcenter}/identify/submit` //实名认证表单提交
+export const identifyUpdateUrl = `${proxyURLUcenter}/identify/update` //实名认证表单修改
 
