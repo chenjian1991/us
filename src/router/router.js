@@ -6,6 +6,8 @@ import store from '../store/index'
 import {getCreateAccount} from '_api/exchange.js'
 import {clearLocalStorage} from '@/config'
 
+const index = () => import(/* webpackChunkName: "home" */ '../views/home/index.vue')
+
 const HomePageMain = () => import(/* webpackChunkName: "home" */ '../views/home/Home.vue')
 const ExchangeGBBO = () => import(/* webpackChunkName: "exchangeGBBO" */ '../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import(/* webpackChunkName: "exchange" */ '../views/exchange/Exchange.vue')
@@ -17,11 +19,6 @@ const Register = () => import(/* webpackChunkName: "register" */ '../views/login
 const About = () => import(/* webpackChunkName: "about" */ '../views/about/About.vue')
 const Captial = () => import(/* webpackChunkName: "about" */ '../views/captial/Captial.vue')
 
-
-import buyMining from '../views/mining/buyMining.vue';
-import lockWarehouseMining from '../views/mining/lockWarehouseMining.vue';
-import superMiner from '../views/mining/superMiner.vue';
-import reliefFee from '../views/mining/reliefFee.vue';
 
 import Google from '../views/login/google.vue';
 import Forgot from '../views/forgotPassword/forgot.vue';
@@ -230,6 +227,14 @@ const router = new Router({
          redirect: '/home',
          component: Layout,
          children: [
+            {
+               path: '/index',
+               name: 'index',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: index
+            },
             {
                path: '/exchangeGBBO',
                name: 'exchangeGBBO',
@@ -596,31 +601,6 @@ const router = new Router({
                },
                component: aml
             },
-            //挖矿
-            // {
-            //    path: 'buyMining',
-            //    name: 'buyMining',
-            //    meta: {
-            //       title: 'HeaderBuying'
-            //    },
-            //    component: buyMining
-            // },
-            // {
-            //    path: 'lockWarehouseMining',
-            //    name: 'lockWarehouseMining',
-            //    meta: {
-            //       title: 'HeaderLocking'
-            //    },
-            //    component: lockWarehouseMining
-            // },
-            // {
-            //    path: 'superMiner',
-            //    name: 'superMiner',
-            //    meta: {
-            //       title: 'HeaderSuperMiner'
-            //    },
-            //    component: superMiner
-            // },
             {
                path: 'about55',
                name: 'about55',

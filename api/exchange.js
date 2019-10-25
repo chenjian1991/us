@@ -96,6 +96,17 @@ export const getSymbolList_realtime = () => {
    })
 }
 
+//行情交易对 有USDT
+export const getSymbolList_realtime_USDT = () => {
+   return new Promise((resolve,reject) =>{
+      getApi(symbolList_realtime).then(res=>{
+         resolve(res)
+      }).catch(err =>{
+         reject(err)
+      })
+   })
+}
+
 export const getdepthList = (params) => {
    return getApi(depthList, params)
 }
