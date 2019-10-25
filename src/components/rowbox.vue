@@ -31,7 +31,7 @@
    }
 
    .main-color {
-      color: #344857;
+      color: #304454;
    }
 
    .withe-color {

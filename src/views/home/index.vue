@@ -58,19 +58,47 @@
                      <div class="f-14">Est Return {{gbboList.avg.change}}</div>
                   </div>
                   <div class="d-flex align-items-center">
-                     <Button class="c-blue f-14 trade-btn" :class="gbboList.avg.disableTrade?'disabled':''">Instant Trade</Button>
+                     <Button class="c-blue f-14 trade-btn" :class="gbboList.avg.disableTrade?'disabled':''">Instant
+                        Trade
+                     </Button>
                   </div>
                </div>
             </div>
          </div>
       </div>
       <!--Why Tresso?-->
-      <div class="bgc-fff pb-11">
+      <div class="pb-11">
          <row-box :rowLists="overview">
-            <div :slot="item.name" class="overview pr-lg-7" v-for="(item,i) in overviewList" :key="i">
-               <img v-lazy='item.img' class="view-img">
-               <p class="mt-3 pb-3">{{item.title}}</p>
-               <section class="c-dark-gray">{{item.section}}</section>
+            <div :slot="item.name" class="overview pr-lg-9" v-for="(item,i) in overviewList" :key="i">
+               <!--<img v-lazy='item.img' class="view-img">-->
+               <p class="f-18 c-d-black mt-3 mb-2">{{item.title}}</p>
+               <section class="f-14 c-dark-gray">{{item.section}}</section>
+            </div>
+         </row-box>
+      </div>
+      <!--2 ways to connect-->
+      <div class="connect-box bgc3 pb-5">
+         <row-box :rowLists="connect">
+            <div :slot="item.name" class="connect bgc-fff br-8 p-lg-6 pr-lg-7" v-for="(item,i) in connectList" :key="i">
+               <!--<img v-lazy='item.img' class="view-img">-->
+               <p class="f-18 c-d-black mt-3 mb-2">{{item.title}}</p>
+               <section class="f-14 c-dark-gray">{{item.section}}</section>
+            </div>
+         </row-box>
+      </div>
+      <!--Keep more of your margin with FREE trading-->
+      <div class="margin-box bgc-fff pb-5">
+         <row-box :rowLists="margin">
+            <div :slot="item.name" class="margin bgc-fff br-8 p-lg-6 pr-lg-7" v-for="(item,i) in marginList" :key="i">
+               <!--<img v-lazy='item.img' class="view-img">-->
+            </div>
+         </row-box>
+      </div>
+      <!--manager-->
+      <div class="manager-box bgc-fff pb-5">
+         <row-box :rowLists="margin">
+            <div :slot="item.name" class="manager bgc-fff br-8 p-lg-6 pr-lg-7" v-for="(item,i) in managerList" :key="i">
+               <!--<img v-lazy='item.img' class="view-img">-->
             </div>
          </row-box>
       </div>
@@ -121,7 +149,7 @@
                avg: {
                   price: 0,
                   change: 0,
-                  disableTrade:false,
+                  disableTrade: false,
                },
             },
             overview: {
@@ -144,20 +172,86 @@
                {
                   name: 'left',
                   img: '',
-                  title:'GBBO™ Technology',
+                  title: 'GBBO™ Technology',
                   section: 'GBBO™ provides best global pricing through smart order routing and matching engine on a global consolidated order book.'
                },
                {
                   name: 'middle',
                   img: '',
-                  title:'Deepest Liquidity Pools',
+                  title: 'Deepest Liquidity Pools',
                   section: 'Execute unbroken high volume orders via Tresso’s interconnected liquidity pools with the backing of a third party audit system.'
                },
                {
                   name: 'right',
                   img: '',
-                  title:'Free Trading',
+                  title: 'Free Trading',
                   section: 'No transaction fees on trade executions for every user. '
+               },
+            ],
+            connect: {
+               title: '2 ways to connect',
+               default: false,
+               list: [
+                  [{
+                     num: 6,
+                     name: 'left',
+                  }, {
+                     num: 6,
+                     name: 'right',
+                  }]
+               ]
+            },
+            connectList: [
+               {
+                  name: 'left',
+                  img: '',
+                  title: 'Web Platform',
+                  section: 'Institutional-grade tech and functionality on a web platform built for retail traders.'
+               },
+               {
+                  name: 'right',
+                  img: '',
+                  title: 'API',
+                  section: 'IHigh-speed trading engine designed for quant funds, trading firms, VIP retail clients, and mining pools. Use the next generation FIX-based trading API with no rate limits.'
+               },
+            ],
+            margin: {
+               title: 'Keep more of your margin with FREE trading',
+               default: true,
+               list: [
+                  [{
+                     num: 12,
+                     name: 'middle',
+                  }]
+               ]
+            },
+            marginList: [
+               {
+                  name: 'middle',
+                  img: '',
+               },
+            ],
+            manager: {
+               title: '',
+               default: false,
+               list: [
+                  [{
+                     num: 3,
+                     name: 'left',
+                  }, {
+                     num: 9,
+                     name: 'right',
+                  }]
+               ]
+            },
+            managerList: [
+               {
+                  name: 'left',
+                  img: '',
+               },
+               {
+                  name: 'right',
+                  section: '“Given the maturation of the crypto, token, and digital asset markets, the trading standards and operations found in current exchanges are woefully underdeveloped when compared with those of traditional markets. Tresso’s institutional-grade trading with Global Best Bid and Offer is a necessary innovation to these nontraditional markets. GBBO™ is the first of many innovations that we expect to bring to this marketplace to enhance institutional trust, credence and participation in nontraditional digital assets such as crypto.”'
                },
             ],
          }
@@ -301,6 +395,11 @@
          background-color: transparent;
          padding: 5px 10px;
       }
+      .connect-box {
+         .connect {
+
+         }
+      }
 
    }
 
@@ -354,12 +453,17 @@
       .bgc3 {
          background-color: #1A232B;
       }
+      .bgc-fff {
+         background-color: #fff;
+      }
       .btn {
          padding: 12px 20px;
       }
       .br-4 {
          border-radius: 4px;
       }
-
+      .br-8 {
+         border-radius: 8px;
+      }
    }
 </style>
