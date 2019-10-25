@@ -1,6 +1,9 @@
 <template>
    <div class="container pt-11">
-      <div class="title mt-2 mb-6" :class="rowLists.default?'main-color':'withe-color'">{{rowLists.title}}</div>
+      <div class="title mt-2 mb-6" v-if="rowLists.show?false:true" :class="rowLists.default?'main-color':'withe-color'">
+         {{rowLists.title}}
+      </div>
+      <slot></slot>
       <div class="row justify-content-between" v-for="(row,i) in rowLists.list" :key="i">
          <div :class="['col-md-'+col.num]" v-for="(col,i) in row" :key="i" class="col-box">
             <slot :name="col.name">
