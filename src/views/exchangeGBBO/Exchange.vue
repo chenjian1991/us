@@ -2079,12 +2079,12 @@
             }
          },
          openPassWordPage() {
-            if (this.$store.state.exchange.openTradePasswordStatus) {
+            // if (this.$store.state.exchange.openTradePasswordStatus) {
                document.body.style.overflow = 'hidden';
                this.showPassWordPage = true;
-            } else {
-               this.submitPassWord()
-            }
+            // } else {
+            //    this.submitPassWord()
+            // }
          },
          closePassWordPage() {//关闭交易密码页面
             this.showPassWordPage = false;
