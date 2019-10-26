@@ -581,6 +581,11 @@ export default {
    bbjyCoinInfoLinkText: 'Coin Details(powered by CoinMarketCap)',
    panSell: ' Sell',
    panBuy: ' Buy',
+   exchangeCheapest: 'Buy at cheapest',
+   exchangeHighest: 'Sell at highest',
+   exchangeGBBORouter: 'From GBBO Smart Oder Router',
+   exchangeGBBORouterDesc: 'Smart Oder Router (SOR) routes your order to the exchange with the best price',
+   exchangeExchange: 'Exchange',
 
    //交易订单接口返回状态
    500: "Internal Server Error",

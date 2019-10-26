@@ -8,7 +8,8 @@ import {clearLocalStorage} from '@/config'
 
 const HomePageMain = () => import(/* webpackChunkName: "home" */ '../views/home/Home.vue')
 const ExchangeGBBO = () => import(/* webpackChunkName: "exchangeGBBO" */ '../views/exchangeGBBO/Exchange.vue')
-const ExchangeMain = () => import(/* webpackChunkName: "exchange" */ '../views/exchange/Exchange.vue')
+// const ExchangeMain = () => import(/* webpackChunkName: "exchange" */ '../views/exchange/Exchange.vue')
+const ExchangeMain = () => import(/* webpackChunkName: "exchangeGBBO" */ '../views/exchangeGBBO/Exchange.vue')
 import download from "../views/download/download.vue";
 // import Login from '../views/login/Login.vue';
 // import Register from '../views/login/register.vue';
