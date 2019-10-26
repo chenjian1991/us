@@ -13,6 +13,8 @@
             <Button type="info" class="mt-5 f-14 btn">GET STARTED</Button>
          </div>
       </div>
+      <!--3D-->
+      <home-canvas></home-canvas>
       <!--GBBO-->
       <div class="gbbo bgc2 pt-lg-11 pb-lg-11 pt-3 pb-5">
          <div class="container">
@@ -183,16 +185,19 @@
    import {BigNumber} from "bignumber.js";
    import bigDecimal from "js-big-decimal"; //除法失效
    import rowbox from '@/components/rowbox'
-
-   import {getSymbolList_realtime_USDT} from "_api/exchange.js";
+   
+   import { getSymbolList_realtime_USDT } from "_api/exchange.js";
    import {
       getDecimalsNum,
    } from "@/lib/utils.js";
 
+   import HomeCanvas from './component/HomeCanvas'
+
    export default {
       name: "index",
       components: {
-         'row-box': rowbox
+         'row-box': rowbox,
+         HomeCanvas
       },
       data() {
          return {
