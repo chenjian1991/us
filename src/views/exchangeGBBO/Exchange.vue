@@ -2222,6 +2222,7 @@
             return `${val}%`;
          },
          getOrderId() {
+            return
             this.exchange.orderTicket = ''
             this.exchange.getOrderTicket((orderTicket) => {
                this.exchange.orderTicket = orderTicket
