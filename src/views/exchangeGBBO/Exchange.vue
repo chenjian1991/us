@@ -1254,7 +1254,8 @@
                this.stompClient.debug = null
                this.stompClient.heartbeat.outgoing = 1000;
                this.stompClient.connect({}, (frame) => {
-                  this.stompClient.subscribe('/topic/orderbook/BTCUSDD', (message) => {
+                  this.stompClient.subscribe('/topic/orderbook/BTCUSD', (message) => {
+                  // this.stompClient.subscribe('/topic/orderbook/BTCUSDD', (message) => {
                      if (message.body) {
                         this.sortOrderBook(JSON.parse(message.body))
                      }
