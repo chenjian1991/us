@@ -1749,7 +1749,7 @@
                }.bind(this), 1000);
 
                //继续撤单
-            } else if (this.$store.state.exchange.openTradePasswordStatus) {
+            } else if (this.$store.state.exchange.inputTradePassWordStatus) {
                //密码
                if (getValue("ORDER_SESSION")) {
                   //密码为失效
