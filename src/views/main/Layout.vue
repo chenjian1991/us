@@ -33,7 +33,8 @@
 <script>
     import Header2 from '@/components/common/US-Header.vue'
     // import TradeCenterHeader from '@/components/common/TradeCenterHeader.vue'
-    import Footer from '../../components/common/US-NEW-Footer.vue'
+    // import Footer from '../../components/common/US-NEW-Footer.vue'
+    import Footer from '../../components/common/Footer'
     import {AndroidDownloadUrl} from '../../../api/urls.js';
     import {getApi} from '../../../api/axios.js';
     export default {
