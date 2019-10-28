@@ -11,6 +11,7 @@
 
             </a>
         </div> -->
+       <tressoHeader></tressoHeader>
         <Header2 />
         <!-- Content 内容 -->
         <div style="flex:1;height:100%;width:100%;flex-basis:auto;">
@@ -20,7 +21,7 @@
         <div class="footerTips" >
             <div class="cookiesBox" v-if="isShowCookiesBox">
                 <div>Our site uses cookies. By continuing to use our site you are agreeing to our <router-link to="/privacy" class="gotoPolicy">Cookie Policy</router-link> .</div>
-                <div class="cookiesBtn" @click="closeCookiesBox">OK, I UNDERSTAND</div> 
+                <div class="cookiesBtn" @click="closeCookiesBox">OK, I UNDERSTAND</div>
             </div>
             <div class="ipBox" v-if="isShowIPModal">
                 <div class="ipText">{{message}}</div>
@@ -31,7 +32,9 @@
 </template>
 
 <script>
-    import Header2 from '@/components/common/US-Header.vue'
+   import tressoHeader from '@/components/common/tressoHeader.vue'
+
+   import Header2 from '@/components/common/US-Header.vue'
     // import TradeCenterHeader from '@/components/common/TradeCenterHeader.vue'
     // import Footer from '../../components/common/US-NEW-Footer.vue'
     import Footer from '../../components/common/Footer'
@@ -64,7 +67,7 @@
                 message:'Attention: Please note that residents of the state of Connecticut, Florida, Hawaii, Maine, Mississippi, New Jersey, New York, North Carolina, North Dakota, Ohio, South Dakota, Texas, Vermont, or Washington are not permitted to trade on 55.trade.',
                // routerArr:['home','Bhome','Shome','Fhome','Chome','login','register','usdd','FF','stock','cinfo','about55','capital','card','redeemsupreme','tokenizeyeezy','whyus','crypto','smartexecution','termsfront','faqs','ourcompany','team','contactus'],
             }
-           
+
         },
         methods:{
             close(){
@@ -104,7 +107,7 @@
             }
         },
         watch:{
-            // $route(to,from){ //路由site变化 
+            // $route(to,from){ //路由site变化
             //     if(this.routerArr.join(',').lastIndexOf(this.$route.name) == -1){
             //         this.showTradeHeader = true
             //     }else{
@@ -114,6 +117,7 @@
         },
         components: {
            Footer,
+           tressoHeader,
            Header2,
         //    TradeCenterHeader
         },
@@ -155,7 +159,7 @@
     body{
         position: relative;
     }
-   
+
     }
 }
 </style>
@@ -207,9 +211,9 @@
         }
     }
     .clearfix:after {
-                content:""; 
-                display: block; 
-                clear:both; 
+                content:"";
+                display: block;
+                clear:both;
     }
      .app-tip{
         width: 1200px;
@@ -232,7 +236,7 @@
             .logo{
                 width: 105px;
                 height: 105px;
-                margin:20px 20px; 
+                margin:20px 20px;
             }
             .logo2{
                 p{
@@ -243,7 +247,7 @@
                     margin-top: 20px;
                     margin-left: 20px;
                 }
-                
+
             }
             .dn-btn{
                 float: right;
@@ -255,5 +259,5 @@
             }
         }
     }
-   
+
 </style>
