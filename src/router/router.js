@@ -114,6 +114,7 @@ const faqs = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle
 const ourcompany = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/ourcompany.vue')
 const team = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/TheTeam.vue')
 const contactus = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/contactus.vue')
+const about = () => import(/* webpackChunkName: "about" */ '../views/about/about_new.vue')
 
 
 
@@ -852,8 +853,14 @@ const router = new Router({
                },
                component: interFinanceThree
             },
-
-
+            {//about
+               path: 'about',
+               name: 'about',
+               meta: {
+                  title: 'about',
+               },
+               component: about
+            },
          ]
       },
       {
