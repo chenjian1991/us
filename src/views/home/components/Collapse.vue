@@ -70,24 +70,24 @@ export default{
     return{
       arr:[
         {
-          title:"11111",
-          des:"Using smart order router and matching engine technology, GBBO™ uncovers the best available (lowest) ask price and the best available (highest) bid price in crypto trading"
+          title:"DEEPEST LIQUIDITY",
+          des:"Consolidated global order book, fills large volume trades with ease"
         },
         {
-          title:"2222",
-          des:"Using smart order router and matching engine technology, GBBO™ uncovers the best available (lowest) ask price and the best available (highest) bid price in crypto trading"
+          title:"BEST GLOBAL PRICES",
+          des:"Using smart order router and matching engine technology, GBBO uncovers the best available (lowest) ask price and the best available (highest) bid price in crypto trading"
         },
         {
-          title:"33333",
-          des:"Using smart order router and matching engine technology, GBBO™ uncovers the best available (lowest) ask price and the best available (highest) bid price in crypto trading"
+          title:"CROSS-CURRENCY CONVERSION",
+          des:"Execute orders cross-currency for access to true global best pricing, all at no additional fee"
         },
         {
-          title:"444444",
-          des:"Using smart order router and matching engine technology, GBBO™ uncovers the best available (lowest) ask price and the best available (highest) bid price in crypto trading"
+          title:"INSTANT ARBITRAGE",
+          des:"Arbitrage from a single network of exchanges instantly, utilizing GBBO’s global consolidated order book"
         },
         {
-          title:"55555555",
-          des:"Using smart order router and matching engine technology, GBBO™ uncovers the best available (lowest) ask price and the best available (highest) bid price in crypto trading"
+          title:"“TRUE” SINGLE ACCOUNT",
+          des:"No need to open, keep, and maintain accounts with multiple systems and exchanges"
         },
       ],
       arrLeft:[],
