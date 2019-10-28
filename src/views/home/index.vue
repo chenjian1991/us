@@ -14,7 +14,7 @@
          </div>
       </div>
       <!--3D-->
-      <home-canvas></home-canvas>
+      <home-canvas style="overflow: hidden"></home-canvas>
       <!--GBBO-->
       <div class="gbbo bgc2 pt-lg-11 pb-lg-11 pt-3 pb-5">
          <div class="container">
