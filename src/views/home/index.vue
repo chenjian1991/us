@@ -96,19 +96,59 @@
             </div>
          </row-box>
       </div>
+      <!--&lt;!&ndash;CONNECTED EXCHANGES&ndash;&gt;-->
+      <!--<div class="connected-box bgc4 d-flex align-items-center justify-content-center t-c">-->
+      <!--<div class="p-5">-->
+      <!--<h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>-->
+      <!--<p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>-->
+      <!--</div>-->
+      <!--</div>-->
       <!--CONNECTED EXCHANGES-->
-      <div class="connected-box bgc4 d-flex align-items-center justify-content-center t-c">
-         <div class="p-5">
-            <h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>
-            <p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>
+      <div class="connected-box bgc4 position-relative">
+         <div class="pt-lg-11">
+            <div class="row justify-content-center pt-lg-8">
+               <div class="col-3 mt-3" style="transform: translate3d(0, 0, 0px);">
+                  <img class="img-fluid" src="../../assets/images/tresso/2.png" alt="Image Description">
+               </div>
+               <div class="col-3" style="transform: translate3d(30%, 0, 0px);">
+                  <img class="img-fluid" src="../../assets/images/tresso/3.png" alt="Image Description">
+               </div>
+            </div>
+            <div class="row justify-content-between mt-6">
+               <div class="col-3 t-c">
+                  <img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">
+               </div>
+               <div class="col-3 t-c">
+                  <img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">
+               </div>
+            </div>
+            <div class="row justify-content-between mt-11">
+               <div class="col-4 t-c">
+                  <img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">
+               </div>
+               <div class="col-4 t-c mt-5">
+                  <img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">
+               </div>
+               <div class="col-4 t-c">
+                  <img class="img-fluid" src="../../assets/images/tresso/5.png" alt="Image Description">
+               </div>
+            </div>
+         </div>
+         <div class="t-c connected">
+            <div class="p-5">
+               <h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>
+               <p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>
+            </div>
          </div>
       </div>
-      <!--free-->
-      <!--<div class="free-box bgc-fff t-c p-lg-11">-->
-      <!--<div class="p-3">-->
-      <!--<h3 class="f-36 c-d-black f-w">Keep more of your margin with FREE trading</h3>-->
-      <!--</div>-->
-      <!--</div>-->
+      <div class="free-box bgc-fff t-c p-lg-11">
+         <div class="container p-3">
+            <h3 class="f-36 c-d-black f-w">Keep more of your margin with FREE trading</h3>
+            <div style="width: 100%;overflow-x: scroll" id="free">
+               <img v-lazy="require('../../assets/images/tresso/trading.png')" class="free-img mt-9">
+            </div>
+         </div>
+      </div>
       <!--2 ways to connect-->
       <div class="connect-box bgc3 pb-11">
          <row-box :rowLists="connect" class="mb-5">
@@ -130,24 +170,25 @@
       <!--</row-box>-->
       <!--</div>-->
       <!--manager-->
-      <div class="manager-box bgc-fff p-11">
+      <div class="manager-box bgc-fff p-lg-11">
          <div class="container pt-4 pb-4">
-            <div class="row justify-content-between align-items-center">
-               <div class="col-md-3">
+            <div class="row justify-content-between align-items-stretch">
+               <div class="col-md-5">
                   <img v-lazy='require("../../assets/images/tresso/manager.png")' class="manager-img">
                </div>
-               <div class="col-md-9">
-                  <img src="../../assets/images/tresso/left.png" alt="">
+               <div class="col-md-7">
+                  <img src="../../assets/images/tresso/left.png" class="manager-icon" alt="">
+                  <h4 class="f-30 c-d-black mb-3 mt-lg-11">Join the Innovation</h4>
                   <section class="f-16 c-d-black mb-6">
-                     “Given the maturation of the crypto, token, and digital asset markets, the trading standards and
+                     Given the maturation of the crypto, token, and digital asset markets, the trading standards and
                      operations found in current exchanges are woefully underdeveloped when compared with those of
                      traditional markets. Tresso’s institutional-grade trading with Global Best Bid and Offer is a
                      necessary innovation to these nontraditional markets. GBBO™ is the first of many innovations that
-                     we
-                     expect to bring to this marketplace to enhance institutional trust, credence and participation in
-                     nontraditional digital assets such as crypto.”
+                     we expect to bring to this marketplace to enhance institutional trust, credence and participation
+                     in nontraditional digital assets such as crypto.
                   </section>
-                  <img src="" alt="">
+                  <img src="../../assets/images/tresso/right.png" class="manager-icon position-absolute bottom-0 right-0"
+                       alt="">
                </div>
             </div>
          </div>
@@ -477,6 +518,12 @@
          .connected-box {
             height: 600px;
          }
+
+         .manager-box {
+            .manager-img {
+               width: 370px !important;
+            }
+         }
       }
       .top {
          .top-desc {
@@ -510,6 +557,27 @@
 
          }
       }
+      .connected-box {
+         .connected {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            /*margin: 0 auto;*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+         .img-fluid {
+            width: 30px;
+            height: 30px;
+            box-sizing: content-box;
+            border: solid 26px #fff;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+         }
+      }
       .connect-box {
          .connect {
             .connect-img {
@@ -517,9 +585,18 @@
             }
          }
       }
+      .free-box {
+         .free-img {
+            width: 1110px;
+            /*width: 100%;*/
+         }
+      }
       .manager-box {
          .manager-img {
-            width: 220px;
+            width: 100%;
+         }
+         .manager-icon {
+            width: 23px;
          }
       }
       .partners-box {
@@ -562,11 +639,14 @@
       .f-36 {
          font-size: 36px;
       }
+      .f-30 {
+         font-size: 30px;
+      }
       .f-28 {
          font-size: 28px;
       }
       .f-24 {
-         font-size: 20px;
+         font-size: 24px;
       }
       .f-20 {
          font-size: 20px;
