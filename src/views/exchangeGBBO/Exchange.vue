@@ -52,7 +52,7 @@
                                                 @click.stop="addMarkCoin(v,key,true)"/>
                                           {{v.baseAsset}}
                                           <!-- <i class="gbbo-img" v-if="v.symbol==='BTCUSDD'&&isGBBO"></i> -->
-																					<i class="gbbo-img" ></i>
+                                          <i class="gbbo-img" ></i>
                                        </div>
                                        <div class="priceItme">{{v.last?v.last:'--' | scientificToNumber}}</div>
                                        <div class="priceItme redText" v-if="v.showColor === -1">{{v.percent || '--'}}
@@ -665,7 +665,7 @@
 </template>
 
 <script>
-   import {getSymbolList, getSymbolList_realtime, getdepthList, getDeleteFavoritesPair} from '_api/exchange.js'
+   import {getSymbolList, getSymbolList_realtime, getdepthList, getDeleteFavoritesPair, getTradePassWordOpenStatus} from '_api/exchange.js'
    import {
       getObjFirstKey,
       getDecimalsNum,
@@ -689,8 +689,8 @@
    import SockJS from 'sockjs-client';
    import Stomp from 'stompjs';
    import CHAT from '@/components/exchange/CHAT.vue'
-	 import _ from 'lodash'
-	 import Cookies from 'js-cookie'
+   import _ from 'lodash'
+   import Cookies from 'js-cookie'
    import moment, {isMoment, defineLocale} from 'moment'
    import bigDecimal from 'js-big-decimal' //除法失效
    import {BigNumber} from 'bignumber.js';
@@ -710,6 +710,8 @@
       },
       data() {
          return {
+             // 当前是否开启交易密码
+             isOpenTradePassWordStatus: false,
             //2019性能优化-左侧币种选择栏
             siteName: 'B',
             siteIndexNumber: 0,//站点序号 数字
@@ -1247,8 +1249,8 @@
                if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
                   socket = new SockJS('https://' + domain + '/xchange/marketdata');
                } else {
-									// socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
-									socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+                  // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
+                  socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
                }
                this.stompClient = Stomp.over(socket);
                this.stompClient.debug = null
@@ -1771,7 +1773,7 @@
             }
 
          },
-         buyBtn() {
+           buyBtn() {
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易
@@ -1875,58 +1877,39 @@
                }.bind(this), 1000);
             }
             else if (this.$store.state.exchange.inputTradePassWordStatus) {
-               //需要输入密码
-               if (getValue("ORDER_SESSION")) {
-                  // if (this.isGBBO) {
-									this.exchange.createGBBOOrder({
-												"symbol": this.currentSymbol,
-												"orderType": "LIMIT",
-												"orderSide": this.orderType,
-												"quantity": this.buyCountInput,
-												"limitPrice": this.buyPriceInput
-										}, null, (data) => {
-												this.buyDisabled = false
-												this.$Notice.success({
-													title: this.$t('tsTips'),
-													desc: this.$t('bbjyOrderSuccess'),
-												});
-												this.getOrderId()
-										},
-										(data) => {
-												this.buyDisabled = false;
-										}
-									);
-                  // } else {
-                  //    this.exchange.createNewOrder({
-                  //          "symbol": this.currentSymbol,
-                  //          "orderType": "LIMIT",
-                  //          "orderSide": this.orderType,
-                  //          "quantity": this.buyCountInput,
-                  //          "limitPrice": this.buyPriceInput
-                  //       }, null, (data) => {
-                  //          this.buyDisabled = false
-                  //          this.buyCountInput = ''
-                  //          this.$refs.buyCountInputRef.value = ''
-                  //          this.$Notice.success({
-                  //             title: this.$t('tsTips'),
-                  //             desc: this.$t('bbjyOrderSuccess'),
-                  //          });
-                  //          this.getOrderId()
-                  //       },
-                  //       (data) => {
-                  //          this.buyDisabled = false;
-                  //       }
-                  //    );
-                  // }
-               } else {
+              // 是否需要输入交易密码
+              if(this.isOpenTradePassWordStatus) { // 是
+                //需要输入密码
+                if (getValue("ORDER_SESSION")) {
+                  this.exchange.createGBBOOrder({
+                        "symbol": this.currentSymbol,
+                        "orderType": "LIMIT",
+                        "orderSide": this.orderType,
+                        "quantity": this.buyCountInput,
+                        "limitPrice": this.buyPriceInput
+                    }, null, () => {
+                        this.buyDisabled = false
+                        this.$Notice.success({
+                          title: this.$t('tsTips'),
+                          desc: this.$t('bbjyOrderSuccess'),
+                        });
+                        this.getOrderId()
+                    },() => {
+                        this.buyDisabled = false;
+                    }
+                  );
+                } else {
                   this.openPassWordPage();
-               }
-               return
-            } else {
-               //直接下单
-               this.submitPassWord()
-            }
-         },
+                }
+              } else { // 否   
+                this.submitPassWord() // 直接下单
+              }
+            } 
+            // else {
+            //    //直接下单
+            //    this.submitPassWord()
+            // }
+           },
          sellBtn() {
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '卖出按钮', 0, 'sellBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
@@ -2021,7 +2004,7 @@
                //需要输入交易密码
                if (getValue("ORDER_SESSION")) {
                   this.sellDisabled = true;
-                  if (this.isGBBO) {
+                  // if (this.isGBBO) {
                      this.exchange.createGBBOOrder({
                            "symbol": this.currentSymbol,
                            "orderType": "LIMIT",
@@ -2044,32 +2027,32 @@
 
                         }
                      );
-                  } else {
-                     this.exchange.createNewOrder({
-                           "symbol": this.currentSymbol,
-                           "orderType": "LIMIT",
-                           "orderSide": this.orderType,
-                           "quantity": this.sellCountInput,
-                           "limitPrice": this.sellPriceInput
-                        },
-                        null,
-                        (data) => {
-                           // orderComplete();
-                           this.sellDisabled = false;
-                           this.sellCountInput = ''
-                           this.$refs.sellCountInputRef.value = ''
-                           this.$Notice.success({
-                              title: this.$t('tsTips'),
-                              desc: this.$t('bbjyOrderSuccess'),
-                           });
-                           this.getOrderId()
-                        },
-                        (data) => {
-                           this.sellDisabled = false;
+                  // } else {
+                  //    this.exchange.createNewOrder({
+                  //          "symbol": this.currentSymbol,
+                  //          "orderType": "LIMIT",
+                  //          "orderSide": this.orderType,
+                  //          "quantity": this.sellCountInput,
+                  //          "limitPrice": this.sellPriceInput
+                  //       },
+                  //       null,
+                  //       (data) => {
+                  //          // orderComplete();
+                  //          this.sellDisabled = false;
+                  //          this.sellCountInput = ''
+                  //          this.$refs.sellCountInputRef.value = ''
+                  //          this.$Notice.success({
+                  //             title: this.$t('tsTips'),
+                  //             desc: this.$t('bbjyOrderSuccess'),
+                  //          });
+                  //          this.getOrderId()
+                  //       },
+                  //       (data) => {
+                  //          this.sellDisabled = false;
 
-                        }
-                     );
-                  }
+                  //       }
+                  //    );
+                  // }
                } else {
                   this.openPassWordPage();
                }
@@ -2341,6 +2324,15 @@
             //         this.FFDeductible = 1
             //     }
             // })
+          // 是否开启了，交易密码
+          getTradePassWordOpenStatus(Cookies.get('loginToken'))
+            .then((res) => {
+              const { result } = res.data
+              // 开启了交易密码
+              // if (result) {
+              this.isOpenTradePassWordStatus = result
+              // }
+            })
          }
       },
       beforeMount() {

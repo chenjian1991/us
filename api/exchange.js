@@ -48,6 +48,7 @@ import {
    queryTradePassWordURL,
    completedList_v2,
    filledList_v2,
+   queryTradePasswordOpen
 } from './urls'
 
 const checkExpiredAble = (expiredAble) => {
@@ -94,6 +95,10 @@ export const getSymbolList_realtime = () => {
          reject(err)
       })
    })
+}
+
+export const getTradePassWordOpenStatus = (token) => {
+   return getHeaderTokenApi(queryTradePasswordOpen, '', token)
 }
 
 export const getdepthList = (params) => {
@@ -251,6 +256,7 @@ export const getSummarizedTimeRange = (params) => {
 export const queryTradePassWordStatus = (token) => {
    return getHeaderTokenApi(queryTradePassWordURL, {},token)
 }
+
 
 
 
