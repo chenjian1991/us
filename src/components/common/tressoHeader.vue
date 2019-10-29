@@ -13,7 +13,7 @@
                   <!-- Logo -->
                   <router-link to='/home' class="mr-lg-11">
                      <!-- <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="120px" height="30px"> -->
-                     <img src="../../assets/images/tressoHeader/logo.png" alt="logo">
+                     <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="120px">
                   </router-link>
                   <!-- End Logo -->
                   <!-- Responsive Toggle Button -->
