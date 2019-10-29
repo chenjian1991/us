@@ -416,7 +416,7 @@
          init() {
             // 获取gbbo btcusd交易对行情
             getSymbolList_realtime().then(res => {
-               console.log(res)
+               // console.log(res)
                res.map((v, i) => {
                   this.symbolList_quote[v.symbol] = v;
                   if (v.symbol === this.symbol) {
