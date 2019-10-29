@@ -95,7 +95,7 @@
                   with:
                </section>
             </div>
-            <p class="f-12 c-blue mt-4">This power is not currently available in any single exchange, regardless of
+            <p class="f-12 c-blue mt-4 mb-5">This power is not currently available in any single exchange, regardless of
                size, and only available at Tresso.</p>
             <Collapse></Collapse>
          </row-box>
@@ -184,14 +184,6 @@
       </div>
       <!--PARTNERS-->
       <div class="partners-box bgc3 pb-lg-11">
-         <!--<div class="container pt-4 pb-4">-->
-         <!--<h3 class="f-36 c-fff f-w t-c">PARTNERS</h3>-->
-         <!--<ul class="mt-11 d-flex justify-content-between">-->
-         <!--<li v-for="item in partnersList">-->
-         <!--<img v-lazy="item.img" class="partners-img">-->
-         <!--</li>-->
-         <!--</ul>-->
-         <!--</div>-->
          <row-box :rowLists="partner" class="mb-5">
             <div :slot="item.name" class="partner mt-7" v-for="(item,i) in partnerList" :key="i">
                <img v-lazy="item.img" class="partners-img">

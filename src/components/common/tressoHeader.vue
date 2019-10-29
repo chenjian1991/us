@@ -81,7 +81,7 @@
                         </li>
                      </ul>
                      <!--account-->
-                     <ul class="navbar-nav u-header__navbar-nav">
+                     <ul class="navbar-nav u-header__navbar-nav" v-else>
                         <li
                            class="nav-item hs-has-sub-menu u-header__nav-item header-box"
                            data-event="hover"
