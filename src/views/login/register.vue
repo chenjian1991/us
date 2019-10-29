@@ -97,10 +97,10 @@
                                     <img src="../../assets/images/register/password.svg" alt="">
                                     <Input type="password" v-model="formValidate.confrimPassword" :placeholder="$t('confirmPasswordPlacehodler')"></Input>
                                 </FormItem>
-                                <FormItem class="form_item" prop='referrId'>
+                                <!-- <FormItem class="form_item" prop='referrId'>
                                     <img style="width:16px;height:20px;" src="../../assets/images/register/Referral_ID.svg" alt="">
                                     <Input :disabled='referrDisable' v-model="formValidate.referrId" :placeholder="$t('referridPlacehodler')"></Input>
-                                </FormItem>
+                                </FormItem> -->
                                 <FormItem prop="interest">
                                     <CheckboxGroup v-model="formValidate.interest">
                                         <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}}</span>
@@ -339,14 +339,14 @@ const clickoutside = {
                 }
             };
             const validateCheckbox = (rule,value,callback) =>{
-                if(value == ''){
+                if(value === ''){
                     callback(new Error(this.$t("checkboxRequire")))
                 }else{
                     callback()
                 }
             }
             const validateReferrId = (rule, value, callback) => {
-                if(value === ''){
+                if(value === ''||value === null){
                     callback(new Error(this.$t("comfrimpassRequier")))
                 }else{
                     callback()
@@ -407,7 +407,7 @@ const clickoutside = {
                         { required: true, validator:validateCheckbox, type: 'array', min: 1, trigger: 'change' },
                     ],
                     referrId: [
-                        { required: true, validator: validateReferrId, trigger: 'blur' }
+                        {validator: validateReferrId, trigger: 'blur' }
                     ]
                     
                 },
@@ -484,18 +484,16 @@ const clickoutside = {
             },
           getOSSjson(){
                 getApi('https://oss.55gm.co/content/country/55-country.json',{}).then((res)=>{
-                    this.ossJSON = res;
+                    this.ossJSON = res.slice(4,res.length);
                     let FrencyCountry = [];
                     res.forEach(item => {
                         if(item.type=='recommend'){
                             FrencyCountry.push(item);
                         }
                     });
-                    // console.log(FrencyCountry)
-                    //把默认值写在then里面就避免了异步问题，解决了在mounted里面直接写的问题
-                    this.countryNumber = FrencyCountry[4].code;
+                    // this.countryNumber = FrencyCountry[4].code;
                     this.globalCountryNumber = FrencyCountry[4].en;
-                    this.phoneCountryName = FrencyCountry[4].locale;
+                    // this.phoneCountryName = FrencyCountry[4].locale;
                     this.EmailcountryName = FrencyCountry[4].locale;
                     this.countryFlag=FrencyCountry[4].image;
 
