@@ -1242,15 +1242,16 @@
          },
          getGBBODepth() {
             if (this.stompClient == null || !this.stompClient.connected) {
-              //  const domain = document.domain;
-              //  let socket = null
-              //  if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-              //     socket = new SockJS('https://' + domain + '/xchange/marketdata');
-              //  } else {
-              //     // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
-              //     socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
-              //  }
-               const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+               const domain = document.domain;
+               let socket = null
+               if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+                  socket = new SockJS('https://' + domain + '/xchange/marketdata');
+               } else {
+                  // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
+                  socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+               }
+               // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+               // const socket = new SockJS('https://www.55.center/xchange/marketdata');
                this.stompClient = Stomp.over(socket);
                this.stompClient.debug = null
                this.stompClient.heartbeat.outgoing = 1000;
