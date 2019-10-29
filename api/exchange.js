@@ -48,6 +48,7 @@ import {
    queryTradePassWordURL,
    completedList_v2,
    filledList_v2,
+   userInfo
 } from './urls'
 
 const checkExpiredAble = (expiredAble) => {
@@ -59,6 +60,10 @@ const checkExpiredAble = (expiredAble) => {
    }
    return null;
 };
+// 获取用户信息
+export const getUserInfo = (token) => {
+   return postHeaderTokenBodyApi(userInfo, token, {})
+}
 //下单交易对
 export const getSymbolList = () => {
    return getApi(symbolList)

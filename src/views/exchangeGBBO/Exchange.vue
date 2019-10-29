@@ -215,10 +215,10 @@
                                                 <div class="currencyInput" v-else>
                                                    <span v-if="buy_input_change">limit price</span>
                                                    <div v-else>
-                                                      {{$t('exchangeGBBORouter')}}
-                                                      <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
+                                                      {{$t('exchangeGBBORouterb')}}
+                                                      <!-- <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
                                                          <Icon type="md-help-circle"/>
-                                                      </Tooltip>
+                                                      </Tooltip> -->
                                                    </div>
                                                 </div>
                                              </div>
@@ -316,10 +316,10 @@
                                                 <div class="currencyInput" v-else>
                                                    <span v-if="sell_input_change">limit price</span>
                                                    <div v-else>
-                                                      {{$t('exchangeGBBORouter')}}
-                                                      <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
+                                                      {{$t('exchangeGBBORoutera')}}
+                                                      <!-- <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
                                                          <Icon type="md-help-circle"/>
-                                                      </Tooltip>
+                                                      </Tooltip> -->
                                                    </div>
                                                 </div>
                                              </div>
@@ -570,8 +570,14 @@
                               <div>{{v.percent}}%</div>
                               <div>{{v.total}}</div>
                               <!-- 撤单 -->
-                              <div class="cancleBtn"><a class="cancel" @click="cancelMyOrder(v.orderId,v)"
-                                                        :disabled="v.isDisabled">{{$t(v.btnText)}}</a></div>
+                              <div class="cancleBtn">
+                                <a 
+                                  class="cancel"
+                                  @click="cancelMyOrder(v.orderId,v)"
+                                  :disabled="v.isDisabled">
+                                {{$t(v.btnText)}}
+                                </a>
+                              </div>
                            </li>
                         </ul>
                      </div>
@@ -665,7 +671,13 @@
 </template>
 
 <script>
-   import {getSymbolList, getSymbolList_realtime, getdepthList, getDeleteFavoritesPair} from '_api/exchange.js'
+  import {
+    getSymbolList,
+    getSymbolList_realtime,
+    getdepthList,
+    getDeleteFavoritesPair,
+    getUserInfo
+  } from '_api/exchange.js'
    import {
       getObjFirstKey,
       getDecimalsNum,
@@ -710,6 +722,8 @@
       },
       data() {
          return {
+           // 是否设置交易密码
+           isSetTradePasswrod: false,
             //2019性能优化-左侧币种选择栏
             siteName: 'B',
             siteIndexNumber: 0,//站点序号 数字
@@ -1240,34 +1254,36 @@
                }, 10000)
             })
          },
-         getGBBODepth() {
-            if (this.stompClient == null || !this.stompClient.connected) {
-               const domain = document.domain;
-               let socket = null
-               if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-                  socket = new SockJS('https://' + domain + '/xchange/marketdata');
-               } else {
-                  // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
-                  socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
-               }
-               // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
-               // const socket = new SockJS('https://www.55.center/xchange/marketdata');
-               this.stompClient = Stomp.over(socket);
-               this.stompClient.debug = null
-               this.stompClient.heartbeat.outgoing = 1000;
-               this.stompClient.connect({}, (frame) => {
-                  this.stompClient.subscribe('/topic/orderbook/BTCUSD', (message) => {
-                  // this.stompClient.subscribe('/topic/orderbook/BTCUSDD', (message) => {
-                     if (message.body) {
-                        this.sortOrderBook(JSON.parse(message.body))
-                     }
-                  });
-               }, (error) => {
-                  this.stompClient = null
-                  this.getGBBODepth()
-               });
-            }
-         },
+        getGBBODepth() {
+          if (this.stompClient == null || !this.stompClient.connected) {
+              const domain = document.domain;
+              let socket = null
+              if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+                socket = new SockJS('https://' + domain + '/xchange/marketdata');
+              } else {
+                // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
+                socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+              }
+              // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+              // const socket = new SockJS('https://www.55.center/xchange/marketdata');
+              this.stompClient = Stomp.over(socket);
+              this.stompClient.debug = null
+              this.stompClient.heartbeat.outgoing = 1000;
+              this.stompClient.connect({}, (frame) => {
+                this.stompClient.subscribe('/topic/orderbook/BTCUSD', (message) => {
+                // this.stompClient.subscribe('/topic/orderbook/BTCUSDD', (message) => {
+                    if (message.body) {
+                      this.sortOrderBook(JSON.parse(message.body))
+                    }
+                });
+              }, (error) => {
+                console.log('new Sockjs  error')
+                this.stompClient.disconnect()
+                this.stompClient = null
+                this.getGBBODepth()
+              });
+          }
+        },
          sortOrderBook(data) {
             let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
             // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
@@ -1301,7 +1317,7 @@
             this.subNumber = bigDecimal.round(Math.abs(diff), priceLong)
             this.GBBO_rate = bigDecimal.round(new BigNumber(this.subNumber) * new BigNumber(this.currencyRate), 4)
             if (diff < 0) {
-               this.isShowARB = "ARB"
+               this.isShowARB = "ARBITRAGE"
             } else {
                this.isShowARB = "SPREAD"
             }
@@ -1741,7 +1757,7 @@
             //     // showError("account-error");
             //     this.$Message.warning(this.$t('bbjyAccountError'));
             // } else
-            if (!this.$store.state.exchange.inputTradePassWordStatus) {
+            if (!this.isSetTradePasswrod) {
                //交易密码是否设置
                this.$Notice.warning({
                   title: this.$t('bbjyNoPasswordError'),
@@ -1867,7 +1883,8 @@
                this.buyDisabled = false
             }
             //没有设置交易密码直接下单 增加逻辑
-            else if (!this.$store.state.exchange.inputTradePassWordStatus) {
+            else if(!this.isSetTradePasswrod) { // 未设置交易密码
+            // else if (!this.$store.state.exchange.inputTradePassWordStatus) {
                this.$Notice.warning({
                   title: this.$t('bbjyNoPasswordError'),
                });
@@ -1876,7 +1893,7 @@
                   this.$router.push('/originTradePassword')
                }.bind(this), 1000);
             }
-            else if (this.$store.state.exchange.inputTradePassWordStatus) {
+            else if (this.$store.state.exchange.inputTradePassWordStatus) {              
               //需要输入密码
               if (getValue("ORDER_SESSION")) {
                 this.exchange.createGBBOOrder({
@@ -1893,15 +1910,15 @@
                       });
                       this.getOrderId()
                   },() => {
-                      this.buyDisabled = false;
+                    this.buyDisabled = false;
                   }
                 );
               } else {
                 this.openPassWordPage();
               }
             }else {
-               //直接下单
-               this.submitPassWord()
+              //直接下单
+              this.submitPassWord()
             }
            },
          sellBtn() {
@@ -1986,7 +2003,7 @@
                this.sellDisabled = false;
             }
             //未设置交易密码直接下单
-            else if (!this.$store.state.exchange.inputTradePassWordStatus) {
+            else if (!this.isSetTradePasswrod) {
                this.$Notice.warning({
                   title: this.$t('bbjyNoPasswordError'),
                });
@@ -2098,7 +2115,7 @@
                      desc: this.$t('bbjyCancelMsg'),
                   })
                }, () => {
-                  v.isDisabled = false;
+                  // v.isDisabled = false;
                });
             } else {
                this.sellDisabled = true;
@@ -2291,6 +2308,15 @@
             //     }
             // })
          }
+        if(Cookies.get('loginToken')){
+          getUserInfo(Cookies.get('loginToken'))
+              .then((res) => {
+                if(!res.code) {
+                  // 是否设置交易密码
+                  this.isSetTradePasswrod = res.isSetTradePasswrod
+                }
+              })
+        }
       },
       beforeMount() {
          //交易相关的交易对

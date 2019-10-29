@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 import {getQueryFavoritesPair,getUpdateFavoritesPair} from '_api/exchange.js'
 export default {
   state: {
-    isLogin:Cookies.get('loginToken')?true:false,
+    isLogin:Cookies.get('loginToken') ? true : false,
     countryLanguage:localStorage.getItem('countryLanguage'),
     bandPhoneObj:{
       "operateType":"BIND_PHONE",
