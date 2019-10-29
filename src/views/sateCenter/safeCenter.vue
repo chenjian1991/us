@@ -73,7 +73,7 @@
                            <router-link v-else to='/originTradePassword?origin=safecenter'>{{$t('aqzxModify')}}
                            </router-link>
                         </li>
-                         <li class="set_trade_password"  v-if="setTradingPassword" >
+                         <!-- <li class="set_trade_password"  v-if="setTradingPassword" >
                            <span class="trading_pass">
                               <em>{{$t('交易密码失效')}}</em>
                            </span>
@@ -86,7 +86,7 @@
                                              <span>{{$t('不输入')}}</span>
                                         </Radio>
                            </RadioGroup>
-                        </li>
+                        </li> -->
                      </ul>
                   </div>
                </div>

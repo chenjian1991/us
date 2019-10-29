@@ -13,10 +13,13 @@
             <div  class="register_wraper">
                 <div v-clickoutside="handleClose" class="inner_input">
                     <div class="register-title">
-                        <ul>    
+                        Sign Up
+                        <!-- {{$t('signupEmail')}} -->
+                        <!-- <h3>{{$t('signupEmail')}}</h3> -->
+                        <!-- <ul>    
                             <li @click="emailTab" :class="{register_on:shows==2}">{{$t('signupEmail')}}</li>
                             <li @click="phoneTab" :class="{register_on:shows==1}">{{$t('signupPhone')}}</li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="register-container">
                         <div  class="phone">

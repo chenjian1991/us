@@ -213,7 +213,7 @@
    import bigDecimal from "js-big-decimal"; //除法失效
    import rowbox from '@/components/rowbox'
 
-   import {getSymbolList_realtime_USDT} from "_api/exchange.js";
+   import {getSymbolList_realtime} from "_api/exchange.js";
    import {
       getDecimalsNum,
    } from "@/lib/utils.js";
@@ -415,7 +415,7 @@
       methods: {
          init() {
             // 获取gbbo btcusd交易对行情
-            getSymbolList_realtime_USDT().then(res => {
+            getSymbolList_realtime().then(res => {
                console.log(res)
                res.map((v, i) => {
                   this.symbolList_quote[v.symbol] = v;
