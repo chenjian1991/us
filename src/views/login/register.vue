@@ -161,7 +161,7 @@
                                 </FormItem>
                                 <FormItem class="form_item" prop='referrId'>
                                     <img style="width:16px;height:20px;" src="../../assets/images/register/Referral_ID.svg" alt="">
-                                    <Input  :disabled='referrDisable' v-model="formValidate.referrId" :placeholder="$t('referridPlacehodler')"></Input>
+                                    <Input type="text" :disabled='referrDisable' v-model="formValidate.referrId" :placeholder="$t('referridPlacehodler')"></Input>
                                 </FormItem>
                                 <FormItem prop="interest">
                                     <CheckboxGroup v-model="formValidate.interest">
@@ -345,6 +345,14 @@ const clickoutside = {
                     callback()
                 }
             }
+            const validateReferrId = (rule, value, callback) => {
+                if(value === ''){
+                    callback(new Error(this.$t("comfrimpassRequier")))
+                }else{
+                    callback()
+                }
+            }
+            
             return {
                 srcCode:'',//空投渠道ID
                 countryLanguage:localStorage.getItem('countryLanguage'),
@@ -398,6 +406,9 @@ const clickoutside = {
                      interest: [
                         { required: true, validator:validateCheckbox, type: 'array', min: 1, trigger: 'change' },
                     ],
+                    referrId: [
+                        { required: true, validator: validateReferrId, trigger: 'blur' }
+                    ]
                     
                 },
                 referrDisable:false,
@@ -882,28 +893,28 @@ const clickoutside = {
         },
         created(){
              var _this = this;
-			document.onkeydown = function(e) {
+      document.onkeydown = function(e) {
                 //1.规避页面上方的搜索框等是否获取了焦点，是则不触发本次快捷键
-				var inputs = document.getElementsByClassName('isfocus_enter'); //找到这一组元素
-				//是否获取了焦点的判断
-				let hasFocus = false;
-				if(inputs && inputs.length >0){
-					for(let i=0;i<inputs.length;i++){
-						//如果hasFocus为true表示input元素获得焦点，否则没有获得焦点
-						hasFocus = document.hasFocus() && document.activeElement === inputs[i];
-						if(hasFocus == true){
-							break;
-						}
-					}
-				}
-			     //console.log("判断不该获取焦点的元素是否获取了焦点（isfocus_enter）:%s",hasFocus);
-						var key = window.event.keyCode;
-						// console.log("按键：%s",key);
-						if (key == 13) {
-							_this.handleSubmit('formValidate') //此方法是当按下enter键后要做的动作。
-						}
-						
-			}
+        var inputs = document.getElementsByClassName('isfocus_enter'); //找到这一组元素
+        //是否获取了焦点的判断
+        let hasFocus = false;
+        if(inputs && inputs.length >0){
+          for(let i=0;i<inputs.length;i++){
+            //如果hasFocus为true表示input元素获得焦点，否则没有获得焦点
+            hasFocus = document.hasFocus() && document.activeElement === inputs[i];
+            if(hasFocus == true){
+              break;
+            }
+          }
+        }
+           //console.log("判断不该获取焦点的元素是否获取了焦点（isfocus_enter）:%s",hasFocus);
+            var key = window.event.keyCode;
+            // console.log("按键：%s",key);
+            if (key == 13) {
+              _this.handleSubmit('formValidate') //此方法是当按下enter键后要做的动作。
+            }
+            
+      }
         }
         
         
