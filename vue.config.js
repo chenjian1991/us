@@ -16,7 +16,7 @@ const BASE_URL = '/'
 
 // const targetUrl='http://www.dev_test_uat.55.exchange/' // 测试本地环境
 // const targetUrl='https://us.55ex.co/' //生产
-const targetUrl='https://www.55.trade/' //生产
+const targetUrl='https://www.55.center/' //生产
 
 module.exports = {
    transpileDependencies: [
