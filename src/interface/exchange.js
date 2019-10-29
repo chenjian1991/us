@@ -435,10 +435,13 @@ Exchange.prototype.createGBBOOrder = function (orderInfo,userpassword, fn, error
    }
    _this.getAccountId(function (_accountId) {
       _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
-         _this.getOrderTicket(function (_orderId) {
+         // _this.getOrderTicket(function (_orderId) {
+         const userId = localStorage.getItem('ex55Pin')
+            const fourRandDigit = Math.floor(Math.random() * (999 - 100)) + 100
+            const orderId = `${userId}${new Date().getTime()}${fourRandDigit}`
             getCreateGBBOOrder({"session": _orderSession}, {
                "accountId": _accountId,
-               "orderId": _orderId,
+               "orderId": orderId,
                "orderInfo": orderInfo
             }).then(
                data => {
@@ -447,7 +450,7 @@ Exchange.prototype.createGBBOOrder = function (orderInfo,userpassword, fn, error
             ).catch(data => {
                errorFn(data)
             })
-         })
+         // })
       })
    })
 };
