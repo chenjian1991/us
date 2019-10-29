@@ -11,7 +11,7 @@
                <!-- Nav -->
                <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
                   <!-- Logo -->
-                  <router-link to='/index' class="mr-lg-11">
+                  <router-link to='/home' class="mr-lg-11">
                      <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="120px" height="30px">
                   </router-link>
                   <!-- End Logo -->

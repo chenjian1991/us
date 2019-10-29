@@ -53,7 +53,7 @@
                      <span class="c-blue">{{gbboList.sell.price}}</span>
                      <span>{{gbboList.sell.exchange}}</span>
                   </div>
-                  <div class="f-14">< Markets Avg {{gbboList.sell.diffAvg}}</div>
+                  <div class="f-14">> Markets Avg {{gbboList.sell.diffAvg}}</div>
                </div>
                <div class="col-md-3" v-model="gbboList.avg">
                   <div class="f-16 bgc3 br-4 text-center list-box mb-3">Arbitrage</div>
@@ -63,7 +63,7 @@
                         <div class="f-14">Est Return {{gbboList.avg.change}}</div>
                      </div>
                      <div class="d-flex align-items-center">
-                        <router-link :to="{path:'exchange',query:{symbol:'BTCUSDD'}}">
+                        <router-link :to="{path:'exchange',query:{symbol:symbol}}">
                            <Button class="c-blue f-14 trade-btn" :class="gbboList.avg.disableTrade?'disabled':''">
                               Instant Trade
                            </Button>
@@ -230,6 +230,7 @@
       },
       data() {
          return {
+            symbol: 'BTCUSD',
             stompClient: null,
             symbolList_quote: [],
             currentSymbolObj: {},
@@ -413,20 +414,20 @@
       },
       methods: {
          init() {
-            // 获取gbbo btcusdd交易对行情
+            // 获取gbbo btcusd交易对行情
             getSymbolList_realtime_USDT().then(res => {
                console.log(res)
                res.map((v, i) => {
-                  this.symbolList_quote[v.symbol] = v; //拼装行情的symbol为Key的symbolList 对象
-                  if (v.symbol === 'BTCUSD') {
+                  this.symbolList_quote[v.symbol] = v;
+                  if (v.symbol === this.symbol) {
                      this.currentSymbolObj = v;
                   }
                });
-               // this.getSockJS()
+               this.getSockJS()
             })
          },
          getSockJS() {
-            if (this.stompClient == null || !this.stompClient.connected) {
+            if (this.stompClient === null || !this.stompClient.connected) {
                const domain = document.domain;
                let socket = null
                if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
@@ -438,16 +439,15 @@
                this.stompClient.debug = null
                this.stompClient.heartbeat.outgoing = 1000;
                this.stompClient.connect({}, () => {
-                  this.stompClient.subscribe('/topic/orderbook/BTCUSDD', (message) => {
+                  this.stompClient.subscribe(`/topic/orderbook/${this.symbol}`, (message) => {
                      if (message.body) {
                         this.sortOrderBook(JSON.parse(message.body))
                      }
                   });
-                  this.stompClient.subscribe('/topic/ticker/BTCUSDD', (message) => {
+                  this.stompClient.subscribe(`/topic/ticker/${this.symbol}`, (message) => {
                      this.getVol(JSON.parse(message.body))
                   });
-                  // 平均价
-                  this.stompClient.subscribe('/topic/trade/BTCUSDD', (message) => {
+                  this.stompClient.subscribe(`/topic/trade/${this.symbol}`, (message) => {
                      this.getAvgPrice(JSON.parse(message.body))
                   });
                }, (error) => {
@@ -467,6 +467,7 @@
          },
          // 计算平均价
          getAvgPrice(data) {
+            console.log(data)
             let priceTotal = '';
             let avgObj_length = Object.keys(data).length;
             for (let price in data) {
@@ -487,13 +488,9 @@
             this.gbboList.buy.price = result.bids[0].priceWithFee.toFixed(2)
             this.gbboList.buy.exchange = result.bids[0].provider // 交易所logo
 
-            // 平均值 暂55代替
-            // this.avgPrice = this.e55BTCUSDD.last
-            // lower
             const avg = this.gbboList.base.price
             this.gbboList.buy.diffAvg = bigDecimal.subtract(avg, this.gbboList.sell.price)
 
-            // higher
             this.gbboList.sell.diffAvg = bigDecimal.subtract(this.gbboList.buy.price, avg)
 
             // 差价
@@ -507,7 +504,6 @@
                this.gbboList.avg.price = bigDecimal.round(diff, priceLong)
             }
 
-            // 价差百分比  (subNumber / avgPrice  *100%)，保留到小数点4位
             this.gbboList.avg.change = new BigNumber(this.gbboList.avg.price).dividedBy(avg).multipliedBy(100).toFixed(4) + '%';
 
          },
@@ -515,7 +511,11 @@
       mounted() {
          this.init()
       },
-
+      beforeDestroy() {
+         if (this.stompClient != null) {
+            this.stompClient.disconnect();
+         }
+      },
    }
 </script>
 

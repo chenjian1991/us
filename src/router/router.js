@@ -6,7 +6,8 @@ import store from '../store/index'
 import {getCreateAccount} from '_api/exchange.js'
 import {clearLocalStorage} from '@/config'
 
-const index = () => import(/* webpackChunkName: "home" */ '../views/home/index.vue')
+// const index = () => import(/* webpackChunkName: "home" */ '../views/home/index.vue')
+import USHOME from "../views/home/index.vue";
 
 const HomePageMain = () => import(/* webpackChunkName: "home" */ '../views/home/Home.vue')
 const ExchangeGBBO = () => import(/* webpackChunkName: "exchangeGBBO" */ '../views/exchangeGBBO/Exchange.vue')
@@ -52,7 +53,7 @@ import identiy from "../views/identity/identity.vue"
 import identityResult from "../views/identity/identityResult.vue"
 import Invite from "../views/invite/Invite.vue"
 import Test from "../views/TestUtil/Test";
-import USHOME from "../views/home/us/USHOME";
+// import USHOME from "../views/home/us/USHOME";
 
 // const Test = () => import(/* webpackChunkName: 'ImportFuncDemo' */ '../views/TestUtil/Test') 
 //韩国挖矿活动
@@ -228,14 +229,14 @@ const router = new Router({
          redirect: '/home',
          component: Layout,
          children: [
-            {
-               path: '/index',
-               name: 'index',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: index
-            },
+            // {
+            //    path: '/index',
+            //    name: 'index',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: index
+            // },
             {
                path: '/exchangeGBBO',
                name: 'exchangeGBBO',
