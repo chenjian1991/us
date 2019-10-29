@@ -2307,14 +2307,16 @@
             //         this.FFDeductible = 1
             //     }
             // })
-            getUserInfo(Cookies.get('loginToken'))
+         }
+        if(Cookies.get('loginToken')){
+          getUserInfo(Cookies.get('loginToken'))
               .then((res) => {
                 if(!res.code) {
                   // 是否设置交易密码
                   this.isSetTradePasswrod = res.isSetTradePasswrod
                 }
               })
-         }
+        }
       },
       beforeMount() {
          //交易相关的交易对
