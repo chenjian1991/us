@@ -32,9 +32,6 @@
                            data-animation-out="fadeOut"
                            data-position="left">
                            <router-link to='/about' class="nav-link u-header__nav-link"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        aria-controls="navSubmenuPagesCompany"
                            >ABOUT
                            </router-link>
                         </li>
@@ -104,7 +101,7 @@
                               aria-labelledby="pagesMegaMenu"
                            >
                               <li class="hs-has-sub-menu">
-                                 <router-link to='/balances'
+                                 <router-link to=''
                                               class="nav-link u-header__sub-menu-nav-link"
                                  >Dashboard
                                  </router-link>
@@ -522,25 +519,7 @@
 
       },
       mounted() {
-         $(".js-mega-menu").HSMegaMenu({
-            event: "hover",
-            pageContainer: $(".container"),
-            breakpoint: 767.98,
-            hideTimeOut: 0
-         });
 
-         //$.HSCore.components.HSSVGIngector.init(".js-svg-injector");
-         // initialization of header
-         // $.HSCore.components.HSHeader.init($("#header"));
-         // initialization of unfold component
-         // $.HSCore.components.HSUnfold.init($("[data-unfold-target]"), {
-         //   afterOpen: function() {
-         //     $(this)
-         //       .find('input[type="search"]')
-         //       .focus();
-         //   }
-         // });
-         // $.HSCore.components.HSFocusState.init();
 
          let language = window.localStorage.getItem("countryLanguage") || "en";
          let currency = localStorage.getItem("currentCurrency");
@@ -599,26 +578,16 @@
          let isLogin = this.$store.state.app.isLogin;
          if (isLogin) {
             this.isLogin = true;
-            // let loginToken = Cookies.get("loginToken");
-            // var ssoProvider = {};
-            //创建实例
-            // this.exchange = new Exchange(ssoProvider);
-            // //登录以后查询资产 挂单 成交记录
-            // if (loginToken) {
-            // this.exchange.ssoProvider.getSsoToken = function(fn) {
-            //   fn(loginToken);
-            // }.bind(this);
-            //   this.getAccountInfoData();
-            // }
          } else {
             this.isLogin = false;
          }
-         //判断otc URL
-         // this.OTCURL = getOTCURL();
-         //this.mainSiteURL = getMainSite();
-         //公告滚动
-         // this.initAnnoucementList();
-         // this.timer = setInterval(this.scroll, 3000);
+
+         $(".js-mega-menu").HSMegaMenu({
+            event: "hover",
+            pageContainer: $(".container"),
+            breakpoint: 767.98,
+            hideTimeOut: 0
+         });
       }
    };
 </script>
