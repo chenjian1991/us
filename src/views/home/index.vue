@@ -467,7 +467,7 @@
          },
          // 计算平均价
          getAvgPrice(data) {
-            console.log(data)
+            // console.log(data)
             let priceTotal = '';
             let avgObj_length = Object.keys(data).length;
             for (let price in data) {
