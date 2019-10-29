@@ -10,10 +10,8 @@
                conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest
                opportunities to win. All in a single account.
             </section>
-            <router-link to='/register'>
-               <Button type="info" class="mt-5 f-14 btn">
-                  GET STARTED
-               </Button>
+            <router-link to='/register' class="btn btn-sm btn-primary transition-3d-hover button bgc-blue f-14 mt-5">
+               GET STARTED
             </router-link>
          </div>
       </div>
@@ -27,46 +25,45 @@
             <div class="bgc3 f-16 c-blue br-4 f-w mt-4 mb-3 title-box">USD</div>
             <div class="row justify-content-between" v-model="gbboList">
                <div class="col-md-3" v-model="gbboList.base">
-                  <div class="f-16 bgc3 br-4 text-center list-box mb-3">GBBO Markets</div>
+                  <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">GBBO Markets</div>
                   <div class="f-16 d-flex justify-content-between mb-2">
                      <div>
-                        <span class="c-fff">{{gbboList.base.baseAssets}}</span>
-                        <span class="c-d-gray">{{gbboList.base.quoteAssets}}</span>
+                        <span class="c-fff f-w-5">{{gbboList.base.baseAssets}}</span>
+                        <span class="c-d-gray f-w-5">{{gbboList.base.quoteAssets}}</span>
                      </div>
                      <div>{{gbboList.base.price}}</div>
                   </div>
                   <div>
-                     <span class="f-14">24h Vol：{{gbboList.base.vol}}</span>
+                     <span class="f-14 c-d-gray">24h Vol：{{gbboList.base.vol}}</span>
                   </div>
                </div>
                <div class="col-md-3" v-model="gbboList.buy">
-                  <div class="f-16 bgc3 br-4 text-center list-box mb-3">Buy at Lowest</div>
+                  <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Buy at Lowest</div>
                   <div class="f-16 d-flex justify-content-between mb-2">
                      <span class="c-blue">{{gbboList.buy.price}}</span>
                      <span>{{gbboList.buy.exchange}}</span>
                   </div>
-                  <div class="f-14">< Markets Avg {{gbboList.buy.diffAvg}}</div>
+                  <div class="f-14 c-d-gray">< Markets Avg {{gbboList.buy.diffAvg}}</div>
                </div>
                <div class="col-md-3" v-model="gbboList.sell">
-                  <div class="f-16 bgc3 br-4 text-center list-box mb-3">Sell at Highest</div>
+                  <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Sell at Highest</div>
                   <div class="f-16 d-flex justify-content-between mb-2">
                      <span class="c-blue">{{gbboList.sell.price}}</span>
-                     <span>{{gbboList.sell.exchange}}</span>
+                     <span class="c-d-gray">{{gbboList.sell.exchange}}</span>
                   </div>
-                  <div class="f-14">> Markets Avg {{gbboList.sell.diffAvg}}</div>
+                  <div class="f-14 c-d-gray">> Markets Avg {{gbboList.sell.diffAvg}}</div>
                </div>
                <div class="col-md-3" v-model="gbboList.avg">
-                  <div class="f-16 bgc3 br-4 text-center list-box mb-3">Arbitrage</div>
+                  <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Arbitrage</div>
                   <div class="d-flex justify-content-between">
                      <div>
                         <div class="f-16 c-fff mb-2">{{gbboList.avg.price}}</div>
-                        <div class="f-14">Est Return {{gbboList.avg.change}}</div>
+                        <div class="f-14 c-d-gray">Est Return {{gbboList.avg.change}}</div>
                      </div>
                      <div class="d-flex align-items-center">
-                        <router-link :to="{path:'exchange',query:{symbol:symbol}}">
-                           <Button class="c-blue f-14 trade-btn" :class="gbboList.avg.disableTrade?'disabled':''">
-                              Instant Trade
-                           </Button>
+                        <router-link :to="{path:'exchange',query:{symbol:symbol}}"
+                                     class="btn btn-sm btn-primary transition-3d-hover c-blue f-14 trade-btn">
+                           Instant Trade
                         </router-link>
                      </div>
                   </div>
@@ -76,11 +73,13 @@
       </div>
       <!--Why Tresso?-->
       <div class="pb-11">
-         <row-box :rowLists="tresso">
-            <div :slot="item.name" class="tresso pr-lg-9 pt-lg-6 pt-3" v-for="(item,i) in tressoList" :key="i">
-               <img v-lazy='item.img' class="tresso-img">
-               <p class="f-18 c-d-black mt-6 mb-2">{{item.title}}</p>
-               <section class="f-14 c-dark-gray">{{item.section}}</section>
+         <row-box :rowLists="tresso"  class="pt-lg-6 pt-3">
+            <div :slot="item.name" class="tresso" v-for="(item,i) in tressoList" :key="i">
+               <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
+                  <img v-lazy='item.img' class="tresso-img">
+                  <p class="f-18 c-d-black mt-6 mb-2 f-w-6">{{item.title}}</p>
+                  <section class="f-14 c-dark-gray">{{item.section}}</section>
+               </div>
             </div>
          </row-box>
       </div>
@@ -147,16 +146,17 @@
          </div>
       </div>
       <!--2 ways to connect-->
-      <div class="connect-box bgc3 pb-11">
-         <row-box :rowLists="connect" class="mb-5">
+      <div class="connect-box bgc3">
+         <row-box :rowLists="connect" class="pb-5">
             <div :slot="item.name" class="connect bgc-fff br-8 p-lg-7 pr-lg-9 mt-3 p-5" v-for="(item,i) in connectList"
                  :key="i">
                <img v-lazy='item.img' class="connect-img">
-               <p class="f-20 c-d-black mt-4 mb-2">{{item.title}}</p>
+               <p class="f-20 c-d-black mt-4 mb-2 f-w-6">{{item.title}}</p>
                <section class="f-16 c-d-gray f-w-5">{{item.section}}</section>
             </div>
          </row-box>
       </div>
+      <div class="connect-bg"></div>
       <!--manager-->
       <div class="manager-box bgc-fff p-lg-11">
          <div class="container pt-4 pb-4">
@@ -165,41 +165,54 @@
                   <img v-lazy='require("../../assets/images/tresso/manager.png")' class="manager-img">
                </div>
                <div class="col-md-7">
-                  <img src="../../assets/images/tresso/left.png" class="manager-icon" alt="">
-                  <h4 class="f-30 c-d-black mb-3 mt-lg-11">Join the Innovation</h4>
-                  <section class="f-16 c-d-black mb-6">
-                     Given the maturation of the crypto, token, and digital asset markets, the trading standards and
-                     operations found in current exchanges are woefully underdeveloped when compared with those of
-                     traditional markets. Tresso’s institutional-grade trading with Global Best Bid and Offer is a
-                     necessary innovation to these nontraditional markets. GBBO™ is the first of many innovations that
-                     we expect to bring to this marketplace to enhance institutional trust, credence and participation
-                     in nontraditional digital assets such as crypto.
-                  </section>
-                  <img src="../../assets/images/tresso/right.png"
-                       class="manager-icon position-absolute bottom-0 right-0"
-                       alt="">
+                  <div>
+                     <img src="../../assets/images/tresso/left.png" class="manager-icon" alt="">
+                  </div>
+                  <div>
+                     <h4 class="f-30 c-d-black mb-3 mt-lg-9">Join the Innovation</h4>
+                     <section class="f-16 c-d-black mb-2 f-w-5">
+                        Given the maturation of the crypto, token, and digital asset markets, the trading standards and
+                        operations found in current exchanges are woefully underdeveloped when compared with those of
+                        traditional markets. Tresso’s institutional-grade trading with Global Best Bid and Offer is a
+                        necessary innovation to these nontraditional markets. GBBO™ is the first of many innovations
+                        that
+                        we expect to bring to this marketplace to enhance institutional trust, credence and
+                        participation
+                        in nontraditional digital assets such as crypto.
+                     </section>
+                     <p class="f-14 c-d-gray mb-2">David Weild, Former Vice Chairman Nasdaq</p>
+                  </div>
+                  <div class="t-r mt-lg-7">
+                     <img src="../../assets/images/tresso/right.png" class="manager-icon" alt="">
+                  </div>
+
                </div>
             </div>
          </div>
       </div>
       <!--PARTNERS-->
-      <div class="partners-box bgc3 pb-lg-11">
-         <row-box :rowLists="partner" class="mb-5">
-            <div :slot="item.name" class="partner mt-7" v-for="(item,i) in partnerList" :key="i">
-               <img v-lazy="item.img" class="partners-img">
-            </div>
-         </row-box>
+      <div class="partners-box bgc3 pt-lg-11 pb-lg-11">
+         <div class="container pt-4 pb-4">
+            <h3 class="f-36 c-fff f-w t-c">PARTNERS</h3>
+            <ul class="row p-3 mt-lg-11 d-flex justify-content-between">
+               <li v-for="item in partnersList">
+                  <img v-lazy="item.img" class="partners-img">
+               </li>
+            </ul>
+         </div>
+         <!--<row-box :rowLists="partner" class="mb-5">-->
+            <!--<div :slot="item.name" class="partner mt-7" v-for="(item,i) in partnerList" :key="i">-->
+               <!--<img v-lazy="item.img" class="partners-img">-->
+            <!--</div>-->
+         <!--</row-box>-->
       </div>
       <!--trading-->
       <div class="trading-box bgc-fff p-lg-11 t-c pt-5 pb-5">
          <div class="container p-lg-11">
             <h3 class="f-36 c-d-black f-w t-c">Want more efficient trading?</h3>
-            <p class="f-18 c-d-gray mt-3">Tresso’s tech-driven trading platform is almost ready to launch. Join the
-               waitlist now.</p>
-            <router-link to='/register'>
-               <Button type="info" class="bgc-blue c-fff f-14 btn mt-7">
-                  BE THE FIRST TO KNOW
-               </Button>
+            <p class="f-18 c-d-gray mt-3">Tresso's tech-driven trading platform has launched.</p>
+            <router-link to='/register' class="btn btn-sm transition-3d-hover bgc-blue f-14 mt-7 c-fff trading-btn">
+               Get Started
             </router-link>
          </div>
       </div>
@@ -352,7 +365,7 @@
                   name: 'right',
                   img: require('../../assets/images/tresso/connect2.png'),
                   title: 'API',
-                  section: 'IHigh-speed trading engine designed for quant funds, trading firms, VIP retail clients, and mining pools. Use the next generation FIX-based trading API with no rate limits.'
+                  section: 'High-speed trading engine designed for quant funds, trading firms, VIP retail clients, and mining pools. Use the next generation FIX-based trading API with no rate limits.'
                },
             ],
             margin: {
@@ -404,11 +417,12 @@
                   }]
                ]
             },
-            partnerList: [
-               {name: 'one', img: require('../../assets/images/tresso/partner1.png')},
-               {name: 'two', img: require('../../assets/images/tresso/partner2.png')},
-               {name: 'three', img: require('../../assets/images/tresso/partner3.png')},
-               {name: 'four', img: require('../../assets/images/tresso/partner5.png')}
+            partnersList: [
+               {img: require('../../assets/images/tresso/partner1.png')},
+               {img: require('../../assets/images/tresso/partner2.png')},
+               {img: require('../../assets/images/tresso/partner3.png')},
+               {img: require('../../assets/images/tresso/partner4.png')},
+               {img: require('../../assets/images/tresso/partner5.png')}
             ],
          }
       },
@@ -416,7 +430,6 @@
          init() {
             // 获取gbbo btcusd交易对行情
             getSymbolList_realtime().then(res => {
-               console.log(res)
                res.map((v, i) => {
                   this.symbolList_quote[v.symbol] = v;
                   if (v.symbol === this.symbol) {
@@ -467,7 +480,6 @@
          },
          // 计算平均价
          getAvgPrice(data) {
-            // console.log(data)
             let priceTotal = '';
             let avgObj_length = Object.keys(data).length;
             for (let price in data) {
@@ -520,6 +532,8 @@
 </script>
 
 <style lang="less" scoped>
+   @import '../../assets/css/common.less';
+
    .home {
       @media screen and (min-width: 1140px) {
          .top {
@@ -554,7 +568,7 @@
       .trade-btn {
          border-color: #01B2D6;
          background-color: transparent;
-         padding: 5px 10px;
+         padding: 7px 11px;
       }
       .tresso {
          .tresso-img {
@@ -580,14 +594,23 @@
             justify-content: center;
          }
          .img-fluid {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             box-sizing: content-box;
-            border: solid 26px #fff;
+            border: solid 20px #fff;
             -webkit-border-radius: 50%;
             -moz-border-radius: 50%;
             border-radius: 50%;
          }
+         .row {
+            margin-left: 0;
+            margin-right: 0;
+         }
+      }
+      .connect-bg {
+         background: #1A232B url("../../assets/images/tresso/connectBg.png") top center;
+         background-size: cover;
+         height: 80px;
       }
       .connect-box {
          .connect {
@@ -613,102 +636,13 @@
       .partners-box {
          .partners-img {
             width: 140px;
-
          }
       }
-   }
+      .trading-box {
+         .trading-btn {
+            padding: 13px 67px;
+         }
+      }
 
-   .home-common {
-      font-family: PingFang SC, Hiragino Sans GB, Heiti SC, Microsoft YaHei, WenQuanYi Micro Hei, Helvetica, Arial, monospace, serif;
-      .c-fff {
-         color: #fff;
-      }
-      .c-l-gray {
-         color: #C7D1D9;
-      }
-      .c-d-gray {
-         color: #77838F;
-      }
-      .c-gray-b {
-         color: #B9C9D6;
-      }
-      .c-gray-9 {
-         color: #93A4B2;
-      }
-      .c-blue {
-         color: #01B2D6;
-      }
-      .c-l-black {
-         color: #1A232B;
-      }
-      .c-d-black {
-         color: #304454;
-      }
-      .f-48 {
-         font-size: 48px;
-      }
-      .f-36 {
-         font-size: 36px;
-      }
-      .f-30 {
-         font-size: 30px;
-      }
-      .f-28 {
-         font-size: 28px;
-      }
-      .f-24 {
-         font-size: 24px;
-      }
-      .f-20 {
-         font-size: 20px;
-      }
-      .f-18 {
-         font-size: 18px;
-      }
-      .f-16 {
-         font-size: 16px;
-      }
-      .f-14 {
-         font-size: 14px;
-      }
-      .f-12 {
-         font-size: 12px;
-      }
-      .f-w {
-         font-weight: bolder;
-      }
-      .f-w-5 {
-         font-weight: 500;
-      }
-      .bgc1 {
-         background-color: #151D24;
-      }
-      .bgc2 {
-         background-color: #12191F;
-      }
-      .bgc3 {
-         background-color: #1A232B;
-      }
-      .bgc4 {
-         background-color: #F8F9FA;
-      }
-      .bgc-fff {
-         background-color: #fff;
-      }
-      .bgc-blue {
-         background-color: #01B2D6;
-      }
-      .btn {
-         padding: 12px 20px;
-      }
-      .br-4 {
-         border-radius: 4px;
-      }
-      .br-8 {
-         border-radius: 8px;
-      }
-      .t-c {
-         text-align: center;
-      }
    }
 </style>
