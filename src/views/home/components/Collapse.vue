@@ -25,7 +25,7 @@
         </div>
         <div :id='"FAQL"+index' class="collapse" :aria-labelledby="index" data-parent="#FAQCollapse">
           <div class="card-body">
-            <p>{{item.des}}</p>
+            <p class="pr-lg-11">{{item.des}}</p>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
         </div>
         <div :id='"FAQR"+index' class="collapse" :aria-labelledby="index" data-parent="#FAQCollapse">
           <div class="card-body">
-            <p>{{item.des}}</p>
+            <p class="pr-lg-11">{{item.des}}</p>
           </div>
         </div>
       </div>
@@ -110,23 +110,32 @@ export default{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: #141C23;
   .cardList{
     width:540px;
     .card{
       background-color: #141C23;
       margin-bottom:30px;
-      h5{
+      border: none;
+      .card-header{
+        border-bottom: none;
         background-color: #141C23;
-        border:1px solid rgba(35,47,58,1);
-        border-radius:4px;
-        .card-btn{
-          color:#fff;
-          font-size: 18px;
-          .btnTitle{
-            img{
-              width: 24px;
-              height: 24px;
-              margin-right: 17px;
+        h5{
+          background-color: #141C23;
+          border:1px solid rgba(35,47,58,1);
+          border-radius:4px;
+          .card-btn{
+            color:#fff;
+            font-size: 18px;
+            .btnTitle{
+              img{
+                width: 24px;
+                height: 24px;
+                margin-right: 17px;
+              }
+            }
+            .card-btn-arrow{
+              color:#0AB1D5;
             }
           }
         }
