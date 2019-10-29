@@ -110,7 +110,6 @@ export default{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: #141C23;
   .cardList{
     width:540px;
     .card{
@@ -143,6 +142,7 @@ export default{
       .card-body{
         color:#B9C9D6;
         font-size: 14px;
+        border:1px solid rgba(35,47,58,1);
       }
     }
   }

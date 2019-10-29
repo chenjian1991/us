@@ -3,7 +3,7 @@
       <!-- ========== HEADER ========== -->
       <header
          id="header"
-         class="u-header u-header--bg-transparent u-header--show-hide-md board_Background"
+         class="u-header u-header--bg-transparent u-header--show-hide-md bgc1"
          data-header-fix-moment="500"
          data-header-fix-effect="slide">
          <div class="u-header__section">
@@ -12,8 +12,7 @@
                <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
                   <!-- Logo -->
                   <router-link to='/home' class="mr-lg-11">
-                     <!-- <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="120px" height="30px"> -->
-                     <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="120px">
+                     <img src="../../assets/images/tressoHeader/logo.png" alt="logo" class="logo-img">
                   </router-link>
                   <!-- End Logo -->
                   <!-- Responsive Toggle Button -->
@@ -24,7 +23,7 @@
                        </span>
                   </button>
                   <!-- End Responsive Toggle Button -->
-                  <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse">
+                  <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
                      <ul class="navbar-nav">
                         <li
                            class="nav-item hs-has-mega-menu u-header__nav-item header-box"
@@ -50,7 +49,7 @@
                            data-event="hover"
                            data-animation-in="slideInUp"
                            data-animation-out="fadeOut">
-                           <router-link to="" class="nav-link u-header__nav-link">
+                           <router-link to="faqs" class="nav-link u-header__nav-link">
                               FAQ
                            </router-link>
                         </li>
@@ -123,7 +122,8 @@
                                  </router-link>
                               </li>
                               <li class="hs-has-sub-menu">
-                                 <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="verfiy">ID verification</a>
+                                 <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="verfiy">ID
+                                    verification</a>
                               </li>
                               <li class="hs-has-sub-menu">
                                  <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="quitFun">
@@ -596,6 +596,7 @@
    #tressoHeader {
       .nav-item, .hs-has-mega-menu, .u-header__nav-item {
          a {
+            color: #fff;
             &:hover {
                color: #01B2D6;
             }
@@ -608,7 +609,7 @@
       /*height: 35px;*/
       /*line-height: 35px;*/
       /*}*/
-      .u-header__sub-menu-nav-link{
+      .u-header__sub-menu-nav-link {
          font-size: 14px;
          color: #77838F;
          height: 29px;
@@ -623,10 +624,15 @@
          border-top: none !important;
          border-radius: 4px;
       }
+      .u-header__navbar-nav{
+         background-color: transparent;
+      }
    }
 </style>
 <style scoped lang="less">
-   @import "../../assets/css/header-Front.css";
+   @import '../../assets/css/common.less';
+
+   /*@import "../../assets/css/header-Front.css";*/
 
    .appdownload {
       position: relative;
@@ -657,16 +663,24 @@
    }
 
    .header-box {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 14px;
+      padding-right: 14px;
       font-size: 14px;
 
    }
 
    @blue: #01B2D6;
    .register-btn {
-      color: @blue;
+      color: @blue !important;
       border: solid 1px @blue;
       background-color: transparent;
+   }
+
+   .logo-img {
+      width: 110px;
+   }
+
+   .nav-link {
+      font-weight: 500;
    }
 </style>
