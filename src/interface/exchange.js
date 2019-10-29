@@ -436,7 +436,7 @@ Exchange.prototype.createGBBOOrder = function (orderInfo,userpassword, fn, error
    _this.getAccountId(function (_accountId) {
       _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
          // _this.getOrderTicket(function (_orderId) {
-            const userId = localStorage.getItem('loginUserId')
+         const userId = localStorage.getItem('ex55Pin')
             const fourRandDigit = Math.floor(Math.random() * (999 - 100)) + 100
             const orderId = `${userId}${new Date().getTime()}${fourRandDigit}`
             getCreateGBBOOrder({"session": _orderSession}, {

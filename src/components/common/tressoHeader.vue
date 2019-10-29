@@ -12,7 +12,8 @@
                <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
                   <!-- Logo -->
                   <router-link to='/home' class="mr-lg-11">
-                     <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="120px" height="30px">
+                     <!-- <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="120px" height="30px"> -->
+                     <img src="../../assets/images/tressoHeader/logo.png" alt="logo">
                   </router-link>
                   <!-- End Logo -->
                   <!-- Responsive Toggle Button -->
