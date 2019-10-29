@@ -2,7 +2,7 @@
     <div id="activeEmail" class="root">
         <div class="wrapper">
             <div class="title">
-                <img src="../../assets/images/footer/foot-logo.svg" alt="">
+                <img src="../../assets/images/footer/foot-logo.png" alt="">
             </div>
             <div class="mail-box">
                 <div class="content">

@@ -215,10 +215,10 @@
                                                 <div class="currencyInput" v-else>
                                                    <span v-if="buy_input_change">limit price</span>
                                                    <div v-else>
-                                                      {{$t('exchangeGBBORouter')}}
-                                                      <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
+                                                      {{$t('exchangeGBBORouterb')}}
+                                                      <!-- <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
                                                          <Icon type="md-help-circle"/>
-                                                      </Tooltip>
+                                                      </Tooltip> -->
                                                    </div>
                                                 </div>
                                              </div>
@@ -316,10 +316,10 @@
                                                 <div class="currencyInput" v-else>
                                                    <span v-if="sell_input_change">limit price</span>
                                                    <div v-else>
-                                                      {{$t('exchangeGBBORouter')}}
-                                                      <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
+                                                      {{$t('exchangeGBBORoutera')}}
+                                                      <!-- <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
                                                          <Icon type="md-help-circle"/>
-                                                      </Tooltip>
+                                                      </Tooltip> -->
                                                    </div>
                                                 </div>
                                              </div>
@@ -1317,7 +1317,7 @@
             this.subNumber = bigDecimal.round(Math.abs(diff), priceLong)
             this.GBBO_rate = bigDecimal.round(new BigNumber(this.subNumber) * new BigNumber(this.currencyRate), 4)
             if (diff < 0) {
-               this.isShowARB = "ARB"
+               this.isShowARB = "ARBITRAGE"
             } else {
                this.isShowARB = "SPREAD"
             }
