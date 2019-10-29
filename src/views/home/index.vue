@@ -10,13 +10,17 @@
                conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest
                opportunities to win. All in a single account.
             </section>
-            <Button type="info" class="mt-5 f-14 btn">GET STARTED</Button>
+            <router-link to='/register'>
+               <Button type="info" class="mt-5 f-14 btn">
+                  GET STARTED
+               </Button>
+            </router-link>
          </div>
       </div>
       <!--3D-->
       <home-canvas style="overflow: hidden"></home-canvas>
       <!--GBBO-->
-      <div class="gbbo bgc2 pt-lg-11 pb-lg-11 pt-3 pb-5">
+      <div class="gbbo bgc2 pt-lg-11 pb-lg-11 pt-3 pb-5" id="GBBO">
          <div class="container">
             <div class="d-flex align-items-center"><span class="f-28 c-fff f-w mr-4">GBBO™</span><span
                class="f-14 c-d-gray">Global Best Bid and Offer</span></div>
@@ -59,9 +63,11 @@
                         <div class="f-14">Est Return {{gbboList.avg.change}}</div>
                      </div>
                      <div class="d-flex align-items-center">
-                        <Button class="c-blue f-14 trade-btn" :class="gbboList.avg.disableTrade?'disabled':''">Instant
-                           Trade
-                        </Button>
+                        <router-link :to="{path:'exchange',query:{symbol:'BTCUSDD'}}">
+                           <Button class="c-blue f-14 trade-btn" :class="gbboList.avg.disableTrade?'disabled':''">
+                              Instant Trade
+                           </Button>
+                        </router-link>
                      </div>
                   </div>
                </div>
@@ -91,20 +97,9 @@
             </div>
             <p class="f-12 c-blue mt-4">This power is not currently available in any single exchange, regardless of
                size, and only available at Tresso.</p>
-            <div :slot="item.name" class="gbboTM pr-lg-9" v-for="(item,i) in gbboTMList" :key="i">
-               <img v-lazy='item.img' class="gbboTM-img">
-               <p class="f-18 c-d-black mt-6 mb-2">{{item.title}}</p>
-               <section class="f-14 c-dark-gray">{{item.section}}</section>
-            </div>
+            <Collapse></Collapse>
          </row-box>
       </div>
-      <!--&lt;!&ndash;CONNECTED EXCHANGES&ndash;&gt;-->
-      <!--<div class="connected-box bgc4 d-flex align-items-center justify-content-center t-c">-->
-      <!--<div class="p-5">-->
-      <!--<h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>-->
-      <!--<p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>-->
-      <!--</div>-->
-      <!--</div>-->
       <!--CONNECTED EXCHANGES-->
       <div class="connected-box bgc4 position-relative">
          <div class="pt-lg-11">
@@ -162,15 +157,6 @@
             </div>
          </row-box>
       </div>
-      <!---->
-      <!--&lt;!&ndash;Keep more of your margin with FREE trading&ndash;&gt;-->
-      <!--<div class="margin-box bgc-fff pb-5">-->
-      <!--<row-box :rowLists="margin">-->
-      <!--<div :slot="item.name" class="margin bgc-fff br-8 p-lg-6 pr-lg-7" v-for="(item,i) in marginList" :key="i">-->
-      <!--&lt;!&ndash;<img v-lazy='item.img' class="view-img">&ndash;&gt;-->
-      <!--</div>-->
-      <!--</row-box>-->
-      <!--</div>-->
       <!--manager-->
       <div class="manager-box bgc-fff p-lg-11">
          <div class="container pt-4 pb-4">
@@ -189,22 +175,28 @@
                      we expect to bring to this marketplace to enhance institutional trust, credence and participation
                      in nontraditional digital assets such as crypto.
                   </section>
-                  <img src="../../assets/images/tresso/right.png" class="manager-icon position-absolute bottom-0 right-0"
+                  <img src="../../assets/images/tresso/right.png"
+                       class="manager-icon position-absolute bottom-0 right-0"
                        alt="">
                </div>
             </div>
          </div>
       </div>
       <!--PARTNERS-->
-      <div class="partners-box bgc3 p-11">
-         <div class="container pt-4 pb-4">
-            <h3 class="f-36 c-fff f-w t-c">PARTNERS</h3>
-            <ul class="mt-11 d-flex justify-content-between">
-               <li v-for="item in partnersList">
-                  <!--<img v-lazy="item.img" class="partners-img">-->
-               </li>
-            </ul>
-         </div>
+      <div class="partners-box bgc3 pb-lg-11">
+         <!--<div class="container pt-4 pb-4">-->
+         <!--<h3 class="f-36 c-fff f-w t-c">PARTNERS</h3>-->
+         <!--<ul class="mt-11 d-flex justify-content-between">-->
+         <!--<li v-for="item in partnersList">-->
+         <!--<img v-lazy="item.img" class="partners-img">-->
+         <!--</li>-->
+         <!--</ul>-->
+         <!--</div>-->
+         <row-box :rowLists="partner" class="mb-5">
+            <div :slot="item.name" class="partner mt-7" v-for="(item,i) in partnerList" :key="i">
+               <img v-lazy="item.img" class="partners-img">
+            </div>
+         </row-box>
       </div>
       <!--trading-->
       <div class="trading-box bgc-fff p-lg-11 t-c pt-5 pb-5">
@@ -212,9 +204,11 @@
             <h3 class="f-36 c-d-black f-w t-c">Want more efficient trading?</h3>
             <p class="f-18 c-d-gray mt-3">Tresso’s tech-driven trading platform is almost ready to launch. Join the
                waitlist now.</p>
-            <Button class="bgc-blue c-fff f-14 btn mt-7">
-               BE THE FIRST TO KNOW
-            </Button>
+            <router-link to='/register'>
+               <Button type="info" class="bgc-blue c-fff f-14 btn mt-7">
+                  BE THE FIRST TO KNOW
+               </Button>
+            </router-link>
          </div>
       </div>
    </main>
@@ -226,19 +220,21 @@
    import {BigNumber} from "bignumber.js";
    import bigDecimal from "js-big-decimal"; //除法失效
    import rowbox from '@/components/rowbox'
-   
-   import { getSymbolList_realtime_USDT } from "_api/exchange.js";
+
+   import {getSymbolList_realtime_USDT} from "_api/exchange.js";
    import {
       getDecimalsNum,
    } from "@/lib/utils.js";
 
    import HomeCanvas from './component/HomeCanvas'
+   import Collapse from './components/Collapse'
 
    export default {
       name: "index",
       components: {
          'row-box': rowbox,
-         HomeCanvas
+         HomeCanvas,
+         Collapse
       },
       data() {
          return {
@@ -336,7 +332,7 @@
                   name: 'right',
                   img: require('../../assets/images/tresso/tresso3.png'),
                   title: 'Free Trading',
-                  section: 'No transaction fees on trade executions for every user. '
+                  section: 'No transaction or withdrawal fees for every users. And never a subscription fee - always FREE to use.'
                },
             ],
             connect: {
@@ -396,12 +392,30 @@
                   }]
                ]
             },
-            partnersList: [
-               {img: require('../../assets/images/tresso/partner1.png')},
-               {img: require('../../assets/images/tresso/partner2.png')},
-               {img: require('../../assets/images/tresso/partner3.png')},
-               // {img: require('../../assets/images/tresso/partner4.png')},
-               {img: require('../../assets/images/tresso/partner5.png')}
+            partner: {
+               title: 'PARTNERS',
+               default: false,
+               list: [
+                  [{
+                     num: 3,
+                     name: 'one',
+                  }, {
+                     num: 3,
+                     name: 'two',
+                  }, {
+                     num: 3,
+                     name: 'three',
+                  }, {
+                     num: 3,
+                     name: 'four',
+                  }]
+               ]
+            },
+            partnerList: [
+               {name: 'one', img: require('../../assets/images/tresso/partner1.png')},
+               {name: 'two', img: require('../../assets/images/tresso/partner2.png')},
+               {name: 'three', img: require('../../assets/images/tresso/partner3.png')},
+               {name: 'four', img: require('../../assets/images/tresso/partner5.png')}
             ],
          }
       },

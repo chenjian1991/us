@@ -12,7 +12,7 @@
             </a>
         </div> -->
        <tressoHeader></tressoHeader>
-        <Header2 />
+        <!--<Header2 />-->
         <!-- Content 内容 -->
         <div style="flex:1;height:100%;width:100%;flex-basis:auto;">
             <router-view></router-view>
@@ -34,7 +34,7 @@
 <script>
    import tressoHeader from '@/components/common/tressoHeader.vue'
 
-   import Header2 from '@/components/common/US-Header.vue'
+   // import Header2 from '@/components/common/US-Header.vue'
     // import TradeCenterHeader from '@/components/common/TradeCenterHeader.vue'
     // import Footer from '../../components/common/US-NEW-Footer.vue'
     import Footer from '../../components/common/Footer'
@@ -118,7 +118,7 @@
         components: {
            Footer,
            tressoHeader,
-           Header2,
+           // Header2,
         //    TradeCenterHeader
         },
         mounted(){

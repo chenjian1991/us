@@ -1,274 +1,141 @@
 <template>
-   <div>
+   <div id="tressoHeader">
       <!-- ========== HEADER ========== -->
       <header
          id="header"
          class="u-header u-header--bg-transparent u-header--show-hide-md board_Background"
          data-header-fix-moment="500"
-         data-header-fix-effect="slide"
-      >
+         data-header-fix-effect="slide">
          <div class="u-header__section">
-            <div
-               id="logoAndNav"
-               class="container"
-            >
+            <div id="logoAndNav" class="container">
                <!-- Nav -->
                <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
                   <!-- Logo -->
-                  <router-link to='/home'><img
-                     src="../../assets/images/tressoHeader/logo.png"
-                     alt="logo"
-                     width="120px" height="30px"
-                  >
+                  <router-link to='/index' class="mr-lg-11">
+                     <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="120px" height="30px">
                   </router-link>
-
                   <!-- End Logo -->
-
                   <!-- Responsive Toggle Button -->
-                  <button
-                     type="button"
-                     class="navbar-toggler btn u-hamburger"
-                     aria-label="Toggle navigation"
-                     aria-expanded="false"
-                     aria-controls="navBar"
-                     data-toggle="collapse"
-                     data-target="#navBar"
-                  >
-              <span
-                 id="hamburgerTrigger"
-                 class="u-hamburger__box"
-              >
-                <span class="u-hamburger__inner"></span>
-              </span>
+                  <button type="button" class="navbar-toggler btn u-hamburger" aria-label="Toggle navigation"
+                          aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                       <span id="hamburgerTrigger" class="u-hamburger__box">
+                         <span class="u-hamburger__inner"></span>
+                       </span>
                   </button>
                   <!-- End Responsive Toggle Button -->
-
-                  <!-- Navigation -->
-                  <div
-                     id="navBar"
-                     class="collapse navbar-collapse u-header__navbar-collapse"
-                  >
-                     <ul class="navbar-nav u-header__navbar-nav">
-                        <!-- exchange -->
+                  <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse">
+                     <ul class="navbar-nav">
                         <li
-                           class="nav-item hs-has-mega-menu u-header__nav-item"
+                           class="nav-item hs-has-mega-menu u-header__nav-item header-box"
                            data-event="hover"
                            data-animation-in="slideInUp"
                            data-animation-out="fadeOut"
-                           data-max-width="900px"
-                           data-position="right"
-                        >
-                           <router-link
-                              to='/exchange'
-                              class="nav-link u-header__nav-link "
-                           >Exchange</router-link>
+                           data-position="left">
+                           <router-link to='/about' class="nav-link u-header__nav-link"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                        aria-controls="navSubmenuPagesCompany"
+                           >ABOUT
+                           </router-link>
                         </li>
-                        <!-- exchange -->
-                        <!-- Features -->
-                        <li class="nav-item hs-has-sub-menu u-header__nav-item"
-                            data-event="hover"
-                            data-animation-in="slideInUp"
-                            data-animation-out="fadeOut">
-                           <a id="dropdownMegaMenuWithDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="dropdownSubMenuWithDropdown">Features</a>
-
-                           <!-- Dropdown - Submenu -->
-                           <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
-                              <li><router-link to="/crypto" class="nav-link u-header__sub-menu-nav-link">Crypto Trading</router-link></li>
-                              <li><a target="_blank"  class="nav-link u-header__sub-menu-nav-link" href="https://www.55.center/doc/">API Trading</a></li>
-                              <li><a class="nav-link u-header__sub-menu-nav-link"  @click="initURL"> Social Trading </a></li>
-                           </ul>
-                           <!-- End Dropdown - Submenu -->
-                        </li>
-                        <!-- End Features -->
-                        <!-- Benefits -->
-                        <li class="nav-item hs-has-sub-menu u-header__nav-item"
-                            data-event="hover"
-                            data-animation-in="slideInUp"
-                            data-animation-out="fadeOut">
-                           <a id="dropdownMegaMenuWithDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="dropdownSubMenuWithDropdown">Benefits</a>
-
-                           <!-- Dropdown - Submenu -->
-                           <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
-                              <li><router-link  to='/whyus' class="nav-link u-header__sub-menu-nav-link">Why Us?</router-link></li>
-                              <li><router-link to="/smartexecution" class="nav-link u-header__sub-menu-nav-link">Smart Execution</router-link></li>
-                              <li><router-link to='/faqs' class="nav-link u-header__sub-menu-nav-link">FAQs</router-link></li>
-                           </ul>
-                           <!-- End Dropdown - Submenu -->
-                        </li>
-                        <!-- End Benefits -->
-                        <!-- About Us -->
-                        <li class="nav-item hs-has-sub-menu u-header__nav-item"
-                            data-event="hover"
-                            data-animation-in="slideInUp"
-                            data-animation-out="fadeOut">
-                           <a id="dropdownMegaMenuWithDropdown" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="dropdownSubMenuWithDropdown">About Us</a>
-
-                           <!-- Dropdown - Submenu -->
-                           <ul id="dropdownSubMenuWithDropdown" class="hs-sub-menu u-header__sub-menu u-header__sub-menu--spacer" aria-labelledby="dropdownMegaMenuWithDropdown" style="min-width: 230px;">
-                              <li><router-link to='/ourcompany' class="nav-link u-header__sub-menu-nav-link">Our Company</router-link></li>
-                              <!-- <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Another action</a></li> -->
-                              <li><router-link to="/team" class="nav-link u-header__sub-menu-nav-link">The Team</router-link></li>
-                              <li><a class="nav-link u-header__sub-menu-nav-link" href=" https://www.linkedin.com/company/55-global/jobs/" target="_blank">Careers</a></li>
-                              <li><router-link to='/contactus' class="nav-link u-header__sub-menu-nav-link">Contact Us</router-link></li>
-                           </ul>
-                           <!-- End Dropdown - Submenu -->
-                        </li>
-                        <!-- End About Us -->
-                        <!-- 订单 -->
                         <li
-                           class="nav-item hs-has-mega-menu u-header__nav-item"
+                           class="nav-item hs-has-sub-menu u-header__nav-item header-box"
                            data-event="hover"
                            data-animation-in="slideInUp"
-                           data-animation-out="fadeOut"
-                           data-max-width="900px"
-                           data-position="right"
-                           v-show="isLogin"
-                        >
-                           <router-link
-                              to='/order'
-                              class="nav-link u-header__nav-link "
-                           >{{$t('homeOrder')}}</router-link>
+                           data-animation-out="fadeOut">
+                           <a class="nav-link u-header__nav-link" href="#GBBO">
+                              GBBO™
+                           </a>
                         </li>
-                        <!-- 订单-->
-                        <!-- 资产 -->
+                        <li
+                           class="nav-item hs-has-sub-menu u-header__nav-item header-box"
+                           data-event="hover"
+                           data-animation-in="slideInUp"
+                           data-animation-out="fadeOut">
+                           <router-link to="" class="nav-link u-header__nav-link">
+                              FAQ
+                           </router-link>
+                        </li>
+                     </ul>
+                     <ul class="navbar-nav u-header__navbar-nav" v-if="!isLogin">
                         <li
                            class="nav-item hs-has-sub-menu u-header__nav-item"
                            data-event="hover"
                            data-animation-in="slideInUp"
                            data-animation-out="fadeOut"
+                           data-position="right">
+                           <router-link class="nav-link u-header__nav-link mr-lg-5" to='/login' style="font-size: 14px">
+                              Log In
+                           </router-link>
+                        </li>
+                        <li
+                           class="nav-item hs-has-mega-menu u-header__nav-item"
+                           data-event="hover"
+                           data-animation-in="slideInUp"
+                           data-animation-out="fadeOut"
+                           data-max-width="900px"
+                           data-position="right">
+                           <router-link class="btn btn-sm btn-primary transition-3d-hover d-inline-block register-btn"
+                                        to='/register'>GET STARTED
+                           </router-link>
+                        </li>
+                     </ul>
+                     <!--account-->
+                     <ul class="navbar-nav u-header__navbar-nav">
+                        <li
+                           class="nav-item hs-has-sub-menu u-header__nav-item header-box"
+                           data-event="hover"
+                           data-animation-in="slideInUp"
+                           data-animation-out="fadeOut"
+                           data-position="right"
                         >
                            <router-link
-                              to='/balances'
+                              to=''
                               id="pagesMegaMenu"
                               class="nav-link u-header__nav-link u-header__nav-link-toggle"
                               aria-labelledby="pagesSubMenu"
                               aria-haspopup="true"
                               aria-expanded="false"
-                              v-show="isLogin"
-                           >{{$t('homeBalances')}}</router-link>
-
-                           <!-- Pages - Submenu -->
+                           >My Account
+                           </router-link>
                            <ul
                               id="pagesSubMenu"
                               class="hs-sub-menu u-header__sub-menu"
                               aria-labelledby="pagesMegaMenu"
-                              style="min-width: 230px;"
                            >
-                              <!-- Account -->
                               <li class="hs-has-sub-menu">
-                                 <router-link
-                                    to='/balances'
-                                    class="nav-link u-header__sub-menu-nav-link"
-                                 >{{$t('zcDeposit')}} & {{$t('zcWithdrawal')}}</router-link>
+                                 <router-link to='/balances'
+                                              class="nav-link u-header__sub-menu-nav-link"
+                                 >Dashboard
+                                 </router-link>
                               </li>
-                              <!-- End Account -->
-
-                              <!-- Company -->
                               <li class="hs-has-sub-menu">
-                                 <router-link
-                                    to='/transaction_history'
-                                    class="nav-link u-header__sub-menu-nav-link"
-                                 >{{$t('tbdhTransactionHistory')}}</router-link>
+                                 <router-link to='/balances' class="nav-link u-header__sub-menu-nav-link">
+                                    Balances
+                                 </router-link>
                               </li>
-                              <!-- Company -->
+                              <li class="hs-has-sub-menu">
+                                 <router-link to='/order' class="nav-link u-header__sub-menu-nav-link">
+                                    Order
+                                 </router-link>
+                              </li>
+                              <li class="hs-has-sub-menu">
+                                 <router-link to='/safeCenter' class="nav-link u-header__sub-menu-nav-link">
+                                    account & Security
+                                 </router-link>
+                              </li>
+                              <li class="hs-has-sub-menu">
+                                 <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="verfiy">ID verification</a>
+                              </li>
+                              <li class="hs-has-sub-menu">
+                                 <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="quitFun">
+                                    Log out
+                                 </a>
+                              </li>
                            </ul>
-                           <!-- End Pages - Submenu -->
                         </li>
-                        <!-- End 资产 -->
-
-                        <!-- 账户start -->
-                        <li
-                           class="nav-item hs-has-sub-menu u-header__nav-item"
-                           data-event="hover"
-                           data-animation-in="slideInUp"
-                           data-animation-out="fadeOut"
-                        >
-
-                           <router-link
-                              to='/safeCenter'
-                              id="accountMegaMenu"
-                              class="nav-link u-header__nav-link u-header__nav-link-toggle"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                              aria-labelledby="accountSubMenu"
-                              v-show="isLogin"
-                           >Account</router-link>
-
-                           <!-- Pages - Submenu -->
-                           <ul
-                              id="accountSubMenu"
-                              class="hs-sub-menu u-header__sub-menu"
-                              aria-labelledby="accountMegaMenu"
-                              style="min-width: 230px;"
-                           >
-                              <!-- Account -->
-                              <li class="hs-has-sub-menu">
-                                 <router-link
-                                    to='/safeCenter'
-                                    class="nav-link u-header__sub-menu-nav-link"
-                                 >{{$t('tbdhAccountSecurity')}}</router-link>
-                              </li>
-                              <!-- End Account -->
-                              <!-- Company -->
-                              <li class="hs-has-sub-menu">
-                                 <a
-                                    id="navLinkPagesCompany"
-                                    class="nav-link u-header__sub-menu-nav-link"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                    aria-controls="navSubmenuPagesCompany"
-                                    @click="verfiy"
-                                 >{{$t('tbdhIDVerification')}}</a>
-                              </li>
-                              <!-- <li class="hs-has-sub-menu">
-                               <a
-                                 id="navLinkPagesCompany"
-                                 class="nav-link u-header__sub-menu-nav-link"
-                                 aria-haspopup="true"
-                                 aria-expanded="false"
-                                 aria-controls="navSubmenuPagesCompany"
-                                 @click="L2verify"
-                               >{{$t('kyc2')}}</a>
-                             </li> -->
-                              <!-- Company -->
-                              <!-- Company -->
-                              <!-- <li @click="inviteFriend"><a
-                                  href="javascript:;"
-                                  class="nav-link u-header__sub-menu-nav-link"
-                                >{{$t('invitePeople')}}</a></li> -->
-                              <!-- Company -->
-                              <li @click="quitFun"><a
-                                 href="javascript:;"
-                                 class="nav-link u-header__sub-menu-nav-link"
-                              >{{$t('tbdhLogout')}}</a></li>
-                           </ul>
-                           <!-- End Pages - Submenu -->
-                        </li>
-                        <!-- End 账户 -->
-                        <!-- Button -->
-                        <li
-                           class="nav-item hs-has-mega-menu u-header__nav-item"
-                           data-event="hover"
-                           data-animation-in="slideInUp"
-                           data-animation-out="fadeOut"
-                           data-max-width="900px"
-                           data-position="right"
-                           v-if="!isLogin"
-                        >
-                           <router-link
-                              to='/login'
-                              class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
-                           >{{$t('HomeSignin')}}</router-link>
-                           &nbsp;&nbsp;
-                           <router-link
-                              class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
-                              to='/register'
-                           >{{$t('HomeSignup')}}</router-link>
-                        </li>
-                        <!-- End Button -->
                      </ul>
                   </div>
-                  <!-- End Navigation -->
                </nav>
                <!-- End Nav -->
             </div>
@@ -322,13 +189,13 @@
 
 <script>
    import Loading from "@/components/Loading";
-   import { subNumberPoint, scientificToNumber } from "@/lib/utils";
-   import { getLegalTenderValue } from "_api/header.js";
-   import { getHeaderTokenApi, postHeaderTokenBodyApi } from "_api/axios.js";
-   import { AnnoucementList } from "_api/home";
+   import {subNumberPoint, scientificToNumber} from "@/lib/utils";
+   import {getLegalTenderValue} from "_api/header.js";
+   import {getHeaderTokenApi, postHeaderTokenBodyApi} from "_api/axios.js";
+   import {AnnoucementList} from "_api/home";
    import moment from "moment";
    import Cookies from "js-cookie";
-   import { Exchange } from "@/interface/exchange.js";
+   import {Exchange} from "@/interface/exchange.js";
 
    import {
       relatNameVerify,
@@ -337,20 +204,20 @@
       identifyQueryUrl,
       amlqueryState
    } from "../../../api/urls.js";
-   import { proportion } from "_api/balances.js";
+   import {proportion} from "_api/balances.js";
    import {
       CHAT_URL,
       getCommouityBaseURL,
       getMainSite,
       clearLocalStorage
    } from "../../config/index";
-   import { debuglog } from 'util';
+   import {debuglog} from 'util';
 
    export default {
-      name:'tressoHeader',
+      name: 'tressoHeader',
       data() {
          return {
-            isLogin: true,
+            isLogin: false,
             currencyBtnloading: false, //法币汇率loading
             countryLanguage: "", //选择语言菜单展示
             language: window.localStorage.getItem("countryLanguage") || "zh-CN", //传参数
@@ -363,28 +230,28 @@
             currentCurrency: {},
             mainSiteURL: "",
             currencyList: [
-               { value: "USD", label: "$ USD", shortName: "$" },
-               { value: "CNY", label: "¥ CNY", shortName: "¥" },
-               { value: "HKD", label: "HK$ HKD", shortName: "HK$" },
-               { value: "MOP", label: "MOP$ MOP", shortName: "MOP$" }, //澳门元
-               { value: "KRW", label: "₩ KRW", shortName: "₩" }, //韩元
-               { value: "TWD", label: "NT$ TWD", shortName: "NT$" }, //新台币
-               { value: "PHP", label: "₱ PHP", shortName: "₱" }, //菲律宾比索
-               { value: "SGD", label: "S$ SGD", shortName: "S$" }, //新加坡
-               { value: "CHF", label: "CHF", shortName: "CHF" }, //瑞士法郎
-               { value: "THB", label: "฿ THB", shortName: "฿ " }, //泰国铢
-               { value: "NZD", label: "NZ$ NZD", shortName: "NZ$" }, //新西兰元
-               { value: "RUB", label: "RUB", shortName: "RUB" }, //卢布
-               { value: "INR", label: "INR", shortName: "INR" }, //印度卢比
-               { value: "IDR", label: "Rp IDR", shortName: "Rp" }, //印尼盾
-               { value: "GBP", label: "￡ GBP", shortName: "￡" }, //英镑
-               { value: "CAD", label: "C$ CAD", shortName: "C$" }, //加拿大
-               { value: "ZAR", label: "ZAR", shortName: "$" }, //南非兰特
-               { value: "SAR", label: "SAR", shortName: "SAR" }, //沙特里亚尔
-               { value: "BRL", label: "R$ BRL", shortName: "R$" }, //巴西里亚尔
-               { value: "TRY", label: "TRY", shortName: "TRY" }, //土耳其里拉
-               { value: "EUR", label: "€ EUR", shortName: "€" }, //欧元
-               { value: "JPY", label: "J￥ JPY", shortName: "J￥" } //日元,
+               {value: "USD", label: "$ USD", shortName: "$"},
+               {value: "CNY", label: "¥ CNY", shortName: "¥"},
+               {value: "HKD", label: "HK$ HKD", shortName: "HK$"},
+               {value: "MOP", label: "MOP$ MOP", shortName: "MOP$"}, //澳门元
+               {value: "KRW", label: "₩ KRW", shortName: "₩"}, //韩元
+               {value: "TWD", label: "NT$ TWD", shortName: "NT$"}, //新台币
+               {value: "PHP", label: "₱ PHP", shortName: "₱"}, //菲律宾比索
+               {value: "SGD", label: "S$ SGD", shortName: "S$"}, //新加坡
+               {value: "CHF", label: "CHF", shortName: "CHF"}, //瑞士法郎
+               {value: "THB", label: "฿ THB", shortName: "฿ "}, //泰国铢
+               {value: "NZD", label: "NZ$ NZD", shortName: "NZ$"}, //新西兰元
+               {value: "RUB", label: "RUB", shortName: "RUB"}, //卢布
+               {value: "INR", label: "INR", shortName: "INR"}, //印度卢比
+               {value: "IDR", label: "Rp IDR", shortName: "Rp"}, //印尼盾
+               {value: "GBP", label: "￡ GBP", shortName: "￡"}, //英镑
+               {value: "CAD", label: "C$ CAD", shortName: "C$"}, //加拿大
+               {value: "ZAR", label: "ZAR", shortName: "$"}, //南非兰特
+               {value: "SAR", label: "SAR", shortName: "SAR"}, //沙特里亚尔
+               {value: "BRL", label: "R$ BRL", shortName: "R$"}, //巴西里亚尔
+               {value: "TRY", label: "TRY", shortName: "TRY"}, //土耳其里拉
+               {value: "EUR", label: "€ EUR", shortName: "€"}, //欧元
+               {value: "JPY", label: "J￥ JPY", shortName: "J￥"} //日元,
             ],
             adArr: [], //banner图列表数组
             telegramURL: "",
@@ -392,13 +259,13 @@
             annoucementURL: "",
             FAQURL: "",
             submitURL: "",
-            learnMoreURL:'',
+            learnMoreURL: '',
             OTCURL: "", //otcURL
             short: "$",
             // englishCommunityURL: '',
-            loginToken:'',
-            chatToken:'',
-            baseSocialURL:'',
+            loginToken: '',
+            chatToken: '',
+            baseSocialURL: '',
 
          };
       },
@@ -409,13 +276,13 @@
       methods: {
          initURL() {
             this.loginToken = Cookies.get('loginToken')
-            if(this.loginToken){
-               postHeaderTokenBodyApi(socialToken,this.loginToken,null).then(data => {
-                  this.chatToken = data.token +'/'
-                  this.baseSocialURL = getCommouityBaseURL()+'/api/v1/memberinterface/'+this.chatToken;
+            if (this.loginToken) {
+               postHeaderTokenBodyApi(socialToken, this.loginToken, null).then(data => {
+                  this.chatToken = data.token + '/'
+                  this.baseSocialURL = getCommouityBaseURL() + '/api/v1/memberinterface/' + this.chatToken;
                   window.open(this.baseSocialURL)
                })
-            }else{
+            } else {
                this.baseSocialURL = getCommouityBaseURL();
                window.open(this.baseSocialURL)
             }
@@ -451,7 +318,7 @@
                this.annoucementURL = 'https://55support.zendesk.com/hc/zh-cn/categories/360000443513'
                this.FAQURL = 'https://55support.zendesk.com/hc/zh-cn/categories/360000444094'
                this.submitURL = 'https://55support.zendesk.com/hc/zh-cn/requests/new'
-               this.learnMoreURL= 'https://55support.zendesk.com/hc/zh-cn/sections/360001019733'
+               this.learnMoreURL = 'https://55support.zendesk.com/hc/zh-cn/sections/360001019733'
             } else if (language == "ru-ru") {
                this.countryLanguage = "Русский";
             } else if (language == "de-de") {
@@ -519,7 +386,7 @@
          },
          initAnnoucementList() {
             this.adArr = [];
-            AnnoucementList({ language: this.language, fromSite: "ALL" }).then(
+            AnnoucementList({language: this.language, fromSite: "ALL"}).then(
                data => {
                   data.map((v, i) => {
                      if (v.clientType == "PC") {
@@ -533,25 +400,25 @@
                }
             );
          },
-         L2verify(){
+         L2verify() {
             this.L2queryState(Cookies.get('loginToken'))
          },
-         L2queryState(token){
-            getHeaderTokenApi(amlqueryState,'',token).then((res)=>{
-               if(res.data.result){
+         L2queryState(token) {
+            getHeaderTokenApi(amlqueryState, '', token).then((res) => {
+               if (res.data.result) {
                   this.amlStatus = res.data.result;
-                  if(this.amlStatus=='NOHAVE'){
+                  if (this.amlStatus == 'NOHAVE') {
                      this.$router.push('amlKyc')
-                  }else{
+                  } else {
                      this.$router.push('amlkycResult')
                   }
-               }else if(res.data.code){
-                  if(res.data.code =='10013'){
+               } else if (res.data.code) {
+                  if (res.data.code == '10013') {
                      this.$router.push('login')
                   }
                   this.$Notice.error({
                      title: this.$t(res.data.code),
-                     desc:this.$t(res.data.code)
+                     desc: this.$t(res.data.code)
                   });
                }
             })
@@ -560,7 +427,7 @@
             let loginToken = Cookies.get("loginToken");
             getHeaderTokenApi(identifyQueryUrl, {}, loginToken)
                .then(res => {
-                  if (res.data == "" || res.data == null||res=='{}') {
+                  if (res.data == "" || res.data == null || res == '{}') {
                      this.$router.push("/kyc");
                      return;
                   }
@@ -611,7 +478,7 @@
          },
          inviteFriend() {
             //返佣比例
-            proportion({ ssoToken: Cookies.get("loginToken") }).then(res => {
+            proportion({ssoToken: Cookies.get("loginToken")}).then(res => {
                if (res.secondLevelProportion === null) {
                   //普通用户
                   this.$router.push("/inviteFriend");
@@ -682,7 +549,7 @@
          this.annoucementURL = 'https://55support.zendesk.com/hc/en-us/categories/360000443513'
          this.FAQURL = 'https://55support.zendesk.com/hc/en-us/categories/360000444094'
          this.submitURL = 'https://55support.zendesk.com/hc/en-us/requests/new'
-         this.learnMoreURL= 'https://55support.zendesk.com/hc/en-us/sections/360001019733'
+         this.learnMoreURL = 'https://55support.zendesk.com/hc/en-us/sections/360001019733'
 
          if (language == "en") {
             this.countryLanguage = "English";
@@ -755,8 +622,42 @@
       }
    };
 </script>
+<style lang="less">
+   #tressoHeader {
+      .nav-item, .hs-has-mega-menu, .u-header__nav-item {
+         a {
+            &:hover {
+               color: #01B2D6;
+            }
+            &:active {
+               color: #01B2D6;
+            }
+         }
+      }
+      /*.hs-has-sub-menu{*/
+      /*height: 35px;*/
+      /*line-height: 35px;*/
+      /*}*/
+      .u-header__sub-menu-nav-link{
+         font-size: 14px;
+         color: #77838F;
+         height: 29px;
+         line-height: 29px;
+         padding-left: 20px;
+         &:hover {
+            color: #01B2D6;
+         }
+      }
+      .u-header__sub-menu {
+         width: 180px;
+         border-top: none !important;
+         border-radius: 4px;
+      }
+   }
+</style>
 <style scoped lang="less">
    @import "../../assets/css/header-Front.css";
+
    .appdownload {
       position: relative;
       &:hover {
@@ -776,10 +677,26 @@
          display: none;
       }
    }
+
    .loginBtn:hover {
       color: #fff !important;
    }
-   a:hover{
+
+   a:hover {
       color: #12869A;
+   }
+
+   .header-box {
+      padding-left: 20px;
+      padding-right: 20px;
+      font-size: 14px;
+
+   }
+
+   @blue: #01B2D6;
+   .register-btn {
+      color: @blue;
+      border: solid 1px @blue;
+      background-color: transparent;
    }
 </style>
