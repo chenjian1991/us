@@ -436,7 +436,7 @@
                      this.currentSymbolObj = v;
                   }
                });
-               // this.getSockJS()
+               this.getSockJS()
             })
          },
          getSockJS() {
