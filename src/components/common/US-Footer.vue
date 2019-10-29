@@ -17,7 +17,7 @@
               <p
                 class="mb-1 text-white"
               >We want to answer all of your queries. Get in touch and we'll get back to you as soon as we can.</p>
-              <a class="font-size-14 text-white" href="mailto:service@55.trade">
+              <a class="font-size-14 text-white" href="mailto:service@tresso.com">
                   E-mail us
                   <span class="fa fa-angle-right align-middle ml-2"></span>
               </a>
@@ -141,7 +141,7 @@
         <!-- End Logo -->
         <p class="small text-white"><a style="color:#fff;" target="_blank" href="https://www.55.com/MSB.pdf msb_registration.">MSB No.31000146897405</a> </p>
         <p class="small text-white">2500 Plaza 5, Unit 2553, Jersey City, NJ 07311</p>
-        <p class="small text-white">&copy; 2017-2019 55.trade All rights reserved.</p>
+        <p class="small text-white">&copy; 2017-2019 tresso.com All rights reserved.</p>
         <div class="col-lg-6 text-lg-right" style="max-width:100%">
           <!-- Social Networks -->
           <ul class="list-inline mb-0" style="text-align:center">
