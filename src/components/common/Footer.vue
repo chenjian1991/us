@@ -7,7 +7,7 @@
 export default {
   data() {
     return {
-      footerTxt: '© Copyright. All rights reserved.'
+      footerTxt: '© 2019-2020 tresso.com All rights reserved'
     }
   }
 }
