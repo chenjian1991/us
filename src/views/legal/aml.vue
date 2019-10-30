@@ -1,33 +1,7 @@
 <template>
-    <div class="aboutBox">
+    <div>
         </br>
         <div class="row terms">
-            <div class="bs-component">
-                <div class="panel-gray">
-                    
-                    <div class="box-container">
-						   <div  class="right-part hidden-xs">
-								<ul>
-									<li>
-										<router-link  to='/terms'> · User Agreement</router-link>
-									</li>
-									<li >
-										<router-link to='/privacy'> · Privacy Policy</router-link>
-									</li>
-                                    <li >
-										<router-link class="active" to='/aml'> · AML Policy</router-link>
-									</li>
-									<li>
-										<router-link to='/disclaimer'> · Disclaimer</router-link>
-									</li>
-									<li>
-										<router-link to='/fee'> · Fee Schedule</router-link>
-									</li>
-									<li>
-										<router-link to='/tradingRules'> · Trading Rules</router-link>
-									</li>
-								</ul>
-                    	</div>
                     <div class="panel-body paddong_30_left left-part">
 							<!-- <div class="panel-heading no-padding">
                         	    <h3 class="panel-title">Terms  of  Use</h3>

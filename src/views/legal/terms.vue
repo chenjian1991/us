@@ -1,26 +1,7 @@
 <template>
-    <div class="aboutBox" style="font-family: 'helvetica','Microsoft YaHei','PingFang SC';">
+    <div style="font-family: 'helvetica','Microsoft YaHei','PingFang SC';">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 mb-3">
-                        <ul>
-                            <li> 
-                                <router-link class="active" to='/terms'> · User Agreement</router-link>
-                            </li>
-                            <li >
-                                <router-link to='/privacy'> · Privacy Policy</router-link>
-                            </li>
-                            <li>
-                                <router-link to='/disclaimer'> · Disclaimer</router-link>
-                            </li>
-                            <li>
-                                <router-link to='/fee'> · Fee Schedule</router-link>
-                            </li>
-                            <li>
-                                <router-link to='/tradingRules'> · Trading Rules</router-link>
-                            </li>
-                        </ul>
-                </div>
 
                 <div class="panel-body paddong_30_left col-lg-10 col-md-9 col-sm-12 col-xs-12">
                         <div class=WordSection1>
