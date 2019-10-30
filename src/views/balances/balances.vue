@@ -93,7 +93,7 @@
                   <Table :columns="columns1" :data="dataB"></Table>
                </TabPane>
                <!--<TabPane :label="$t('headercoustomerchain')" name="name5">-->
-                  <!--<Table :columns="columns1" :data="dataC"></Table>-->
+               <!--<Table :columns="columns1" :data="dataC"></Table>-->
                <!--</TabPane>-->
             </Tabs>
          </div>
@@ -107,10 +107,10 @@
       </us-modal>
       <!--实名认证2-->
       <!--<us-modal v-model="showNoVerification2" className="alertModal" width="750px" title="balanceNotice"-->
-                <!--okText="noticeL2" cancelText="nextTime" @ok="ok2" @cancel="cancel" :showBtn="true">-->
-         <!--<div class="alert-content">-->
-            <!--<h4 class="notice">{{$t('balanceNoticeCon')}}</h4>-->
-         <!--</div>-->
+      <!--okText="noticeL2" cancelText="nextTime" @ok="ok2" @cancel="cancel" :showBtn="true">-->
+      <!--<div class="alert-content">-->
+      <!--<h4 class="notice">{{$t('balanceNoticeCon')}}</h4>-->
+      <!--</div>-->
       <!--</us-modal>-->
       <!--设置银行卡-->
       <us-modal v-model="showNoBank" className="alertModal" width="750px" title="balanceNotice" okText="balanceToBank"
@@ -634,7 +634,7 @@
                this.currencyPrecision[v.currency] = v.currencyPrecision//小数位数
             })
             //美国站6种币
-            const bSite = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM','USDD']
+            const bSite = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM', 'USDD']
             this.allAccount['B'] = this.allAccount['B'].filter(v => {
                let flag = false
                bSite.map(value => {
@@ -663,9 +663,9 @@
                      if (v['frozen'] < 0.00000001) {
                         v['frozen'] = 0
                      }
-                     v['total'] = dealNumber(v['available'] + v['frozen'], precision) //计算总值
                      v['available'] = dealNumber(v['available'], precision)
                      v['frozen'] = dealNumber(v['frozen'], precision)
+                     v['total'] = dealNumber(bigDecimal.add(v['available'], v['frozen']), precision) //计算总值
                      this.mapCurrencyList(v, ['available', 'frozen', 'total'], [v['available'], v['frozen'], v['total']])
                   })
                }
@@ -941,38 +941,6 @@
                }
             })
          },
-         // getIdentify(currency, path) {
-         //    if (this.checkStatus) {
-         //       this.dealCheckStatus(currency, path)
-         //    } else {
-         //       identifyQuery(Cookies.get('loginToken')).then(res => {//实名认证
-         //          if (res.data) {
-         //             switch (res.data['dataStatus']) {
-         //                case 1:
-         //                   this.checkStatus = "NOT_SET"
-         //                   this.levelStatus = 'unverified'
-         //                   break
-         //                case 2:
-         //                   this.checkStatus = "SUBMIT"
-         //                   this.levelStatus = 'submitted'
-         //                   break
-         //                case 3:
-         //                   this.checkStatus = "PASSED"
-         //                   this.levelStatus = 'verified'
-         //                   break
-         //                case 4:
-         //                   this.checkStatus = "NOT_SET"
-         //                   this.levelStatus = 'rejected'
-         //                   break
-         //             }
-         //          } else {
-         //             this.checkStatus = "NOT_SET"
-         //             this.levelStatus = 'unverified'
-         //          }
-         //          this.dealCheckStatus(currency, path)
-         //       })
-         //    }
-         // },
          dealCheckStatus(currency, path) {
             if (this.checkStatus === "PASSED") {
                this.$router.push({
@@ -1076,6 +1044,7 @@
          this.$store.commit('changeHeaderColor', '#15232C');
          this.currentCurrency = JSON.parse(localStorage.getItem('currentCurrency'))
          this.init()
+
       },
       watch: {
          currencyState: function (newV, oldV) {
