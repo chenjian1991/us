@@ -71,7 +71,7 @@ export default{
       arr:[
         {
           title:"DEEPEST LIQUIDITY",
-          des:"Consolidated global order book, fills large volume trades with ease"
+          des:"Global consolidated order book fills large volume trades with ease"
         },
         {
           title:"BEST GLOBAL PRICES",
@@ -79,14 +79,14 @@ export default{
         },
         {
           title:"CROSS-CURRENCY CONVERSION",
-          des:"Execute orders cross-currency for access to true global best pricing, all at no additional fee"
+          des:"Execute cross-currency orders for access to true global best pricing, all at no additional fee"
         },
         {
           title:"INSTANT ARBITRAGE",
           des:"Arbitrage from a single network of exchanges instantly, utilizing GBBO’s global consolidated order book"
         },
         {
-          title:"“TRUE” SINGLE ACCOUNT",
+          title:"TRUE SINGLE ACCOUNT",
           des:"No need to open, keep, and maintain accounts with multiple systems and exchanges"
         },
       ],

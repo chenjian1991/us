@@ -35,9 +35,13 @@
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box header-box">
-                           <router-link to="faqs" class="nav-link u-header__nav-link">
+                           <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ" target="_blank"
+                              class="nav-link u-header__nav-link">
                               FAQ
-                           </router-link>
+                           </a>
+                           <!--<router-link to="faqs" class="nav-link u-header__nav-link">-->
+                           <!--FAQ-->
+                           <!--</router-link>-->
                         </li>
                      </ul>
                      <!--login-->
@@ -65,9 +69,9 @@
                            </router-link>
                            <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu">
                               <!--<li class="hs-has-sub-menu">-->
-                                 <!--<router-link to='' class="nav-link u-header__sub-menu-nav-link">-->
-                                    <!--Dashboard-->
-                                 <!--</router-link>-->
+                              <!--<router-link to='' class="nav-link u-header__sub-menu-nav-link">-->
+                              <!--Dashboard-->
+                              <!--</router-link>-->
                               <!--</li>-->
                               <li class="hs-has-sub-menu">
                                  <router-link to='/balances' class="nav-link u-header__sub-menu-nav-link">
@@ -81,7 +85,7 @@
                               </li>
                               <li class="hs-has-sub-menu">
                                  <router-link to='/safeCenter' class="nav-link u-header__sub-menu-nav-link">
-                                    account & Security
+                                    Account & Security
                                  </router-link>
                               </li>
                               <li class="hs-has-sub-menu">
@@ -587,8 +591,8 @@
       .u-header__navbar-nav {
          background-color: transparent;
       }
-      .hs-has-sub-menu{
-         a{
+      .hs-has-sub-menu {
+         a {
             color: #77838F;
          }
       }

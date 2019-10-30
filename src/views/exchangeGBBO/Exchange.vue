@@ -215,7 +215,7 @@
                                                 <div class="currencyInput" v-else>
                                                    <span v-if="buy_input_change">limit price</span>
                                                    <div v-else>
-                                                      {{$t('exchangeGBBORouterb')}}
+                                                      {{$t('exchangeGBBORouter')}}
                                                       <!-- <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
                                                          <Icon type="md-help-circle"/>
                                                       </Tooltip> -->
@@ -316,7 +316,7 @@
                                                 <div class="currencyInput" v-else>
                                                    <span v-if="sell_input_change">limit price</span>
                                                    <div v-else>
-                                                      {{$t('exchangeGBBORoutera')}}
+                                                      {{$t('exchangeGBBORouter')}}
                                                       <!-- <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
                                                          <Icon type="md-help-circle"/>
                                                       </Tooltip> -->
