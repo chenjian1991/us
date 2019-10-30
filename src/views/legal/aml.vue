@@ -35,7 +35,7 @@
 		II.&nbsp;<b>Description of Business&nbsp;</b><b></b>
 	</h1>
 	<p class="MsoNormal" align="justify" style="text-align:justify;">
-		The Company currently operates a custodial cryptocurrency exchange network at http://www.55.com, allowing users to exchange cryptocurrencies on its platform (collectively, the “<b><i>Services</i></b>”). Presently, in the United States, the Services only allow for cryptocurrency-to-cryptocurrency transfers, where a customer can exchange one of the listed cryptocurrencies on the Company’s platform for another listed cryptocurrency. Outside the US, the Company allows fiat to cryptocurrency transfers as part of its Services.
+		The Company currently operates a custodial cryptocurrency exchange network at http://www.Tresso.com, allowing users to exchange cryptocurrencies on its platform (collectively, the “<b><i>Services</i></b>”). Presently, in the United States, the Services only allow for cryptocurrency-to-cryptocurrency transfers, where a customer can exchange one of the listed cryptocurrencies on the Company’s platform for another listed cryptocurrency. Outside the US, the Company allows fiat to cryptocurrency transfers as part of its Services.
 	</p>
 	<p class="MsoNormal" align="justify" style="text-align:justify;">
 		The Financial Crimes Enforcement Network (“<b><i>FinCEN</i></b>”), a bureau of the United States Department of the Treasury, administers and issues regulations pursuant to the BSA and implements and enforces compliance with the BSA and associated regulations. Pursuant to FinCEN administrative guidance, the Company’s operations can be defined as a MSB, and the Company has registered as a MSB with FinCEN.

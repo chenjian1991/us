@@ -27,10 +27,10 @@
                                 <p class=MsoNormal><span lang=EN></span></p>
 
                                 <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>1.1  55 Asset Network Inc. (the “<b style='mso-bidi-font-weight:normal'>Company</b>”)
+                                lang=EN>1.1  Tresso Asset Network Inc. (the “<b style='mso-bidi-font-weight:normal'>Company</b>”)
                                 is a company incorporated in Delaware under the laws of the United States, and
-                                operates the Website <u><span style='color:#1155CC'><a href="javascrip:;"><span
-                                style='color:#1155CC'>tresso.com</span></a></span></u> (the “<b
+                                operates the Website <u><span style='color:#11TressoCC'><a href="javascrip:;"><span
+                                style='color:#11TressoCC'>tresso.com</span></a></span></u> (the “<b
                                 style='mso-bidi-font-weight:normal'>Website</b>”), which is a platform
                                 dedicated to the transaction of digital assets and the provision of related
                                 services (hereinafter referred to as the “<b style='mso-bidi-font-weight:normal'>Service</b>”).
@@ -669,7 +669,7 @@
                                 lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
                                 style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
                                 dir=LTR></span><span lang=EN>To enforce or apply our terms of use
-                                https://www.55.com/terms and other agreements, including for billing and
+                                https://www.Tresso.com/terms and other agreements, including for billing and
                                 collection purposes.</span></p>
 
                                 <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
