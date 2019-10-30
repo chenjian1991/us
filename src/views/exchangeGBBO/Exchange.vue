@@ -2327,6 +2327,7 @@
         }
       },
       beforeMount() {
+
          //交易相关的交易对
          this.getSymbolListData();
          //行情相关的交易对>>>>>>

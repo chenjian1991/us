@@ -37,27 +37,27 @@
                      <span class="f-14 c-d-gray">24h Vol：{{gbboList.base.vol}}</span>
                   </div>
                </div>
-               <div class="col-md-3" v-model="gbboList.buy">
+               <div class="col-md-3" v-model="gbboList.sell">
                   <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Buy at Lowest</div>
                   <div class="f-16 d-flex justify-content-between mb-2">
-                     <span class="c-blue">{{gbboList.buy.price}}</span>
-                     <span>{{gbboList.buy.exchange}}</span>
+                     <span class="c-blue">{{gbboList.sell.price}}</span>
+                     <span>{{gbboList.sell.exchange}}</span>
                   </div>
-                  <div class="f-14 c-d-gray">< Market Avg {{gbboList.buy.diffAvg|compare}}</div>
+                  <div class="f-14 c-d-gray">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
                </div>
-               <div class="col-md-3" v-model="gbboList.sell">
+               <div class="col-md-3" v-model="gbboList.buy">
                   <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Sell at Highest</div>
                   <div class="f-16 d-flex justify-content-between mb-2">
-                     <span class="c-blue">{{gbboList.sell.price}}</span>
-                     <span class="c-d-gray">{{gbboList.sell.exchange}}</span>
+                     <span class="c-blue">{{gbboList.buy.price}}</span>
+                     <span class="c-d-gray">{{gbboList.buy.exchange}}</span>
                   </div>
-                  <div class="f-14 c-d-gray">> Market Avg {{gbboList.sell.diffAvg|compare}}</div>
+                  <div class="f-14 c-d-gray">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
                </div>
                <div class="col-md-3" v-model="gbboList.avg">
                   <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Arbitrage</div>
                   <div class="d-flex justify-content-between">
                      <div>
-                        <div class="f-16 c-fff mb-2">{{gbboList.avg.price}}</div>
+                        <div class="f-16 c-fff mb-2">{{gbboList.avg.price|compare}}</div>
                         <div class="f-14 c-d-gray">Est Return {{gbboList.avg.change}}</div>
                      </div>
                      <div class="d-flex align-items-center">
@@ -89,7 +89,8 @@
             <div class="gbboTMBg p-6 mb-5">
                <h3 class="f-24 c-fff f-w">Global Best Bid & Offer (GBBO™) fuels next-level trading</h3>
                <section class="c-gray-b f-14 mt-3">
-                  Building upon the foundations of National Best Bid & Offer that is required in traditional securities markets,
+                  Building upon the foundations of National Best Bid & Offer that is required in traditional securities
+                  markets,
                   GBBO™ connects disjointed, local exchanges into a unified global liquidity pool to provide its traders
                   with:
                </section>
@@ -101,41 +102,41 @@
       </div>
       <!--CONNECTED EXCHANGES 需求先隐藏-->
       <!--<div class="connected-box bgc4 position-relative">-->
-         <!--<div class="pt-lg-11">-->
-            <!--<div class="row justify-content-center pt-lg-8">-->
-               <!--<div class="col-3 mt-3" style="transform: translate3d(0, 0, 0px);">-->
-                  <!--<img class="img-fluid" src="../../assets/images/tresso/2.png" alt="Image Description">-->
-               <!--</div>-->
-               <!--<div class="col-3" style="transform: translate3d(30%, 0, 0px);">-->
-                  <!--<img class="img-fluid" src="../../assets/images/tresso/3.png" alt="Image Description">-->
-               <!--</div>-->
-            <!--</div>-->
-            <!--<div class="row justify-content-between mt-6">-->
-               <!--<div class="col-3 t-c">-->
-                  <!--<img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">-->
-               <!--</div>-->
-               <!--<div class="col-3 t-c">-->
-                  <!--<img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">-->
-               <!--</div>-->
-            <!--</div>-->
-            <!--<div class="row justify-content-between mt-11">-->
-               <!--<div class="col-4 t-c">-->
-                  <!--<img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">-->
-               <!--</div>-->
-               <!--<div class="col-4 t-c mt-5">-->
-                  <!--<img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">-->
-               <!--</div>-->
-               <!--<div class="col-4 t-c">-->
-                  <!--<img class="img-fluid" src="../../assets/images/tresso/5.png" alt="Image Description">-->
-               <!--</div>-->
-            <!--</div>-->
-         <!--</div>-->
-         <!--<div class="t-c connected">-->
-            <!--<div class="p-5">-->
-               <!--<h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>-->
-               <!--<p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>-->
-            <!--</div>-->
-         <!--</div>-->
+      <!--<div class="pt-lg-11">-->
+      <!--<div class="row justify-content-center pt-lg-8">-->
+      <!--<div class="col-3 mt-3" style="transform: translate3d(0, 0, 0px);">-->
+      <!--<img class="img-fluid" src="../../assets/images/tresso/2.png" alt="Image Description">-->
+      <!--</div>-->
+      <!--<div class="col-3" style="transform: translate3d(30%, 0, 0px);">-->
+      <!--<img class="img-fluid" src="../../assets/images/tresso/3.png" alt="Image Description">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row justify-content-between mt-6">-->
+      <!--<div class="col-3 t-c">-->
+      <!--<img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">-->
+      <!--</div>-->
+      <!--<div class="col-3 t-c">-->
+      <!--<img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row justify-content-between mt-11">-->
+      <!--<div class="col-4 t-c">-->
+      <!--<img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">-->
+      <!--</div>-->
+      <!--<div class="col-4 t-c mt-5">-->
+      <!--<img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">-->
+      <!--</div>-->
+      <!--<div class="col-4 t-c">-->
+      <!--<img class="img-fluid" src="../../assets/images/tresso/5.png" alt="Image Description">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="t-c connected">-->
+      <!--<div class="p-5">-->
+      <!--<h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>-->
+      <!--<p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>-->
+      <!--</div>-->
+      <!--</div>-->
       <!--</div>-->
 
       <!--Keep more of your margin with FREE trading-->
@@ -424,6 +425,7 @@
             })
          },
          getSockJS() {
+
             if (this.stompClient === null || !this.stompClient.connected) {
                const domain = document.domain;
                let socket = null
@@ -442,9 +444,11 @@
                      }
                   });
                   this.stompClient.subscribe(`/topic/ticker/${this.symbol}`, (message) => {
+
                      this.getVol(JSON.parse(message.body))
                   });
                   this.stompClient.subscribe(`/topic/trade/${this.symbol}`, (message) => {
+
                      this.getAvgPrice(JSON.parse(message.body))
                   });
                }, (error) => {
@@ -477,31 +481,28 @@
             let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
             var result = data
 
+            //卖盘 最低价买
             this.gbboList.sell.price = result.asks[result.asks.length - 1].priceWithFee.toFixed(2)
             this.gbboList.sell.exchange = result.asks[result.asks.length - 1].provider
 
-
+            //买盘 最高价卖
             this.gbboList.buy.price = result.bids[0].priceWithFee.toFixed(2)
             this.gbboList.buy.exchange = result.bids[0].provider // 交易所logo
 
             const avg = this.gbboList.base.price
-            this.gbboList.buy.diffAvg = bigDecimal.subtract(avg, this.gbboList.sell.price)
+            this.gbboList.sell.diffAvg = bigDecimal.subtract(avg, this.gbboList.sell.price)
 
-            this.gbboList.sell.diffAvg = bigDecimal.subtract(this.gbboList.buy.price, avg)
+            this.gbboList.buy.diffAvg = bigDecimal.subtract(this.gbboList.buy.price, avg)
 
             // 差价
             var diff = this.gbboList.buy.price - this.gbboList.sell.price
+            this.gbboList.avg.price = bigDecimal.round(diff, priceLong)
+
             if (diff <= 0) {
-               diff = 0
-               this.gbboList.avg.price = 0
-               this.gbboList.avg.disableTrade = true
-            } else {
-               this.gbboList.avg.disableTrade = false
-               this.gbboList.avg.price = bigDecimal.round(diff, priceLong)
+               this.gbboList.avg.change=0
+            }else{
+               this.gbboList.avg.change = new BigNumber(this.gbboList.avg.price).dividedBy(avg).multipliedBy(100).toFixed(4) + '%';
             }
-
-            this.gbboList.avg.change = new BigNumber(this.gbboList.avg.price).dividedBy(avg).multipliedBy(100).toFixed(4) + '%';
-
          },
       },
       mounted() {
