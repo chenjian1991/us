@@ -44,6 +44,7 @@ import newtradePassword from "../views/resetTradePasswrod/newtradePassword.vue"
 import verfifyEmail from "../views/login/verifyEmail.vue";
 import activeEmail from "../views/login/activeEmail.vue";
 import terms from "../views/legal/terms.vue";
+import legal from "../views/legal/legal.vue";
 import tradingRules from "../views/legal/TradingRules.vue";
 import privacy from "../views/legal/privice.vue";
 import fee from "../views/legal/fee.vue";
@@ -532,47 +533,57 @@ const router = new Router({
                },
                component: verfifyEmail
             },
-            {//terms
-               path: 'terms',
-               name: 'terms',
+            {//legal
+               path: 'legal',
+               name: 'legal',
                meta: {
                   title: 'HomeTitle'
                },
-               component: terms
-            },
-            {//tradingRules
-               path: 'tradingRules',
-               name: 'tradingRules',
-               meta: {
-                  title: ''
-               },
-               component: tradingRules
+               component: legal,
+               children:[
+                  {//terms
+                     path: 'terms',
+                     name: 'terms',
+                     meta: {
+                        title: 'HomeTitle'
+                     },
+                     component: terms
+                  },
+                  {//privacy
+                     path: 'privacy',
+                     name: 'privacy',
+                     meta: {
+                        title: 'privacy'
+                     },
+                     component: privacy
+                  },
+                  {//disclaimer
+                     path: 'disclaimer',
+                     name: 'disclaimer',
+                     meta: {
+                        title: 'HomeTitle'
+                     },
+                     component: disclaimer
+                  },
+                  {//fee
+                     path: 'fee',
+                     name: 'fee',
+                     meta: {
+                        title: 'HomeTitle'
+                     },
+                     component: fee
+                  },
+                  {//tradingRules
+                     path: 'tradingRules',
+                     name: 'tradingRules',
+                     meta: {
+                        title: ''
+                     },
+                     component: tradingRules
+                  },
+               ]
             },
 
-            {//privacy
-               path: 'privacy',
-               name: 'privacy',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: privacy
-            },
-            {//fee
-               path: 'fee',
-               name: 'fee',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: fee
-            },
-            {//disclaimer
-               path: 'disclaimer',
-               name: 'disclaimer',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: disclaimer
-            },
             {//amlKyc
                path: 'amlKyc',
                name: 'amlKyc',
