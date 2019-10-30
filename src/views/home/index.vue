@@ -43,7 +43,7 @@
                      <span class="c-blue">{{gbboList.buy.price}}</span>
                      <span>{{gbboList.buy.exchange}}</span>
                   </div>
-                  <div class="f-14 c-d-gray">< Markets Avg {{gbboList.buy.diffAvg}}</div>
+                  <div class="f-14 c-d-gray">< Markets Avg {{gbboList.buy.diffAvg|compare}}</div>
                </div>
                <div class="col-md-3" v-model="gbboList.sell">
                   <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Sell at Highest</div>
@@ -51,7 +51,7 @@
                      <span class="c-blue">{{gbboList.sell.price}}</span>
                      <span class="c-d-gray">{{gbboList.sell.exchange}}</span>
                   </div>
-                  <div class="f-14 c-d-gray">> Markets Avg {{gbboList.sell.diffAvg}}</div>
+                  <div class="f-14 c-d-gray">> Markets Avg {{gbboList.sell.diffAvg|compare}}</div>
                </div>
                <div class="col-md-3" v-model="gbboList.avg">
                   <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Arbitrage</div>
@@ -73,7 +73,7 @@
       </div>
       <!--Why Tresso?-->
       <div class="pb-11">
-         <row-box :rowLists="tresso"  class="pt-lg-6 pt-3">
+         <row-box :rowLists="tresso" class="pt-lg-6 pt-3">
             <div :slot="item.name" class="tresso" v-for="(item,i) in tressoList" :key="i">
                <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
                   <img v-lazy='item.img' class="tresso-img">
@@ -200,11 +200,6 @@
                </li>
             </ul>
          </div>
-         <!--<row-box :rowLists="partner" class="mb-5">-->
-            <!--<div :slot="item.name" class="partner mt-7" v-for="(item,i) in partnerList" :key="i">-->
-               <!--<img v-lazy="item.img" class="partners-img">-->
-            <!--</div>-->
-         <!--</row-box>-->
       </div>
       <!--trading-->
       <div class="trading-box bgc-fff p-lg-11 t-c pt-5 pb-5">
@@ -240,6 +235,13 @@
          'row-box': rowbox,
          HomeCanvas,
          Collapse
+      },
+      filters: {
+         compare: function (value) {
+            if (!value) return ''
+            if (value < 0) return 0
+            return value
+         }
       },
       data() {
          return {
@@ -305,7 +307,7 @@
                   name: 'right',
                   img: require('../../assets/images/tresso/tresso3.png'),
                   title: 'Free Trading',
-                  section: 'No transaction fees on trade executions for every user. '
+                  section: 'No transaction or withdrawal fees for every users. And never a subscription fee - always FREE to use.'
                },
             ],
             gbboTM: {
@@ -321,26 +323,6 @@
                   }]
                ]
             },
-            gbboTMList: [
-               {
-                  name: 'left',
-                  img: require('../../assets/images/tresso/tresso1.png'),
-                  title: 'GBBO™ Technology',
-                  section: 'GBBO™ provides best global pricing through smart order routing and matching engine on a global consolidated order book.'
-               },
-               {
-                  name: 'middle',
-                  img: require('../../assets/images/tresso/tresso2.png'),
-                  title: 'Deepest Liquidity Pools',
-                  section: 'Execute unbroken high volume orders via Tresso’s interconnected liquidity pools with the backing of a third party audit system.'
-               },
-               {
-                  name: 'right',
-                  img: require('../../assets/images/tresso/tresso3.png'),
-                  title: 'Free Trading',
-                  section: 'No transaction or withdrawal fees for every users. And never a subscription fee - always FREE to use.'
-               },
-            ],
             connect: {
                title: '2 ways to connect',
                default: false,

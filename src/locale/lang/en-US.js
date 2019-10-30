@@ -321,7 +321,7 @@ export default {
    SMSPlacehodler: 'SMS code',
    passwordPlacehodler: 'Password',
    confirmPasswordPlacehodler: 'Confirm password',
-   referridPlacehodler: 'Referral ID (optional)',
+   referridPlacehodler: 'Referral ID',
    phoneNumberRequier: 'This field is required',
    numberMust: 'must be a number',
    emailMustExg: 'Only English letters, numbers, underscores, periods, and underscores are allowed',

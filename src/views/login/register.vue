@@ -460,13 +460,12 @@ const clickoutside = {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         if(this.emailRegister){//如果是邮箱注册
-                            //  this.captchaIns && this.captchaIns.popUp()
-                            if(this.ipCountry=='中国'){
-                                this.captchaIns && this.captchaIns.popUp()
-                            }else{
-                                    this.robotModalflag = true;
-                                }
-
+                            // if(this.ipCountry=='中国'){
+                            //     this.captchaIns && this.captchaIns.popUp()
+                            // }else{
+                            //         this.robotModalflag = true;
+                            //}
+                        this.robotModalflag = true;
                         }else{//如果是手机注册
                             this.loaded = false;
                              this.codeVerifyFun();
