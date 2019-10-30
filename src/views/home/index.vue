@@ -10,7 +10,7 @@
                conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest
                opportunities to win. All in a single account.
             </section>
-            <router-link to='/register' class="btn btn-sm btn-primary transition-3d-hover button bgc-blue f-14 mt-5">
+            <router-link to='/register' class="btn btn-sm btn-primary transition-3d-hover button bgc-blue f-14 mt-7">
                GET STARTED
             </router-link>
          </div>
@@ -43,7 +43,7 @@
                      <span class="c-blue">{{gbboList.buy.price}}</span>
                      <span>{{gbboList.buy.exchange}}</span>
                   </div>
-                  <div class="f-14 c-d-gray">< Markets Avg {{gbboList.buy.diffAvg|compare}}</div>
+                  <div class="f-14 c-d-gray">< Market Avg {{gbboList.buy.diffAvg|compare}}</div>
                </div>
                <div class="col-md-3" v-model="gbboList.sell">
                   <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Sell at Highest</div>
@@ -51,7 +51,7 @@
                      <span class="c-blue">{{gbboList.sell.price}}</span>
                      <span class="c-d-gray">{{gbboList.sell.exchange}}</span>
                   </div>
-                  <div class="f-14 c-d-gray">> Markets Avg {{gbboList.sell.diffAvg|compare}}</div>
+                  <div class="f-14 c-d-gray">> Market Avg {{gbboList.sell.diffAvg|compare}}</div>
                </div>
                <div class="col-md-3" v-model="gbboList.avg">
                   <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Arbitrage</div>
@@ -73,12 +73,12 @@
       </div>
       <!--Why Tresso?-->
       <div class="pb-11">
-         <row-box :rowLists="tresso" class="pt-lg-6 pt-3">
-            <div :slot="item.name" class="tresso" v-for="(item,i) in tressoList" :key="i">
+         <row-box :rowLists="tresso">
+            <div :slot="item.name" class="tresso mt-4" v-for="(item,i) in tressoList" :key="i">
                <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
                   <img v-lazy='item.img' class="tresso-img">
-                  <p class="f-18 c-d-black mt-6 mb-2 f-w-6">{{item.title}}</p>
-                  <section class="f-14 c-dark-gray">{{item.section}}</section>
+                  <p class="f-20 c-d-black mt-6 mb-2 f-w-6">{{item.title}}</p>
+                  <section class="f-16 c-d-gray f-w-5">{{item.section}}</section>
                </div>
             </div>
          </row-box>
@@ -86,61 +86,63 @@
       <!--GBBO-->
       <div class="gbboTM-box pb-11 bgc2">
          <row-box :rowLists="gbboTM">
-            <div class="gbboTMBg p-6">
+            <div class="gbboTMBg p-6 mb-5">
                <h3 class="f-24 c-fff f-w">Global Best Bid & Offer (GBBO™) fuels next-level trading</h3>
                <section class="c-gray-b f-14 mt-3">
-                  Building upon the foundations of National Best Bid & Offer required in traditional securities markets,
+                  Building upon the foundations of National Best Bid & Offer that is required in traditional securities markets,
                   GBBO™ connects disjointed, local exchanges into a unified global liquidity pool to provide its traders
                   with:
                </section>
             </div>
-            <p class="f-12 c-blue mt-4 mb-5">This power is not currently available in any single exchange, regardless of
-               size, and only available at Tresso.</p>
             <Collapse></Collapse>
+            <p class="f-16 c-blue">This power is not currently available in any single exchange, regardless of
+               size, and only available at Tresso.</p>
          </row-box>
       </div>
-      <!--CONNECTED EXCHANGES-->
-      <div class="connected-box bgc4 position-relative">
-         <div class="pt-lg-11">
-            <div class="row justify-content-center pt-lg-8">
-               <div class="col-3 mt-3" style="transform: translate3d(0, 0, 0px);">
-                  <img class="img-fluid" src="../../assets/images/tresso/2.png" alt="Image Description">
-               </div>
-               <div class="col-3" style="transform: translate3d(30%, 0, 0px);">
-                  <img class="img-fluid" src="../../assets/images/tresso/3.png" alt="Image Description">
-               </div>
-            </div>
-            <div class="row justify-content-between mt-6">
-               <div class="col-3 t-c">
-                  <img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">
-               </div>
-               <div class="col-3 t-c">
-                  <img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">
-               </div>
-            </div>
-            <div class="row justify-content-between mt-11">
-               <div class="col-4 t-c">
-                  <img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">
-               </div>
-               <div class="col-4 t-c mt-5">
-                  <img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">
-               </div>
-               <div class="col-4 t-c">
-                  <img class="img-fluid" src="../../assets/images/tresso/5.png" alt="Image Description">
-               </div>
-            </div>
-         </div>
-         <div class="t-c connected">
-            <div class="p-5">
-               <h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>
-               <p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>
-            </div>
-         </div>
-      </div>
+      <!--CONNECTED EXCHANGES 需求先隐藏-->
+      <!--<div class="connected-box bgc4 position-relative">-->
+         <!--<div class="pt-lg-11">-->
+            <!--<div class="row justify-content-center pt-lg-8">-->
+               <!--<div class="col-3 mt-3" style="transform: translate3d(0, 0, 0px);">-->
+                  <!--<img class="img-fluid" src="../../assets/images/tresso/2.png" alt="Image Description">-->
+               <!--</div>-->
+               <!--<div class="col-3" style="transform: translate3d(30%, 0, 0px);">-->
+                  <!--<img class="img-fluid" src="../../assets/images/tresso/3.png" alt="Image Description">-->
+               <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row justify-content-between mt-6">-->
+               <!--<div class="col-3 t-c">-->
+                  <!--<img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">-->
+               <!--</div>-->
+               <!--<div class="col-3 t-c">-->
+                  <!--<img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">-->
+               <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row justify-content-between mt-11">-->
+               <!--<div class="col-4 t-c">-->
+                  <!--<img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">-->
+               <!--</div>-->
+               <!--<div class="col-4 t-c mt-5">-->
+                  <!--<img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">-->
+               <!--</div>-->
+               <!--<div class="col-4 t-c">-->
+                  <!--<img class="img-fluid" src="../../assets/images/tresso/5.png" alt="Image Description">-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</div>-->
+         <!--<div class="t-c connected">-->
+            <!--<div class="p-5">-->
+               <!--<h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>-->
+               <!--<p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>-->
+            <!--</div>-->
+         <!--</div>-->
+      <!--</div>-->
+
+      <!--Keep more of your margin with FREE trading-->
       <div class="free-box bgc-fff t-c p-lg-11">
          <div class="container p-3">
             <h3 class="f-36 c-d-black f-w">Keep more of your margin with FREE trading</h3>
-            <div style="width: 100%;overflow-x: scroll" id="free">
+            <div style="width: 100%;overflow-x: scroll" id="free" class="free-scroll">
                <img v-lazy="require('../../assets/images/tresso/trading.png')" class="free-img mt-9">
             </div>
          </div>
@@ -168,8 +170,8 @@
                   <div>
                      <img src="../../assets/images/tresso/left.png" class="manager-icon" alt="">
                   </div>
-                  <div>
-                     <h4 class="f-30 c-d-black mb-3 mt-lg-9">Join the Innovation</h4>
+                  <div class="pl-lg-10 pr-lg-10">
+                     <h4 class="f-30 c-d-black mb-3 mt-lg-7">Join the Innovation.</h4>
                      <section class="f-16 c-d-black mb-2 f-w-5">
                         Given the maturation of the crypto, token, and digital asset markets, the trading standards and
                         operations found in current exchanges are woefully underdeveloped when compared with those of
@@ -180,7 +182,7 @@
                         participation
                         in nontraditional digital assets such as crypto.
                      </section>
-                     <p class="f-14 c-d-gray mb-2">David Weild, Former Vice Chairman Nasdaq</p>
+                     <p class="f-14 c-d-gray mb-2">David Weild, Former Vice Chairman of Nasdaq</p>
                   </div>
                   <div class="t-r mt-lg-7">
                      <img src="../../assets/images/tresso/right.png" class="manager-icon" alt="">
@@ -624,6 +626,24 @@
          .trading-btn {
             padding: 13px 67px;
          }
+      }
+
+      /*设置溢出滚动条样式*/
+      .free-scroll::-webkit-scrollbar {
+         width: 10px;
+         /* 不给背景色不会影响数据多少的样式*/
+         background-color: transparent;
+      }
+
+      .free-scroll::-webkit-scrollbar-thumb {
+         width: 10px;
+         -webkit-border-radius: 5px;
+         border-radius: 5px;
+      }
+
+      .free-scroll::-webkit-scrollbar-track {
+         -webkit-border-radius: 5px;
+         border-radius: 5px;
       }
 
    }

@@ -1,6 +1,6 @@
 <template>
    <div class="container pt-11">
-      <div class="title mt-2 mb-6" v-if="rowLists.show?false:true" :class="rowLists.default?'main-color':'withe-color'">
+      <div class="title mt-4 mb-6" v-if="rowLists.show?false:true" :class="rowLists.default?'main-color':'withe-color'">
          {{rowLists.title}}
       </div>
       <slot></slot>
@@ -23,7 +23,7 @@
 
 <style lang="less" scoped>
    .title {
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 500;
       text-align: center;
    }

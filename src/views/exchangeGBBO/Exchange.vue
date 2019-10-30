@@ -215,7 +215,7 @@
                                                 <div class="currencyInput" v-else>
                                                    <span v-if="buy_input_change">limit price</span>
                                                    <div v-else>
-                                                      {{$t('exchangeGBBORouterb')}}
+                                                      {{$t('exchangeGBBORouter')}}
                                                       <!-- <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
                                                          <Icon type="md-help-circle"/>
                                                       </Tooltip> -->
@@ -316,7 +316,7 @@
                                                 <div class="currencyInput" v-else>
                                                    <span v-if="sell_input_change">limit price</span>
                                                    <div v-else>
-                                                      {{$t('exchangeGBBORoutera')}}
+                                                      {{$t('exchangeGBBORouter')}}
                                                       <!-- <Tooltip placement="top" :content="$t('exchangeGBBORouterDesc')">
                                                          <Icon type="md-help-circle"/>
                                                       </Tooltip> -->
@@ -1288,9 +1288,13 @@
             let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
             // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
             var result = data
+
+            //路总需求 要加这个隐藏字段
             this.updateAt = result.updateAt
             // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
+
             this.gbbo_asksArr = result.asks
+            
             if (!this.buy_input_change) {
                this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
                this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
