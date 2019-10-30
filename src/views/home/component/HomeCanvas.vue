@@ -31,7 +31,13 @@ export default {
     // var windowHalfX = window.innerWidth / 2;
     // var windowHalfY = window.innerHeight / 2;
 
-    
+    const onWindowResize = () => {
+      // windowHalfX = window.innerWidth / 2;
+      // windowHalfY = container.clientHeight / 2;
+      // camera.aspect = window.innerWidth / container.clientHeight;
+      // camera.updateProjectionMatrix();
+      this.renderer.setSize(window.innerWidth, this.container.clientHeight);
+    }
 
     var init = () => {
       // container = document.createElement("div");
@@ -73,13 +79,7 @@ export default {
       window.addEventListener("resize", onWindowResize, false);
     }
 
-    const onWindowResize = () => {
-      // windowHalfX = window.innerWidth / 2;
-      // windowHalfY = container.clientHeight / 2;
-      // camera.aspect = window.innerWidth / container.clientHeight;
-      // camera.updateProjectionMatrix();
-      this.renderer.setSize(window.innerWidth, this.container.clientHeight);
-    }
+    
 
     // function onDocumentMouseMove(event) {
     //   mouseX = event.clientX - windowHalfX;
