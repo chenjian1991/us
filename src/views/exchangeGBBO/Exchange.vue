@@ -190,10 +190,10 @@
                                     </div>
                                     <div v-if="isGBBO" class="gbboPrice">
                                        <span>{{$t('exchangeCheapest')}}</span>
-                                       <span class="logobox">
+                                       <!-- <span class="logobox">
                                                         <i :class="buy_exchange_logo"></i>
                                                         {{bestSellPrice}} {{currentInfo.quoteAsset}}
-                                                    </span>
+                                                    </span> -->
                                     </div>
                                     <div class="trade-msg">
                                        <div class="price-box">
@@ -287,10 +287,10 @@
                                     </div>
                                     <div v-if="isGBBO" class="gbboPrice">
                                        <span>{{$t('exchangeHighest')}}</span>
-                                       <span class="logobox">
+                                       <!-- <span class="logobox">
                                                         <i :class="sell_exchange_logo"></i>
                                                         {{bestBuyPrice}} {{currentInfo.quoteAsset}}
-                                                    </span>
+                                                    </span> -->
                                     </div>
                                     <div class="trade-msg">
                                        <div class="price-box">
@@ -666,7 +666,7 @@
       </div>
       <!-- 聊天 -->
       <!-- <div class="chat_container"></div> -->
-      <CHAT/>
+      <!-- <CHAT/> -->
    </div>
 </template>
 
@@ -700,12 +700,14 @@
    import TVChartContainer from '@/components/KLine/TVChartContainer.vue'
    import SockJS from 'sockjs-client';
    import Stomp from 'stompjs';
-   import CHAT from '@/components/exchange/CHAT.vue'
+   // import CHAT from '@/components/exchange/CHAT.vue'
    import _ from 'lodash'
    import Cookies from 'js-cookie'
    import moment, {isMoment, defineLocale} from 'moment'
    import bigDecimal from 'js-big-decimal' //除法失效
    import {BigNumber} from 'bignumber.js';
+
+   import { orderBookName } from './config'
 
    let allNowPriceObject = {}//所有币种快照的最新价格的对象
    export default {
@@ -838,7 +840,7 @@
       components: {
          PasswordInput: PasswordInput,
          TVChartContainer: TVChartContainer,
-         CHAT,
+         // CHAT,
       },
       methods: {
          //切换版块
@@ -1265,7 +1267,7 @@
                 socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
               }
               // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
-              // const socket = new SockJS('https://www.55.center/xchange/marketdata');
+              // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
               this.stompClient = Stomp.over(socket);
               this.stompClient.debug = null
               this.stompClient.heartbeat.outgoing = 1000;
@@ -1288,12 +1290,21 @@
             let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
             // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
             var result = data
-
+            
             //路总需求 要加这个隐藏字段
             this.updateAt = result.updateAt
+
             // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
-            this.gbbo_asksArr = result.asks
+            this.gbbo_asksArr = result.asks.map((val) => {
+               if(val.provider && orderBookName.includes(val.provider)) {
+                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
+               }else if(val.provider && val.provider === 'E55') {
+                  return Object.assign({}, val, { provider: 'TRESSO' })
+               }else if(val.provider) {
+                  return val
+               }
+            })
             
             if (!this.buy_input_change) {
                this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
@@ -1309,7 +1320,15 @@
                }, 0)
                this.isInitOrderBook = false
             }
-            this.gbbo_bidsArr = result.bids
+            this.gbbo_bidsArr = result.bids.map((val) => {
+               if(val.provider && orderBookName.includes(val.provider)) {
+                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
+               }else if(val.provider && val.provider === 'E55') {
+                  return Object.assign({}, val, { provider: 'TRESSO' })
+               }else if(val.provider) {
+                  return val
+               }
+            })
             if (!this.sell_input_change) {
                this.bestBuyPrice = result.bids[0].priceWithFee
                this.sell_exchange_logo = result.bids[0].provider // 交易所logo
