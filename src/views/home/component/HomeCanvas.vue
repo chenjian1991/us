@@ -5,58 +5,42 @@
 export default {
   data() {
     return {
-      
+      _container: '',
+      _camera: '',
+      _scene: '',
+      _renderer: '',
+      _requestAnimation: ''
     };
   },
   mounted() {
-    const SEPARATION = 100,
-      AMOUNTX = 50,
-      AMOUNTY = 50;
+    const SEPARATION = 100;
+    const AMOUNTX = 50;
+    const AMOUNTY = 50;
 
-    // let { container, camera, scene, renderer } = this
-    this.container = ''
-    this.camera = ''
-    this.scene = ''
-    this.renderer = ''
-    this.requestAnimation = ''
-    // var camera, scene, renderer;
 
-    var particles,
-      particle,
-      count = 0;
+    let particles;
+    let particle;
+    let count = 0;
 
-    var mouseX = 0,
-      mouseY = -800;
+    const mouseX = 0;
+    const mouseY = -800;
+    
 
-    // var windowHalfX = window.innerWidth / 2;
-    // var windowHalfY = window.innerHeight / 2;
-
-    const onWindowResize = () => {
-      // windowHalfX = window.innerWidth / 2;
-      // windowHalfY = container.clientHeight / 2;
-      // camera.aspect = window.innerWidth / container.clientHeight;
-      // camera.updateProjectionMatrix();
-      this.renderer.setSize(window.innerWidth, this.container.clientHeight);
-    }
-
-    var init = () => {
-      // container = document.createElement("div");
-      this.container = this.$refs.homeCanvas
-      // document.body.appendChild(container);
-      console.log(this.container.clientHeight)
-      this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-      this.camera.position.z = 1000;
-      this.scene = new THREE.Scene();
-      particles = new Array();
-      var PI2 = Math.PI * 2;
-      var material = new THREE.ParticleCanvasMaterial({
+    const init = () => {
+      this._container = this.$refs.homeCanvas
+      this._camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000)
+      this._camera.position.z = 1000
+      this._scene = new THREE.Scene()
+      particles = new Array()
+      const PI2 = Math.PI * 2
+      const material = new THREE.ParticleCanvasMaterial({
         color: 0xffffff,
         program: function(context) {
-          context.beginPath();
-          context.arc(0, 0, 1, 0, PI2, true);
-          context.fill();
+          context.beginPath()
+          context.arc(0, 0, 1, 0, PI2, true)
+          context.fill()
         }
-      });
+      })
       var i = 0;
 
       for (var ix = 0; ix < AMOUNTX; ix++) {
@@ -64,53 +48,19 @@ export default {
           particle = particles[i++] = new THREE.Particle(material);
           particle.position.x = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
           particle.position.z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
-          this.scene.add(particle);
+          this._scene.add(particle)
         }
       }
 
-      this.renderer = new THREE.CanvasRenderer();
-      this.renderer.setSize(window.innerWidth, this.container.clientHeight);
-      this.container.appendChild(this.renderer.domElement);
-
-      // container.addEventListener("mousemove", onDocumentMouseMove, false);
-      // document.addEventListener("touchstart", onDocumentTouchStart, false);
-      // document.addEventListener("touchmove", onDocumentTouchMove, false);
-      
-      window.addEventListener("resize", onWindowResize, false);
+      this._renderer = new THREE.CanvasRenderer()
+      this._renderer.setSize(window.innerWidth, this._container.clientHeight)
+      this._container.appendChild(this._renderer.domElement)
     }
-
     
-
-    // function onDocumentMouseMove(event) {
-    //   mouseX = event.clientX - windowHalfX;
-    //   mouseY = event.clientY - windowHalfY;
-    // }
-
-    // function onDocumentTouchStart(event) {
-    //   if (event.touches.length === 1) {
-    //     event.preventDefault();
-
-    //     mouseX = event.touches[0].pageX - windowHalfX;
-    //     mouseY = event.touches[0].pageY - windowHalfY;
-    //   }
-    // }
-
-    // function onDocumentTouchMove(event) {
-    //   if (event.touches.length === 1) {
-    //     event.preventDefault();
-    //     mouseX = event.touches[0].pageX - windowHalfX;
-    //     mouseY = event.touches[0].pageY - windowHalfY;
-    //   }
-    // }
-
-
     const render = () => {
-      this.camera.position.x += (mouseX - this.camera.position.x) * 0.05;
-      this.camera.position.y += (-mouseY - this.camera.position.y) * 0.05;
-      // console.log(camera.position.y)
-      // camera.position.y = (-mouseY - camera.position.y) * 0.05;
-      // camera.position.y = 30
-      this.camera.lookAt(this.scene.position);
+      this._camera.position.x += (mouseX - this._camera.position.x) * 0.05
+      this._camera.position.y += (-mouseY - this._camera.position.y) * 0.05
+      this._camera.lookAt(this._scene.position);
 
       var i = 0;
 
@@ -126,25 +76,33 @@ export default {
         }
       }
 
-      this.renderer.render(this.scene, this.camera);
+      this._renderer.render(this._scene, this._camera);
 
       count += 0.1;
     }
 
     const animate = () => {
-      this.requestAnimation = requestAnimationFrame(animate);
+      this._requestAnimation = requestAnimationFrame(animate);
       render();
     }
+
+    window.addEventListener("resize", this.resizeFn, false);
 
     init();
     animate();
   },
+  methods: {
+    resizeFn() {
+      this._renderer.setSize(window.innerWidth, this._container.clientHeight);
+    }
+  },
   beforeDestroy() {
-    this.container = ''
-    this.camera = ''
-    this.scene = ''
-    this.renderer = ''
-    cancelAnimationFrame(this.requestAnimation)
+    this._container = ''
+    this._camera = ''
+    this._scene = ''
+    this._renderer = ''
+    cancelAnimationFrame(this._requestAnimation)
+    window.removeEventListener('resize', this.resizeFn, false)
   }
 };
 </script>

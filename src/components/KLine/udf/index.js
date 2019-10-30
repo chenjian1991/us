@@ -9,6 +9,7 @@ import { storage,getDecimalsNum,getUTCDay,getUTCHour,getUTCMinutes,getUTCHour_S}
 import { getHistoricalTimeRange,getSummarizedTimeRange} from '_api/exchange'
 const Datafeeds = {}
 let KlineSSE= null
+let KlineSSECount = 0
 Datafeeds.UDFCompatibleDatafeed = function() {
     // 默认配置
     // https://b.aistock.ga/books/tradingview/book/JS-Api.html
@@ -319,6 +320,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.subscribeBars = function(symbolInfo, r
         //  console.log("K线行情推送连接已经建立：", this.readyState);
     };
     KlineSSE.onmessage = (e) => {
+        if (KlineSSECount !== 0) KlineSSECount = 0
         //每次推送一条记录
         let data = JSON.parse(e.data)
         if (data.ping != undefined) {
@@ -345,7 +347,10 @@ Datafeeds.UDFCompatibleDatafeed.prototype.subscribeBars = function(symbolInfo, r
     }
 
     KlineSSE.onerror = (event) => {
+        KlineSSE.close()
+        if (KlineSSECount > 5) return
         setTimeout(function(){
+            KlineSSECount += 1
             KlineSSE = new ReconnectingWebSocket(url)
         }.bind(this),3000)
     };

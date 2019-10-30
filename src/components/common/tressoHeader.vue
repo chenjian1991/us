@@ -31,9 +31,7 @@
                            data-animation-in="slideInUp"
                            data-animation-out="fadeOut"
                            data-position="left">
-                           <router-link to='/about' class="nav-link u-header__nav-link"
-                           >ABOUT
-                           </router-link>
+                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
                         </li>
                         <li
                            class="nav-item hs-has-sub-menu u-header__nav-item header-box"

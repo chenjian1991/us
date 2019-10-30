@@ -7,7 +7,8 @@ import {getCreateAccount} from '_api/exchange.js'
 import {clearLocalStorage} from '@/config'
 
 // const index = () => import(/* webpackChunkName: "home" */ '../views/home/index.vue')
-import USHOME from "../views/home/index.vue";
+// import USHOME from "../views/home/index.vue";
+const USHOME = () => import(/* webpackChunkName: 'home' */'../views/home/index.vue')
 
 const HomePageMain = () => import(/* webpackChunkName: "home" */ '../views/home/Home.vue')
 const ExchangeGBBO = () => import(/* webpackChunkName: "exchangeGBBO" */ '../views/exchangeGBBO/Exchange.vue')
@@ -304,7 +305,7 @@ const router = new Router({
                path: 'faqs',
                name: 'faqs',
                meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
+                  title: 'FAQ'
                },
                component: faqs,
             },
