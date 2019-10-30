@@ -17,6 +17,7 @@ export default {
     height: 42px;
     background: #fff;
     &-box{
+      line-height: 42px;
       text-align: center;
       color: #304454;
     }

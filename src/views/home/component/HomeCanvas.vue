@@ -4,15 +4,22 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      
+    };
   },
   mounted() {
     const SEPARATION = 100,
       AMOUNTX = 50,
       AMOUNTY = 50;
 
-    var container;
-    var camera, scene, renderer;
+    // let { container, camera, scene, renderer } = this
+    this.container = ''
+    this.camera = ''
+    this.scene = ''
+    this.renderer = ''
+    this.requestAnimation = ''
+    // var camera, scene, renderer;
 
     var particles,
       particle,
@@ -21,19 +28,25 @@ export default {
     var mouseX = 0,
       mouseY = -800;
 
-    var windowHalfX = window.innerWidth / 2;
-    var windowHalfY = window.innerHeight / 2;
+    // var windowHalfX = window.innerWidth / 2;
+    // var windowHalfY = window.innerHeight / 2;
 
-    
+    const onWindowResize = () => {
+      // windowHalfX = window.innerWidth / 2;
+      // windowHalfY = container.clientHeight / 2;
+      // camera.aspect = window.innerWidth / container.clientHeight;
+      // camera.updateProjectionMatrix();
+      this.renderer.setSize(window.innerWidth, this.container.clientHeight);
+    }
 
     var init = () => {
       // container = document.createElement("div");
-      container = this.$refs.homeCanvas
+      this.container = this.$refs.homeCanvas
       // document.body.appendChild(container);
-      console.log(container.clientHeight)
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-      camera.position.z = 1000;
-      scene = new THREE.Scene();
+      console.log(this.container.clientHeight)
+      this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+      this.camera.position.z = 1000;
+      this.scene = new THREE.Scene();
       particles = new Array();
       var PI2 = Math.PI * 2;
       var material = new THREE.ParticleCanvasMaterial({
@@ -51,13 +64,13 @@ export default {
           particle = particles[i++] = new THREE.Particle(material);
           particle.position.x = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
           particle.position.z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
-          scene.add(particle);
+          this.scene.add(particle);
         }
       }
 
-      renderer = new THREE.CanvasRenderer();
-      renderer.setSize(window.innerWidth, container.clientHeight);
-      container.appendChild(renderer.domElement);
+      this.renderer = new THREE.CanvasRenderer();
+      this.renderer.setSize(window.innerWidth, this.container.clientHeight);
+      this.container.appendChild(this.renderer.domElement);
 
       // container.addEventListener("mousemove", onDocumentMouseMove, false);
       // document.addEventListener("touchstart", onDocumentTouchStart, false);
@@ -66,18 +79,12 @@ export default {
       window.addEventListener("resize", onWindowResize, false);
     }
 
-    function onWindowResize() {
-      // windowHalfX = window.innerWidth / 2;
-      // windowHalfY = container.clientHeight / 2;
-      // camera.aspect = window.innerWidth / container.clientHeight;
-      // camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, container.clientHeight);
-    }
+    
 
-    function onDocumentMouseMove(event) {
-      mouseX = event.clientX - windowHalfX;
-      mouseY = event.clientY - windowHalfY;
-    }
+    // function onDocumentMouseMove(event) {
+    //   mouseX = event.clientX - windowHalfX;
+    //   mouseY = event.clientY - windowHalfY;
+    // }
 
     // function onDocumentTouchStart(event) {
     //   if (event.touches.length === 1) {
@@ -96,18 +103,14 @@ export default {
     //   }
     // }
 
-    function animate() {
-      requestAnimationFrame(animate);
-      render();
-    }
 
-    function render() {
-      camera.position.x += (mouseX - camera.position.x) * 0.05;
-      camera.position.y += (-mouseY - camera.position.y) * 0.05;
+    const render = () => {
+      this.camera.position.x += (mouseX - this.camera.position.x) * 0.05;
+      this.camera.position.y += (-mouseY - this.camera.position.y) * 0.05;
       // console.log(camera.position.y)
       // camera.position.y = (-mouseY - camera.position.y) * 0.05;
       // camera.position.y = 30
-      camera.lookAt(scene.position);
+      this.camera.lookAt(this.scene.position);
 
       var i = 0;
 
@@ -123,14 +126,26 @@ export default {
         }
       }
 
-      renderer.render(scene, camera);
+      this.renderer.render(this.scene, this.camera);
 
       count += 0.1;
     }
+
+    const animate = () => {
+      this.requestAnimation = requestAnimationFrame(animate);
+      render();
+    }
+
     init();
     animate();
+  },
+  beforeDestroy() {
+    this.container = ''
+    this.camera = ''
+    this.scene = ''
+    this.renderer = ''
+    cancelAnimationFrame(this.requestAnimation)
   }
-  
 };
 </script>
 <style lang="less">

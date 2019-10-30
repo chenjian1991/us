@@ -1648,6 +1648,7 @@
             if (!this.isLogin) {
                return false;
             }
+            let sseOrderCount = 0
             //刚进页面初始数据
             this.updateOpenListAndCompletedList();
             this.exchange.listFilledOrder((token, accountId) => {
@@ -1668,7 +1669,10 @@
                this.SSE_order.addEventListener('_ERROR', function (e) {
                })
                this.SSE_order.onerror = (e) => {
+                  this.SSE_order.close()
+                  if (sseOrderCount > 5) return
                   setTimeout(() => {
+                     sseOrderCount += 1
                      this.SSE_order = new EventSource(`${baseURL}/api/spot/order/detail.stream?token=${token}&accountId=${accountId}`)
                   }, 3000)
                };
