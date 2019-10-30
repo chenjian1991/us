@@ -180,17 +180,9 @@
                             <span><span style="color:#51809F;margin-right:5px;">{{$t('regAlreadyReg')}}</span> <router-link  to='./login'>{{$t('regLogin')}}</router-link></span>
                         </div>
                     </div>
-                       
-
-                       
                     </div>
                     <!-- regiser-container -->
-                  
-                    
-
                 </div>
-
-            
             </div>
             <div v-if="modal2" class="alert dis-n">
                 <div class="title"><i class="iconfont">&#xe604;</i></div>

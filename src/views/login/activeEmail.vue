@@ -14,7 +14,14 @@
                         <router-link to='/login'> {{$t('HomeSignin')}}</router-link>
                     </div>
                 </div>
+                
             </div>
+            <div>
+                <p class="d-flex justify-content-around mt-3">
+                    <a target="_blank" class="text-white" download="../../../public/Terms.docx" href="http://55.tresso/Terms.docx">User Agreement</a>
+                    <a target="_blank" class="text-white" download="../../../public/Privacy.docx" href="http://55.tresso/Privacy.docx">Privacy Policy</a>
+                </p>
+             </div>
             
 
         </div>
