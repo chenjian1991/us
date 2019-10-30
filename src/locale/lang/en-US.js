@@ -337,7 +337,7 @@ export default {
    regTermsOfUse: 'User Agreement',
    dlWelcome: 'Welcome to TRESSO',
    dlLogin: 'Log In',
-   dlForgot: 'Forgot your password ?',
+   dlForgot: 'Forgot your password?',
    dlSignup: 'Sign Up',
    siginAcountPlaceholder: 'Email Address',
    signPasswordPlaceholder: 'Password',
