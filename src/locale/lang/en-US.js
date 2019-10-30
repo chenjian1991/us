@@ -345,7 +345,7 @@ export default {
    signupEmail: 'Sign Up with Email',
    regPhone: 'Sign Up',
    regSend: 'Send',
-   regSignup: 'Sign Up',
+   regSignup: 'Agree and Sign Up',
    regAlreadyReg: 'Already Registered?',
    regLogin: 'Log In',
    registerAnd: 'and',
