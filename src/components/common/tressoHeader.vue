@@ -24,54 +24,32 @@
                   </button>
                   <!-- End Responsive Toggle Button -->
                   <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
+                     <!--left-->
                      <ul class="navbar-nav">
-                        <li
-                           class="nav-item hs-has-mega-menu u-header__nav-item header-box"
-                           data-event="hover"
-                           data-animation-in="slideInUp"
-                           data-animation-out="fadeOut"
-                           data-position="left">
-                           <router-link to='/about' class="nav-link u-header__nav-link"
-                           >ABOUT
-                           </router-link>
+                        <li class="nav-item u-header__nav-item header-box">
+                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
                         </li>
                         <li
-                           class="nav-item hs-has-sub-menu u-header__nav-item header-box"
-                           data-event="hover"
-                           data-animation-in="slideInUp"
-                           data-animation-out="fadeOut">
-                           <a class="nav-link u-header__nav-link" href="#GBBO">
-                              GBBO™
-                           </a>
+                           class="nav-item u-header__nav-item header-box">
+                           <a class="nav-link u-header__nav-link" href="#GBBO">GBBO™</a>
                         </li>
                         <li
-                           class="nav-item hs-has-sub-menu u-header__nav-item header-box"
-                           data-event="hover"
-                           data-animation-in="slideInUp"
-                           data-animation-out="fadeOut">
+                           class="nav-item u-header__nav-item header-box header-box">
                            <router-link to="faqs" class="nav-link u-header__nav-link">
                               FAQ
                            </router-link>
                         </li>
                      </ul>
-                     <ul class="navbar-nav u-header__navbar-nav" v-if="!isLogin">
+                     <!--login-->
+                     <ul class="navbar-nav u-header__navbar-nav" v-if="isLogin">
                         <li
-                           class="nav-item hs-has-sub-menu u-header__nav-item"
-                           data-event="hover"
-                           data-animation-in="slideInUp"
-                           data-animation-out="fadeOut"
-                           data-position="right">
+                           class="nav-item u-header__nav-item header-box">
                            <router-link class="nav-link u-header__nav-link mr-lg-5" to='/login' style="font-size: 14px">
                               Log In
                            </router-link>
                         </li>
                         <li
-                           class="nav-item hs-has-mega-menu u-header__nav-item"
-                           data-event="hover"
-                           data-animation-in="slideInUp"
-                           data-animation-out="fadeOut"
-                           data-max-width="900px"
-                           data-position="right">
+                           class="nav-item u-header__nav-item">
                            <router-link class="btn btn-sm btn-primary transition-3d-hover d-inline-block register-btn"
                                         to='/register'>GET STARTED
                            </router-link>
@@ -79,33 +57,18 @@
                      </ul>
                      <!--account-->
                      <ul class="navbar-nav u-header__navbar-nav" v-else>
-                        <li
-                           class="nav-item hs-has-sub-menu u-header__nav-item header-box"
-                           data-event="hover"
-                           data-animation-in="slideInUp"
-                           data-animation-out="fadeOut"
-                           data-position="right"
-                        >
-                           <router-link
-                              to=''
-                              id="pagesMegaMenu"
-                              class="nav-link u-header__nav-link u-header__nav-link-toggle"
-                              aria-labelledby="pagesSubMenu"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                           >My Account
+                        <li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"
+                            data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">
+                           <router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle"
+                                        to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">
+                              My Account
                            </router-link>
-                           <ul
-                              id="pagesSubMenu"
-                              class="hs-sub-menu u-header__sub-menu"
-                              aria-labelledby="pagesMegaMenu"
-                           >
-                              <li class="hs-has-sub-menu">
-                                 <router-link to=''
-                                              class="nav-link u-header__sub-menu-nav-link"
-                                 >Dashboard
-                                 </router-link>
-                              </li>
+                           <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu">
+                              <!--<li class="hs-has-sub-menu">-->
+                                 <!--<router-link to='' class="nav-link u-header__sub-menu-nav-link">-->
+                                    <!--Dashboard-->
+                                 <!--</router-link>-->
+                              <!--</li>-->
                               <li class="hs-has-sub-menu">
                                  <router-link to='/balances' class="nav-link u-header__sub-menu-nav-link">
                                     Balances
@@ -122,8 +85,9 @@
                                  </router-link>
                               </li>
                               <li class="hs-has-sub-menu">
-                                 <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="verfiy">ID
-                                    verification</a>
+                                 <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="verfiy">
+                                    ID verification
+                                 </a>
                               </li>
                               <li class="hs-has-sub-menu">
                                  <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="quitFun">
@@ -594,7 +558,7 @@
 </script>
 <style lang="less">
    #tressoHeader {
-      .nav-item, .hs-has-mega-menu, .u-header__nav-item {
+      .nav-item, .u-header__nav-item {
          a {
             color: #fff;
             &:hover {
@@ -605,10 +569,6 @@
             }
          }
       }
-      /*.hs-has-sub-menu{*/
-      /*height: 35px;*/
-      /*line-height: 35px;*/
-      /*}*/
       .u-header__sub-menu-nav-link {
          font-size: 14px;
          color: #77838F;
@@ -624,8 +584,18 @@
          border-top: none !important;
          border-radius: 4px;
       }
-      .u-header__navbar-nav{
+      .u-header__navbar-nav {
          background-color: transparent;
+      }
+      .hs-has-sub-menu{
+         a{
+            color: #77838F;
+         }
+      }
+      .router-link-exact-active, .router-link-active {
+         &:visited {
+            color: #01B2D6;
+         }
       }
    }
 </style>
