@@ -27,7 +27,7 @@
                      <!--left-->
                      <ul class="navbar-nav">
                         <li class="nav-item u-header__nav-item header-box">
-                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
+                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT1</router-link>
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box">
