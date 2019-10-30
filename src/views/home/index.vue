@@ -307,7 +307,7 @@
                   name: 'right',
                   img: require('../../assets/images/tresso/tresso3.png'),
                   title: 'Free Trading',
-                  section: 'No transaction fees on trade executions for every user. '
+                  section: 'No transaction or withdrawal fees for every users. And never a subscription fee - always FREE to use.'
                },
             ],
             gbboTM: {
@@ -323,26 +323,6 @@
                   }]
                ]
             },
-            gbboTMList: [
-               {
-                  name: 'left',
-                  img: require('../../assets/images/tresso/tresso1.png'),
-                  title: 'GBBO™ Technology',
-                  section: 'GBBO™ provides best global pricing through smart order routing and matching engine on a global consolidated order book.'
-               },
-               {
-                  name: 'middle',
-                  img: require('../../assets/images/tresso/tresso2.png'),
-                  title: 'Deepest Liquidity Pools',
-                  section: 'Execute unbroken high volume orders via Tresso’s interconnected liquidity pools with the backing of a third party audit system.'
-               },
-               {
-                  name: 'right',
-                  img: require('../../assets/images/tresso/tresso3.png'),
-                  title: 'Free Trading',
-                  section: 'No transaction or withdrawal fees for every users. And never a subscription fee - always FREE to use.'
-               },
-            ],
             connect: {
                title: '2 ways to connect',
                default: false,

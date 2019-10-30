@@ -41,7 +41,7 @@
                         </li>
                      </ul>
                      <!--login-->
-                     <ul class="navbar-nav u-header__navbar-nav" v-if="isLogin">
+                     <ul class="navbar-nav u-header__navbar-nav" v-if="!isLogin">
                         <li
                            class="nav-item u-header__nav-item header-box">
                            <router-link class="nav-link u-header__nav-link mr-lg-5" to='/login' style="font-size: 14px">
