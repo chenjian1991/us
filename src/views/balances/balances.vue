@@ -690,9 +690,9 @@
                   if (v.currency === 'USD') {
                      this.USD = dealNumber(v['available'], 2)
                   }
-                  v['total'] = dealNumber(v['available'] + v['frozen'], precision) //计算总值
                   v['available'] = dealNumber(v['available'], precision)
                   v['frozen'] = dealNumber(v['frozen'], precision)
+                  v['total'] = dealNumber(bigDecimal.add(v['available'], v['frozen']), precision) //计算总值
                   this.mapCurrencyList(v, ['available', 'frozen', 'total'], [v['available'], v['frozen'], v['total']])
                })
                this.balancesList.map(v => {
@@ -1044,7 +1044,6 @@
          this.$store.commit('changeHeaderColor', '#15232C');
          this.currentCurrency = JSON.parse(localStorage.getItem('currentCurrency'))
          this.init()
-
       },
       watch: {
          currencyState: function (newV, oldV) {
