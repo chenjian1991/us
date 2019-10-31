@@ -3,19 +3,19 @@
     <div class="footer-info">
       <div class="footer-info__img">
         <dl class="footer-info__address">
-          <dt class="footer-info__title">{{ whereAbout.title }}</dt>
-          <dd class="footer-info__addressDetail">
-            <p v-for="(val, index) in whereAbout.addressOne" :key="index.toString()">{{ val }}</p>
+          <dt class="footer-info__title" v-once>{{ whereAbout.title }}</dt>
+          <dd class="footer-info__detail">
+            <p v-for="(val, index) in whereAbout.addressOne" :key="index.toString()" v-once>{{ val }}</p>
           </dd>
-          <dd class="footer-info__addressDetail">
-            <p v-for="(val, index) in whereAbout.addressTwo" :key="index.toString()">{{ val }}</p>
+          <dd class="footer-info__detail">
+            <p v-for="(val, index) in whereAbout.addressTwo" :key="index.toString()" v-once>{{ val }}</p>
           </dd>
         </dl>
       </div>
       <div class="footer-info__link">
         <dl class="footer-info__legal">
-          <dt class="footer-info__title">{{ legalTerms.title }}</dt>
-          <dd class="footer-info__items" v-for="(val, index) in legalTerms.content" :key="index.toString()"><a :href="val.link">{{ val.text }}</a></dd>
+          <dt class="footer-info__title" v-once>{{ legalTerms.title }}</dt>
+          <dd class="footer-info__items" v-for="(val, index) in legalTerms.content" :key="index.toString()" v-once><a :href="val.link" v-once>{{ val.text }}</a></dd>
         </dl>
       </div>
       <div class="footer-info__logo"></div>
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       whereAbout: {
-        title: 'WHEREABOUT',
+        title: 'Locations',
         addressOne: ['199 Water Street, Floor 33', 'New York, NY 10038'],
         addressTwo: ['353 Sacramento Street, 8th Floor', 'San Francisco, CA 94111']
       },
@@ -37,13 +37,13 @@ export default {
         content: [
           { 
             text: 'User Agreement',
-            link: ''
+            link: 'https://www.tresso.com/legal/terms'
           }, {
             text: 'Privacy Policy',
-            link: ''
+            link: 'https://www.tresso.com/legal/privacy'
           }, {
-            text: 'Exchange Rules',
-            link: ''
+            text: 'Trading Rules',
+            link: 'https://www.tresso.com/legal/tradingRules'
           }
         ]
       },
@@ -75,8 +75,9 @@ export default {
         color: #fff;
         padding-bottom: 36px;
       }
-      &__addressDetail{
-        // padding-left: 24px;
+      &__detail{
+        padding-left: 24px;
+        background: url('./images/footer_icon_address.png') left 1px no-repeat/12px 16px;
         p{
           font-size: 14px;
           color: #B9C9D6;
