@@ -15,7 +15,7 @@
       <div class="footer-info__link">
         <dl class="footer-info__legal">
           <dt class="footer-info__title" v-once>{{ legalTerms.title }}</dt>
-          <dd class="footer-info__items" v-for="(val, index) in legalTerms.content" :key="index.toString()" v-once><a :href="val.link" v-once>{{ val.text }}</a></dd>
+          <dd class="footer-info__items" v-for="(val, index) in legalTerms.content" :key="index.toString()" v-once><a :href="val.link" target="_blank" v-once>{{ val.text }}</a></dd>
         </dl>
       </div>
       <div class="footer-info__logo"></div>
