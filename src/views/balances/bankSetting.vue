@@ -387,8 +387,15 @@
          },
          getIdentify() { //实名认证
             identifyQuery(Cookies.get('loginToken')).then(res => {
-               localStorage.setItem('bankAccountName', `${res.data.firstName} ${res.data.lastName}`)
-               this.bankAccountName = localStorage.getItem('bankAccountName')
+               console.log(res)
+               let data=res.data
+               if(data){
+                  if(data.dataStatus===3){
+                     const formJson = JSON.parse(data.formJson)
+                     localStorage.setItem('bankAccountName', `${formJson.firstName} ${formJson.lastName}`)
+                     this.bankAccountName = localStorage.getItem('bankAccountName')
+                  }
+               }
             })
          },
          warning(code, params) {
