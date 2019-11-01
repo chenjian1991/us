@@ -31,7 +31,8 @@
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box">
-                           <a class="nav-link u-header__nav-link" href="#GBBO">GBBO™</a>
+                           <a class="nav-link u-header__nav-link" href="/home#GBBO">GBBO™</a>
+                           <!-- <router-link to='/home#GBBO' class="nav-link u-header__nav-link">GBBO™</router-link> -->
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box header-box">
