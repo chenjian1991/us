@@ -429,27 +429,30 @@ Exchange.prototype.createNewOrder = function (orderInfo,userpassword, fn, errorF
    })
 };
 Exchange.prototype.createGBBOOrder = function (orderInfo,userpassword, fn, errorFn) {
-   var _this = this;
-   if(userpassword){
-      _this.userPassWord = userpassword
-   }
-   _this.getAccountId(function (_accountId) {
-      _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
-         _this.getOrderTicket(function (_orderId) {
-            getCreateGBBOOrder({"session": _orderSession}, {
-               "accountId": _accountId,
-               "orderId": _orderId,
-               "orderInfo": orderInfo
-            }).then(
-               data => {
-                  fn(data)
-               }
-            ).catch(data => {
-               errorFn(data)
-            })
-         })
-      })
-   })
+	var _this = this;
+	if(userpassword){
+		_this.userPassWord = userpassword
+	}
+	_this.getAccountId(function (_accountId) {
+		_this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
+				// _this.getOrderTicket(function (_orderId) {
+				const userId = localStorage.getItem('ex55Pin')
+				const fourRandDigit = Math.floor(Math.random() * (999 - 100)) + 100
+				const orderId = `${userId}${new Date().getTime()}${fourRandDigit}`
+				getCreateGBBOOrder({"session": _orderSession}, {
+					"accountId": _accountId,
+					"orderId": orderId,
+					"orderInfo": orderInfo
+				}).then(
+					data => {
+							fn(data)
+					}
+				).catch(data => {
+					errorFn(data)
+				})
+				// })
+		})
+	})
 };
 
 Exchange.prototype.cancelOrder = function (orderId,userpassword, fn) {

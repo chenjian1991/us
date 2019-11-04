@@ -102,10 +102,10 @@
                      aria-labelledby="basicsHeadingTwo"
                      data-parent="#basicsAccordion">
                   <div class="card-body">
-                    KYC/AML is know your customer and anti-money laundering identity verification that all users must pass to be able to perform any transacting functions on 55.trade or 55.com. 
+                    KYC/AML is know your customer and anti-money laundering identity verification that all users must pass to be able to perform any transacting functions on tresso.com or TRESSO. 
                     KYC/AML identity verification is required for all users to operate within US compliance.
                     Users are required to provide images of a valid government identification of themselves including the front and back of the identification document as well as a picture of themselves / the user holding their identification with additional requirements.
-                    To complete KYC/AML verification, visit <router-link to='/kyc'>55.trade/kyc</router-link> 
+                    To complete KYC/AML verification, visit <router-link to='/kyc'>tresso.com/kyc</router-link> 
                   </div>
                 </div>
                 </div>       
@@ -120,7 +120,7 @@
                             data-target="#basicsCollapseThree"
                             aria-expanded="false"
                             aria-controls="basicsCollapseThree">
-                            How do I contact 55 TRADE?
+                            How do I contact TRESSO?
 
                       <span class="card-btn-arrow">
                         <span class="fas fa-arrow-down small"></span>
@@ -132,19 +132,19 @@
                      aria-labelledby="basicsHeadingThree"
                      data-parent="#basicsAccordion">
                   <div class="card-body">
-                    Please review this FAQ for answers. If you are unable to resolve your issue through the FAQ, please contact the 55 Trade team directly at the channels listed below:
+                    Please review this FAQ for answers. If you are unable to resolve your issue through the FAQ, please contact the TRESSO team directly at the channels listed below:
                       <ul class='pl-3 mt-3'>
                         <li>
-                          For general inquiries: <a class='text-primary' href='mailto:team@55.trade'>team@55.trade</a>
+                          For general inquiries: <a class='text-primary' href='mailto:team@tresso.com'>team@tresso.com</a>
                         </li>
                         <li>
-                          For business and partnership inquiries:<a class='text-primary' href='mailto:partners@55.trade'>partners@55.trade</a> 
+                          For business and partnership inquiries:<a class='text-primary' href='mailto:partners@tresso.com'>partners@tresso.com</a> 
                         </li>
                          <li>
-	                        For press inquiries:<a class='text-primary' href='mailto:media@55.trade'>media@55.trade</a> 
+	                        For press inquiries:<a class='text-primary' href='mailto:media@tresso.com'>media@tresso.com</a> 
                         </li>
                         <li>
-                         We're also on Telegram with the following channels: <a class='text-primary' href="https://t.me/English_55GlobalMarkets">Official 55.trade Telegram.</a> 
+                         We're also on Telegram with the following channels: <a class='text-primary' href="https://t.me/English_55GlobalMarkets">Official tresso.com Telegram.</a> 
                         </li>
                         
                       </ul>
@@ -199,7 +199,7 @@
                             data-target="#syncingCollapseOne"
                             aria-expanded="false"
                             aria-controls="syncingCollapseOne">
-                            My state is not currently eligible for account creation on 55 TRADE. When will my state be able to use 55 TRADE?
+                            My state is not currently eligible for account creation on tresso.com. When will my state be able to use tresso.com?
                       <span class="card-btn-arrow">
                         <span class="fas fa-arrow-down small"></span>
                       </span>
@@ -237,7 +237,7 @@
                      data-parent="#syncingAccordion">
                   <div class="card-body">
                     Check your spam and junk mail accordingly. If you still require assistance, <router-link class='text-primary' to='/contactus'>contact us.</router-link>
-                    If a verification email is not received after creating an account, please contact 55 Live Chat Support for immediate assistance. The issue will be immediately escalated to our technology team to resolve.
+                    If a verification email is not received after creating an account, please contact tresso.com Live Chat Support for immediate assistance. The issue will be immediately escalated to our technology team to resolve.
                   </div>
                 </div>
               </div>
@@ -306,7 +306,7 @@
                         The SMS code error and not receiving the verification code may be caused by network congestion. Please wait and try again. If you continue to experience this SMS code issue, please follow these steps:
                               <ul class='pl-3 mt-3 mb-3'>
                         <li>
-                            1.)	Please make sure your location is on the list of SMS supported areas for the 55 Exchange.
+                            1.)	Please make sure your location is on the list of SMS supported areas for the tresso.com Exchange.
                         </li>
                         <li>
                           2.)	Please make sure the signal of your cellphone is stable; move to a location with good signal coverage
@@ -318,9 +318,9 @@
                         4.)	Reboot your cell phone
                         </li>
                       </ul>
-                        If you still cannot receive the SMS verification code after restarting cell phone, please contact 55 with your mobile phone model, the mobile system category (IOS, Android, etc.), country, location, and we will contact SMS suppliers as soon as possible.
+                        If you still cannot receive the SMS verification code after restarting cell phone, please contact tresso.com with your mobile phone model, the mobile system category (IOS, Android, etc.), country, location, and we will contact SMS suppliers as soon as possible.
                         
-                        55 Customer Support will then reset your Google Authenticator once your selfie photo has been reviewed, verified, and approved.
+                        tresso.com Customer Support will then reset your Google Authenticator once your selfie photo has been reviewed, verified, and approved.
                       </div>
                 </div>
               </div>
@@ -372,7 +372,7 @@
                          aria-labelledby="accountHeadingFour"
                          data-parent="#accountAccordion">
                       <div class="card-body">
-                            55 will never ask for your account password. Do not give your password to anyone claiming to be from 55 Customer Support. Do not pickup nor call any phone number from someone claiming to be from 55 Customer Support. Do not send money to any individual claiming to be from 55 Customer Support. 
+                            TRESSO will never ask for your account password. Do not give your password to anyone claiming to be from TRESSO Customer Support. Do not pickup nor call any phone number from someone claiming to be from TRESSO Customer Support. Do not send money to any individual claiming to be from TRESSO Customer Support. 
                             As an additional security layer, please enable Google 2FA Authentication. 
                           </div>
                         </div>

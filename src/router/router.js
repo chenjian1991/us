@@ -6,9 +6,14 @@ import store from '../store/index'
 import {getCreateAccount} from '_api/exchange.js'
 import {clearLocalStorage} from '@/config'
 
+// const index = () => import(/* webpackChunkName: "home" */ '../views/home/index.vue')
+// import USHOME from "../views/home/index.vue";
+const USHOME = () => import(/* webpackChunkName: 'home' */'../views/home/index.vue')
+
 const HomePageMain = () => import(/* webpackChunkName: "home" */ '../views/home/Home.vue')
 const ExchangeGBBO = () => import(/* webpackChunkName: "exchangeGBBO" */ '../views/exchangeGBBO/Exchange.vue')
-const ExchangeMain = () => import(/* webpackChunkName: "exchange" */ '../views/exchange/Exchange.vue')
+// const ExchangeMain = () => import(/* webpackChunkName: "exchange" */ '../views/exchange/Exchange.vue')
+const ExchangeMain = () => import(/* webpackChunkName: "exchangeGBBO" */ '../views/exchangeGBBO/Exchange.vue')
 import download from "../views/download/download.vue";
 // import Login from '../views/login/Login.vue';
 // import Register from '../views/login/register.vue';
@@ -17,11 +22,6 @@ const Register = () => import(/* webpackChunkName: "register" */ '../views/login
 const About = () => import(/* webpackChunkName: "about" */ '../views/about/About.vue')
 const Captial = () => import(/* webpackChunkName: "about" */ '../views/captial/Captial.vue')
 
-
-import buyMining from '../views/mining/buyMining.vue';
-import lockWarehouseMining from '../views/mining/lockWarehouseMining.vue';
-import superMiner from '../views/mining/superMiner.vue';
-import reliefFee from '../views/mining/reliefFee.vue';
 
 import Google from '../views/login/google.vue';
 import Forgot from '../views/forgotPassword/forgot.vue';
@@ -44,6 +44,7 @@ import newtradePassword from "../views/resetTradePasswrod/newtradePassword.vue"
 import verfifyEmail from "../views/login/verifyEmail.vue";
 import activeEmail from "../views/login/activeEmail.vue";
 import terms from "../views/legal/terms.vue";
+import legal from "../views/legal/legal.vue";
 import tradingRules from "../views/legal/TradingRules.vue";
 import privacy from "../views/legal/privice.vue";
 import fee from "../views/legal/fee.vue";
@@ -55,7 +56,7 @@ import identiy from "../views/identity/identity.vue"
 import identityResult from "../views/identity/identityResult.vue"
 import Invite from "../views/invite/Invite.vue"
 import Test from "../views/TestUtil/Test";
-import USHOME from "../views/home/us/USHOME";
+// import USHOME from "../views/home/us/USHOME";
 
 // const Test = () => import(/* webpackChunkName: 'ImportFuncDemo' */ '../views/TestUtil/Test') 
 //韩国挖矿活动
@@ -117,6 +118,7 @@ const faqs = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle
 const ourcompany = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/ourcompany.vue')
 const team = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/TheTeam.vue')
 const contactus = () => import(/* webpackChunkName: "chome" */ '../views/headerToggle/contactus.vue')
+const about = () => import(/* webpackChunkName: "about" */ '../views/about/about_new.vue')
 
 
 
@@ -230,6 +232,14 @@ const router = new Router({
          redirect: '/home',
          component: Layout,
          children: [
+            // {
+            //    path: '/index',
+            //    name: 'index',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: index
+            // },
             {
                path: '/exchangeGBBO',
                name: 'exchangeGBBO',
@@ -296,7 +306,7 @@ const router = new Router({
                path: 'faqs',
                name: 'faqs',
                meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
+                  title: 'FAQ'
                },
                component: faqs,
             },
@@ -523,47 +533,57 @@ const router = new Router({
                },
                component: verfifyEmail
             },
-            {//terms
-               path: 'terms',
-               name: 'terms',
+            {//legal
+               path: 'legal',
+               name: 'legal',
                meta: {
                   title: 'HomeTitle'
                },
-               component: terms
-            },
-            {//tradingRules
-               path: 'tradingRules',
-               name: 'tradingRules',
-               meta: {
-                  title: ''
-               },
-               component: tradingRules
+               component: legal,
+               children:[
+                  {//terms
+                     path: 'terms',
+                     name: 'terms',
+                     meta: {
+                        title: 'HomeTitle'
+                     },
+                     component: terms
+                  },
+                  {//privacy
+                     path: 'privacy',
+                     name: 'privacy',
+                     meta: {
+                        title: 'privacy'
+                     },
+                     component: privacy
+                  },
+                  {//disclaimer
+                     path: 'disclaimer',
+                     name: 'disclaimer',
+                     meta: {
+                        title: 'HomeTitle'
+                     },
+                     component: disclaimer
+                  },
+                  {//fee
+                     path: 'fee',
+                     name: 'fee',
+                     meta: {
+                        title: 'HomeTitle'
+                     },
+                     component: fee
+                  },
+                  {//tradingRules
+                     path: 'tradingRules',
+                     name: 'tradingRules',
+                     meta: {
+                        title: ''
+                     },
+                     component: tradingRules
+                  },
+               ]
             },
 
-            {//privacy
-               path: 'privacy',
-               name: 'privacy',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: privacy
-            },
-            {//fee
-               path: 'fee',
-               name: 'fee',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: fee
-            },
-            {//disclaimer
-               path: 'disclaimer',
-               name: 'disclaimer',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: disclaimer
-            },
             {//amlKyc
                path: 'amlKyc',
                name: 'amlKyc',
@@ -596,31 +616,6 @@ const router = new Router({
                },
                component: aml
             },
-            //挖矿
-            // {
-            //    path: 'buyMining',
-            //    name: 'buyMining',
-            //    meta: {
-            //       title: 'HeaderBuying'
-            //    },
-            //    component: buyMining
-            // },
-            // {
-            //    path: 'lockWarehouseMining',
-            //    name: 'lockWarehouseMining',
-            //    meta: {
-            //       title: 'HeaderLocking'
-            //    },
-            //    component: lockWarehouseMining
-            // },
-            // {
-            //    path: 'superMiner',
-            //    name: 'superMiner',
-            //    meta: {
-            //       title: 'HeaderSuperMiner'
-            //    },
-            //    component: superMiner
-            // },
             {
                path: 'about55',
                name: 'about55',
@@ -872,8 +867,14 @@ const router = new Router({
                },
                component: interFinanceThree
             },
-
-
+            {//about
+               path: 'about',
+               name: 'about',
+               meta: {
+                  title: 'about',
+               },
+               component: about
+            },
          ]
       },
       {

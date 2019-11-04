@@ -133,7 +133,7 @@
       onlyInputNumAndPoint, parseUrl
    } from '@/lib/utils.js'
    import {
-      getIdentify, queryUserInfo,
+      identifyQuery, queryUserInfo,
    } from '_api/balances.js'
 
    export default {
@@ -386,12 +386,17 @@
             this.swiftCode = ''
          },
          getIdentify() { //实名认证
-            if (!this.bankAccountName) {
-               getIdentify(Cookies.get('loginToken')).then(res => {
-                  localStorage.setItem('bankAccountName', `${res.data.firstName} ${res.data.lastName}`)
-                  this.bankAccountName = localStorage.getItem('bankAccountName')
-               })
-            }
+            identifyQuery(Cookies.get('loginToken')).then(res => {
+               console.log(res)
+               let data=res.data
+               if(data){
+                  if(data.dataStatus===3){
+                     const formJson = JSON.parse(data.formJson)
+                     localStorage.setItem('bankAccountName', `${formJson.firstName} ${formJson.lastName}`)
+                     this.bankAccountName = localStorage.getItem('bankAccountName')
+                  }
+               }
+            })
          },
          warning(code, params) {
             params = params || ''

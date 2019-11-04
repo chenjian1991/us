@@ -1,48 +1,29 @@
 <template>
-    <div class="aboutBox" style="font-family: 'helvetica','Microsoft YaHei','PingFang SC';">
+    <div style="font-family: 'helvetica','Microsoft YaHei','PingFang SC';">
         <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 mb-3">
-                    <ul>
-                        <li>
-                            <router-link  to='/terms'> · User Agreement</router-link>
-                        </li>
-                        <li >
-                            <router-link to='/privacy'> · Privacy Policy</router-link>
-                        </li>
-                        <li>
-                            <router-link to='/disclaimer'> · Disclaimer</router-link>
-                        </li>
-                        <li>
-                            <router-link to='/fee'> · Fee Schedule</router-link>
-                        </li>
-                        <li>
-                            <router-link  class="active" to='/tradingrules'> · Trading Rules</router-link>
-                        </li>
-                    </ul>
-            </div>
             <div class="panel-body paddong_30_left col-lg-10 col-md-9 col-sm-12 col-xs-12">
             
                 <div class="WordSection1" style='layout-grid:15.6pt'>
 
                 <p class=MsoNormal><b><span lang=EN-US style='font-size:11.0pt;mso-bidi-font-size:
-                14.0pt'>55 TRADE Trading Rules</span></b></p>
+                14.0pt'>Tresso TRADE Trading Rules</span></b></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>
 
                 <p class=MsoNormal><span lang=EN-US>The following set of Trading Rules governs
-                orders placed by Traders on the 55 TRADE at 55.trade operated by
-                55 Asset Network Inc. (“55”). Capitalized terms not defined herein shall have
-                the meanings ascribed to them in the 55 TRADE User Agreement</span></p>
+                orders placed by Traders on the TRESSO at tresso.com operated by
+                Tresso Asset Network Inc. (“Tresso”). Capitalized terms not defined herein shall have
+                the meanings ascribed to them in the Tresso TRADE User Agreement</span></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>
 
                 <p class=MsoNormal><b><span lang=EN-US style='font-size:11.0pt;mso-bidi-font-size:
                 14.0pt'>1.<span style='mso-tab-count:1'>    </span>Trading </span></b></p>
 
-                <p class=MsoNormal><span lang=EN-US>1.1.<span style='mso-tab-count:1'>  </span>55
+                <p class=MsoNormal><span lang=EN-US>1.1.<span style='mso-tab-count:1'>  </span>Tresso
                 operates a central limit order book trading platform and settles trades in a
-                number of Digital Asset Pairs. Each Trader’s 55 Account will list which Digital
+                number of Digital Asset Pairs. Each Trader’s Tresso Account will list which Digital
                 Asset Pairs are available to the Trader.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>
@@ -51,7 +32,7 @@
 
                 <p class=MsoNormal><span lang=EN-US>1.2.1.<span style='mso-tab-count:1'>      </span>To
                 place an Order on an Order Book, a Trader must have an Available Balance of the
-                relevant Digital Asset or Fiat Currencies in their 55 Account which is
+                relevant Digital Asset or Fiat Currencies in their Tresso Account which is
                 sufficient to cover the total value of the Order plus any applicable fees.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>1.2.2.<span style='mso-tab-count:1'>      </span>When
@@ -94,7 +75,7 @@
                 <p class=MsoNormal><span lang=EN-US>1.4.1.<span style='mso-tab-count:1'>      </span>All
                 Orders placed on the Marketplace are subject to the following minimum and
                 maximum order requirements. In addition, traders may not place any Orders
-                greater than the value of the applicable Digital Assets held in their 55
+                greater than the value of the applicable Digital Assets held in their Tresso
                 Account.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>
@@ -1438,7 +1419,7 @@
 
                 <p class=MsoNormal><span lang=EN-US></span></p>
 
-                <p class=MsoNormal><span lang=EN-US>1.4.2.<span style='mso-tab-count:1'>      </span>55
+                <p class=MsoNormal><span lang=EN-US>1.4.2.<span style='mso-tab-count:1'>      </span>Tresso
                 will periodically update these Order Minimums and Order Maximums to reflect the
                 current state of our marketplace and the notional value of the assets.</span></p>
 
@@ -1455,7 +1436,7 @@
                 14.0pt'>2.<span style='mso-tab-count:1'>    </span>Matching Engine and Order
                 Priority</span></b></p>
 
-                <p class=MsoNormal><span lang=EN-US>2.1.<span style='mso-tab-count:1'>  </span>55
+                <p class=MsoNormal><span lang=EN-US>2.1.<span style='mso-tab-count:1'>  </span>Tresso
                 matches Taker Orders with Open Maker Orders on each Order Book based on
                 Price-Time Priority.</span></p>
 
@@ -1478,21 +1459,21 @@
                 a Maker Order is matched with a Taker Order, those Orders are Filled. An Order
                 may be matched with and Filled by one or more Orders at the same price.</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>2.3.2.<span style='mso-tab-count:1'>      </span>55
+                <p class=MsoNormal><span lang=EN-US>2.3.2.<span style='mso-tab-count:1'>      </span>Tresso
                 settles all Filled Orders immediately, by debiting and crediting the relevant
-                balances of Digital Assets in both Traders’ 55 Accounts.</span></p>
+                balances of Digital Assets in both Traders’ Tresso Accounts.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>
 
                 <p class=MsoNormal><b><span lang=EN-US style='font-size:11.0pt;mso-bidi-font-size:
                 14.0pt'>3.<span style='mso-tab-count:1'>    </span>Trading Fee</span></b></p>
 
-                <p class=MsoNormal><span lang=EN-US>3.1.<span style='mso-tab-count:1'>  </span>55
+                <p class=MsoNormal><span lang=EN-US>3.1.<span style='mso-tab-count:1'>  </span>Tresso
                 charges a fee for each Taker Order and Maker Order that is posted to the Order
                 Book. The fee is calculated as a percentage of the Order. </span></p>
 
                 <p class=MsoNormal><span lang=EN-US>3.2.<span style='mso-tab-count:1'>  </span>The
-                current fee rates can be found at https://www.55.com/fee. </span></p>
+                current fee rates can be found at https://www.Tresso.com/fee. </span></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>
 
@@ -1502,15 +1483,15 @@
                 <p class=MsoNormal><span lang=EN-US>4.1.<span style='mso-tab-count:1'>  </span>All
                 Fills are final and will not be reversed unless:</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>55
+                <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>Tresso
                 is compelled to do so by any applicable law or regulation; or</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>Due
                 to a serious technical error, Orders or Fills do not occur as specified in
-                these Rules - in which case 55 will make all reasonable efforts to restore all
+                these Rules - in which case Tresso will make all reasonable efforts to restore all
                 Traders to the position they would have been in had the error not occurred.</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>4.2.<span style='mso-tab-count:1'>  </span>55
+                <p class=MsoNormal><span lang=EN-US>4.2.<span style='mso-tab-count:1'>  </span>Tresso
                 may cancel Open Orders in the following circumstances:</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>Orders
@@ -1523,8 +1504,8 @@
                 quantity, or other parameters - a ‘clearly erroneous transaction’.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>If
-                required by any applicable law or regulation, including specifically where 55
-                is required to suspend or terminate a Trader’s 55 Account.</span></p>
+                required by any applicable law or regulation, including specifically where Tresso
+                is required to suspend or terminate a Trader’s Tresso Account.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>If
                 required for technical reasons.</span></p>
@@ -1533,8 +1514,8 @@
 
                 <p class=MsoNormal><span lang=EN-US>If technical reasons prevent or degrade
                 Traders’ ability to place or cancel Orders, or prevent or degrade access to the
-                55 Sites or affect the operation of the Marketplace or matching engines, then
-                55 may, in its discretion, take one or more of the following actions in respect
+                Tresso Sites or affect the operation of the Marketplace or matching engines, then
+                Tresso may, in its discretion, take one or more of the following actions in respect
                 of one or more Order Books;</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>Temporarily
@@ -1558,15 +1539,15 @@
                 <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>Disable
                 access to the mobile application.</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>55 will notify all Traders of any such
-                interruptions on the 55 Sites. </span></p>
+                <p class=MsoNormal><span lang=EN-US>Tresso will notify all Traders of any such
+                interruptions on the Tresso Sites. </span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.4.<span style='mso-tab-count:1'>  </span>Trading
                 Halts</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>4.4.1.<span style='mso-tab-count:1'>      </span>55
+                <p class=MsoNormal><span lang=EN-US>4.4.1.<span style='mso-tab-count:1'>      </span>Tresso
                 does not use circuit breakers or automated trading halts based on predetermined
-                price bands. As provided herein, 55 may, in its discretion, halt trading.</span></p>
+                price bands. As provided herein, Tresso may, in its discretion, halt trading.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.5.<span style='mso-tab-count:1'>  </span>Market
                 Manipulation Prohibited</span></p>
@@ -1594,49 +1575,49 @@
 
                 <p class=MsoNormal><span lang=EN-US>4.6.<span style='mso-tab-count:1'>  </span>All
                 Traders have full and equal real-time access to Market Data. Market Data is
-                made available through the 55 Sites.</span></p>
+                made available through the Tresso Sites.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.7.<span style='mso-tab-count:1'>  </span>Delisting</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.7.1.<span style='mso-tab-count:1'>      </span>The
-                Listing Agreement authorizes 55 to halt and authorizes 55 to suspend trading in
+                Listing Agreement authorizes Tresso to halt and authorizes Tresso to suspend trading in
                 a listed Digital Asset without notice and at any time or to delist Digital
-                Assets if 55 or a regulatory body, as the case may be, believes it is in the
+                Assets if Tresso or a regulatory body, as the case may be, believes it is in the
                 public interest or is required by law or regulation. Where no Listing Agreement
-                has been entered into, 55 reserves the right to halt or suspend trading in, or delist,
+                has been entered into, Tresso reserves the right to halt or suspend trading in, or delist,
                 any Digital Assets.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.8.<span style='mso-tab-count:1'>  </span>Corporate
                 Operations</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>4.8.1.<span style='mso-tab-count:1'>      </span>55
+                <p class=MsoNormal><span lang=EN-US>4.8.1.<span style='mso-tab-count:1'>      </span>Tresso
                 also trades its reserves on the Marketplace.</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>4.8.2.<span style='mso-tab-count:1'>      </span>55
+                <p class=MsoNormal><span lang=EN-US>4.8.2.<span style='mso-tab-count:1'>      </span>Tresso
                 does not have any special priority and is subject to the same
                 Price/Time/Priority and fee structure as all other Traders.</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>4.8.3.<span style='mso-tab-count:1'>      </span>55
+                <p class=MsoNormal><span lang=EN-US>4.8.3.<span style='mso-tab-count:1'>      </span>Tresso
                 only trades based on Market Data and does not have access to inside
                 information. It does not engage in any front-running.</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>4.9.<span style='mso-tab-count:1'>  </span>55
-                policies prohibit all 55 employees from using inside, corporate or proprietary
+                <p class=MsoNormal><span lang=EN-US>4.9.<span style='mso-tab-count:1'>  </span>Tresso
+                policies prohibit all Tresso employees from using inside, corporate or proprietary
                 information to trade Digital Assets.</span><span style='font-family:"MS Mincho";
                 mso-bidi-font-family:"MS Mincho"'> </span><span lang=EN-US></span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.10.<span style='mso-tab-count:1'>       </span>Scheduled
                 Service Suspension</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>4.10.1.<span style='mso-tab-count:1'>    </span>55
+                <p class=MsoNormal><span lang=EN-US>4.10.1.<span style='mso-tab-count:1'>    </span>Tresso
                 may, from time to time and with at least 24 hours’ prior notice on the Site,
-                suspend the 55 Services (“Service Suspensions”) to accommodate, among other
+                suspend the Tresso Services (“Service Suspensions”) to accommodate, among other
                 things, Digital Asset network launches, protocol upgrades, launch of new Digital
                 Asset pairs, blockchain forks, and general platform upgrades and maintenances. </span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.10.2.<span style='mso-tab-count:1'>    </span>During
                 Service Suspensions, the Marketplace will freeze all Orders of the affected
-                Digital Asset Pairs and all Orders will generally resume trading thereafter. 55
+                Digital Asset Pairs and all Orders will generally resume trading thereafter. Tresso
                 may also in its sole and absolute discretion cancel or remove none or all
                 resting Orders of the affected Digital Asset Pairs upon the onset of a Services
                 Suspension.</span></p>
@@ -1644,24 +1625,24 @@
                 <p class=MsoNormal><span lang=EN-US>4.10.3.<span style='mso-tab-count:1'>    </span>During
                 Service Suspensions, Subscribers will not be able to initiate withdrawal
                 requests or initial Orders and are generally advised against initiating funding
-                transactions. 55 may not honor funding transactions initiated by Traders during
+                transactions. Tresso may not honor funding transactions initiated by Traders during
                 Services Suspensions.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.11.<span style='mso-tab-count:1'>       </span>Unscheduled
                 Service Suspension</span></p>
 
-                <p class=MsoNormal><span lang=EN-US>4.11.1.<span style='mso-tab-count:1'>    </span>55
-                may, from time to time and without prior notice, suspend 55 Services
+                <p class=MsoNormal><span lang=EN-US>4.11.1.<span style='mso-tab-count:1'>    </span>Tresso
+                may, from time to time and without prior notice, suspend Tresso Services
                 (“Unscheduled Service Suspensions”) due to unforeseen events or circumstances.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US>4.11.2.<span style='mso-tab-count:1'>    </span>During
                 Unscheduled Service Suspensions, Traders may not be able to access any or all
                 functionalities of the Marketplace and are generally advised against initiating
-                funding transactions. 55 may not honor funding transactions initiated by
+                funding transactions. Tresso may not honor funding transactions initiated by
                 Traders during Unscheduled Service Suspensions. All Orders of the affected
                 Digital Asset will be frozen and trading will generally resume thereafter. In
                 addition, during an Unscheduled Service Suspension, the Marketplace may reject
-                all Orders of some or all Digital Asset Pairs, and 55 may cancel or remove none
+                all Orders of some or all Digital Asset Pairs, and Tresso may cancel or remove none
                 or all resting Orders of some or all Digital Asset Pairs.</span></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>
@@ -1740,7 +1721,7 @@
                 trading. </span></p>
 
                 <p class=MsoNormal><span lang=EN-US>•<span style='mso-tab-count:1'>      </span>Listing
-                Agreement means the listing agreement between 55 and a Digital Assets issuing
+                Agreement means the listing agreement between Tresso and a Digital Assets issuing
                 entity. </span></p>
 
                 <p class=MsoNormal><span lang=EN-US></span></p>

@@ -143,7 +143,7 @@
                 
                 </a>
                 <!-- target="_blank" href="https://www.55.com/MSB.pdf"https://www.55.trade/MSB.pdf -->
-                <p class="small text-white"><a style="color:#fff;" target="_blank" href="http://55.trade/msb_registration.pdf">MSB No. 31000151244818</a></p>
+                <p class="small text-white"><a style="color:#fff;" target="_blank" href="http://55.tresso/msb_registration.pdf">MSB No. 31000151244818</a></p>
                 <p class="small text-white">2500 Plaza 5, Unit 2553, Jersey City, NJ 07311</p>
                 <p class="small text-white">&copy; 2017-2019 55.trade All rights reserved.</p>
                 <div class="col-lg-6 text-lg-right" style="max-width:100%">
