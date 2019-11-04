@@ -11,12 +11,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 import {scientificToNumber} from '@/lib/utils.js';
 import MetaInfo from 'vue-meta-info';
 import VueClipboard from 'vue-clipboard2'//剪切板
-// import '../public/assets/css/theme.css';
-// front 框架;
-// import "../public/assets/vendor/bootstrap/bootstrap.css"
-// import "../public/assets/css/front.css";
+import VueLazyload from 'vue-lazyload'
 
-//import 'babel-polyfill';
 
 Vue.config.productionTip = false
 Vue.use(iView)
@@ -24,9 +20,9 @@ Vue.use(iView)
 Vue.use(VueAwesomeSwiper)
 Vue.use(MetaInfo)
 Vue.use(VueClipboard)
-// this.$Notice.config({
-//   duration: 3
-// });
+Vue.use(VueLazyload)
+
+
 Vue.filter('scientificToNumber', function (value) {
   if (!value) return '--'
   return scientificToNumber(value)

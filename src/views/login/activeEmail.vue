@@ -2,7 +2,7 @@
     <div id="activeEmail" class="root">
         <div class="wrapper">
             <div class="title">
-                <img src="../../assets/images/footer/foot-logo.svg" alt="">
+                <img src="../../assets/images/footer/foot-logo.png" alt="">
             </div>
             <div class="mail-box">
                 <div class="content">
@@ -14,7 +14,14 @@
                         <router-link to='/login'> {{$t('HomeSignin')}}</router-link>
                     </div>
                 </div>
+                
             </div>
+            <div>
+                <p class="d-flex justify-content-around mt-3">
+                    <a target="_blank" class="text-white" download="../../../public/Terms.docx" href="https://www.tresso.com/Terms.docx">User Agreement</a>
+                    <a target="_blank" class="text-white" download="../../../public/Privacy.docx" href="https://www.tresso.com/Privacy.docx">Privacy Policy</a>
+                </p>
+             </div>
             
 
         </div>

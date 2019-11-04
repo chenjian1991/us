@@ -15,8 +15,7 @@ const resolve = dir => {
 const BASE_URL = '/'
 
 const targetUrl='http://www.dev_test_uat.55.exchange/' // 测试本地环境
-// const targetUrl='https://us.55ex.co/' //生产
-// const targetUrl='https://www.55.trade/' //生产
+// const targetUrl ='https://www.tresso.com/' //生产
 
 module.exports = {
    transpileDependencies: [
@@ -45,14 +44,17 @@ module.exports = {
       //   .add('babel-polyfill')
       // .set('vue','vue/dist/vue.js')
    },
-   // configureWebpack: {
-   //    plugins: [
-   //       new webpack.ProvidePlugin({
-   //          jQuery: 'jquery',
-   //          $: 'jquery'
-   //       })
-   //    ]
-   // },
+   configureWebpack: config => {
+      if (process.env.NODE_ENV === 'development'){
+         config.devtool = 'source-map'
+      }
+      // plugins: [
+      //    new webpack.ProvidePlugin({
+      //       jQuery: 'jquery',
+      //       $: 'jquery'
+      //    })
+      // ]
+   },
    // 生产环境是否生成 sourceMap 文件
    productionSourceMap: false,
    // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码。这个值会在 @vue/cli-plugin-eslint 被安装之后生效。

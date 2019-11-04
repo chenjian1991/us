@@ -6,16 +6,9 @@
                <div id="logoAndNav" class="container-fluid">
                   <!-- Nav -->
                   <nav class="navbar navbar-expand u-header__navbar pt-2">
-                     <!--<a class="d-none d-lg-flex navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-text-white"-->
-                     <!--href="../home" aria-label="Front">-->
-                     <!--<img class="d-none d-lg-inline-block" src="../../assets/images/kyc/logo-white-footer.svg"-->
-                     <!--alt="Logo" style="width: 50px;">-->
-                     <!--</a>-->
                      <a class="d-flex d-lg-none navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-collapsed"
                         href="../home" aria-label="Front">
-                        <!--<img class="d-inline-block d-lg-none" src="../../assets/images/kyc/logo1@x2.56dbba9c.png"-->
-                        <!--alt="Logo" style="width: 140px;">-->
-                        <img class="d-inline-block d-lg-none" src="../../assets/images/kyc/kych5.png"
+                        <img class="d-inline-block d-lg-none" src="../../assets/images/kyc/kycLogo.png"
                              alt="Logo" style="width: 140px;">
                      </a>
                      <div class="ml-auto">
@@ -30,7 +23,7 @@
             <div class="w-100">
                <div class="w-md-80 w-lg-60 text-left mx-auto">
                   <div class="text-center mb-7">
-                     <img src="../../assets/images/kyc/kyc.png">
+                     <img src="../../assets/images/kyc/kycLogo.png">
                   </div>
                   <blockquote class="h6 text-white font-weight-normal mb-4">
                      {{$t('newK1lefttext1')}}
@@ -46,8 +39,6 @@
                         <img class="u-clients" src="../../assets/images/kyc/idm.png" alt="Image Description">
                      </div>
                   </div>
-                  <img src="../../assets/images/kyc/kyc1.png" class="mt-7">
-
                </div>
             </div>
          </div>

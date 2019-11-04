@@ -13,10 +13,13 @@
             <div  class="register_wraper">
                 <div v-clickoutside="handleClose" class="inner_input">
                     <div class="register-title">
-                        <ul>    
+                        Sign Up
+                        <!-- {{$t('signupEmail')}} -->
+                        <!-- <h3>{{$t('signupEmail')}}</h3> -->
+                        <!-- <ul>    
                             <li @click="emailTab" :class="{register_on:shows==2}">{{$t('signupEmail')}}</li>
                             <li @click="phoneTab" :class="{register_on:shows==1}">{{$t('signupPhone')}}</li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="register-container">
                         <div  class="phone">
@@ -94,16 +97,16 @@
                                     <img src="../../assets/images/register/password.svg" alt="">
                                     <Input type="password" v-model="formValidate.confrimPassword" :placeholder="$t('confirmPasswordPlacehodler')"></Input>
                                 </FormItem>
-                                <FormItem class="form_item" prop='referrId'>
+                                <!-- <FormItem class="form_item" prop='referrId'>
                                     <img style="width:16px;height:20px;" src="../../assets/images/register/Referral_ID.svg" alt="">
                                     <Input :disabled='referrDisable' v-model="formValidate.referrId" :placeholder="$t('referridPlacehodler')"></Input>
-                                </FormItem>
+                                </FormItem> -->
                                 <FormItem prop="interest">
                                     <CheckboxGroup v-model="formValidate.interest">
                                         <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}}</span>
-                                        <router-link target="_blank" class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
+                                        <router-link target="_blank" class="termsurl" to="/legal/terms">{{$t('regTermsOfUse')}}</router-link>
                                            <span style="color:#51809F;padding:0 10px;">{{$t('registerAnd')}}</span>
-                                        <router-link target="_blank" class="termsurl" to="/privacy">{{$t('隐私条款')}}</router-link>
+                                        <router-link target="_blank" class="termsurl" to="/legal/privacy">{{$t('隐私条款')}}</router-link>
                                         </Checkbox>
                                     </CheckboxGroup>
                                 </FormItem>
@@ -158,14 +161,14 @@
                                 </FormItem>
                                 <FormItem class="form_item" prop='referrId'>
                                     <img style="width:16px;height:20px;" src="../../assets/images/register/Referral_ID.svg" alt="">
-                                    <Input  :disabled='referrDisable' v-model="formValidate.referrId" :placeholder="$t('referridPlacehodler')"></Input>
+                                    <Input type="text" :disabled='referrDisable' v-model="formValidate.referrId" :placeholder="$t('referridPlacehodler')"></Input>
                                 </FormItem>
                                 <FormItem prop="interest">
                                     <CheckboxGroup v-model="formValidate.interest">
                                         <Checkbox label='ddd'><span style="color:#51809F;" class="agree_tip">{{$t('regAgree')}} </span>
-                                        <router-link target="_blank" class="termsurl" to="/terms">{{$t('regTermsOfUse')}}</router-link>
+                                        <router-link target="_blank" class="termsurl" to="/legal/terms">{{$t('regTermsOfUse')}}</router-link>
                                             <span style="color:#51809F;padding:0 10px;">{{$t('registerAnd')}}</span>
-                                        <router-link target="_blank" class="termsurl" to="/privacy">{{$t('隐私条款')}}</router-link>
+                                        <router-link target="_blank" class="termsurl" to="/legal/privacy">{{$t('隐私条款')}}</router-link>
                                         </Checkbox>
                                     </CheckboxGroup>
                                 </FormItem>
@@ -177,17 +180,9 @@
                             <span><span style="color:#51809F;margin-right:5px;">{{$t('regAlreadyReg')}}</span> <router-link  to='./login'>{{$t('regLogin')}}</router-link></span>
                         </div>
                     </div>
-                       
-
-                       
                     </div>
                     <!-- regiser-container -->
-                  
-                    
-
                 </div>
-
-            
             </div>
             <div v-if="modal2" class="alert dis-n">
                 <div class="title"><i class="iconfont">&#xe604;</i></div>
@@ -336,12 +331,20 @@ const clickoutside = {
                 }
             };
             const validateCheckbox = (rule,value,callback) =>{
-                if(value == ''){
+                if(value === ''){
                     callback(new Error(this.$t("checkboxRequire")))
                 }else{
                     callback()
                 }
             }
+            const validateReferrId = (rule, value, callback) => {
+                if(value === ''||value === null){
+                    callback(new Error(this.$t("comfrimpassRequier")))
+                }else{
+                    callback()
+                }
+            }
+            
             return {
                 srcCode:'',//空投渠道ID
                 countryLanguage:localStorage.getItem('countryLanguage'),
@@ -395,6 +398,9 @@ const clickoutside = {
                      interest: [
                         { required: true, validator:validateCheckbox, type: 'array', min: 1, trigger: 'change' },
                     ],
+                    referrId: [
+                        {validator: validateReferrId, trigger: 'blur' }
+                    ]
                     
                 },
                 referrDisable:false,
@@ -446,13 +452,12 @@ const clickoutside = {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         if(this.emailRegister){//如果是邮箱注册
-                            //  this.captchaIns && this.captchaIns.popUp()
-                            if(this.ipCountry=='中国'){
-                                this.captchaIns && this.captchaIns.popUp()
-                            }else{
-                                    this.robotModalflag = true;
-                                }
-
+                            // if(this.ipCountry=='中国'){
+                            //     this.captchaIns && this.captchaIns.popUp()
+                            // }else{
+                            //         this.robotModalflag = true;
+                            //}
+                        this.robotModalflag = true;
                         }else{//如果是手机注册
                             this.loaded = false;
                              this.codeVerifyFun();
@@ -470,18 +475,16 @@ const clickoutside = {
             },
           getOSSjson(){
                 getApi('https://oss.55gm.co/content/country/55-country.json',{}).then((res)=>{
-                    this.ossJSON = res;
+                    this.ossJSON = res.slice(4,res.length);
                     let FrencyCountry = [];
                     res.forEach(item => {
                         if(item.type=='recommend'){
                             FrencyCountry.push(item);
                         }
                     });
-                    // console.log(FrencyCountry)
-                    //把默认值写在then里面就避免了异步问题，解决了在mounted里面直接写的问题
-                    this.countryNumber = FrencyCountry[4].code;
+                    // this.countryNumber = FrencyCountry[4].code;
                     this.globalCountryNumber = FrencyCountry[4].en;
-                    this.phoneCountryName = FrencyCountry[4].locale;
+                    // this.phoneCountryName = FrencyCountry[4].locale;
                     this.EmailcountryName = FrencyCountry[4].locale;
                     this.countryFlag=FrencyCountry[4].image;
 
@@ -879,28 +882,28 @@ const clickoutside = {
         },
         created(){
              var _this = this;
-			document.onkeydown = function(e) {
+      document.onkeydown = function(e) {
                 //1.规避页面上方的搜索框等是否获取了焦点，是则不触发本次快捷键
-				var inputs = document.getElementsByClassName('isfocus_enter'); //找到这一组元素
-				//是否获取了焦点的判断
-				let hasFocus = false;
-				if(inputs && inputs.length >0){
-					for(let i=0;i<inputs.length;i++){
-						//如果hasFocus为true表示input元素获得焦点，否则没有获得焦点
-						hasFocus = document.hasFocus() && document.activeElement === inputs[i];
-						if(hasFocus == true){
-							break;
-						}
-					}
-				}
-			     //console.log("判断不该获取焦点的元素是否获取了焦点（isfocus_enter）:%s",hasFocus);
-						var key = window.event.keyCode;
-						// console.log("按键：%s",key);
-						if (key == 13) {
-							_this.handleSubmit('formValidate') //此方法是当按下enter键后要做的动作。
-						}
-						
-			}
+        var inputs = document.getElementsByClassName('isfocus_enter'); //找到这一组元素
+        //是否获取了焦点的判断
+        let hasFocus = false;
+        if(inputs && inputs.length >0){
+          for(let i=0;i<inputs.length;i++){
+            //如果hasFocus为true表示input元素获得焦点，否则没有获得焦点
+            hasFocus = document.hasFocus() && document.activeElement === inputs[i];
+            if(hasFocus == true){
+              break;
+            }
+          }
+        }
+           //console.log("判断不该获取焦点的元素是否获取了焦点（isfocus_enter）:%s",hasFocus);
+            var key = window.event.keyCode;
+            // console.log("按键：%s",key);
+            if (key == 13) {
+              _this.handleSubmit('formValidate') //此方法是当按下enter键后要做的动作。
+            }
+            
+      }
         }
         
         

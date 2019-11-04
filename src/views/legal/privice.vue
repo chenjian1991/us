@@ -1,30 +1,8 @@
 <template>
-    <div class="aboutBox" style='font-family: helvetica, "Microsoft YaHei", "PingFang SC";'>
+    <div style='font-family: helvetica, "Microsoft YaHei", "PingFang SC";'>
       <div class="container">
          <div class="row">
 
-						   <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 mb-3">
-                                <ul>
-                                    <li>
-                                        <router-link to='/terms'> · User Agreement</router-link>
-                                    </li>
-                                    <li>
-                                        <router-link class="active" to='/privacy'> · Privacy Policy</router-link>
-                                    </li>
-                                    <!-- <li >
-                                        <router-link to='/aml'> · AML Policy</router-link>
-                                    </li> -->
-                                    <li>
-                                        <router-link to='/disclaimer'> · Disclaimer</router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to='/fee'> · Fee Schedule</router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to='/tradingRules'> · Trading Rules</router-link>
-                                    </li>
-                                </ul>
-							</div>
 
                   		
                           <div class="panel-body paddong_30_left col-lg-10 col-md-9 col-sm-12 col-xs-12">
@@ -49,10 +27,10 @@
                                 <p class=MsoNormal><span lang=EN></span></p>
 
                                 <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>1.1  55 Asset Network Inc. (the “<b style='mso-bidi-font-weight:normal'>Company</b>”)
+                                lang=EN>1.1  Tresso Asset Network Inc. (the “<b style='mso-bidi-font-weight:normal'>Company</b>”)
                                 is a company incorporated in Delaware under the laws of the United States, and
-                                operates the Website <u><span style='color:#1155CC'><a href="javascrip:;"><span
-                                style='color:#1155CC'>55.trade</span></a></span></u> (the “<b
+                                operates the Website <u><span style='color:#11TressoCC'><a href="javascrip:;"><span
+                                style='color:#11TressoCC'>tresso.com</span></a></span></u> (the “<b
                                 style='mso-bidi-font-weight:normal'>Website</b>”), which is a platform
                                 dedicated to the transaction of digital assets and the provision of related
                                 services (hereinafter referred to as the “<b style='mso-bidi-font-weight:normal'>Service</b>”).
@@ -691,7 +669,7 @@
                                 lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
                                 style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
                                 dir=LTR></span><span lang=EN>To enforce or apply our terms of use
-                                https://www.55.com/terms and other agreements, including for billing and
+                                https://www.Tresso.com/terms and other agreements, including for billing and
                                 collection purposes.</span></p>
 
                                 <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
@@ -762,7 +740,7 @@
                                 your data (the registration process) or at any other time by logging into the
                                 Website and adjusting your user preferences in your account profile by checking
                                 or unchecking the relevant boxes or by sending us an email stating your request
-                                to service@55.trade. If we have sent you a promotional email, you may send us a
+                                to service@tresso.com. If we have sent you a promotional email, you may send us a
                                 return email asking to be omitted from future email distributions. This opt out
                                 does not apply to information provided to the Company as a result of a product
                                 purchase, warranty registration, product service experience or other
@@ -779,7 +757,7 @@
                                 located on the form on which we collect your data (the registration process) or
                                 at any other time by logging into the Website and adjusting your user
                                 preferences in your account profile by checking or unchecking the relevant
-                                boxes or by sending us an email stating your request to service@55.trade. For this
+                                boxes or by sending us an email stating your request to service@tresso.com. For this
                                 opt-out to function, you must have your browser set to accept all browser
                                 cookies.</span></p>
 
@@ -816,7 +794,7 @@
                                 <p class=MsoNormal><span lang=EN></span></p>
 
                                 <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>You may also send us an email at service@55.trade to request access to,
+                                lang=EN>You may also send us an email at service@tresso.com to request access to,
                                 correct or delete any personal information that you have provided to us. We
                                 cannot delete your personal information except by also deleting your user
                                 account. We may not accommodate a request to change information if we believe
@@ -830,7 +808,7 @@
                                 User Contributions may remain viewable in cached and archived pages, or might
                                 have been copied or stored by other Website users. Proper access and use of
                                 information provided on the Website, including User Contributions, is governed
-                                by our terms of use https://www.55.com/terms.</span></p>
+                                by our terms of use https://www.tresso.com/terms.</span></p>
 
                                 <p class=MsoNormal><span lang=EN></span></p>
 
@@ -856,7 +834,7 @@
                                 Website that are California residents to request certain information regarding
                                 our disclosure of personal information to third parties for their direct
                                 marketing purposes. To make such a request, please send an email to
-                               service@55.trade.</span></p>
+                               service@tresso.com.</span></p>
 
                                 <p class=MsoNormal><span lang=EN></span></p>
 
@@ -1010,7 +988,7 @@
                                 lang=EN>To ask questions or comment about this privacy policy and our privacy
                                 practices, contact us at:</span></p>
 
-                                <p class=MsoNormal><span lang=EN>service@55.trade</span></p>
+                                <p class=MsoNormal><span lang=EN>service@tresso.com</span></p>
 
                                 <p class=MsoNormal><span lang=EN></span></p>
 

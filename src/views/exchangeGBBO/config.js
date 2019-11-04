@@ -26,3 +26,4 @@ export const coinInfoLinks = {
     "ONT":"ontology",
     "ONG":"ong",
 }
+export const orderBookName = ['BINANCE', 'HUOBI', 'INDODAX', 'BITSTAMP', 'COINFLOOR']

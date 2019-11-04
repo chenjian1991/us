@@ -178,14 +178,15 @@ import { setTimeout } from 'timers';
                                     }
                             }
                          }
-                             console.log(this.ipCountry)
-                         if(this.ipCountry=='中国'){
-                              this.paramsObj = params;
-                             this.captchaIns && this.captchaIns.popUp()
-                         }else{
-                            this.paramsObj = params;
+                        //  if(this.ipCountry=='中国'){
+                        //       this.paramsObj = params;
+                        //      this.captchaIns && this.captchaIns.popUp()
+                        //  }else{
+                        //     this.paramsObj = params;
+                        //     this.robotModalflag = true;
+                        //  }
+                             this.paramsObj = params;
                             this.robotModalflag = true;
-                         }
                         }).catch((error)=>{
                             this.$Message.error('server error')
                         })
