@@ -22,49 +22,53 @@
          <div class="container">
             <div class="d-flex align-items-center"><span class="f-28 c-fff f-w mr-4">GBBO™</span><span
                class="f-14 c-d-gray">Global Best Bid and Offer</span></div>
-            <div class="bgc3 f-16 c-blue br-4 f-w mt-4 mb-3 title-box">USD</div>
-            <div class="row justify-content-between" v-model="gbboList">
-               <div class="col-md-3" v-model="gbboList.base">
-                  <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">GBBO Markets</div>
-                  <div class="f-16 d-flex justify-content-between mb-2">
-                     <div>
-                        <span class="c-fff f-w-5">{{gbboList.base.baseAssets}}</span>
-                        <span class="c-d-gray f-w-5">{{gbboList.base.quoteAssets}}</span>
+            <!-- <div class="bgc3 f-16 c-blue br-4 f-w mt-4 mb-3 title-box">USD</div> -->
+            <div class="container gbboTableWrap">
+               <div class="gbboTable">
+                  <div class="row justify-content-between" v-model="gbboList">
+                     <div class="col-3" v-model="gbboList.base">
+                        <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">GBBO Markets</div>
+                        <div class="f-16 d-flex justify-content-between mb-2">
+                           <div>
+                              <span class="c-fff f-w-5">{{gbboList.base.baseAssets}}</span>
+                              <span class="c-d-gray f-w-5">{{gbboList.base.quoteAssets}}</span>
+                           </div>
+                           <div>{{gbboList.base.price}}</div>
+                        </div>
+                        <div>
+                           <span class="f-14 c-d-gray">24h Vol：{{gbboList.base.vol}}</span>
+                        </div>
                      </div>
-                     <div>{{gbboList.base.price}}</div>
-                  </div>
-                  <div>
-                     <span class="f-14 c-d-gray">24h Vol：{{gbboList.base.vol}}</span>
-                  </div>
-               </div>
-               <div class="col-md-3" v-model="gbboList.sell">
-                  <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Buy at Lowest</div>
-                  <div class="f-16 d-flex justify-content-between mb-2">
-                     <span class="c-blue">{{gbboList.sell.price}}</span>
-                     <span>{{gbboList.sell.exchange}}</span>
-                  </div>
-                  <div class="f-14 c-d-gray">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
-               </div>
-               <div class="col-md-3" v-model="gbboList.buy">
-                  <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Sell at Highest</div>
-                  <div class="f-16 d-flex justify-content-between mb-2">
-                     <span class="c-blue">{{gbboList.buy.price}}</span>
-                     <span class="c-d-gray">{{gbboList.buy.exchange}}</span>
-                  </div>
-                  <div class="f-14 c-d-gray">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
-               </div>
-               <div class="col-md-3" v-model="gbboList.avg">
-                  <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Arbitrage</div>
-                  <div class="d-flex justify-content-between">
-                     <div>
-                        <div class="f-16 c-fff mb-2">{{gbboList.avg.price|compare}}</div>
-                        <div class="f-14 c-d-gray">Est Return {{gbboList.avg.change}}</div>
+                     <div class="col-3" v-model="gbboList.sell">
+                        <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Buy at Lowest</div>
+                        <div class="f-16 d-flex justify-content-between mb-2">
+                           <span class="c-blue">{{gbboList.sell.price}}</span>
+                           <span>{{gbboList.sell.exchange}}</span>
+                        </div>
+                        <div class="f-14 c-d-gray">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
                      </div>
-                     <div class="d-flex align-items-center">
-                        <router-link :to="{path:'exchange',query:{symbol:symbol}}"
-                                     class="btn btn-sm btn-primary transition-3d-hover c-blue f-14 trade-btn">
-                           Instant Trade
-                        </router-link>
+                     <div class="col-3" v-model="gbboList.buy">
+                        <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Sell at Highest</div>
+                        <div class="f-16 d-flex justify-content-between mb-2">
+                           <span class="c-blue">{{gbboList.buy.price}}</span>
+                           <span class="c-d-gray">{{gbboList.buy.exchange}}</span>
+                        </div>
+                        <div class="f-14 c-d-gray">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
+                     </div>
+                     <div class="col-3" v-model="gbboList.avg">
+                        <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Arbitrage</div>
+                        <div class="d-flex justify-content-between">
+                           <div>
+                              <div class="f-16 c-fff mb-2">{{gbboList.avg.price|compare}}</div>
+                              <div class="f-14 c-d-gray">Est Return {{gbboList.avg.change}}</div>
+                           </div>
+                           <div class="d-flex align-items-center">
+                              <router-link :to="{path:'exchange',query:{symbol:symbol}}"
+                                          class="btn btn-sm btn-primary transition-3d-hover c-blue f-14 trade-btn">
+                                 Instant Trade
+                              </router-link>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
@@ -650,5 +654,12 @@
          border-radius: 5px;
       }
 
+   }
+   .gbboTableWrap{
+      overflow: auto;
+      padding:0;
+      .gbboTable{
+         width:1095px;
+      }
    }
 </style>
