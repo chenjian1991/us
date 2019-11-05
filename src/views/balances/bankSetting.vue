@@ -2,7 +2,7 @@
    <div class="wrapper" id="bankSetting">
       <div class="container">
          <div class="content">
-            <p class="title">{{$t('bankAccounts')}}</p>
+            <p class="title">Bank Accounts</p>
             <div class="main">
                <div v-for="(bank,i) in bankList" class="row-block">
                   <Row type="flex" align-item="center">
@@ -26,7 +26,7 @@
                <div class="row-block">
                   <div class="main-color add-more">
                      <span @click="add" class="verticalCentering"><img src="../../assets/images/balances/add.png"
-                                                                       class="add-icon">{{$t('withdrawAcc1')}}</span>
+                                                                       class="add-icon">Link New Account</span>
                   </div>
                </div>
                <div>

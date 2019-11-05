@@ -1,101 +1,80 @@
 <template>
-   <div class="wrapper" id="balances">
-      <div class="content">
-         <div class="top">
-            <div class="top-common">
-               <p class="title">{{$t('zcEstimatedValue')}}</p>
-               <div class="value">
-                  <Col span="18">
-                     <em>{{total_BTC}}</em>
-                     BTC&nbsp;&nbsp;≈ {{legalCurrency}} {{currentCurrency.name}}
-                  </Col>
-               </div>
-            </div>
-            <!--USD balances-->
-            <div class="top-common">
-               <Row>
-                  <Col span="2">
-                     <img src="../../assets/images/balances/balance.png" style="width: 26px;margin-top: 5px">
-                  </Col>
-                  <Col span="22">
-                     <div class="top-right-up">
-                        <span class="title">{{$t('balanceAvailable')}}</span>
-                        <span v-if="levelStatus==='verified'">
-                           <div class="kyc-status verified">{{$t('balanceVerified')}}
-                              <Icon type="md-checkmark" class="verified-icon"/>
-                           </div>
-                        </span>
-                        <span v-else-if="levelStatus==='rejected'">
-                           <router-link to="identityResult" class="kyc-status rejected">{{$t('balanceRejected')}}
-                              <Icon type="md-close"/>
-                           </router-link>
-                        </span>
-                        <span v-else-if="levelStatus==='unverified'">
-                           <router-link to="kyc" class="kyc-status unverified">{{$t('balanceUnverified')}}
-                              <Icon type="ios-arrow-forward"/>
-                           </router-link>
-                        </span>
-                        <span v-else>
-                           <router-link to="identityResult" class="kyc-status unverified">{{$t('balanceSubmit')}}
-                              <Icon type="ios-arrow-forward"/>
-                           </router-link>
-                        </span>
-                        <a target="_blank" href="https://www.gcodigital.com/">
-                           <img style="width:156px;height:16px;float:right;"
-                                src="../../assets/images/balances/gco-logo@2x.png" alt="">
-                        </a>
-
-                     </div>
-                     <div class="space-between">
-                        <div><em>{{USD}}</em>&nbsp;&nbsp;<span>USD</span></div>
-                        <div>
-                           <a class="balancesBtn deposit-hover deposit-color" @click="checkState('deposit_usd')">{{$t('zcDeposit')}}</a>
-                           <a class="balancesBtn withdrawal-hover withdrawal-color"
-                              @click="checkState('withdrawal_usd')">{{$t('zcWithdrawal')}}</a>
-                           <a class="balancesBtn bank-color" @click="checkState('bankSetting')">
-                              <!--<img src="../../assets/images/balances/bank.png" style="width: 15px;margin-right: 8px">-->
-                              <Icon type="ios-card-outline" class="icon"/>
-                              {{$t('balanceBank')}}</a>
+   <main id="balances" class="balances">
+      <account-info name="balances"></account-info>
+      <div class="container pt-5 pb-5">
+         <div class="card">
+            <div class="card-body">
+               <h6 class="content-title mb-3">ACCOUNT BALANCES</h6>
+               <!--<ul class="nav nav-pills px-0 mb-2" id="pills-tab" role="tablist">-->
+               <!--<li class="nav-item">-->
+               <!--<a class="nav-link active" id="exchange-tab" data-toggle="pill" href="#exchange-href"-->
+               <!--role="tab"-->
+               <!--aria-controls="pills-one" aria-selected="false">Crypto Account</a>-->
+               <!--</li>-->
+               <!--<li class="nav-item">-->
+               <!--<a class="nav-link" id="otc-tab" data-toggle="pill" href="#otc-href" role="tab"-->
+               <!--aria-controls="pills-two" aria-selected="true">Fiat Account</a>-->
+               <!--</li>-->
+               <!--</ul>-->
+               <div class="tab-content middle" id="pills-tabContent">
+                  <div class="tab-pane fade active show" id="exchange-href" role="tabpanel"
+                       aria-labelledby="exchange-tab">
+                     <div class="row align-items-center mt-1">
+                        <div class="col-md-2 title">{{$t('zcEstimatedValue')}}</div>
+                        <div class="col-md-10">
+                           <span style="font-size: 24px" class="main-color">{{total_BTC}}</span><span
+                           class="f16"> BTC ≈ </span>
+                           <span style="font-size: 24px">{{legalCurrency}} {{currentCurrency.name}}</span>
                         </div>
                      </div>
-                  </Col>
-               </Row>
-            </div>
-         </div>
-         <div class="middle">
-            <Row class="filter-box">
-               <Col span="12">
-                  <!--隐藏小额资产-->
-                  <div class="hide-btn" :class="hideSmallBalance===true?'hide-balances':'no-hide'"
-                       @click="hideZeroBalances">
-                     <div class="hide-ball" :class="animateStatus"></div>
+                     <div class="row justify-content-between align-items-center mb-4">
+                        <div class="col-md-2 order-md-2 text-md-right mb-3 mb-md-0">
+                           <router-link to="/transaction_history" class="main-color f16">{{$t('BalancesRecord')}}
+                           </router-link>
+                        </div>
+                        <div class="col-md-10 order-md-1">
+                           <ul class="nav nav-classic nav-borderless px-0" id="pills-tab1" role="tablist">
+                              <li class="nav-item">
+                                 <a class="nav-link active" id="all-tab" data-toggle="pill" href="#all-href" role="tab"
+                                    aria-controls="pills-one" aria-selected="false">{{$t('zcExchangeAccount')}}</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="row justify-content-between align-items-center filter-box">
+                        <div class="col-md-6 order-md-1">
+                           <div class="hide-btn" :class="hideSmallBalance===true?'hide-balances':'no-hide'"
+                                @click="hideZeroBalances">
+                              <div class="hide-ball" :class="animateStatus"></div>
+                           </div>
+                           <span>{{$t('BalancesHide')}}</span>
+                           <div class="tooltip-center">
+                              <!--问号上提示-->
+                              <Tooltip :content="$t('BalancesHideValue')" placement="top">
+                                 <Icon type="ios-help-circle" class="help-icon"/>
+                              </Tooltip>
+                           </div>
+                        </div>
+                        <div class="col-md-6 order-md-2 text-md-right mb-md-0">
+                           <!--币种搜索-->
+                           <div class="search-box text-md-right">
+                              <Input suffix="ios-search" class="search" v-model="currencyInput" @on-change="search"/>
+                              <div class="close-box" v-show="showCloseIcon">
+                                 <Icon type="md-close-circle" class="close" @click="clear"/>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--table 数据-->
+                     <div class="tab-content" id="pills-tabContent1">
+                        <div class="tab-pane fade active show" id="all-href" role="tabpanel"
+                             aria-labelledby="all-tab">
+                           <Table :columns="columns1" :data="dataALL"></Table>
+                        </div>
+                     </div>
                   </div>
-                  <span>{{$t('BalancesHide')}}</span>
-                  <div class="tooltip-center">
-                     <!--问号上提示-->
-                     <Tooltip :content="$t('BalancesHideValue')" placement="top">
-                        <Icon type="ios-help-circle" class="help-icon"/>
-                     </Tooltip>
-                  </div>
-               </Col>
-               <Col span="12"></Col>
-            </Row>
-            <!--币种搜索-->
-            <Input suffix="ios-search" class="search" v-model="currencyInput" @on-change="search"/>
-            <div class="close-box" v-show="showCloseIcon">
-               <Icon type="md-close-circle" class="close" @click="clear"/>
+               </div>
             </div>
-            <Spin fix v-if="showSpin" class="spin">
-               <Icon type="ios-loading" size=26 class="demo-spin-icon-load"></Icon>
-            </Spin>
-            <Tabs value="name2" :animated="animate">
-               <TabPane :label="$t('zcBSiteAccount')" name="name2">
-                  <Table :columns="columns1" :data="dataB"></Table>
-               </TabPane>
-               <!--<TabPane :label="$t('headercoustomerchain')" name="name5">-->
-               <!--<Table :columns="columns1" :data="dataC"></Table>-->
-               <!--</TabPane>-->
-            </Tabs>
          </div>
       </div>
       <!--实名认证1-->
@@ -105,61 +84,41 @@
             <h4 class="notice">{{$t('balanceNoticeCon1')}}</h4>
          </div>
       </us-modal>
-      <!--实名认证2-->
-      <!--<us-modal v-model="showNoVerification2" className="alertModal" width="750px" title="balanceNotice"-->
-      <!--okText="noticeL2" cancelText="nextTime" @ok="ok2" @cancel="cancel" :showBtn="true">-->
-      <!--<div class="alert-content">-->
-      <!--<h4 class="notice">{{$t('balanceNoticeCon')}}</h4>-->
-      <!--</div>-->
-      <!--</us-modal>-->
-      <!--设置银行卡-->
-      <us-modal v-model="showNoBank" className="alertModal" width="750px" title="balanceNotice" okText="balanceToBank"
-                cancelText="nextTime" @ok="checkState('bankSetting')" @cancel="cancel" :showBtn="true">
-         <div class="alert-content">
-            <h4 class="notice">{{$t('balanceNoBank')}}</h4>
-         </div>
-      </us-modal>
-   </div>
+   </main>
 </template>
 
 <script>
    import {Exchange} from '@/interface/exchange.js'
    import {Market} from '@/interface/market.js'
-   import {
-       getUserInfo
-   } from '_api/balances.js'
    import bigDecimal from 'js-big-decimal' //除法失效
-   import Cookies from 'js-cookie'
+   import moment from 'moment'
    import alertModal from '@/components/alertModal'
    import usModal from '@/components/usModal'
+   import AccountInfo from '@/components/common/AccountInfo'
 
    import {
-      getSymbolList,
       getCurrencyList,
       getSymbolList_realtime,
    } from '_api/exchange.js'
    import {
-      getRealtimeList, queryState, getIdentify, identifyQuery
+      getRealtimeList, getUserInfo
    } from '_api/balances.js'
 
    import {
       scientificToNumber,
-      addSymbolSplitLine,
-      getDecimalsNum,
-      storage,
-      dealNumber,
+      dealNumber
    } from '@/lib/utils.js'
-   import {getApi} from '_api/axios'
 
    export default {
       name: "balances",
       components: {
          alertModal: alertModal,
-         'us-modal': usModal
+         'us-modal': usModal,
+         'account-info': AccountInfo,
       },
       data() {
          return {
-            animate: false,//tab 动画禁用
+            exchange: null,
             showSpin: true,//加载中
             currencyList: [],//币种数据
             allAccount: {},//总数据
@@ -179,15 +138,11 @@
             totalPage: 1,
             sortName: '',
             directive: '',
-            kycStatus: '',
-            checkStatus: '',
+            classStatus: 'unable',//按钮样式
+            activeStatus: 'BalancesConfirm',//按钮状态
+            checkStatus: '',//是否实名
             showNoVerification1: false,
-            //us
-            levelStatus: '',
-            USD: 0,
-            //alert
-            showNoVerification2: false,
-            showNoBank: false,
+            usd: 0,
             //排序
             animateStatus: '',
             availableSort: false,
@@ -200,10 +155,15 @@
             showCloseIcon: false,
             currencyInput: '',
             sortList: ['currency', 'available', 'frozen', 'total', 'USDT'],
+
+            //行情
+            quoteList: [],
+            loginToken: $cookies.get('loginToken'),
+
             columns1: [
                {
                   key: 'imgSrc',
-                  width: 50,
+                  width: 32,
                   align: 'left',
                   renderHeader: (h) => {
                      return h('div', {}, '')
@@ -218,7 +178,7 @@
                },
                {
                   key: 'currency',
-                  width: 100,
+                  width: 75,
                   renderHeader: (h) => {
                      const params = 'currency'
                      return h('div', {
@@ -266,7 +226,7 @@
                },
                {
                   key: 'available',
-                  width: 180,
+                  width: 130,
                   align: 'right',
                   render: (h, params) => {
                      return h('div', {}, params.row.available || '--')
@@ -326,7 +286,7 @@
                },
                {
                   key: 'frozen',
-                  width: 180,
+                  width: 130,
                   align: 'right',
                   render: (h, params) => {
                      return h('div', {}, params.row.frozen || '--')
@@ -377,7 +337,7 @@
                },
                {
                   key: 'total',
-                  width: 180,
+                  width: 130,
                   align: 'right',
                   render: (h, params) => {
                      return h('div', {}, params.row.total || '--')
@@ -427,13 +387,86 @@
                   }
                },
                {
-                  key: 'operate',
-                  // width: 350,
+                  key: 'USDT',
+                  width: 130,
                   align: 'right',
                   render: (h, params) => {
-                     let exchange = params.row['list'] && params.row['list'].length !== 0 ? true : false
+                     if (!params.row.USDT) {
+                        return h('div', {}, '--')
+                     } else {
+                        return h('div', {}, params.row.USDT)
+                     }
+                  },
+                  renderHeader: (h) => {
+                     const params = 'USDT'
+                     return h('div', {
+                        style: {
+                           cursor: 'pointer'
+                        },
+                        on: {
+                           click: () => {
+                              this.balancesSort(params)
+                              this.sortColor(params)
+                           }
+                        }
+                     }, [h('div', {
+                        style: {
+                           display: 'inline-block'
+                        }
+                     }, this.$t('zcUSDTEstimation')),
+                        h('span', {
+                           style: {
+                              fontSize: '14px'
+                           }
+                        }, [h('Icon',
+                           {
+                              attrs: {
+                                 type: 'md-arrow-dropup'
+                              },
+                              style: {
+                                 position: 'absolute',
+                                 color: this.sortName === params && this.directive === true ? '#12869A' : '#949DA6'
+                              }
+                           }
+                        ), h('Icon',
+                           {
+                              attrs: {
+                                 type: 'md-arrow-dropdown'
+                              },
+                              style: {
+                                 marginTop: '8px',
+                                 color: this.sortName === params && this.directive === false ? '#12869A' : '#949DA6'
+                              }
+                           }
+                        )],)])
+                  }
+               },
+               {
+                  key: 'USDT',
+                  title: ' ',
+                  // width: 110,
+                  align: 'left',
+                  render: (h, params) => {
+                     if (!params.row.USDT) {
+                        return h('div', {}, '--')
+                     } else {
+                        let name = this.currentCurrency.name
+                        let rate = this.currentCurrency.rate//法币估值
+                        let text = '≈ ' + this.transferNumber(bigDecimal.multiply(params.row.USDT, rate), 2) + ' ' + name
+                        return h('div', {
+                           style: {
+                              color: '#12869A'
+                           }
+                        }, text)
+                     }
+                  },
+               },
+               {
+                  key: 'operate',
+                  width: 340,
+                  align: 'right',
+                  render: (h, params) => {
                      let siteType = params.row.siteType
-
                      let deposit = false
                      let withdraw = false
                      //充值提现状态
@@ -455,7 +488,7 @@
                            withdraw = true;
                            break;
                      }
-
+                     const isUSD = params.row.currency === 'USD' ? true : false
                      return h('div', {
                            style: {
                               position: 'relative',
@@ -480,7 +513,13 @@
                               on: {
                                  click: () => {
                                     if (deposit) {
-                                       this.getIdentify(params.row.currency, '/deposit')
+                                       // this.getIdentify(params.row.currency, '/deposit')
+                                       this.$router.push({
+                                          path: '/deposit',
+                                          query: {
+                                             'currency': params.row.currency
+                                          }
+                                       })
                                     }
                                  }
                               }
@@ -507,59 +546,73 @@
                                  }
                               }
                            }, this.$t('zcWithdrawal')),
-                           h('a',// 交易
-                              {
+                           isUSD ? h('a', {// 设置银行卡
+                                 'class': {
+                                    'balancesBtn': true,
+                                    'bank-hover': true,
+                                 },
                                  style: {
-                                    display: 'inline-block',
+                                    color: '#0E7DFF',
+                                    cursor: 'pointer'
                                  },
                                  on: {
-                                    mouseenter: (e) => {
-                                       e.target.lastElementChild.style.display = 'block' //目标元素的最后一个子元素
-                                    },
-                                    mouseleave: (e) => {
-                                       e.target.lastElementChild.style.display = 'none'
-                                    },
+                                    click: () => {
+                                       if (withdraw) {
+                                          this.getIdentify(params.row.currency, '/withdrawal')
+                                       }
+                                    }
                                  }
-                              },
-                              [
-                                 h('div', {
-                                    'class': {'balancesBtn': true},
+                              }, this.$t('balanceBank')) :
+                              h('a',// 交易
+                                 {
                                     style: {
-                                       // color: '#0E7DFF',
-                                       // borderColor: '#0E7DFF',
-                                       color: exchange ? '#0E7DFF' : '#949DA6',
-                                       borderColor: exchange ? '#0E7DFF' : '#949DA6',
-                                       cursor: exchange ? 'pointer' : 'not-allowed'
+                                       display: 'inline-block',
                                     },
-                                 }, this.$t('zcTrade')),
-                                 h('dl', {
-                                       'class': {'tradeBox': true},
-                                       style: {
-                                          display: 'none'
+                                    on: {
+                                       mouseenter: (e) => {
+                                          e.target.lastElementChild.style.display = 'block' //目标元素的最后一个子元素
                                        },
-                                    },
-                                    params.row['list'] && params.row['list'].length !== 0 ? params.row.list.map(function (v) {//有交易对
-                                       return h('dt', {
-                                          'class': {'tradeBtn': true},
-                                          on: {
-                                             click: () => {
-                                                //跳转交易页 注意5站域名情况
-                                                siteType.map(value => {
-                                                   this.$router.push({
-                                                      path: 'exchange',
-                                                      query: {
-                                                         'symbol': v.replace(/\//, ''),
-                                                         'site': value
-                                                      }
+                                       mouseleave: (e) => {
+                                          e.target.lastElementChild.style.display = 'none'
+                                       },
+                                    }
+                                 },
+                                 [
+                                    h('div', {
+                                       'class': {'balancesBtn': true},
+                                       style: {
+                                          color: '#0E7DFF',
+                                          borderColor: '#0E7DFF',
+                                          cursor: 'pointer'
+                                       },
+                                    }, this.$t('zcTrade')),
+                                    h('dl', {
+                                          'class': {'tradeBox': true},
+                                          style: {
+                                             display: 'none'
+                                          },
+                                       },
+                                       params.row['list'] && params.row['list'].length !== 0 ? params.row.list.map(function (v) {//有交易对
+                                          return h('dt', {
+                                             'class': {'tradeBtn': true},
+                                             on: {
+                                                click: () => {
+                                                   siteType.map(value => {
+                                                      this.$router.push({
+                                                         path: '/exchange',
+                                                         query: {
+                                                            'symbol': v.replace(/\//, ''),
+                                                            'site': value
+                                                         }
+                                                      })
                                                    })
-                                                })
+                                                }
                                              }
-                                          }
-                                       }, v)
-                                    }.bind(this)) : ''//没有交易对
-                                 )
-                              ],
-                           )
+                                          }, v)
+                                       }.bind(this)) : ''//没有交易对
+                                    )
+                                 ],
+                              )
                         ])
                   },
                   renderHeader: (h) => {
@@ -567,16 +620,14 @@
                   }
                }
             ],
-            dataB: [],
-            dataC: [],
+            dataALL: [],
          }
       },
       methods: {
          init() {
-            // this.getIdentify()
             let currencyList = new Promise(resolve => {
                getCurrencyList().then(result => {//币种
-                  //过滤S站 注意 过滤不改变原数据
+                  console.log(result)
                   this.currencyList = result.filter(v => {
                      v.siteType = v.siteType.filter(value => {//siteTypeList 所有站
                         if (value !== 'S') {
@@ -602,12 +653,8 @@
                })
             })
             let quoteList = new Promise(resolve => {
-               getRealtimeList().then(result => {//行情
-                  result.map(v => {
-                     this.realTimeList[v.symbol] = v.last
-                  })
-                  resolve()
-               })
+               this.getRealtimeList()
+               resolve()
             })
             let balanceList = new Promise(resolve => {
                this.exchange.balance(function (result) {//获取资产
@@ -626,54 +673,33 @@
                }.bind(this), 1000)
             })
          },
+         getRealtimeList() {
+            if (!this.quoteList.length) {
+               return new Promise((resolve) => {
+                  getRealtimeList().then(result => {//行情
+                     this.quoteList = result
+                     result.map(v => {
+                        this.realTimeList[v.symbol] = v.last
+                     })
+                     resolve(this.quoteList)
+                  })
+               });
+            }
+            return this.quoteList
+         },
          getCurrencyList() {//处理币种列表
             this.currencyList.map(v => {
-               this.exchangeList.push({currency: v.currency, list: []})
+               this.allAccount['ALL'].push({currency: v.currency, siteType: v.siteType, status: v.status})//全部通证
                v.siteType.map(value => {//数据放入这个站中
                   this.allAccount[value].push({currency: v.currency, siteType: [value], status: v.status})
                })
-               this.allAccount['ALL'].push({currency: v.currency, siteType: v.siteType, status: v.status})//全部通证
+               this.exchangeList.push({currency: v.currency, list: []})
                this.currencyPrecision[v.currency] = v.currencyPrecision//小数位数
             })
-            //美国站6种币
-            const bSite = ['BTC', 'LTC', 'ETH', 'ZEC', 'DASH', 'XLM', 'USDD']
-            this.allAccount['B'] = this.allAccount['B'].filter(v => {
-               let flag = false
-               bSite.map(value => {
-                  if (v.currency === value) {
-                     flag = true
-                  }
-               })
-               if (flag) {
-                  return flag
-               }
-            })
-            // end
             this.siteTypeList.map(val => {//各站附初始值币种
                let data = `data${val}`
                this[data] = this.allAccount[val]
             })
-         },
-         getBalance() {//单独写在方法里 如果加活动 方便调取资产接口
-            this.exchange.balance(function (result) {//获取资产
-               if (result.length !== 0) {
-                  result.map((v) => {
-                     let precision = this.currencyPrecision[v.currency]
-                     if (v['available'] < 0.00000001) {
-                        v['available'] = 0
-                     }
-                     if (v['frozen'] < 0.00000001) {
-                        v['frozen'] = 0
-                     }
-                     v['available'] = dealNumber(v['available'], precision)
-                     v['frozen'] = dealNumber(v['frozen'], precision)
-                     v['total'] = dealNumber(bigDecimal.add(v['available'], v['frozen']), precision) //计算总值
-                     this.mapCurrencyList(v, ['available', 'frozen', 'total'], [v['available'], v['frozen'], v['total']])
-                  })
-               }
-               this.balancesList = result
-               this.getValuation()
-            }.bind(this))
          },
          getValuation() {//计算估值
             let BTC_USDD = this.realTimeList['BTCUSDD']
@@ -682,33 +708,26 @@
             this.total_BTC = 0
             if (this.balancesList.length !== 0) {
                this.balancesList.map((v) => {
-                  let precision = this.currencyPrecision[v.currency]
+                  let precision = this.currencyPrecision[v.currency] || 8
                   if (v['available'] < 0.00000001) {
                      v['available'] = 0
                   }
                   if (v['frozen'] < 0.00000001) {
                      v['frozen'] = 0
                   }
-                  if (v.currency === 'USD') {
-                     this.USD = dealNumber(v['available'], 2)
-                  }
+                  v['total'] = dealNumber(v['available'] + v['frozen'], precision) //计算总值
                   v['available'] = dealNumber(v['available'], precision)
                   v['frozen'] = dealNumber(v['frozen'], precision)
-                  v['total'] = dealNumber(bigDecimal.add(v['available'], v['frozen']), precision) //计算总值
                   this.mapCurrencyList(v, ['available', 'frozen', 'total'], [v['available'], v['frozen'], v['total']])
                })
                this.balancesList.map(v => {
-                  if (this.realTimeList[`${v.currency}USDD`]) {//和USDD有交易对
+                  if (this.realTimeList[`${v.currency}USD`]) {//和USDD有交易对
                      v['USDT'] = this.transferNumber(bigDecimal.multiply(v.total, this.realTimeList[`${v.currency}USDD`]), 2)
-                  } else if (this.realTimeList[`${v.currency}USDT`]) {//和USDT有交易对
-                     v['USDT'] = this.transferNumber(bigDecimal.multiply(v.total, this.realTimeList[`${v.currency}USDT`]), 2)
                   } else if (this.realTimeList[`${v.currency}ETH`]) {//和ETH有交易对
                      let last = this.realTimeList[`${v.currency}ETH`]
                      let symbolETH = bigDecimal.multiply(v.total, last)
                      v['USDT'] = this.transferNumber(bigDecimal.multiply(symbolETH, ETH_USDD || 0), 2)
-                  } else if (v.currency === 'USDD') {//usdd本身
-                     v['USDT'] = this.transferNumber(v.total, 2)
-                  } else if (v.currency === 'USDT') {//usdt本身
+                  } else if (v.currency === 'USD') {//usdd本身
                      v['USDT'] = this.transferNumber(v.total, 2)
                   }
                   this.total_USDT += Number(this.transferNumber(v['USDT'], 2))//usdd总值
@@ -720,13 +739,9 @@
                this.total_BTC = this.transferNumber(this.total_USDT / BTC_USDD, this.currencyPrecision['BTC'])//btc总值
                this.legalCurrency = this.transferNumber(bigDecimal.multiply(this.total_USDT, this.currentCurrency.rate), 2)//法币估值
             }
-            // this.siteTypeList.map(val => {//各站附初始值币种
-            //    let data = `data${val}`
-            //    this[data] = this.allAccount[val]
-            // })
             this.showSpin = false
-            this.balancesSort('total')
-            this.sortColor('total')
+            this.balancesSort('USDT')
+            this.sortColor('USDT')
             this.filterData()
          },
          getCurrencyImgList() {//币种logo
@@ -743,12 +758,7 @@
                res.map((v) => {
                   this.exchangeList.map(value => {
                      if (v['baseAsset'] === value['currency']) {
-                        // if (v.quoteAsset === 'USDT' || v.quoteAsset === 'USDD') {//过滤 USDT和USDD的右侧币
-                        if (v.quoteAsset === 'USDT') {//过滤 USDT的右侧币
-                           return
-                        } else {
-                           value['list'].push(`${v.baseAsset}/${v.quoteAsset}`)//exchangeList加入交易对
-                        }
+                        value['list'].push(`${v.baseAsset}/${v.quoteAsset}`)//exchangeList加入交易对
                      }
                   })
                })
@@ -799,11 +809,27 @@
             if (type) {
                if (this[`${type}Sort`]) {//如果排序过 则逆序显示
                   this.siteTypeList.map(val => {
-                     const noBalance = this.allAccount[val].filter(v => {
+                     let noBalance = this.allAccount[val].filter(v => {
                         if (!v[type]) {
                            return v
                         }
                      })//没有资产的数据
+                     //没有资产估值 默认总资产总大到小排序
+                     if (type === 'USDT') {
+                        const dataUSDT = noBalance.filter(v => {
+                           if (v['total']) {
+                              return v
+                           }
+                        }).sort((b, a) => {
+                           return a['total'] - b['total']
+                        })
+                        const dataNoUSDT = noBalance.filter(v => {
+                           if (!v['total']) {
+                              return v
+                           }
+                        })
+                        noBalance = dataUSDT.concat(dataNoUSDT)
+                     }
                      this.allAccount[val] = this.allAccount[val].filter(v => {
                         if (v[type]) {
                            return v
@@ -819,11 +845,28 @@
                      })
                   } else {
                      this.siteTypeList.map(val => {
-                        const noBalance = this.allAccount[val].filter(v => {
+                        let noBalance = this.allAccount[val].filter(v => {
                            if (!v[type]) {
                               return v
                            }
                         })//没有资产的数据
+                        //没有资产估值 默认总资产总大到小排序
+                        if (type === 'USDT') {
+                           const dataUSDT = noBalance.filter(v => {
+                              if (v['total']) {
+                                 return v
+                              }
+                           }).sort((b, a) => {
+                              return a['total'] - b['total']
+                           })
+                           const dataNoUSDT = noBalance.filter(v => {
+                              if (!v['total']) {
+                                 return v
+                              }
+                           })
+                           noBalance = dataUSDT.concat(dataNoUSDT)
+                        }
+
                         this.allAccount[val] = this.allAccount[val].filter(v => {
                            if (v[type]) {
                               return v
@@ -907,15 +950,7 @@
             this.showCloseIcon = false
             this.filter()
          },
-         transferNumber(number, num = 8) {//保x留小数位与科学计数法转换
-            if (number === '--') {
-               return '--'
-            } else if (number === undefined) {//逐条推送会导致有些交易对还没结果 所以需要处理underfind的情况
-               return 0
-            } else {
-               return bigDecimal.round(scientificToNumber(number), num)
-            }
-         },
+         //暂时没用到
          getIdentify(currency, path) {
             if (this.checkStatus) {
                this.dealCheckStatus(currency, path)
@@ -958,61 +993,8 @@
                this.$router.push('/identityResult')
             }
          },
-         // queryState() {//实名认证2
-         //    queryState(Cookies.get('loginToken')).then(res => {//是否实名
-         //       // 没有提交:NOHAVE 提交(提交数据):SUBMIT 等待(提交第三方):PENDING 失败:FAIL 成功:SUCCESS
-         //       switch (res.data.result) {
-         //          case 'NOHAVE':
-         //             this.levelStatus = 'unverified'
-         //             break
-         //          case 'SUBMIT':
-         //             this.levelStatus = 'submitted'
-         //             break
-         //          case 'PENDING':
-         //             this.levelStatus = 'pending'
-         //             break
-         //          case 'FAIL':
-         //             this.levelStatus = 'rejected'
-         //             break
-         //          case 'SUCCESS':
-         //             this.levelStatus = 'verified'
-         //             break
-         //          default:
-         //             this.levelStatus = 'unverified'
-         //             break
-         //       }
-         //    })
-         // },
-         checkState(page) {
-            //充值前判断 实名认证
-            if (this.levelStatus === 'verified') {
-               try {
-                  if (page === 'withdrawal_usd') {
-                     this.exchange.withdrawAddress('USD', function (res) {//提现的时候判断没有设置银行卡 跳转银行卡页面
-                        if (res.length === 0) {
-                           this.showNoBank = true
-                           throw new Error()
-                        } else {
-                           this.$router.push(page)
-                        }
-                     }.bind(this))
-                  } else {
-                     this.$router.push(page)
-                  }
-               } catch (e) {
-               }
-            } else if (this.levelStatus === 'unverified') {
-               this.showNoVerification1 = true
-            } else {
-               this.$router.push('/identityResult')
-            }
-         },
          cancel1() {
             this.showNoVerification1 = false
-         },
-         cancel() {
-            this.showNoVerification2 = false
-            this.showNoBank = false
          },
          ok1() {
             this.showNoVerification1 = false
@@ -1020,27 +1002,24 @@
                this.$router.push('/kyc')
             }, 500)
          },
-         ok2() {//跳转实名认证2
-            this.showNoVerification2 = false
-            setTimeout(() => {
-               this.$router.push('amlKyc')
-            }, 500)
+         transferNumber(number, num = 8) {//保x留小数位与科学计数法转换
+            if (number === '--') {
+               return '--'
+            } else if (number === undefined) {//逐条推送会导致有些交易对还没结果 所以需要处理underfind的情况
+               return 0
+            } else {
+               return bigDecimal.round(scientificToNumber(number), num)
+            }
          },
       },
       beforeMount() {
-         let loginToken = Cookies.get('loginToken')
+         let loginToken = this.loginToken
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
-         if (loginToken) {
-            this.exchange.ssoProvider.getSsoToken = function (fn) {
-               fn(loginToken);
-            };
-         } else {
-            this.$router.push({
-               path: '/login',
-            })
-         }
+         this.exchange.ssoProvider.getSsoToken = function (fn) {
+            fn(loginToken);
+         };
          this.market = new Market();
       },
       mounted() {
@@ -1053,7 +1032,7 @@
             //法币估值做相应的刷新
             this.currentCurrency = JSON.parse(localStorage.getItem('currentCurrency'))
             this.filterData()
-            this.legalCurrency = this.transferNumber(bigDecimal.multiply(this.total_USDT, this.currentCurrency.rate), 2)
+            this.legalCurrency = this.transferNumber(bigDecimal.multiply(this.total_USDT === '--' ? 0 : this.total_USDT, this.currentCurrency.rate), 2)
          },
       },
       computed: {
@@ -1068,6 +1047,8 @@
    }
 </script>
 <style lang="less">
+   @import './balances.less';
+
    #balances {
       @select-color: #949DA6;
       @border-border-color: #F5F5F5;
@@ -1087,12 +1068,16 @@
       /*table 样式 end*/
 
       .ivu-tabs-no-animation > .ivu-tabs-content {
-         padding: 0 15px 10px;
+         padding: 0 15px 32px;
       }
       /* table 使溢出显示 */
       .ivu-table-cell {
          overflow: visible;
          position: relative;
+      }
+
+      .ivu-table-overflowX::-webkit-scrollbar {
+         display: none;
       }
 
       /* select 样式 start */
@@ -1132,6 +1117,10 @@
          height: 38px;
          border: 1px solid #D8D8D8;
          color: #333333;
+         &:focus {
+            border-color: #12869A !important;
+            box-shadow: none;
+         }
       }
 
       .ivu-input-with-suffix {
@@ -1158,7 +1147,6 @@
       .balancesBtn {
          display: inline-block;
          height: 28px;
-         font-size: 12px;
          line-height: 26px;
          padding: 0 15px;
          margin-left: 8px;
@@ -1177,6 +1165,12 @@
       .withdrawal-hover {
          &:hover {
             background-color: #66B76D;
+            color: #fff !important;
+         }
+      }
+      .bank-hover {
+         &:hover {
+            background-color: #0E7DFF;
             color: #fff !important;
          }
       }
@@ -1227,6 +1221,42 @@
 
 </style>
 <style lang="less" scoped>
+   @color: #344857;
+   @buy-color: #12869A;
+
+   .main-color {
+      color: @buy-color;
+   }
+
+   .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+      color: #fff;
+      background-color: @buy-color;
+   }
+
+   .nav-pills .nav-link {
+      color: @buy-color;
+   }
+
+   .nav-classic .nav-link.active {
+      color: @buy-color !important;
+      border-bottom-width: 2px;
+      border-bottom-color: @buy-color !important;
+   }
+
+   .nav-classic .nav-link {
+      &:hover {
+         color: @buy-color;
+      }
+   }
+
+   .nav-link {
+      font-size: 16px;
+   }
+
+   .card {
+      border: none;
+   }
+
    .input-common {
       width: 100%;
       height: 42px;
@@ -1244,154 +1274,27 @@
       }
    }
 
+   .f16 {
+      font-size: 14px;
+   }
+
    .bg-color {
       background-color: #fff;
    }
 
-   .space-between {
-      display: flex;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flex;
-      display: -o-flex;
-      justify-content: space-between;
-   }
-
-   .align-center {
-      display: flex;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flex;
-      display: -o-flex;
-      align-items: center;
-   }
-
-   @color: #344857;
-   @red-color: #EA4853;
-   @buy-color: #12869A;
-   @gray-color: #D2D2D2;
-   @trade-color: #0a8dff;
-   @withdraw-color: #66B76D;
-
-   .deposit-color {
-      border-color: @buy-color !important;
-      color: @buy-color !important;
-   }
-
-   .withdrawal-color {
-      border-color: @withdraw-color !important;
-      color: @withdraw-color !important;
-   }
-
-   .bank-color {
-      border-color: @trade-color !important;
-      color: @trade-color;
-      &:hover {
-         background-color: @trade-color;
-         color: #fff !important;
-      }
-   }
-
-   .wrapper {
-      position: relative;
-      padding: 40px 0 30px;
+   .balances {
       background-color: #F7F9FA;
-      .content {
-         width: 1200px;
-         margin: 0 auto;
-         background-color: #F7F9FA;
-      }
-      .top {
-         width: 100%;
-         height: 150px;
-         .space-between;
-         .top-common {
-            width: 590px;
-            height: inherit;
-            padding: 45px 20px 0 30px;
-            .bg-color;
-         }
-         .top-right-up {
-            margin-bottom: 30px;
-         }
-         .kyc-status {
-            display: inline-block;
-            height: 26px;
-            line-height: 24px;
-            font-size: 12px;
-            border-radius: 13px;
-            padding-left: 17px;
-            padding-right: 13px;
-            border: solid 1px transparent;
-            margin-left: 18px;
-            cursor: pointer;
-            .verified-icon {
-               font-weight: bold;
-               margin-left: 8px;
-               margin-top: -2px;
-            }
-         }
-         .verified {
-            color: @buy-color;
-            background-color: rgba(18, 134, 154, 0.1);
-            .verified-icon {
-               color: #53D960;
-            }
-         }
-         .rejected {
-            color: #ED5C66;
-            background-color: rgba(237, 92, 102, 0.1);
-            .verified-icon {
-               color: #ED5C66;
-            }
-         }
-         .unverified {
-            color: @gray-color;
-            background-color: rgba(210, 210, 210, 0.2);
-            .verified-icon {
-               color: @gray-color;
-            }
-         }
-         .title {
-            font-size: 14px;
-            color: @color;
-            margin-top: 8px;
-         }
-         .value {
-            margin-top: 22px;
-            font-size: 14px;
-            color: @color;
-         }
-         em {
-            font-size: 20px;
-            color: #EA4853;
-            font-style: normal;
-         }
-         .transferBtn {
-            background-color: #5A6CB1;
-            border: none;
-            color: #fff;
-            padding: 10px 15px;
-         }
-         .icon {
-            font-size: 19px;
-            margin-top: -2px;
-            margin-right: 8px
-         }
+      min-height: 100%;
+      .title {
+         font-size: 16px;
+         color: @color;
       }
       .middle {
-         position: relative;
-         margin-top: 20px;
          .bg-color;
          .filter-box {
-            position: absolute;
-            top: 50px;
-            .space-between;
-            width: 100%;
-            height: 50px;
             line-height: 50px;
-            padding: 0 20px;
             z-index: 5;
+            border-top: solid 1px #F5F5F5;
             .hide-btn {
                position: absolute;
                top: 50%;
@@ -1441,42 +1344,28 @@
             }
          }
          .search {
-            position: absolute;
-            top: 8px;
-            right: 20px;
             width: 200px;
             height: 34px;
             z-index: 5;
          }
-         .close-box {
-            position: absolute;
-            top: 14px;
-            right: 25px;
-            background-color: #fff;
-            z-index: 10;
-         }
-
-      }
-      .below {
-         margin-top: 20px;
-         .below-title {
-            color: @color;
-            font-size: 16px;
-         }
-         .below-content {
-            .bg-color;
-            padding: 15px 20px;
-            margin-top: 10px;
-            .title {
-               font-size: 14px;
-               color: @color;
-               border-bottom: solid 1px #F5F5F5;
-               padding-bottom: 10px;
+         .search-box {
+            position: relative;
+            .close-box {
+               position: absolute;
+               top: 14px;
+               right: 5px;
+               background-color: #fff;
+               z-index: 10;
+               cursor: pointer;
             }
          }
-         .page {
-            margin-top: 20px;
-            text-align: right;
+         .transactionHistory {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            z-index: 5;
+            color: @buy-color;
+            letter-spacing: 0.5px;
          }
       }
    }
@@ -1519,5 +1408,4 @@
          }
       }
    }
-
 </style>

@@ -1,144 +1,98 @@
 <template>
-   <div class="wrapper" id="historyTabs">
-      <div class="header">
-         <router-link to="/balances">{{$t('czBalances')}}</router-link>
-         <a> > {{$t('czlsTransactionHistory')}}</a>
-      </div>
-      <div class="content">
-         <Tabs v-model="tabName" :animated="false">
-            <TabPane :label="$t('transactionHisCD')" name="name1">
-               <Table :columns="columns1" :data="data1"></Table>
-               <Page :total="totalPage1" :page-size="1" show-elevator class="page" @on-change="onChangePage1"/>
-            </TabPane>
-            <TabPane :label="$t('transactionHisCW')" name="name2">
-               <Table :columns="columns1" :data="data2"></Table>
-               <Page :total="totalPage2" :page-size="1" show-elevator class="page" @on-change="onChangePage2"/>
-            </TabPane>
-            <TabPane :label="$t('transactionHisFD')" name="name3">
-               <Table :columns="columns2" :data="data3"></Table>
-               <Page :total="totalPage3" :page-size="1" show-elevator class="page" @on-change="onChangePage3"/>
-            </TabPane>
-            <TabPane :label="$t('transactionHisFW')" name="name4">
-               <Table :columns="columns3" :data="data4"></Table>
-               <Page :total="totalPage4" :page-size="1" show-elevator class="page" @on-change="onChangePage4"/>
-            </TabPane>
-            <!--             <TabPane :label="$t('transHis')" name="name5">
-                           <Table height='680' :columns="columns5" :data="data5"></Table>
-                        </TabPane>
-             -->         </Tabs>
-      </div>
-      <us-modal v-model="showModal" className="depositModal" width="750px" title="depositInstruction"
-                okText="depositSubmit2" cancelText="depositCancel" :showBtn="false">
-         <div class="alert-content">
-            <p class="desc">{{$t('depositTitle')}}</p>
-            <ul class="list">
-               <li class="item">
-                  {{$t('depositCon5')}} <span class="green-color">{{bankAccountName}}</span> {{$t('depositCon6')}}
+   <main id="historyTabs" class="historyTabs">
+      <account-info name="transaction_history"></account-info>
+      <div class="container pt-4 pb-4">
+         <div class="header">
+            <router-link to="/balances">{{$t('czBalances')}}</router-link>
+            <a> > {{$t('czlsTransactionHistory')}}</a>
+         </div>
+         <div class="content bgc-fff">
+            <ul class="nav nav-classic nav-borderless px-0 mb-2" id="pills-tab" role="tablist">
+               <li class="nav-item">
+                  <a class="nav-link active" id="deposit-tab" data-toggle="pill" href="#deposit-href"
+                     role="tab"
+                     aria-controls="pills-one" aria-selected="false">{{$t('transactionHisCD')}}</a>
                </li>
-               <li class="item">
-                  {{$t('depositCon8')}} <span style="font-weight: bold">{{$t('depositCon9')}}</span>
-                  {{$t('depositCon10')}} <span class="green-color"
-                                               style="font-weight: bold">{{reference}}</span>
-                  {{$t('depositCon11')}}
+               <li class="nav-item">
+                  <a class="nav-link" id="withdraw-tab" data-toggle="pill" href="#withdraw-href" role="tab"
+                     aria-controls="pills-two" aria-selected="true">{{$t('transactionHisCW')}}</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" id="transfer-tab" data-toggle="pill" href="#transfer-href" role="tab"
+                     aria-controls="pills-two" aria-selected="true">{{$t('transactionHisFD')}}</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" id="other-tab" data-toggle="pill" href="#other-href" role="tab"
+                     aria-controls="pills-two" aria-selected="true">{{$t('transactionHisFW')}}</a>
                </li>
             </ul>
-            <div class="information">
-               <Row v-for="item in information" :key="item.key">
-                  <Col span="7" class="col-left">{{$t(item['key'])}}</Col>
-                  <Col span="17" class="col-right">{{item['value']}}</Col>
-               </Row>
+            <div class="tab-content middle pl-3 pr-3 pb-3" id="pills-tabContent">
+               <div class="tab-pane fade active show" id="deposit-href" role="tabpanel" aria-labelledby="deposit-tab">
+                  <Table :columns="columns1" :data="data1"></Table>
+                  <Page :total="totalPage1" :page-size="1" show-elevator class="page" @on-change="onChangePage1"/>
+               </div>
+               <div class="tab-pane fade" id="withdraw-href" role="tabpanel" aria-labelledby="withdraw-tab">
+                  <Table :columns="columns1" :data="data2"></Table>
+                  <Page :total="totalPage2" :page-size="1" show-elevator class="page" @on-change="onChangePage2"/>
+               </div>
+               <div class="tab-pane fade" id="transfer-href" role="tabpanel" aria-labelledby="transfer-tab">
+                  <Table :columns="columns2" :data="data3"></Table>
+                  <Page :total="totalPage3" :page-size="1" show-elevator class="page" @on-change="onChangePage3"/>
+               </div>
+               <div class="tab-pane fade" id="other-href" role="tabpanel" aria-labelledby="other-tab">
+                  <Table :columns="columns3" :data="data4"></Table>
+                  <Page :total="totalPage4" :page-size="1" show-elevator class="page" @on-change="onChangePage4"/>
+               </div>
             </div>
-            <p class="desc red-color">
-               {{$t('depositCon12')}}
-            </p>
          </div>
-      </us-modal>
-   </div>
+      </div>
+   </main>
 </template>
 <script>
    import {Exchange} from '@/interface/exchange.js'
-   import moment, {isMoment} from 'moment'
+   import moment from 'moment'
    import bigDecimal from 'js-big-decimal' //除法失效
-   import PasswordInput from '@/components/PasswordInput.vue'
-   import usModal from '@/components/usModal'
-   import {getCreateAccount, getAccountInfo} from '_api/exchange.js'
-   import {postHeaderKeyIdBodyApi} from '../../../api/axios.js';
-   import {commonRemite} from '../../../api/urls.js';
+   import AccountInfo from '@/components/common/AccountInfo'
 
+   import {getCreateAccount, getAccountInfo} from '_api/exchange.js'
 
    import {
       getCurrencyList,
    } from '_api/exchange.js'
    import {
       scientificToNumber,
-      parseUrl,
+      storage,
    } from '@/lib/utils.js'
-   import {
-      getIdentify,
-   } from '_api/balances.js'
 
    export default {
-      name: "order",
+      name: "transaction_history",
       components: {
-         PasswordInput: PasswordInput,
-         'us-modal': usModal
+         'account-info': AccountInfo,
       },
       data() {
          return {
-            loginToken: $cookies.get('loginToken'),
             tabName: '',
+            accountToken: '',
             SSE_order: null,//订单推送
             symbolList: {},//交易接口的symbolList 接口
             totalPage1: 1,
             totalPage2: 1,
             totalPage3: 1,
             totalPage4: 1,
+
+            pageInfo: {
+               total: 0, //初始化信息总条数
+               pageNo: 1,
+               pageSize: 10,
+            },
+
             currencyPrecision: {},
             txIdExplorer: {},
-            //alert
-            showModal: false,
-            bankAccountName: localStorage.getItem('bankAccountName') || '',
-            reference: '',
-            message: {},
-            information: [
-               {
-                  key: 'ptAccName',
-                  label: 'beneficiaryName',
-                  value: ''
-               }, {
-                  key: 'ptAccAddress',
-                  label: 'beneficiaryAddress',
-                  value: ''
-               }, {
-                  key: 'ptAccBankname',
-                  label: 'bankName',
-                  value: ''
-               }, {
-                  key: 'ptAccBankAddress',
-                  label: 'bankAddress',
-                  value: ''
-               }, {
-                  key: 'ptAccBankPhone',
-                  label: 'bankPhone',
-                  value: ''
-               }, {
-                  key: 'ptAccBankRouting',
-                  label: 'routingNumber',
-                  value: ''
-               }, {
-                  key: 'ptAccNumber',
-                  label: 'accountNumber',
-                  value: ''
-               }, {
-                  key: 'ptAccSwift',
-                  label: 'SWIFTCode',
-                  value: ''
-               }, {
-                  key: 'ptAccREF',
-                  label: 'reference_number',
-                  value: ''
-               }],
-
+            accountID: '',
+            statusMessage: '',
+            transfer: (h) => {
+               return h('div', {}, this.$t('transHis'))
+            },
             columns1: [
                {
                   key: 'createdAt',
@@ -405,7 +359,7 @@
                   }
                },
             ],
-            columns5: [
+            columns4: [
                {
                   // title: 'Time',
                   key: 'createsDate',
@@ -477,21 +431,22 @@
                   },
                }
             ],
-            data5: [],
             data1: [],
             data2: [],
             data3: [],
             data4: [],
+            currencyList:[],
          }
       },
       methods: {
          init() {
+            let loginToken = $cookies.get('loginToken')
             let ssoProvider = {};
             //创建实例
             this.exchange = new Exchange(ssoProvider);
-            if (this.loginToken) {
+            if (loginToken) {
                this.exchange.ssoProvider.getSsoToken = function (fn) {
-                  fn(this.loginToken);
+                  fn(loginToken);
                };
             } else {
                this.$router.push('/login')
@@ -499,8 +454,11 @@
             (async () => {
                await new Promise(resolve => {
                   getCurrencyList().then(res => {//币种全称
+                     this.currencyList=res
                      res.map(v => {
-                        this.txIdExplorer[v.currency] = v['coinInfos'][0]['txIdExplorer']
+                        // this.txIdExplorer[v.currency] = v['coinInfos'][0]['txIdExplorer']
+                        this.txIdExplorer[v.currency] = v['coinInfos']
+
                         this.currencyPrecision[v.currency] = v.currencyPrecision
                      })
                      resolve()
@@ -590,58 +548,20 @@
             this[type][index][`show${index}`] = !this[type][index][`show${index}`]
             this.$set(this[type])
          },
-         getIdentify() { //实名认证
-            if (this.bankAccountName) {
-               this.information[0]['value'] = this.bankAccountName
-               this.information = JSON.parse(JSON.stringify(this.information))
-            } else {
-               getIdentify(this.loginToken).then(res => {
-                  localStorage.setItem('bankAccountName', res.data.firstName + res.data.lastName)
-                  this.information[0].value = this.bankAccountName = localStorage.getItem('bankAccountName')
-                  this.information = JSON.parse(JSON.stringify(this.information))
-               })
-            }
-         },
-         async getHistoryTransfer() {
-            await getCreateAccount({'ssoToken': this.loginToken}, {}).then(result => {
-               this.accountToken = result.value
-            })//accountToken
-            await getAccountInfo({token: this.accountToken}).then(result => {
-               this.accountID = result.accountId
-            })//accountId
-            let params = {
-               channelUserId: this.accountID,
-               createTime: '',
-            }
-            postHeaderKeyIdBodyApi(commonRemite, {
-               "url": '/api/pay/remtrade/getRemittanceTradesList',
-               "params": JSON.stringify(params)
-            }).then((res) => {
-               if (!res.status) {
-                  this.data5 = res.data.entity.remTradesList;
-               }
-            })
-         }
-
-
-      },
-      beforeMount() {
-         if (Object.keys(this.$route.params).length !== 0) {
-            this.tabName = this.$route.params.id
-         }
       },
       mounted() {
          this.$store.commit('changeHeaderColor', '#15232C');
          this.init()
-         this.getHistoryTransfer()
       },
       deactivated() {
          this.$destroy()
-      }
+      },
    }
 </script>
 
 <style lang="less">
+   @import './balances.less';
+
    #historyTabs {
       .ivu-table td {
          height: 48px;
@@ -649,13 +569,79 @@
          padding: 0;
          vertical-align: text-top; //！！！文字上方对齐
       }
+      .ivu-table-overflowX::-webkit-scrollbar {
+         display: none;
+      }
    }
 
    #historyTabs table, th, td {
       border: none;
    }
+
+   #historyTabs .ivu-select-selection,
+   #historyTabs .ivu-select-selection-foucsed,
+   #historyTabs .ivu-select-selection:hover,
+   #historyTabs .ivu-select-visible .ivu-select-selection {
+      border-color: #12869A !important;
+   }
+
+   #historyTabs .ivu-select-item-selected, #historyTabs .ivu-select-item-selected:hover {
+      color: #12869A !important;
+   }
 </style>
 <style lang="less" scoped>
+   @color-light-gary: #E7EAED;
+   @color-green: #12869A;
+
+   #historyTabs {
+      background-color: #F7F9FA
+   }
+
+   .bgc-fff {
+      background-color: #fff;
+   }
+
+   .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+      color: #fff;
+      background-color: @color-green;
+   }
+
+   .nav-pills .nav-link {
+      color: @color-green;
+   }
+
+   .nav-classic .nav-link.active {
+      color: @color-green !important;
+      border-bottom-width: 2px;
+      border-bottom-color: @color-green !important;
+   }
+
+   .nav-classic .nav-link {
+      &:hover {
+         color: @color-green !important;
+      }
+   }
+
+   .nav-link {
+      font-size: 16px;
+   }
+
+   .historyTabs {
+      min-height: 100%;
+      .content {
+         min-height: 635px;
+
+      }
+      .header {
+         margin: 0 auto 10px;
+
+         a {
+            font-size: 14px;
+            color: #AAB0CC;
+         }
+      }
+   }
+
    .wrapper {
       padding: 25px 0 10px;
       background-color: #F7F9FA;
@@ -679,41 +665,5 @@
    .page {
       margin-top: 20px;
       text-align: right;
-   }
-
-   @color: #12869A;
-   @red-color: #EA4853;
-   .depositModal {
-      .alert-content {
-         padding: 25px 0 18px;
-         .list {
-            .item {
-               color: #949DA6;
-               margin-bottom: 15px;
-            }
-         }
-         .information {
-            .col-left, .col-right {
-               font-size: 14px;
-               color: #344857;
-               line-height: 30px;
-            }
-            .col-right {
-               font-weight: bold;
-            }
-         }
-         .desc {
-            font-size: 12px;
-            color: #949DA6;
-            margin-top: 15px;
-            margin-bottom: 20px;
-         }
-         .green-color {
-            color: @color !important;
-         }
-         .red-color {
-            color: @red-color;
-         }
-      }
    }
 </style>

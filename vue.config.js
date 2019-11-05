@@ -14,8 +14,8 @@ const resolve = dir => {
 // http(s)://a.com/my-app/
 const BASE_URL = '/'
 
-const targetUrl='http://www.dev_test_uat.55.exchange/' // 测试本地环境
-// const targetUrl ='https://www.tresso.com/' //生产
+// const targetUrl='http://www.dev_test_uat.55.exchange/' // 测试本地环境
+const targetUrl ='https://www.tresso.com/' //生产
 
 module.exports = {
    transpileDependencies: [

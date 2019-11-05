@@ -13,3 +13,4 @@ export const getRelatNameVerify = () => {
 export const getLegalTenderValue = (params) => {
     return getApi(fabiCost, params)
  }
+

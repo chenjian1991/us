@@ -1,10 +1,22 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from '../views/main/Layout.vue';
-import Cookies from 'js-cookie'
+import VueCookies from 'vue-cookies'
+
+Vue.use(VueCookies)
+
 import store from '../store/index'
 import {getCreateAccount} from '_api/exchange.js'
 import {clearLocalStorage} from '@/config'
+
+//zmw
+const newbalances = () => import('../views/newBalances/balances.vue')
+const deposit = () => import('../views/newBalances/deposit.vue')
+const withdrawal = () => import('../views/newBalances/withdrawal.vue')
+const transaction_history = () => import('../views/newBalances/transactionHistory.vue')
+const order = () => import('../views/newBalances/order.vue')
+// const inviteFriend = () => import('../views/newBalances/inviteFriend.vue')
+// const invitePartner = () => import("../views/newBalances/invitePartner.vue")
 
 const index = () => import('../views/home/index.vue')
 const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
@@ -22,12 +34,12 @@ import resetNewpass from '../views/forgotPassword/resetNewpass.vue';
 import safeCenter from '../views/sateCenter/safeCenter.vue';
 import bandEmail from '../views/sateCenter/bandEmail.vue';
 import bandPhone from '../views/sateCenter/bandPhone.vue';
-import order from '../views/order/order.vue'
+// import order from '../views/order/order.vue'
 
 const balances = () => import('../views/balances/balances.vue')
-import deposit from '../views/balances/deposit.vue'
-import withdrawal from '../views/balances/withdrawal.vue'
-import transaction_history from '../views/balances/transaction_history.vue'
+// import deposit from '../views/balances/deposit.vue'
+// import withdrawal from '../views/balances/withdrawal.vue'
+// import transaction_history from '../views/balances/transaction_history.vue'
 
 import originLoginPassword from "../views/resetLoginPassword/originPasswrod.vue";
 import newPassword from "../views/resetLoginPassword/newPassword.vue";
@@ -564,6 +576,17 @@ const router = new Router({
                component: order
             },
             //资产
+            {
+               path: 'newbalances',
+               name: 'balances',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'headerBalances'
+               },
+               component: newbalances
+            },
             {
                path: 'balances',
                name: 'balances',

@@ -3,7 +3,7 @@ import {
    setLocalStorage as setValue,
 } from '@/lib/utils.js'
 import store from '@/store/index'
-import { clearLocalStorage } from '@/config'
+import {clearLocalStorage} from '@/config'
 import {
    Message,
    Notice
@@ -47,7 +47,6 @@ import {
 } from '_api/exchange.js'
 import Cookies from 'js-cookie'
 //韩国挖矿
-import {queryIncoming, listPersonal, listTeam, listBonus} from '_api/miningKo.js'
 import _ from 'lodash'
 
 export function Exchange(ssoProvider) {
@@ -263,21 +262,21 @@ Exchange.prototype.getSession = function (tokenType, fn) {
       fn(expiredAbleSession);
       return;
    }
-    else if (getValue(tokenType + "_SESSION")) {
+   else if (getValue(tokenType + "_SESSION")) {
       fn(getValue(tokenType + "_SESSION"));
       return;
    }
    _this.getAccountId(function (_accountId) {
       _this.getToken(tokenType, function (_typeToken) {
-         _this.issuedTradePassword(Cookies.get('loginToken'),_this.userPassWord,function(passwordToken){
+         _this.issuedTradePassword(Cookies.get('loginToken'), _this.userPassWord, function (passwordToken) {
             getCreateSession({'token': _typeToken}, {
                'accountId': _accountId,
-               'extension':passwordToken
+               'extension': passwordToken
             }).then(data => {
                _this.sessionCache[tokenType] = data;
                setValue(tokenType + "_SESSION", data);
                fn(data["value"]);
-            }).catch(error=>{
+            }).catch(error => {
                console.log('签发session error')
             })
          })
@@ -291,7 +290,7 @@ Exchange.prototype.issuedTradePassword = function (token, password, fn) {
    if (expiredAblepassword) {
       fn(expiredAblepassword);
       return;
-   }else if(getValue("PASSWORDTOKEN")){
+   } else if (getValue("PASSWORDTOKEN")) {
       fn(getValue("PASSWORDTOKEN"))
       return;
    }
@@ -413,9 +412,9 @@ Exchange.prototype.listFilledOrder = function (fn) {
    })
 };
 
-Exchange.prototype.createNewOrder = function (orderInfo,userpassword, fn, errorFn) {
+Exchange.prototype.createNewOrder = function (orderInfo, userpassword, fn, errorFn) {
    var _this = this;
-   if(userpassword){
+   if (userpassword) {
       _this.userPassWord = userpassword
    }
    _this.getAccountId(function (_accountId) {
@@ -436,36 +435,36 @@ Exchange.prototype.createNewOrder = function (orderInfo,userpassword, fn, errorF
       })
    })
 };
-Exchange.prototype.createGBBOOrder = function (orderInfo,userpassword, fn, errorFn) {
-	var _this = this;
-	if(userpassword){
-		_this.userPassWord = userpassword
-	}
-	_this.getAccountId(function (_accountId) {
-		_this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
-				// _this.getOrderTicket(function (_orderId) {
-				const userId = localStorage.getItem('ex55Pin')
-				const fourRandDigit = Math.floor(Math.random() * (999 - 100)) + 100
-				const orderId = `${userId}${new Date().getTime()}${fourRandDigit}`
-				getCreateGBBOOrder({"session": _orderSession}, {
-					"accountId": _accountId,
-					"orderId": orderId,
-					"orderInfo": orderInfo
-				}).then(
-					data => {
-							fn(data)
-					}
-				).catch(data => {
-					errorFn(data)
-				})
-				// })
-		})
-	})
+Exchange.prototype.createGBBOOrder = function (orderInfo, userpassword, fn, errorFn) {
+   var _this = this;
+   if (userpassword) {
+      _this.userPassWord = userpassword
+   }
+   _this.getAccountId(function (_accountId) {
+      _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
+         // _this.getOrderTicket(function (_orderId) {
+         const userId = localStorage.getItem('ex55Pin')
+         const fourRandDigit = Math.floor(Math.random() * (999 - 100)) + 100
+         const orderId = `${userId}${new Date().getTime()}${fourRandDigit}`
+         getCreateGBBOOrder({"session": _orderSession}, {
+            "accountId": _accountId,
+            "orderId": orderId,
+            "orderInfo": orderInfo
+         }).then(
+            data => {
+               fn(data)
+            }
+         ).catch(data => {
+            errorFn(data)
+         })
+         // })
+      })
+   })
 };
 
-Exchange.prototype.cancelOrder = function (orderId,userpassword, fn) {
+Exchange.prototype.cancelOrder = function (orderId, userpassword, fn) {
    var _this = this;
-   if(userpassword){
+   if (userpassword) {
       _this.userPassWord = userpassword
    }
    _this.getAccountId(function (_accountId) {
@@ -499,18 +498,6 @@ Exchange.prototype.getFFfees = function (available, fn) {
    })
 }
 
-//挖矿
-Exchange.prototype.queryRewardFilledBuyBrief = function (fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-         getQueryRewardFilledBuyBrief({"token": _assetToken, "accountId": _accountId}).then(data => {
-            fn(data);
-         })
-      })
-   })
-};
-
 Exchange.prototype.activityList = function (activity, currency, fn) {
    var params = {}
    var _this = this;
@@ -543,52 +530,6 @@ Exchange.prototype.activityList = function (activity, currency, fn) {
    })
 };
 
-Exchange.prototype.queryRewardLockedAssetBrief = function (fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-         getQueryRewardLockedAssetBrief({"token": _assetToken, "accountId": _accountId}).then(data => {
-            fn(data);
-         })
-      })
-   })
-};
-
-Exchange.prototype.createLocked = function (currency, amount, type, lockedLongDurationDay, fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-         getCreateLocked({
-            "token": _assetToken
-         }, {
-            "accountId": _accountId,
-            'currency': currency,
-            'amount': amount,
-            'type': type,
-            'lockedLongDurationDay': lockedLongDurationDay
-         }).then(data => {
-            fn(data);
-         })
-      })
-   })
-};
-
-Exchange.prototype.listLocked = function (type, page, limit, fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-         getListLocked({
-            "token": _assetToken,
-            "accountId": _accountId,
-            'type': type,
-            'page': page,
-            'limit': limit
-         }).then(data => {
-            fn(data);
-         })
-      })
-   })
-};
 //USDDInterest
 Exchange.prototype.usddInterestQuery = function (fn) {
    var _this = this;
@@ -692,7 +633,7 @@ Exchange.prototype.createWithdrawAddress = function (currency, friendlyName, add
             "address": address,
          }).then(data => {
             fn(data);
-         }).catch(data=>{
+         }).catch(data => {
             fn(data);
          })
       })
@@ -743,31 +684,6 @@ Exchange.prototype.getAssetTicket = function (fn) {
       })
    })
 };
-//提现
-// Exchange.prototype.withdraw = function (currency, address, amount, fee, fn, errorFn) {
-//    var _this = this;
-//    _this.ssoProvider.getSsoToken(function (_ssoToken) {
-//       _this.getAccountId(function (_accountId) {
-//          _this.getWithdrawSession(Exchange.TokenType.ASSET, function (_assetSession) {
-//             _this.getAssetTicket(function (_assetTicket) {
-//                withdraw({"ssoToken": _ssoToken, "session": _assetSession}, {
-//                   "currency": currency,
-//                   "accountId": _accountId,
-//                   "ticket": _assetTicket,
-//                   "address": address,
-//                   "amount": amount,
-//                   "fee": fee
-//                }).then(data => {
-//                   fn(data);
-//                }).catch(data => {
-//                   errorFn(data);
-//                });
-//             })
-//          })
-//       })
-//    })
-// };
-
 
 Exchange.prototype.withdraw = function (currency, address, amount, fee, fn, errorFn) {
    var _this = this;
@@ -816,92 +732,3 @@ Exchange.prototype.withdrawUSD = function (currency, address, amount, fee, fn, e
    })
 };
 
-
-//韩货挖矿活动
-//import {queryIncoming,listPersonal,listTeam,listBonus} from '_api/miningKo.js'
-//查询账户收益
-Exchange.prototype.getIncoming = function (fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getAccountToken(function (_accountToken) {
-         queryIncoming({'accountId': _accountId, 'token': _accountToken}).then(data => {
-            fn(data)
-         })
-      })
-   })
-};
-//查询个人挖矿记录
-Exchange.prototype.getListPersonal = function (params, fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getAccountToken(function (_accountToken) {
-         listPersonal({
-            'accountId': _accountId,
-            'token': _accountToken,
-            'page': params.page,
-            'limit': params.limit
-         }).then(data => {
-            fn(data)
-         })
-      })
-   })
-};
-//查询组队挖矿记录
-Exchange.prototype.getListTeam = function (params, fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getAccountToken(function (_accountToken) {
-         listTeam({
-            'accountId': _accountId,
-            'token': _accountToken,
-            'page': params.page,
-            'limit': params.limit
-         }).then(data => {
-            fn(data)
-         })
-      })
-   })
-};
-//查询邀请中奖记录
-Exchange.prototype.getListBonus = function (params, fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getAccountToken(function (_accountToken) {
-         listBonus({
-            'accountId': _accountId,
-            'token': _accountToken,
-            'page': params.page,
-            'limit': params.limit
-         }).then(data => {
-            fn(data)
-         })
-      })
-   })
-};
-//查询组队详情
-Exchange.prototype.getGroupDetail = function (params, fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getAccountToken(function (_accountToken) {
-         queryGroupDetail({
-            'token': _accountToken,
-            'accountId': _accountId,
-            'page': params.page,
-            'limit': params.limit
-         }).then(data => {
-            fn(data)//参数是个函数，在函数里面处理data
-         })
-      })
-   })
-},
-//喊他挖矿，查询是否已经挖矿
-   Exchange.prototype.queryMingMethod = function (params, fn) {
-      var _this = this;
-      _this.getAccountId(function (_accountId) {
-         _this.getAccountToken(function (_accountToken) {
-            queryMiningflag({'token': _accountToken, 'accountId': _accountId, 'ex55Pin': params.ex55Pin}).then(data => {
-               fn(data)//参数是个函数，在函数里面处理data
-            })
-         })
-      })
-   }

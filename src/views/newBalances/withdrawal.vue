@@ -1,12 +1,35 @@
 <template>
-   <div class="wrapper" id="withdraw">
-      <div class="container">
-         <deposit-withdraw :balancesData="withdrawData"></deposit-withdraw>
-         <div class="content-middle content-common">
-            <p class="title">{{currency}} {{$t('tsWithdrawalAddress')}}</p>
-            <Row type="flex" justify="space-between" class="row-middle">
-               <Col span="12">
-                  <div class="below-col">
+   <main id="withdraw" class="withdraw">
+      <account-info name="withdrawal"></account-info>
+      <div class="container pt-4 pb-4">
+         <p class="title">{{currency}} - {{currencyName}}</p>
+         <div class="bgc-fff">
+            <div class="row">
+               <div class="col-md-4 middle-col p-4">
+                  <div class="line">
+                     <h3 class="total">{{total}}</h3>
+                     <p>{{$t('czTotalBalance')}} ({{currency}})</p>
+                  </div>
+               </div>
+               <div class="col-md-4 middle-col p-4">
+                  <div class="line">
+                     <h3>{{frozen}}</h3>
+                     <p>{{$t('czInOrder')}} ({{currency}})</p>
+                  </div>
+               </div>
+               <div class="col-md-4 middle-col p-4">
+                  <div>
+                     <h3>{{available}}</h3>
+                     <p>{{$t('czAvailableBalance')}} ({{currency}})</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <p class="title mt-3">{{currency}} {{$t('tsWithdrawalAddress')}}</p>
+         <div class="content-middle bgc-fff">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="below-col p-4">
                      <div class="input-box">
                         <input type="text" v-model.trim="value1" :disabled="disabled"
                                @input="changeAddress('value1')" class="input-common input-address">
@@ -25,7 +48,7 @@
                            </dt>
                            <!--使用新地址-->
                            <dt @click="chooseNewAddress" class="address-item">
-                              <Icon type="md-add-circle" class="icon"/>&nbsp;{{$t('tsUseNewAddress')}}
+                              <Icon type="md-add-circle" class="icon"/>&nbsp;Enter withdrawal address
                            </dt>
                         </dl>
                         <div class="new-address" v-show="showNewAddress">
@@ -36,17 +59,17 @@
                         </div>
                      </div>
                      <!--EOS 提现备注-->
-                     <div v-if="EOS">
+                     <div v-if="isMemo">
                         <div class="input-box-label EOSLabel">
-                           <div>{{currency}} {{$t('withdrawEOSLabel')}}</div>
+                           <div>{{currency}} {{$t('tsWithdrawal')}}{{$t(depositType)}}</div>
                            <!--单选框-->
                            <div class="radio-box" @click="changeAgree">
                               <span class="label-radio" :class="radioStatus"></span>
-                              <span class="text">{{$t('withdrawEOSNoLabel')}}</span>
+                              <span class="text">{{$t('withdrawEOSNo')}}{{$t(depositType)}}</span>
                            </div>
                         </div>
                         <div class="input-box">
-                           <input type="text" v-model.trim="EOSLabelValue" :maxlength="12" :class="noLabelStatus"
+                           <input type="text" v-model.trim="EOSLabelValue" :maxlength="60" :class="noLabelStatus"
                                   :disabled="disabledNoLabel" @input="changeAddress('EOSLabelValue')"
                                   class="input-common input-address">
                         </div>
@@ -54,32 +77,34 @@
                      <!--提现数量-->
                      <div class="input-box-label">{{$t('tsAmount')}}</div>
                      <div class="input-box">
-                        <input type="text" v-model.trim="value2" :maxlength="20" @input="changeValue('value2')"
+                        <input type="text" v-model.trim="value2" :maxlength="20" @input="changeValue"
                                onpaste="return false" ondragenter="return false" class="input-common input-address">
                         <div class="right-box">{{$t('tsAvailable')}} : <em
                            @click="inputALL">{{available}}</em>&nbsp;<span>{{currency}}</span>
                         </div>
                      </div>
+                     <!--手续费-->
                      <Row type="flex" justify="space-between" class="below-row">
                         <Col span="12">{{$t('tsTransactionFee')}}: {{fee}}</Col>
                         <Col span="12" align="right"><span>{{$t('tsReceiveAmount')}}</span>: {{receiveAmount}}</Col>
                      </Row>
                      <Button @click="submit" class="submitBtn" :disabled="disabledSubmit">{{$t('tsSubmit')}}</Button>
-                     <a @click="toWithdraw" class="below-content">{{$t('tsHowWithdrawal')}}</a>
+                     <a @click="toWithdraw" class="below-content">How do I Withdraw from Tresso?</a>
                   </div>
-               </Col>
-               <Col span="10">
-                  <div class="below-col">
+               </div>
+               <div class="col-md-6">
+                  <div class="below-col p-4">
                      <p class="tip">{{$t('czTips')}}</p>
                      <ul>
-                        <li>{{$t('tsMinimum')}}: {{minAmount}} {{currency}}</li>
-                        <li>{{$t('tsTipsContent2')}}</li>
-                        <li>{{$t('tsTipsContent3')}}</li>
-                        <li>{{$t('tsTipsContent4')}}</li>
+                        <li>Minimum withdrawal amount is 0.005 BTC.</li>
+                        <li>We will not credit your account if you attempt to withdraw directly to a crowdfund or ICO.
+                        </li>
+                        <li>Do not process a withdrawal from a computer or browser that is not secure.</li>
+                        <li>You can view the status of your withdrawals on your Transaction History page.</li>
                      </ul>
                   </div>
-               </Col>
-            </Row>
+               </div>
+            </div>
          </div>
       </div>
       <!--删除地址-->
@@ -145,9 +170,7 @@
                <li>{{$t('tscgInfoContent1')}}</li>
                <li>{{$t('tscgInfoContent2')}}</li>
             </ul>
-            <!--<router-link to='/transaction_history'><Button @click="success" class="confirm-btn">{{$t('tscgOK')}}</Button></router-link>-->
             <Button @click="success" class="confirm-btn">{{$t('tscgOK')}}</Button>
-
          </div>
       </alertModal>
       <alertModal className="alert-fourth" v-model="showFourth" :showHeader="showHeaderFourth"
@@ -160,13 +183,13 @@
             <Button @click="toKyc" class="kyc-btn kyc-btn-ok">{{$t('gotokyc')}}</Button>
          </div>
       </alertModal>
-   </div>
+   </main>
 </template>
 
 <script>
    import bigDecimal from 'js-big-decimal' //除法失效
    import alertModal from '@/components/alertModal'
-   import depositWithdraw from '@/components/depositWithdraw'
+   import AccountInfo from '@/components/common/AccountInfo'
    import {Exchange} from '@/interface/exchange.js'
    import {
       getCurrencyList,
@@ -177,7 +200,6 @@
       send,
       codeVerify,
       getIdentify,
-      identifyQuery,
    } from '_api/balances.js'
    import {
       scientificToNumber, onlyInputNumAndPoint, dealNumber
@@ -187,15 +209,15 @@
       name: "withdrawal",
       components: {
          alertModal: alertModal,
-         'deposit-withdraw': depositWithdraw,
+         'account-info': AccountInfo,
       },
       data() {
          return {
-            loginToken: $cookies.get('loginToken'),
-            withdrawData: {},
             currency: '--',
             currencyName: '--',
             available: '--',
+            frozen: '--',
+            total: '--',
             currencyPrecision: {},
             deleteLabel: '',
             deleteAddress: '',
@@ -224,8 +246,9 @@
             value5: '',
             value6: '',
             value7: '',
-            EOS: '',//当前币种为EOS
+            isMemo: '',//当前币种为EOS
             EOSLabelValue: '',//eos提现备注
+            depositType: '',
             agree: false,//无备注  单选按钮初始化未选状态
             addressVerify: '',//验证地址
             disabledNoLabel: false,
@@ -242,6 +265,7 @@
             showNewAddress: false,
             addAddress: false,
             coinType: '',
+            loginToken: '',
             disabledSubmit: false,
             disabledEMAIL: false,
             disabledPHONE: false,
@@ -268,36 +292,41 @@
                amountCorrect: 'tsCorrectVolume',
                emptyEOSLabel: 'withdrawEOSEmpty',
             },
+            coinTypeList: [],
+            defaultCoinType: '',
+            coinTypeNum: 8,
+            coin: '',
             countEMAIL: 0,
             countPHONE: 0,
             userId: localStorage.getItem('loginUserId'),
-
+            coinInfos: {},//币种类型切换 手续费
          }
       },
       methods: {
          init() {
-            let ssoProvider = {};
-            //创建实例
-            this.exchange = new Exchange(ssoProvider);
-            if (this.loginToken) {
-               this.exchange.ssoProvider.getSsoToken = function (fn) {
-                  fn(this.loginToken);
-               };
-            } else {
-               this.$router.push('/login')
-            }
             getCurrencyList().then(res => {//币种全称
                res.map(v => {
-                  this.currencyPrecision[v.currency] = v.currencyPrecision
                   if (v["currency"] === this.currency) {
-                     this.coinType = v['coinInfos'][0]['coinType']
+                     this.currencyPrecision[v.currency] = v.currencyPrecision
                      this.currencyName = v['currencyName']
-                     this.fee = v['withdrawMinFee']
+                     this.coinType = v['coinInfos'][0]['coinType']
+                     this.fee = v['coinInfos'][0]['withdrawMinFee']
                      this.minAmount = v["withdrawMinAmount"];
                      this.maxAmount = v["withdrawMaxAmount"];
-                     this.withdrawData['currencyName'] = v['currencyName']
+                     if (v['coinInfos'].length !== 1) {
+                        v['coinInfos'].map(coinInfo => {
+                           this.coinInfos[coinInfo.coinType] = coinInfo.withdrawMinFee
+                        })
+                     }
+                     if (v['coinInfos'][0].memo) {
+                        this.isMemo = true
+                        this.memoAliasName = v['coinInfos'][0].memoAliasName
+                     }
                   }
                })
+               if (this.isMemo) {
+                  this.depositType = `depositContent${this.memoAliasName}`
+               }
                this.getBalances()
             })
             this.getWithdrawAddress()
@@ -313,11 +342,19 @@
          },
          inputALL() {
             this.value2 = this.available
-            let receive = this.transferNumber(bigDecimal.subtract(this.available, this.fee), 8)
-            if (Number(receive) <= 0) {
+            this.receive(this.available)
+         },
+         receive(value) {
+            let val = value
+            if (val >= this.minAmount && val <= Number(this.available)) {
+               let receive = this.transferNumber(bigDecimal.subtract(val, this.fee), 8)
+               if (Number(receive) <= 0) {
+                  this.receiveAmount = '0.00000000'
+               } else {
+                  this.receiveAmount = receive
+               }
+            } else {//able状态之后的disabled状态
                this.receiveAmount = '0.00000000'
-            } else {
-               this.receiveAmount = receive
             }
          },
          getBalances() {
@@ -332,18 +369,18 @@
                         if (v['frozen'] < 0.00000001) {
                            v['frozen'] = 0
                         }
-                        this.withdrawData['available'] = this.available = dealNumber(v.available, precision)
-                        this.withdrawData['frozen'] = dealNumber(v.frozen, precision)
-                        this.withdrawData['total'] = dealNumber(bigDecimal.add(v.available, v.frozen), precision)
+                        this.available = this.available = dealNumber(v.available, precision)
+                        this.frozen = dealNumber(v.frozen, precision)
+                        this.total = dealNumber(bigDecimal.add(v.available, v.frozen), precision)
                      }
                   })
                   if (this.available === '--') {
-                     this.available = this.withdrawData['available'] = this.withdrawData['frozen'] = this.withdrawData['total'] = '0.00000000'
+                     this.available = this['frozen'] = this['total'] = '0.00000000'
+
                   }
                } else {
-                  this.available = this.withdrawData['available'] = this.withdrawData['frozen'] = this.withdrawData['total'] = '0.00000000'
+                  this.available = this['frozen'] = this['total'] = '0.00000000'
                }
-               this.withdrawData = JSON.parse(JSON.stringify(this.withdrawData))// 这句话很重要 重新赋值 更新数据！！！
             }.bind(this))
          },
          getWithdrawAddress() {//提现地址
@@ -399,9 +436,13 @@
          },
          toKyc() {
             if (this.checkStatus === 'NOT_SET') {
-               this.$router.push('/kyc')
+               this.$router.push({
+                  path: '/kyc',
+               })
             } else {
-               this.$router.push('/identityResult')
+               this.$router.push({
+                  path: '/identityResult',
+               })
             }
          },
          submit() {//第一步提交
@@ -418,7 +459,7 @@
                   this.verifyAddress(newAddress, this.errorCode.emptyNewAddress)
                } else {
                   this.verifyAddress(temporary, this.errorCode.emptyAddress)
-                  if (this.EOS && !this.agree) {
+                  if (this.isMemo && !this.agree) {
                      this.verifyAddress(EOSWithdrawLabel, this.errorCode.emptyEOSLabel)
                   }
                }
@@ -439,7 +480,7 @@
                } else {
                   address = this.value1
                }
-               if (this.EOS) {
+               if (this.isMemo) {
                   this.addressVerify = `${address}:${EOSWithdrawLabel}`
                } else {
                   this.addressVerify = address
@@ -456,8 +497,8 @@
                   })
                   await new Promise(resolve => {
                      getUserInfo({
-                        userId: this.userId
-                     }, this.loginToken).then(res => {//实名认证
+                        userId: localStorage.getItem('loginUserId')
+                     }, $cookies.get('loginToken')).then(res => {//实名认证
                         if (res.data) {
                            switch (res.data['identifyState']) {
                               case 'INIT':
@@ -473,13 +514,27 @@
                               case 'FAIL':
                                  this.checkStatus = "NOT_SET"
                                  break
+
                            }
                         }
+
                         resolve()
                      })
                   })
                   await new Promise(resolve => {
-                     if (this.kyc === false) {//去实名
+                     if (this.kyc === false) {
+                        this.exchange.activityList('INCOMING', 'OTC_INCOMING,WALLET_INCOMING', 'COMPLETED', null, null, 1, 10, function (res) {
+                           if (res.data.length > 0) {//有充值记录
+                              this.deposit = true
+                           }
+                           resolve()
+                        }.bind(this))
+                     } else {
+                        resolve()
+                     }
+                  })
+                  await new Promise(resolve => {
+                     if (this.deposit === false && this.kyc === false) {//去实名
                         this.showFourth = true
                         resolve()
                      } else {
@@ -508,12 +563,13 @@
          getUserInfo() {//获取用户信息
             this.value5 = this.value6 = this.value7 = ''
             if (!this.email && !this.phone) {
-               getUserInfo(this.loginToken).then(res => {
+               getUserInfo({userId: this.userId}, this.loginToken).then(res => {
+                  res = res.data
                   this.showSecond = true
                   this.userInfo = {
                      email: res.email ? true : false,
                      phone: res.phone ? true : false,
-                     google: res['isBindingGoogle']
+                     google: res['bindGoogle']
                   }
                   if (res.email) {
                      this.showEmail = true
@@ -523,7 +579,7 @@
                      this.showPhone = true
                      this.phone = res.phone
                   }
-                  this.showGoogle = res['isBindingGoogle']
+                  this.showGoogle = res['bindGoogle']
                })
             } else {
                this.showSecond = true
@@ -594,7 +650,7 @@
             }
          },
          verifyAddress(value, code) {
-            if (value.length === 0) {
+            if (!value || value.length === 0) {
                throw code
             }
          },
@@ -615,6 +671,8 @@
                this.verifyCode('phone', this.value6, this.errorCode.emptyPhone, this.errorCode.phone)
                this.verifyCode('google', this.value7, this.errorCode.emptyGoogle, this.errorCode.google)
                codeVerify(this.loginToken, {//校验验证码
+                  userId: this.userId,
+                  businessType: 'withdraw',
                   "emailCode": this.value5,
                   "phoneCode": this.value6,
                   "googleCode": this.value7,
@@ -622,8 +680,8 @@
                   if (res["code"]) {
                      this.error(res["code"]);
                   } else {
-                     this.exchange.ssoProvider["getWithdrawExtension"] = res['token'];
-                     this.exchange.withdraw(this.currency, this.addressVerify, this.value2, this.fee, function (res) {
+                     this.exchange.ssoProvider["getWithdrawExtension"] = res['result'];
+                     this.exchange.withdraw(this.currency, this.addressVerify, this.value2, this.fee, this.coin, function (res) {
                         this.showSecond = false
                         this.showThird = true
                      }.bind(this))
@@ -642,27 +700,18 @@
             this.getBalances()
             this.$router.push({
                name: 'transaction_history',
-               params: {id: 'name2'}
+               params: {id: 'withdraw-href'}
             })
          },
          changeAddress(type) {
             window.event.target.value = window.event.target.value.replace(/[^A-Za-z0-9]/g, "");  //清除“数字”和“.”以外的字符
             this[type] = window.event.target['value']
          },
-         changeValue(type) {
-            window.event.target.value = onlyInputNumAndPoint(window.event.target.value, this.currencyPrecision[this.currency])
-            this[type] = window.event.target['value']
+         changeValue() {
+            window.event.target.value = onlyInputNumAndPoint(window.event.target.value, this.coinTypeNum === 6 ? 6 : this.currencyPrecision[this.currency])
+            this['value2'] = window.event.target['value']
             let val = Number(window.event.target['value'])
-            if (val >= this.minAmount && val <= this.available) {
-               let receive = this.transferNumber(bigDecimal.subtract(val, this.fee), 8)
-               if (Number(receive) <= 0) {
-                  this.receiveAmount = '0.00000000'
-               } else {
-                  this.receiveAmount = receive
-               }
-            } else {//able状态之后的disabled状态
-               this.receiveAmount = '0.00000000'
-            }
+            this.receive(val)
          },
          changeAgree() {//eos 无备注按钮
             this.disabledNoLabel = !this.disabledNoLabel
@@ -704,28 +753,32 @@
                      }
                   }
                }
-               //console.log("判断不该获取焦点的元素是否获取了焦点（isfocus_enter）:%s",hasFocus);
                var key = window.event.keyCode;
-               // console.log("按键：%s",key);
                if (key == 13) {
                   //	_this.handleSubmit('formValidate') //此方法是当按下enter键后要做的动作。
                   _this.submit()
                }
-
             }
          }
+      },
+      beforeMount() {
+         let loginToken = $cookies.get('loginToken')
+         this.loginToken = loginToken
+         let ssoProvider = {};
+         //创建实例
+         this.exchange = new Exchange(ssoProvider);
+         this.exchange.ssoProvider.getSsoToken = function (fn) {
+            fn(loginToken);
+         };
       },
       mounted() {
          this.$store.commit('changeHeaderColor', '#15232C');
          if (this.$route.query['currency']) {
             this.currency = this.$route.query['currency']
-            this.withdrawData['currency'] = this.$route.query['currency']
-            if (this.currency === 'EOS') {
-               this.EOS = true
-            }
             this.init()
          } else {
             //没传币种
+            this.$router.push('/home')
          }
       },
       computed: {
@@ -746,6 +799,80 @@
    }
 </script>
 <style lang="less">
+   /*充值提现单选按钮样式*/
+   #withdraw {
+      @color-green: #12869A;
+      .ivu-btn {
+         font-size: 14px;
+         padding: 7px 25px;
+         border-radius: 0;
+         background-color: #108093;
+         color: #fff;
+         &:hover {
+            background-color: @color-green;
+            color: #fff;
+         }
+      }
+      .copy-btn, .ivu-btn-primary {
+         background-color: #fff;
+         color: #12869A;
+         border: 1px solid #12869A;
+         &:hover {
+            background-color: #fff;
+            color: #12869A;
+         }
+      }
+      .ivu-card {
+         position: relative;
+         background: #0A1640;
+      }
+      .ivu-card-head {
+         border-bottom: 1px solid #1F2551 !important;
+      }
+      .radio-box {
+         position: relative;
+         display: flex;
+         align-items: center;
+         cursor: pointer;
+         .label-radio {
+            position: absolute;
+            top: 4px;
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 1px solid #E7EAED;
+            border-radius: 2px;
+            margin-right: 5px;
+            margin-top: -1px;
+         }
+         .label-radio-checked { //选中单选框
+            background-color: #108093;
+         }
+         .label-radio-checked:after {
+            position: absolute;
+            content: '';
+            left: 4px;
+            top: 1px;
+            height: 9px;
+            width: 5px;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            border-radius: 2px;
+            transition: all .2s ease-in-out;
+            transform: rotate(45deg);
+         }
+         .text {
+            font-size: 14px;
+            color: #949DA6;
+            margin-left: 18px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+         }
+      }
+   }
+
    #withdraw {
       .ivu-btn {
          margin-right: 20px;
@@ -782,7 +909,6 @@
             color: #fff;
          }
       }
-
    }
 </style>
 <style lang="less" scoped>
@@ -790,6 +916,14 @@
    @color-green: #12869A;
    @color-gary: #949DA6;
    @color-light-gary: #E7EAED;
+
+   #withdraw {
+      background-color: #F7F9FA
+   }
+
+   .bgc-fff {
+      background-color: #fff;
+   }
 
    .border {
       border: solid 1px @color-light-gary;
@@ -833,175 +967,172 @@
       }
    }
 
-   .wrapper {
-      position: relative;
-      padding: 15px 0 10px;
-      background-color: #F7F9FA;
-      p {
-         font-size: 14px;
-         color: #9DA5C8;
+   .withdraw {
+      min-height: 100%;
+      .title {
+         color: @color;
+         font-size: 16px;
+         margin-bottom: 12px;
       }
-      .header {
-         width: 1200px;
-         margin: 0 auto 10px;
-         a {
-            font-size: 14px;
-            color: #AAB0CC;
-         }
-      }
-      .container {
-         width: 1200px;
-         margin: 0 auto;
-         padding: 25px 0 40px;
-         .content-common {
-            .title {
+      .middle-col {
+         height: 150px;
+         text-align: center;
+         div {
+            h3 {
+               display: block;
+               font-size: 32px;
                color: @color;
-               font-size: 16px;
-               margin-bottom: 12px;
+               margin-bottom: 25px;
+            }
+            p {
+               font-size: 14px;
+               color: @color-gary;
             }
          }
-         .content-middle {
-            .row-middle {
-               background-color: #fff;
-               padding: 30px;
-               .below-col {
-                  .input-box-label {
+         .line {
+            border-right: solid 1px #E7EAED;
+            .total {
+               color: @color-green;
+            }
+         }
+      }
+      .content-middle {
+         .below-col {
+            .input-box-label {
+               color: @color;
+               font-size: 14px;
+               margin-bottom: 13px;
+            }
+            .EOSLabel {
+               display: flex;
+               justify-content: space-between;
+               div {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 0;
+               }
+            }
+            .radio-box {
+               .label-radio {
+                  .border;
+               }
+               .text {
+                  color: @color;
+               }
+            }
+            .input-box {
+               margin-bottom: 15px;
+               .right-box {
+                  color: #B2B9BF;
+                  span {
                      color: @color;
-                     font-size: 14px;
-                     margin-bottom: 13px;
+                     margin-right: 10px;
                   }
-                  .EOSLabel {
-                     display: flex;
-                     justify-content: space-between;
-                     div {
-                        display: flex;
-                        align-items: center;
-                        margin-bottom: 0;
-                     }
-                  }
-                  .radio-box {
-                     .label-radio {
-                        .border;
-                     }
-                     .text {
-                        color: @color;
+                  .arrow {
+                     width: 42px;
+                     height: 42px;
+                     background-color: @color-light-gary;
+                     text-align: center;
+                     cursor: pointer;
+                     .icon {
+                        font-size: 26px;
+                        color: #ACB5BF;
                      }
                   }
-                  .input-box {
-                     margin-bottom: 15px;
-                     .right-box {
-                        color: #B2B9BF;
-                        span {
-                           color: @color;
-                           margin-right: 10px;
-                        }
-                        .arrow {
-                           width: 42px;
-                           height: 42px;
-                           background-color: @color-light-gary;
-                           text-align: center;
-                           cursor: pointer;
-                           .icon {
-                              font-size: 26px;
-                              color: #ACB5BF;
-                           }
-                        }
-                     }
-                     em {
-                        cursor: pointer;
-                        color: @color-green;
-                     }
-                     .address-list {
-                        position: absolute;
-                        width: 100%;
-                        background-color: #fff;
-                        border: 1px solid @color-light-gary;
-                        border-top: none;
-                        border-radius: 0 0 4px 4px;
-                        z-index: 20;
-                        .address-item {
-                           position: relative;
-                           height: 42px;
-                           line-height: 42px;
-                           font-size: 12px;
-                           font-weight: normal;
-                           color: @color-gary;
-                           padding: 0 10px;
-                           cursor: pointer;
-                           align-items: center;
-                           -webkit-user-select: none;
-                           -moz-user-select: none;
-                           -ms-user-select: none;
-                           user-select: none;
-                           .icon {
-                              font-size: 22px;
-                              color: @color-light-gary;
-                           }
-                           &:not(:last-child) {
-                              border-bottom: 1px solid @color-light-gary;
-                           }
-                           &:hover {
-                              background-color: @color-light-gary;
-                              .icon {
-                                 font-size: 22px;
-                                 color: @color-gary;
-                              }
-                           }
-                           .delete {
-                              position: absolute;
-                              top: 50%;
-                              right: 10px;
-                              transform: translateY(-50%);
-                              &:hover {
-                                 color: #fff;
-                              }
-                           }
-                        }
-                     }
-                  }
-                  .below-row {
-                     margin-top: 30px;
-                     color: @color-green;
-                     span {
-                        color: @color-gary;
-                     }
-                  }
-                  .tip {
-                     font-size: 12px;
-                     color: @color;
-                     margin-bottom: 5px;
-                  }
-                  ul {
-                     margin-left: 18px;
-                     li {
-                        font-size: 12px;
-                        list-style: disc;
-                        line-height: 24px;
-                        color: @color-gary;
-                     }
-                  }
-                  .new-address {
-                     display: flex;
-                     justify-content: space-between;
-                     margin-top: 10px;
+               }
+               em {
+                  cursor: pointer;
+                  color: @color-green;
+               }
+               .address-list {
+                  position: absolute;
+                  width: 100%;
+                  background-color: #fff;
+                  border: 1px solid @color-light-gary;
+                  border-top: none;
+                  border-radius: 0 0 4px 4px;
+                  z-index: 20;
+                  .address-item {
+                     position: relative;
+                     height: 42px;
                      line-height: 42px;
+                     font-size: 12px;
+                     font-weight: normal;
+                     color: @color-gary;
+                     padding: 0 10px;
+                     cursor: pointer;
+                     align-items: center;
                      -webkit-user-select: none;
                      -moz-user-select: none;
                      -ms-user-select: none;
                      user-select: none;
-                  }
-                  .submitBtn {
-                     width: 100%;
-                     margin-top: 5px;
-                     font-size: 14px !important;
-                     margin-bottom: 28px;
-                  }
-                  .below-content {
-                     display: block;
-                     font-size: 12px;
-                     color: @color-gary;
+                     .icon {
+                        font-size: 22px;
+                        color: @color-light-gary;
+                     }
+                     &:not(:last-child) {
+                        border-bottom: 1px solid @color-light-gary;
+                     }
+                     &:hover {
+                        background-color: @color-light-gary;
+                        .icon {
+                           font-size: 22px;
+                           color: @color-gary;
+                        }
+                     }
+                     .delete {
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        transform: translateY(-50%);
+                        &:hover {
+                           color: #fff;
+                        }
+                     }
                   }
                }
+            }
+            .below-row {
+               margin-top: 30px;
+               color: @color-green;
+               span {
+                  color: @color-gary;
+               }
+            }
+            .tip {
+               font-size: 12px;
+               color: @color;
+               margin-bottom: 5px;
+            }
+            ul {
+               margin-left: 18px;
+               li {
+                  font-size: 12px;
+                  list-style: disc;
+                  line-height: 24px;
+                  color: @color-gary;
+               }
+            }
+            .new-address {
+               display: flex;
+               justify-content: space-between;
+               margin-top: 10px;
+               line-height: 42px;
+               -webkit-user-select: none;
+               -moz-user-select: none;
+               -ms-user-select: none;
+               user-select: none;
+            }
+            .submitBtn {
+               width: 100%;
+               margin-top: 5px;
+               font-size: 14px !important;
+               margin-bottom: 28px;
+            }
+            .below-content {
+               display: block;
+               font-size: 12px;
+               color: @color-gary;
             }
          }
       }

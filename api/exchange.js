@@ -20,11 +20,7 @@ import {
    historicalTrailing,
    historicalTimeRange,
    summarizedTimeRange,
-   queryRewardFilledBuyBrief,
    activityList,
-   queryRewardLockedAssetBrief,
-   createLocked,
-   listLocked,
    filled,
    currencyList,
    queryUsdt2usddUrl,
@@ -152,22 +148,11 @@ export const realNameMethod =(token,params) =>{
 export const getBalanceList = (params) => {
    return getApi(balanceList, params)
 }
-//挖矿
-export const getQueryRewardFilledBuyBrief = (params) => {
-   return getApi(queryRewardFilledBuyBrief, params)
-}
+
 export const getActivityList = (params) => {
    return getApi(activityList, params)
 }
-export const getQueryRewardLockedAssetBrief = (params) => {
-   return getApi(queryRewardLockedAssetBrief, params)
-}
-export const getCreateLocked = (params, data) => {
-   return postHeaderJsonApi(createLocked, params, data)
-}
-export const getListLocked = (params) => {
-   return getApi(listLocked, params)
-}
+
 //充值地址
 export const address = (params) => {
    return getApi(queryAddress, params)

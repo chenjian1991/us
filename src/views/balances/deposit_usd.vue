@@ -22,27 +22,27 @@
                   </Col>
                </Row>
                <section class="below">
-                  <p>{{$t('depositCon1')}}</p>
-                  <p>{{$t('depositCon2')}}</p>
+                  <p>To add a bank account, click the Bank Accounts option on your Balances page and fill out the form
+                     to link a new bank account. Note that in order to make a wire deposit into your Tresso account the
+                     wire transfer must originate from a bank account that is owned by you.</p>
                   <Button class="instruction button-common" :loading="loading" @click="getInstruction">
                      {{$t('depositSubmit')}}
                   </Button>
-                  <h4>{{$t('depositCon3')}}</h4>
-                  <h4>{{$t('depositCon4')}}</h4>
+                  <h4>Funds will be returned to the originating bank if the wire transfer originated from a third
+                     party.</h4>
                   <div class="line"></div>
                   <Button class="history button-common" @click="next">{{$t('depositHis')}}
                      <Icon type="ios-arrow-round-forward" class="arrow-icon"/>
                   </Button>
                   <div class="logo-box">
-                     <img src="../../assets/images/balances/55logo@2x.png" class="logo">
                      <a target="_blank" href="https://www.gcodigital.com/">
-                        <img  src="../../assets/images/balances/gco-logo1x.png" >
+                        <img src="../../assets/images/balances/gco-logo1x.png">
                      </a>
                      <img src="../../assets/images/balances/pt-logo@2x.png" class="logo">
                   </div>
                   <div class="partnerPrime">
-                     <p>{{$t('partnerPrime')}}</p>
-                     <p>{{$t('partnerPrime1')}}</p>
+                     <p>Tresso partners with Global Currency Organization and Prime Trust to provide Fiat trading
+                        services. Prime Trust is a chartered, regulated, insured trust company.</p>
                   </div>
                </section>
             </div>
@@ -338,13 +338,13 @@
                      margin-bottom: 20px;
                      .logo {
                         height: 36px;
-                        &:first-child{
+                        &:first-child {
                            margin-right: 12px;
                         }
                      }
                   }
-                  .partnerPrime{
-                     p{
+                  .partnerPrime {
+                     p {
                         font-size: 12px;
                         color: #C1C1C1;
                      }
