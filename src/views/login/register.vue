@@ -513,12 +513,12 @@ const clickoutside = {
                             FrencyCountry.push(item);
                         }
                     });
-                    this.countryNumber = FrencyCountry[0].code;
+                    // this.countryNumber = FrencyCountry[0].code;
                     this.globalCountryNumber = FrencyCountry[4].en;
-                    this.phoneCountryName = FrencyCountry[0].locale;
-                    this.EmailcountryName = FrencyCountry[0].locale;
+                    // this.phoneCountryName = FrencyCountry[0].locale;
+                    this.EmailcountryName = FrencyCountry[4].locale;
                     this.countryFlag=FrencyCountry[4].image;
-                    this.FrencyCountry = FrencyCountry
+                    // this.FrencyCountry = FrencyCountry
                 })
 
             },
@@ -613,23 +613,8 @@ const clickoutside = {
                 this.phoneCountryName = locale;
                 this.countryFlag=img;
                 this.countryNumber=code;
-                // if(locale == 'US') { // 国际站暂不支持美国注册
-                //     this.usModal = true;
-                //     this.countryNumber = this.FrencyCountry[0].code;
-                //     this.globalCountryNumber = this.FrencyCountry[0].en;
-                //     this.phoneCountryName = this.FrencyCountry[0].locale;
-                //     this.EmailcountryName = this.FrencyCountry[0].locale;
-                //     this.countryFlag=this.FrencyCountry[0].image;
-                // } else {
-                //     this.globalCountryNumber = name;
-                //     this.EmailcountryName = locale;
-                //     this.phoneCountryName = locale;
-                //     this.countryFlag=img;
-                //     this.countryNumber=code;
-                // }
             },
             cancelUS(){ // 取消
-                // clearInterval(this.timer);
                 this.usModal = false;
             },
             handleClose(e) {
