@@ -14,7 +14,6 @@
                         <router-link to='/login'> {{$t('HomeSignin')}}</router-link>
                     </div>
                 </div>
-                
             </div>
             <div>
                 <p class="d-flex justify-content-around mt-3">
