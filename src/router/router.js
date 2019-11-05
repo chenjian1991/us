@@ -10,7 +10,7 @@ import {getCreateAccount} from '_api/exchange.js'
 import {clearLocalStorage} from '@/config'
 
 //zmw
-const newbalances = () => import('../views/newBalances/balances.vue')
+const balances = () => import('../views/newBalances/balances.vue')
 const deposit = () => import('../views/newBalances/deposit.vue')
 const withdrawal = () => import('../views/newBalances/withdrawal.vue')
 const transaction_history = () => import('../views/newBalances/transactionHistory.vue')
@@ -36,7 +36,7 @@ import bandEmail from '../views/sateCenter/bandEmail.vue';
 import bandPhone from '../views/sateCenter/bandPhone.vue';
 // import order from '../views/order/order.vue'
 
-const balances = () => import('../views/balances/balances.vue')
+// const balances = () => import('../views/balances/balances.vue')
 // import deposit from '../views/balances/deposit.vue'
 // import withdrawal from '../views/balances/withdrawal.vue'
 // import transaction_history from '../views/balances/transaction_history.vue'
@@ -576,17 +576,17 @@ const router = new Router({
                component: order
             },
             //资产
-            {
-               path: 'newbalances',
-               name: 'balances',
-               beforeEnter: (to, from, next) => {
-                  checkSSOToken(to, next)
-               },
-               meta: {
-                  title: 'headerBalances'
-               },
-               component: newbalances
-            },
+            // {
+            //    path: 'newbalances',
+            //    name: 'balances',
+            //    beforeEnter: (to, from, next) => {
+            //       checkSSOToken(to, next)
+            //    },
+            //    meta: {
+            //       title: 'headerBalances'
+            //    },
+            //    component: newbalances
+            // },
             {
                path: 'balances',
                name: 'balances',
@@ -762,28 +762,31 @@ const router = new Router({
 })
 
 function checkSSOToken(to, next) {
-   // let loginToken = Cookies.get('loginToken');
-   // if (loginToken) {
-   //    getCreateAccount({'ssoToken': loginToken}, {}).then(data => {
-   //       if (data) {
-   //          // window.localStorage.setItem("ACCOUNT_TOKEN", JSON.stringify(data));
-   //          next()
-   //       }
-   //    }).catch(error => {
-   //       //clearLocalStorage()
-   //       // store.commit('changeLoingStatus', false);
-   //       if (to.name == "exchange") {
-   //          next();
-   //       } else {
-   //          next({path: '/login'})
-   //       }
-   //       //取消登录的状态
-   //       // clearLocalStorage()
-   //
-   //    })
-   // } else {
-      next()
-   // }
+   let loginToken = $cookies.get('loginToken');
+   if (loginToken) {
+      getCreateAccount({
+         'ssoToken': loginToken
+      }, {}).then(data => {
+         if (data) {
+            next()
+         }
+      }).catch(error => {
+         if (to.name === "exchange") {
+            next();
+         } else {
+            $cookies.remove('loginToken', '', document.domain.split('.').slice(-2).join('.'))
+            clearLocalStorage()
+            next({
+               path: '/login'
+            })
+         }
+      })
+   } else {
+      clearLocalStorage()
+      next({
+         path: '/login'
+      })
+   }
 }
 
 router.beforeEach((to, from, next) => {

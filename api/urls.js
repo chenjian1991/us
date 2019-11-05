@@ -5,12 +5,6 @@ let proxyURLUcenter='/api/sso'
 
 let finaceURL = 'http://172.17.3.2:8081';// 李成涛
 
-//新
-let proxyURLUser='/api/sso/user'
-let proxyURLUcenter='/api/sso'
-
-
-
 //= ======= 币币交易 start========
 export const symbolList = `${proxyURL}/spot/util/symbol.list`// 获取交易对
 export const symbolList_realtime = `${proxyURL}/quote-realtime/util/symbol.list`// 获取行情交易对

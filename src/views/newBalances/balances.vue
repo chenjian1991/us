@@ -84,6 +84,13 @@
             <h4 class="notice">{{$t('balanceNoticeCon1')}}</h4>
          </div>
       </us-modal>
+      <!--设置银行卡-->
+      <us-modal v-model="showNoBank" className="alertModal" width="750px" title="balanceNotice" okText="balanceToBank"
+                cancelText="nextTime" @ok="$router.push('/bankSetting')" @cancel="cancel" :showBtn="true">
+         <div class="alert-content">
+            <h4 class="notice">{{$t('balanceNoBank')}}</h4>
+         </div>
+      </us-modal>
    </main>
 </template>
 
@@ -140,8 +147,9 @@
             directive: '',
             classStatus: 'unable',//按钮样式
             activeStatus: 'BalancesConfirm',//按钮状态
-            checkStatus: '',//是否实名
             showNoVerification1: false,
+            showNoBank: false,
+
             usd: 0,
             //排序
             animateStatus: '',
@@ -159,6 +167,8 @@
             //行情
             quoteList: [],
             loginToken: $cookies.get('loginToken'),
+            userId: localStorage.getItem('loginUserId'),
+
 
             columns1: [
                {
@@ -513,13 +523,7 @@
                               on: {
                                  click: () => {
                                     if (deposit) {
-                                       // this.getIdentify(params.row.currency, '/deposit')
-                                       this.$router.push({
-                                          path: '/deposit',
-                                          query: {
-                                             'currency': params.row.currency
-                                          }
-                                       })
+                                       isUSD ? this.getIdentify(params.row.currency, '/deposit') : this.getIdentify(params.row.currency, '/deposit_usd')
                                     }
                                  }
                               }
@@ -541,7 +545,7 @@
                               on: {
                                  click: () => {
                                     if (withdraw) {
-                                       this.getIdentify(params.row.currency, '/withdrawal')
+                                       isUSD ? this.getIdentify(params.row.currency, '/withdrawal'):this.getIdentify(params.row.currency, '/withdrawal_usd')
                                     }
                                  }
                               }
@@ -558,7 +562,7 @@
                                  on: {
                                     click: () => {
                                        if (withdraw) {
-                                          this.getIdentify(params.row.currency, '/withdrawal')
+                                          this.getBankSetting()
                                        }
                                     }
                                  }
@@ -950,51 +954,71 @@
             this.showCloseIcon = false
             this.filter()
          },
-         //暂时没用到
-         getIdentify(currency, path) {
-            if (this.checkStatus) {
-               this.dealCheckStatus(currency, path)
-            } else {
+         //实名信息
+         getUserInfo() {
+            return new Promise(resolve => {
                getUserInfo({
-                  userId: localStorage.getItem('loginUserId')
+                  userId: this.userId
                }, this.loginToken).then(res => {//实名认证
                   if (res.data) {
-                     switch (res.data['identifyState']) {
-                        case 'INIT':
-                           this.checkStatus = "NOT_SET"
-                           break
-                        case 'SUBMIT':
-                           this.checkStatus = "RESULT"
-                           break
-                        case 'SUCCESS':
-                           this.checkStatus = "PASSED"
-                           this.kyc = true//实名通过 可以提现
-                           break
-                        case 'FAIL':
-                           this.checkStatus = "NOT_SET"
-                           break
-                     }
+                     resolve(res.data['identifyState'])
                   }
-                  this.dealCheckStatus(currency, path)
                })
-            }
+            })
          },
-         dealCheckStatus(currency, path) {
-            if (this.checkStatus === "PASSED") {
-               this.$router.push({
-                  path: path,
-                  query: {
-                     'currency': currency
-                  }
-               })
-            } else if (this.checkStatus === "NOT_SET") {
-               this.showNoVerification1 = true
-            } else {
-               this.$router.push('/identityResult')
-            }
+         getIdentify(currency, path) {
+            this.getUserInfo().then(res => {
+               console.log(res)
+               switch (res) {
+                  case 'INIT':
+                     this.showNoVerification1 = true
+                     break
+                  case 'SUBMIT':
+                     this.$router.push('/identityResult')
+                     break
+                  case 'SUCCESS':
+                     this.$router.push({
+                        path: path,
+                        query: {
+                           'currency': currency
+                        }
+                     })
+                     break
+                  case 'FAIL':
+                     this.$router.push('/identityResult')
+                     break
+               }
+            })
+         },
+         getBankSetting() {
+            this.getUserInfo().then(res => {
+               switch (res) {
+                  case 'INIT':
+                     this.showNoVerification1 = true
+                     break
+                  case 'SUBMIT':
+                     this.$router.push('/identityResult')
+                     break
+                  case 'SUCCESS':
+                     this.exchange.withdrawAddress('USD', function (res) {//提现的时候判断没有设置银行卡 跳转银行卡页面
+                        if (res.length === 0) {
+                           this.showNoBank = true
+                        } else {
+                           this.$router.push('bankSetting')
+                        }
+                     }.bind(this))
+                     break
+                  case 'FAIL':
+                     this.$router.push('/identityResult')
+                     break
+               }
+            })
          },
          cancel1() {
             this.showNoVerification1 = false
+         },
+         cancel() {
+            this.showNoBank = false
          },
          ok1() {
             this.showNoVerification1 = false

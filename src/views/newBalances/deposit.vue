@@ -116,9 +116,9 @@
          <div class="alert-content">
             <Icon type="ios-close-circle" class="icon" @click="showFirst=false"/>
             <div class="title">{{currency}} {{$t(depositName)}}</div>
-            <div class="normal-font">{{$t('depositQRDesc1')}}</div>
+            <div class="normal-font">Scan QR code to get the address</div>
             <div id="qrcode" class="qrcode"></div>
-            <div class="f12 color-gary">{{$t('depositQRDesc2')}} {{currency}} {{$t('depositQRDesc3')}}</div>
+            <div class="f12 color-gary">Please don't deposit any other digital assets except {{currency}} to the above address</div>
          </div>
       </alertModal>
    </main>
@@ -217,12 +217,8 @@
             })()
 
          },
-         getDepositAddress(coinType) {
-            let params = null
-            if (this.currency === 'USDT') {
-               params = coinType
-            }
-            this.exchange.deposit(this.currency, params, function (data) {//获取充值地址
+         getDepositAddress() {
+            this.exchange.deposit(this.currency, function (data) {//获取充值地址
                if (this.isMemo) {
                   this.address = data.value.slice(0, data.value.indexOf(':'))
                   this.EOSLabel = data.value.slice(data.value.indexOf(':') + 1)

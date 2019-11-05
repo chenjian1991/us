@@ -2,8 +2,8 @@ import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postFormDataApi} from
 
 import {
    realTime, verifyAddress, userInfo, ssoSend, withdrawCodeVerify, identify, ssoGoogleVerify, ssoCodeVerify,
-   updateSecretKeyUrl, closeSecretKeyUrl, queryStateUrl, queryUserInfoUrl,identifySubmitUrl,identifyUpdateUrl,
-   identifyQueryUrl,uploadPic
+   updateSecretKeyUrl, closeSecretKeyUrl, queryStateUrl, identifySubmitUrl,
+   identifyInfo as identifyQueryUrl, uploadPic
 } from "./urls";
 
 export const getRealtimeList = () => {
@@ -13,8 +13,8 @@ export const getVerifyAddress = (params) => {
    return getApi(verifyAddress, params)
 }
 
-export const getUserInfo = (params) => {
-   return postHeaderTokenBodyApi(userInfo, params)
+export const getUserInfo = (params, token) => {
+   return getHeaderTokenApi(userInfo, params, token)
 }
 
 export const send = (params, data) => {
@@ -61,8 +61,8 @@ export const identifyUpdate = (params, data) => {
    return postHeaderTokenBodyApi(identifyUpdateUrl, params, data)
 }
 
-export const identifyQuery = (token) => {
-   return getHeaderTokenApi(identifyQueryUrl, '', token)
+export const identifyQuery = (params, token) => {
+   return getHeaderTokenApi(identifyQueryUrl, params, token)
 }
 
 export const uploadImg = (params, data) => {
