@@ -478,7 +478,7 @@
                                  <span
                                     class="costMoney"> {{currentInfo.quoteAsset}} ≈ {{GBBO_rate}}{{currencyName}}</span>
                               </div>
-                              <span>{{isShowARB}}</span>
+                              <span :class="isShowARB === 'Arbitrage' ? 'gbbo-arb' : ''" >{{isShowARB}}</span>
                            </div>
                            <div class="sell-buy-orders">
                               <ul class="orders-body buy-orders-body" ref="sellOrderContainer" v-if="!isGBBO">
@@ -824,7 +824,7 @@
             bestSellPrice: null,
             bestBuyPrice: null,
             subNumber: 0,//差值
-            isShowARB: 'SPREAD',
+            isShowARB: '',
             GBBO_rate: 0,
             sell_exchange_logo: '',
             buy_exchange_logo: '',
@@ -1298,11 +1298,11 @@
 
             this.gbbo_asksArr = result.asks.map((val) => {
                if(val.provider && orderBookName.includes(val.provider)) {
-                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
+                  return val
                }else if(val.provider && val.provider === 'E55') {
                   return Object.assign({}, val, { provider: 'TRESSO' })
                }else if(val.provider) {
-                  return val
+                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
                }
             })
             
@@ -1320,13 +1320,14 @@
                }, 0)
                this.isInitOrderBook = false
             }
+
             this.gbbo_bidsArr = result.bids.map((val) => {
                if(val.provider && orderBookName.includes(val.provider)) {
-                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
+                  return val
                }else if(val.provider && val.provider === 'E55') {
                   return Object.assign({}, val, { provider: 'TRESSO' })
                }else if(val.provider) {
-                  return val
+                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
                }
             })
             if (!this.sell_input_change) {
@@ -1340,9 +1341,9 @@
             this.subNumber = bigDecimal.round(Math.abs(diff), priceLong)
             this.GBBO_rate = bigDecimal.round(new BigNumber(this.subNumber) * new BigNumber(this.currencyRate), 4)
             if (diff < 0) {
-               this.isShowARB = "ARBITRAGE"
+               this.isShowARB = "Arbitrage"
             } else {
-               this.isShowARB = "SPREAD"
+               this.isShowARB = "Spread"
             }
          },
          //获取推送行情

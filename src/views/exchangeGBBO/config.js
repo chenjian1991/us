@@ -26,4 +26,5 @@ export const coinInfoLinks = {
     "ONT":"ontology",
     "ONG":"ong",
 }
-export const orderBookName = ['BINANCE', 'HUOBI', 'INDODAX', 'BITSTAMP', 'COINFLOOR']
+// export const orderBookName = ['BINANCE', 'HUOBI', 'INDODAX', 'BITSTAMP', 'COINFLOOR', 'INDEPENDENTRESERVE']
+export const orderBookName = ['GEMINI', 'KRAKEN', 'BITTREX', 'COINBASEPRO']
