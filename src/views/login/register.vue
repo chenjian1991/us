@@ -506,7 +506,7 @@ const clickoutside = {
             },
             getOSSjson(){
                 getApi('https://oss.55gm.co/content/country/55-country.json',{}).then((res)=>{
-                    this.ossJSON = res;
+                    this.ossJSON = res.slice(4,res.length);
                     let FrencyCountry = [];
                     res.forEach(item => {
                         if(item.type=='recommend'){
