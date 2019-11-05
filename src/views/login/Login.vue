@@ -322,6 +322,9 @@ import { setTimeout } from 'timers';
                     }
                     let registerParams = Object.assign(_that.paramsObj,captchaValidateStr)// 对象组合
                     postBaseApi(login,{},registerParams).then((res) =>{// 成功之后调用登录接口
+                    
+                    localStorage.setItem('ex55Pin', res.ex55Pin || '')
+
                     if(res.code){
                         if(this.ipCountry=='中国'){
                             this.initRobot()//注册失败后是实利化人机验证
