@@ -208,9 +208,11 @@ import {countrylist} from '../login/country.js'
 import {getUrlKey} from '@/lib/utils.js'
 import '../../lib/utils.js'
 import sendBtn from '../../components/sendBtn'
-import {codeVerify,register,emailRegister,ossjson,userNameUnique,ipQuery} from '../../../api/urls.js';
-import {postBaseApi,postHeaderTokenBodyApi,getApi,getApiLoin} from '../../../api/axios.js';
+import {register,emailRegister,ossjson,ipQuery} from '../../../api/urls.js';
+import {postBaseApi,getApi,getApiLoin} from '../../../api/axios.js';
 import Modaltips from '@/components/Modal';
+import {getBrowserMessage,splitDomain,getUrlKeyandEncode} from "@/lib/utils.js"
+import {geeTest} from '../../../api/usersystem.js'
 const clickoutside = {
     // 初始化指令
     bind(el, binding, vnode) {
@@ -238,9 +240,21 @@ const clickoutside = {
 };
     export default {
         name:'register',
+         metaInfo(){
+            return{
+                title: this.pageTitle, // set a title
+                meta: [{                 // set meta
+                    name: 'keywords',
+                    content:this.pageKeyword
+                },{
+                    name:'description',
+                    content:this.pageDescription
+                }],
+            }
+        },
         data() {
             
-             const validatePhone = (rule, value, callback) => {
+            const validatePhone = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error(this.$t('phoneNumberRequier')));
                 } else{
@@ -254,7 +268,7 @@ const clickoutside = {
                     
                 } 
             };
-             const validateEmail = (rule, value, callback) => {
+            const validateEmail = (rule, value, callback) => {
                 if (value === ''||value ==undefined) {
                     callback(new Error(this.$t('phoneNumberRequier')));
                 } else{
@@ -279,33 +293,15 @@ const clickoutside = {
                 if(value === ''){
                     callback(new Error(this.$t('smsRequired')))
                 }else{
-                    let pattern = /^[A-Za-z0-9_]{4,20}$/
+                    let pattern = /^[A-Za-z0-9_]{4,30}$/
                     if(!pattern.test(value)){
                          callback(new Error(this.$t('usernameexg')))
-                          getApi(userNameUnique+value,'').then((res)=>{
-                            if(res.result){//true,可以设置
-                                this.nameFlag = false;
-                            }else{//名字重复
-                                this.nameFlag = true;
-                            }
-                        })
                     }else{
                         callback()
-                         getApi(userNameUnique+value,'').then((res)=>{
-                            if(res.result){//true,可以设置
-                                this.nameFlag = false;
-                            }else{//名字重复
-                                this.nameFlag = true;
-                            }
-                        })
                     }
-                   
                 }
             };
-
-
-
-             const validatePass = (rule, value, callback) => {
+            const validatePass = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error(this.$t('passwordRequier')));
                 } else{
@@ -331,21 +327,16 @@ const clickoutside = {
                 }
             };
             const validateCheckbox = (rule,value,callback) =>{
-                if(value === ''){
+                if(value == ''){
                     callback(new Error(this.$t("checkboxRequire")))
                 }else{
                     callback()
                 }
             }
-            const validateReferrId = (rule, value, callback) => {
-                if(value === ''||value === null){
-                    callback(new Error(this.$t("comfrimpassRequier")))
-                }else{
-                    callback()
-                }
-            }
-            
             return {
+                pageTitle:this.$t(this.$route.meta.title),
+                pageKeyword : this.$t(this.$route.meta.keywords),
+                pageDescription : this.$t(this.$route.meta.description),
                 srcCode:'',//空投渠道ID
                 countryLanguage:localStorage.getItem('countryLanguage'),
                 model1: '',
@@ -398,9 +389,6 @@ const clickoutside = {
                      interest: [
                         { required: true, validator:validateCheckbox, type: 'array', min: 1, trigger: 'change' },
                     ],
-                    referrId: [
-                        {validator: validateReferrId, trigger: 'blur' }
-                    ]
                     
                 },
                 referrDisable:false,
@@ -420,12 +408,17 @@ const clickoutside = {
                 EmailcountryName:"",
                 phoneCountryName:"",
                 comonUseCountry:[],
+                deviceObj:{},
                 ipCountry:'',
                 googleID:'',
-                
-
-
-
+                jiYanChallenge:'',
+                FrencyCountry:[],
+                usModal:false,
+                timer:null,
+                seconds:5,
+                registerResult:false,
+                machine:true,
+                origin:''
             }
 
 
@@ -446,34 +439,72 @@ const clickoutside = {
         },
         methods:{
             handleSubmit (name) {
-                //注册按钮埋点统计
-                // window._czc.push(["_trackEvent",'注册按钮','注册新用户','统计55全球市场注册','5','registerBtn']);
                 this.srcCode = getUrlKey('src') //获取韩国空投的渠道ID
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        if(this.emailRegister){//如果是邮箱注册
-                            // if(this.ipCountry=='中国'){
-                            //     this.captchaIns && this.captchaIns.popUp()
-                            // }else{
-                            //         this.robotModalflag = true;
-                            //}
-                        this.robotModalflag = true;
-                        }else{//如果是手机注册
-                            this.loaded = false;
-                             this.codeVerifyFun();
-                        }
-                    } else {//验证不通过
-
-
+                        this.checkGeetest()
                     }
                 })
             },
+            checkGeetest(){
+                    geeTest('0e50ea14c3b178745d1b5cbeefb96b23','1',(data)=>{
+                             if(this.emailRegister){//邮箱注册
+                                this.emailParams = {
+                                    "domainCode":document.domain==='www.55com.io'?"china":'global',
+                                    'country':this.EmailcountryName,
+                                    "name":this.formValidate.userName,
+                                    "email":this.formValidate.emailNumber,
+                                    "personType": "GEETEST",
+                                    "personCode":data,//人机校验码
+                                    "geeCode":data,
+                                    "password":this.setSha(this.formValidate.confrimPassword),
+                                    "inviteFrom":this.formValidate.referrId,
+                                    "deviceType":"WEB",
+                                    "deviceCode": this.deviceObj.browserVersion,
+                                    "deviceInfo":{
+                                            "deviceModel":this.deviceObj.browserType,
+                                            "resolution":this.deviceObj.windowWith,
+                                    },
+                                    "detail":{
+                                            "activityCode":getUrlKey('src'),
+                                             "originFrom":this.origin
+                                    },
+                                    
+                                }
+                                this.emailRegisterFun(this.emailParams);
+                             }else{//手机注册
+                                      let params = {
+                                        "country": this.phoneCountryName,
+                                        "name": this.formValidate.userName,
+                                        "phone": this.formValidate.phoneNumber+'+'+this.countryNumber,
+                                        "phoneCode": this.formValidate.smsCode,
+                                        "personType": "GEETEST",
+                                        "personCode": data,
+                                        "geeCode": data,
+                                        "password": this.setSha(this.formValidate.confrimPassword),
+                                        "inviteFrom":this.formValidate.referrId,
+                                        "deviceType": "WEB",
+                                        "deviceCode": this.deviceObj.browserVersion,
+                                        "deviceInfo":{
+                                                "deviceModel":this.deviceObj.browserType,
+                                                "resolution":this.deviceObj.windowWith,
+                                        },
+                                        "detail":{
+                                                "activityCode":getUrlKey('src'),
+                                                 "originFrom":this.origin
+                                        },
+
+                                        }  
+                                        this.phoneRegisterFun(params)
+                             }
+                    })
+            },
             setSha(passwrod){
                 let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
-                let pw = '::'+ sha256(passwrod)//要加密的密码
+                let pw = sha256(passwrod)//要加密的密码
                 return pw;
             },
-          getOSSjson(){
+            getOSSjson(){
                 getApi('https://oss.55gm.co/content/country/55-country.json',{}).then((res)=>{
                     this.ossJSON = res.slice(4,res.length);
                     let FrencyCountry = [];
@@ -482,305 +513,87 @@ const clickoutside = {
                             FrencyCountry.push(item);
                         }
                     });
-                    // this.countryNumber = FrencyCountry[4].code;
+                    // this.countryNumber = FrencyCountry[0].code;
                     this.globalCountryNumber = FrencyCountry[4].en;
-                    // this.phoneCountryName = FrencyCountry[4].locale;
+                    // this.phoneCountryName = FrencyCountry[0].locale;
                     this.EmailcountryName = FrencyCountry[4].locale;
                     this.countryFlag=FrencyCountry[4].image;
-
+                    // this.FrencyCountry = FrencyCountry
                 })
 
             },
-            sendSMSfun(callback){
-                let itc = this.countryNumber;
+            sendSMSfun(callback){//发送验证码
                 if(this.shows==1){
-                    this.phoneMessage = {//手机注册发送验证
-                        itc:itc,
-                        phone:this.formValidate.phoneNumber,
-                        codeType:"PHONE",
-                        operateType:"REGISTER",
+                    this.phoneMessage = {
+                        "businessType": "phone_register",
+                        "phone": this.formValidate.phoneNumber+"+"+this.countryNumber,
+                        "deviceType":'WEB'
                     }
                 }
                 if(callback){//callback是从子组件传递过来的参数
                     this.showModal = !this.showModal;
                     this.text = callback;
                 }
-
-
-
             },
             countryCode(){
                 let name = this.countryNumber;
             },
-            codeVerifyFun(){
-                let params;
-                if(this.phoneRegister){
-                       params = {
-                        "phone":this.formValidate.phoneNumber,
-                        "phoneCode":this.formValidate.smsCode,
-                        "codeType":"PHONE",
-                        "operateType":"REGISTER"
-                     }
-                }
-                postBaseApi(codeVerify,{},params).then((res) =>{
+            phoneRegisterFun(params){//手机注册方法
+                postBaseApi(register,{},params).then((res) =>{
                     if(res.code){
-                        this.loaded = true
-                        this.showModal = !this.showModal;
-                        this.text = this.$t(res.code);
-                    }else{
-                        this.token = res.token;
-                        this.phoneRegisterFun();
-                    }
-                })
-
-
-
-            },
-             ipQueryFun(){//ip所在国家查询
-                getApiLoin(ipQuery,'').then((res)=>{
-                    if(res.resultcode==200){
-                        this.ipCountry = res.result.Country;
-                         this.onloadCallback();
-                    }else{
-                          this.ipCountry='美国'//ip查询失败的时候默认美国
-                          this.onloadCallback();
-                    }
-                }).catch((error)=>{//当ip获取失败都时候默认是谷歌验证
-                    this.ipCountry='美国'// 请求超时的还是把ip写死美国
-                    this.onloadCallback();
-                })
-            },
-             initRobot(){
-                let _that = this;
-                let captchaIns;
-                if (captchaIns) {
-                    captchaIns.destroy()
-                }
-                let lan = this.$store.state.app.countryLanguage;
-                if(lan==='zh-CN'){
-                        lan = 'zh-CN'
-                }else{
-                    lan = 'en'
-                }
-             
-                initNECaptcha({
-                    element: '#captcha',
-                    captchaId: 'a3cd39c172284133a3470b7ec05a2bb0',
-                    mode: 'popup',
-                    width: '320px',
-                    lang:lan,
-                    onReady: function (instance) {
-                        // 验证码一切准备就绪，此时可正常使用验证码的相关功能
-                    },
-                    onVerify: function (err, data) {
-                        if(err){
-                        //
-                        }
-                        if(data){
-                            _that.loaded=false;
-                            let value = document.getElementsByName('NECaptchaValidate')[0].value;
-                            _that.emailParams = {//邮箱注册
-                                    "personCode":value,//人机校验码
-                                    "personCodeType":'wangyi',
-                                    "profileEmail":_that.formValidate.emailNumber,
-                                    "uniqueName":_that.formValidate.userName,
-                                    "inviteCode":_that.formValidate.referrId,
-                                    "password":_that.setSha(_that.formValidate.confrimPassword),
-                                    'country':_that.EmailcountryName,
-                                    "site":"B",
-                                    "activityCode":getUrlKey('src'),
-                                     "userClientInfo":{
-                                        "deviceModel":"MI 2S",
-                                        "deviceId": "xxxsllsj",
-                                        "resolution":"1920*1080",
-                                        "os":"Android",
-                                        "netType":"4G",
-                                        "operator":"China Mobile"
-                                        }
-                            }
-                            _that.emailRegisterFun();
-                        }
-                    }
-                }, function (instance) {
-                    // 初始化成功后，用户输入对应用户名和密码，以及完成验证后，直接点击登录按钮即可
-                    _that.captchaIns = instance;
-                }, function onerror(err) {
-                    _that.captchaIns = ''
-                    //验证码初始化失败处理逻辑，例如：提示用户点击按钮重新初始化
-                })//初始化函数结尾
-
-                return captchaIns;
-            },
-            onloadCallback(){
-                let _that = this;
-                if(grecaptcha.render){
-                    console.log('render success')
-                        let widgetId=grecaptcha.render('robot', {
-                    'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
-                    "theme":'light',
-                    "size":'normal',
-                    'callback': function (data) {//验证成功回调函数
-                        // console.log(data)
-                        if(data.length!==0){
-                             _that.loaded=false;
-                            _that.emailParams = {//邮箱注册
-                                    "personCode":data,//人机校验码
-                                    "personCodeType":'google',
-                                    "profileEmail":_that.formValidate.emailNumber,
-                                    "uniqueName":_that.formValidate.userName,
-                                    "inviteCode":_that.formValidate.referrId,
-                                    "password":_that.setSha(_that.formValidate.confrimPassword),
-                                    'country':_that.EmailcountryName,
-                                    "site":"B",
-                                    "activityCode":getUrlKey('src'),
-                                     "userClientInfo":{
-                                        "deviceModel":"MI 2S",
-                                        "deviceId": "xxxsllsj",
-                                        "resolution":"1920*1080",
-                                        "os":"Android",
-                                        "netType":"4G",
-                                        "operator":"China Mobile"
-                                        }
-                            }
-                            _that.emailRegisterFun();
-                            setTimeout(()=>{
-                                _that.robotModalflag= false;
-                            },2000)
-                        //  console.log('Verified: not robot');
-                        }
-                    },
-                    "expired-callback":function(){//验证失效回调函数
-                        console.log('expired-callback')
-                    },
-                    "error-callback":function(){//因为网络等问题无法验证，通过回调函数提醒用户重试
-                        console.log('error-callback')
-                    },
-
-                    });
-                    _that.googleID = widgetId;
-                    return widgetId;
-                }else{
-                    _that.ipCountry='中国';
-                     console.log('render error');
-                }
-
-            },
-            phoneRegisterFun(){//手机注册方法
-                let itc = this.countryNumber;
-                let params;
-                if(this.phoneRegister){
-                        params = {
-                        "profileItc": itc,
-                        "profilePhone": this.formValidate.phoneNumber,
-                        "uniqueName":this.formValidate.userName,
-                        "inviteCode": this.formValidate.referrId,
-                        "password": this.setSha(this.formValidate.confrimPassword),
-                        "country": this.phoneCountryName,
-                        "site": "B",
-                        "activityCode":getUrlKey('src'),
-                         "userClientInfo":{
-                                        "deviceModel":"MI 2S",
-                                        "deviceId": "xxxsllsj",
-                                        "resolution":"1920*1080",
-                                        "os":"Android",
-                                        "netType":"4G",
-                                        "operator":"China Mobile"
-                                        }
-                        
-                        }  
-                }else{
-                     params = this.emailParams;
-                }
-              
-                postHeaderTokenBodyApi(register,this.token,params).then((res) =>{
-                    if(res.code){
-                        this.loaded = true;
                         if(res.code =='10047'){
                             this.modal2 = true;
                             return false;
                         }
+                        this.loaded = true;
                         this.showModal = !this.showModal;
                         this.text = this.$t(res.code);
-
-                    }else{
+                    }else if(res.result){
+                        this.registerResult = res.result;
                         this.loaded = true;
-                           let loginToken = res.token;
-                            this.showModal = true;
-                             this.text = this.$t(11000);// 成功提示框
-                              this.$router.push('/login')
-                       
+                         this.$Notice.success({
+                            title: this.$t('11001'),
+                            desc:this.$t('11001')
+                        });
+                        if(this.origin==='otc'){// 从otc过来的注册
+                             let domainurl = splitDomain(document.domain);
+                             let protocol = document.location.protocol+'//'
+                             let url = protocol+'otc.'+domainurl+'/#/login' //测试
+                             window.location.href=url
+                        }else{
+                            this.$router.push({
+                            path:'/login',
+                            query:{
+                                fromWhere:this.$route.query.fromWhere,
+                                src:this.$route.query.src,
+                            } 
+                        })
+                        }
+                        
                     }
                 }).catch((res)=>{
                     this.loaded = true;
+                  
                 })
             },
-            emailRegisterFun(){//邮箱注册
-                let params;
-                params = this.emailParams;
+            emailRegisterFun(params){//邮箱注册
                 postBaseApi(emailRegister,'',params).then((res) =>{
-                    if(res.code){
-                        this.loaded = true;
-                        if(this.ipCountry=='中国'){
-                            this.initRobot()//注册失败后是实利化人机验证
-                        }else{
-                            grecaptcha.reset(this.googleID);//注册失败后是实利化人机验证
-                        }
-                        if(res.code=='10044'){//改用户未激活
-                             setTimeout(() => {
-                                this.$router.push('/verfifyEmail')
-                             }, 3000);
-                        }else if(res.code=='10045'){//改用户已激活
-                            setTimeout(() => {
-                                this.$router.push('/login')
-                             }, 3000);
-                        }else if(res.code=='10002'){//已经注册成功，可以登录
-                                setTimeout(() => {
-                                this.$router.push('/login')
-                             }, 3000);
-                        }else if(res.code =="10047"){
-                            this.modal2 = true;
-                            return false;
-                        }
-                        this.showModal = !this.showModal;
-                        this.text = this.$t(res.code);
-                    }else{
-                            this.loaded = true;
-                            this.initRobot()//注册成功后是实利化人机验证
+                    if(res.result){
+                         this.loaded = true;
                             let emailAdderss= this.formValidate.emailNumber;
                             localStorage.setItem('emailAdderss',emailAdderss);
-                            let loginToken = res.token;
-                            this.$router.push('/verfifyEmail')
-                       
+                             this.$router.push({
+                                  path:'/verfifyEmail',
+                                    query:{
+                                        fromWhere:this.$route.query.fromWhere,
+                                        src:this.$route.query.src,
+                                    } 
+                              })
                     }
                 }).catch((res) =>{
                      this.loaded = true;
-                     this.initRobot()//注册成功后是实利化人机验证
                 })
             },
-            // userTerms(){
-            //     let lang = this.$store.state.app.countryLanguage;
-            //     if(lang=='en'){
-            //         this.agreeAbleUrl = this.agreeAbleUrlEn;
-            //     }else{
-            //         this.agreeAbleUrl = this.agreeAbleUrlCH;
-            //     }
-            // },
-            // getUrlParams(name){
-            //         let after = window.location.hash.split("?")[1];
-            //         if(after)
-            //         {
-            //             let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-            //             var r = after.match(reg);
-            //             if(r != null) {
-            //                 return  decodeURIComponent(r[2]);
-            //             }
-            //             else  {
-            //                 return '';
-            //             }
-
-            //         }
-
-            // },
             controlSelect(){
                 this.selectFlag = !this.selectFlag;
                 this.countrySelectFlag = false;
@@ -801,7 +614,10 @@ const clickoutside = {
                 this.countryFlag=img;
                 this.countryNumber=code;
             },
-             handleClose(e) {
+            cancelUS(){ // 取消
+                this.usModal = false;
+            },
+            handleClose(e) {
                 this.selectFlag = false;
                 this.countrySelectFlag = false;
             },
@@ -818,28 +634,12 @@ const clickoutside = {
             del(){
                 this.modal2 = false;
             },
-            judgePCorMoble(){
-                let u = navigator.userAgent;
-                if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// 移动端
-                    if(getUrlKey('invite_code')){
-                        window.location.href='http://47.75.120.27:8030/mobile/#/emailRegister?invite_code='+getUrlKey('invite_code');
-                    }else{
-                        window.location.href='http://47.75.120.27:8030/mobile/#/emailRegister';
-                    }
-                } else {
-
-                }
-            }
-
-
         },
         computed:{
             phoneNumberChange(){
                return this.formValidate.phoneNumber;   
             },
-            // emailNumberChange(){
-            //     return this.formValidate.emailNumber;
-            // },
+           
             languageChange(){
                 return  this.$store.state.app.countryLanguage;//返回全局state的状态值
             }
@@ -861,49 +661,50 @@ const clickoutside = {
                     this.formValidate.phoneNumber= this.formValidate.phoneNumber.replace(/[^\d]g/,'');
                 }
             },
-          
             languageChange(val,oldVal){
                 this.$refs.formValidate.resetFields();
-                //this.userTerms()
+                 this.pageTitle = this.$t(this.$route.meta.title)
+                this.pageKeyword = this.$t(this.$route.meta.keywords)
+                this.pageDescription = this.$t(this.$route.meta.description)
             }
         },
         mounted(){
-            this.initRobot()
             this.countryCode();
-            this.ipQueryFun()
             // this.formValidate.interest=['ddd'];
-            let inviteCode = getUrlKey('invite_code');
+            let inviteCode =  getUrlKey('invite_code');
             this.formValidate.referrId = inviteCode;
             if(inviteCode){
                 this.referrDisable = true;
             }
             this.getOSSjson();
-            this.formValidate.emailNumber = this.$route.query.email;
+           this.deviceObj = getBrowserMessage();
+           this.formValidate.emailNumber= this.$route.query.email;
+           this.origin = this.$route.query.originFrom?this.$route.query.originFrom:'global';
         },
         created(){
              var _this = this;
-      document.onkeydown = function(e) {
+			document.onkeydown = function(e) {
                 //1.规避页面上方的搜索框等是否获取了焦点，是则不触发本次快捷键
-        var inputs = document.getElementsByClassName('isfocus_enter'); //找到这一组元素
-        //是否获取了焦点的判断
-        let hasFocus = false;
-        if(inputs && inputs.length >0){
-          for(let i=0;i<inputs.length;i++){
-            //如果hasFocus为true表示input元素获得焦点，否则没有获得焦点
-            hasFocus = document.hasFocus() && document.activeElement === inputs[i];
-            if(hasFocus == true){
-              break;
-            }
-          }
-        }
-           //console.log("判断不该获取焦点的元素是否获取了焦点（isfocus_enter）:%s",hasFocus);
-            var key = window.event.keyCode;
-            // console.log("按键：%s",key);
-            if (key == 13) {
-              _this.handleSubmit('formValidate') //此方法是当按下enter键后要做的动作。
-            }
-            
-      }
+				var inputs = document.getElementsByClassName('isfocus_enter'); //找到这一组元素
+				//是否获取了焦点的判断
+				let hasFocus = false;
+				if(inputs && inputs.length >0){
+					for(let i=0;i<inputs.length;i++){
+						//如果hasFocus为true表示input元素获得焦点，否则没有获得焦点
+						hasFocus = document.hasFocus() && document.activeElement === inputs[i];
+						if(hasFocus == true){
+							break;
+						}
+					}
+				}
+			     //console.log("判断不该获取焦点的元素是否获取了焦点（isfocus_enter）:%s",hasFocus);
+						var key = window.event.keyCode;
+						// console.log("按键：%s",key);
+						if (key == 13) {
+							_this.handleSubmit('formValidate') //此方法是当按下enter键后要做的动作。
+						}
+						
+			}
         }
         
         
