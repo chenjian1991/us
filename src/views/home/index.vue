@@ -5,7 +5,7 @@
          <div class="container">
             <h1 class="c-fff f-48 f-w">Maximize Returns, Minimize Hassle</h1>
             <section class="c-l-gray f-18 mt-1 top-desc">
-               Tresso’s institutional-grade Global Best Bid and Offer (GBBO™) technology scans the deepest global
+               Tresso's institutional-grade Global Best Bid and Offer (GBBO™) technology scans the deepest global
                liquidity pools to deliver the best prices on digital currencies. Coupled with no fees, high-speed
                conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest
                opportunities to win. All in a single account.

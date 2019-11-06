@@ -61,7 +61,7 @@ export default {
    sicotext: "ATTEND SICO TEST NOW",
    sicoReview: "Tokens Undergoing SICO Review for Listing",
    HomeTitle: 'Tresso - Maximize Returns, Minimize Hassle',
-   HomeDescription: 'Tresso’s institutional-grade Global Best Bid and Offer (GBBO™) technology scans the deepest global liquidity pools to deliver the best prices on digital currencies. Coupled with no fees, high-speed conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest opportunities to win. All in a single account.',
+   HomeDescription: "Tresso's institutional-grade Global Best Bid and Offer (GBBO™) technology scans the deepest global liquidity pools to deliver the best prices on digital currencies. Coupled with no fees, high-speed conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest opportunities to win. All in a single account.",
    HomeKeyword: 'Tresso, tresso.com, GBBO',
 
    HomeSafetyAt: 'Security Partners',
