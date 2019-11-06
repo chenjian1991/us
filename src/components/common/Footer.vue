@@ -4,9 +4,15 @@
       <div class="footer-info__img">
         <dl class="footer-info__address">
           <dt class="footer-info__title" v-once>{{ whereAbout.title }}</dt>
-          <dd class="footer-info__detail">
+          <div class="footer-info__subTitle">
+            <span>New York Office</span>
+          </div>
+          <dd class="footer-info__detail mb-3">
             <p v-for="(val, index) in whereAbout.addressOne" :key="index.toString()" v-once>{{ val }}</p>
           </dd>
+          <div class="footer-info__subTitle">
+            <span>San Francisco Office</span>
+          </div>
           <dd class="footer-info__detail">
             <p v-for="(val, index) in whereAbout.addressTwo" :key="index.toString()" v-once>{{ val }}</p>
           </dd>
@@ -29,7 +35,7 @@ export default {
     return {
       whereAbout: {
         title: 'Locations',
-        addressOne: ['199 Water Street, Floor 33', 'New York, NY 10038'],
+        addressOne: ['199 Water Street, Floor 33rd', 'New York, NY 10038'],
         addressTwo: ['353 Sacramento Street, 8th Floor', 'San Francisco, CA 94111']
       },
       legalTerms: {
@@ -97,6 +103,12 @@ export default {
         height: 40px;
         background: url('../../assets/images/tressoHeader/logo.png') center center no-repeat/100% 100%;
       }
+      &__subTitle{
+        font-size: 14px;
+        font-weight: 700;
+        padding-left: 24px;
+        color:#fff;
+      }      
     }
     &-box{        
       line-height: 90px;

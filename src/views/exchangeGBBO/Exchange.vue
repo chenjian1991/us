@@ -265,7 +265,7 @@
                                           <span><span class="quoteAsset">{{currentInfo.quoteAsset}}</span></span>
                                        </p>
                                        <button class="mybtn btn-back" v-if="!isLogin">
-                                          <router-link to='/login' class="text"> {{$t('bbjyBuyLogin')}}</router-link>
+                                          <router-link to='/login' class="text"> {{$t('bbjyBuyLogin')}}</router-link>&nbsp;
                                           <span>{{$t("bbjyOr")}}</span>
                                           <router-link class="text" to='/register'> {{$t('bbjyBuyRegister')}}
                                           </router-link>
@@ -374,7 +374,7 @@
                                        </p>
                                        <!-- 卖出按钮 -->
                                        <button class="mybtn btn-back" v-if="!isLogin">
-                                          <router-link to='/login' class="text"> {{$t('bbjyBuyLogin')}}</router-link>
+                                          <router-link to='/login' class="text"> {{$t('bbjyBuyLogin')}}</router-link>&nbsp;
                                           <span>{{$t("bbjyOr")}}</span>
                                           <router-link class="text" to='/register'> {{$t('bbjyBuyRegister')}}
                                           </router-link>
