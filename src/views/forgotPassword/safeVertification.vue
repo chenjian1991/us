@@ -7,32 +7,32 @@
                     <p>{{$t('zhmmSecurityExplain')}}</p>
                 </div>
                 <div  class="inner_input inner_input_login">
-                    <Form onsubmit="return false;" v-if="phoneFlage" ref="formValidateDisable" :model='formValidateDisable' :rules='ruleValidate'>
+                    <Form onsubmit="return false;" v-if="phone" ref="formValidateDisable" :model='formValidateDisable' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='phoneNumber'>
-                            <img src="../../assets/images/register/accountnew.svg" alt="">
-                            <Input :disabled="true"  type="text"  :maxlength="30" v-model="formValidateDisable.phoneNumber"  :placeholder="$t('phonePlacehodler')"></Input>
+                            <img src="../../assets/images/register/accountnew.svg">
+                            <Input :disabled="true"  type="text"  :maxlength="30" v-model="phone" :placeholder="$t('phonePlacehodler')"></Input>
                         </FormItem>
                     </Form>
                     <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                         <!-- 手机 -->
-                        <FormItem v-if="phoneFlage" class="form_item smsCode" prop='smsCode'>
-                            <img src="../../assets/images/register/code.svg" alt="">
+                        <FormItem v-if="phone" class="form_item smsCode" prop='smsCode'>
+                            <img src="../../assets/images/register/code.svg">
                             <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('SMSPlacehodler')"></Input>
-                            <sendBtn  robotDiv='robotDiv'  @sendCick= 'sendSMSfun' :empty='empty' :ForgotPhonePassworMessage='ForgotPhonePassworMessage'></sendBtn>
+                            <sendBtn business='business' :forgot='true' :machine='false' robotDiv='robotPhone'   @sendCick= 'sendSMSfun' :empty='empty' :ForgotPhonePassworMessage='ForgotPhonePassworMessage'></sendBtn>
                         </FormItem>
                         <!-- 邮箱 -->
-                         <FormItem v-if="emailFlage" class="form_item" prop='EmailName'>
-                            <img style="top:18px;" src="../../assets/images/register/email.svg" alt="">
-                            <Input :disabled="true"  type="text"  :maxlength="30" v-model="formValidate.EmailName"  :placeholder="$t('phonePlacehodler')"></Input>
+                         <FormItem v-if="email" class="form_item" prop='EmailName'>
+                            <img style="top:18px;" src="../../assets/images/register/email.svg">
+                            <Input :disabled="true"  type="text"  :maxlength="30" v-model="email"  :placeholder="$t('phonePlacehodler')"></Input>
                         </FormItem>
-                          <FormItem v-if="emailFlage" class="form_item smsCode" prop='EmailCode'>
-                            <img src="../../assets/images/register/code.svg" alt="">
-                            <Input :maxlength="6" v-model="formValidate.EmailCode" :placeholder="$t('emialCodePlaceholder')"></Input>
-                            <sendBtn robotDiv='robotsecondDiv'   @sendCick= 'sendSMSfun' :empty='empty' :ForgotEmailPassworMessage='ForgotEmailPassworMessage'></sendBtn>
+                          <FormItem v-if="email" class="form_item smsCode" prop='EmailCode'>
+                            <img src="../../assets/images/register/code.svg">
+                            <Input :maxlength="6" v-model.trim="formValidate.EmailCode" :placeholder="$t('emialCodePlaceholder')"></Input>
+                            <sendBtn business='business' :forgot='true' :machine='machine' robotDiv='robotEmail'   @sendCick= 'sendSMSfun' :empty='empty' :ForgotEmailPassworMessage='ForgotEmailPassworMessage'></sendBtn>
                         </FormItem>
                         <!--  google-->
-                        <FormItem v-if="isBingGoogle" class="form_item" prop='googleCode'>
-                            <img src="../../assets/images/register/password.svg" alt="">
+                        <FormItem v-if="bindGoogle==true" class="form_item" prop='googleCode'>
+                            <img src="../../assets/images/register/password.svg">
                             <Input type="text" :maxlength="6" v-model="formValidate.googleCode" :placeholder="$t('googleCodenum')"></Input>
                         </FormItem>
                         <Button v-if="loaded"  @click="handleSubmit('formValidate')" type="primary">{{$t('zhmmResetSubmit')}}</Button>
@@ -62,10 +62,9 @@
 <script>
 import '../../lib/utils.js'
 import sendBtn from '../../components/sendBtn'
-import {codeVerify,restPasswordVerify} from '../../../api/urls.js';
+import {restPasswordVerify,verifyBusinessCode} from '../../../api/urls.js';
 import {postBaseApi,postHeaderTokenBodyApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import Cookies from 'js-cookie'
 
     export default {
         name:'safevertification',
@@ -93,21 +92,19 @@ import Cookies from 'js-cookie'
                 phoneFlage :false,
                 loaded:true,
                 ForgotPhonePassworMessage:{
-                    "ex55Pin":'',
-                    "codeType":"PHONE",
-                    "operateType":"RESET_PASSWORD",
-                    "phone":''
+                    "userId":"",
+                    "businessType":"forget_password",
+                    "sendCodeType":'phone'
                 },
                 ForgotEmailPassworMessage:{
-                    "ex55Pin":'',
-                    "codeType":"PHONE",
-                    "operateType":"RESET_PASSWORD",
-                    "language":localStorage.getItem('countryLanguage'),
-                    "email":'',
+                    "token":'',
+                    "userId":"",
+                    "businessType":"forget_password",
+                    "sendCodeType":'email'
 
                 },
                 formValidateDisable:{
-                    phoneNumber:'',
+                    phone:'',
                 },
                 formValidate:{
                     phoneNumber:'',
@@ -127,6 +124,14 @@ import Cookies from 'js-cookie'
                         { validator: validatePhone, trigger: 'blur' }
                     ]
                 },
+                phone:'',
+                email:'',
+                bindGoogle:'',
+                userId:'',
+                outerToken:'',
+                machine:false,
+                verifyBusinessResult:'',
+                origin:''
 
 
             }
@@ -136,76 +141,52 @@ import Cookies from 'js-cookie'
         },
         components:{
             sendBtn,
-            Modal
+            Modal,
         },
         methods:{
             handleSubmit (name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.loaded = false;
+                        // this.loaded = false;
                         this.codeVerify();
                     } else {
+
                     }
                 })
             },
             sendSMSfun(callback){
-                    // let PhoneNumber = localStorage.getItem('userNumer');
-                    // if(PhoneNumber.indexOf('@')!==-1){//邮箱登录
-                    //         this.ForgotEmailPassworMessage = {
-                    //                 "ex55Pin":localStorage.getItem('ex55pin'),
-                    //                 "codeType":"EMAIL",
-                    //                 "operateType":"RESET_PASSWORD",
-                    //                 "email":localStorage.getItem('userNumer')
-                    //         }
-                    //      }else{
-                    //         this.ForgotPhonePassworMessage = {
-                    //                 "ex55Pin":localStorage.getItem('ex55pin'),
-                    //                 "codeType":"PHONE",
-                    //                 "operateType":"RESET_PASSWORD",
-                    //                 "phone":localStorage.getItem('userNumer')
-                    //             }
-                    // }
-                    this.ForgotEmailPassworMessage = {//发送邮箱验证码参数
-                        "ex55Pin":localStorage.getItem('ex55pin'),
-                        "codeType":"EMAIL",
-                        "operateType":"RESET_PASSWORD",
-                        "email":localStorage.getItem('userNumer'),
-                         "language":localStorage.getItem('countryLanguage')
-                    }
-                    this.ForgotPhonePassworMessage = {//发送手机验证码参数
-                        "ex55Pin":localStorage.getItem('ex55pin'),
-                        "codeType":"PHONE",
-                        "operateType":"RESET_PASSWORD",
-                        "phone":localStorage.getItem('userNumer')
-                    }
-
                 if(callback){//callback是从子组件传递过来的参数
                     this.showModal = !this.showModal;
                     this.text = callback;
                 }
-
             },
             codeVerify(){
                 let bodyParam  = {
-                    "ex55Pin":localStorage.getItem('ex55pin'),
-                    "phone":this.formValidateDisable.phoneNumber,
+                    "userId":this.userId,
+                    "businessType":'forget_password',
                     "phoneCode":this.formValidate.smsCode,
-                    "email":this.formValidate.EmailName,
                     "emailCode":this.formValidate.EmailCode,
-                    "googleCode":this.formValidate.googleCode
+                    "googleCode":this.formValidate.googleCode,
                 }
-                postBaseApi(restPasswordVerify,{},bodyParam).then((res) =>{
-                    if(res.code){
-                        this.showModal = !this.showModal;
-                        this.text = this.$t(res.code);
+                postHeaderTokenBodyApi(verifyBusinessCode,this.outerToken,bodyParam).then((res) =>{
+                    if(res.result){
+                        // this.$Notice.success({
+                        //         title:this.$t(11001),
+                        //         desc: this.$t(11001)
+                        //     });
                         this.loaded = true;
-                    }else{
-                        localStorage.setItem('codeVerifyToken',res.token)
-                        this.$router.push('/resetNewpass');
+                        this.verifyBusinessResult = res.result;
+                        localStorage.setItem('codeVerifyToken',res.result)
+                        localStorage.setItem('outerUserId',this.userId)
+                        this.$router.push({
+                            path:'/resetNewpass',
+                            query:{
+                                originFrom:this.$route.query.originFrom
+                            }
+                        });
                     }
-
                 }).catch((error)=>{
-                        this.loaded = true;
+                    this.loaded = true;
                 })
             },
 
@@ -223,24 +204,22 @@ import Cookies from 'js-cookie'
         },
         mounted(){
             this.empty = false;//按钮高亮
-            this.formValidateDisable.phoneNumber=localStorage.getItem('phoneNumber')
-            this.isBingGoogle=localStorage.getItem('googleFlag') === 'false' ? false : true;//将获取到的‘false’字符串转换成false bollen类型
-            let emailName = localStorage.getItem('emailFlag');
-            let phoneNumber = localStorage.getItem('phoneNumber');
-            if(phoneNumber=='null'||phoneNumber==null){
-                this.phoneFlage = false;
-            }else{
-                this.phoneFlage = true;
+            this.phone = this.$route.query.phone;
+            this.email = this.$route.query.email;
+            this.bindGoogle = this.$route.query.bindGoogle;
+            this.userId = this.$route.query.userId;
+            // this.origin = this.$route.query.originFrom;
+            this.outerToken = localStorage.getItem('outerToken');
+            this.ForgotEmailPassworMessage = {//发送邮箱验证码参数
+                    "userId":this.userId,
+                    "businessType":"forget_password",
+                    "sendCodeType":'email'
             }
-            if(emailName=='null'||emailName==null){
-                    this.emailFlage = false;
-            }else{
-                this.emailFlage = true;
-                this.formValidate.EmailName =localStorage.getItem('emailFlag');
+            this.ForgotPhonePassworMessage = {//发送手机验证码参数
+                "userId":this.userId,
+                "businessType":"forget_password",
+                "sendCodeType":'phone'
             }
-
-        
-
         },
          created(){
              var _this = this;
@@ -280,9 +259,7 @@ import Cookies from 'js-cookie'
      .headerbox{
         flex: 0 0 auto;
      }
-    //  #app{
-    //      height: 100%;
-    //  }
+    
     .footerBox{
          flex: 0 0 auto;
      }
@@ -296,7 +273,7 @@ import Cookies from 'js-cookie'
                 }
             } 
             .ivu-btn-primary[disabled]{
-                background-color: #233743 !important;
+                // background-color: #d1d3df !important;
                 border: none;
 
             }

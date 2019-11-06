@@ -166,7 +166,6 @@
       socialToken
    } from '_api/urls.js';
    import {getCommouityBaseURL} from '../../config/index'
-
    export default {
       data() {
          return {
