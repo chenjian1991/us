@@ -37,10 +37,10 @@ const balances = () => import(/* webpackChunkName: "balances" */ '../views/balan
 import deposit from '../views/balances/deposit.vue'
 import withdrawal from '../views/balances/withdrawal.vue'
 import transaction_history from '../views/balances/transaction_history.vue'
-import originLoginPassword from "../views/resetLoginPassword/originPasswrod.vue";
-import newPassword from "../views/resetLoginPassword/newPassword.vue";
-import originTradePassword from "../views/resetTradePasswrod/originTradePassword.vue";
-import newtradePassword from "../views/resetTradePasswrod/newtradePassword.vue"
+import LoginPass from "../views/resetLoginPassword/LoginOrigin.vue";
+import NewLoginpwd from "../views/resetLoginPassword/LoginNewpws.vue";
+import OriginTradePassword from "../views/resetTradePasswrod/TradeOriginpwd.vue";
+import NewTradePassword from "../views/resetTradePasswrod/TradeNewpwd.vue"
 import verfifyEmail from "../views/login/verifyEmail.vue";
 import activeEmail from "../views/login/activeEmail.vue";
 import terms from "../views/legal/terms.vue";
@@ -451,40 +451,40 @@ const router = new Router({
                component: bandPhone
             },
             {//修改登录密码
-               path: 'originLoginPassword',
-               name: 'originLoginPassword',
+               path: 'LoginPass',
+               name: 'LoginPass',
                meta: {
                   title: 'ChangePasswordTitle'
                },
-               component: originLoginPassword
+               component: LoginPass
             },
             {//修改登录密码
-               path: 'newPassword',
-               name: 'newPassword',
+               path: 'NewLoginpwd',
+               name: 'NewLoginpwd',
                meta: {
                   title: 'ChangePasswordTitle'
                },
-               component: newPassword
+               component: NewLoginpwd
             },
             {//修改交易密码
-               path: 'originTradePassword',
-               name: 'originTradePassword',
+               path: 'OriginTradePassword',
+               name: 'OriginTradePassword',
                meta: {
                   title: 'ResetTradePasswordTitle'
                },
-               component: originTradePassword
+               component: OriginTradePassword
             },
             {//修改交易密码
-               path: 'newtradePassword',
-               name: 'newtradePassword',
+               path: 'NewTradePassword',
+               name: 'NewTradePassword',
                meta: {
                   title: 'ResetTradePasswordTitle'
                },
-               component: newtradePassword
+               component: NewTradePassword
             },
             {//设置谷歌验证
-               path: 'setGoogle',
-               name: 'setGoogle',
+               path: 'setGoogleCode',
+               name: 'setGoogleCode',
                meta: {
                   title: 'HomeTitle'
                },
@@ -502,8 +502,8 @@ const router = new Router({
                component: Invite
             },
             {//关闭谷歌验证
-               path: 'closeGoogle',
-               name: 'closeGoogle',
+               path: 'closeGoogleCode',
+               name: 'closeGoogleCode',
                meta: {
                   title: ''
                },

@@ -10,6 +10,7 @@ import store from '@/store/index'
 import {
    clearLocalStorage
 } from '@/config'
+import router from '../src/router/router.js'
 
 // let pending = []; //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 // let cancelToken = axios.CancelToken;
@@ -97,6 +98,8 @@ axios.interceptors.response.use(
             });
             clearLocalStorage()
             store.commit('changeLoingStatus', false);
+            router.replace('/login')// 统一跳转登录
+
 
          }else if(error.response.status === 403){
             Notice.error({

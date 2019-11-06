@@ -533,25 +533,6 @@
    .wrapper {
       padding-bottom: 40px;
       @color: #12869A;
-      // .api {
-      //    margin-top: 40px;
-      //    .title {
-      //       font-size: 16px;
-      //       margin-bottom: 11px;
-      //    }
-      //    .api-row {
-      //       background-color: #fff;
-      //       padding: 20px 30px;
-      //       color: #949DA6;
-      //       a {
-      //          color: @color;
-      //       }
-      //       .enable {
-      //          font-size: 14px;
-      //          color: @color;
-      //       }
-      //    }
-      // }
    }
 </style>
 

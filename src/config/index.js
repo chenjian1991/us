@@ -18,30 +18,38 @@ export function clearLocalStorage(){
     let index = document.domain.indexOf('.')+1
     let siteDoamin = document.domain.substr(index)
     Cookies.remove('loginToken',{domain:siteDoamin})
+
+    let lan = localStorage.getItem('countryLanguage')
+    let deviceCode = localStorage.getItem('deviceCode')
+    let currentCurrency = localStorage.getItem('currentCurrency')
+    localStorage.clear();
+    localStorage.setItem('countryLanguage',lan)
+    localStorage.setItem('deviceCode',deviceCode)
+    localStorage.setItem('currentCurrency',currentCurrency)
     
-    localStorage.removeItem("ACCOUNT_TOKEN");
-    localStorage.removeItem("ORDER_TOKEN");
-    localStorage.removeItem("ASSET_TOKEN");
-    localStorage.removeItem("UTIL_TOKEN");
-    localStorage.removeItem("accountId");
-    localStorage.removeItem("ACCOUNT_SESSION");
-    localStorage.removeItem("ORDER_SESSION");
-    localStorage.removeItem("ASSET_SESSION");
-    localStorage.removeItem("orderTicket");
-    localStorage.removeItem("curPage");
-    localStorage.removeItem("bankAccountName");
-    localStorage.removeItem("googleFlag");
-    localStorage.removeItem("phoneNumber");
-    localStorage.removeItem("userNumer");
-    localStorage.removeItem("ex55pin");
-    localStorage.removeItem("emailFlag");
-    localStorage.removeItem("ifEmail");
-    localStorage.removeItem("ifsetgoogle");
-    localStorage.removeItem("isSetTradePasswrod");
-    localStorage.removeItem("securitPhone");
-    localStorage.removeItem("Emailtoken");
-    localStorage.removeItem("phoneToken");
-    localStorage.removeItem("PASSWORDTOKEN")
+    // localStorage.removeItem("ACCOUNT_TOKEN");
+    // localStorage.removeItem("ORDER_TOKEN");
+    // localStorage.removeItem("ASSET_TOKEN");
+    // localStorage.removeItem("UTIL_TOKEN");
+    // localStorage.removeItem("accountId");
+    // localStorage.removeItem("ACCOUNT_SESSION");
+    // localStorage.removeItem("ORDER_SESSION");
+    // localStorage.removeItem("ASSET_SESSION");
+    // localStorage.removeItem("orderTicket");
+    // localStorage.removeItem("curPage");
+    // localStorage.removeItem("bankAccountName");
+    // localStorage.removeItem("googleFlag");
+    // localStorage.removeItem("phoneNumber");
+    // localStorage.removeItem("userNumer");
+    // localStorage.removeItem("ex55pin");
+    // localStorage.removeItem("emailFlag");
+    // localStorage.removeItem("ifEmail");
+    // localStorage.removeItem("ifsetgoogle");
+    // localStorage.removeItem("isSetTradePasswrod");
+    // localStorage.removeItem("securitPhone");
+    // localStorage.removeItem("Emailtoken");
+    // localStorage.removeItem("phoneToken");
+    // localStorage.removeItem("PASSWORDTOKEN")
     // window.location.reload();
   }, 100)
 }

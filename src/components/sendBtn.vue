@@ -67,7 +67,7 @@
                 this.$emit('sendCick')//触发父组件的方法
                 if(this.machine){//需要人机验证
                     if(this.phoneMessage){//手机注册发送验证码
-                        this.checkGeetest('209e852e38e2414366b2df0287bb2911','3')
+                        this.checkGeetest('25e87d5e8ba4373ac4c3e1adc20d4f55','3')
                     }
                 }
                 if(this.business){//不要人机验证 业务发送

@@ -100,7 +100,7 @@ import {queryUserStatus,geeTest} from '../../../api/usersystem.js'
                 })
             },
             checkGeetest(){
-                    geeTest('c35c34442e2a3e6866bc3e4375f004b0','0',(data)=>{
+                    geeTest('dc3be6125f84f6786ab2198c26f780ca','0',(data)=>{
                             let params = {
                                     personType:'GEETEST',
                                     personCode:data,
