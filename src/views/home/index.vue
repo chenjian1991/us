@@ -27,54 +27,54 @@
                <div class="gbboTable">
                   <div class="row justify-content-between" v-model="gbboList">
                      <div class="col-3 p-0" v-model="gbboList.base">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">GBBO Markets</div>
+                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Market Avg Price</div>
                         <div class="dataWrap pb-3">
                            <div class="dataInner pl-5 pr-5">
                               <div class="f-16 d-flex justify-content-between mb-2">
                                  <div>
                                     <span class="c-fff f-w-5">{{gbboList.base.baseAssets}}</span>
-                                    <span class="c-d-gray f-w-5">{{gbboList.base.quoteAssets}}</span>
+                                    <span class="c-fff f-w-5">{{gbboList.base.quoteAssets}}</span>
                                  </div>
                                  <div>{{gbboList.base.price}}</div>
                               </div>
                               <div>
-                                 <span class="f-14 c-d-gray">24h Vol：{{gbboList.base.vol}}</span>
+                                 <span class="f-14 c-fff">24h Vol：{{gbboList.base.vol}}</span>
                               </div>
                            </div>
                         </div>
                      </div>
                      <div class="col-3 p-0" v-model="gbboList.sell">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Buy at Lowest</div>
+                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Buy at Global Lowest Price</div>
                         <div class="dataWrap pb-3">
                            <div class="dataInner pl-5 pr-5">
                               <div class="f-16 d-flex justify-content-between mb-2">
-                                 <span class="c-blue">{{gbboList.sell.price}}</span>
+                                 <span class="redNum">{{gbboList.sell.price}}</span>
                                  <span>{{gbboList.sell.exchange}}</span>
                               </div>
-                              <div class="f-14 c-d-gray">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
+                              <div class="f-14 c-fff">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
                            </div>
                         </div>
                      </div>
                      <div class="col-3 p-0" v-model="gbboList.buy">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Sell at Highest</div>
+                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Sell at Global Highest Price</div>
                         <div class="dataWrap pb-3">
                            <div class="dataInner pl-5 pr-5">
                               <div class="f-16 d-flex justify-content-between mb-2">
-                                 <span class="c-blue">{{gbboList.buy.price}}</span>
-                                 <span class="c-d-gray">{{gbboList.buy.exchange}}</span>
+                                 <span class="greenNum">{{gbboList.buy.price}}</span>
+                                 <span class="c-fff">{{gbboList.buy.exchange}}</span>
                               </div>
-                              <div class="f-14 c-d-gray">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
+                              <div class="f-14 c-fff">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
                            </div>
                         </div>
                      </div>
                      <div class="col-3 p-0" v-model="gbboList.avg">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-d-gray mb-3">Arbitrage</div>
+                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Arbitrage</div>
                         <div class="dataWrap pb-3">
                            <div class="dataInner pl-5 noBorder">
                               <div class="d-flex justify-content-between">
                                  <div>
-                                    <div class="f-16 c-fff mb-2">{{gbboList.avg.price|compare}}</div>
-                                    <div class="f-14 c-d-gray">Est Return {{gbboList.avg.change}}</div>
+                                    <div class="f-16 c-fff mb-2 c-blue">{{gbboList.avg.price|compare}}</div>
+                                    <div class="f-14 c-fff">Est Return {{gbboList.avg.change}}</div>
                                  </div>
                                  <div class="d-flex align-items-center">
                                     <router-link :to="{path:'exchange',query:{symbol:symbol}}"
@@ -676,12 +676,23 @@
       padding:0;
       .gbboTable{
          width:1095px;
+         color: #fff;
+         .dataTitle{
+            color: #fff;
+         }
          .dataWrap{
             border-bottom: 1px #2E3D49 solid;
+            color: #fff;
             .dataInner{
                border-right: 1px #2E3D49 solid;
                &.noBorder{
                   border-right: none;
+               }
+               .redNum{
+                  color: #EB4D59;
+               }
+               .greenNum{
+                  color:#66B76D;
                }
             }
          }
