@@ -657,7 +657,7 @@ export default {
    10026: "Failed to send mail",
    10027: "Email Code verification code is incorrect",
    10028: "Login type is incorrect",
-   10029: "Phone format is incorrect",
+   10029: "Please login with your email adddress",
    10030: "Email format is incorrect",
    10031: "Please unbind the original account first.",
    10032: "Can't unbind a unique account",

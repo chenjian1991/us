@@ -330,7 +330,7 @@
                   name: 'right',
                   img: require('../../assets/images/tresso/tresso3.png'),
                   title: 'Free Trading',
-                  section: 'No transaction or withdrawal fees for every users. And never a subscription fee - always FREE to use.'
+                  section: 'No transaction or withdrawal fees for every user. And never a subscription fee - always FREE to use.'
                },
             ],
             gbboTM: {
@@ -347,7 +347,7 @@
                ]
             },
             connect: {
-               title: '2 ways to connect',
+               title: 'Two ways to connect',
                default: false,
                list: [
                   [{

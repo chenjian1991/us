@@ -32,7 +32,7 @@
          return {
             isShowIPModal: true,
             isShowCookiesBox: false,
-            message: 'Attention: Please note that residents of the state of Connecticut, Florida, Texas, Hawaii, Mississippi, New Jersey, Maine, New York, North Carolina, North Dakota, Ohio, South Dakota, Vermont, or Washington are not permitted to trade on tresso.com.',
+            message: 'Attention: Please note that residents of the state of Connecticut, Florida, Texas, Hawaii, Mississippi, New Jersey, Maine, New York, North Carolina, North Dakota, Ohio, South Carolina, Vermont, or Washington are not permitted to trade on tresso.com.',
          }
       },
       methods: {
