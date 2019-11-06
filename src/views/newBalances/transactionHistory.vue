@@ -106,6 +106,7 @@
                },
                {
                   key: 'currency',
+                  width: 80,
                   render: (h, params) => {
                      return h('div', {}, params.row.currency)
                   },
@@ -115,9 +116,9 @@
                },
                {
                   key: 'amount',
-                  width: 180,
+                  width: 150,
                   render: (h, params) => {
-                     let quantityLong = this.currencyPrecision[params.row.currency]
+                     let quantityLong = this.currencyPrecision[params.row.currency] && this.currencyPrecision[params.row.currency]['currencyPrecision'] || 8
                      let quantity = bigDecimal.round(scientificToNumber(params.row.amount), quantityLong)
                      return h('div', {}, quantity)
                   },
@@ -127,13 +128,22 @@
                },
                {
                   key: 'targetAddress',
-                  width: 550,
+                  minWidth: 500,
                   render: (h, params) => {
                      let show = params.row[`show${params.index}`]
                      let targetAddress = params.row['targetAddress']
                      let label = null
                      let address = null
-                     let txIdExplorer = this.txIdExplorer[params.row.currency]
+                     let txIdExplorer=''
+                     this.txIdExplorer[params.row.currency].map(v=>{
+                        if(params.row.currency==='USDT'){
+                           if(v.coin===params.row.coin){
+                              txIdExplorer = v.txIdExplorer
+                           }
+                        }else{
+                           txIdExplorer = v.txIdExplorer
+                        }
+                     })
                      if (params.row.currency === 'EOS') {
                         if (targetAddress) {
                            label = targetAddress.slice(targetAddress.indexOf(':') + 1)
@@ -194,7 +204,7 @@
                {
                   key: 'status',
                   align: 'right',
-                  width: 140,
+                  minWidth: 140,
                   render: (h, params) => {
                      return h('div', {}, this.$t(params.row.status))
                   },
@@ -205,7 +215,7 @@
                {
                   title: ' ',
                   align: 'right',
-                  width: 60,
+                  width: 40,
                   render: (h, params) => {
                      let show = params.row[`show${params.index}`]
                      return h('Icon', {
@@ -225,6 +235,139 @@
                   },
                },
             ],
+
+            // columns1: [
+            //    {
+            //       key: 'createdAt',
+            //       width: 150,
+            //       render: (h, params) => {
+            //          return h('div', {}, moment(params.row['createdAt']).format('YYYY-MM-DD HH:mm:ss'))
+            //       },
+            //       renderHeader: (h) => {
+            //          return h('div', {}, this.$t('czlsDate'))
+            //       }
+            //    },
+            //    {
+            //       key: 'currency',
+            //       render: (h, params) => {
+            //          return h('div', {}, params.row.currency)
+            //       },
+            //       renderHeader: (h) => {
+            //          return h('div', {}, this.$t('czlsType'))
+            //       }
+            //    },
+            //    {
+            //       key: 'amount',
+            //       width: 180,
+            //       render: (h, params) => {
+            //          let quantityLong = this.currencyPrecision[params.row.currency]
+            //          let quantity = bigDecimal.round(scientificToNumber(params.row.amount), quantityLong)
+            //          return h('div', {}, quantity)
+            //       },
+            //       renderHeader: (h) => {
+            //          return h('div', {}, this.$t('czlsAmount'))
+            //       }
+            //    },
+            //    {
+            //       key: 'targetAddress',
+            //       width: 450,
+            //       render: (h, params) => {
+            //          let show = params.row[`show${params.index}`]
+            //          let targetAddress = params.row['targetAddress']
+            //          let label = null
+            //          let address = null
+            //          let txIdExplorer = this.txIdExplorer[params.row.currency]
+            //          if (params.row.currency === 'EOS') {
+            //             if (targetAddress) {
+            //                label = targetAddress.slice(targetAddress.indexOf(':') + 1)
+            //                address = targetAddress.slice(0, targetAddress.indexOf(':'))
+            //             }
+            //          } else {
+            //             address = targetAddress
+            //          }
+            //          return h('ul', {
+            //             style: {
+            //                lineHeight: '28px',
+            //                padding: '5px 0',
+            //             }
+            //          }, [
+            //             //地址
+            //             h('li', [
+            //                h('span', {
+            //                   style: {
+            //                      color: '#AAB0CC'
+            //                   }
+            //                }, `${this.$t('transactionHistoryAddress')}: `),
+            //                h('span', {}, address || '--')
+            //             ]),
+            //             //TXID
+            //             show === true ? h('li', {}, [
+            //                h('span', {
+            //                   style: {
+            //                      color: '#AAB0CC'
+            //                   }
+            //                }, 'TXID: '),
+            //                h('a', {
+            //                   attrs: {
+            //                      href: params.row['txId'] ? txIdExplorer.replace('{{tx_id}}', params.row['txId']) : 'javascript:void (0)',
+            //                      target: '_blank'
+            //                   },
+            //                   style: {
+            //                      color: '#344857',
+            //                      cursor: params.row['txId'] ? 'pointer' : 'default'
+            //                   }
+            //                }, params.row['txId'] || '--')
+            //             ]) : '',
+            //             //MEMO 只有eos存在
+            //             show === true ?
+            //                params.row.currency === 'EOS' ? h('li', {}, [
+            //                   h('span', {
+            //                      style: {
+            //                         color: '#AAB0CC'
+            //                      }
+            //                   }, 'MEMO: '),
+            //                   h('span', {}, label || '--')
+            //                ]) : '' : ''
+            //          ])
+            //       },
+            //       renderHeader: (h) => {
+            //          return h('div', {}, this.$t('transactionHistoryInfo'))
+            //       }
+            //    },
+            //    {
+            //       key: 'status',
+            //       align: 'right',
+            //       width: 140,
+            //       render: (h, params) => {
+            //          return h('div', {}, this.$t(params.row.status))
+            //       },
+            //       renderHeader: (h) => {
+            //          return h('div', {}, this.$t('czlsStatus'))
+            //       }
+            //    },
+            //    {
+            //       title: ' ',
+            //       align: 'right',
+            //       width: 60,
+            //       render: (h, params) => {
+            //          let show = params.row[`show${params.index}`]
+            //          return h('Icon', {
+            //             attrs: {
+            //                type: show === true ? 'md-arrow-dropup' : 'md-arrow-dropdown'
+            //             },
+            //             style: {
+            //                fontSize: '30px',
+            //                cursor: 'pointer'
+            //             },
+            //             on: {
+            //                click: () => {
+            //                   this.toggleShow(params.index, params.row.type)
+            //                }
+            //             }
+            //          },)
+            //       },
+            //    },
+            // ],
             columns2: [
                {
                   key: 'createdAt',
@@ -359,78 +502,6 @@
                   }
                },
             ],
-            columns4: [
-               {
-                  // title: 'Time',
-                  key: 'createsDate',
-                  renderHeader: (h) => {
-                     return h('div', {}, this.$t('transfertime'))
-                  },
-                  render: (h, params) => {
-                     return h('div', {}, params.row.createsDate + ' ' + params.row.createTime)
-                  },
-               },
-               {
-                  // title: 'Order ID',
-                  renderHeader: (h) => {
-                     return h('div', {}, this.$t('transferorderid'))
-                  },
-                  key: 'id',
-                  width: 250,
-               },
-               {
-                  // title: "Account Holder's Name",
-                  renderHeader: (h) => {
-                     return h('div', {}, this.$t('transferhodername'))
-                  },
-                  key: 'accountHolderName',
-                  align: 'center',
-               },
-               {
-                  // title: 'Account Number/IBAN',
-                  renderHeader: (h) => {
-                     return h('div', {}, this.$t('transferIBAN'))
-                  },
-                  key: 'accountNumber',
-                  align: 'center',
-
-               },
-               {
-                  // title: 'Send',
-                  renderHeader: (h) => {
-                     return h('div', {}, this.$t('transferSend'))
-                  },
-                  render: (h, params) => {
-                     return h('div', {}, params.row.payAmount + ' ' + params.row.tokenCode)
-                  },
-                  key: 'payAmount',
-                  align: 'center',
-
-               },
-               {
-                  // title: 'Receive',
-                  renderHeader: (h) => {
-                     return h('div', {}, this.$t('transferReceive'))
-                  },
-                  render: (h, params) => {
-                     return h('div', {}, params.row.currencyNum + ' ' + params.row.currencySimple)
-                  },
-                  key: 'currencyNum',
-                  align: 'center',
-
-               },
-               {
-                  // title: 'Status',
-                  key: 'status',
-                  renderHeader: (h) => {
-                     return h('div', {}, this.$t('transferStatus'))
-                  },
-                  align: 'center',
-                  render: (h, params) => {
-                     return h('div', {}, this.$t('transfer' + params.row.status))
-                  },
-               }
-            ],
             data1: [],
             data2: [],
             data3: [],
@@ -560,7 +631,6 @@
 </script>
 
 <style lang="less">
-   @import './balances.less';
 
    #historyTabs {
       .ivu-table td {
@@ -590,6 +660,8 @@
    }
 </style>
 <style lang="less" scoped>
+   @import './balances.less';
+
    @color-light-gary: #E7EAED;
    @color-green: #12869A;
 
@@ -633,26 +705,6 @@
 
       }
       .header {
-         margin: 0 auto 10px;
-
-         a {
-            font-size: 14px;
-            color: #AAB0CC;
-         }
-      }
-   }
-
-   .wrapper {
-      padding: 25px 0 10px;
-      background-color: #F7F9FA;
-      .content {
-         width: 1200px;
-         margin: 0 auto;
-         background-color: #fff;
-         min-height: 685px;
-      }
-      .header {
-         width: 1200px;
          margin: 0 auto 10px;
 
          a {

@@ -29,8 +29,7 @@
                      </div>
                      <div class="row justify-content-between align-items-center mb-4">
                         <div class="col-md-2 order-md-2 text-md-right mb-3 mb-md-0">
-                           <router-link to="/transaction_history" class="main-color f16">{{$t('BalancesRecord')}}
-                           </router-link>
+                           <router-link to="/transaction_history" class="main-color f16">Transaction History</router-link>
                         </div>
                         <div class="col-md-10 order-md-1">
                            <ul class="nav nav-classic nav-borderless px-0" id="pills-tab1" role="tablist">
