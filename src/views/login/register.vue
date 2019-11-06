@@ -141,11 +141,11 @@
                                     </div>
                                         <div style="color:#fff;font-size:14px;margin-top:10px;">{{$t('lawTips')}}</div>
                                 </FormItem>
-                                 <FormItem class="form_item" prop='userName'>
+                                 <!-- <FormItem class="form_item" prop='userName'>
                                     <img  style="top:18px;" src="../../assets/images/register/yonghu.svg" alt="">
                                     <Input  type="text"   v-model="formValidate.userName"  :placeholder="this.$t('userName')"></Input>
                                     <div v-if="nameFlag" style="position:absolute;top:42px;color:#ed4014;right:0px;">{{$t('usernameused')}}</div>
-                                </FormItem>
+                                </FormItem> -->
                                 <FormItem class="form_item" prop='emailNumber'>
                                     <img  style="top:18px;" src="../../assets/images/register/email.svg" alt="">
                                     <Input  type="text"   v-model="formValidate.emailNumber"  :placeholder="$t('emailPlacehodler')"></Input>
@@ -399,7 +399,9 @@ const clickoutside = {
                         { required: true, validator:validateCheckbox, type: 'array', min: 1, trigger: 'change' },
                     ],
                     referrId: [
-                        {validator: validateReferrId, trigger: 'blur' }
+                        {
+                            // validator: validateReferrId, trigger: 'blur' 
+                        }
                     ]
                     
                 },
