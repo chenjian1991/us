@@ -1,6 +1,9 @@
 import {getApi, postBaseApi, postHeaderTokenBodyApi, postFormDataApi, postHeaderJsonApi,getHeaderTokenApi} from './axios'
 // postApi
-import Cookies from 'js-cookie'
+import Vue from 'vue'
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
+
 import {
    symbolList,
    depthList,
@@ -78,7 +81,7 @@ export const getUpdateFavoritesPair = (token,data) => {
 }
 //删除收藏币种
 export const getDeleteFavoritesPair = (arr) => {
-   return postHeaderTokenBodyApi(deleteFavoritesPair,Cookies.get('loginToken'),arr)
+   return postHeaderTokenBodyApi(deleteFavoritesPair,$cookies.get('loginToken'),arr)
 }
 //行情交易对
 export const getSymbolList_realtime = () => {

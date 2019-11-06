@@ -131,7 +131,7 @@
       onlyInputNumAndPoint, parseUrl
    } from '@/lib/utils.js'
    import {
-      identifyQuery, queryUserInfo, getUserInfo
+      identifyQuery, getUserInfo
    } from '_api/balances.js'
 
    export default {
@@ -189,7 +189,7 @@
       methods: {
          init() {
             this.getWithdrawAddress()
-            this.queryUserInfo()
+            this.getUserInfo()
          },
          getWithdrawAddress() {//银行卡
             this.exchange.withdrawAddress(this.currency, function (res) {
@@ -201,7 +201,7 @@
                }
             }.bind(this))
          },
-         queryUserInfo() {
+         getUserInfo() {
             getUserInfo({
                userId: this.userId
             }, this.loginToken).then(res => {

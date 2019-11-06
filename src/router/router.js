@@ -22,6 +22,7 @@ const index = () => import('../views/home/index.vue')
 const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import('../views/exchangeGBBO/Exchange.vue')
 import download from "../views/download/download.vue";
+
 const Login = () => import('../views/login/Login.vue')
 const Register = () => import('../views/login/register.vue')
 const About = () => import('../views/about/About.vue')
@@ -198,9 +199,9 @@ const router = new Router({
       {
          path: '/kyc',
          name: 'kyc',
-         // beforeEnter: (to, from, next) => {
-         //    checkSSOToken(to, next)
-         // },
+         beforeEnter: (to, from, next) => {
+            checkSSOToken(to, next)
+         },
          meta: {
             title: 'KYCTitle'
          },
@@ -216,7 +217,7 @@ const router = new Router({
                path: '/exchangeGBBO',
                name: 'exchangeGBBO',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
+                  checkSSOToken(to, next)
                },
                meta: {
                   // title:'HomeTokenExchange'
@@ -241,8 +242,8 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: index,
-            }, 
-             {
+            },
+            {
                path: 'whyus',
                name: 'whyus',
                meta: {
@@ -471,7 +472,7 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: legal,
-               children:[
+               children: [
                   {//terms
                      path: 'terms',
                      name: 'terms',

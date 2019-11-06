@@ -79,7 +79,6 @@
 </template>
 
 <script>
-   import Cookies from 'js-cookie'
    import usModal from '@/components/usModal'
    import {Exchange} from '@/interface/exchange.js'
    import {
@@ -99,6 +98,7 @@
       },
       data() {
          return {
+            loginToken: $cookies.get('loginToken'),
             //输入框
             currency: 'USD',
             amount: '',
@@ -219,7 +219,7 @@
                this.information[0]['value'] = this.bankAccountName
                this.information = JSON.parse(JSON.stringify(this.information))
             } else {
-               getIdentify(Cookies.get('loginToken')).then(res => {
+               getIdentify(this.loginToken).then(res => {
                   localStorage.setItem('bankAccountName', `${res.data.firstName} ${res.data.lastName}`)
                   this.information[0].value = this.bankAccountName = localStorage.getItem('bankAccountName')
                   this.information = JSON.parse(JSON.stringify(this.information))
@@ -228,19 +228,12 @@
          },
       },
       beforeMount() {
-         let loginToken = Cookies.get('loginToken')
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
-         if (loginToken) {
-            this.exchange.ssoProvider.getSsoToken = function (fn) {
-               fn(loginToken);
-            };
-         } else {
-            this.$router.push({
-               path: '/login',
-            })
-         }
+         this.exchange.ssoProvider.getSsoToken = function (fn) {
+            fn(this.loginToken);
+         };
       },
       mounted() {
          this.init()

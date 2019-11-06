@@ -45,7 +45,6 @@ import {
    getCompletedList_v2,
    getFilledList_v2,
 } from '_api/exchange.js'
-import Cookies from 'js-cookie'
 //韩国挖矿
 import _ from 'lodash'
 
@@ -268,19 +267,22 @@ Exchange.prototype.getSession = function (tokenType, fn) {
    }
    _this.getAccountId(function (_accountId) {
       _this.getToken(tokenType, function (_typeToken) {
-         _this.issuedTradePassword(Cookies.get('loginToken'), _this.userPassWord, function (passwordToken) {
-            getCreateSession({'token': _typeToken}, {
-               'accountId': _accountId,
-               'extension': passwordToken
-            }).then(data => {
-               _this.sessionCache[tokenType] = data;
-               setValue(tokenType + "_SESSION", data);
-               fn(data["value"]);
-            }).catch(error => {
-               console.log('签发session error')
+         _this.ssoProvider.getSsoToken(function (_ssoToken) {
+            _this.issuedTradePassword(_ssoToken, _this.userPassWord, function (passwordToken) {
+               getCreateSession({'token': _typeToken}, {
+                  'accountId': _accountId,
+                  'extension': passwordToken
+               }).then(data => {
+                  _this.sessionCache[tokenType] = data;
+                  setValue(tokenType + "_SESSION", data);
+                  fn(data["value"]);
+               }).catch(error => {
+                  console.log('签发session error')
+               })
             })
          })
       })
+
    })
 };
 Exchange.prototype.issuedTradePassword = function (token, password, fn) {

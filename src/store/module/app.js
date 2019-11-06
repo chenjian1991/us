@@ -1,8 +1,12 @@
-import Cookies from 'js-cookie'
+import Vue from 'vue'
+import VueCookies from 'vue-cookies'
+
+Vue.use(VueCookies)
+
 import {getQueryFavoritesPair,getUpdateFavoritesPair} from '_api/exchange.js'
 export default {
   state: {
-    isLogin:Cookies.get('loginToken') ? true : false,
+    isLogin:$cookies.get('loginToken') ? true : false,
     countryLanguage:localStorage.getItem('countryLanguage'),
     bandPhoneObj:{
       "operateType":"BIND_PHONE",
@@ -24,7 +28,7 @@ export default {
     firstLogin:false,
     backgroundHeader:'', //改变Header的背景色
     backgroundFooter:"",
-    ssoToken:Cookies.get('loginToken'),
+    ssoToken:$cookies.get('loginToken'),
     ip_status:'',//IP限制提示 RESTRICT,UNKNOWN, PASSED
     routerHistory:""//前一个页面的路由地址
 
@@ -35,7 +39,7 @@ export default {
   actions:{
         //查询收藏的交易对
         getMarkSymbol({ commit }) {
-          getQueryFavoritesPair(Cookies.get('loginToken')).then(result=>{
+          getQueryFavoritesPair($cookies.get('loginToken')).then(result=>{
               //处理返回的结果
               let data = result.data
               let obj = {}
@@ -54,7 +58,7 @@ export default {
         },
         //更新收藏的交易对
         updateMarkSymbol({ commit }) {
-          let ssoToken = Cookies.get('loginToken')
+          let ssoToken = $cookies.get('loginToken')
           if(ssoToken){
             let arr = []
             let sort = 1

@@ -101,7 +101,6 @@
 </template>
 
 <script>
-   import Cookies from 'js-cookie'
    import moment from 'moment';
    import usModal from '@/components/usModal'
    import {Exchange} from '@/interface/exchange.js'
@@ -301,19 +300,12 @@
          },
       },
       beforeMount() {
-         let loginToken = Cookies.get('loginToken')
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
-         if (loginToken) {
-            this.exchange.ssoProvider.getSsoToken = function (fn) {
-               fn(loginToken);
-            };
-         } else {
-            this.$router.push({
-               path: '/login',
-            })
-         }
+         this.exchange.ssoProvider.getSsoToken = function (fn) {
+            fn($cookies.get('loginToken'));
+         };
       },
       mounted() {
          this.init()

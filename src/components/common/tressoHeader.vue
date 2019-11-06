@@ -503,7 +503,6 @@
 
       },
       mounted() {
-         console.log(this.$router)
          let language = window.localStorage.getItem("countryLanguage") || "en";
          let currency = localStorage.getItem("currentCurrency");
          //默认英语连接

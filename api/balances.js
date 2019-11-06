@@ -1,9 +1,9 @@
-import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postFormDataApi} from './axios'
+import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postFormDataApi,postHeaderTokenBodyParamsApi} from './axios'
 
 import {
    realTime, verifyAddress, userInfo, ssoSend, withdrawCodeVerify, identify, ssoGoogleVerify, ssoCodeVerify,
-   updateSecretKeyUrl, closeSecretKeyUrl, queryStateUrl, identifySubmitUrl,
-   identifyInfo as identifyQueryUrl, uploadPic
+   updateSecretKeyUrl, closeSecretKeyUrl, queryStateUrl, identifySubmitUrl,identifyUpdateUrl,
+   identifyInfo as identifyQueryUrl, uploadPic,identifyPhoto
 } from "./urls";
 
 export const getRealtimeList = () => {
@@ -49,10 +49,6 @@ export const queryState = (token) => {
    return getHeaderTokenApi(queryStateUrl, '', token)
 }
 
-export const queryUserInfo = (token) => {
-   return getHeaderTokenApi(queryUserInfoUrl, '', token)
-}
-
 export const identifySubmit = (params, data) => {
    return postHeaderTokenBodyApi(identifySubmitUrl, params, data)
 }
@@ -67,4 +63,8 @@ export const identifyQuery = (params, token) => {
 
 export const uploadImg = (params, data) => {
    return postHeaderTokenBodyApi(uploadPic, params, data)
+}
+
+export const getPhoto = (params, data) => {
+   return postHeaderTokenBodyParamsApi(identifyPhoto, params, {}, data)
 }
