@@ -522,7 +522,7 @@
                               on: {
                                  click: () => {
                                     if (deposit) {
-                                       isUSD ? this.getIdentify(params.row.currency, '/deposit') : this.getIdentify(params.row.currency, '/deposit_usd')
+                                       isUSD ? this.getIdentify(params.row.currency, '/deposit_usd') : this.getIdentify(params.row.currency, '/deposit')
                                     }
                                  }
                               }
@@ -544,7 +544,13 @@
                               on: {
                                  click: () => {
                                     if (withdraw) {
-                                       isUSD ? this.getIdentify(params.row.currency, '/withdrawal'):this.getIdentify(params.row.currency, '/withdrawal_usd')
+                                       if(isUSD){
+                                          // this.getIdentify(params.row.currency, '/withdrawal_usd')
+                                          this.getBankSetting()
+
+                                       }else{
+                                          this.getIdentify(params.row.currency, '/withdrawal')
+                                       }
                                     }
                                  }
                               }
@@ -561,7 +567,7 @@
                                  on: {
                                     click: () => {
                                        if (withdraw) {
-                                          this.getBankSetting()
+                                          this.getIdentify(params.row.currency, '/bankSetting')
                                        }
                                     }
                                  }
@@ -1003,7 +1009,7 @@
                         if (res.length === 0) {
                            this.showNoBank = true
                         } else {
-                           this.$router.push('bankSetting')
+                           this.$router.push('/bankSetting')
                         }
                      }.bind(this))
                      break

@@ -661,8 +661,8 @@
             // type: '',
 
             //pc
-            showStep1: false,
-            showStep2: true,
+            showStep1: true,
+            showStep2: false,
             showStep3: false,
             showStep4: false,
             isUS: false,
@@ -681,7 +681,7 @@
             },
             language: localStorage.getItem('countryLanguage'),
 
-            currentStep: 2,
+            currentStep: 1,
             stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
             idType: [
                {label: "newK1DL", value: 'license'},
