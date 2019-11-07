@@ -583,7 +583,7 @@ export default {
    panBuy: ' Buy',
    exchangeCheapest: 'Global Best Ask',
    exchangeHighest: 'Global Best Bid',
-   exchangeGBBORouter: 'From GBBO Smart Oder Router',
+   exchangeGBBORouter: 'From GBBO Smart Order Router',
    exchangeGBBORouterb: 'Global Best Bid',
    exchangeGBBORoutera: 'Global Best Ask',
    exchangeGBBORouterDesc: 'Smart Oder Router (SOR) routes your order to the exchange with the best price',
