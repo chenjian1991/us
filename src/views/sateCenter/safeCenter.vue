@@ -277,8 +277,6 @@
                     this.identifyState = res.data.identifyState;
                     this.setTradingPassword = res.data.setTradePassword;
                     this.switchState = res.data.openTradePassword.toString()
-                    console.log(this.switchState)
-                    
                 }).catch((res) =>{
 
                 })

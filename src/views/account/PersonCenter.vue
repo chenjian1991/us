@@ -1,5 +1,4 @@
 <template>
-  <!-- ========== MAIN ========== -->
   <main
     id="content"
     role="main"
@@ -116,10 +115,7 @@
               <div class="row mb-5">
                 <div class="col-sm-12 mb-4 mb-sm-0">
                   <div>Total Value</div>
-                  <span class="font-size-3 font-weight-medium text-lh-sm">{{otcAccount && otcAccount.total_BTC}} BTC </span>
-                  <div class="mb-1">
-                    <span class="text-secondary font-size-1"> ≈ {{otcAccount && otcAccount.legalCurrency}} {{otcAccount && otcAccount.name}}</span>
-                  </div>
+                  <span class="font-size-3 font-weight-medium text-lh-sm">{{totalUSD}} USD</span>
                 </div>
 
                 <div class="col-sm-6 align-self-end">
@@ -214,9 +210,9 @@
 <script>
 import AccountInfo from "../../components/common/AccountInfo.vue";
 import { AnnoucementList } from "_api/home";
-// import {
-//       getCurrencyListData
-//    } from '_otcApi/home.js'
+  import {
+      getCurrencyList,
+   } from '_api/exchange.js'
 import { getSymbolList } from "_api/exchange.js";
 import PasswordInput from "@/components/PasswordInput.vue";
 import moment from "moment";
@@ -263,52 +259,15 @@ export default {
       pageKeyword : this.$t(this.$route.meta.keywords),
       pageDescription : this.$t(this.$route.meta.description),
       language: window.localStorage.getItem("countryLanguage") || "en",
-      adArr: [],
-      moreAnounce: "",
-      myOpenList: [], //未成交订单
       isLogin: this.$store.state.app.isLogin || false,
       exchange: null,
-      SSE_order: null,
-      showPassWordPage: false,
-      exchangePassWord: null,
       loginToken: $cookies.get("loginToken"), //登陆token
       exchangeAccount: null,
-      otcAccount: null,
       allAccountBTC: 0,
       allAccountCurrency: 0,
       modal1:false,
-      //资产划转
-      otcModal:false,
-      transferModel:false,
-      transferCurrency:'USDT',//选择划转的币种
-      firstSelect:'currency',
-      seccondSelect:'money',
-      directionSelect:[{value: 'money',label: 'BalancesOTCAccount'}, {value: 'currency',label: 'BalancesExchangeAccount'}],
-      otcAvailable:'0.000000',//OTC可用资产
-      bbAvailable:'0.000000', //币币的可用资产
-      allTransfer:'',//划转的数量
-      transferCurrencySelect: [
-              {value: 'BTC',label: 'BTC'},
-              {value: 'ETH',label: 'ETH'},
-              {value: 'USDT',label: 'USDT'},
-              {value: 'USDD',label: 'USDD'},
-      ],
-      otcJsObj:null,
-      otc_accountId:'',
-      bbAvailableObj:{},
-      loaded:true,
-      listData:[],
+      totalUSD:"",
       identifyState:'',
-      vpiNum: '--',
-      vipTrad: '--',
-      levelNum: 0,
-      volume: 0,
-      fees: 0,
-      smalls: 0,
-      taget: 0,
-      start: 0,
-      ends: 0,
-      vipLevels: 0
     };
   },
   components: {
@@ -328,13 +287,24 @@ export default {
     getAccountData() {
       getBalancesValuation().then(data => {
         this.exchangeAccount = data;
-        console.log('this.exchangeAccount',this.exchangeAccount)
         if(data.total_BTC !== '--'){
             this.allAccountBTC = Number(this.allAccountBTC) + Number(data.total_BTC);
             this.allAccountCurrency =Number(this.allAccountCurrency) + Number(data.legalCurrency);
         }
       });
     },
+      initUSDD() {
+            let balanceList = new Promise(resolve => {
+               this.exchange.balance(function (result) {//获取资产
+                  result.forEach(item => {
+                      if(item.currency==='USDD'){
+                          this.totalUSD = item.available;
+                      }
+                  });
+                  resolve()
+               }.bind(this))
+            })
+         },
      goKycPage(){
         if (this.identifyState === 'INIT') {
             this.$router.push('/kyc')
@@ -394,6 +364,7 @@ export default {
       }
     }.bind(this);
     this.getAccountData();
+    this.initUSDD()
     this.getUserInfo($cookies.get("loginToken"));
     let loginToken = $cookies.get("loginToken");
   }
