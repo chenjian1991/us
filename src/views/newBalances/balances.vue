@@ -97,7 +97,6 @@
    import {Exchange} from '@/interface/exchange.js'
    import {Market} from '@/interface/market.js'
    import bigDecimal from 'js-big-decimal' //除法失效
-   import moment from 'moment'
    import alertModal from '@/components/alertModal'
    import usModal from '@/components/usModal'
    import AccountInfo from '@/components/common/AccountInfo'
@@ -453,7 +452,7 @@
                {
                   key: 'USDT',
                   title: ' ',
-                  // width: 110,
+                  width: 113,
                   align: 'left',
                   render: (h, params) => {
                      if (!params.row.USDT) {

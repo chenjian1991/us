@@ -702,7 +702,6 @@
    import Stomp from 'stompjs';
    // import CHAT from '@/components/exchange/CHAT.vue'
    import _ from 'lodash'
-   import Cookies from 'js-cookie'
    import moment, {isMoment, defineLocale} from 'moment'
    import bigDecimal from 'js-big-decimal' //除法失效
    import {BigNumber} from 'bignumber.js';
@@ -772,7 +771,7 @@
             asksArr: [],
             //****交易相关 */
             exchange: null,//交易接口函数
-            loginToken: Cookies.get('loginToken'),//登陆token
+            loginToken: $cookies.get('loginToken'),//登陆token
             // ***** 买入 卖出 ******//
             FFDeductible: 0,//1 开启手续费折扣 2.FF余额低 3.手续费折扣中
             commissionTemplateId: false,//开启折扣开关 true 开启
@@ -2335,8 +2334,8 @@
             //     }
             // })
          }
-        if(Cookies.get('loginToken')){
-          getUserInfo(Cookies.get('loginToken'))
+        if($cookies.get('loginToken')){
+          getUserInfo($cookies.get('loginToken'))
               .then((res) => {
                 if(!res.code) {
                   // 是否设置交易密码
@@ -2360,7 +2359,7 @@
          this.$store.commit('changeHeaderColor', '#15232C');
          this.$store.commit('changeFooterColor', '#15232C');
          // 登录的情况下
-         if (Cookies.get('loginToken') && localStorage.getItem('loginUserId')) {
+         if ($cookies.get('loginToken') && localStorage.getItem('loginUserId')) {
             //获取交易密码开关
             this.$store.dispatch("getTradePassWordStatus");
          }

@@ -242,4 +242,5 @@ export const userListUrl = `${proxyURLUser}/query-invitation-record` //邀请好
 export const identifySubmitUrl = `${proxyURLUcenter}/identify/submit` //实名认证表单提交
 export const identifyUpdateUrl = `${proxyURLUcenter}/identify/update` //实名认证表单修改
 export const uploadPic = `${proxyURLUcenter}/identify/upload`//上传图片
+export const listRebateUrl = `${proxyURL}/reconciliation/commission-rebate/rebate.list` //获取返佣列表
 

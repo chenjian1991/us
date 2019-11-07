@@ -390,7 +390,7 @@
          getIdentify() { //实名认证
             identifyQuery({
                userId: this.userId,
-               nameList: 'THIRD_ADMIN,THIRD_IDM,THIRD_PT'
+               nameList: 'THIRD_PT'
             }, this.loginToken).then(res => {
                if (res.data.length) {
                   const identifyState = res.data[0]['thirdState']
@@ -407,6 +407,7 @@
          },
       },
       beforeMount() {
+         console.log(this.loginToken)
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
