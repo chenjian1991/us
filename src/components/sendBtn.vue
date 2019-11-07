@@ -180,10 +180,6 @@
             }else{
                  this.loginToken = Cookies.get('loginToken')
             }
-           
-           
-            
-           
         }
     }
 </script>
