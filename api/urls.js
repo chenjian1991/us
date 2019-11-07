@@ -82,7 +82,7 @@ export const restPasswordVerify = `${proxyURL}/sso/user/restPasswordVerify`//查
 // export const activationEmail = `${proxyURL}/sso/user/register.activation`// 激活成功
 //export const alreadyDividend = `${proxyURL}/content/portal/usdd/dividend.query`// 已经派的利息
 export const loginHistory = `${proxyURL}/sso/log/login`//登录历史查询
-export const logout = `${proxyURL}/sso/new-user/logout`//退出接口
+// export const logout = `${proxyURL}/sso/new-user/logout`//退出接口
 // export const register = `${proxyURL}/sso/new-user/phone-register`//手机注册
 export const userNameUnique = `${proxyURL}/sso/new-user/query-unique-name/`//登录
 // export const emailRegister = `${proxyURL}/sso/new-user/email-register`// 邮箱注册
@@ -143,7 +143,7 @@ export const bindSend = `${proxyURLUser}/send-bind-code`//绑定手机，邮箱�
 export const userInfo = `${proxyURLUser}/get-user-info`//查询用户信息
 export const setTradingPassword = `${proxyURLUser}/set-trade-password`//设置交易密码
 export const switchTradingPassword = `${proxyURLUser}/switch-trade-password`//开启交易密码
-// export const logout = `${proxyURLUser}/logout`//退出
+export const logout = `${proxyURLUser}/logout`//退出
 export const identifyInfo = `${proxyURLUcenter}/identify/get-info`//实名认证查询
 export const identifyPhoto = `${proxyURLUcenter}/identify/get-pub-url`//查询图片地址
 

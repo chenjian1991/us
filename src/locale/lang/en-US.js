@@ -1158,7 +1158,6 @@ export default {
    fronthomefootAPPios: "Download on the",
    fronthomefootAPPandroid: "Get it on",
    helpURL: 'https://55support.zendesk.com/hc/en-us',
-   账户: "账户",
 
 
    //关于55页面
@@ -2277,4 +2276,26 @@ export default {
    confirmbtn: 'Confirm',
    去绑定:"Bind",
    用于保护资产安全: 'To ensure asset security',
+   推荐安全设置: 'Increase your account security',
+   去实名: 'Go to ID verification',
+   稍后再说: 'skip for now',
+   尊敬的用户:'Dear User',
+   已实名: 'Verified',
+   未实名: 'Unverified',
+   总览: 'Dashboard',
+   账户: 'Account',
+   个人中心title: 'Personal Dashboard',
+   账户总估值: 'Total Estimated Value',
+   详情: 'View',
+   充值到币币账户: 'To Exchange Account',
+   设置提现地址更安全: 'To external address',
+   kycModalText1: 'Your ID verification has not been approved yet!',
+   kycModalText2: 'You must pass identity verification before engaging in any deposit, withdrawal, trade, and all other fund, token, and currency functions.',
+
+
+
+
+
+
+
 };

@@ -169,7 +169,8 @@
       socialToken,
       logout,
       identifyQueryUrl,
-      amlqueryState
+      amlqueryState,
+      userInfo
    } from "../../../api/urls.js";
    import {proportion} from "_api/balances.js";
    import {
@@ -233,6 +234,8 @@
             loginToken: '',
             chatToken: '',
             baseSocialURL: '',
+            identifyState:"",
+            
 
          };
       },
@@ -398,57 +401,43 @@
             })
          },
          verfiy() {
-            let loginToken = Cookies.get("loginToken");
-            getHeaderTokenApi(identifyQueryUrl, {}, loginToken)
+               let params = {
+                  userId: localStorage.getItem("loginUserId")
+               };
+               getHeaderTokenApi(userInfo, params, $cookies.get("loginToken"))
                .then(res => {
-                  if (res.data == "" || res.data == null || res == '{}') {
+                  this.identifyState = res.data.identifyState;
+                  if (this.identifyState === "INIT") {
                      this.$router.push("/kyc");
-                     return;
-                  }
-                  if (res.data.code) {
-                     this.$Notice.error({
-                        title: this.$t(res.data.code),
-                        desc: this.$t(res.data.code)
-                     });
-                     this.$router.push("/login");
-                  }
-                  let status = res.data.dataStatus;
-                  if (status == 1) {
-                     this.$router.push("/kyc");
-                  } else {
+                  } else if (
+                     this.identifyState === "SUCCESS" ||
+                     this.identifyState === "SUBMIT" ||
+                     this.identifyState === "FAIL"
+                  ) {
                      this.$router.push("/identityResult");
                   }
                })
-               .catch(error => {
-                  // console.log(error)
-               });
+               .catch(res => {});
          },
-         // gotoSocial() {
-         //   let loginFlag = Cookies.get("loginToken");
-         //   if (loginFlag) {
-         //     //登陆了
-         //     postHeaderTokenBodyApi(socialToken, loginFlag, {}).then(res => {
-         //       let responseToken = res.token;
-         //       let socialURL = CHAT_URL.baseURL + responseToken;
-         //       let url = socialURL;
-         //       window.open(url, "_blank");
-         //     });
-         //   } else {
-         //     var url = getCommouityBaseURL();
-         //     window.open(url, "_blank");
-         //   }
-         // },
          quitFun() {
-            postHeaderTokenBodyApi(logout, Cookies.get("loginToken"), {}).then(
-               res => {
-                  // console.log(res)
-               }
-            );
-            //更新自选的币种
-            this.$store.dispatch("updateMarkSymbol");
+             let params = {
+                  userId: localStorage.getItem("loginUserId")
+               };
+               getHeaderTokenApi(logout, params, $cookies.get("loginToken")).then(
+                  res => {
+                     if (res.data.result) {
+                     clearLocalStorage();
+                     setTimeout(() => {
+                        this.$router.push("/home");
+                     }, 500);
+                     this.$Notice.success({
+                        title: this.$t(11001),
+                        desc: this.$t(11001)
+                     });
+                     }
+                  }
+               );
             this.$store.commit("changeLoingStatus", false);
-            this.$router.push("/home");
-            clearLocalStorage();
          },
          inviteFriend() {
             //返佣比例

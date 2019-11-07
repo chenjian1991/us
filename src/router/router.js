@@ -32,6 +32,7 @@ import resetNewpass from '../views/forgotPassword/resetNewpass.vue';
 import safeCenter from '../views/sateCenter/safeCenter.vue';
 import bandEmail from '../views/sateCenter/bandEmail.vue';
 import bandPhone from '../views/sateCenter/bandPhone.vue';
+const PersonCenter = () => import('../views/account/PersonCenter.vue') // 归到资产块
 
 import LoginPass from "../views/resetLoginPassword/LoginOrigin.vue";
 import NewLoginpwd from "../views/resetLoginPassword/LoginNewpws.vue";
@@ -53,10 +54,6 @@ import identityResult from "../views/identity/identityResult.vue"
 
 //usdd
 import FF from "../views/FF/FF.vue";
-import stock from "../views/assestInfo/s/stock.vue"
-import cinfo from "../views/assestInfo/c/CInfo.vue"
-
-import StockToken from "../views/tongzheng/s/stock.vue"
 //aml
 import amlKyc from '../views/aml/amlkyc.vue';
 import amlkycResult from '../views/aml/amlkycResult.vue';
@@ -271,6 +268,17 @@ const router = new Router({
                   title: 'ForgotPasswordTitle'
                },
                component: resetNewpass
+            },
+            {
+               path: '/accountInfo',
+               name: 'accountInfo',
+               meta: {
+                  title: '个人中心title'
+               },
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               component: PersonCenter
             },
             {
                path: 'safeCenter',
@@ -568,29 +576,8 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: FF
-            }, {//stock
-               path: 'stock',
-               name: 'stock',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: stock
-            }, {//usdd
-               path: 'cinfo',
-               name: 'cinfo',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: cinfo
-            },
-            {//usdd
-               path: 'StockToken',
-               name: 'cintongzhengStockfo',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: StockToken
-            },
+            }, 
+          
             {//interFinance
                path: 'interFinanceOne',
                name: 'interFinanceOne',
