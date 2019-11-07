@@ -9,21 +9,28 @@ import store from '../store/index'
 import {getCreateAccount} from '_api/exchange.js'
 import {clearLocalStorage} from '@/config'
 
+
 //zmw
+//首页
+const index = () => import('../views/home/index.vue')
+
 const balances = () => import('../views/newBalances/balances.vue')
 const deposit = () => import('../views/newBalances/deposit.vue')
 const withdrawal = () => import('../views/newBalances/withdrawal.vue')
 const transaction_history = () => import('../views/newBalances/transactionHistory.vue')
+//us balance
+import deposit_usd from '../views/balances/deposit_usd.vue'
+import withdrawal_usd from '../views/balances/withdrawal_usd.vue'
+import bankSetting from '../views/balances/bankSetting.vue'
+
 const order = () => import('../views/newBalances/order.vue')
 const kyc = () => import('../views/kyc/kyc.vue')
 
-const index = () => import('../views/home/index.vue')
 const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import('../views/exchangeGBBO/Exchange.vue')
 
 const Login = () => import('../views/login/Login.vue')
 const Register = () => import('../views/login/register.vue')
-const About = () => import('../views/about/About.vue')
 
 import Google from '../views/login/google.vue';
 import Forgot from '../views/forgotPassword/forgot.vue';
@@ -44,55 +51,19 @@ import terms from "../views/legal/terms.vue";
 import legal from "../views/legal/legal.vue";
 import tradingRules from "../views/legal/TradingRules.vue";
 import privacy from "../views/legal/privice.vue";
-import fee from "../views/legal/fee.vue";
-import disclaimer from "../views/legal/disclaimer.vue";
-import aml from "../views/legal/aml.vue";
 import setGoogle from "../views/google/setGoogle.vue";
 import closeGoogle from "../views/google/closeGoogle.vue";
-import identiy from "../views/identity/identity.vue"
 import identityResult from "../views/identity/identityResult.vue"
 
-//usdd
-import FF from "../views/FF/FF.vue";
-//aml
-import amlKyc from '../views/aml/amlkyc.vue';
-import amlkycResult from '../views/aml/amlkycResult.vue';
-import editAmlKyc from "../views/aml/editAmlKyc.vue";
-
-//us balance
-import deposit_usd from '../views/balances/deposit_usd.vue'
-import withdrawal_usd from '../views/balances/withdrawal_usd.vue'
-import bankSetting from '../views/balances/bankSetting.vue'
-
-const interFinanceOne = () => import( '../views/interFinance/interFinanceOne.vue')
-const interFinanceTWO = () => import( '../views/interFinance/interFinanceTWO.vue')
-const interFinanceThree = () => import( '../views/interFinance/interFinanceThree.vue')
-
-//header toggle
-const whyus = () => import('../views/headerToggle/whyus.vue')
-const crypto = () => import('../views/headerToggle/criptoTrading.vue')
-const smartexecution = () => import('../views/headerToggle/smartexecution.vue')
-const termsfront = () => import('../views/headerToggle/terms.vue')
-const faqs = () => import('../views/headerToggle/faqs.vue')
-const ourcompany = () => import('../views/headerToggle/ourcompany.vue')
-const team = () => import('../views/headerToggle/TheTeam.vue')
-const contactus = () => import('../views/headerToggle/contactus.vue')
 const about = () => import('../views/about/about_new.vue')
-
-
-
-import download from "../views/download/download.vue";
-const Captial = () => import('../views/captial/Captial.vue')
 
 import i18n from '@/locale/index.js';
 
 Vue.use(Router)
 
-
 const router = new Router({
    //history 路由 
    mode: 'history',
-
    routes: [
       {
          path: '/activeEmail',
@@ -101,14 +72,6 @@ const router = new Router({
             title: 'activeEmailTitle'
          },
          component: activeEmail
-      },
-      {
-         path: '/download',
-         name: 'download',
-         meta: {
-            title: 'HomeTitle'
-         },
-         component: download,
       },
       {
          path: '/kyc',
@@ -156,70 +119,6 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: index,
-            },
-            {
-               path: 'whyus',
-               name: 'whyus',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: whyus,
-            },
-            {
-               path: 'crypto',
-               name: 'crypto',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: crypto,
-            },
-            {
-               path: 'smartexecution',
-               name: 'smartexecution',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: smartexecution,
-            },
-            {
-               path: 'termsfront',
-               name: 'termsfront',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: termsfront,
-            },
-            {
-               path: 'faqs',
-               name: 'faqs',
-               meta: {
-                  title: 'FAQ'
-               },
-               component: faqs,
-            },
-            {
-               path: 'ourcompany',
-               name: 'ourcompany',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: ourcompany,
-            },
-            {
-               path: 'team',
-               name: 'team',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: team,
-            },
-            {
-               path: 'contactus',
-               name: 'contactus',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: contactus,
             },
             {
                path: 'login',
@@ -356,14 +255,6 @@ const router = new Router({
                component: closeGoogle
             },
             {//实名认证
-               path: 'identiy',
-               name: 'identiy',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: identiy
-            },
-            {//实名认证
                path: 'identityResult',
                name: 'identityResult',
                meta: {
@@ -403,22 +294,6 @@ const router = new Router({
                      },
                      component: privacy
                   },
-                  {//disclaimer
-                     path: 'disclaimer',
-                     name: 'disclaimer',
-                     meta: {
-                        title: 'HomeTitle'
-                     },
-                     component: disclaimer
-                  },
-                  {//fee
-                     path: 'fee',
-                     name: 'fee',
-                     meta: {
-                        title: 'HomeTitle'
-                     },
-                     component: fee
-                  },
                   {//tradingRules
                      path: 'tradingRules',
                      name: 'tradingRules',
@@ -428,55 +303,6 @@ const router = new Router({
                      component: tradingRules
                   },
                ]
-            },
-
-            {//amlKyc
-               path: 'amlKyc',
-               name: 'amlKyc',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: amlKyc
-            },
-            {//amlkycResult
-               path: 'amlkycResult',
-               name: 'amlkycResult',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: amlkycResult
-            },
-            {//editAmlKyc
-               path: 'editAmlKyc',
-               name: 'editAmlKyc',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: editAmlKyc
-            },
-            {//disclaimer
-               path: 'aml',
-               name: 'aml',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: aml
-            },
-            {
-               path: 'about55',
-               name: 'about55',
-               meta: {
-                  title: 'aboutTitle'
-               },
-               component: About
-            },
-            {
-               path: 'capital',
-               name: 'capital',
-               meta: {
-                  title: 'capital'
-               },
-               component: Captial
             },
             //订单
             {
@@ -568,39 +394,6 @@ const router = new Router({
                   title: 'balanceBank'
                },
                component: bankSetting
-            },
-            {//FF
-               path: 'FF',
-               name: 'FF',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: FF
-            }, 
-          
-            {//interFinance
-               path: 'interFinanceOne',
-               name: 'interFinanceOne',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: interFinanceOne
-            },
-            {//interFinance
-               path: 'interFinanceTWO',
-               name: 'interFinanceTWO',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: interFinanceTWO
-            },
-            {//interFinance
-               path: 'interFinanceThree',
-               name: 'interFinanceThree',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: interFinanceThree
             },
             {//about
                path: 'about',

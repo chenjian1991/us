@@ -1,9 +1,9 @@
-import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postFormDataApi,postHeaderTokenBodyParamsApi} from './axios'
+import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postHeaderTokenBodyParamsApi} from './axios'
 
 import {
    realTime, verifyAddress, userInfo, ssoSend, withdrawCodeVerify, identify, ssoGoogleVerify, ssoCodeVerify,
-   updateSecretKeyUrl, closeSecretKeyUrl, queryStateUrl, identifySubmitUrl,identifyUpdateUrl,
-   identifyInfo as identifyQueryUrl, uploadPic,identifyPhoto,userListUrl,usersCountUrl,listRebateUrl
+   identifySubmitUrl, identifyUpdateUrl,
+   identifyInfo as identifyQueryUrl, uploadPic, identifyPhoto
 } from "./urls";
 
 export const getRealtimeList = () => {
@@ -37,18 +37,6 @@ export const googleVerify = (params, data) => {
    return postHeaderTokenBodyApi(ssoGoogleVerify, params, data)
 }
 
-export const updateSecretKey = (params, data) => {
-   return postFormDataApi(updateSecretKeyUrl, params, data)
-}
-
-export const closeSecretKey = (params, data) => {
-   return postFormDataApi(closeSecretKeyUrl, params, data)
-}
-
-export const queryState = (token) => {
-   return getHeaderTokenApi(queryStateUrl, '', token)
-}
-
 export const identifySubmit = (params, data) => {
    return postHeaderTokenBodyApi(identifySubmitUrl, params, data)
 }
@@ -67,16 +55,4 @@ export const uploadImg = (params, data) => {
 
 export const getPhoto = (params, data) => {
    return postHeaderTokenBodyParamsApi(identifyPhoto, params, {}, data)
-}
-
-export const userList = (params, token) => {
-   return getHeaderTokenApi(userListUrl, params, token)
-}
-
-export const usersCount = (params, token) => {
-   return getHeaderTokenApi(usersCountUrl, params, token)
-}
-
-export const listRebate = (params) => {
-   return getApi(listRebateUrl, params)
 }

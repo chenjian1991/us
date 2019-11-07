@@ -577,11 +577,10 @@
          return {
             //移动端
             showHeader: true,
-            // type: '',
 
             //pc
-            showStep1: false,
-            showStep2: true,
+            showStep1: true,
+            showStep2: false,
             showStep3: false,
             showStep4: false,
             isUS: false,
@@ -600,7 +599,7 @@
             },
             language: localStorage.getItem('countryLanguage'),
 
-            currentStep: 2,
+            currentStep: 1,
             stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
             idType: [
                {label: "newK1DL", value: 'license'},
@@ -917,10 +916,10 @@
                   throw this.stepTwoError['expireDate']
                }
                //判断图片非空   最新更改
-               // if (this.urlPath && this.urlPathTWO && this.urlPathTHREE) {//全部填完
-               // } else {
-               //    throw 'newK1Imgrequired'
-               // }
+               if (this.urlPath && this.urlPathTWO && this.urlPathTHREE) {//全部填完
+               } else {
+                  throw 'newK1Imgrequired'
+               }
                this.step2Params = {}
                Object.assign(this.step2Params, this.stepTwoForm, {frontPathFront: this.userFrontMessage.frontPathFront}, {backPathBack: this.userBackMessage.backPathBack}, {selfPathSelf: this.userSelf.selfPathSelf});
 

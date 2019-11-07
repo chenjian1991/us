@@ -359,23 +359,6 @@ Exchange.prototype.getFilledList_v2Order = function (params, fn) {
 };
 
 
-Exchange.prototype.listFilledOrderDetail = function (page, fn) {
-   var _this = this;
-   var page = page || 1;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ORDER, function (_orderToken) {
-         getFilled({
-            "token": _orderToken,
-            "accountId": _accountId,
-            "page": page,
-            "limit": 10
-         }).then(data => {
-            fn(data);
-         })
-      })
-   })
-};
-
 //sse 推送订单详情
 Exchange.prototype.listFilledOrder = function (fn) {
    var _this = this;
@@ -504,44 +487,6 @@ Exchange.prototype.activityList = function (activity, currency, fn) {
    })
 };
 
-//USDDInterest
-Exchange.prototype.usddInterestQuery = function (fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-         queryUSDDInterest({"token": _assetToken, "accountId": _accountId}).then(data => {
-            fn(data);
-         })
-      })
-   })
-};
-//usdt => usdd
-Exchange.prototype.usdt2usddQuery = function (fn) {
-   var _this = this;
-   _this.getAccountId(function (_accountId) {
-      _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-         queryUsdt2usdd({"token": _assetToken, "accountId": _accountId}).then(data => {
-            fn(data);
-         })
-      })
-   })
-};//usdt => usdd
-Exchange.prototype.usdt2usddExchange = function (amount, fn) {
-   var _this = this;
-   _this.ssoProvider.getSsoToken(function (_ssoToken) {
-      _this.getAccountId(function (_accountId) {
-         _this.getToken(Exchange.TokenType.ASSET, function (_assetToken) {
-            exchangeUsdt2usdd({"token": _assetToken}, {
-               "ssoToken": _ssoToken,
-               "accountId": _accountId,
-               'amount': amount
-            }).then(data => {
-               fn(data);
-            })
-         })
-      })
-   })
-};
 //充值地址
 Exchange.prototype.deposit = function (currency, fn, errorFn) {
    var _this = this;
