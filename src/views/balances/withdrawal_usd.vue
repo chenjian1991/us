@@ -39,23 +39,18 @@
                   </Col>
                </Row>
                <section class="below">
-                  <p>{{$t('withdrawCon')}}</p>
-                  <p>{{$t('withdrawConfee1')}} ${{fee}} {{$t('withdrawConfee2')}}</p>
+                  <p>Tresso partners with Global Currency Organization and Prime Trust to provide Fiat trading services.
+                     Prime Trust is a chartered, regulated, insured trust company.</p>
                   <Button class="instruction button-common" @click="getInstruction">{{$t('withdrawConfirm')}}</Button>
                   <div class="line"></div>
                   <Button class="history button-common" @click="next">{{$t('withdrawHis')}}
                      <Icon type="ios-arrow-round-forward" class="arrow-icon"/>
                   </Button>
                   <div class="logo-box">
-                     <img src="../../assets/images/balances/55logo@2x.png" class="logo">
                      <a target="_blank" href="https://www.gcodigital.com/">
-                        <img src="../../assets/images/balances/gco-logo1x.png" >
+                        <img src="../../assets/images/balances/gco-logo1x.png">
                      </a>
                      <img src="../../assets/images/balances/pt-logo@2x.png" class="logo">
-                  </div>
-                  <div class="partnerPrime">
-                     <p>{{$t('partnerPrime')}}</p>
-                     <p>{{$t('partnerPrime1')}}</p>
                   </div>
                </section>
             </div>
@@ -106,7 +101,6 @@
 </template>
 
 <script>
-   import Cookies from 'js-cookie'
    import moment from 'moment';
    import usModal from '@/components/usModal'
    import {Exchange} from '@/interface/exchange.js'
@@ -306,19 +300,12 @@
          },
       },
       beforeMount() {
-         let loginToken = Cookies.get('loginToken')
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
-         if (loginToken) {
-            this.exchange.ssoProvider.getSsoToken = function (fn) {
-               fn(loginToken);
-            };
-         } else {
-            this.$router.push({
-               path: '/login',
-            })
-         }
+         this.exchange.ssoProvider.getSsoToken = function (fn) {
+            fn($cookies.get('loginToken'));
+         };
       },
       mounted() {
          this.init()

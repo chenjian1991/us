@@ -1,5 +1,8 @@
+import Vue from 'vue'
 import axios from 'axios'
-import Cookies from 'js-cookie'
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
+
 import {
    Message,
    Notice
@@ -266,7 +269,7 @@ export function postHeaderTokenJsonApi(url, params, appendToken = true) {
          url: url,
          headers: {
             'Content-type': 'application/json',
-            'token': Cookies.get('token')
+            'token': $cookies.get('token')
          },
          data: JSON.stringify(params)
       }).then(response => {
@@ -308,10 +311,6 @@ export function postHeaderJsonApi(url, params, bodyData) {
  */
 export function getHeaderTokenApi(url, params, token) {
    return new Promise((resolve, reject) => {
-      // let token
-      // if (appendToken) {
-      //   token = Cookies.get('token')
-      // }
       axios.get(url, {
          params: params,
          headers: {
@@ -333,12 +332,6 @@ export function getHeaderTokenApi(url, params, token) {
  */
 export function getApi(url, params) {
    return new Promise((resolve, reject) => {
-      // if (appendToken) {
-      //     let token = Cookies.get('TOKEN')
-      //     if (token != '') {
-      //         params['token'] = token
-      //     }
-      // }
       axios.get(url, {
          params: params,
          paramsSerializer: params => {
@@ -356,12 +349,6 @@ export function getApi(url, params) {
 // 登陆请求ip单独处理
 export function getApiLoin(url, params) {
    return new Promise((resolve, reject) => {
-      // if (appendToken) {
-      //     let token = Cookies.get('TOKEN')
-      //     if (token != '') {
-      //         params['token'] = token
-      //     }
-      // }
       axios.get(url, {
          params: params,
          paramsSerializer: params => {
@@ -374,4 +361,27 @@ export function getApiLoin(url, params) {
          reject(error)
       })
    })
+}
+/**
+ *  封装axios的post请求
+ * @param {*} url 请求的接口路径
+ * @param {*} bodyData 请求body的参数，参数格式以json对象形式
+ * @param params 参数
+ */
+export function postHeaderTokenBodyParamsApi(url, token, bodyData,params) {
+   return new Promise((resolve, reject) => {
+      axios({
+         method: 'post',
+         url: url,
+         headers: {
+            'token': token
+         },
+         data: bodyData,
+         params:params
+      }).then(response => {
+         resolve(response.data)
+      }).catch((error) => {
+         reject(error)
+      })
+   });
 }

@@ -31,7 +31,8 @@
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box">
-                           <a class="nav-link u-header__nav-link" href="#GBBO">GBBO™</a>
+                           <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO™</a>
+                           <!-- <router-link :to='gbboHref' class="nav-link u-header__nav-link">GBBO™</router-link> -->
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box header-box">
@@ -240,6 +241,13 @@
       },
 
       methods: {
+         gbboHref() {
+            if(location.href.includes('/home')){
+               location.href='#GBBO'
+            }else{
+               this.$router.push('/home')
+            }
+         },
          initURL() {
             this.loginToken = Cookies.get('loginToken')
             if (this.loginToken) {
@@ -455,6 +463,13 @@
          }
       },
       computed: {
+         // gbboHref() {
+         //    if(location.href.includes('/home')){
+         //       return '/home#GBBO'
+         //    }else{
+         //       return '/home'
+         //    }
+         // },
          languageChange() {
             return this.$store.state.app.countryLanguage; //  返回全局state的状态值
          },
@@ -488,8 +503,6 @@
 
       },
       mounted() {
-
-
          let language = window.localStorage.getItem("countryLanguage") || "en";
          let currency = localStorage.getItem("currentCurrency");
          //默认英语连接

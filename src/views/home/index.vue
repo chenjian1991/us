@@ -73,7 +73,7 @@
       </div>
       <!--Why Tresso?-->
       <div class="pb-11">
-         <row-box :rowLists="tresso">
+         <Rowbox :rowLists="tresso">
             <div :slot="item.name" class="tresso mt-4" v-for="(item,i) in tressoList" :key="i">
                <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
                   <img v-lazy='item.img' class="tresso-img">
@@ -81,11 +81,11 @@
                   <section class="f-16 c-d-gray f-w-5">{{item.section}}</section>
                </div>
             </div>
-         </row-box>
+         </Rowbox>
       </div>
       <!--GBBO-->
       <div class="gbboTM-box pb-11 bgc2">
-         <row-box :rowLists="gbboTM">
+         <Rowbox :rowLists="gbboTM">
             <div class="gbboTMBg p-6 mb-5">
                <h3 class="f-24 c-fff f-w">Global Best Bid & Offer (GBBO™) fuels next-level trading</h3>
                <section class="c-gray-b f-14 mt-3">
@@ -98,7 +98,7 @@
             <Collapse></Collapse>
             <p class="f-16 c-blue">This power is not currently available in any single exchange, regardless of
                size, and only available at Tresso.</p>
-         </row-box>
+         </Rowbox>
       </div>
       <!--CONNECTED EXCHANGES 需求先隐藏-->
       <!--<div class="connected-box bgc4 position-relative">-->
@@ -140,7 +140,7 @@
       <!--</div>-->
 
       <!--Keep more of your margin with FREE trading-->
-      <div class="free-box bgc-fff t-c p-lg-11">
+      <div class="free-box bgc-fff t-c pt-11 pb-11">
          <div class="container p-3">
             <h3 class="f-36 c-d-black f-w">Keep more of your margin with FREE trading</h3>
             <div style="width: 100%;overflow-x: scroll" id="free" class="free-scroll">
@@ -150,14 +150,14 @@
       </div>
       <!--2 ways to connect-->
       <div class="connect-box bgc3">
-         <row-box :rowLists="connect" class="pb-5">
+         <Rowbox :rowLists="connect" class="pb-5">
             <div :slot="item.name" class="connect bgc-fff br-8 p-lg-7 pr-lg-9 mt-3 p-5" v-for="(item,i) in connectList"
                  :key="i">
                <img v-lazy='item.img' class="connect-img">
                <p class="f-20 c-d-black mt-4 mb-2 f-w-6">{{item.title}}</p>
                <section class="f-16 c-d-gray f-w-5">{{item.section}}</section>
             </div>
-         </row-box>
+         </Rowbox>
       </div>
       <div class="connect-bg"></div>
       <!--manager-->
@@ -222,7 +222,7 @@
    import Stomp from 'stompjs';
    import {BigNumber} from "bignumber.js";
    import bigDecimal from "js-big-decimal"; //除法失效
-   import rowbox from '@/components/rowbox'
+   import Rowbox from '@/components/Rowbox'
 
    import {getSymbolList_realtime} from "_api/exchange.js";
    import {
@@ -230,12 +230,12 @@
    } from "@/lib/utils.js";
 
    import HomeCanvas from './component/HomeCanvas'
-   import Collapse from './components/Collapse'
+   import Collapse from './component/Collapse'
 
    export default {
       name: "index",
       components: {
-         'row-box': rowbox,
+         'Rowbox': Rowbox,
          HomeCanvas,
          Collapse
       },
@@ -425,7 +425,6 @@
             })
          },
          getSockJS() {
-
             if (this.stompClient === null || !this.stompClient.connected) {
                const domain = document.domain;
                let socket = null
@@ -438,20 +437,22 @@
                this.stompClient.debug = null
                this.stompClient.heartbeat.outgoing = 1000;
                this.stompClient.connect({}, () => {
+                  this.stompClient.subscribe(`/topic/trade/${this.symbol}`, (message) => {
+                     if (message.body) {
+                        this.getAvgPrice(JSON.parse(message.body))
+                     }
+                  });
+                  this.stompClient.subscribe(`/topic/ticker/${this.symbol}`, (message) => {
+                     if (message.body) {
+                        this.getVol(JSON.parse(message.body))
+                     }
+                  });
                   this.stompClient.subscribe(`/topic/orderbook/${this.symbol}`, (message) => {
                      if (message.body) {
                         this.sortOrderBook(JSON.parse(message.body))
                      }
                   });
-                  this.stompClient.subscribe(`/topic/ticker/${this.symbol}`, (message) => {
-
-                     this.getVol(JSON.parse(message.body))
-                  });
-                  this.stompClient.subscribe(`/topic/trade/${this.symbol}`, (message) => {
-
-                     this.getAvgPrice(JSON.parse(message.body))
-                  });
-               }, (error) => {
+               }, () => {
                   this.stompClient = null
                });
             }
@@ -468,13 +469,15 @@
          },
          // 计算平均价
          getAvgPrice(data) {
-            let priceTotal = '';
+            let priceTotal = 0;
             let avgObj_length = Object.keys(data).length;
-            for (let price in data) {
-               if (data.hasOwnProperty(price)) {
-                  priceTotal = bigDecimal.add(data[price].trades[0].price, priceTotal)
+            for (let i in data) {
+               if (data.hasOwnProperty(i)) {
+                  let price = data[i].trades[0].price
+                  priceTotal = bigDecimal.add(price, priceTotal)
                }
             }
+            //总价除以交易所数量
             this.gbboList.base.price = new BigNumber(priceTotal).dividedBy(avgObj_length).toFixed(2);
          },
          sortOrderBook(data) {
@@ -499,8 +502,8 @@
             this.gbboList.avg.price = bigDecimal.round(diff, priceLong)
 
             if (diff <= 0) {
-               this.gbboList.avg.change=0
-            }else{
+               this.gbboList.avg.change = 0
+            } else {
                this.gbboList.avg.change = new BigNumber(this.gbboList.avg.price).dividedBy(avg).multipliedBy(100).toFixed(4) + '%';
             }
          },

@@ -166,16 +166,13 @@
       socialToken
    } from '_api/urls.js';
    import {getCommouityBaseURL} from '../../config/index'
-   import Cookies from 'js-cookie'
-
-
    export default {
       data() {
          return {
             accoundId: '',
             uid: '',
             isKyc: false,
-            loginToken: Cookies.get('loginToken'),
+            loginToken: $cookies.get('loginToken'),
             socialLink: '',
             socialLinkText: '',
             identifyState: ''
@@ -195,7 +192,7 @@
                let params = {
                   "userId": localStorage.getItem('loginUserId'),
                }
-               getHeaderTokenApi(userInfo, params, Cookies.get('loginToken')).then((res) => {
+               getHeaderTokenApi(userInfo, params, $cookies.get('loginToken')).then((res) => {
                   this.accoundId = res.data.phone || res.data.email;
                   this.uid = res.data.userId;
                   this.identifyState = res.data.identifyState;
