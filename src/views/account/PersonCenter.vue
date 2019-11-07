@@ -47,12 +47,6 @@
         <div class="card-deck d-block d-lg-flex card-lg-gutters-3 space-1">
           <!-- Stats -->
           <div class="card mb-7 mb-lg-0">
-
-
-
-
-
-            
             <div class="card-body pt-4 pb-5 px-5 mb-3 mb-md-0">
               <!-- Title & Settings -->
               <div class="d-flex justify-content-between align-items-center">
@@ -209,37 +203,15 @@
 
 <script>
 import AccountInfo from "../../components/common/AccountInfo.vue";
-import { AnnoucementList } from "_api/home";
   import {
       getCurrencyList,
    } from '_api/exchange.js'
-import { getSymbolList } from "_api/exchange.js";
-import PasswordInput from "@/components/PasswordInput.vue";
-import moment from "moment";
 import { Exchange } from "@/interface/exchange.js";
-import bigDecimal from "js-big-decimal"; //除法失效
-import { BigNumber } from "bignumber.js";
-import {
-  getObjFirstKey,
-  getDecimalsNum,
-  onlyInputNumAndPoint,
-  getTokenByKey as getValue,
-  addSymbolSplitLine,
-  storage,
-  isDivideAll,
-  getLastUTCMinutes,
-  getIndexInObject,
-  scientificToNumber,
-  isSameUTCDay,
-  subNumberPoint,
-  getObjFirstValue
-} from "@/lib/utils.js";
 import {
   getBalancesValuation,
-  getOtcValuation
 } from "./getValue.js";
-import {postBaseApi, postHeaderTokenBodyApi, getHeaderTokenApi} from '_api/axios.js';
-import {userInfo, identify,setOpenTradePassword,TradingPasswordVerify,queryTradePasswordOpen,identifyQueryUrl,socialToken} from '_api/urls.js';
+import {getHeaderTokenApi} from '_api/axios.js';
+import {userInfo} from '_api/urls.js';
 export default {
  metaInfo(){
             return{
@@ -297,8 +269,8 @@ export default {
             let balanceList = new Promise(resolve => {
                this.exchange.balance(function (result) {//获取资产
                   result.forEach(item => {
-                      if(item.currency==='USDD'){
-                          this.totalUSD = item.available;
+                      if(item.currency==='USD'){
+                          this.totalUSD = item.available?item.available:'--';
                       }
                   });
                   resolve()
