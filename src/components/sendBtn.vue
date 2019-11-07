@@ -133,7 +133,6 @@
             },
               businessPostRequest(outerToken,params,_that){//业务发送验证码
                     postHeaderTokenBodyApi(businessSend,outerToken,params).then((res) =>{
-                        console.log(res)
                             _that.show = false;
                             const TIME_COUNT = 60;
                             if(!_that.timer){
@@ -175,18 +174,12 @@
             }
         },
         mounted() {
-            //  从url里面读取token  和app交互
-            console.log(this.business)
             const params = this.$route.query;
             if (params['token']) {
                 this.loginToken = params['token']
             }else{
                  this.loginToken = Cookies.get('loginToken')
             }
-           
-           
-            
-           
         }
     }
 </script>

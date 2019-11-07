@@ -44,8 +44,7 @@
                      <h1 class="h3 text-white font-weight-medium mb-1">Hi,{{accoundId}} <span
                         class="badge badge-warning" style="cursor: pointer" @click="goKycPage">{{isKyc?$t('已实名'):$t('未实名')}}</span>
                      </h1>
-                     <span class="d-block text-white">UID:{{uid}}  <span class="socialLink text-white">{{$t('我的社交投资主页')}}: <a
-                        :href="socialLink" target="_blank" class="socialLinkText">{{socialLinkText}}</a></span></span>
+                     <span class="d-block text-white">UID:{{uid}}</span>
 
                   </div>
                </div>
@@ -142,9 +141,9 @@
 
             <div class="ml-lg-auto">
                <!-- Button -->
-               <router-link to="/inviteFriend" class="btn btn-sm btn-soft-white text-nowrap transition-3d-hover">
+               <!-- <router-link to="/inviteFriend" class="btn btn-sm btn-soft-white text-nowrap transition-3d-hover">
                   {{$t('邀请好友得高额返佣')}}
-               </router-link>
+               </router-link> -->
                <!-- End Button -->
                <!-- Button -->
                <!-- <a class="btn btn-sm btn-soft-white text-nowrap transition-3d-hover" href="#requestPaymentModal"

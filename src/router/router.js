@@ -39,6 +39,7 @@ import resetNewpass from '../views/forgotPassword/resetNewpass.vue';
 import safeCenter from '../views/sateCenter/safeCenter.vue';
 import bandEmail from '../views/sateCenter/bandEmail.vue';
 import bandPhone from '../views/sateCenter/bandPhone.vue';
+const PersonCenter = () => import('../views/account/PersonCenter.vue') // 归到资产块
 
 import LoginPass from "../views/resetLoginPassword/LoginOrigin.vue";
 import NewLoginpwd from "../views/resetLoginPassword/LoginNewpws.vue";
@@ -166,6 +167,17 @@ const router = new Router({
                   title: 'ForgotPasswordTitle'
                },
                component: resetNewpass
+            },
+            {
+               path: '/accountInfo',
+               name: 'accountInfo',
+               meta: {
+                  title: '个人中心title'
+               },
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               component: PersonCenter
             },
             {
                path: 'safeCenter',

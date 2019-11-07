@@ -53,8 +53,7 @@ export const verifyEmail = `${proxyURL}/sso/user/verify_user_new_email`//查询�
 export const restPasswordVerify = `${proxyURL}/sso/user/restPasswordVerify`//查询邮箱是否存在
 
 export const loginHistory = `${proxyURL}/sso/log/login`//登录历史查询
-export const logout = `${proxyURL}/sso/new-user/logout`//退出接口
-export const ipQuery = `${proxyURL}/content/request-ip-query`//ip查询
+export const userNameUnique = `${proxyURL}/sso/new-user/query-unique-name/`//登录
 //交易密码
 export const TradingPasswordVerify = `${proxyURL}/sso/user/sso.restTradePasswordVerify`//验证code是否正确
 export const queryTradePasswordOpen = `${proxyURL}/sso/new-user/query-open-trade-password`// 查询是否开启交易密码
@@ -82,6 +81,7 @@ export const bindSend = `${proxyURLUser}/send-bind-code`//绑定手机，邮箱�
 export const userInfo = `${proxyURLUser}/get-user-info`//查询用户信息
 export const setTradingPassword = `${proxyURLUser}/set-trade-password`//设置交易密码
 export const switchTradingPassword = `${proxyURLUser}/switch-trade-password`//开启交易密码
+export const logout = `${proxyURLUser}/logout`//退出
 export const identifyInfo = `${proxyURLUcenter}/identify/get-info`//实名认证查询
 export const identifyPhoto = `${proxyURLUcenter}/identify/get-pub-url`//查询图片地址
 //**************** 注册  //

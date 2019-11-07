@@ -4,18 +4,20 @@
                     <div class="title">{{$t('sfrzIIDVerification')}}</div>
                 <div class="innner">
                     <!-- 正在审核 -->
-                    <div v-if="underRivew"  class="underReview">
+                    <div v-if="identifyState==='SUBMIT'" class="underReview">
                         <h3 class="nav">{{$t('IDVertification')}}</h3>
                         <p class="tips"><Icon class="warning" type="md-alert" />{{$t('newK1Subsuccess')}}</p>
+                        <p class="text-center font-size-40">We will review your submission and inform you about your approval status within 3 bussiness days</p>
                         <p class="img-content">
                             <img src="../../assets/images/identify/dengdai.png" alt="">
                         </p>
                     </div>
                     <!-- 通过 -->
-                     <div v-if="passed" class="passed">
+                     <div v-if="identifyState==='SUCCESS'" class="passed">
                         <h3 class="nav">{{$t('IDVertification')}}</h3>
                         <p class="tips"><Icon class="success" type="md-checkmark-circle-outline" />{{$t('newK1applypass')}}</p>
                         <p style="text-align:center;">{{$t('newK1successtip')}}</p>
+                        <p style="text-align:center;">If you have not received a Beta code yet, we'll email you as soon as a testing slot opens. Stay tuned.</p>
                         <p class="img-content">
                             <img src="../../assets/images/identify/yirenzheng.png" alt="">
                         </p>
@@ -28,16 +30,16 @@
                                 </ul>
                             </div>
                             <div class="right">
-                                <ul>
-                                    <li>{{resultObj.country}}</li>
-                                    <li>{{resultObj.idNumber}}</li>
-                                    <li v-if="chinaPeople">{{resultObj.lastName+resultObj.firstName}}</li>
-                                    <li v-else>{{resultObj.firstName}}<span style="width:3px;display:inline-block;"></span>{{resultObj.lastName}}</li>
-                                </ul>
+                                    <ul>
+                                        <li>{{personMessage.country}}</li>
+                                        <li>{{personMessage.idNumber}}</li>
+                                        <li v-if="personMessage.country=='CN'">{{fullNameCn}}</li>
+                                        <li v-else>{{fullName}}</li>
+                                    </ul>
                             </div>
                         </div>
                     </div>
-                    <div v-if="rejected" class="rejected">
+                    <div v-if="identifyState==='FAIL'"  class="rejected">
                         <h3 class="nav">{{$t('IDVertification')}}</h3>
                         <p class="tips"><Icon class="failed" type="ios-close-circle" />{{$t('newK1applyfail')}}</p>
                         <div class="reject-reason">
@@ -63,7 +65,7 @@
 
 <script>
     import Loading from "@/components/Loading"
-    import {userInfo,identify,identifyQueryUrl} from '../../../api/urls.js';
+    import {userInfo,identify,identifyQueryUrl,identifyInfo} from '../../../api/urls.js';
     import {getHeaderTokenApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
     import Cookies from 'js-cookie';
      import {
@@ -86,6 +88,10 @@
                 chinaPeople:true,
                 personJson:{},
                 resultObj:{},
+                identifyState:'',
+                personMessage:{},
+                middleName:'',
+                coinDescribe:[]
 
             }
         },
@@ -93,46 +99,31 @@
             Loading
         },
         methods: {
-               getRealNameIdentify(token){
-                getHeaderTokenApi(identifyQueryUrl,{},token).then((res) =>{
-                    if(res.data==''||res.data==null){
-                         this.$router.push('/kyc')
-                    }else{
-                        let reg = new RegExp("</br>", "g");
-                    if(res.data.remark){
-                         this.coinDescribe = res.data.remark.replace(/<\s*\/br>/gi,"<br/>").split('<br/>')// 切割成数组然后处理成换行；
+             getUserInfo(token){
+                let params = {
+                     "userId":localStorage.getItem('loginUserId'),
+                }
+                getHeaderTokenApi(userInfo,params,token).then((res) =>{
+                    if(res.data){
+                        this.identifyState = res.data.identifyState;
                     }
-                    if (res.data.code) {
-                        this.$Notice.error({
-                            title: this.$t(res.data.code),
-                            desc: this.$t(res.data.code)
-                        });
-                        this.$router.push('/login')
-                    }
-                    this.personJson = res.data.formJson;
-                    this.resultObj = JSON.parse(this.personJson);
-                    let identifyFlag = res.data.dataStatus;
-                    if(identifyFlag==1){//还没有提交实名认证
-                            this.$router.push('/kyc')
-                    }else if(identifyFlag == 3){//成功
-                            this.passed = true;
-                            this.underRivew = false;
-                            this.rejected = false;
-                    }else if(identifyFlag ==2){//submit
-                            this.underRivew = true;
-                            this.rejected = false;
-                            this.passed = false;
-
-                    }else if(identifyFlag==4){//失败
-                            this.rejected = true;
-                            this.passed = false;
-                            this.underRivew = false;
-                    }
-                    
-                    }
-                    
                 }).catch((res) =>{
-                    console.log(res)
+
+                })
+            },
+             getIdentiyMessage(token){
+                let params = {
+                    userId:localStorage.getItem('loginUserId'),
+                    nameList:'THIRD_PT'
+                }
+                getHeaderTokenApi(identifyInfo,params,token).then((res)=>{   
+                    if(res.data){
+                        this.personMessage = res.data[0].data;
+                        this.middleName = this.personMessage.middleName?this.personMessage.middleName:''
+                        if(res.data[0].thirdRemark){
+                            this.coinDescribe = res.data[0].thirdRemark.split('</br>');
+                        }
+                    }
                 })
             },
             gotoRealname(){
@@ -144,6 +135,12 @@
              languageChange(){
                 return  this.$store.state.app.countryLanguage;//  返回全局state的状态值
             },
+            fullName(){
+                return this.personMessage.firstName+this.middleName+this.personMessage.lastName;
+            },
+            fullNameCn(){
+                return this.personMessage.lastName+this.middleName+this.personMessage.firstName;
+            }
         },
         watch:{
             languageChange(val,oldVal){
@@ -156,12 +153,15 @@
             },
         },
         mounted(){
-            this.getRealNameIdentify(Cookies.get('loginToken'))
+            // this.getRealNameIdentify(Cookies.get('loginToken'))
+                 this.getUserInfo($cookies.get('loginToken'))
+                this.getIdentiyMessage($cookies.get('loginToken'))
               if(localStorage.getItem('countryLanguage')=='zh-CN'){
                     this.chinaPeople = true;
                 }else{
                     this.chinaPeople = false;
             }
+            
 
         }
     }

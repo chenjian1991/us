@@ -53,136 +53,55 @@
                         :class="currentStep===i+1?'active':''" :disabled="true">{{$t(item)}}</a>
                   </div>
                   <!-- 第一步 -->
-                  <div v-show="showStep1" class="firstStep">
+                      <div v-show="showStep1" class="firstStep">
                      <input type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
                      <div id="captcha"></div>
-                     <form class="mt-5 mb-5" v-model="stepOneForm" ref="stepOneForm">
+                     <form class="mt-5 mb-5">
                         <section v-if='banddingEmailFlag' class="bandingEmail">
-                           <!-- 绑定邮箱 -->
-                           <label class="h6 d-block font-size-14 mb-3"
-                                  for="exampleInputEmail1">{{$t('newK1mail')}}</label>
-                           <div style="position:relative;" class="input-group mb-4">
-                              <input @blur.prevent='exgCheckt()' @input="EnterEmail" required=""
-                                     v-model.trim='stepOneForm.emailAddress'
-                                     type="email" class="form-control" id="exampleInputEmail1"
-                                     aria-describedby="emailHelp"/>
-                              <div class="input-group-append">
-                                 <sendBtn robotDiv='robotDiv' :fatherClass='fatherClass' @sendCick='sendSMSfun'
-                                          :empty='empty'
-                                          :ssoEmail='ssoEmail'></sendBtn>
-                              </div>
-                              <span style="color:#ed4014;position:absolute;top:40px;" v-if="emailFlag">{{$t('newK1mailpopf')}}</span>
-
+                           <div class="form-group">
+                              <label class="h6 d-block text-uppercase"
+                                     for="disabledTextInput">{{$t('newK1mailBD')}}</label>
+                              <input disabled v-model="email" type="text" id="disabledTextInput"
+                                     class="form-control"
+                                     :placeholder="email"/>
                            </div>
-                           <section v-if='banddingGoogleFlag' class="bandingEmail">
-                              <label class="h6 d-block  font-size-14 mb-3"
-                                     for="disabledTextInput">{{$t('googleVerify')}}</label>
-                              <div class="input-group mb-4">
-                                 <input :maxlength="6" @input='EnterGoogleCodeEmail'
-                                        v-model.trim='stepOneForm.googleCode' type="text"
-                                        class="form-control" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"/>
-                              </div>
-                           </section>
-                           <section>
-                              <label class="h6 d-block  font-size-14 mb-3"
-                                     for="disabledTextInput">{{$t('emialCodePlaceholder')}}</label>
-                              <div class="input-group mb-4">
-                                 <input :maxlength="6" @input='EnterEmailCode' v-model.trim='stepOneForm.emailCode'
-                                        type="text"
-                                        class="form-control" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"/>
-                                 <div class="input-group-append">
-                                    <button @click='bandEmialFunc' :disabled='btnFlagEmail'
-                                            class="btn selfDefineBtn"
-                                            type="button">{{$t('newK1buttonBind')}}
-                                    </button>
-                                 </div>
-                              </div>
-                           </section>
-
-                           <!-- 绑定邮箱结束 -->
                         </section>
                         <section v-else class="bandingEmail">
                            <div class="form-group">
                               <label class="h6 d-block text-uppercase"
-                                     for="disabledTextInput">{{$t('newK1mailBD')}}</label>
-                              <input disabled v-model="bandEmail" type="text" id="disabledTextInput"
-                                     class="form-control"
-                                     :placeholder="userInfoObj.profileEmail"/>
+                                     for="disabledTextInput">{{$t('aqzxBandEmail')}}</label>
+                              <router-link  v-if="type==='ios'||type==='android'"
+                                           class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
+                                           to='/BandEmail?origin=kyc&type=mobile'>{{$t('去绑定')}}
+                              </router-link>
+                              <router-link v-else
+                                           class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
+                                           to='/BandEmail?origin=kyc'>{{$t('去绑定')}}
+                              </router-link>
                            </div>
                         </section>
                         <section v-if="banddingPhoneFlag" class="bandingPhone">
-                           <!-- 绑定手机号 -->
-                           <label class="h6 d-block  font-size-14 mb-3"
-                                  for="disabledTextInput">{{$t('newK1phone')}}</label>
-                           <div class="input-group mb-4">
-                              <div class="input-group-prepend">
-                                 <button type="button" class="btn btn-outline-secondary">+{{countryNumber}}
-                                 </button>
-                                 <button type="button"
-                                         class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 </button>
-                                 <div class="dropdown-menu overflow-height">
-                                    <a @click="chooseCountry(item.code)" v-for="item in ossJSON" class="dropdown-item"
-                                       href="#">
-                                       <img class="flag" :src="item.image"></img>
-                                       <span style="color:#000;margin-left:10px;" v-html="item.en"></span>
-                                       <span class="pull-right" v-html="item.code"></span>
-                                    </a>
-                                 </div>
-                              </div>
-                              <input @blur.prevent='exgChecktphone()' :maxlength="12" @input='EnterPhone'
-                                     v-model='stepOneForm.phoneNumber' type="text"
-                                     class="form-control"
-                                     aria-label="Text input with segmented dropdown button"/>
-                              <div class="input-group-append">
-                                 <sendBtn robotDiv='robotsecondDiv' :fatherClass='fatherClass' @sendCick='sendSMSfun'
-                                          :empty='empty'
-                                          :ssoPhone='ssoPhone'></sendBtn>
-                              </div>
-                              <span v-if="phoneFlag" style="color:#ed4014;position:absolute;top:40px;">{{$t('newK1phonepopf')}}</span>
-                           </div>
-                           <!-- 绑定谷歌 -->
-                           <section v-if='banddingGoogleFlag' class="bandingEmail">
-                              <label class="h6 d-block  font-size-14 mb-3"
-                                     for="disabledTextInput">{{$t('googleVerify')}}</label>
-                              <div class="input-group mb-4">
-                                 <input :maxlength="6" @input='EnterGoogleCode' v-model.trim='stepOneForm.googleCode'
-                                        type="text"
-                                        class="form-control" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"/>
-                              </div>
-                           </section>
-                           <section>
-                              <label class="h6 d-block  font-size-14 mb-3"
-                                     for="disabledTextInput">{{$t('SMSPlacehodler')}}</label>
-                              <div class="input-group mb-4">
-                                 <input :maxlength="6" @input='EntersmsCode' v-model='stepOneForm.smsCode' type="text"
-                                        class="form-control" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"/>
-                                 <div class="input-group-append">
-                                    <button :disabled='btnFlagPhone' @click="bandingFunc"
-                                            class="btn selfDefineBtn"
-                                            type="button">{{$t('newK1buttonBind')}}
-                                    </button>
-                                 </div>
-                              </div>
-                           </section>
-
-                           <!-- 绑定手机号结束 -->
-                        </section>
-                        <section v-else class="bandingPhone">
-                           <!-- 绑定手机 -->
                            <div class="form-group">
                               <label class="h6 d-block text-uppercase"
                                      for="disabledTextInput">{{$t('newK1phoneBD')}}</label>
-                              <input disabled v-model="bandPhone" type="text" id="disabledTextInput"
+                              <input disabled v-model="phone" type="text" id="disabledTextInput"
                                      class="form-control"
-                                     :placeholder="userInfoObj.profilePhone"/>
+                                     :placeholder="phone"/>
                            </div>
-                           <!-- 绑定手机结束 -->
+                        </section>
+                        <section v-else class="bandingPhone">
+                           <div class="form-group">
+                              <label class="h6 d-block text-uppercase"
+                                     for="disabledTextInput">{{$t('aqzxBandPhone')}}</label>
+                              <router-link v-if="type==='ios'||type==='android'"
+                                           class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
+                                           to='/BandPhone?origin=kyc&type=mobile'>{{$t('去绑定')}}
+                              </router-link>
+                              <router-link v-else
+                                           class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
+                                           to='/BandPhone?origin=kyc'>{{$t('去绑定')}}
+                              </router-link>
+                           </div>
                         </section>
                      </form>
                      <!-- Button -->
@@ -372,8 +291,9 @@
                                        :on-format-error="handleFormatErrorTHREE"
                                        :on-exceeded-size="handleMaxSizeTHREE"
                                        multiple
+                                       :data='uploadHandself'
                                        :headers="headerObj"
-                                       :action="uploadUrlPic"
+                                       :action="uploadUrl"
                                     >
                                        <div style="width: 304px;height:200px;position: absolute;top: 0px;">
                                           <span>上传</span>
@@ -614,7 +534,6 @@
                      </div>
                      <!-- End Button -->
                   </div>
-                  <Modaltips :modal='showModal' :text="text"></Modaltips>
                </div>
             </div>
          </div>
@@ -631,7 +550,6 @@
       queryUserInfo, identifySubmit, identifyUpdate, identifyQuery, uploadImg, getPhoto,
    } from '_api/balances.js'
    import {
-      ssoCodeVerify,
       binding,
       identifyPhoto,
       userInfo
@@ -640,9 +558,9 @@
       getApi,
       postHeaderTokenBodyApi,
       postHeaderSeveralTokenBodyApi,
-      getHeaderTokenApi
+      getHeaderTokenApi,
+      postHeaderTokenBodyParamsApi
    } from '../../../api/axios.js';
-   import sendBtn from '../../components/sendBtn'
 
    import Modaltips from '@/components/Modal';
 
@@ -759,10 +677,8 @@
             step3Params: {},
             formJson: {},
 
-            //开始
-            countryNumber: '',
+            //chen开始
             phoneNumber: '',
-            showModal: false,
             text: '',
             empty: true,
             ssoPhone: {
@@ -789,7 +705,6 @@
             //图片上传部分
             idCard: true,// 新添加
             PASSPORT: false,// 新添加
-            userInfoObj: {},
             uploadList: [],
             uploadListTWO: [],
             uploadListThree: [],
@@ -800,16 +715,25 @@
             headerObj: {
                token: ''
             },
-            uploadUrl: "",
-            uploadUrlPic: '',
+            uploadUrl: `/api/sso/identify/upload`,
+            // uploadUrlPic: `/api/sso/user/identify.upload`,
             fileUrl: "",
             uploadParams: {
                side: 'front',
                ocr: true,
+               userId:localStorage.getItem('loginUserId'),
             },
             uploadBack: {
                side: 'back',
                ocr: true,
+               userId:localStorage.getItem('loginUserId'),
+            },
+            uploadHandself: {
+               userId: localStorage.getItem('loginUserId')
+            },
+            userSelf: {
+               userId:localStorage.getItem('loginUserId'),
+               selfPathSelf: '',//最新更改
             },
             userFrontMessage: {
                nameFront: '',
@@ -826,9 +750,6 @@
                organizationBack: '',
                backPathBack: ''//最新更改
             },
-            userSelf: {
-               selfPathSelf: '',//最新更改
-            },
             bandPhone: '',
             bandEmail: '',
             disabledFlag: true,
@@ -840,11 +761,13 @@
             banddingGoogleFlag: true,
             val: '',
             userId: localStorage.getItem('loginUserId'),
-            deviceCode: localStorage.getItem('deviceCode'),
+            deviceCode:localStorage.getItem('deviceCode'),
+            email:'',
+            phone:'',
+            type:'',
          }
       },
       components: {
-         sendBtn,
          Modaltips
       },
       methods: {
@@ -1150,254 +1073,31 @@
          },
 
          //开始=====
-         bandingFunc() {//绑定手机按钮方法
-            this.ssoCodeVerify('phone');
-         },
-         bandEmialFunc() {
-            this.ssoCodeVerify('email');
-         },
-         getOSSfunc() {
-            getApi('https://oss.55gm.co/content/country/55-country.json', {}).then((res) => {
-               this.ossJSON = res;
-               let FrencyCountry = [];
-               res.forEach(item => {
-                  if (item.type == 'recommend') {
-                     FrencyCountry.push(item);
-                  }
-               });
-               this.countryNumber = FrencyCountry[4].code;
-            })
-
-         },
-         chooseCountry(code) {
-            this.countryNumber = code;
-         },
-         sendSMSfun(callback) {
-            //绑定手机
-            // let len = this.countryNumber.length;
-            let itc = this.countryNumber;
-            let value = {
-               "operateType": "BIND_PHONE",
-               "codeType": "PHONE",
-               "itc": itc,
-               "phone": this.stepOneForm.phoneNumber
-            }
-            this.$store.commit('changebandPhoneObj', value)
-            this.ssoPhone = {
-               "operateType": "BIND_PHONE",
-               "codeType": "PHONE",
-               "itc": itc,
-               "phone": this.stepOneForm.phoneNumber
-            }
-            //绑定邮箱
-            let valueEmail = {
-               "operateType": "BIND_EMAIL",
-               "codeType": "EMAIL",
-               "email": this.stepOneForm.emailAddress,
-               "language": localStorage.getItem('countryLanguage')
-            }
-            this.$store.commit('changeBandEmail', valueEmail);
-            this.ssoEmail = {
-               "operateType": "BIND_EMAIL",
-               "codeType": "EMAIL",
-               "email": this.stepOneForm.emailAddress,
-               "language": localStorage.getItem('countryLanguage')
-            }
-            if (callback) {//callback是从子组件传递过来的参数
-               this.showModal = !this.showModal;
-               this.text = callback;
-            }
-         },
-         ssoCodeVerify(account) {
-            let params;
-            if (account == 'phone') {//绑定手机
-               params = {
-                  "operateType": "BIND_PHONE",
-                  "codeType": "PHONE",
-                  "phone": this.stepOneForm.phoneNumber,
-                  "phoneCode": this.stepOneForm.smsCode,
-                  "googleCode": this.stepOneForm.googleCode
-               }
-            } else {//绑定邮箱
-               params = {
-                  "operateType": "BIND_EMAIL",
-                  "codeType": "EMAIL",
-                  "email": this.stepOneForm.emailAddress,
-                  "emailCode": this.stepOneForm.emailCode,
-                  "googleCode": this.stepOneForm.googleCode
-               }
-            }
-            postHeaderTokenBodyApi(ssoCodeVerify, this.loginToken, params).then((res) => {
-               if (res.code) {
-                  this.showModal = !this.showModal;
-                  this.text = this.$t(res.code);
-               } else {
-                  this.token = res.token;
-                  this.bindMetond(account)
-               }
-            })
-
-
-         },
-         bindMetond(whicCount) {
-            let itc = this.countryNumber;
-            let ssoToken = this.loginToken;
-            let params;
-            if (whicCount == 'phone') {//绑定手机
-               params = {
-                  "phone": this.stepOneForm.phoneNumber,
-                  "phoneCode": this.stepOneForm.smsCode,
-                  "operateType": "BIND_PHONE",
-                  "bindType": "PHONE",
-                  "itc": itc,
-                  "googleCode": this.stepOneForm.googleCode
-               }
-            } else {//绑定邮箱
-               params = {
-                  "email": this.stepOneForm.emailAddress,
-                  "emailCode": this.stepOneForm.emailCode,
-                  "operateType": "BIND_EMAIL",
-                  "bindType": "EMAIL",
-                  "googleCode": this.stepOneForm.googleCode
-               }
-            }
-            postHeaderSeveralTokenBodyApi(binding, ssoToken, this.token, params).then((res) => {
-               if (res.result == true) {
-                  this.bandPhone = this.stepOneForm.phoneNumber;
-                  this.bandEmail = this.stepOneForm.emailAddress;
-                  if (whicCount == 'phone') {
-                     this.banddingPhoneFlag = false;
-                  } else {
-                     this.banddingEmailFlag = false;
-                  }
-                  if (!this.banddingPhoneFlag && !this.banddingEmailFlag) {//只在绑定后才可以点击下一步
-                     this.disabledFlag = false;
-                  }
-               } else {
-                  this.showModal = !this.showModal;
-                  this.text = this.$t(res.code);
-               }
-            })
-         },
-         exgCheckt() {
-            if (!this.stepOneForm.emailAddress == '') {
-               let pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
-               if (pattern.test(this.stepOneForm.emailAddress)) {
-                  this.emailFlag = false;
-                  this.empty = false;
-
-               } else {
-                  this.emailFlag = true;
-                  this.empty = true;
-               }
-            } else {
-               this.emailFlag = false;
-               this.disabledFlag = true;
-            }
-         },
-         exgChecktphone() {
-            let patternnew = /[^\d]/;
-            this.phoneFlag = patternnew.test(this.stepOneForm.phoneNumber);
-            if (this.phoneFlag) {
-               this.empty = true
-            } else {
-               this.empty = false;
-            }
-         },
-         EnterEmail() {
-            if (!this.stepOneForm.emailAddress == '') {
-               this.empty = false;
-               this.emailFlag = false;
-            } else {
-               this.emailFlag = false;
-               this.empty = true;
-               this.disabledFlag = true;
-            }
-         },
-         EnterPhone() {
-            if (!this.stepOneForm.phoneNumber == '') {
-               this.empty = false;
-
-            } else {
-               this.empty = true;
-               this.stepOneForm.phoneNumber = this.stepOneForm.phoneNumber.replace(/[^\d]g/, '');
-               this.disabledFlag = true;
-            }
-         },
-         EntersmsCode() {
-            if (this.banddingGoogleFlag) {
-               if (this.stepOneForm.smsCode.length >= 6 && this.stepOneForm.googleCode.length >= 6) {
-                  this.btnFlagPhone = false;
-               } else {
-                  this.btnFlagPhone = true;
-                  this.disabledFlag = true;
-               }
-            } else {
-               if (this.stepOneForm.smsCode.length >= 6) {
-                  this.btnFlagPhone = false;
-               } else {
-                  this.btnFlagPhone = true;
-                  this.disabledFlag = true;
-               }
-            }
-
-         },
-         EnterGoogleCode(e) {
-            this.stepOneForm.googleCode = e.target.value.replace(/[^\d]/g, '');
-            if (this.stepOneForm.googleCode.length >= 6 && this.stepOneForm.smsCode.length >= 6) {
-               this.btnFlagPhone = false;
-            } else {
-               this.btnFlagPhone = true;
-               this.disabledFlag = true;
-            }
-         },
-         EnterGoogleCodeEmail(e) {//谷歌的监听
-            this.stepOneForm.googleCode = e.target.value.replace(/[^\d]/g, '');
-            if (this.stepOneForm.emailCode.length >= 6 && this.stepOneForm.googleCode.length >= 6) {
-               this.btnFlagEmail = false;
-            } else {
-               this.btnFlagEmail = true;
-               this.disabledFlag = true;
-            }
-         },
-         EnterEmailCode() {//邮件验证码监听
-            if (this.banddingGoogleFlag) {
-               if (this.stepOneForm.emailCode.length >= 6 && this.stepOneForm.googleCode.length >= 6) {
-                  this.btnFlagEmail = false;
-               } else {
-                  this.btnFlagEmail = true;
-                  this.disabledFlag = true;
-               }
-            } else {
-               if (this.stepOneForm.emailCode.length >= 6) {
-                  this.btnFlagEmail = false;
-               } else {
-                  this.btnFlagEmail = true;
-                  this.disabledFlag = true;
-               }
-            }
-
-         },
          changeIdType(e) {//新添加
             this.firstIdcard = e;
             if (e == 'idCard' && this.countryName == 'China') {
                this.uploadParams = {
                   side: 'front',
                   ocr: true,
+                  userId:this.userId,
+
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: true,
+                  userId:this.userId,
                }
 
             } else {
                this.uploadParams = {
                   side: 'front',
                   ocr: false,
+                  userId:this.userId,
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: false,
+                  userId:this.userId,
                }
             }
             if (e == 'idCard' || e == 'license') {
@@ -1412,20 +1112,28 @@
                this.uploadParams = {
                   side: 'front',
                   ocr: true,
+                  userId:this.userId,
+
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: true,
+                  userId:this.userId,
+
                }
 
             } else {
                this.uploadParams = {
                   side: 'front',
                   ocr: false,
+                  userId:this.userId,
+
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: false,
+                  userId:this.userId,
+
                }
             }
          },
@@ -1518,30 +1226,61 @@
             }
             this.uploadListThree = this.$refs.uploadThird.fileList;
          },
-         handleSuccess(res, file) {
-            let fileUrl = res.filePath.filePath;
-            getHeaderTokenApi(identifyPhoto, {filePath: fileUrl}, this.loginToken).then((res) => {
-               if (res.code) {
-                  this.$Notice.error({
-                     title: this.$t(res.code),
-                     desc: this.$t(res.code)
-                  });
-                  return;
-               }
-               this.urlPath = res.data.filePath;
-            }).catch((error) => {
-               console.log(error)
-            })
-            this.userFrontMessage.frontPathFront = fileUrl;
-            if (JSON.stringify(res.info) !== "{}") {
-               this.uploadSelfFlag = true;
-               this.userFrontMessage.addressFront = res.info.words_result['住址'].words;
-               this.userFrontMessage.idnumberFront = res.info.words_result['公民身份号码'].words;
-               this.userFrontMessage.birthdayFront = res.info.words_result['出生'].words;
-               this.userFrontMessage.nameFront = res.info.words_result['姓名'].words;
-               this.userFrontMessage.genderFront = res.info.words_result['性别'].words;
-               this.userFrontMessage.NationalityFront = res.info.words_result['民族'].words;
+          handleSuccess(res, file) {
+            let fileUrl = res.result;
+            let params = {
+               userId: this.userId,
+               key: res.result
             }
+            postHeaderTokenBodyParamsApi(identifyPhoto, this.loginToken, {}, params).then((res) => {
+               this.urlPath = res.result;
+            }).catch((error) => {
+            })
+
+            this.userFrontMessage.frontPathFront = fileUrl;
+            // if (Object.keys(JSON.parse(res.info)).length !== 0) {// 不要删
+            //    this.uploadSelfFlag = true;
+            //    this.userFrontMessage.addressFront = res.info.words_result['住址'].words;
+            //    this.userFrontMessage.idnumberFront = res.info.words_result['公民身份号码'].words;
+            //    this.userFrontMessage.birthdayFront = res.info.words_result['出生'].words;
+            //    this.userFrontMessage.nameFront = res.info.words_result['姓名'].words;
+            //    this.userFrontMessage.genderFront = res.info.words_result['性别'].words;
+            //    this.userFrontMessage.NationalityFront = res.info.words_result['民族'].words;
+            // }
+         },
+            handleSuccessTWO(res, file) {
+            let fileUrl = res.result;
+            let params = {
+               userId: this.userId,
+               key: res.result
+            }
+            postHeaderTokenBodyParamsApi(identifyPhoto, this.loginToken, {}, params).then((res) => {
+               this.urlPathTWO = res.result;
+            })
+            this.userBackMessage.backPathBack = fileUrl;
+            // if (Object.keys(JSON.parse(res.info)).length !== 0) {//不要删
+            //    this.userBackMessage.expireTimeBack = res.info.words_result['失效日期'].words;
+            //    this.userBackMessage.dateIssuanceBack = res.info.words_result['签发日期'].words;
+            //    this.userBackMessage.organizationBack = res.info.words_result['签发机关'].words;
+            // }
+         },
+         handleSuccessTHREE(res, file) {
+            this.userSelf.selfPathSelf = res.result;
+            let params = {
+               userId: this.userId,
+               key: res.result
+            }
+            postHeaderTokenBodyParamsApi(identifyPhoto, this.loginToken, {}, params).then((res) => {
+               this.urlPathTHREE = res.result;
+            })
+         },
+         handleError(error, file, fileList) {
+            let errore = error;
+            this.$Notice.error({
+               title: this.$t('uploadError'),
+               desc: this.$t('uploadError')
+            });
+
          },
          handleRemove(file) {
             const fileList = this.$refs.upload.fileList;
@@ -1575,40 +1314,6 @@
             this.userSelf = {
                selfPathSelf: '',
             }
-         },
-         handleSuccessTWO(res, file) {
-            let fileUrl = res.filePath.filePath;
-            getHeaderTokenApi(identifyPhoto, {filePath: fileUrl}, this.loginToken).then((res) => {
-               this.urlPathTWO = res.data.filePath;
-               if (res.code) {
-                  this.$Notice.error({
-                     title: this.$t(res.code),
-                     desc: this.$t(res.code)
-                  });
-               }
-            })
-            this.userBackMessage.backPathBack = fileUrl;
-            if (JSON.stringify(res.info) !== "{}") {
-               this.userBackMessage.expireTimeBack = res.info.words_result['失效日期'].words;
-               this.userBackMessage.dateIssuanceBack = res.info.words_result['签发日期'].words;
-               this.userBackMessage.organizationBack = res.info.words_result['签发机关'].words;
-            }
-
-
-         },
-         handleSuccessTHREE(res, file) {
-            this.idcardURLSignature = res.filePath;
-            let fileUrl = res.filePath;
-            this.userSelf.selfPathSelf = fileUrl;
-            if (res.code) {
-               this.$Notice.error({
-                  title: this.$t(res.code),
-                  desc: this.$t(res.code)
-               });
-            }
-            getHeaderTokenApi(identifyPhoto, {filePath: fileUrl}, this.loginToken).then((res) => {
-               this.urlPathTHREE = res.data.filePath;
-            })
          },
          handleError(error, file, fileList) {
             let errore = error;
@@ -1654,25 +1359,23 @@
                desc: this.$t('picIsToolarge')
             });
          },
-         imgFallBack(fileUrl, which) {//今天
-            let _that = this;
-            getHeaderTokenApi(identifyPhoto, {filePath: fileUrl}, this.loginToken).then((res) => {
-               if (res.data.code) {
-                  _that.$Notice.error({
-                     title: _that.$t(res.data.code),
-                     desc: _that.$t(res.data.code)
-                  });
-               }
+         imgFallBack(fileUrl, which) {//  图片回显
+            let params = {
+               userId: this.userId,
+               key: fileUrl
+            }
+            postHeaderTokenBodyParamsApi(identifyPhoto, this.loginToken, {}, params).then((res) => {
                if (which == 'front') {
-                  _that.urlPath = res.data.filePath;
+                  this.urlPath = res.result;
                } else if (which == 'back') {
-                  _that.urlPathTWO = res.data.filePath;
+                  this.urlPathTWO = res.result;
                } else if (which == 'self') {
-                  _that.urlPathTHREE = res.data.filePath;
+                  this.urlPathTHREE = res.result;
                }
             })
+
+
          },
-         //图片上传结束
       },
       mounted() {
          let ssoProvider = {};
@@ -1683,9 +1386,6 @@
             fn(this.loginToken);
          };
          this.getUserInfo(this.loginToken)
-         this.getOSSfunc()
-         this.uploadUrl = `/api/sso/new-identify/upload-front`;//新添加
-         this.uploadUrlPic = `/api/sso/user/identify.upload`;//新添加
          this.stepTwoForm.idType = this.idType[0].value
       }
    }

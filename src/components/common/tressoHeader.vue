@@ -167,8 +167,6 @@
             //更新自选的币种
             this.$store.dispatch("updateMarkSymbol");
             this.$store.commit("changeLoingStatus", false);
-            this.$router.push("/home");
-            clearLocalStorage();
          },
       },
       computed: {
