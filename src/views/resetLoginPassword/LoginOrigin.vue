@@ -1,18 +1,18 @@
 <template>
-    <div id="closeGoogle" class="root">
+    <div id="loginPassword" class="root">
                 <!-- Title Section -->
     <div class="bg-light">
       <div class="container py-5">
         <div class="row align-items-sm-center">
           <div class="col-sm-6 mb-3 mb-sm-0">
-            <h1 class="h4 mb-0">{{$t('aqzxCloseGoogletitle')}}</h1>
+            <h1 class="h4 mb-0">{{$t('aqzxchangepassword')}}</h1>
           </div>
           <div class="col-sm-6">
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb breadcrumb-no-gutter justify-content-sm-end mb-0">
                 <li class="breadcrumb-item"><router-link to='/SafeCenter' >{{$t('tbdhAccountSecurity')}}</router-link></li>
-                <li class="breadcrumb-item active" aria-current="page">{{$t('aqzxCloseGoogleRouter')}}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{$t('aqzxchangepassword')}}</li>
               </ol>
             </nav>
             <!-- End Breadcrumb -->
@@ -30,7 +30,7 @@
         <div class="mb-7">
           <!-- <h2 class="h3  font-weight-normal mb-3">{{$t('aqzxchangepassword')}}</h2> -->
           <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>{{$t('aqzxCloseGoogletips')}}</strong>
+                <strong>{{$t('aqzxtips')}}</strong>
           </div>
         </div>
         <!-- End Title -->
@@ -46,7 +46,7 @@
             <div class="js-form-message js-focus-state">
                  <label class="" for="signupPassword">
                     <span class="d-flex justify-content-between align-items-center">
-                        {{$t('jymmLoginPassword')}}
+                        {{$t('aqzxoldpass')}}
                     </span>
                 </label>
                 <div class="input-group">
@@ -55,14 +55,14 @@
                         <span class="fas fa-lock"></span>
                         </span>
                     </div>
-                    <input :maxlength='20' v-model='password' type="password" class="form-control" name="password" id="signupPassword" :placeholder="this.$t('aqzxpasswordplaceholder')" aria-label="Password" aria-describedby="signupPasswordLabel" required
+                    <input :maxlength='20' v-model='password' type="password" class="form-control" name="password" id="signupPassword" :placeholder="this.$t('aqzxoldPasswordPlaceholder')" aria-label="Password" aria-describedby="signupPasswordLabel" required
                             :data-msg="this.$t('phoneNumberRequier')"
                             data-error-class="u-has-error"
                             data-success-class="u-has-success">
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div v-if="googleFlag"  class="form-group">
             <div class="js-form-message js-focus-state">
                 <label class="" for="signupPassword">
                     <span class="d-flex justify-content-between align-items-center">
@@ -86,7 +86,7 @@
         <!-- Button -->
         <div class="row align-items-center mb-5">
           <div class="col-12 text-left">
-            <button type="button" value="button" @click="handleSubmit" class="btn btn-primary-55 transition-3d-hover">{{$t('sfrzSubmit')}}</button>
+            <button type="button" value="button" @click="handleSubmit" class="btn btn-primary-55 transition-3d-hover">{{$t('aqzxnext')}}</button>
           </div>
         </div>
         <!-- End Button -->
@@ -99,71 +99,107 @@
 </template>
 
 <script>
-import {unbindGoogle} from '../../../api/urls.js';
-import {postHeaderTokenBodyApi} from '../../../api/axios.js';
-import Cookies from 'js-cookie'
-
+import {resetLoginPasswordVerify,hashUrl,userInfo} from '../../../api/urls.js';
+import {postHeaderTokenBodyApi,getApi,getHeaderTokenApi} from '../../../api/axios.js';
     export default {
-        name:'closegogle',
+        name:'login',
         components:{
         },
         data() {
             return {
                 password:'',
-                googlecode:'',
-                showModal:false,
-                text:'',
                 loaded:true,
+                googleFlag:false,
+                googlecode:'',
+                userId:''
             }
         },
         methods:{
-            handleSubmit (name) {
-                 if(this.password==''||this.googlecode=='') {
+          handleSubmit (event) {
+              if(this.password=='') {
                   this.$Notice.error({
                         title:this.$t('输入框不能为空'),
                         desc: this.$t('输入框不能为空')
                     });
                   return false;
               }
-               if($('.invalid-feedback').text()!==''){//如果有红色的提示语则阻止其提交
+              if(this.googleFlag){
+                if(this.googlecode==''){
+                      this.$Notice.error({  
+                          title:this.$t('输入框不能为空'),
+                          desc: this.$t('输入框不能为空')
+                      });
+                    return false;
+                }
+              }
+              if($('.invalid-feedback').text()!==''){//如果有红色的提示语则阻止其提交
                 return false;
               }
                 this.loaded = false;
-                this.unbindGoogleMthods();
-               
+                this.verifyOriginPassword();
             },
-             setSha(passwrod){
-                let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
-                let pw = sha256(passwrod)//要加密的密码
-                return pw;
-            },
-            unbindGoogleMthods(){
+          async  verifyOriginPassword(){
                   let  params = {
-                    "userId": localStorage.getItem('loginUserId'),
+                    "userId": this.userId,
                     "password":this.setSha(this.password),
-                    "googleCode": this.googlecode,
-                }
-                postHeaderTokenBodyApi(unbindGoogle,Cookies.get('loginToken'),params).then((res) =>{
+                    'googleCode':this.googlecode
+                  }
+                postHeaderTokenBodyApi(resetLoginPasswordVerify,$cookies.get('loginToken'),params).then((res) =>{
                   if(res.result){
-                      this.$Notice.success({
-                            title:this.$t(11001),
-                            desc: this.$t(11001)
-                      });
-                      setTimeout(() => {
-                          this.$router.push('/SafeCenter')
-                      }, 1500);
+                        localStorage.setItem('validatePasswordToken',res.result)
+                        this.$router.push('/NewLoginpwd')
+                        this.$router.push({
+                            path:'/NewLoginpwd',
+                            query:{
+                              originFrom:this.$route.query.originFrom,
+                              userId:this.userId
+                            }
+                        })
                   }
                 }).catch((error)=>{
                         this.loaded = true;
                     
                 })
 
-
-
             },
-            interFunc(){
-                 var _this = this;
-			    document.onkeydown = function(e) {
+            setSha(passwrod){
+                let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
+                let pw = sha256(passwrod)//要加密的密码
+                return pw;
+            },
+            getUserInfo(token){
+                let params = {
+                     "userId":this.userId,
+                }
+                getHeaderTokenApi(userInfo,params,token).then((res) =>{
+                    this.googleFlag = res.data.bindGoogle;
+                }).catch((res) =>{
+
+                })
+            },
+        },
+        computed:{
+            inputValidate(){
+               return this.password;   
+            },
+             languageChange(){
+                return  this.$store.state.app.countryLanguage;//  返回全局state的状态值
+            },
+            
+        },
+        watch:{
+            languageChange(val,oldVal){
+            },
+        },
+        mounted(){
+          this.userId = this.$route.query.loginUserId?this.$route.query.loginUserId:localStorage.getItem('loginUserId');
+          this.getUserInfo($cookies.get('loginToken'))
+
+          console.log(this.userId)
+        },
+          created(){
+            var _this = this;
+			document.onkeydown = function(e) {
                 //1.规避页面上方的搜索框等是否获取了焦点，是则不触发本次快捷键
 				var inputs = document.getElementsByClassName('isfocus_enter'); //找到这一组元素
 				//是否获取了焦点的判断
@@ -184,35 +220,14 @@ import Cookies from 'js-cookie'
 							_this.handleSubmit('formValidate') //此方法是当按下enter键后要做的动作。
 						}
 						
-			    }
-            }
-           
+			}
         },
-        computed:{
-             languageChange(){
-                return  this.$store.state.app.countryLanguage;//  返回全局state的状态值
-            },
-           
-            
-        },
-        watch:{
-            languageChange(val,oldVal){
-            },
-        },
-        mounted(){
-
-
-        },
-        created(){
-            this.interFunc()
-        }
         
         
     }
 </script>
 <style lang='less'>
-#closeGoogle{
-    .btn-primary-55{
+.btn-primary-55{
     color: #fff;
     background-color: #12869a;
     border-color: #12869a;
@@ -220,7 +235,6 @@ import Cookies from 'js-cookie'
          color: #fff;
        text-decoration: none;
     }
-}
 }
     .main_container{
         min-height:100%;
@@ -233,35 +247,37 @@ import Cookies from 'js-cookie'
     .footerBox{
          flex: 0 0 auto;
      }
-     #closeGoogle{
-         .inner_input_login{
+     #loginPassword{
+         .container{
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }   
+          .inner_input_login{
          .ivu-input{
-            width: 580px;
+           width: 580px;
+            height: 48px;
+            padding-left: 53px;
             border: solid 1px #E7EAED;
             color: #344857;
-            height: 48px;
-            line-height: 48px;
             background: none;
             font-size: 14px;
-            padding-left: 53px;
         }
         .ivu-form-item-content{
             position: relative;
             img{
                 z-index: 99;
                 position: absolute;
-                top: 14px;
+                top: 16px;
                 left: 14px;
             }
             
         }
         
-        
-        
      }
      }
-     
-
 </style>
 
 

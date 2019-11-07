@@ -4,6 +4,7 @@
             <div  class="register_wraper">
                 <div class="title">
                      <h2>{{$t('zhmmSecurity')}}</h2>
+                    <p>{{$t('zhmmSecurityExplaindesc')}}</p>
                     <p>{{$t('zhmmSecurityExplain')}}</p>
                 </div>
                 <div  class="inner_input inner_input_login">

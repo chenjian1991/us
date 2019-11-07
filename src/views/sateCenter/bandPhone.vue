@@ -1,265 +1,268 @@
+
 <template>
-    <div  id="bandphone" class="root">
-        <div  class="wrapper">
-            <div  class="register_wraper">
-                   <div class="band-nav">
-                        <router-link to='/safeCenter'>{{$t('tbdhAccountSecurity')}}  </router-link>><router-link to='/bandingPhone'> {{$t('aqzxBandPhone')}}</router-link>
-                    </div>
-                    <div class="tips">
-                            {{$t('aqzxTips')}}
-                    </div>
-                  <div class="divider"></div>
-                <div v-clickoutside="handleClose" class="inner_input">
-                    <div class="register-container bandPhone">
-                        <div  class="phone">
-                            <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
-                                <div class="phone-item">
-                                    <div class="bandphone-div">
-                                        <span class="label-span">{{$t('phonenumber')}}</span>
-                                            <FormItem class="form_item phone_item" prop='phoneNumber'>
-                                            <div style="width:109px;" class="country_container">
-                                                <div @click="controlSelect">
-                                                    <input type="hidden">
-                                                    <div>
-                                                        <em v-html="countryNumber" class="code"></em>
-                                                        <Icon v-show="!selectFlag" type="ios-arrow-down" />
-                                                        <Icon v-show="selectFlag" type="ios-arrow-up" />
-                                                    </div>
-                                                </div>
-                                                <transition :duration="1000" mode="out-in"  name='fade'>
-                                                    <div v-show="selectFlag" class="select_dropdown">
-                                                        <ul class="select_down_list">
-                                                        <li @click="chooseCountry(item.label)" v-for="item in cityList" :value="item.label"  :label="item.label">
-                                                            <span v-html="item.value"></span>
-                                                            <span v-html="item.label"></span>
-                                                        </li>
-                                                        </ul>
-                                                        </div>
-                                                </transition>
-                                                </div>
-                                                <Input class=""  type="text"  :maxlength="30" v-model="formValidate.phoneNumber"  :placeholder="$t('phonePlacehodlerphone')"></Input>
-                                            </FormItem>
-                                    </div>
-                                    <div class="bandphone-div">
-                                            <span class="label-span">{{$t('smscode')}}</span>
-                                        <div>
-                                            <FormItem class="form_item smsCode" prop='smsCode'>
-                                            <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('SMSPlacehodler')"></Input>
-                                            <sendBtn robotDiv='robotSendPhone'  @sendCick= 'sendSMSfun' :empty='empty' :ssoPhone='ssoPhone'></sendBtn>
-                                            </FormItem>
-                                        </div>
-                                    </div>
-                                    <div class="bandphone-div" v-if="googleFlag">
-                                            <span class="label-span">{{$t('aqzxGooglecode')}}</span>
-                                            <FormItem class="form_item" prop='googleCode'>
-                                                <Input :maxlength="6" type="text" v-model="formValidate.googleCode" :placeholder="$t('goolePlaceholder')"></Input>
-                                            </FormItem>
-                                    </div>
-                                    
-
-                                </div>
-                                <Button v-if="loaded" class="pull-right"  @click="handleSubmit('formValidate')" type="primary">{{$t('zhmmResetSubmit')}}</Button>
-                                <Button v-else disabled loading class="loginbtn pull-right"  @click="handleSubmit('formValidate')" type="primary"></Button>
-
-                        </Form>
-                    </div>
-                    </div>
-                </div>
-
-
-            </div>
-        <Modal :modal='showModal' :text="text"></Modal>
-
-
+    <div id="bandphone" class="root">
+  <!-- Title Section -->
+    <div v-if="!DeviceType" class="bg-light">
+      <div class="container py-5">
+        <div class="row align-items-sm-center">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <h1 class="h4 mb-0">{{$t('aqzxBandPhone')}}</h1>
+          </div>
+          <div class="col-sm-6">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-no-gutter justify-content-sm-end mb-0">
+                <li class="breadcrumb-item"><router-link to='/SafeCenter' >{{$t('tbdhAccountSecurity')}}</router-link></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$t('aqzxBandPhone')}}</li>
+              </ol>
+            </nav>
+            <!-- End Breadcrumb -->
+          </div>
         </div>
+      </div>
+    </div>
+    <!-- End Title Section -->
 
-
+             <!-- ========== MAIN ========== -->
+  <main id="content" role="main">
+    <!-- Login Form -->
+    <div class="container space-2">
+      <form autocomplete="off" action=''  @submit.prevent="handleSubmit" class="js-validate w-md-75 w-lg-50 mx-md-auto">
+        <!-- Title -->
+        <div class="mb-7">
+          <!-- <h2 class="h3  font-weight-normal mb-3">{{$t('aqzxBandPhone')}}</h2> -->
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{$t('aqzxTips')}}</strong>
+          </div>
+        </div>
+        <!-- End Title -->
+        <!-- Title -->
+        <div class="row align-items-center mb-4">
+          <div class="col-md-8 mb-3 mb-md-0">
+            <h2 class="h5 mb-0">{{$t('zhmmSecurity')}}</h2>
+          </div>
+        </div>
+        <!-- End Title -->
+        <!-- Form Group -->
+         <div class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="" for="signupPassword">
+                    <span class="d-flex justify-content-between align-items-center">
+                        {{$t('phonenumber')}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <Select  v-model="countryName" style="width:110px;height:44px;">
+                            <Option  v-for="item in cityList" :value="item.label" :key="item.value" :label="item.label" >
+                                    <span v-html="item.value"></span>
+                                    <span v-html="item.label"></span>
+                                </Option>
+                        </Select>
+                    </div>
+                    <input  @input="inputPhone" v-model='phoneNumber' type="number" class="form-control" name="phone" id="signupPassword" :placeholder="this.$t('phonePlacehodlerphone')" aria-label="phone" aria-describedby="signupPasswordLabel" required
+                            :data-msg="this.$t('phoneNumberRequier')"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="" for="emailNumber">
+                    <span class="d-flex justify-content-between align-items-center">
+                        {{$t('SMSPlacehodler')}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="phonecodeLabel">
+                        <span class="fas fa-key"></span>
+                        </span>
+                    </div>
+                    <input :maxlength='6' v-model='phoneCode' type="number" class="form-control" name="phonecode" id="emailNumber" :placeholder="this.$t('SMSPlacehodler')" aria-label="Password" aria-describedby="phonecodeLabel" required
+                            :data-msg="this.$t('phoneNumberRequier')"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                            <div class="input-group-append">
+                                <span style='padding:0px;' class="input-group-text">
+                                    <sendBtn business='business'  :Bindmachine='false' :fatherClass='fatherClass'  @sendCick= 'sendSMSfun' :empty='empty' :ssoPhone='ssoPhone'></sendBtn>
+                                </span>
+                            </div>
+                </div>
+            </div>
+         </div>
+        <!-- email-->
+       <div v-if="emailAddress" class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="" for="emailNumber">
+                    <span class="d-flex justify-content-between align-items-center">
+                        {{$t('aqzxEmailSms')}} {{emailAddress}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="phonecodeLabel">
+                        <span class="fas fa-key"></span>
+                        </span>
+                    </div>
+                    <input  :maxlength='6' v-model='EmailCode' type="number" class="form-control" name="emailcode" id="emailNumber" :placeholder="this.$t('aqzxEmailSms')" aria-label="Password" aria-describedby="phonecodeLabel" required
+                            data-msg="邮箱验证码必须是6位数字"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                            <div class="input-group-append">
+                                <span style='padding:0px;' class="input-group-text">
+                                   <sendBtn business='business' :Bindmachine='false' :fatherClass='fatherClass'  @sendCick= 'sendSMSfun'  :ssoEmail='ssoEmail'></sendBtn>
+                                </span>
+                            </div>
+                </div>
+            </div>
+         </div>
+          <!-- google -->
+        <div v-if='googleFlag' class="form-group">
+            <div class="js-form-message js-focus-state">
+                <label class="" for="signupPassword">
+                    <span class="d-flex justify-content-between align-items-center">
+                         {{$t('aqzxgooglecode')}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="signinSrPassword">
+                        <span class="fas fa-key"></span>
+                        </span>
+                    </div>
+                    <input :maxlength='6' v-model='googlecode' type="number" class="form-control" name="googleCode" id="signinSrPassword" :placeholder="this.$t('goolePlaceholder')" aria-label="请输入谷歌验证码" aria-describedby="signupConfirmPasswordLabel" required
+                            :data-msg="this.$t('phoneNumberRequier')"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                </div>
+            </div>
+        </div>
+        <!-- Button -->
+        <div class="row align-items-center mb-5">
+          <div class="col-12 text-left">
+            <button type="button" value="button" @click="handleSubmit" class="btn btn-primary-55 transition-3d-hover">{{$t('zhmmResetSubmit')}}</button>
+          </div>
+        </div>
+        <!-- End Button -->
+      </form>
+    </div>
+    <!-- End Login Form -->
+  </main>
+   <Modal :modal='showModal' :text="text"></Modal>
     </div>
 </template>
-
 <script>
 import {countrylist} from '../login/country.js'
 import '../../lib/utils.js'
 import sendBtn from '../../components/sendBtn'
-import {codeVerify,register, transaction,binding,ssoCodeVerify} from '../../../api/urls.js';
-import {postBaseApi,postHeaderTokenBodyApi,postHeaderSeveralTokenBodyApi} from '../../../api/axios.js';
+import {bindAccount,userInfo,verifyBusinessCode} from '../../../api/urls.js';
+import {postHeaderTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import Cookies from 'js-cookie'
-const clickoutside = {
-    // 初始化指令
-    bind(el, binding, vnode) {
-        function documentHandler(e) {
-            // 这里判断点击的元素是否是本身，是本身，则返回
-            if (el.contains(e.target)) {
-                return false;
-            }
-            // 判断指令中是否绑定了函数
-            if (binding.expression) {
-                // 如果绑定了函数 则调用那个函数，此处binding.value就是handleClose方法
-                binding.value(e);
-            }
-        }
-        // 给当前元素绑定个私有变量，方便在unbind中可以解除事件监听
-        el.__vueClickOutside__ = documentHandler;
-        document.addEventListener('click', documentHandler);
-    },
-    update() {},
-    unbind(el, binding) {
-        // 解除事件监听
-        document.removeEventListener('click', el.__vueClickOutside__);
-        delete el.__vueClickOutside__;
-    },
-};
+
     export default {
         name:'register',
         data() {
-             const validatePhone = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error(this.$t('phoneNumberRequier')));
-                } else{
-                    let pattern =/[^\d]/;
-                    if(pattern.test(value)){
-                        callback(new Error(this.$t('numberMust')))
-                    }else{
-                        
-                    }
-                    callback()
-                    
-                } 
-            };
-             const validateEmail = (rule, value, callback) => {
-                if (value === ''||value ==undefined) {
-                    callback(new Error(this.$t('phoneNumberRequier')));
-                } else{
-                  let pattern =  /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
-                    if(!pattern.test(value)){
-                        callback(new Error(this.$t('emailMustExg')))
-                    }else{
-                        
-                    }
-                    callback()
-                    
-                } 
-            };
-            const validateSms = (rule,value,callback) => {
-                if(value === ''){
-                    callback(new Error(this.$t('smsRequired')))
-                }else{
-                    callback()
-                }
-            };
-
-
-             const validatePass = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error(this.$t('passwordRequier')));
-                } else{
-                    let pattern = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/;
-                    if(!pattern.test(value)){
-                        callback(new Error(this.$t('passwordReg')))
-                    }else{
-                        if(this.formValidate.confrimPassword!==''){
-                        this.$refs.formValidate.validateField('confrimPassword')
-                        }
-                    }
-                    callback()
-                    
-                } 
-            };
-            const validatePassCheck = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error(this.$t('comfrimpassRequier')));
-                } else if (value !== this.formValidate.googleCode) {
-                    callback(new Error(this.$t('passwordNotMach')))
-                } else {
-                    callback();
-                }
-            };
-            const validateCheckbox = (rule,value,callback) =>{
-                if(value == ''){
-                    callback(new Error(this.$t("checkboxRequire")))
-                }else{
-                    callback()
-                }
-            }
             return {
+                //front
+                phoneNumber:'',
+                phoneCode:'',
+                googlecode:'',
+                countryName:'',
                 countryLanguage:localStorage.getItem('countryLanguage'),
-                model1: '',
                 empty:true,
                 token:'',
                 loaded:true,
-                phoneMessage:{
-                    itc:"",
-                    phone:"",
-                    codeType:"PHONE",
-                    operateType:"REGISTER",
-                    captchaValidateStr:''
-                },
-                formValidate:{
-                    emailName:'',
-                    smsCode:'',
-                    googleCode:'',
-                    confrimPassword:'',
-                    referrId:'',
-                    interest:[],
-                },
-                ssoPhone:{
-                    "operateType":"BIND_PHONE",
-                    "codeType":"PHONE",
-                    "itc":'',
-                    "phone":''
-                },
+                ssoPhone:{},
+                ssoEmail:{},
                 showModal:false,
                 text:'',
-                ruleValidate: {
-                    emailName: [
-                        { validator: validatePhone, trigger: 'blur' }
-                    ],
-                    emailNumber: [
-                        { validator: validateEmail, trigger: 'blur' }
-                    ],
-                    smsCode: [
-                        { validator: validateSms, trigger: 'blur' }
-                    ],
-                    googleCode: [
-                        { validator: validatePhone, trigger: 'blur' }
-                    ],
-                },
-                referrDisable:false,
                 cityList: [],
-                selectFlag:false,
-                countryNumber:'',
                 phoneRegister:true,
                 emailRegister:false,
                 shows:1,
                 phoneFlag:0,
                 emailFlag:0,
                 googleFlag:false,
-                phone:''
-
-
+                phone:'',
+                fatherClass: 'newBtn',
+                emailAddress:'',
+                EmailCode:'',
+                FromOrigin:'',
+                DeviceType:'',
             }
 
 
 
         },
-          directives: {clickoutside},
         components:{
             sendBtn,
             Modal
         },
         methods:{
             handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.loaded = false;
-                        this.ssoCodeVerify();
-                    } else {
+                   if(this.phoneNumber==''||this.phoneCode==''){
+                    this.$Notice.error({
+                            title:this.$t('输入框不能为空'),
+                            desc: this.$t('输入框不能为空')
+                        });
+                    return false;
+                }else{
+                    if(this.emailAddress){
+                        if(this.EmailCode===''){
+                             this.$Notice.error({
+                                title:this.$t('输入框不能为空'),
+                                desc: this.$t('输入框不能为空')
+                                });
+                            return false;
+                        }
                     }
+                    if(this.googleFlag){
+                        if(this.googlecode===''){
+                             this.$Notice.error({
+                                title:this.$t('输入框不能为空'),
+                                desc: this.$t('输入框不能为空')
+                                });
+                            return false;
+                        }
+                    }
+                    if($('.invalid-feedback').text()!==''){//如果有红色的提示语则阻止其提交
+                        return false;
+                    }
+                    this.loaded = false;
+                    this.codeVerify();
+
+                }
+               
+            },
+            codeVerify(){
+                let bodyParam  = {
+                    "userId":localStorage.getItem('loginUserId'),
+                    "businessType":'bind_phone',
+                    "phoneCode":this.phoneCode,
+                    "emailCode":this.EmailCode,
+                    "googleCode":this.googlecode,
+                    "bindAccount":this.phoneNumber+'+'+this.countryName.substring(1),
+                }
+                postHeaderTokenBodyApi(verifyBusinessCode,$cookies.get('loginToken'),bodyParam).then((res) =>{
+                    if(res.result){
+                      this.$Notice.success({
+                           title:this.$t(11001),
+                           desc:this.$t(11001)
+                     });
+                     if(this.FromOrigin){
+                         this.$router.push('kyc')
+                     }else{
+                        this.$router.push('/SafeCenter')
+                     }
+                    }
+                }).catch((error)=>{
+                    this.loaded = true;
                 })
             },
              dealCountry(){
-                    let countryArr = []
+                let countryArr = []
                 countrylist.map((v,i) => {
                     let country = v.split('-');
                     let name = country[0];
@@ -270,85 +273,34 @@ const clickoutside = {
                     }
                     countryArr.push(countrylist)
                     this.cityList = countryArr;
+
                 })
             },
-            countryCode(){
-                let name = this.countryNumber;
+            inputPhone(){
+                 this.ssoPhone = {
+                        "userId":localStorage.getItem('loginUserId'),
+                        "businessType":"bind_phone",
+                        "sendCodeType":'phone',
+                        "bindAccount":this.phoneNumber+'+'+this.countryName.substring(1),
+                }
             },
-            controlSelect(){
-                this.selectFlag = !this.selectFlag;
-            },
-            chooseCountry(code){
-                this.selectFlag = false;
-                this.countryNumber = code;
-            },
-             handleClose(e) {
-                this.selectFlag = false;
+            getUserInfo(token){
+                let params = {
+                     "userId":localStorage.getItem('loginUserId'),
+                }
+                getHeaderTokenApi(userInfo,params,token).then((res) =>{
+                    let userInfo = res.data;
+                    this.googleFlag = res.data.bindGoogle;
+                    this.emailAddress = res.data.email;
+                }).catch((res) =>{
+
+                })
             },
             sendSMSfun(callback){
-                let len = this.countryNumber.length;
-                let itc = this.countryNumber.substring(1);
-                let value = {
-                        "operateType":"BIND_PHONE",
-                         "codeType":"PHONE",
-                        "itc":itc,
-                        "phone":this.formValidate.phoneNumber
-                }
-                this.$store.commit('changebandPhoneObj',value)
-                this.ssoPhone = {
-                         "operateType":"BIND_PHONE",
-                         "codeType":"PHONE",
-                          "itc":itc,
-                          "phone":this.formValidate.phoneNumber
-                    }
                 if(callback){//callback是从子组件传递过来的参数
                     this.showModal = !this.showModal;
                     this.text = callback;
                 }
-            },
-            ssoCodeVerify(){
-                let  params = {
-                    "operateType":"BIND_PHONE",
-                    "codeType":"PHONE",
-                    "phone":this.formValidate.phoneNumber,
-                    "phoneCode":this.formValidate.smsCode,
-                    "googleCode":this.formValidate.googleCode
-
-                }
-                postHeaderTokenBodyApi(ssoCodeVerify,Cookies.get('loginToken'),params).then((res) =>{
-                    if(res.code){
-                        this.loaded= true;
-                        this.showModal = !this.showModal;
-                        this.text = this.$t(res.code);
-                    }else{
-                        this.token = res.token;
-                        this.bindMetond()
-                    }
-                })
-
-
-            },
-            bindMetond(){
-                 let len = this.countryNumber.length;
-                let itc = this.countryNumber.substring(1);
-                let ssoToken = Cookies.get('loginToken');
-                let params = {
-                    "phone":this.formValidate.phoneNumber,
-                    "phoneCode":this.formValidate.smsCode,
-                    "googleCode":this.formValidate.googleCode,
-                    "operateType":"BIND_PHONE",
-                    "bindType":"PHONE",
-                    "itc":itc,
-                }
-                    postHeaderSeveralTokenBodyApi(binding,ssoToken,this.token,params).then((res)=>{
-                        if(res.result==true){
-                            this.$router.push('/safeCenter')
-                        }else{
-                             this.loaded= true;
-                             this.showModal = !this.showModal;
-                             this.text = this.$t(res.code);
-                        }
-                    })
             },
               interFunc(){
                  var _this = this;
@@ -382,45 +334,41 @@ const clickoutside = {
                 return  this.$store.state.app.countryLanguage;//返回全局state的状态值
             },
              phoneNumberChange(){
-               return this.formValidate.phoneNumber;   
+               return this.phoneNumber;   
             },
             
         },
         watch:{
-            ruleValidate:{
-                handler(curVal,oldVal){
-                },
-                deep:true
-            },
             languageChange(val,oldVal){
-                this.$refs.formValidate.resetFields();
             },
             phoneNumberChange(val,oldVal){
-                if(!this.formValidate.phoneNumber==''){
+                if(!this.phoneNumber==''){
                     this.empty = false;
                 }else{
                     this.empty = true;
-                    this.formValidate.phoneNumber= this.formValidate.phoneNumber.replace(/[^\d]g/,'');
+                    this.phoneNumber= this.phoneNumber.replace(/[^\d]g/,'');
                 }
             },
         },
         mounted(){
-            this.phoneFlag = this.$route.query.phoneFlag;
-           //this.emailDisable()
-           if(localStorage.getItem('google')=='true'){//  获取的是字符串类型的true和false
-               this.googleFlag = true
-           }else{
-               this.googleFlag = false;
-           }
             this.dealCountry();
-            this.countryCode();
-            this.countryNumber = '+1';
-           
-
-
+            this.countryName = '+86';
+            this.getUserInfo($cookies.get('loginToken'))
+            this.ssoEmail = {
+                "userId":localStorage.getItem('loginUserId'),
+                "businessType":"bind_phone",
+                "sendCodeType":'email'
+            }
+            this.FromOrigin = this.$route.query.origin;
         },
         created(){
             this.interFunc()
+            this.DeviceType = this.$route.query.type;
+            if(this.$route.query.type === 'mobile'){
+                    this.$emit('public_header', false);
+                    this.$emit('public_footer', false);
+             }
+
         }
         
         
@@ -428,10 +376,51 @@ const clickoutside = {
 </script>
 <style lang='less'>
 #bandphone{
+    .btn-primary-55{
+        color: #fff;
+        background-color: #12869a;
+        border-color: #12869a;
+        &:hover{
+            color: #fff;
+        text-decoration: none;
+        }
+    }
+.ivu-select-selection{
+    height:100%;
+    line-height:44px;
+    >div{
+        height:100%;
+    }
+    .ivu-select-selected-value{
+        height:44px;
+        line-height:44px;
+        font-size:16px;
+        padding-left:30px;
+    }
+}
+.ivu-select-dropdown{
+    width:100%;
+    .ivu-select-dropdown-list{
+        li{
+            display:flex;
+            justify-content:space-between;
+        }
+    }
+}
+.btn-primary{
+    background:#fff;
+    color:#515a6e;
+    height:50px;
+    line-height: 28px;
+    font-size: 20px;
+}
     .inner_input{
         .bandPhone{
             .ivu-input-wrapper{
                 width: auto;
+            }
+            .ivu-form-item{
+                margin-bottom: 24px;
             }
             .phone_item{
                 .ivu-form-item-content{
@@ -450,6 +439,7 @@ const clickoutside = {
                 color: #344857;
                 background: none;
                 font-size: 14px;
+                width: 580px;
              }
         }
          .btn_contain{
@@ -490,18 +480,8 @@ const clickoutside = {
                 background:#108093;
             }
         }
-         
-        
         
      }
-
-
-
-
-
-    
 </style>
-<style scoped lang="less">
-    @import './bandPhone.less';
-</style>
+
 

@@ -7,11 +7,11 @@
                      <Form onsubmit="return false;" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='password'>
                             <img src="../../assets/images/register/security.svg">
-                            <Input type="password" v-model="formValidate.password" :placeholder="$t('signPasswordPlaceholder')"></Input>
+                            <Input type="password" v-model="formValidate.password" :placeholder="$t('zhmmInputNewPassword')"></Input>
                         </FormItem>
                           <FormItem class="form_item" prop='confrimPassword'>
                             <img src="../../assets/images/register/password.svg">
-                            <Input type="password" v-model="formValidate.confrimPassword" :placeholder="$t('confirmPasswordPlacehodler')"></Input>
+                            <Input type="password" v-model="formValidate.confrimPassword" :placeholder="$t('zhmmConfirmPassword')"></Input>
                         </FormItem>
                         <Button v-if="loaded"  class="loginbtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('zhmmSetSubmit')}}</Button>
                         <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
