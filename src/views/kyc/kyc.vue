@@ -958,14 +958,14 @@
             let file = e.target.files[0]
             let param = new FormData() // 创建form对象
             param.append('file', file)// 通过append向form对象添加数据
-            param.append('userId', localStorage.getItem('loginUserId'))// 通过append向form对象添加数据
+            param.append('userId', this.userId)// 通过append向form对象添加数据
 
             uploadImg(this.loginToken, param).then(res => {
                this.getPubUrl(res.result)
             })
          },
          getPubUrl(key) {
-            getPhoto(this.loginToken, {'userId': localStorage.getItem('loginUserId'), key: key}).then(res => {
+            getPhoto(this.loginToken, {'userId': this.userId, key: key}).then(res => {
                this.file = {filePath: res.result, fileName: res.result}
             })
          },
@@ -1675,17 +1675,6 @@
          //图片上传结束
       },
       mounted() {
-         // this.userId = this.$route.query['userId']?this.$route.query['userId']:localStorage.getItem('loginUserId');
-         // localStorage.setItem('loginUserId',this.userId);
-         // this.deviceCode = this.$route.query['deviceCode']?this.$route.query['deviceCode']:localStorage.getItem('deviceCode');
-         // localStorage.setItem('deviceCode',this.deviceCode);
-         // this.type = this.$route.query['type']?this.$route.query['type']:localStorage.getItem('mobile');
-         // localStorage.setItem('mobile',this.type);
-         // this.showHeader = (this.type === 'ios' || this.type === 'android') ? false : true
-         // const language = this.$route.query['language']
-         // if (language) {
-         //    this.$store.commit('changeCurentLange', language);
-         // }
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
