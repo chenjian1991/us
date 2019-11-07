@@ -20,7 +20,6 @@
     import {sendSms,businessSend,verifyEmail,userVerify,ipQuery,bindSend} from '../../api/urls.js';
     import {postBaseApi,postHeaderTokenBodyApi,getApi,getApiLoin} from '../../api/axios.js';
     import {geeTest} from '../../api/usersystem.js'
-   import Cookies from 'js-cookie';
     export default {
         name:'sendBtn',
         props:{
@@ -76,17 +75,17 @@
                         }else if(this.ForgotEmailPassworMessage){//忘记密码邮箱发送验证码
                              this.businessPostRequest(localStorage.getItem('outerToken'),this.ForgotEmailPassworMessage,this)
                         }else if(this.tradePassEmail){//修改交易密码邮箱发送验证码
-                             this.businessPostRequest(Cookies.get('loginToken'),this.tradePassEmail,this)
+                             this.businessPostRequest(this.loginToken,this.tradePassEmail,this)
                         }else if(this.tradePassPhone){//修改交易密码手机发送验证码
-                             this.businessPostRequest(Cookies.get('loginToken'),this.tradePassPhone,this)
+                             this.businessPostRequest(this.loginToken,this.tradePassPhone,this)
                         }else if(this.switchTradePassPhone){//开启交易密码发送手机验证码
-                             this.businessPostRequest(Cookies.get('loginToken'),this.switchTradePassPhone,this)
+                             this.businessPostRequest(this.loginToken,this.switchTradePassPhone,this)
                         }else if(this.switchTradePassEmail){//开启交易密码邮箱发送
-                             this.businessPostRequest(Cookies.get('loginToken'),this.switchTradePassEmail,this)
+                             this.businessPostRequest(this.loginToken,this.switchTradePassEmail,this)
                         }else if(this.ssoPhone){// 绑定邮箱发送手机验证码
-                             this.businessPostRequest(Cookies.get('loginToken'),this.ssoPhone,this)
+                             this.businessPostRequest(this.loginToken,this.ssoPhone,this)
                         }else if(this.ssoEmail){//绑定手机发送邮箱验证码
-                             this.businessPostRequest(Cookies.get('loginToken'),this.ssoEmail,this)
+                             this.businessPostRequest(this.loginToken,this.ssoEmail,this)
                         }
                 }
             },
@@ -178,7 +177,7 @@
             if (params['token']) {
                 this.loginToken = params['token']
             }else{
-                 this.loginToken = Cookies.get('loginToken')
+                 this.loginToken = $cookies.get('loginToken')
             }
         }
     }

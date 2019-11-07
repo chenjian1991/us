@@ -311,7 +311,6 @@
 import {queryGoogleURL,bindGoogle} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import Cookies from 'js-cookie'
 
 
 //import QRCode from 'qrcodejs2'//二维码
@@ -433,7 +432,7 @@ import VueQr from 'vue-qr'
               let params = {
                 userId:localStorage.getItem('loginUserId')
               }
-                getHeaderTokenApi(queryGoogleURL,params,Cookies.get('loginToken')).then((res)=>{
+                getHeaderTokenApi(queryGoogleURL,params,$cookies.get('loginToken')).then((res)=>{
                     this.QRCodeurl = res.data.qrCode;
                     this.qrCodeString = res.data.secretKey;
                 }).catch((error)=>{
@@ -458,7 +457,7 @@ import VueQr from 'vue-qr'
                         "googleKey": this.kyeofsecret,
                         "googleCode": this.codeOfGoogle
                     }
-                    postHeaderTokenBodyApi(bindGoogle,Cookies.get('loginToken'),params).then((res)=>{
+                    postHeaderTokenBodyApi(bindGoogle,$cookies.get('loginToken'),params).then((res)=>{
                         if(res.result){
                              this.$Notice.success({
                                     title:this.$t(11001),

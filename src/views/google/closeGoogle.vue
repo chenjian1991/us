@@ -101,7 +101,6 @@
 <script>
 import {unbindGoogle} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi} from '../../../api/axios.js';
-import Cookies from 'js-cookie'
 
     export default {
         name:'closegogle',
@@ -143,7 +142,7 @@ import Cookies from 'js-cookie'
                     "password":this.setSha(this.password),
                     "googleCode": this.googlecode,
                 }
-                postHeaderTokenBodyApi(unbindGoogle,Cookies.get('loginToken'),params).then((res) =>{
+                postHeaderTokenBodyApi(unbindGoogle,$cookies.get('loginToken'),params).then((res) =>{
                   if(res.result){
                       this.$Notice.success({
                             title:this.$t(11001),

@@ -156,7 +156,6 @@ import {bindAccount,userInfo,verifyBusinessCode} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi,postHeaderSeveralTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 import {countrylist} from '../login/country.js'
-import $cookies from 'js-cookie'
     export default {
         name:'register',
         data() {

@@ -67,7 +67,6 @@
     import Loading from "@/components/Loading"
     import {userInfo,identify,identifyQueryUrl,identifyInfo} from '../../../api/urls.js';
     import {getHeaderTokenApi,postHeaderTokenBodyApi,getApi} from '../../../api/axios.js';
-    import Cookies from 'js-cookie';
      import {
       identifyQuery,
    } from '_api/balances.js'
@@ -153,7 +152,6 @@
             },
         },
         mounted(){
-            // this.getRealNameIdentify(Cookies.get('loginToken'))
                  this.getUserInfo($cookies.get('loginToken'))
                 this.getIdentiyMessage($cookies.get('loginToken'))
               if(localStorage.getItem('countryLanguage')=='zh-CN'){

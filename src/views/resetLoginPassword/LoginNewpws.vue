@@ -107,7 +107,6 @@ import {postHeaderTokenBodyApi} from '../../../api/axios.js';
 import {getBrowserMessage} from "@/lib/utils.js"
 import {clearLocalStorage} from '../../config/index.js';
 import {splitDomain} from "@/lib/utils.js"
-import $cookies from 'js-cookie'
     export default {
         name:'login',
         components:{

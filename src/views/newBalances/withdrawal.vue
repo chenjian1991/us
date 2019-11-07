@@ -202,7 +202,7 @@
       getIdentify,
    } from '_api/balances.js'
    import {
-      scientificToNumber, onlyInputNumAndPoint, dealNumber
+      onlyInputNumAndPoint, dealNumber
    } from '@/lib/utils.js'
 
    export default {
@@ -337,7 +337,7 @@
             } else if (number === undefined) {
                return 0
             } else {
-               return bigDecimal.round(scientificToNumber(number), num)
+               return dealNumber(number, num)
             }
          },
          inputALL() {

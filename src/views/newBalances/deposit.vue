@@ -100,13 +100,6 @@
                      <li>{{$t('sendOnly')}} {{currency}} {{$t('czTipsContent')}}</li>
                      <li>{{$t('aftemaking')}}</li>
                   </ul>
-                  <!--<div class="title mb-3 space-between" v-if="isOTC">-->
-                     <!--<div>{{$t('depositOTCBuyCurrency')}} {{currency}} {{$t('depositOTCBuyWith')}}</div>-->
-                     <!--<span class="f12 color-gary">{{$t('depositOTCSupport')}} PayPal / {{$t('depositOTCBank')}} / {{$t('depositOTCWechat')}} / {{$t('depositOTCAlipay')}}{{$t('depositOTCBuy')}}</span>-->
-                  <!--</div>-->
-                  <!--<div class="title mb-3" v-else>-->
-                     <!--<div>{{$t('depositOTCBuyCurrency')}} {{currencyOtcList}} {{$t('depositOTCBuyWith')}}</div>-->
-                  <!--</div>-->
                </div>
             </div>
          </div>
@@ -137,7 +130,7 @@
       getCurrencyList,
    } from '_api/exchange.js'
    import {
-      scientificToNumber, dealNumber
+      dealNumber
    } from '@/lib/utils.js'
 
    export default {
@@ -268,7 +261,7 @@
             } else if (number === undefined) {//逐条推送会导致有些交易对还没结果 所以需要处理underfind的情况
                return 0
             } else {
-               return bigDecimal.round(scientificToNumber(number), num)
+               return dealNumber(number, num)
             }
          },
          changeAgree() {//eos 无备注按钮
