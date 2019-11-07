@@ -118,7 +118,6 @@
       data() {
          return {
             isLogin: false,
-            loginToken: '',
          };
       },
       methods: {
@@ -133,8 +132,8 @@
          getUserInfo() {
             return new Promise(resolve => {
                getUserInfo({
-                  userId: this.userId
-               }, this.loginToken).then(res => {//实名认证
+                  userId: localStorage.getItem('loginUserId')
+               }, $cookies.get('loginToken')).then(res => {//实名认证
                   if (res.data) {
                      resolve(res.data['identifyState'])
                   }
@@ -184,9 +183,7 @@
             } else {
                this.isLogin = false;
             }
-
          },
-
       },
       mounted() {
          //判断是否登录有效
