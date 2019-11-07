@@ -2194,11 +2194,11 @@ export default {
    newK1Subsuccess: "Thank you for submitting you KYC information.",
    newK1subtip1: "We will review your application and respond within",
    newK1subtip2: "bussiness days.",
-   newK1subtipbutt: "If you have any questions, please email us at contact-us@tresso.com.",
+   newK1subtipbutt: "If you have any questions, please email us at contact-us@[US Site Name].com.",
    newK1applyfail: "Your application has not been approved.",
    newK1failreson: "reason:",
    newK1applypass: "Your application has been approved!",
-   newK1successtip: "You may now deposit crypto assests and begin trading.",
+   newK1successtip: "Approved Beta users can now deposit crypto assets and begin trading.",
    newK1Male: "Male",
    newK1Female: "Female",
    newK1Bind: "Bind phone / email",
@@ -2231,5 +2231,9 @@ export default {
    步骤三: 'Step 3',
    步骤四: 'Step 4',
    confirmbtn: 'Confirm',
+   去绑定:"Bind",
+   用于保护资产安全: 'To ensure asset security',
+
+
 
 };
