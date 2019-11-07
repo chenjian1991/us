@@ -20,12 +20,12 @@
             </ul>
             <div class="tab-content middle pl-3 pr-3 pb-3" id="pills-tabContent">
                <div class="tab-pane fade active show" id="open-href" role="tabpanel" aria-labelledby="open-tab">
-                  <Table :columns="columns1" :data="data1" no-data-text="You have no Open Orders"></Table>
+                  <Table :columns="columns1" :data="data1"></Table>
                </div>
                <div class="tab-pane fade" id="complete-href" role="tabpanel" aria-labelledby="complete-tab">
                   <order-filter :showHide="true" :symbolList="quoteAssetList"
                                 @search="searchComplete($event)" @reset="resetComplete"></order-filter>
-                  <Table :columns="columns2" :data="data2" no-data-text="You have no Order History"></Table>
+                  <Table :columns="columns2" :data="data2"></Table>
                   <!--搜索自定义分页-->
                   <div class="page">
                      <div class="page-box" @click="prevPageComplete" :disabled="prevComplete"
@@ -39,7 +39,7 @@
                <div class="tab-pane fade" id="detail-href" role="tabpanel" aria-labelledby="detail-tab">
                   <order-filter :showHide="false" :symbolList="quoteAssetList"
                                 @search="searchDetail($event)" @reset="resetDetail"></order-filter>
-                  <Table :columns="columns3" :data="data3" no-data-text="You have no Transaction History"></Table>
+                  <Table :columns="columns3" :data="data3"></Table>
                   <!--搜索自定义分页-->
                   <div class="page">
                      <div class="page-box" @click="prevPageDetail" :disabled="prevDetail"
@@ -501,8 +501,8 @@
                   getSymbolList().then(res => {
                      res.map((v) => {
                         this.symbolList[v.symbol] = v
-                        //美国站不展示USDD、USDT
-                        if (v.quoteAsset !== 'USDD' && v.quoteAsset !== 'USDT') {
+                        //美国站不展示USDD USDT
+                        if (v.quoteAsset !== 'USDD'||v.quoteAsset !== 'USDT') {
                            this.quoteAssetList.push(v.quoteAsset)
                         }
                      })
@@ -525,12 +525,6 @@
          getListOpenOrder() {
             this.exchange.listOpenOrder(function (data) {
                this.data1 = data
-               //这么做 每条固定数据 会导致数据没有或者数据量变少
-               // this.data1 = data.filter(v => {
-               //    if (v.symbol.slice(-4) !== 'USDD' && v.symbol.slice(-4) !== 'USDT') {
-               //       return v
-               //    }
-               // })
             }.bind(this))
          },
          resetComplete() {

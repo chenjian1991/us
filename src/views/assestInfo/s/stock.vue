@@ -157,11 +157,7 @@
 </template>
 
 <script>
-import {alreadyDividend} from '../../../../api/urls.js';
-import {getApi,postHeaderTokenBodyApi} from '../../../../api/axios.js';
 import Modal from '@/components/Modal';
-import { duration } from 'moment';
-import Cookies from 'js-cookie';
     export default {
         name:'login',
         components:{

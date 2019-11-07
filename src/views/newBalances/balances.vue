@@ -452,7 +452,7 @@
                {
                   key: 'USDT',
                   title: ' ',
-                  // width: 110,
+                  width: 113,
                   align: 'left',
                   render: (h, params) => {
                      if (!params.row.USDT) {

@@ -15,16 +15,15 @@ const deposit = () => import('../views/newBalances/deposit.vue')
 const withdrawal = () => import('../views/newBalances/withdrawal.vue')
 const transaction_history = () => import('../views/newBalances/transactionHistory.vue')
 const order = () => import('../views/newBalances/order.vue')
+const kyc = () => import('../views/kyc/kyc.vue')
 
 const index = () => import('../views/home/index.vue')
 const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import('../views/exchangeGBBO/Exchange.vue')
-import download from "../views/download/download.vue";
 
 const Login = () => import('../views/login/Login.vue')
 const Register = () => import('../views/login/register.vue')
 const About = () => import('../views/about/About.vue')
-const Captial = () => import('../views/captial/Captial.vue')
 
 import Google from '../views/login/google.vue';
 import Forgot from '../views/forgotPassword/forgot.vue';
@@ -33,12 +32,7 @@ import resetNewpass from '../views/forgotPassword/resetNewpass.vue';
 import safeCenter from '../views/sateCenter/safeCenter.vue';
 import bandEmail from '../views/sateCenter/bandEmail.vue';
 import bandPhone from '../views/sateCenter/bandPhone.vue';
-// import order from '../views/order/order.vue'
 
-// const balances = () => import('../views/balances/balances.vue')
-// import deposit from '../views/balances/deposit.vue'
-// import withdrawal from '../views/balances/withdrawal.vue'
-// import transaction_history from '../views/balances/transaction_history.vue'
 
 import originLoginPassword from "../views/resetLoginPassword/originPasswrod.vue";
 import newPassword from "../views/resetLoginPassword/newPassword.vue";
@@ -57,7 +51,6 @@ import setGoogle from "../views/google/setGoogle.vue";
 import closeGoogle from "../views/google/closeGoogle.vue";
 import identiy from "../views/identity/identity.vue"
 import identityResult from "../views/identity/identityResult.vue"
-import Test from "../views/TestUtil/Test";
 
 //usdd
 import FF from "../views/FF/FF.vue";
@@ -78,18 +71,7 @@ import bankSetting from '../views/balances/bankSetting.vue'
 const interFinanceOne = () => import( '../views/interFinance/interFinanceOne.vue')
 const interFinanceTWO = () => import( '../views/interFinance/interFinanceTWO.vue')
 const interFinanceThree = () => import( '../views/interFinance/interFinanceThree.vue')
-const inviteAto = () => import( '../views/inviteAto/inviteAto.vue')
-const beinvited = () => import( '../views/inviteAto/beinvited.vue')
-const registerSuccess = () => import( '../views/inviteAto/registerSuccess.vue')
 
-const atoInivteplus = () => import( '../views/inviteAtoplus/inviteAtoplus.vue')
-const beinvitedplus = () => import( '../views/inviteAtoplus/beinvitedplus.vue')
-const registerSuccessplus = () => import( '../views/inviteAtoplus/registerSuccessplus.vue')
-
-const card = () => import('../views/visa.vue')
-const redeemsupreme = () => import('../views/redeemsupreme.vue')
-const tokenizeyeezy = () => import('../views/tokenizeyeezy.vue')
-const Supreme = () => import('../views/Supreme.vue')
 //header toggle
 const whyus = () => import('../views/headerToggle/whyus.vue')
 const crypto = () => import('../views/headerToggle/criptoTrading.vue')
@@ -101,7 +83,10 @@ const team = () => import('../views/headerToggle/TheTeam.vue')
 const contactus = () => import('../views/headerToggle/contactus.vue')
 const about = () => import('../views/about/about_new.vue')
 
-const kyc = () => import('../views/kyc/kyc.vue')
+
+
+import download from "../views/download/download.vue";
+const Captial = () => import('../views/captial/Captial.vue')
 
 import i18n from '@/locale/index.js';
 
@@ -128,70 +113,6 @@ const router = new Router({
             title: 'HomeTitle'
          },
          component: download,
-      },
-      {
-         path: '/test',
-         name: 'test',
-         meta: {
-            title: 'HomeTitle'
-         },
-         component: Test
-      },
-      {
-         path: '/supreme',
-         name: 'supreme',
-         meta: {
-            title: 'HomeTitle'
-         },
-         component: Supreme
-      },
-      {//inviteAto
-         path: '/inviteAto',
-         name: 'inviteAto',
-         meta: {
-            title: 'supretitle'
-         },
-         component: inviteAto
-      },
-      {//beinvited
-         path: '/beinvited',
-         name: 'beinvited',
-         meta: {
-            title: 'supretitle'
-         },
-         component: beinvited
-      },
-      {//registerSuccess
-         path: '/registerSuccess',
-         name: 'registerSuccess',
-         meta: {
-            title: 'supretitle'
-         },
-         component: registerSuccess
-      },
-      {//atoInivtePlus
-         path: '/atoInivteplus',
-         name: 'atoInivteplus',
-         meta: {
-            title: 'supinviteplus'
-         },
-         component: atoInivteplus
-      },
-      {//beinvitedplus
-         path: '/beinvitedplus',
-         name: 'beinvitedplus',
-         meta: {
-            title: 'supinviteplus'
-         },
-         component: beinvitedplus
-      },
-      {//registerSuccessplus
-         path: '/registerSuccessplus',
-         name: 'registerSuccessplus',
-         meta: {
-            title: 'supinviteplus'
-         },
-         component: registerSuccessplus
       },
       {
          path: '/kyc',
@@ -671,30 +592,6 @@ const router = new Router({
                },
                component: StockToken
             },
-            {//api
-               path: 'card',
-               name: 'card',
-               meta: {
-                  title: 'card'
-               },
-               component: card
-            },
-            {//api
-               path: 'redeemsupreme',
-               name: 'redeemsupreme',
-               meta: {
-                  title: 'Redeem Yeezy Sneaker with Yeezy Tokens'
-               },
-               component: redeemsupreme
-            },
-            {//api
-               path: 'tokenizeyeezy',
-               name: 'tokenizeyeezy',
-               meta: {
-                  title: 'Tokenize Your Yeezy Sneaker for Yeezy Tokens'
-               },
-               component: tokenizeyeezy
-            },
             {//interFinance
                path: 'interFinanceOne',
                name: 'interFinanceOne',
@@ -777,13 +674,4 @@ router.beforeEach((to, from, next) => {
    next()
 })
 
-// router.afterEach((to, from) => {
-//    console.log(2222,'afterEach')
-//    /* 路由发生变化修改页面title */
-//    if (to.meta.title) {
-//       document.title = i18n.t(to.meta.title)
-//    }
-//    window.scroll(0, 0); //跳转到新页面，将页面头部置顶；
-//    // next()
-// })
 export default router
