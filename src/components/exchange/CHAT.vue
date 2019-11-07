@@ -33,7 +33,6 @@
 
 <script>
 import { CHAT_URL} from "../../config/index";
- import Cookies from 'js-cookie'
  import {postHeaderTokenBodyApi} from '_api/axios'
 import {socialToken} from '../../../api/urls.js';
 
@@ -43,7 +42,7 @@ export default {
             isShowChatBtn: true,
             chatDialog:false,
             isLogin:this.$store.state.app.isLogin,
-            loginToken:Cookies.get('loginToken'),
+            loginToken:$cookies.get('loginToken'),
             chatToken:'undefined',
             chatName:'55 English',
             iframeURL:'',

@@ -3,7 +3,7 @@ import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postFormDataApi,postH
 import {
    realTime, verifyAddress, userInfo, ssoSend, withdrawCodeVerify, identify, ssoGoogleVerify, ssoCodeVerify,
    updateSecretKeyUrl, closeSecretKeyUrl, queryStateUrl, identifySubmitUrl,identifyUpdateUrl,
-   identifyInfo as identifyQueryUrl, uploadPic,identifyPhoto
+   identifyInfo as identifyQueryUrl, uploadPic,identifyPhoto,userListUrl,usersCountUrl,listRebateUrl
 } from "./urls";
 
 export const getRealtimeList = () => {
@@ -67,4 +67,16 @@ export const uploadImg = (params, data) => {
 
 export const getPhoto = (params, data) => {
    return postHeaderTokenBodyParamsApi(identifyPhoto, params, {}, data)
+}
+
+export const userList = (params, token) => {
+   return getHeaderTokenApi(userListUrl, params, token)
+}
+
+export const usersCount = (params, token) => {
+   return getHeaderTokenApi(usersCountUrl, params, token)
+}
+
+export const listRebate = (params) => {
+   return getApi(listRebateUrl, params)
 }

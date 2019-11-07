@@ -265,7 +265,6 @@
             showNewAddress: false,
             addAddress: false,
             coinType: '',
-            loginToken: '',
             disabledSubmit: false,
             disabledEMAIL: false,
             disabledPHONE: false,
@@ -298,6 +297,7 @@
             coin: '',
             countEMAIL: 0,
             countPHONE: 0,
+            loginToken:$cookies.get('loginToken'),
             userId: localStorage.getItem('loginUserId'),
             coinInfos: {},//币种类型切换 手续费
          }
@@ -498,7 +498,7 @@
                   await new Promise(resolve => {
                      getUserInfo({
                         userId: localStorage.getItem('loginUserId')
-                     }, $cookies.get('loginToken')).then(res => {//实名认证
+                     }, this.loginToken).then(res => {//实名认证
                         if (res.data) {
                            switch (res.data['identifyState']) {
                               case 'INIT':
@@ -762,13 +762,11 @@
          }
       },
       beforeMount() {
-         let loginToken = $cookies.get('loginToken')
-         this.loginToken = loginToken
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
          this.exchange.ssoProvider.getSsoToken = function (fn) {
-            fn(loginToken);
+            fn(this.loginToken);
          };
       },
       mounted() {

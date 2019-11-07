@@ -1,14 +1,11 @@
+import {sha256} from 'js-sha256'
 import {
    getTokenByKey as getValue,
    setLocalStorage as setValue,
 } from '@/lib/utils.js'
 import store from '@/store/index'
 import {clearLocalStorage} from '@/config'
-import {
-   Message,
-   Notice
-} from 'iview'
-import i18n from '@/locale/index.js'
+
 import {
    getCreateAccount,
    getAccountInfo,
@@ -276,13 +273,11 @@ Exchange.prototype.getSession = function (tokenType, fn) {
                   _this.sessionCache[tokenType] = data;
                   setValue(tokenType + "_SESSION", data);
                   fn(data["value"]);
-               }).catch(error => {
-                  console.log('签发session error')
                })
             })
          })
-      })
 
+      })
    })
 };
 Exchange.prototype.issuedTradePassword = function (token, password, fn) {
@@ -296,35 +291,12 @@ Exchange.prototype.issuedTradePassword = function (token, password, fn) {
       fn(getValue("PASSWORDTOKEN"))
       return;
    }
-
    getCreatePasswordToken(token, {
       userId: localStorage.getItem('loginUserId'),
       "password": password ? sha256(password) : password,
    }).then(data => {
       fn(data.result);
    })
-
-   // getCreatePasswordToken(token, {"password": password,"tradePasswordType":"TRADE_PASSWORD"}).then(data => {
-   //    if(data.code == "10018" || data.code == "10011"|| data.code == "10017"|| data.code == "10018"){
-   //       //全局错误弹窗
-   //       Notice.warning({
-   //          title: i18n.t('tsTips'),
-   //          desc: i18n.t(data['code']),
-   //       });
-   //       return
-   //    }else{
-   //       //passwordToken保存到本地存储
-   //       let obj = {}
-   //       obj.expiredAt = data.expiredTime
-   //       obj.value = data.token
-   //       setValue("PASSWORDTOKEN", obj);
-   //       fn(data.token);
-   //    }
-   //    // _this.tradePassword = data;
-   // }).catch(error=>{
-   //    console.log('签发密码token error')
-   //
-   // })
 };
 Exchange.prototype.listOpenOrder = function (fn) {
    var _this = this;

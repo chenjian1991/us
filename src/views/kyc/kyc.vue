@@ -135,7 +135,8 @@
                         </div>
                         <div class="mb-4">
                            <label class="h6 font-size-14 mb-3">{{$t('newK1idT')}}</label>
-                           <Select @on-change='changeIdType' v-model="stepTwoForm.idType" size="large">
+                           <Select @on-change='changeIdType' v-model="stepTwoForm.idType" size="large"
+                                   :disabled="!isUS">
                               <Option v-for="item in idType" :value="item.value" :label="$t(item.label)">
                                  {{$t(item.label)}}
                               </Option>
@@ -579,8 +580,8 @@
             // type: '',
 
             //pc
-            showStep1: true,
-            showStep2: false,
+            showStep1: false,
+            showStep2: true,
             showStep3: false,
             showStep4: false,
             isUS: false,
@@ -599,7 +600,7 @@
             },
             language: localStorage.getItem('countryLanguage'),
 
-            currentStep: 1,
+            currentStep: 2,
             stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
             idType: [
                {label: "newK1DL", value: 'license'},
@@ -790,6 +791,8 @@
                   if (userInfo.country === 'US') {
                      this.isUS = true
                      this.stepThreeForm.region = this.state[0].locale
+                  } else {
+                     this.stepTwoForm.idType = this.idType[2].value
                   }
                   resolve()
                })

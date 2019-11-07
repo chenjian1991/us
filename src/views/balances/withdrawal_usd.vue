@@ -39,8 +39,8 @@
                   </Col>
                </Row>
                <section class="below">
-                  <p>Tresso partners with Global Currency Organization and Prime Trust to provide Fiat trading services.
-                     Prime Trust is a chartered, regulated, insured trust company.</p>
+                  <p>{{$t('withdrawCon')}}</p>
+                  <p>{{$t('withdrawConfee',{fee:'$5'})}}</p>
                   <Button class="instruction button-common" @click="getInstruction">{{$t('withdrawConfirm')}}</Button>
                   <div class="line"></div>
                   <Button class="history button-common" @click="next">{{$t('withdrawHis')}}
@@ -51,6 +51,10 @@
                         <img src="../../assets/images/balances/gco-logo1x.png">
                      </a>
                      <img src="../../assets/images/balances/pt-logo@2x.png" class="logo">
+                  </div>
+                  <div class="partnerPrime">
+                     <p>Tresso partners with Global Currency Organization and Prime Trust to provide Fiat trading
+                        services. Prime Trust is a chartered, regulated, insured trust company.</p>
                   </div>
                </section>
             </div>
