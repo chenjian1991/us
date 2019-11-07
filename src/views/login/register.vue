@@ -447,7 +447,7 @@ const clickoutside = {
                 })
             },
             checkGeetest(){
-                    geeTest('0e50ea14c3b178745d1b5cbeefb96b23','1',(data)=>{
+                    geeTest('4f8eb91de0e6a7940cb7b9f63f260aa7','1',(data)=>{
                              if(this.emailRegister){//邮箱注册
                                 this.emailParams = {
                                     "domainCode":document.domain==='www.55com.io'?"china":'global',

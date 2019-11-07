@@ -185,7 +185,7 @@ import {geeTest} from '../../../api/usersystem.js'
                 })
             },
               checkGeetest(){
-                    geeTest('8e47aae5e5ec6a8b813ce1db919a6c8f','2',(data)=>{
+                    geeTest('95bf5aac7dc0c5e7adc943823b363fb2','2',(data)=>{
                             let params = {
                                 "loginName": this.formValidate.phoneNumber,
                                 "password": this.setSha(this.formValidate.password),
@@ -250,16 +250,7 @@ import {geeTest} from '../../../api/usersystem.js'
                        
                     }
                 }).catch((error)=>{
-                    // if(res.code == 'Cx000024'){//用户未激活，则跳转到重新发送页面
-                    //         let emailaddress = this.formValidate.phoneNumber;
-                    //         localStorage.setItem('emailAdderss',emailaddress);
-                    //         setTimeout(() => {
-                    //             this.$router.push('/verfifyEmail');
-                    //         }, 1500);
-                    //     }else if(res.code == '10047'){//美国ip登录提示
-                    //         this.modal2 = true;
-                    //         return false;
-                    //     }
+                 
 
                 })
             },

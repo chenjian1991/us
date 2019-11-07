@@ -32,7 +32,6 @@
 import {activationEmail} from '../../../api/urls.js';
 import {getApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import Cookies from 'js-cookie'
 import {getUrlKey} from '@/lib/utils.js'
 
 
@@ -51,22 +50,6 @@ import {getUrlKey} from '@/lib/utils.js'
 
         },
         methods:{
-            // getUrlParams(name){
-            //         let after = window.location.hash.split("?")[1];
-            //         if(after)
-            //         {
-            //             let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-            //             var r = after.match(reg);
-            //             if(r != null) { 
-            //                 return  decodeURIComponent(r[2]);
-            //             }
-            //             else  {
-            //                 return '';
-            //             }
-
-            //         }
-
-            // },
             gotoSite(){
                 if(!getUrlKey('code')){
                     return false;
@@ -74,35 +57,11 @@ import {getUrlKey} from '@/lib/utils.js'
                 let codeParams = getUrlKey('code').replace(/(\")/g, "");//去掉url中的引号；
                 let url = activationEmail+'/'+codeParams;
                 getApi(url,{}).then((res)=>{
-                      if(res.code){
-                        this.showModal = !this.showModal;
-                        this.text = this.$t(res.code);
-                        setTimeout(() => {  
-                            //window.location.href = "https://www.55.com/#/login";
-                            this.$router.push('login')
-                        }, 5000);
-                    }else{//请求成功跳转不同的站
-                        this.showModal = !this.showModal;
-                        this.text = this.$t(11001);
-                        let fromSite = res.fromSite;
-                       
-                        if(fromSite==null||fromSite ==""||fromSite=="B"||fromSite=='null'){
-                            this.whichSite = "B";
-                        }else{
-                            this.whichSite = fromSite;
-                        }
-                        setTimeout(() => {
-                            if(fromSite==null||fromSite ==""||fromSite=="B"){
-                                window.location.href = "https://www.55.com/login";
-                            }else if(fromSite=="F"){
-                                window.location.href = "https://f.55.com/login";
-                            }else if(fromSite=="L"){
-                                window.location.href = "https://l.55.com/login";
-                            }else if(fromSite=="S"){
-                                window.location.href = "https://s.55.com/login";
-                            }
-                        }, 5000);
-                     
+                    if(res.result){
+                        this.$Notice.success({
+                           title:this.$t(11001),
+                           desc:this.$t(11001)
+                     });
                     }
                 })
             }
