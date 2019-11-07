@@ -32,7 +32,6 @@
 import {activationEmail} from '../../../api/urls.js';
 import {getApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import Cookies from 'js-cookie'
 import {getUrlKey} from '@/lib/utils.js'
 
 

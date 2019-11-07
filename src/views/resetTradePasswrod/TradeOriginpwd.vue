@@ -157,7 +157,6 @@ import {TradingPasswordVerify,userInfo,verifyBusinessCode} from '../../../api/ur
 import {postHeaderTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 import sendBtn from '../../components/sendBtn';
-import Cookies from 'js-cookie'
     export default {
         name:'login',
         components:{
@@ -246,7 +245,7 @@ import Cookies from 'js-cookie'
                         "emailCode":this.EmailCode,
                         "googleCode":this.googlecode,
                     }
-                postHeaderTokenBodyApi(verifyBusinessCode,Cookies.get('loginToken'),bodyParam).then((res) =>{
+                postHeaderTokenBodyApi(verifyBusinessCode,$cookies.get('loginToken'),bodyParam).then((res) =>{
                     if(res.result){
                         // this.$Notice.success({
                         //         title:this.$t(11001),
@@ -340,7 +339,7 @@ import Cookies from 'js-cookie'
         },
         mounted(){
             this.userId = this.$route.query.loginUserId?this.$route.query.loginUserId:localStorage.getItem('loginUserId');
-            this.getUserInfo(Cookies.get('loginToken'))
+            this.getUserInfo($cookies.get('loginToken'))
              this.tradePassPhone = { //手机发送
                 "userId":this.userId,
                 "businessType":"set_trade_password",

@@ -156,7 +156,7 @@ import {bindAccount,userInfo,verifyBusinessCode} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi,postHeaderSeveralTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 import {countrylist} from '../login/country.js'
-import Cookies from 'js-cookie'
+import $cookies from 'js-cookie'
     export default {
         name:'register',
         data() {
@@ -275,7 +275,7 @@ import Cookies from 'js-cookie'
                     "googleCode":this.googlecode,
                     "bindAccount":this.emailAddress,
                 }
-                postHeaderTokenBodyApi(verifyBusinessCode,Cookies.get('loginToken'),bodyParam).then((res) =>{
+                postHeaderTokenBodyApi(verifyBusinessCode,$cookies.get('loginToken'),bodyParam).then((res) =>{
                     if(res.result){
                         this.$Notice.success({
                            title:this.$t(11001),
@@ -339,7 +339,7 @@ import Cookies from 'js-cookie'
             },
         },
         mounted(){
-            this.getUserInfo(Cookies.get('loginToken'));
+            this.getUserInfo($cookies.get('loginToken'));
             this.FromOrigin = this.$route.query.origin;
 
             this.ssoPhone = {

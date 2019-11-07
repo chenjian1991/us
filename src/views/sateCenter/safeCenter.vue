@@ -165,7 +165,6 @@
    import sendBtn from '../../components/sendBtn';
    import AccountInfo from "../../components/common/AccountInfo.vue";
    import {getBrowserMessage} from "@/lib/utils.js"
-   import Cookies from 'js-cookie'
 
 
 
@@ -341,7 +340,7 @@
                     "emailCode":this.formValidate.emailCode,
                     "googleCode":this.formValidate.googleNumber,
                 }
-                postHeaderTokenBodyApi(verifyBusinessCode,Cookies.get('loginToken'),bodyParam).then((res) =>{
+                postHeaderTokenBodyApi(verifyBusinessCode,$cookies.get('loginToken'),bodyParam).then((res) =>{
                     if(res.result){
                        this.validateToken = res.result;
                        this.okSubmit()
@@ -365,7 +364,7 @@
                            desc:this.$t(11001)
                      });
                      this.modal1 = false;
-                     this.getUserInfo(Cookies.get('loginToken'))
+                     this.getUserInfo($cookies.get('loginToken'))
                      localStorage.removeItem("ORDER_SESSION");
                      localStorage.removeItem("PASSWORDTOKEN");
                   }
@@ -373,7 +372,7 @@
                })
          },
          cancelbtn(){
-               this.getUserInfo(Cookies.get('loginToken'))
+               this.getUserInfo($cookies.get('loginToken'))
                this.modal1 = false;
          },
       },
@@ -402,9 +401,9 @@
             "businessType":"switch_trade_password",
             "sendCodeType":'email'
          }
-         this.getUserInfo(Cookies.get('loginToken'))
+         this.getUserInfo($cookies.get('loginToken'))
          var ssoProvider = {};
-         let loginToken = Cookies.get('loginToken');
+         let loginToken = $cookies.get('loginToken');
          //创建实例
          this.exchange = new Exchange(ssoProvider);
          if (loginToken) {

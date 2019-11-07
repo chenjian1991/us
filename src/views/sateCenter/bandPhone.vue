@@ -160,7 +160,6 @@ import sendBtn from '../../components/sendBtn'
 import {bindAccount,userInfo,verifyBusinessCode} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import Cookies from 'js-cookie'
 
     export default {
         name:'register',
@@ -246,7 +245,7 @@ import Cookies from 'js-cookie'
                     "googleCode":this.googlecode,
                     "bindAccount":this.phoneNumber+'+'+this.countryName.substring(1),
                 }
-                postHeaderTokenBodyApi(verifyBusinessCode,Cookies.get('loginToken'),bodyParam).then((res) =>{
+                postHeaderTokenBodyApi(verifyBusinessCode,$cookies.get('loginToken'),bodyParam).then((res) =>{
                     if(res.result){
                       this.$Notice.success({
                            title:this.$t(11001),
@@ -354,7 +353,7 @@ import Cookies from 'js-cookie'
         mounted(){
             this.dealCountry();
             this.countryName = '+86';
-            this.getUserInfo(Cookies.get('loginToken'))
+            this.getUserInfo($cookies.get('loginToken'))
             this.ssoEmail = {
                 "userId":localStorage.getItem('loginUserId'),
                 "businessType":"bind_phone",

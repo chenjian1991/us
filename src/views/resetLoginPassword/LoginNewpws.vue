@@ -107,7 +107,7 @@ import {postHeaderTokenBodyApi} from '../../../api/axios.js';
 import {getBrowserMessage} from "@/lib/utils.js"
 import {clearLocalStorage} from '../../config/index.js';
 import {splitDomain} from "@/lib/utils.js"
-import Cookies from 'js-cookie'
+import $cookies from 'js-cookie'
     export default {
         name:'login',
         components:{
@@ -164,7 +164,7 @@ import Cookies from 'js-cookie'
                 }
                 postHeaderTokenBodyApi(resetLoginPassword,localStorage.getItem('validatePasswordToken'),params).then((res) =>{
                   if(res.result){
-                     Cookies.remove('loginToken','',document.domain.split('.').slice(-2).join('.'))
+                     $cookies.remove('loginToken','',document.domain.split('.').slice(-2).join('.'))
                      clearLocalStorage()
                         this.$store.commit('changeLoingStatus',false);
                               this.$Notice.success({

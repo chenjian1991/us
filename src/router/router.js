@@ -41,12 +41,6 @@ import bandPhone from '../views/sateCenter/bandPhone.vue';
 // import deposit from '../views/balances/deposit.vue'
 // import withdrawal from '../views/balances/withdrawal.vue'
 // import transaction_history from '../views/balances/transaction_history.vue'
-
-const balances = () => import(/* webpackChunkName: "balances" */ '../views/balances/balances.vue')
-// import balances from '../views/balances/balances.vue'
-import deposit from '../views/balances/deposit.vue'
-import withdrawal from '../views/balances/withdrawal.vue'
-import transaction_history from '../views/balances/transaction_history.vue'
 import LoginPass from "../views/resetLoginPassword/LoginOrigin.vue";
 import NewLoginpwd from "../views/resetLoginPassword/LoginNewpws.vue";
 import OriginTradePassword from "../views/resetTradePasswrod/TradeOriginpwd.vue";

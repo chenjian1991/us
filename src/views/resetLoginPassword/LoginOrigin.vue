@@ -101,9 +101,6 @@
 <script>
 import {resetLoginPasswordVerify,hashUrl,userInfo} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi,getApi,getHeaderTokenApi} from '../../../api/axios.js';
-import Cookies from 'js-cookie'
-
-
     export default {
         name:'login',
         components:{
@@ -147,7 +144,7 @@ import Cookies from 'js-cookie'
                     "password":this.setSha(this.password),
                     'googleCode':this.googlecode
                   }
-                postHeaderTokenBodyApi(resetLoginPasswordVerify,Cookies.get('loginToken'),params).then((res) =>{
+                postHeaderTokenBodyApi(resetLoginPasswordVerify,$cookies.get('loginToken'),params).then((res) =>{
                   if(res.result){
                         localStorage.setItem('validatePasswordToken',res.result)
                         this.$router.push('/NewLoginpwd')
@@ -196,7 +193,7 @@ import Cookies from 'js-cookie'
         },
         mounted(){
           this.userId = this.$route.query.loginUserId?this.$route.query.loginUserId:localStorage.getItem('loginUserId');
-          this.getUserInfo(Cookies.get('loginToken'))
+          this.getUserInfo($cookies.get('loginToken'))
 
           console.log(this.userId)
         },
