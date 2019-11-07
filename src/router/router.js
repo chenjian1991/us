@@ -15,8 +15,6 @@ const deposit = () => import('../views/newBalances/deposit.vue')
 const withdrawal = () => import('../views/newBalances/withdrawal.vue')
 const transaction_history = () => import('../views/newBalances/transactionHistory.vue')
 const order = () => import('../views/newBalances/order.vue')
-// const inviteFriend = () => import('../views/newBalances/inviteFriend.vue')
-// const invitePartner = () => import("../views/newBalances/invitePartner.vue")
 
 const index = () => import('../views/home/index.vue')
 const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
@@ -59,7 +57,6 @@ import setGoogle from "../views/google/setGoogle.vue";
 import closeGoogle from "../views/google/closeGoogle.vue";
 import identiy from "../views/identity/identity.vue"
 import identityResult from "../views/identity/identityResult.vue"
-import Invite from "../views/invite/Invite.vue"
 import Test from "../views/TestUtil/Test";
 
 //usdd
@@ -422,17 +419,6 @@ const router = new Router({
                },
                component: setGoogle
             },
-            {//邀请好友
-               path: 'invite',
-               name: 'invite',
-               beforeEnter: (to, from, next) => {
-                  checkSSOToken(to, next)
-               },
-               meta: {
-                  title: 'InvitationProgramTitle'
-               },
-               component: Invite
-            },
             {//关闭谷歌验证
                path: 'closeGoogle',
                name: 'closeGoogle',
@@ -577,17 +563,6 @@ const router = new Router({
                component: order
             },
             //资产
-            // {
-            //    path: 'newbalances',
-            //    name: 'balances',
-            //    beforeEnter: (to, from, next) => {
-            //       checkSSOToken(to, next)
-            //    },
-            //    meta: {
-            //       title: 'headerBalances'
-            //    },
-            //    component: newbalances
-            // },
             {
                path: 'balances',
                name: 'balances',

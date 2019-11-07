@@ -68,7 +68,6 @@
    import bigDecimal from 'js-big-decimal' //除法失效
    import PasswordInput from '@/components/PasswordInput.vue'
    import orderFilter from '@/components/orderFilter.vue'
-   import Cookies from 'js-cookie'
    import {
       getSymbolList,
    } from '_api/exchange.js'
@@ -648,7 +647,7 @@
          },
       },
       created(){
-         let loginToken = Cookies.get('loginToken')
+         let loginToken = $cookies.get('loginToken')
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
