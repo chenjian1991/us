@@ -643,7 +643,7 @@
       }
       .partners-box {
          .partners-img {
-            width: 140px;
+            width: 192px;
          }
       }
       .trading-box {
