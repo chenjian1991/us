@@ -1,4 +1,4 @@
-import {getApi, postBaseApi, postHeaderTokenBodyApi, postFormDataApi, postHeaderJsonApi,getHeaderTokenApi} from './axios'
+import {getApi, postBaseApi, postHeaderTokenBodyApi, postFormDataApi,getHeaderTokenApi} from './axios'
 // postApi
 import Vue from 'vue'
 import VueCookies from 'vue-cookies'
@@ -20,15 +20,11 @@ import {
    createPasswordToken,
    createOrder,
    createGBBOOrder,
-   historicalTrailing,
    historicalTimeRange,
    summarizedTimeRange,
    activityList,
    filled,
    currencyList,
-   queryUsdt2usddUrl,
-   exchangeUsdt2usddUrl,
-   USDDInterest,
    identify,
    queryAddress,
    withdrawAddressList,
@@ -37,14 +33,9 @@ import {
    createWithdraw,
    createTicket,
    FFfee,
-   groupDetail,
-   queryMining,
-   weakupGroup,
-   createRealName,
    queryFavoritesPair,
    updateFavoritesPair,
    deleteFavoritesPair,
-   queryTradePassWordURL,
    completedList_v2,
    filledList_v2,
    userInfo
@@ -104,14 +95,7 @@ export const getSymbolList_realtime = () => {
 export const getdepthList = (params) => {
    return getApi(depthList, params)
 }
-//查询USDD
-export const queryUsdt2usdd = (params) => {
-   return getApi(queryUsdt2usddUrl, params)
-}
-//USDDInterest
-export const queryUSDDInterest = (params) => {
-   return getApi(USDDInterest, params)
-}
+
 //创建用户的 Token  
 export const getCreateAccount = (params, data) => {
    return postBaseApi(createAccount, params, data)
@@ -130,22 +114,6 @@ export const getAccountInfo = (params) => {
 //ff手续费折扣
 export const getFFfeesMethod =(params,data)=>{
    return postFormDataApi(FFfee,params,data)
-}
-//查询组队详情
-export const queryGroupDetail = (params) =>{
-   return getApi(groupDetail,params);
-}
-//查询是否已经挖款
-export const queryMiningflag = (params) =>{
-   return getApi(queryMining,params);
-}
-//喊他去挖矿
-export const weakupGroupMethod =(params) =>{
-   return getApi(weakupGroup,{token:params})
-}
-//实名认证
-export const realNameMethod =(token,params) =>{
-   return postHeaderTokenBodyApi(createRealName,token,params)
 }
 
 export const getBalanceList = (params) => {
@@ -180,10 +148,7 @@ export const getCreateTicket = (params, data) => {
 export const withdraw = (params, data) => {
    return postBaseApi(createWithdraw, params, data)
 }
-//USDT => USDD
-export const exchangeUsdt2usdd = (params, data) => {
-   return postFormDataApi(exchangeUsdt2usddUrl, params, data)
-}
+
 //查询用户实名
 export const getIdentify = (params) => {
    return getHeaderTokenApi(identify, '',params)
@@ -226,27 +191,18 @@ export const getCreateGBBOOrder = (params, data) => {
    return postBaseApi(createGBBOOrder, params, data)
 }
 
-
 //签发交易密码
 export const getCreatePasswordToken = (ssoToken, data) => {
    return postHeaderTokenBodyApi(createPasswordToken, ssoToken, data)
 }
 
 //****************K线 */
-export const getHistoricalTrailing = (params) => {
-   return getApi(historicalTrailing, params)
-}
 export const getHistoricalTimeRange = (params) => {
    return getApi(historicalTimeRange, params)
 }
 export const getSummarizedTimeRange = (params) => {
    return getApi(summarizedTimeRange, params)
 }
-export const queryTradePassWordStatus = (token) => {
-   return getHeaderTokenApi(queryTradePassWordURL, {},token)
-}
-
-
 
 
 //封装SSE
