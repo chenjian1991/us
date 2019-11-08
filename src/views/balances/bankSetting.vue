@@ -32,7 +32,7 @@
                <div>
                   <div>
                      <a target="_blank" href="https://www.gcodigital.com/">
-                        <img src="../../assets/images/balances/gco-logo1x.png">
+                        <img src="../../assets/images/balances/gco-logo@2x.png">
                      </a>
                   </div>
                </div>

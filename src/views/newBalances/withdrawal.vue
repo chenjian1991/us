@@ -96,7 +96,7 @@
                   <div class="below-col p-4">
                      <p class="tip">{{$t('czTips')}}</p>
                      <ul>
-                        <li>Minimum withdrawal amount is 0.005 BTC.</li>
+                        <li>Minimum withdrawal amount is {{minAmount}} BTC.</li>
                         <li>We will not credit your account if you attempt to withdraw directly to a crowdfund or ICO.
                         </li>
                         <li>Do not process a withdrawal from a computer or browser that is not secure.</li>
@@ -310,7 +310,7 @@
                      this.currencyPrecision[v.currency] = v.currencyPrecision
                      this.currencyName = v['currencyName']
                      this.coinType = v['coinInfos'][0]['coinType']
-                     this.fee = v['coinInfos'][0]['withdrawMinFee']
+                     this.fee = v['withdrawMinFee']
                      this.minAmount = v["withdrawMinAmount"];
                      this.maxAmount = v["withdrawMaxAmount"];
                      if (v['coinInfos'].length !== 1) {

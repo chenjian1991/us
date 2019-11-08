@@ -180,6 +180,7 @@ import {geeTest} from '../../../api/usersystem.js'
             handleSubmit (name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
+                            this.loaded = false;
                             this.checkGeetest()
                     } 
                 })
@@ -199,11 +200,14 @@ import {geeTest} from '../../../api/usersystem.js'
                                 },
                             }
                             this.loginFunc(params)
+                    }).catch((error)=>{
+                            this.loaded = true;
                     })
             },
             loginFunc(params){
                  clearLocalStorage();//每次登录成功之前都需要清楚所有token
                 postBaseApi(login,{},params).then((res)=>{
+                    this.loaded = true;
                     localStorage.setItem('deviceCode',this.deviceObj.browserVersion)
                     this.loginObj = res;
                     if(res.beforeToken){//绑定谷歌了
@@ -249,8 +253,10 @@ import {geeTest} from '../../../api/usersystem.js'
                        
                     }
                 }).catch((error)=>{
-                 
-
+                    this.loaded = true;
+                    if(error.data.code==="Cx000024"){
+                        this.$router.push('/verfifyEmail')
+                    }
                 })
             },
             confirm(){

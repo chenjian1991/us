@@ -52,7 +52,7 @@
                         <li
                            class="nav-item u-header__nav-item">
                            <router-link class="btn btn-sm btn-primary transition-3d-hover d-inline-block register-btn"
-                                        to='/register'>GET STARTED
+                                        to='/register'>Join the Beta
                            </router-link>
                         </li>
                      </ul>
@@ -65,11 +65,11 @@
                               My Account
                            </router-link>
                            <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu">
-                              <li class="hs-has-sub-menu">
+                              <!-- <li class="hs-has-sub-menu">
                                  <router-link to='Dashboard' class="nav-link u-header__sub-menu-nav-link">
                                     Dashboard
                                  </router-link>
-                              </li>
+                              </li> -->
                               <li class="hs-has-sub-menu">
                                  <router-link to='/balances' class="nav-link u-header__sub-menu-nav-link">
                                     Balances

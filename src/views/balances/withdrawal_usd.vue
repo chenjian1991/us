@@ -48,7 +48,7 @@
                   </Button>
                   <div class="logo-box">
                      <a target="_blank" href="https://www.gcodigital.com/">
-                        <img src="../../assets/images/balances/gco-logo1x.png">
+                        <img src="../../assets/images/balances/gco-logo@2x.png">
                      </a>
                      <img src="../../assets/images/balances/pt-logo@2x.png" class="logo">
                   </div>

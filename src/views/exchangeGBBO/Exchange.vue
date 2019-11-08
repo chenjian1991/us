@@ -2341,7 +2341,7 @@
               .then((res) => {
                 if(!res.code) {
                   // 是否设置交易密码
-                  this.isSetTradePasswrod = res.setTradePassword;
+                  this.isSetTradePasswrod = res.data.setTradePassword;
                 }
               })
         }

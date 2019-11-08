@@ -442,6 +442,7 @@ const clickoutside = {
                 this.srcCode = getUrlKey('src') //获取韩国空投的渠道ID
                 this.$refs[name].validate((valid) => {
                     if (valid) {
+                        this.loaded = false;
                         this.checkGeetest()
                     }
                 })
@@ -579,7 +580,7 @@ const clickoutside = {
             emailRegisterFun(params){//邮箱注册
                 postBaseApi(emailRegister,'',params).then((res) =>{
                     if(res.result){
-                         this.loaded = true;
+                            this.loaded = true;
                             let emailAdderss= this.formValidate.emailNumber;
                             localStorage.setItem('emailAdderss',emailAdderss);
                              this.$router.push({
