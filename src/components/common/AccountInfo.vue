@@ -11,7 +11,7 @@
                      <li class="breadcrumb-item">
                         <router-link to="/home" class="breadcrumb-link">{{$t('headerhome')}}</router-link>
                      <li class="breadcrumb-item">
-                        <router-link to="/accountInfo" class="breadcrumb-link">{{$t('账户')}}</router-link>
+                        <router-link to="/Dashboard" class="breadcrumb-link">{{$t('账户')}}</router-link>
                      </li>
                      <!-- <li class="breadcrumb-item active" aria-current="page">{{name}} </li> -->
                   </ol>
@@ -67,7 +67,7 @@
                                data-event="hover"
                                data-animation-in="slideInUp"
                                data-animation-out="fadeOut">
-                              <router-link to='/accountInfo' class="nav-link u-header__nav-link hoverwhite">
+                              <router-link to='/Dashboard' class="nav-link u-header__nav-link hoverwhite">
                                  {{$t('总览')}}
                               </router-link>
                            </li>

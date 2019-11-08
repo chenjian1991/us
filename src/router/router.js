@@ -169,8 +169,8 @@ const router = new Router({
                component: resetNewpass
             },
             {
-               path: '/accountInfo',
-               name: 'accountInfo',
+               path: '/Dashboard',
+               name: 'Dashboard',
                meta: {
                   title: '个人中心title'
                },

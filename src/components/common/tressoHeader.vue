@@ -65,11 +65,11 @@
                               My Account
                            </router-link>
                            <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu">
-                              <!--<li class="hs-has-sub-menu">-->
-                              <!--<router-link to='' class="nav-link u-header__sub-menu-nav-link">-->
-                              <!--Dashboard-->
-                              <!--</router-link>-->
-                              <!--</li>-->
+                              <li class="hs-has-sub-menu">
+                                 <router-link to='Dashboard' class="nav-link u-header__sub-menu-nav-link">
+                                    Dashboard
+                                 </router-link>
+                              </li>
                               <li class="hs-has-sub-menu">
                                  <router-link to='/balances' class="nav-link u-header__sub-menu-nav-link">
                                     Balances
@@ -203,7 +203,7 @@
          } else {
             this.isLogin = false;
          }
-         document.onclick = function () {
+         document.getElementsByClassName('u-header__navbar-nav').onclick=function(){
             if (document.getElementsByClassName('hs-mega-menu-opened')[0]) {//交易
                setTimeout(() => {
                   document.getElementsByClassName('hs-mega-menu-opened')[0].childNodes[1].style.display = 'none'
@@ -214,6 +214,17 @@
                }, 300)
             }
          }
+         // document.onclick = function () {
+         //    if (document.getElementsByClassName('hs-mega-menu-opened')[0]) {//交易
+         //       setTimeout(() => {
+         //          document.getElementsByClassName('hs-mega-menu-opened')[0].childNodes[1].style.display = 'none'
+         //       }, 300)
+         //    } else if (document.getElementsByClassName('hs-sub-menu-opened')[0]) {
+         //       setTimeout(() => {
+         //          document.getElementsByClassName('hs-sub-menu-opened')[0].childNodes[1].style.display = 'none'
+         //       }, 300)
+         //    }
+         // }
 
          $(".js-mega-menu").HSMegaMenu({
             event: "hover",

@@ -125,7 +125,7 @@
                         <div class="mb-4">
                            <label class="h6 font-size-14 mb-3">{{$t('newK1idC')}}</label>
                            <Select @on-change='changeCountry' v-model="stepTwoForm.country" size="large" disabled>
-                              <Option v-for="item in country" :value="item.locale" :key="id"
+                              <Option v-for="(item,i) in country" :value="item.locale" :key="i"
                                       :label="language==='zh-CN'?item.zh:item.en">
                                  <img class="flag" :src="item.image"/>
                                  <span
@@ -137,7 +137,7 @@
                            <label class="h6 font-size-14 mb-3">{{$t('newK1idT')}}</label>
                            <Select @on-change='changeIdType' v-model="stepTwoForm.idType" size="large"
                                    :disabled="!isUS">
-                              <Option v-for="item in idType" :key="id" :value="item.value" :label="$t(item.label)">
+                              <Option v-for="(item,i) in idType" :key="i" :value="item.value" :label="$t(item.label)">
                                  {{$t(item.label)}}
                               </Option>
                            </Select>
@@ -165,7 +165,7 @@
                                       alt="">
                                  <div class="upload-img-contain" style="visibility:visible;">
                                     <div v-if="item.status === 'finished' && urlPath" class="demo-upload-list"
-                                         v-for="item in uploadList" :key="id">
+                                         v-for="(item,i) in uploadList" :key="i">
                                        <template>
                                           <img v-if="urlPath" :src="urlPath">
                                           <div class="demo-upload-list-cover">
@@ -215,7 +215,7 @@
                                       alt="">
                                  <div class="upload-img-contain" style="visibility:visible;">
                                     <div v-if="item.status === 'finished' && urlPathTWO " class="demo-upload-list"
-                                         v-for="item in uploadListTWO" :key="id">
+                                         v-for="(item,i) in uploadListTWO" :key="i">
                                        <template>
                                           <img v-if="urlPathTWO" :src="urlPathTWO">
                                           <div class="demo-upload-list-cover">
@@ -265,7 +265,7 @@
                                       alt="">
                                  <div class="upload-img-contain" style="visibility:show;">
                                     <div v-if="item.status === 'finished'&& urlPathTHREE" class="demo-upload-list"
-                                         v-for="item in uploadListThree" :key="id">
+                                         v-for="(item,i) in uploadListThree" :key="i">
                                        <template>
                                           <img v-if="urlPathTHREE" :src="urlPathTHREE">
                                           <div class="demo-upload-list-cover">
@@ -402,7 +402,7 @@
                                  <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddReg')}}<span
                                     class="red-color"> *</span></label>
                                  <Select v-model="stepThreeForm.region" size="large">
-                                    <Option v-for="item in state" :value="item.locale" :key="id"
+                                    <Option v-for="(item,i) in state" :value="item.locale" :key="i"
                                             :label="language==='zh-CN'?item.zh:item.en">
                                        <img class="flag" :src="item.image"/>
                                        <span style="color:#5a626d;font-size:14px;margin-left:10px;">{{language==='zh-CN'?item.zh:item.en}}</span>
@@ -489,7 +489,7 @@
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq1')}}</label>
                            <Select v-model="stepFourForm.goal" size="large">
-                              <Option v-for="item in goal" :value="item.value" :label="item.title" :key="id">
+                              <Option v-for="(item,i) in goal" :value="item.value" :label="item.title" :key="i">
                                  {{item.title}}
                               </Option>
                            </Select>
@@ -497,7 +497,7 @@
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq2')}}</label>
                            <Select v-model="stepFourForm.source" size="large">
-                              <Option v-for="item in source" :value="item.value" :label="item.title" :key="id">
+                              <Option v-for="(item,i) in source" :value="item.value" :label="item.title" :key="i">
                                  {{item.title}}
                               </Option>
                            </Select>
@@ -505,7 +505,7 @@
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq3')}}</label>
                            <Select v-model="stepFourForm.occupation" size="large">
-                              <Option v-for="item in occupation" :value="item.value" :label="item.title" :key="id">
+                              <Option v-for="(item,i) in occupation" :value="item.value" :label="item.title" :key="i">
                                  {{item.title}}
                               </Option>
                            </Select>

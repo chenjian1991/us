@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueCookies from 'vue-cookies'
 Vue.use(VueCookies)
 import {Exchange} from '@/interface/exchange.js'
-// import {OTCJS} from '@/interface/otc.js'
 import bigDecimal from 'js-big-decimal' //除法失效
 
 import {
@@ -22,7 +21,6 @@ let currencyPrecision = {}
 let quoteList = []
 
 let balancesList = []
-let otcBalancesList = []
 
 function currencyList() {//处理币种列表
    return new Promise((resolve) => {
@@ -63,15 +61,6 @@ function getBalanceList() {
    });
 }
 
-// function getOtcAssetList() {
-//    return new Promise((resolve) => {
-//       let otcJsObj = new OTCJS()
-//       otcJsObj.getAssetList((res) => {
-//          otcBalancesList = res
-//          resolve(otcBalancesList)
-//       })
-//    });
-// }
 
 function transferNumber(number, num = 8) {//保x留小数位与科学计数法转换
    if (number === '--') {
@@ -160,25 +149,3 @@ export function getBalancesValuation() {
       })()
    });
 }
-
-// export function getOtcValuation() {
-//    return new Promise((resolve) => {
-//       (async () => {
-//          await getOtcAssetList()
-//          await function () {
-//             otcBalancesList.map(balance => {
-//                let precision = 6
-//                balance['available'] = Number(balance['available'])
-//                balance['frozen'] = Number(balance['frozen'])
-//                balance['total'] = dealNumber(balance['available'] + balance['frozen'], precision)//计算总值
-//                balance['available'] = dealNumber(balance['available'], precision)
-//                balance['frozen'] = dealNumber(balance['frozen'], precision)
-//             })
-//          }()
-//          let result = await getValuation(otcBalancesList)
-//          resolve(result)
-//       })()
-//    });
-// }
-
-

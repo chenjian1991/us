@@ -26,9 +26,9 @@ export function clearLocalStorage(){
     localStorage.setItem('countryLanguage',lan)
     localStorage.setItem('deviceCode',deviceCode)
     localStorage.setItem('currentCurrency',currentCurrency)
-    $cookies.remove('loginToken',{domain:siteDoamin})
-    
-    // localStorage.removeItem("ACCOUNT_TOKEN");
+    $cookies.remove('loginToken','',siteDoamin)
+
+     // localStorage.removeItem("ACCOUNT_TOKEN");
     // localStorage.removeItem("ORDER_TOKEN");
     // localStorage.removeItem("ASSET_TOKEN");
     // localStorage.removeItem("UTIL_TOKEN");
@@ -54,11 +54,12 @@ export function clearLocalStorage(){
     // window.location.reload();
   }, 100)
 }
-//种cookies 
+//种cookies
 export function setCookies(token){
-  let index = document.domain.indexOf('.')+1
-  let siteDoamin = document.domain.substr(index)
-   $cookies.set('loginToken',token,{expires:2,domain:siteDoamin})
+   let index = document.domain.indexOf('.')+1
+   let siteDoamin = document.domain.substr(index)
+   $cookies.set('loginToken',token,2*24*60*60,'',siteDoamin)
+
 }
 
 //币币交易页面聊天服务地址
