@@ -1,7 +1,7 @@
 import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postHeaderTokenBodyParamsApi} from './axios'
 
 import {
-   realTime, verifyAddress, userInfo, ssoSend, withdrawCodeVerify, identify, ssoGoogleVerify, ssoCodeVerify,
+   realTime, verifyAddress, userInfo, businessSend, withdrawCodeVerify, identify, ssoGoogleVerify, ssoCodeVerify,
    identifySubmitUrl, identifyUpdateUrl,
    identifyInfo as identifyQueryUrl, uploadPic, identifyPhoto
 } from "./urls";
@@ -18,7 +18,7 @@ export const getUserInfo = (params, token) => {
 }
 
 export const send = (params, data) => {
-   return postHeaderTokenBodyApi(ssoSend, params, data)
+   return postHeaderTokenBodyApi(businessSend, params, data)
 }
 
 export const codeVerify = (params, data) => {
