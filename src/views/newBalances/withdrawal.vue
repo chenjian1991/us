@@ -310,7 +310,7 @@
                      this.currencyPrecision[v.currency] = v.currencyPrecision
                      this.currencyName = v['currencyName']
                      this.coinType = v['coinInfos'][0]['coinType']
-                     this.fee = v['coinInfos'][0]['withdrawMinFee']
+                     this.fee = v['withdrawMinFee']
                      this.minAmount = v["withdrawMinAmount"];
                      this.maxAmount = v["withdrawMaxAmount"];
                      if (v['coinInfos'].length !== 1) {
