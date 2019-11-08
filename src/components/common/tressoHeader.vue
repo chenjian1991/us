@@ -108,8 +108,8 @@
 </template>
 
 <script>
-   import {postHeaderTokenBodyApi} from "_api/axios.js";
-   import {logout,} from "../../../api/urls.js";
+   import {postHeaderTokenBodyApi,getHeaderTokenApi} from "_api/axios.js";
+   import {logout} from "../../../api/urls.js";
    import {getUserInfo} from "_api/balances.js";
    import {clearLocalStorage} from "../../config/index";
 
@@ -159,11 +159,23 @@
             })
          },
          quitFun() {
-            postHeaderTokenBodyApi(logout, $cookies.get("loginToken"), {}).then(
-               res => {
-                  // console.log(res)
+               let params = {
+                  userId: localStorage.getItem("loginUserId")
+               };
+               getHeaderTokenApi(logout, params, $cookies.get("loginToken")).then(
+                res => {
+                  if (res.data.result) {
+                     clearLocalStorage();
+                        setTimeout(() => {
+                        this.$router.push("/home");
+                        }, 500);
+                     this.$Notice.success({
+                        title: this.$t(11001),
+                        desc: this.$t(11001)
+                     });
+                  }
                }
-            );
+               );
             //更新自选的币种
             this.$store.dispatch("updateMarkSymbol");
             this.$store.commit("changeLoingStatus", false);

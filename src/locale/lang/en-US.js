@@ -1258,6 +1258,9 @@ export default {
    设置提现地址更安全: 'To external address',
    kycModalText1: 'Your ID verification has not been approved yet!',
    kycModalText2: 'You must pass identity verification before engaging in any deposit, withdrawal, trade, and all other fund, token, and currency functions.',
+   headerBalances: 'Balances',
+   CreateAPISMSAuthentication: 'SMS Authentication',
+
 
 
 
