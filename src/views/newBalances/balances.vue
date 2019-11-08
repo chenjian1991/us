@@ -635,7 +635,6 @@
          init() {
             let currencyList = new Promise(resolve => {
                getCurrencyList().then(result => {//币种
-                  console.log(result)
                   this.currencyList = result.filter(v => {
                      v.siteType = v.siteType.filter(value => {//siteTypeList 所有站
                         if (value !== 'S') {
@@ -710,8 +709,8 @@
             })
          },
          getValuation() {//计算估值
-            let BTC_USDD = this.realTimeList['BTCUSDD']
-            let ETH_USDD = this.realTimeList['ETHUSDD']
+            console.log(this.realTimeList)
+            let BTC_USDD = this.realTimeList['BTCUSD']
             this.total_USDT = 0
             this.total_BTC = 0
             if (this.balancesList.length !== 0) {
@@ -729,12 +728,9 @@
                   this.mapCurrencyList(v, ['available', 'frozen', 'total'], [v['available'], v['frozen'], v['total']])
                })
                this.balancesList.map(v => {
+                  console.log(v)
                   if (this.realTimeList[`${v.currency}USD`]) {//和USDD有交易对
-                     v['USDT'] = this.transferNumber(bigDecimal.multiply(v.total, this.realTimeList[`${v.currency}USDD`]), 2)
-                  } else if (this.realTimeList[`${v.currency}ETH`]) {//和ETH有交易对
-                     let last = this.realTimeList[`${v.currency}ETH`]
-                     let symbolETH = bigDecimal.multiply(v.total, last)
-                     v['USDT'] = this.transferNumber(bigDecimal.multiply(symbolETH, ETH_USDD || 0), 2)
+                     v['USDT'] = this.transferNumber(bigDecimal.multiply(v.total, this.realTimeList[`${v.currency}USD`]), 2)
                   } else if (v.currency === 'USD') {//usdd本身
                      v['USDT'] = this.transferNumber(v.total, 2)
                   }
