@@ -49,7 +49,7 @@
                            <div class="dataInner pl-5 pr-5">
                               <div class="f-16 d-flex justify-content-between mb-2">
                                  <span class="redNum">{{gbboList.sell.price}}</span>
-                                 <span>{{gbboList.sell.exchange}}</span>
+                                 <span>From:{{gbboList.sell.exchange|marketName}}</span>
                               </div>
                               <div class="f-14 c-fff">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
                            </div>
@@ -61,7 +61,7 @@
                            <div class="dataInner pl-5 pr-5">
                               <div class="f-16 d-flex justify-content-between mb-2">
                                  <span class="greenNum">{{gbboList.buy.price}}</span>
-                                 <span class="c-fff">{{gbboList.buy.exchange}}</span>
+                                 <span class="c-fff">From:{{gbboList.buy.exchange|marketName}}</span>
                               </div>
                               <div class="f-14 c-fff">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
                            </div>
@@ -77,10 +77,13 @@
                                     <div class="f-14 c-fff">Est Return {{gbboList.avg.change}}</div>
                                  </div>
                                  <div class="d-flex align-items-center">
-                                    <router-link :to="{path:'/exchange',query:{symbol:symbol}}"
+                                    <!-- <router-link :to="{path:'exchange',query:{symbol:symbol}}"
                                                 class="btn btn-sm btn-primary transition-3d-hover c-blue f-14 trade-btn">
                                        Instant Trade
-                                    </router-link>
+                                    </router-link> -->
+                                    <div class="btn btn-sm btn-primary c-blue f-14 trade-btn lock">
+                                       Instant Trade
+                                    </div>
                                  </div>
                               </div>
                            </div>
@@ -228,7 +231,7 @@
       <div class="trading-box bgc-fff p-lg-11 t-c pt-5 pb-5">
          <div class="container p-lg-11">
             <h3 class="f-36 c-d-black f-w t-c">Want more efficient trading?</h3>
-            <p class="f-18 c-d-gray mt-3">Tresso's tech-driven trading platform has launched.</p>
+            <p class="f-18 c-d-gray mt-3">Tresso is currently in closed beta. Sign up now to be first on the list.</p>
             <router-link to='/register' class="btn btn-sm transition-3d-hover bgc-blue f-14 mt-7 c-fff trading-btn">
                Join the Beta
             </router-link>
@@ -261,9 +264,18 @@
       },
       filters: {
          compare: function (value) {
-            if (!value) return ''
+            //if (!value) return ''
             if (value < 0) return 0
             return value
+         },
+         marketName(name){
+            if(name === 'E55'){
+               return 'TRESSO'
+            }else if(name === 'GEMINI' || name === 'KRAKEN' || name === 'BITTREX' || name === 'COINBASEPRO'){
+               return name
+            }else{
+               return 'Node of Apifiny'
+            }
          }
       },
       data() {
@@ -693,6 +705,12 @@
                }
                .greenNum{
                   color:#66B76D;
+               }
+               .lock{
+                  background-color: gray;
+                  border: none;
+                  color: #fff;
+                  cursor: not-allowed;
                }
             }
          }
