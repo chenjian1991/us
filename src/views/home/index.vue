@@ -11,7 +11,7 @@
                opportunities to win. All in a single account.
             </section>
             <router-link to='/register' class="btn btn-sm btn-primary transition-3d-hover button bgc-blue f-14 mt-7">
-               GET STARTED
+               Join the Beta
             </router-link>
          </div>
       </div>
@@ -230,7 +230,7 @@
             <h3 class="f-36 c-d-black f-w t-c">Want more efficient trading?</h3>
             <p class="f-18 c-d-gray mt-3">Tresso's tech-driven trading platform has launched.</p>
             <router-link to='/register' class="btn btn-sm transition-3d-hover bgc-blue f-14 mt-7 c-fff trading-btn">
-               Get Started
+               Join the Beta
             </router-link>
          </div>
       </div>
