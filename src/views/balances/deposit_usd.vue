@@ -36,7 +36,7 @@
                   </Button>
                   <div class="logo-box">
                      <a target="_blank" href="https://www.gcodigital.com/">
-                        <img src="../../assets/images/balances/gco-logo1x.png">
+                        <img src="../../assets/images/balances/gco-logo@2x.png">
                      </a>
                      <img src="../../assets/images/balances/pt-logo@2x.png" class="logo">
                   </div>
@@ -88,7 +88,7 @@
       getCurrencyList,
    } from '_api/exchange.js'
    import {
-      getIdentify,
+      identifyQuery,
    } from '_api/balances.js'
 
    export default {
@@ -102,7 +102,7 @@
             //输入框
             currency: 'USD',
             amount: '',
-            bankAccountName: localStorage.getItem('bankAccountName') || '',
+            bankAccountName: '',
             minAmount: 100,
             maxAmount: '',
             currencyPrecision: '',
@@ -215,16 +215,16 @@
             this.showModal = false
          },
          getIdentify() { //实名认证
-            if (this.bankAccountName) {
-               this.information[0]['value'] = this.bankAccountName
-               this.information = JSON.parse(JSON.stringify(this.information))
-            } else {
-               getIdentify(this.loginToken).then(res => {
-                  localStorage.setItem('bankAccountName', `${res.data.firstName} ${res.data.lastName}`)
-                  this.information[0].value = this.bankAccountName = localStorage.getItem('bankAccountName')
+            identifyQuery({
+               userId: localStorage.getItem('loginUserId'),
+               nameList: 'THIRD_PT'
+            }, this.loginToken).then(res => {
+               if (res.data.length) {
+                  const formJson = res.data[0].data
+                  this.information[0].value = this.bankAccountName = `${formJson.firstName} ${formJson.lastName}`
                   this.information = JSON.parse(JSON.stringify(this.information))
-               })
-            }
+               }
+            })
          },
       },
       beforeMount() {
