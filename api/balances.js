@@ -1,9 +1,19 @@
 import {getApi, postHeaderTokenBodyApi, getHeaderTokenApi, postHeaderTokenBodyParamsApi} from './axios'
 
 import {
-   realTime, verifyAddress, userInfo, businessSend, withdrawCodeVerify, identify, ssoGoogleVerify, ssoCodeVerify,
-   identifySubmitUrl, identifyUpdateUrl,
-   identifyInfo as identifyQueryUrl, uploadPic, identifyPhoto
+   realTime,
+   verifyAddress,
+   userInfo,
+   businessSend,
+   verifyBusinessCode as withdrawCodeVerify,
+   identify,
+   ssoGoogleVerify,
+   ssoCodeVerify,
+   identifySubmitUrl,
+   identifyUpdateUrl,
+   identifyInfo as identifyQueryUrl,
+   uploadPic,
+   identifyPhoto
 } from "./urls";
 
 export const getRealtimeList = () => {
