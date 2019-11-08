@@ -231,9 +231,9 @@
       <div class="trading-box bgc-fff p-lg-11 t-c pt-5 pb-5">
          <div class="container p-lg-11">
             <h3 class="f-36 c-d-black f-w t-c">Want more efficient trading?</h3>
-            <p class="f-18 c-d-gray mt-3">Tresso's tech-driven trading platform has launched.</p>
+            <p class="f-18 c-d-gray mt-3">Tresso is currently in closed beta. Sign up now to be first on the list.</p>
             <router-link to='/register' class="btn btn-sm transition-3d-hover bgc-blue f-14 mt-7 c-fff trading-btn">
-               Get Started
+               Join the Beta
             </router-link>
          </div>
       </div>

@@ -5,10 +5,10 @@
       <div class="answer container">We believe that trading should be transparent, neutral, and give everyone the best chance to win. </div>
     </div>
     <div class="describe">
-      <div class="describeInner container">We’re a team of 30+ visionaries, tech-geeks, enthusiasts, and innovators - none of which are mutually exclusive. The one commonality we all share is our passion for finding simple solutions to complex problems.</div>
+      <div class="describeInner container">We’re an NYC-based team of visionaries, tech-geeks, enthusiasts, and innovators with a common goal: discover simple solutions to complex problems. Tresso is dedicated to helping our traders realize the best possible outcomes through amplified trading options, speed and efficiency, We’re elevating the trading experience in crypto, token and digital asset markets.  Together, we’re driving trading innovation.</div>
     </div>
     <div class="team container">
-      <div class="title">Meet the Management Team </div>
+      <div class="title">Meet the Tresso Team</div>
       <div class="members">
         <div class="member" v-for="(item,index) in members" :key="index">
           <div class="des">
@@ -33,26 +33,44 @@ export default {
         {
           name:"David Weild",
           position:"Co-Chairman",
-          experience:"David is a former Vice Chairman of Nasdaq. He priced over 1,000 equity offerings as head of top 10 investment bank and his thought leadership led him to be called the “Father of JOBS Act”.",
-          alpha:require("../../assets/images/about/David.png"),
+          experience:"David is a former Vice Chairman of Nasdaq. As head of a Top 10 investment bank, he priced over 1,000 equity offerings He is known for his leadership with the JOBS Act.",
+          alpha:require("../../assets/images/about/David Weild.png"),
         },
         {
           name:"Haohan Xu",
-          position:"CEO and Co-founder",
-          experience:"Haohan is fintech investor and founder of Apifiny. Haohan holds bachelor degree from Columbia University, and double major in computer science and operations research.",
-          alpha:require("../../assets/images/about/Haohan.png"),
+          position:"CEO and Co-Founder",
+          experience:"Haohan is a fintech investor and Co-Founder of Apifiny. Haohan holds a bachelor’s degree from Columbia University, with a double major in computer science and operations research.",
+          alpha:require("../../assets/images/about/Haohan Xu.png"),
         },
         {
           name:"Ashu Swami",
-          position:"Chief Technology Officer Co-founder",
-          experience:"Ashu Swami previously was the SPV of Quadeye Securities (mining), pioneered trading swaps, operated cloud datacenters, and managed an investment fund. ",
-          alpha:require("../../assets/images/about/Ashu.png"),
+          position:"Chief Technology Officer and Co-Founder",
+          experience:"Previously, Ashu headed an SPV of Quadeye Securities which pioneered and traded mining swaps, operated cloud mining data centers, and managed a mining investment fund.",
+          alpha:require("../../assets/images/about/Ashu Swami.png"),
         },
         {
           name:"Bob Morris",
           position:"Chief Compliance Officer",
-          experience:"Bob has managed numerous compliance teams, including AML and Global Economic Sanction transaction monitoring, KYC and CDD remediation, SAR, trade, Bitcoin and Exchanges.",
-          alpha:require("../../assets/images/about/Bob.png"),
+          experience:"Bob has extensive experience in AML/KYC compliance regulation. He founded his own Broker-Dealer and has led numerous trading firms. He also has served as a FINRA arbitrator.",
+          alpha:require("../../assets/images/about/Bob Morris.png"),
+        },
+        {
+          name:"Alison Ehrmann",
+          position:"SVP of Global Marketing",
+          experience:"Alison has held leadership positions in digital marketing, ecommerce, customer experience and subscriptions at ToysRUs, FreshDirect, Conde Nast, Time Warner and Barnes&Noble.com.",
+          alpha:require("../../assets/images/about/Alison Ehrmann.png"),
+        },
+        {
+          name:"CHARLIE YEH",
+          position:"-",
+          experience:"Charlie is an experienced banking lawyer. He previously helped Digital Asset's clients design next generation settlement systems on DLT. Prior to that, Charlie was an Executive Director at JPMorgan covering its clearance and collateral management functions. ",
+          alpha:require("../../assets/images/about/CHARLIE YEH.png"),
+        },
+        {
+          name:"SIMON GRUNFELD",
+          position:"SVP of Operations",
+          experience:"Simon‘s background is mostly from the retail FX and IT solutions marketplace. Simon become a registered CTA (2006) to form Gallant FX and then co- founded Gallant VPS.",
+          alpha:require("../../assets/images/about/SIMON GRUNFELD.png"),
         },
       ]
     }
