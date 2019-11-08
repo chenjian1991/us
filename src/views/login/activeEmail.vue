@@ -50,9 +50,7 @@ import {getUrlKey,getBrowserMessage} from '@/lib/utils.js'
         },
         methods:{
             gotoSite(){
-                if(!getUrlKey('code')){
-                    return false;
-                }
+            
                 let param = {
                     "email": getUrlKey('email').replace(/(\")/g, ""),
                     "activationCode": getUrlKey('code').replace(/(\")/g, ""),
@@ -85,8 +83,10 @@ import {getUrlKey,getBrowserMessage} from '@/lib/utils.js'
         },
         mounted(){
             this.emailName = localStorage.getItem('emailAdderss')
-            this.gotoSite()
             this.deviceObj = getBrowserMessage();
+            this.gotoSite()
+
+            console.log(this.deviceObj)
         },
 
       
