@@ -724,6 +724,7 @@
       },
       data() {
          return {
+           openTradePassword: false, // 是否打开交易密码
            // 是否设置交易密码
            isSetTradePasswrod: false,
             //2019性能优化-左侧币种选择栏
@@ -1795,7 +1796,7 @@
                }.bind(this), 1000);
 
                //继续撤单
-            } else if (this.$store.state.exchange.inputTradePassWordStatus) {
+            } else if (this.openTradePassword) {
                //密码
                if (getValue("ORDER_SESSION")) {
                   //密码为失效
@@ -1921,7 +1922,7 @@
                   this.$router.push('/originTradePassword')
                }.bind(this), 1000);
             }
-            else if (this.$store.state.exchange.inputTradePassWordStatus) {              
+            else if (this.openTradePassword) {              
               //需要输入密码
               if (getValue("ORDER_SESSION")) {
                 this.exchange.createGBBOOrder({
@@ -2039,7 +2040,7 @@
                   this.$router.push('/originTradePassword')
                }.bind(this), 1000);
             }
-            else if (this.$store.state.exchange.inputTradePassWordStatus) {
+            else if (this.openTradePassword) {
                //需要输入交易密码
                if (getValue("ORDER_SESSION")) {
                   this.sellDisabled = true;                  
@@ -2123,7 +2124,7 @@
             this.$refs.tradeHistory.scrollTop = 0
          },
          submitPassWord() {//提交交易密码页面
-            if (this.$store.state.exchange.inputTradePassWordStatus && this.showPassWordPage) {
+            if (this.openTradePassword && this.showPassWordPage) {
                if (this.exchangePassWord == null || this.exchangePassWord.length < 6) {
                   this.$Notice.warning({
                      title: this.$t('bbjyInputPassword'),
@@ -2338,11 +2339,13 @@
          }
         if($cookies.get('loginToken')){
           getUserInfo({userId: localStorage.getItem('loginUserId')},$cookies.get('loginToken'))
-              .then((res) => {
-                if(!res.code) {
-                  // 是否设置交易密码
-                  this.isSetTradePasswrod = res.data.setTradePassword;
-                }
+              .then((res) => {                
+                const { data: { setTradePassword, openTradePassword } } = res
+                // 是否设置交易密码
+                this.isSetTradePasswrod = setTradePassword
+                // 是否打开交易密码
+                this.openTradePassword = openTradePassword
+                
               })
         }
       },
