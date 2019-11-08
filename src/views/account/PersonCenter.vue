@@ -59,10 +59,10 @@
               <div class="row mb-5">
                 <div class="col-sm-12 mb-4 mb-sm-0">
                   <div>{{$t('账户总估值')}}</div>
-                  <span class="font-size-3 font-weight-medium text-lh-sm">{{exchangeAccount && exchangeAccount.total_BTC}} BTC </span>
-                  <div class="mb-1">
+                  <span class="font-size-3 font-weight-medium text-lh-sm">{{totalBTC}} BTC </span>
+                  <!-- <div class="mb-1">
                     <span class="text-secondary font-size-1"> ≈ {{exchangeAccount && exchangeAccount.legalCurrency}} {{exchangeAccount && exchangeAccount.name}}</span>
-                  </div>
+                  </div> -->
                 </div>
 
                 <div class="col-sm-6 align-self-end">
@@ -240,6 +240,7 @@ export default {
       modal1:false,
       totalUSD:"",
       identifyState:'',
+      totalBTC:'',
     };
   },
   components: {
@@ -270,7 +271,10 @@ export default {
                this.exchange.balance(function (result) {//获取资产
                   result.forEach(item => {
                       if(item.currency==='USD'){
-                          this.totalUSD = item.available?item.available:'--';
+                          this.totalUSD = item.amount?item.amount:'--';
+                      }
+                      if(item.currency==='BTC'){
+                          this.totalBTC = item.amount?item.amount:'--';
                       }
                   });
                   resolve()

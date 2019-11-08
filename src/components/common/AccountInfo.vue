@@ -63,14 +63,14 @@
                      <div id="breadcrumbNavBar" class="collapse navbar-collapse u-header__navbar-collapse">
                         <ul class="navbar-nav u-header__navbar-nav">
                            <!-- General -->
-                           <li class="nav-item hs-has-sub-menu u-header__nav-item"
+                           <!-- <li class="nav-item hs-has-sub-menu u-header__nav-item"
                                data-event="hover"
                                data-animation-in="slideInUp"
                                data-animation-out="fadeOut">
                               <router-link to='/Dashboard' class="nav-link u-header__nav-link hoverwhite">
                                  {{$t('总览')}}
                               </router-link>
-                           </li>
+                           </li> -->
                            <!-- General -->
                            <!-- Account Settings -->
                            <li class="nav-item hs-has-sub-menu u-header__nav-item"
