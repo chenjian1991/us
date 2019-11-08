@@ -26,7 +26,7 @@ import bankSetting from '../views/balances/bankSetting.vue'
 const order = () => import('../views/newBalances/order.vue')
 const kyc = () => import('../views/kyc/kyc.vue')
 
-const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
+// const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import('../views/exchangeGBBO/Exchange.vue')
 
 const Login = () => import('../views/login/Login.vue')
@@ -324,30 +324,30 @@ const router = new Router({
                ]
             },
 
-            {//amlKyc
-               path: 'amlKyc',
-               name: 'amlKyc',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: amlKyc
-            },
-            {//amlkycResult
-               path: 'amlkycResult',
-               name: 'amlkycResult',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: amlkycResult
-            },
-            {//editAmlKyc
-               path: 'editAmlKyc',
-               name: 'editAmlKyc',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: editAmlKyc
-            },
+            // {//amlKyc
+            //    path: 'amlKyc',
+            //    name: 'amlKyc',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: amlKyc
+            // },
+            // {//amlkycResult
+            //    path: 'amlkycResult',
+            //    name: 'amlkycResult',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: amlkycResult
+            // },
+            // {//editAmlKyc
+            //    path: 'editAmlKyc',
+            //    name: 'editAmlKyc',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: editAmlKyc
+            // },
             // {//disclaimer
             //    path: 'aml',
             //    name: 'aml',
@@ -356,22 +356,22 @@ const router = new Router({
             //    },
             //    component: aml
             // },
-            {
-               path: 'about55',
-               name: 'about55',
-               meta: {
-                  title: 'aboutTitle'
-               },
-               component: About
-            },
-            {
-               path: 'capital',
-               name: 'capital',
-               meta: {
-                  title: 'capital'
-               },
-               component: Captial
-            },
+            // {
+            //    path: 'about55',
+            //    name: 'about55',
+            //    meta: {
+            //       title: 'aboutTitle'
+            //    },
+            //    component: About
+            // },
+            // {
+            //    path: 'capital',
+            //    name: 'capital',
+            //    meta: {
+            //       title: 'capital'
+            //    },
+            //    component: Captial
+            // },
             //订单
             {
                path: 'order',
