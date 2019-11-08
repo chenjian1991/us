@@ -44,7 +44,7 @@
                      <h1 class="h3 text-white font-weight-medium mb-1">Hi,{{accoundId}} <span
                         class="badge badge-warning" style="cursor: pointer" @click="goKycPage">{{isKyc?$t('已实名'):$t('未实名')}}</span>
                      </h1>
-                     <span class="d-block text-white">UID:{{uid}}</span>
+                     <span class="d-block text-white">User ID: {{uid}}</span>
 
                   </div>
                </div>
