@@ -610,6 +610,7 @@ import {geeTest} from '../../../api/usersystem.js'
            this.$store.commit('changeLoingStatus',false)
            this.fromSocial = getUrlKeyandEncode('socialback');
            this.domain = getCommouityBaseURL();
+           console.log('adddd')
         },
         created(){
             var _this = this;
