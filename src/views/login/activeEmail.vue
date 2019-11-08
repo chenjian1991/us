@@ -30,11 +30,9 @@
 
 <script>
 import {activationEmail} from '../../../api/urls.js';
-import {getApi} from '../../../api/axios.js';
+import {getApi,postBaseApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import {getUrlKey} from '@/lib/utils.js'
-
-
+import {getUrlKey,getBrowserMessage} from '@/lib/utils.js'
     export default {
         name:'login',
         components:{
@@ -45,25 +43,30 @@ import {getUrlKey} from '@/lib/utils.js'
                 showModal:false,
                 text:'',
                 emailName:'',
-                whichSite:''
+                whichSite:'',
+                deviceObj:{}
             }
 
         },
         methods:{
             gotoSite(){
-                if(!getUrlKey('code')){
-                    return false;
-                }
-                let codeParams = getUrlKey('code').replace(/(\")/g, "");//去掉url中的引号；
-                let url = activationEmail+'/'+codeParams;
-                getApi(url,{}).then((res)=>{
-                    if(res.result){
+            
+                let param = {
+                    "email": getUrlKey('email').replace(/(\")/g, ""),
+                    "activationCode": getUrlKey('code').replace(/(\")/g, ""),
+                    "deviceType": "WEB",
+                    "deviceCode": this.deviceObj.browserVersion
+                    }
+                 postBaseApi(activationEmail,{},param).then((res) => {
+                        if(res.result){
                         this.$Notice.success({
                            title:this.$t(11001),
                            desc:this.$t(11001)
                      });
                     }
-                })
+                    }).catch((error)=>{
+
+                     })
             }
         },
         computed:{
@@ -80,9 +83,10 @@ import {getUrlKey} from '@/lib/utils.js'
         },
         mounted(){
             this.emailName = localStorage.getItem('emailAdderss')
+            this.deviceObj = getBrowserMessage();
             this.gotoSite()
-            //把头，脚，侧边栏隐藏的方法；
-           
+
+            console.log(this.deviceObj)
         },
 
       

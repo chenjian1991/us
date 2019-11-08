@@ -1261,6 +1261,8 @@ export default {
    headerBalances: 'Balances',
    CreateAPISMSAuthentication: 'SMS Authentication',
    usernameexg: "Username should be a combination of 4-30 letters, digitals or underscores with no space.",
+   userName: 'Username',
+
 
 
 
