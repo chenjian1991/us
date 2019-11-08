@@ -2337,11 +2337,11 @@
             // })
          }
         if($cookies.get('loginToken')){
-          getUserInfo($cookies.get('loginToken'))
+          getUserInfo({userId: localStorage.getItem('loginUserId')},$cookies.get('loginToken'))
               .then((res) => {
                 if(!res.code) {
                   // 是否设置交易密码
-                  this.isSetTradePasswrod = res.isSetTradePasswrod
+                  this.isSetTradePasswrod = res.setTradePassword;
                 }
               })
         }

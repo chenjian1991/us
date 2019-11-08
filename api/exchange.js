@@ -52,7 +52,7 @@ const checkExpiredAble = (expiredAble) => {
 };
 // 获取用户信息
 export const getUserInfo = (token) => {
-   return postHeaderTokenBodyApi(userInfo, token, {})
+   return getHeaderTokenApi(userInfo, params, token)
 }
 //下单交易对
 export const getSymbolList = () => {
