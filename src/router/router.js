@@ -51,6 +51,9 @@ import terms from "../views/legal/terms.vue";
 import legal from "../views/legal/legal.vue";
 import tradingRules from "../views/legal/TradingRules.vue";
 import privacy from "../views/legal/privice.vue";
+// import fee from "../views/legal/fee.vue";
+// import disclaimer from "../views/legal/disclaimer.vue";
+// import aml from "../views/legal/aml.vue";
 import setGoogle from "../views/google/setGoogle.vue";
 import closeGoogle from "../views/google/closeGoogle.vue";
 import identityResult from "../views/identity/identityResult.vue"
@@ -294,6 +297,22 @@ const router = new Router({
                      },
                      component: privacy
                   },
+                  // {//disclaimer
+                  //    path: 'disclaimer',
+                  //    name: 'disclaimer',
+                  //    meta: {
+                  //       title: 'HomeTitle'
+                  //    },
+                  //    component: disclaimer
+                  // },
+                  // {//fee
+                  //    path: 'fee',
+                  //    name: 'fee',
+                  //    meta: {
+                  //       title: 'HomeTitle'
+                  //    },
+                  //    component: fee
+                  // },
                   {//tradingRules
                      path: 'tradingRules',
                      name: 'tradingRules',
@@ -303,6 +322,55 @@ const router = new Router({
                      component: tradingRules
                   },
                ]
+            },
+
+            {//amlKyc
+               path: 'amlKyc',
+               name: 'amlKyc',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: amlKyc
+            },
+            {//amlkycResult
+               path: 'amlkycResult',
+               name: 'amlkycResult',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: amlkycResult
+            },
+            {//editAmlKyc
+               path: 'editAmlKyc',
+               name: 'editAmlKyc',
+               meta: {
+                  title: 'HomeTitle'
+               },
+               component: editAmlKyc
+            },
+            // {//disclaimer
+            //    path: 'aml',
+            //    name: 'aml',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: aml
+            // },
+            {
+               path: 'about55',
+               name: 'about55',
+               meta: {
+                  title: 'aboutTitle'
+               },
+               component: About
+            },
+            {
+               path: 'capital',
+               name: 'capital',
+               meta: {
+                  title: 'capital'
+               },
+               component: Captial
             },
             //订单
             {
