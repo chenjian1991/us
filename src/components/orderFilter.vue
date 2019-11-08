@@ -1,54 +1,51 @@
 <template>
-   <Row class="filter-box" id="orderFilter">
-      <Col span="24">
-         <!--日期-->
-         <div class="inline-box">
-            <DatePicker type="date" v-model="startTime" :options="optionsStart" :placeholder="$t('orderStartTime')"
-                        @on-change="changeStartTime"
-                        style="width: 110px" class="date-picker"></DatePicker>
-            <span class="dark-gray">&nbsp;—&nbsp;</span>
-            <DatePicker type="date" v-model="endTime" :options="optionsEnd" :placeholder="$t('orderEndTime')"
-                        @on-change="changeEndTime"
-                        style="width: 110px"
-                        class="date-picker"></DatePicker>
+   <div class="filter-box" id="orderFilter">
+      <!--日期-->
+      <div class="inline-box">
+         <DatePicker type="date" v-model="startTime" :options="optionsStart" :placeholder="$t('orderStartTime')"
+                     @on-change="changeStartTime"
+                     style="width: 110px" class="date-picker"></DatePicker>
+         <span class="dark-gray">&nbsp;—&nbsp;</span>
+         <DatePicker type="date" v-model="endTime" :options="optionsEnd" :placeholder="$t('orderEndTime')"
+                     @on-change="changeEndTime"
+                     style="width: 110px"
+                     class="date-picker"></DatePicker>
+      </div>
+      <!--交易对-->
+      <div class="inline-box">
+         <Input v-model="baseAsset" :placeholder="$t('orderCoin')" style="width: 110px"/>
+         <span class="dark-gray">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+         <Select v-model="quoteAsset" style="width:110px">
+            <Option v-for="item in quoteAssetList" :value="item" :key="item">
+               {{ item==='ALL'?$t('orderAll'):item }}
+            </Option>
+         </Select>
+      </div>
+      <!--方向-->
+      <div class="inline-box">
+         <Select v-model="orderSide" style="width:110px">
+            <Option v-for="item in orderSideList" :value="item.side" :key="$t(item.label)">
+               {{$t(item.label) }}
+            </Option>
+         </Select>
+      </div>
+      <!--搜索-->
+      <div class="inline-box">
+         <Button type="primary" @click="search">{{$t('orderSearch')}}</Button>
+      </div>
+      <!--重置-->
+      <div class="inline-box">
+         <Button @click="reset">{{$t('orderReset')}}</Button>
+      </div>
+      <!--隐藏已撤销-->
+      <div class="inline-box" v-if="showHide">
+         <!--单选框-->
+         <div class="radio-box" @click="changeAgree">
+            <span class="label-radio" :class="orderStatus ? 'label-radio-checked' : ''"></span>
+            <span class="text">{{$t('orderHide')}}</span>
          </div>
-         <!--交易对-->
-         <div class="inline-box">
-            <Input v-model="baseAsset" :placeholder="$t('orderCoin')" style="width: 110px"/>
-            <span class="dark-gray">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
-            <Select v-model="quoteAsset" style="width:110px">
-               <Option v-for="item in quoteAssetList" :value="item" :key="item">
-                  {{ item==='ALL'?$t('orderAll'):item }}
-               </Option>
-            </Select>
-         </div>
-         <!--方向-->
-         <div class="inline-box">
-            <Select v-model="orderSide" style="width:110px">
-               <Option v-for="item in orderSideList" :value="item.side" :key="$t(item.label)">
-                  {{$t(item.label) }}
-               </Option>
-            </Select>
-         </div>
-         <!--搜索-->
-         <div class="inline-box">
-            <Button type="primary" @click="search">{{$t('orderSearch')}}</Button>
-         </div>
-         <!--重置-->
-         <div class="inline-box">
-            <Button @click="reset">{{$t('orderReset')}}</Button>
-         </div>
-         <!--隐藏已撤销-->
-         <div class="inline-box" v-if="showHide">
-            <!--单选框-->
-            <div class="radio-box" @click="changeAgree">
-               <span class="label-radio" :class="orderStatus ? 'label-radio-checked' : ''"></span>
-               <span class="text">{{$t('orderHide')}}</span>
-            </div>
-         </div>
-      </Col>
-      <!--<Col span="12" align="right"></Col>-->
-   </Row>
+      </div>
+   </div>
 
 </template>
 
@@ -205,18 +202,24 @@
    @color-light-gary: #E7EAED;
    @color-green: #12869A;
    .filter-box {
-      position: absolute;
-      top: 50px;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flex;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /*width: 100%;*/
-      height: 50px;
-      z-index: 5;
+      /*front order*/
+      width: 100%;
+      min-height: 50px;
+      line-height: 50px;
+
+      /*原order*/
+      /*position: absolute;*/
+      /*top: 50px;*/
+      /*display: -ms-flexbox;*/
+      /*display: -webkit-flex;*/
+      /*display: -moz-flex;*/
+      /*display: -ms-flex;*/
+      /*display: flex;*/
+      /*justify-content: space-between;*/
+      /*align-items: center;*/
+      /*height: 50px;*/
+      /*z-index: 5;*/
+
       .light-gray {
          color: @color-light-gary;
       }
@@ -253,8 +256,8 @@
          cursor: pointer;
          padding-left: 12px;
          .label-radio {
-            position: absolute;
-            top: 4px;
+            /*position: absolute;*/
+            /*top: 4px;*/
             display: inline-block;
             width: 14px;
             height: 14px;
@@ -269,8 +272,8 @@
          .label-radio-checked:after {
             position: absolute;
             content: '';
-            left: 4px;
-            top: 1px;
+            left: 17px;
+            top: 20px;
             height: 9px;
             width: 5px;
             border-right: 2px solid #fff;
@@ -282,7 +285,7 @@
          .text {
             font-size: 14px;
             color: #949DA6;
-            margin-left: 18px;
+            /*margin-left: 18px;*/
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;

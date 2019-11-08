@@ -1,6 +1,9 @@
-import {getApi, postBaseApi, postHeaderTokenBodyApi, postFormDataApi, postHeaderJsonApi,getHeaderTokenApi} from './axios'
+import {getApi, postBaseApi, postHeaderTokenBodyApi, postFormDataApi,getHeaderTokenApi} from './axios'
 // postApi
-import Cookies from 'js-cookie'
+import Vue from 'vue'
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
+
 import {
    symbolList,
    depthList,
@@ -17,19 +20,11 @@ import {
    createPasswordToken,
    createOrder,
    createGBBOOrder,
-   historicalTrailing,
    historicalTimeRange,
    summarizedTimeRange,
-   queryRewardFilledBuyBrief,
    activityList,
-   queryRewardLockedAssetBrief,
-   createLocked,
-   listLocked,
    filled,
    currencyList,
-   queryUsdt2usddUrl,
-   exchangeUsdt2usddUrl,
-   USDDInterest,
    identify,
    queryAddress,
    withdrawAddressList,
@@ -38,14 +33,9 @@ import {
    createWithdraw,
    createTicket,
    FFfee,
-   groupDetail,
-   queryMining,
-   weakupGroup,
-   createRealName,
    queryFavoritesPair,
    updateFavoritesPair,
    deleteFavoritesPair,
-   queryTradePassWordURL,
    completedList_v2,
    filledList_v2,
    userInfo
@@ -82,7 +72,7 @@ export const getUpdateFavoritesPair = (token,data) => {
 }
 //删除收藏币种
 export const getDeleteFavoritesPair = (arr) => {
-   return postHeaderTokenBodyApi(deleteFavoritesPair,Cookies.get('loginToken'),arr)
+   return postHeaderTokenBodyApi(deleteFavoritesPair,$cookies.get('loginToken'),arr)
 }
 //行情交易对
 export const getSymbolList_realtime = () => {
@@ -105,14 +95,7 @@ export const getSymbolList_realtime = () => {
 export const getdepthList = (params) => {
    return getApi(depthList, params)
 }
-//查询USDD
-export const queryUsdt2usdd = (params) => {
-   return getApi(queryUsdt2usddUrl, params)
-}
-//USDDInterest
-export const queryUSDDInterest = (params) => {
-   return getApi(USDDInterest, params)
-}
+
 //创建用户的 Token  
 export const getCreateAccount = (params, data) => {
    return postBaseApi(createAccount, params, data)
@@ -132,42 +115,15 @@ export const getAccountInfo = (params) => {
 export const getFFfeesMethod =(params,data)=>{
    return postFormDataApi(FFfee,params,data)
 }
-//查询组队详情
-export const queryGroupDetail = (params) =>{
-   return getApi(groupDetail,params);
-}
-//查询是否已经挖款
-export const queryMiningflag = (params) =>{
-   return getApi(queryMining,params);
-}
-//喊他去挖矿
-export const weakupGroupMethod =(params) =>{
-   return getApi(weakupGroup,{token:params})
-}
-//实名认证
-export const realNameMethod =(token,params) =>{
-   return postHeaderTokenBodyApi(createRealName,token,params)
-}
 
 export const getBalanceList = (params) => {
    return getApi(balanceList, params)
 }
-//挖矿
-export const getQueryRewardFilledBuyBrief = (params) => {
-   return getApi(queryRewardFilledBuyBrief, params)
-}
+
 export const getActivityList = (params) => {
    return getApi(activityList, params)
 }
-export const getQueryRewardLockedAssetBrief = (params) => {
-   return getApi(queryRewardLockedAssetBrief, params)
-}
-export const getCreateLocked = (params, data) => {
-   return postHeaderJsonApi(createLocked, params, data)
-}
-export const getListLocked = (params) => {
-   return getApi(listLocked, params)
-}
+
 //充值地址
 export const address = (params) => {
    return getApi(queryAddress, params)
@@ -192,10 +148,7 @@ export const getCreateTicket = (params, data) => {
 export const withdraw = (params, data) => {
    return postBaseApi(createWithdraw, params, data)
 }
-//USDT => USDD
-export const exchangeUsdt2usdd = (params, data) => {
-   return postFormDataApi(exchangeUsdt2usddUrl, params, data)
-}
+
 //查询用户实名
 export const getIdentify = (params) => {
    return getHeaderTokenApi(identify, '',params)
@@ -238,27 +191,18 @@ export const getCreateGBBOOrder = (params, data) => {
    return postBaseApi(createGBBOOrder, params, data)
 }
 
-
 //签发交易密码
 export const getCreatePasswordToken = (ssoToken, data) => {
    return postHeaderTokenBodyApi(createPasswordToken, ssoToken, data)
 }
 
 //****************K线 */
-export const getHistoricalTrailing = (params) => {
-   return getApi(historicalTrailing, params)
-}
 export const getHistoricalTimeRange = (params) => {
    return getApi(historicalTimeRange, params)
 }
 export const getSummarizedTimeRange = (params) => {
    return getApi(summarizedTimeRange, params)
 }
-export const queryTradePassWordStatus = (token) => {
-   return getHeaderTokenApi(queryTradePassWordURL, {},token)
-}
-
-
 
 
 //封装SSE

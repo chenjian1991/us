@@ -2,7 +2,7 @@
    <div class="wrapper" id="bankSetting">
       <div class="container">
          <div class="content">
-            <p class="title">{{$t('bankAccounts')}}</p>
+            <p class="title">Bank Accounts</p>
             <div class="main">
                <div v-for="(bank,i) in bankList" class="row-block">
                   <Row type="flex" align-item="center">
@@ -26,7 +26,7 @@
                <div class="row-block">
                   <div class="main-color add-more">
                      <span @click="add" class="verticalCentering"><img src="../../assets/images/balances/add.png"
-                                                                       class="add-icon">{{$t('withdrawAcc1')}}</span>
+                                                                       class="add-icon">Link New Account</span>
                   </div>
                </div>
                <div>
@@ -124,8 +124,6 @@
 </template>
 
 <script>
-   import Cookies from 'js-cookie'
-   import moment from 'moment';
    import md5 from 'js-md5';//哈希
    import bankModal from '@/components/bankModal'
    import {Exchange} from '@/interface/exchange.js'
@@ -133,7 +131,7 @@
       onlyInputNumAndPoint, parseUrl
    } from '@/lib/utils.js'
    import {
-      identifyQuery, queryUserInfo,
+      identifyQuery, getUserInfo
    } from '_api/balances.js'
 
    export default {
@@ -164,7 +162,7 @@
             rightSpan: 17,
 
             isUS: true,//美国国籍
-            bankAccountName: localStorage.getItem('bankAccountName') || '',
+            bankAccountName: '',
             bankAccountNumber: '',
             contactEmail: '',
             contactName: '',
@@ -184,12 +182,14 @@
                'paymentType',
             ],
             default: '',
+            loginToken: $cookies.get('loginToken'),
+            userId: localStorage.getItem('loginUserId'),
          }
       },
       methods: {
          init() {
             this.getWithdrawAddress()
-            this.queryUserInfo()
+            this.getUserInfo()
          },
          getWithdrawAddress() {//银行卡
             this.exchange.withdrawAddress(this.currency, function (res) {
@@ -201,9 +201,12 @@
                }
             }.bind(this))
          },
-         queryUserInfo() {
-            queryUserInfo(Cookies.get('loginToken')).then(res => {
-               if (res.data.country !== 'US') {
+         getUserInfo() {
+            getUserInfo({
+               userId: this.userId
+            }, this.loginToken).then(res => {
+               console.log(res)
+               if (res.data.country === 'US') {
                   this.isUS = false
                   this.paymentType = 'wire_international'
                   this.paymentTypeList = ['wire_international']
@@ -304,7 +307,6 @@
 
                let patternEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;//邮箱
                let patternName = /^[a-zA-Z\s]+$/;
-               // let patternSwift = /^(?![0-9]+$)(?![a-zA-Z]+$)/;
                let patternSwift = /^[A-Z0-9]{0,15}$/;
                let patternNumber = /^\d+$/;
                let patternRoute = /^\d{9}$/;
@@ -350,7 +352,7 @@
                      //报错
                      this.$Message.warning(result.data.message);
                      this.loading = false
-                  }else{
+                  } else {
 
                      this.loading = false
                      this.showModal = false
@@ -386,14 +388,15 @@
             this.swiftCode = ''
          },
          getIdentify() { //实名认证
-            identifyQuery(Cookies.get('loginToken')).then(res => {
-               console.log(res)
-               let data=res.data
-               if(data){
-                  if(data.dataStatus===3){
-                     const formJson = JSON.parse(data.formJson)
-                     localStorage.setItem('bankAccountName', `${formJson.firstName} ${formJson.lastName}`)
-                     this.bankAccountName = localStorage.getItem('bankAccountName')
+            identifyQuery({
+               userId: this.userId,
+               nameList: 'THIRD_PT'
+            }, this.loginToken).then(res => {
+               if (res.data.length) {
+                  const identifyState = res.data[0]['thirdState']
+                  if (identifyState === 'SUCCESS') {
+                     const formJson = res.data[0].data
+                     this.bankAccountName = `${formJson.firstName} ${formJson.lastName}`
                   }
                }
             })
@@ -404,19 +407,13 @@
          },
       },
       beforeMount() {
-         let loginToken = Cookies.get('loginToken')
+         console.log(this.loginToken)
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
-         if (loginToken) {
-            this.exchange.ssoProvider.getSsoToken = function (fn) {
-               fn(loginToken);
-            };
-         } else {
-            this.$router.push({
-               path: '/login',
-            })
-         }
+         this.exchange.ssoProvider.getSsoToken = function (fn) {
+            fn(this.loginToken);
+         };
       },
       mounted() {
          this.init()

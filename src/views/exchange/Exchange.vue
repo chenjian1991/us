@@ -599,7 +599,6 @@
    import TVChartContainer from '@/components/KLine/TVChartContainer.vue'
    import _ from 'lodash'
    import moment, {isMoment} from 'moment'
-   import Cookies from 'js-cookie'
    import bigDecimal from 'js-big-decimal' //除法失效
    import {BigNumber} from 'bignumber.js';
 
@@ -650,7 +649,7 @@
             asksArr: [],
             //****交易相关 */
             exchange: null,//交易接口函数
-            loginToken: Cookies.get('loginToken'),//登陆token
+            loginToken: $cookies.get('loginToken'),//登陆token
             // ***** 买入 卖出 ******//
             FFDeductible: 0,//1 开启手续费折扣 2.FF余额低 3.手续费折扣中
             commissionTemplateId: false,//开启折扣开关 true 开启
