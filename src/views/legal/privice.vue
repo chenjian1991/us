@@ -1,1069 +1,1465 @@
 <template>
-    <div style='font-family: helvetica, "Microsoft YaHei", "PingFang SC";'>
-      <div class="container">
-         <div class="row">
-
-
-                  		
-                          <div class="panel-body paddong_30_left col-lg-10 col-md-9 col-sm-12 col-xs-12">
-                          <div class=WordSection1>
-                                <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN
-                                style='font-size:14.0pt;line-height:115%;color:#3D85C6'>U.S.
-                                Privacy Policy</span></b></p>
-
-
-                                <p class=MsoNormal><span lang=EN>Last updated: May 2019</span><b
-                                style='mso-bidi-font-weight:normal'><span lang=EN style='font-size:14.0pt;
-                                line-height:115%;color:#3D85C6'></span></b></p>
-
-                                <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN
-                                style='font-size:14.0pt;line-height:115%;color:#3D85C6'></span></b></p>
-
-                                <ol style='margin-top:0cm' start=1 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>1. Parties</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>1.1  Tresso Asset Network Inc. (the “<b style='mso-bidi-font-weight:normal'>Company</b>”)
-                                is a company incorporated in Delaware under the laws of the United States, and
-                                operates the Website <u><span style='color:#11TressoCC'><a href="javascrip:;"><span
-                                style='color:#11TressoCC'>tresso.com</span></a></span></u> (the “<b
-                                style='mso-bidi-font-weight:normal'>Website</b>”), which is a platform
-                                dedicated to the transaction of digital assets and the provision of related
-                                services (hereinafter referred to as the “<b style='mso-bidi-font-weight:normal'>Service</b>”).
-                                For the convenience of wording in this policy (the “<b style='mso-bidi-font-weight:
-                                normal'>Privacy Policy</b>”), the Company and the Website are referred to
-                                collectively as 'we' or other applicable forms of first-person pronouns in this
-                                Privacy Policy. We respect your privacy and are committed to protecting it
-                                through our compliance with this Privacy Policy.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>1.2 <span class=GramE>All natural</span> persons or other subjects who
-                                log onto this Website shall be users of this Website. For the convenience of wording
-                                in this Privacy Policy, the users are referred to as 'you' or any other
-                                applicable forms of the second-person pronouns.</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>1.3 For the convenience of wording in this Privacy Policy, you and we
-                                are collectively referred to as “both parties”, and individually as “one
-                                party”.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=2 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>2. Purposes of the Privacy
-                                    Policy</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>The Privacy Policy stipulates the types of information of yours that we
-                                may collect from you or that you may provide through your use of or logging
-                                into this Website, your registration with this Website, and/or use the services
-                                we offer, as well our practices for collecting, using, maintaining, protecting,
-                                and disclosing such information. This Privacy Policy also extends to
-                                information we collect in email, text, and other electronic messages between you
-                                and this Website and through mobile and desktop applications you download from
-                                this Website, which provides dedicated non-browser-based interaction between
-                                you and this Website. </span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=3 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>3. Your Consent</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>Please read this policy carefully to understand our policies and
-                                practices regarding your information and how we will treat it. If you do not
-                                agree with our policies and practices, your choice is not to use our Website.
-                                By accessing or using this Website, you agree to this Privacy Policy. This
-                                Privacy Policy may change from time to time (see Changes to Our Privacy
-                                Policy). Your continued use of this Website after we make changes is deemed to
-                                be acceptance of those changes, so please check the policy periodically for
-                                updates. If you do not agree with or you are not comfortable with any aspect of
-                                this Privacy Policy, you should immediately discontinue access or use of our
-                                Services. </span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>In particular, upon your logging into our Website or continued use of
-                                the Services, regardless of whether you register with this Website, you shall
-                                be deemed to accept, agree, undertake and confirm that:</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>3.1 You, on the basis of your own free will and your requisite consent,
-                                agree to disclose your personal information to us;</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>3.2 You will comply with all the terms, conditions and limitations of
-                                this Privacy Policy;</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>3.3 You agree that we may collect your information through your logging
-                                into this Website, your registration with this Website, and/or your using the
-                                Services offered by us, as well as through email, text, and other electronic messages
-                                between you and this Website and through mobile and desktop applications you
-                                download from this Website; you agree to any changes and modifications that we
-                                may make to our Privacy Policy in the future (see Changes to Our Privacy
-                                Policy);</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>3.4 You agree that our branches, affiliates and employees may contact
-                                you in connection with the products and services that you may be interested in
-                                (unless you have indicated that you do not want to receive such information).</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=4 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>4. Information We Collect
-                                    About You and How We Collect It</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>4.1 We collect several types of information
-                                from and about users of our Website, including information:</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l4 level1 lfo6'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>By which you may be personally identified, such as
-                                Such information can help us verify whether you are eligible to be registered
-                                as a member of this Website. It includes but is not limited to your name,
-                                residence address, mailing address, e-mail address, social security number, tax
-                                ID, government-issued license or passport, other certificates and corresponding
-                                numbers thereof that are issued by your country or government to certify your
-                                identity information, as well as all other information that can help us to
-                                verify your identity and any other identifier by which you may be contacted
-                                online or offline (“identity information”). We also collect usage information
-                                and information concerning your debit card, credit card and other financial
-                                accounts that you provide or use for accessing the Website (“service
-                                information” and together with identity information<span class=GramE>,
-                                ”personal</span> information”);</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l4 level1 lfo6;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>That is about you but individually does not
-                                identify you; and</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l4 level1 lfo6;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>About your internet connection, the equipment you
-                                use to access our Website, and usage details.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
-                                mso-border-shadow:yes'><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>We collect this information:</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l4 level1 lfo6;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Directly from you when you provide it to us.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l4 level1 lfo6;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Automatically as you navigate through the Website.
-                                Information collected automatically may include usage details, IP addresses,
-                                and information collected through cookies, web beacons, and other tracking
-                                technologies.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l4 level1 lfo6;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>From third parties, for example, our business
-                                partners.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span class=GramE><span lang=EN>4.2<span
-                                style='mso-spacerun:yes'>  </span><u>Information</u></span></span><u><span
-                                lang=EN> You Provide to Us.</span></u></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>The information we collect on or through our
-                                Website may include:</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l5 level1 lfo1'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Information that you provide by filling in forms
-                                on our Website. This includes information provided at the time of registering
-                                to use our Website, subscribing to our Service, posting material or content, or
-                                requesting further services. We may also ask you for information, for example
-                                when you enter a contest or promotion sponsored by us, and when you report a
-                                problem with our Website.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l5 level1 lfo1'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Records and copies of your correspondence
-                                (including email addresses), if you contact us.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l5 level1 lfo1'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Your responses to surveys that we might ask you to
-                                complete for research purposes.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l5 level1 lfo1'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Details of transactions you carry out through our
-                                Website and of the fulfillment of your orders. You may be required to provide
-                                financial information before placing an order through our Website.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l5 level1 lfo1'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Your search queries on the Website.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt'><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>You also may provide information to be published or displayed
-                                (hereinafter, “posted”) on public areas of the Website, or transmitted to other
-                                users of the Website or third parties (collectively, “<b style='mso-bidi-font-weight:
-                                normal'>User Contributions</b>”). Your User Contributions are posted on and
-                                transmitted to others at your own risk. Although we limit access to certain
-                                pages/you may set certain privacy settings for such information by logging into
-                                your account profile, please be aware that no security measures are perfect or
-                                impenetrable. Additionally, we cannot control the actions of other users of the
-                                Website with whom you may choose to share your User Contributions. Therefore,
-                                we cannot and do not guarantee that your User Contributions will not be viewed
-                                by unauthorized persons.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>4.3 <u>Information We Collect Through
-                                Automatic Data Collection Technologies</u>.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>As you navigate through and interact with our Website, we may use
-                                automatic data collection technologies to collect certain information about
-                                your equipment, browsing actions, and patterns, including:</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l0 level1 lfo2'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Details of your visits to our Website, including
-                                traffic data, location data, logs, and other communication data and the
-                                resources that you access and use on the Website.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l0 level1 lfo2'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Information about your computer and internet
-                                connection, including your IP address, operating system, and browser type.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l0 level1 lfo2'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>We also may use these technologies to collect
-                                information about your online activities over time and across third-party
-                                websites or other online services (behavioral tracking). </span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>The information we collect automatically is statistical data and does
-                                not include personal information, but we may maintain it or associate it with
-                                personal information we collect in other ways or receive from third parties. It
-                                helps us to improve our Website and to deliver a better and more personalized
-                                service, including by enabling us to:</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
-                                mso-border-shadow:yes'><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l2 level1 lfo3;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Estimate our audience size and usage patterns.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l2 level1 lfo3;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Store information about your preferences, allowing
-                                us to customize our Website according to your individual interests.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l2 level1 lfo3;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Speed up your searches.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l2 level1 lfo3;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>Recognize you when you return to our Website.</span></p>
-
-                                <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
-                                mso-border-shadow:yes'><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
-                                mso-border-shadow:yes'><span lang=EN>The technologies we use for this automatic
-                                data collection may include:</span></p>
-
-                                <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
-                                mso-border-shadow:yes'><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l2 level1 lfo3;border:none;
-                                mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><u><span lang=EN>Cookies (or browser cookies)</span></u><span
-                                lang=EN>. A cookie is a small file placed on the hard drive of your computer.
-                                You may refuse to accept browser cookies by activating the appropriate setting
-                                on your browser. However, if you select this setting you may be unable to
-                                access certain parts of our Website. Unless you have adjusted your browser
-                                setting so that it will refuse cookies, our system will issue cookies when you
-                                direct your browser to our Website.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l2 level1 lfo3;border:none;
-                                mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><u><span lang=EN>Flash Cookies</span></u><span lang=EN>. Certain
-                                features of our Website may use local stored objects (or Flash cookies) to collect
-                                and store information about your preferences and navigation to, from, and on
-                                our Website. Flash cookies are not managed by the same browser settings as are
-                                used for browser cookies. For information about managing your privacy and
-                                security settings for Flash cookies, see Choices About How We Use and Disclose
-                                Your Information.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l2 level1 lfo3;border:none;
-                                mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><u><span lang=EN>Web Beacons</span></u><span lang=EN>. Pages of <span
-                                class=GramE>our the</span> Website and our e-mails may contain small electronic
-                                files known as web beacons (also referred to as clear gifs, pixel tags, and
-                                single-pixel gifs) that permit the Company, for example, to count users who
-                                have visited those pages or opened an email and for other related website
-                                statistics (for example, recording the popularity of certain website content
-                                and verifying system and server integrity).</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>We generally do not collect personal information automatically, but we
-                                may tie this information to personal information about you that we collect from
-                                other sources or you provide to us. You can find more information about how to
-                                change your browser cookie settings at http://www.allaboutcookies.org.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=5 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>5. Third-Party Use of
-                                    Cookies and Other Tracking Technologies</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>Some content or applications, including advertisements, on the Website
-                                are served by third-parties, including advertisers, ad networks and servers,
-                                content providers, and application providers. These third parties may use
-                                cookies alone or in conjunction with web beacons or other tracking technologies
-                                to collect information about you when you use our website. The information they
-                                collect may be associated with your personal information or they may collect
-                                information, including personal information, about your online activities over
-                                time and across different websites and other online services. They may use this
-                                information to provide you with interest-based (behavioral) advertising or
-                                other targeted content.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>We do not control these third parties’ tracking technologies or how
-                                they may be used. If you have any questions about an advertisement or other
-                                targeted content, you should contact the responsible provider directly. To
-                                opt-out of third-party advertising networks and similar entities that use
-                                targeting/advertising cookies, go to http://www.aboutads.info/choices.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=6 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>6. How We Use Your
-                                    Information</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>We use information that we collect about you
-                                or that you provide to us, including any personal information:</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To identify and confirm your identity when you use
-                                our Website.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To present our Website and its contents to you.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To provide you with information, products, or
-                                services that you request from us.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To fulfill any other purpose for which you provide
-                                it.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To provide you with notices about your
-                                account/subscription, including expiration and renewal notices.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To carry out our obligations and enforce our
-                                rights arising from any contracts entered into between you and us, including
-                                for billing and collection.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To allow you to participate in interactive
-                                features on our Website.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To facilitate transactions (your information,
-                                whether public or private, will not be sold, exchanged, transferred, or
-                                otherwise provided to any other company on any grounds without your consent,
-                                except for where doing so is expressly for the purpose of completing the
-                                transaction you require).</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To improve and upgrade the services of the Website
-                                (your information and feedback received by us can help us improve the service
-                                of the Website, so that we can more effectively respond to your service
-                                requests and support needs).</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To notify you about changes to our Website or any
-                                products or services we offer or provide through it.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To keep statistics relating to the use of our
-                                Website and to be used for data analysis </span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>In any other way we may describe when you provide
-                                the information.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l1 level1 lfo4'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>For any other purpose with your consent.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>We may also use your information to contact you about our own and
-                                third-parties’ goods and services that may be of interest to you. For more
-                                information, see Choices About How We Use and Disclose Your Information.</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>We may use the information we have collected from you to enable us to
-                                display advertisements to our advertisers’ target audiences. Even though we do
-                                not disclose your personal information for these purposes without your consent,
-                                if you click on or otherwise interact with an advertisement, the advertiser may
-                                assume that you meet its target criteria.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=7 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>7. Disclosure of Your
-                                    Information</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>6.1 We may disclose aggregated information about our users, and
-                                information that does not identify any individual, without restriction. We may
-                                disclose personal information that we collect or you provide as described in
-                                this privacy policy:</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l7 level1 lfo10'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To our subsidiaries and affiliates.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l7 level1 lfo10'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To contractors, service providers, and other third
-                                parties we use to support our business and who are bound by contractual
-                                obligations to keep personal information confidential and use it only for the
-                                purposes for which we disclose it to them.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l7 level1 lfo10'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To a buyer or other successor in the event of a
-                                merger, divestiture, restructuring, reorganization, dissolution, or other sale
-                                or transfer of some or all of the Company’s assets, whether as a going concern
-                                or as part of bankruptcy, liquidation, or similar proceeding, in which personal
-                                information held by the Company about our Website users is among the assets
-                                transferred.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l7 level1 lfo10;border:none;
-                                mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To third parties to market their products or
-                                services to you if you have not opted out of these disclosures. For more
-                                information, see Choices About How We Use and Disclose Your Information.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l8 level1 lfo5'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To fulfill the purpose for which you provide it.
-                                For example, if you give us an email address to use the “email a friend”
-                                feature of our Website, we will transmit the contents of that email and your
-                                email address to the recipients.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l8 level1 lfo5'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>For any other purpose disclosed by us when you
-                                provide the information.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l8 level1 lfo5'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>With your consent.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph'><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>We may also disclose your personal information:</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l9 level1 lfo9'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To comply with any court order, law, or legal
-                                process, including to respond to any government or regulatory request.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l9 level1 lfo9'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>To enforce or apply our terms of use
-                                https://www.Tresso.com/terms and other agreements, including for billing and
-                                collection purposes.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l9 level1 lfo9'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><span lang=EN>If we believe disclosure is necessary or
-                                appropriate to protect the rights, property, or safety of Company, our
-                                customers, or others. This includes exchanging information with other companies
-                                and organizations for the purposes of fraud protection and credit risk
-                                reduction.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>6.2 <u>Choices About How We Use and Disclose
-                                Your Information</u>. We strive to provide you with choices regarding the
-                                personal information you provide to us. We have created mechanisms to provide
-                                you with the following control over your information:</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l3 level1 lfo7'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><u><span lang=EN>Tracking Technologies and Advertising</span></u><span
-                                lang=EN>. You can set your browser to refuse all or some browser cookies or to
-                                alert you when cookies are being sent. To learn how you can manage your Flash
-                                cookie settings, visit the Flash player settings page on Adobe’s website. If
-                                you disable or refuse cookies, please note that some parts of this site may
-                                then be inaccessible or not function properly. Some Internet browsers - like
-                                Internet Explorer, Firefox, and Safari - include the ability to transmit
-                                &quot;Do Not Track&quot; or &quot;DNT&quot; signals. Since uniform standards
-                                for &quot;DNT&quot; signals have not been adopted, our Sites do not currently
-                                process or respond to &quot;DNT&quot; signals.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l3 level1 lfo7'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><u><span lang=EN>Disclosure of Your Information for Third-Party
-                                Advertising</span></u><span lang=EN>. If you do not want us to share your
-                                personal information with unaffiliated or non-agent third parties for
-                                promotional purposes, you can opt-out by checking the relevant box located on
-                                the form on which we collect your data. </span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l3 level1 lfo7'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><u><span lang=EN>Mobile Advertising</span></u><span lang=EN>.
-                                You can opt out of having your mobile advertising identifiers used for certain
-                                types of advertising by accessing the settings in mobile device and following
-                                the instructions. If you opt-out, we will remove all data about you and will
-                                not collect any further data. The random ID previously assigned to you will be
-                                removed. Thus, if at a later stage, you decide to opt-in, we will be unable to
-                                continue and track you using the prior ID and you will for all practical
-                                purposes be a new user.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l3 level1 lfo7'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><u><span lang=EN>Promotional Offers from the Company</span></u><span
-                                lang=EN>. If you do not wish to have your contact information used by the
-                                Company to promote our own or third parties’ products or services, you can
-                                opt-out by checking the relevant box located on the form on which we collect
-                                your data (the registration process) or at any other time by logging into the
-                                Website and adjusting your user preferences in your account profile by checking
-                                or unchecking the relevant boxes or by sending us an email stating your request
-                                to service@tresso.com. If we have sent you a promotional email, you may send us a
-                                return email asking to be omitted from future email distributions. This opt out
-                                does not apply to information provided to the Company as a result of a product
-                                purchase, warranty registration, product service experience or other
-                                transactions.</span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;text-align:justify;text-justify:
-                                inter-ideograph;text-indent:-18.0pt;mso-list:l3 level1 lfo7'><![if !supportLists]><span
-                                lang=EN style='mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>●<span
-                                style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-                                dir=LTR></span><u><span lang=EN>Targeted Advertising</span></u><span lang=EN>.
-                                If you do not want us to use information that we collect or that you provide to
-                                us to deliver advertisements according to our advertisers’ target-audience
-                                preferences, you can opt-out by you can opt-out by checking the relevant box
-                                located on the form on which we collect your data (the registration process) or
-                                at any other time by logging into the Website and adjusting your user
-                                preferences in your account profile by checking or unchecking the relevant
-                                boxes or by sending us an email stating your request to service@tresso.com. For this
-                                opt-out to function, you must have your browser set to accept all browser
-                                cookies.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>We do not control third parties’ collection or use of your information
-                                to serve interest-based advertising. However, these third parties may provide
-                                you with ways to choose not to have your information collected or used in this
-                                way. You can opt out of receiving targeted ads from members of the Network
-                                Advertising Initiative <span class=GramE>(”<b style='mso-bidi-font-weight:normal'>NAI</b></span>”)
-                                on the NAI’s website.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>California residents may have additional
-                                personal information rights and choices. Please see Your California Privacy
-                                Rights for more information.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=8 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>8. Accessing and Correcting
-                                    Your Information</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>You can review and change your personal
-                                information by logging into the Website and visiting your account profile page.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>You may also send us an email at service@tresso.com to request access to,
-                                correct or delete any personal information that you have provided to us. We
-                                cannot delete your personal information except by also deleting your user
-                                account. We may not accommodate a request to change information if we believe
-                                the change would violate any law or legal requirement or cause the information
-                                to be incorrect.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>If you delete your User Contributions from the Website, copies of your
-                                User Contributions may remain viewable in cached and archived pages, or might
-                                have been copied or stored by other Website users. Proper access and use of
-                                information provided on the Website, including User Contributions, is governed
-                                by our terms of use https://www.tresso.com/terms.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal><span lang=EN>California residents may have additional
-                                personal information rights and choices. Please see Your California Privacy
-                                Rights for more information.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=9 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>9. Your California Privacy
-                                    Rights</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>If you are a California resident, California law may provide you with
-                                additional rights regarding our use of your personal information. California’s
-                                “Shine the Light” law (Civil Code Section § 1798.83) permits users of our
-                                Website that are California residents to request certain information regarding
-                                our disclosure of personal information to third parties for their direct
-                                marketing purposes. To make such a request, please send an email to
-                               service@tresso.com.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=10 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>10. Data Security</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.1 We adopt appropriate physical, electronic, management and
-                                technical measures so as to protect and safeguard the security of your personal
-                                data. We will, to the greatest extent possible, ensure that any personal data
-                                collected through our Website shall be free from being subject to nuisance by
-                                any third party unrelated to us. The security measures that we may take include
-                                but are not limited to:</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.1.1 Physical measures: records of your personal data will be stored
-                                in a properly locked place.</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.1.2 Electronic measures: The computer data that contain your
-                                personal information will be stored in computer systems and storage media that
-                                are subject to strict login restrictions.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.1.3 Management measures: only staff members duly authorized by us
-                                can access your personal data, and these staff members shall comply with our
-                                internal code concerning personal data confidentiality.</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.1.4 Technical measures: such encryption techniques as Secure Socket
-                                Layer Encryption may be used to convey your personal data.</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.1.5 Other measures: our network servers are protected by proper
-                                'firewall '.</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.2 If you are aware of any security flaws in our Website, please
-                                contact us immediately so that we can take appropriate action as soon as
-                                possible.</span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.3 Despite of the above-mentioned technical and security measures, we
-                                cannot guarantee that the information transmitted via the Internet is
-                                absolutely safe, so we cannot absolutely guarantee that the personal data that
-                                you provide to us through our Website will be safe at any time. The safety and
-                                security of your information also depend on you. Where we have given you (or
-                                where you have chosen) a password for access to certain parts of our Website,
-                                you are responsible for keeping this password confidential. We ask you not to
-                                share your password with anyone. We urge you to be careful about giving out
-                                information in public areas of the Website like message boards. The information
-                                you share in public areas may be viewed by any user of the Website. </span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>10.4 Unfortunately, the transmission of information via the internet is
-                                not completely secure. Although we do our best to protect your personal
-                                information, we cannot guarantee the security of your personal information
-                                transmitted to our Website. Any transmission of personal information is at your
-                                own risk. We are not responsible for circumvention of any privacy settings or
-                                security measures contained on the <span class=SpellE>Website.We</span> will
-                                not be held liable for any loss or damage arising from or caused by any event
-                                that may occur in connection with unauthorized access to your personal data,
-                                and we shall not be held liable for compensation for such loss or damage.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=11 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>11. Children’s Personal
-                                    Information</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span
-                                lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
-                                border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span
-                                lang=EN>We do not knowingly request of collect personal information from any
-                                person under the age of 18. If a user submitting personal information is
-                                suspected of being younger than 18 years of age, we will require the user to
-                                close his or her account and will not allow buying or selling digital
-                                currencies. We will also take steps to delete the information as soon as
-                                possible. Please notify us if you know of any individuals under the age of 18
-                                using our Services so we can take action to prevent access to our Services.<b
-                                style='mso-bidi-font-weight:normal'><span style='color:#3D85C6'></span></b></span></p>
-
-                                <p class=MsoNormal style='margin-left:36.0pt;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
-                                mso-border-shadow:yes'><b style='mso-bidi-font-weight:normal'><span lang=EN
-                                style='color:#3D85C6'></span></b></p>
-
-                                <ol style='margin-top:0cm' start=12 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>12. Changes to Our Privacy
-                                    Policy</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>It is our policy to post any changes we make to our privacy policy on
-                                this. If we make material changes to how we treat our users’ personal
-                                information, we will notify you by email to the primary email address specified
-                                in your account or through a notice on the Website home page. The date the
-                                privacy policy was last revised is identified at the top of the page. You are
-                                responsible for ensuring we have an up-to-date active and deliverable email
-                                address for you, and for periodically visiting our Website and this privacy
-                                policy to check for any changes.</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <ol style='margin-top:0cm' start=13 type=1>
-                                <p class=MsoNormal style='color:#3D85C6;mso-list:l6 level1 lfo8;border:none;
-                                    mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><b
-                                    style='mso-bidi-font-weight:normal'><span lang=EN>13. Contact Information</span></b></p>
-                                </ol>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-                                <p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph'><span
-                                lang=EN>To ask questions or comment about this privacy policy and our privacy
-                                practices, contact us at:</span></p>
-
-                                <p class=MsoNormal><span lang=EN>service@tresso.com</span></p>
-
-                                <p class=MsoNormal><span lang=EN></span></p>
-
-
-                                </div>
-							</div>
-		 </div>
-      </div>
-    </div>
+  <div class="about-privice">
+    <p style="margin:0pt 0pt 6pt; orphans:0; text-align:center; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"
+      >Apifiny Asset Network</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >Privacy Policy</span>
+    </p>
+    <p style="margin:0pt 0pt 6pt; orphans:0; text-align:center; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >
+        Last
+        Updated:
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">October</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >
+        ,
+        2019
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >1.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <a name="_heading_h.gjdgxs"></a>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Introduction.</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">Apifiny Asset Network Inc. (“</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Company</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">”, “</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">our</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">”, “</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">us</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">”, “</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">we</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">”, “</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">”, “</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"
+      >Apifiny Asset Network</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        ”) understands the importance of privacy, especially when
+        it comes to your Personal Information. Data privacy and your trust are our top priorities, and in this Privacy
+        Policy (“
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Privacy</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt"></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Policy</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        ”) we explain what information we collect from you when
+        you use our Tresso Services (collectively, the “
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso Services</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        ”), including our digital asset exchange platform for the
+        trading of supported Digital Assets for other Digital Assets (the "
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Marketplace</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        "), how we will use this information, and the very limited
+        ways that we may share your information. This Privacy Policy does not apply to any Third Party websites,
+        marketplaces or applications, even if they are accessible through our Services. Please read this policy
+        carefully to understand our policies and practices regarding your information, as you consent to the collection,
+        use, and disclosure of Personal Information (as defined below). If you do not agree with our policies and
+        practices, do not use Tresso Services.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        This
+        Privacy Policy is incorporated by reference into our
+      </span>
+      <a style="color:#000000" href="https://www.thistle.co/terms-of-use/">
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Terms
+          of Use
+        </span>
+      </a>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        and
+        subject to the provisions of the Terms of Use. All other terms not defined herein will have the meanings set
+        forth in the Terms of Use.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >2.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Who May Use our
+        Services
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">.</span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; orphans:0; text-align:justify; widows:0">
+      <span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        Services are only intended for adults eighteen (18) years of age and older. We do not knowingly collect Personal
+        Information from persons under the age of 18. If we learn that we have collected any Personal Information from
+        persons under the age of 18, we will promptly take steps to delete such information and terminate their account.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >3.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Scope</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . This Privacy Policy applies to Personal Information that
+        is Processed (as defined below) by Tresso in the course of our business, including on our Marketplace. All
+        persons whose responsibilities include the Processing of Personal Information on behalf of Tresso are expected
+        to protect that data by adherence to this Privacy Policy.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >4.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Personal Information We
+        Collect and How We Use It
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We collect several
+        types of information from and about customers, users and visitors (collectively “
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Individuals</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        ”) depending on how they are using the Tresso Services,
+        including:
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:0pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(a)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Types of Personal
+        Information We Collect
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(i)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Information You
+        Provide Directly to Us
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . When you use the
+        Tresso Services or engage in certain activities, such as registering for an Tresso account with us, creating a
+        digital asset wallet and using digital assets on our digital asset exchange platform, requesting information, or
+        contacting us directly, we may ask you to provide the following types of information:
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:Calibri; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(ii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Account
+        Information
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . If you create an account, we may
+        collect certain information that can be used to identify you. The requested information may include (i) for
+        individuals, certain personal information, including your name, address, telephone number, e-mail address,
+        gender, date of birth, username, and encrypted password which enables you to utilize certain features of the
+        Tresso Services; and (ii) for entities, information about its business, financial condition, corporate
+        structure, shareholders, directors, officers, ultimate beneficial owners, agents and other representatives. We
+        may also collect additional information about you that is needed to complete Know Your Customer (“
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">KYC</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">”) and Anti-Money Laundering (“</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">AML</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        ”) checks, such as address, birthdate, tax ID number,
+        government issued ID, bank account information and cryptocurrency wallet addresses.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(iii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Communications with
+        Us
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may collect Personal Information from
+        you such as name, phone number, email address, or mailing address when you choose to request information about
+        our Services, request to receive customer or technical support, or otherwise communicate with us.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(iv)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Automatic Data
+        Collection
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may collect certain
+        information automatically through our Services or other methods of web analysis, such as your Internet protocol
+        (IP) address, cookie identifiers, and other device identifiers that are automatically assigned to your computer
+        or device when you access the Internet, browser type and language, geo-location information, hardware type,
+        operating system, user settings, location information, mobile carrier, Internet service provider, pages that you
+        visit before and after using the Tresso Services, the date and time of your visit, the amount of time you spend
+        on each page, information about the links you click and pages you view within the Marketplace, and other actions
+        taken through use of the Marketplace such as preferences. Although we do not correlate tracking information to
+        Individuals, some information collected, such as IP addresses, will be unique.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:Calibri; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(v)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Do Not Track
+        Settings
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">. Do Not Track (“</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">DNT</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        ”) is a privacy preference that Individuals can set in
+        certain web browsers. DNT is a privacy preference that Individuals can set in certain browsers to inform
+        websites that they do not want certain information about their webpage visits collected over time and across
+        websites or online Marketplace. We do not track, plant cookies, or use advertising when a DNT browser mechanism
+        is in place.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(vi)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Information from
+        Other Sources
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may receive information
+        about you from other sources, including through our service providers who perform the KYC and AML checks. These
+        service providers may collect information from other sources in order to supplement information provided by you.
+        Information we collect through our service providers may include your name, government issued identification
+        number, location, gender, birth date, and email address. This supplemental information allows us to verify
+        information that you have provided to us and to enhance our ability to provide you with information about our
+        business, products, and Services.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:0pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(b)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        How We Use Your
+        Information
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt; orphans:0; text-align:justify; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        From
+        time to time, it is necessary for customers to supply us with personal data in connection with the opening or
+        continuation of accounts, the use of the services on the Marketplace, or in compliance with any laws or
+        guidelines issued by regulatory or other authorities. We use information that we collect about you or that you
+        provide to us, including Personal Information:
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(i)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        To provide you with
+        information, products, or services that you request from us.
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt"
+      >We may use information about you to:</span>
+    </p>
+    <ul type="circle" style="margin:0pt; padding-left:0pt">
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Generally
+          manage customer information and accounts;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          To
+          provide you with information, products, or services that you request from us;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Provide
+          access to certain areas, functionalities, and features of our Marketplace; and
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Contact
+          you to answer requests for customer support or technical support.
+        </span>
+      </li>
+    </ul>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(ii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Administrative
+        Purposes
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may use Personal Information
+        about you for administrative purposes, including to:
+      </span>
+    </p>
+    <ul type="circle" style="margin:0pt; padding-left:0pt">
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Measure
+          interest in our Services;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Ensure
+          internal quality control;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Verify
+          Individual identity;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Communicate
+          about Individual accounts and activities on our Marketplace and systems, and, in our discretion, changes to
+          our Services or any of our policies;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Send
+          email to the email address you provide to us to verify your account and for informational and operational
+          purposes, such as account management, customer service, or system maintenance;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Verify
+          the information that you provide to use and validate you through the KYC/AML process required by our fiduciary
+          partners;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Meet
+          the requirements to make disclosures under the requirements of any law binding on the Marketplace under and
+          for the purposes of any guidelines issued by regulatory or other authorities with which the Marketplace is
+          expected to comply;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Process
+          payment for products or Services purchased;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Provide
+          you with notices about your account and payments;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Process
+          applications and transactions;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Prevent
+          potentially prohibited or illegal activities;
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Carry
+          out our obligations and enforce our rights arising from any contracts entered into between you and us,
+          including for billing and collection and
+        </span>
+      </li>
+      <li
+        style="font-family:serif; font-size:11pt; margin:0pt 0pt 6pt 65.6pt; orphans:0; padding-left:6.4pt; text-align:justify; text-indent:0pt; widows:0"
+      >
+        <span
+          style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+        >
+          Enforce
+          our Terms.
+        </span>
+      </li>
+    </ul>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(iii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Limiting Use,
+        Disclosure and Retention.
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        We will not use
+        your Personal Data for any purpose that you have not consented to. Tresso will NOT sell or trade Personal Data
+        for commercial purposes. We will only use Personal Information to provide you with important messages about our
+        Services and transactional communications regarding your activity on our website, such as deposit and withdrawal
+        notifications.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(iv)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Anonymous and
+        Aggregated Information Use
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may use
+        Personal Information and other information about you to create anonymized and aggregated information, such as
+        de-identified demographic information, de-identified location information, information about the computer or
+        device from which you access our Services, or other analyses we create. Anonymized and aggregated information is
+        used for a variety of functions, including the measurement of visitors’ interest in and use of various portions
+        or features of the Tresso Services. Anonymized or aggregated information is not Personal Information, and we may
+        use such information in a number of ways, including research, internal analysis, analytics, and any other
+        legally permissible purposes. We may share this information within us and with Third Parties for our or their
+        purposes in an anonymized or aggregated form designed to prevent anyone from identifying you.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(v)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Other
+        Uses
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may use Personal Information for
+        which we have a legitimate interest, such as direct marketing, individual or market research, anti-fraud
+        protection, or any other purpose disclosed to you at the time you provide Personal Information or with your
+        consent.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:0pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(c)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Cookies, Pixel
+        Tags/Web Beacons, Analytics Information, and Interest-Based Advertising
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt; orphans:0; text-align:justify; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        We,
+        as well as Third Parties that provide content or other functionality on our Marketplace, may use cookies, pixel
+        tags, local storage, and other technologies (“
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >Technologies</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ”)
+        to automatically collect information through
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">the Tresso Services</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >.</span>
+      <span
+        style="background-color:#ffffff; font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        We
+        use Technologies that are essentially small data files placed on your computer, tablet, mobile phone, or other
+        devices (referred to collectively as a "
+      </span>
+      <span
+        style="background-color:#ffffff; font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >device</span>
+      <span
+        style="background-color:#ffffff; font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ")
+        that allow us to record certain pieces of information whenever you visit or interact with our Services,
+        applications, messaging, and tools, and to recognize you across all relevant devices.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(i)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">Cookies</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . Cookies are small text files placed in visitors’ devices
+        to store their preferences. Most browsers allow you to block and delete cookies. However, if you do that, some
+        features of the Tresso Services may not work properly.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(ii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Pixel Tags/Web
+        Beacons
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . A pixel tag (also known as a web
+        beacon) is a piece of code embedded on the Site or the App that collects information about Individuals’
+        engagement on the Site or the App. The use of a pixel allows us to record, for example, that a user has visited
+        a particular web page or clicked on a particular advertisement.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt; orphans:0; text-align:justify; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        Our
+        uses of such Technologies fall into the following general categories:
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:underline; vertical-align:baseline"
+      >
+        Operationally
+        Necessary
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        .
+        We may use cookies, web beacons, or other similar technologies that are necessary to the operation of our
+        Services, applications, and tools. This includes technologies that allow you access to our Services,
+        applications, and tools; that are required to identify irregular Service behavior, prevent fraudulent activity
+        and improve security; or that allow you to make use of our functions such as shopping-carts, saved search, or
+        similar functions;
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:underline; vertical-align:baseline"
+      >
+        Performance
+        Related
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        .
+        We may use cookies, web beacons, or other similar technologies to assess the performance of our applications,
+        Services, and tools, including as part of our analytic practices to help us understand how our visitors use our
+        Services, determine if you have interacted with our messaging, determine whether you have viewed an item or
+        link, or to improve our website content, applications, Services, or tools
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">;</span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:underline; vertical-align:baseline"
+      >
+        Functionality
+        Related
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        .
+        We may use cookies, web beacons, or other similar technologies that allow us to offer you enhanced functionality
+        when accessing or using our Services. This may include identifying you when you sign into your account or
+        keeping track of your specified preferences, interests, or past items viewed so that we may enhance the
+        presentation of content;
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:underline; vertical-align:baseline"
+      >
+        Advertising
+        or Targeting Related
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        .
+        We may use first-party or Third Party cookies and web beacons to deliver content, including ads relevant to your
+        interests, on our Site, or on Third Party websites. This includes using Technologies to understand the
+        usefulness to you of the advertisements and content that has been delivered to you, such as whether you have
+        clicked on an advertisement.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt; orphans:0; text-align:justify; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        If
+        you would like to opt out of the Technologies we employ through our Services, applications, or tools, you may do
+        so by blocking, deleting, or disabling them as your browser or device permits. Please note however that certain
+        functionality of
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        the Tresso
+        Services
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >may not be available or function properly if you opt out of certain Technology uses.</span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >5.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Disclosure of Your
+        Information
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt; orphans:0; text-align:justify; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        We
+        only collect Personal Information that we believe to be relevant and required to conduct our business. We may
+        share your Personal Information with our service providers, but only to the extent that they each need to know
+        specific information to continue to provide Services to you. This includes:
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(i)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Vendors and Service
+        Providers
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may share any information we
+        receive with vendors and service providers. The types of service providers (processors) to whom we entrust
+        Personal Information include service providers for: (i) provision of IT and related services; (ii) provision of
+        information and Marketplace you have requested; (iii) payment processing; (iv) customer service activities; (v)
+        fraud prevention; and (vi) in connection with the provision of the services, including KYC/AML checks. We have
+        executed appropriate contracts with the service providers that prohibit them from using or sharing Personal
+        Information except as necessary to perform the contracted Marketplace on our behalf or to comply with applicable
+        legal requirements.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(ii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Disclosures to
+        Protect Us or Others (e.g., as required by law and similar disclosures)
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may access, preserve, and disclose your Personal
+        Information, other account information, and content if we believe doing so is required or appropriate to: (i)
+        comply with law enforcement or national security requests and legal process, such as a court order or subpoena;
+        (ii) respond to your requests; (iii) protect your, our or others’ rights, property, or safety; (iv) enforce our
+        policies or contracts; (v) collect amounts owed to us; (vi) prevent physical harm or financial loss or in
+        connection with an investigation or prosecution of suspected or actual illegal activity; or (vii) disclose your
+        Personal Information in good faith where it is otherwise necessary or advisable.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(iii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Security
+        Reasons
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . In addition, from time to time,
+        server logs may be reviewed for security purposes – e.g., to detect unauthorized activity on the Marketplace. In
+        such cases, server log data containing IP addresses may be shared with law enforcement bodies in order that they
+        may identify Individuals in connection with their investigation of the unauthorized activities.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(iv)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Merger, Sale, or
+        Other Asset Transfers
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . If we are involved in
+        a merger, acquisition, financing due diligence, reorganization, bankruptcy, receivership, sale of company
+        assets, or transition of service to another provider, then your information may be sold or transferred as part
+        of such a transaction as permitted by law and/or contract. In such event, we will endeavor to direct the
+        transferee to use Personal Information in a manner that is consistent with the Privacy Policy in effect at the
+        time such Personal Information was collected.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(v)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        For any other purpose disclosed by us when you
+        provide the information. We may disclose aggregated information about our users, which means information that
+        does not identify any individual, without restriction. As an example, we may include in our marketing materials
+        that a certain percentage of our users are female, but we will not share a list of the female users in these
+        materials.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >6.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        International Data
+        Transfers
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . You agree that all Personal
+        Information collected via or by us may be transferred, Processed, and stored anywhere in the world, including
+        but not limited to the United States, in the cloud, on our servers, on the servers of our affiliates or the
+        servers of our service providers. Your Personal Information may be accessible to law enforcement or other
+        authorities pursuant to a lawful request. By providing information to us, you explicitly consent to the storage
+        of your Personal Information in these locations.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >7.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <a name="_heading_h.30j0zll"></a>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Opt-Out (Right to Object to
+        Processing)
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:0pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(a)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">General</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . You have the right to object to and opt out of certain
+        uses and disclosures of your Personal Information. Where you have consented to our Processing of your Personal
+        Information or Sensitive Personal Information (as defined below), you may withdraw that consent at any time and
+        opt out of further Processing by contacting us as described below.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:0pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(b)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Email and Telephone
+        Communications
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . If you receive an unwanted
+        email from us, you can use the unsubscribe link found at the bottom of the email to opt out of receiving future
+        emails. We will process your request within a reasonable time after receipt. Note that you will continue to
+        receive transaction-related emails regarding products or Marketplace you have requested. We may also send you
+        certain non-promotional communications regarding us and our Marketplace and you will not be able to opt out of
+        those communications (e.g., communications regarding updates to our Terms or this Privacy Policy).
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(i)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        We maintain telephone “do-not-call” lists as
+        mandated by law. We process requests to be placed on do-not-phone and do-not-contact lists within 60 days after
+        receipt, or such shorter time as may be required by law.
+      </span>
+    </p>
+    <p
+      style="margin:0pt 0pt 6pt 36pt; page-break-after:avoid; text-align:justify; text-indent:-36pt"
+    >
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >8.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Rights of Access,
+        Rectification, Erasure, and Restriction
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . You
+        can review and change your Personal Information by logging into the Marketplace and visiting your account page.
+        You may also inquire as to whether we are Processing Personal Information about you or request access to your
+        Personal Information. Where otherwise permitted by applicable law, you may contact us as described below or use
+        any of the methods set out in this Privacy Policy to request access to, receive (port), seek rectification, or
+        request erasure of Personal Information held about you by us. Please include your full name, email address
+        associated with your account, and a detailed description of your data request. Such requests will be Processed
+        in line with local laws.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; orphans:0; text-align:justify; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        We
+        may not accommodate a request to change information if we believe the change would violate any law or legal
+        requirement or cause the information to be incorrect. Although we make good faith efforts to provide Individuals
+        with access to their Personal Information, there may be circumstances in which we are unable to provide access,
+        including but not limited to: where the information contains legal privilege, would compromise others’ privacy
+        or other legitimate rights, where the burden or expense of providing access would be disproportionate to the
+        risks to the Individual’s privacy in the case in question or where it is commercially proprietary. If we
+        determine that access should be restricted in any particular instance, we will provide you with an explanation
+        of why that determination has been made and a contact point for any further inquiries. To protect your privacy,
+        we will take commercially reasonable steps to verify your identity before granting access to or making any
+        changes to your Personal Information.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >9.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Data Retention</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We retain the Personal Information we receive as
+        described in this Privacy Policy for as long as you use our Marketplace or as necessary to fulfill the
+        purpose(s) for which it was collected, provide our Services, resolve disputes, establish legal defenses, conduct
+        audits, pursue legitimate business purposes, enforce our agreements, and comply with applicable laws.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >10.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Security of Your
+        Information
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We take steps to ensure that
+        your information is treated securely and in accordance with this Privacy Policy. We have implemented measures
+        designed to secure your Personal Information from accidental loss and from unauthorized access. All user
+        information is encrypted through the Marketplace with Secure Socket Layer technology (SSL) and is also encrypted
+        when it is stored by us to prevent unauthorized parties from viewing such information. Also, we perform regular
+        malware scanning of the Marketplace and all servers and computers used by us to support the Marketplace. All
+        Company employees are required to adhere to our security and confidentiality procedures and undergo training
+        related to maintaining the security of user Personal Information. The safety and security of your information
+        also depends on you. Where you have chosen a password for access to certain parts of the Marketplace, you are
+        responsible for keeping this password confidential. We ask you not to share your password with anyone and be
+        careful about giving out information to other Individuals on the Marketplace if requested. Unfortunately, the
+        transmission of information via the internet is not completely secure. Although we do our best to protect your
+        Personal Information, we cannot guarantee the security of your Personal Information transmitted to the
+        Marketplace. Any transmission of Personal Information is at your own risk. We are not responsible for
+        circumvention of any privacy settings or security measures contained on the Marketplace, and we do not accept
+        liability for unintentional disclosure.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; orphans:0; text-align:justify; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        By
+        using our Services or providing Personal Information to us, you agree that we may communicate with you
+        electronically regarding security, privacy, and administrative issues relating to your use of
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">the Tresso Services</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        .
+        If we learn of a security system’s breach, we may attempt to notify you electronically by making a notice
+        available to you through the Marketplace or sending an e-mail to you. You may have a legal right to receive this
+        notice in writing.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >11.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        International
+        Users
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . By using the Marketplace, we will
+        transfer data to the United States and other global jurisdictions. By choosing to use the Marketplace or
+        otherwise provide information to us, you agree that any dispute over privacy or the terms contained in this
+        Privacy Policy and the adjudication of any disputes arising in connection with the Marketplace will be in
+        accordance with the Terms of Use.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; orphans:0; text-align:justify; widows:0">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >
+        The
+        Marketplace currently does not permit users based in the European Economic Area (EEA). If you are visiting from
+        a region outside of the EEA which has laws governing data collection and use, please note that you are agreeing
+        to the transfer of your information to the United States and to Processing of your data globally. By providing
+        your Personal Information, you consent to any transfer and Processing in accordance with this Privacy
+        Policy.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >12.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Third Party
+        Links.
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        Our website may contain links that
+        lead to other websites, and Tresso is not responsible for the privacy practices, content, and/or activities of
+        these linked websites. Nonetheless, we seek to protect the integrity of our Services and welcome any feedback
+        about these external websites.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >13.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <a name="_heading_h.1fob9te"></a>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Redress/Compliance and
+        Accountability
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . If you have any questions
+        about our privacy practices, this Privacy Policy, or how to lodge a complaint with the appropriate authority,
+        please contact us as described below. We will address your concerns and attempt to resolve any privacy issues in
+        a timely manner.
+      </span>
+    </p>
+    <p
+      style="margin:0pt 0pt 6pt 36pt; page-break-after:avoid; text-align:justify; text-indent:-36pt"
+    >
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >14.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">
+        Other Rights and Important
+        Information
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; page-break-after:avoid; text-align:justify; text-indent:0pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(a)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      >
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Changes to our
+        Privacy Policy and Practices
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . This Privacy
+        Policy may change from time to time. You understand and agree that you will be deemed to have accepted the
+        updated Privacy Policy if you use the Marketplace after we make the updated Privacy Policy available to you. If
+        at any point you do not agree to any portion of the Privacy Policy then in effect, you must immediately stop
+        using the Marketplace.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(i)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Revision to the
+        Privacy Policy
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . We may revise this Privacy
+        Policy in our sole discretion, so review it periodically. If you continue to access or use the Marketplace made
+        available to you after such changes have been made, you are deemed to have provided your consent to the
+        changes.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(ii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        Posting of Revised
+        Privacy Policy
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . If there are any material
+        changes to this Privacy Policy, we will notify you by email or as otherwise required by applicable law. We will
+        post any adjustments to the Privacy Policy on the Site, and the revised version will be effective immediately
+        when it is posted (or upon notice as applicable).
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >(iii)</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">
+        New Uses of Personal
+        Information
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . Additionally, before we use
+        Personal Information for any new purpose not originally authorized by you, we will endeavor to provide
+        information regarding the new purpose and give you the opportunity to opt out. Where consent of the Individual
+        for the Processing of Personal Information is otherwise required by law or contract, we will endeavor to comply
+        with the law or contract.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >15.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <a name="_heading_h.3znysh7"></a>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Definitions</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . The following capitalized terms will have the meanings
+        herein as set forth below.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >“</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >Agent</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ”
+        means any Third Party that Processes Personal Information pursuant to the instructions of, and solely for, us or
+        to which we disclose Personal Information for use on its behalf.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >“</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >
+        Personal
+        Information
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ”
+        is any information relating to an identified or identifiable natural person (“
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >Individual</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >”).</span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >“</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >Process</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ”
+        or “
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >Processing</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ”
+        means any operation which is performed upon Personal Information, whether or not by automatic means, such as
+        collection, recording, organization, structuring, storage, adaptation or alteration, retrieval, consultation,
+        use, disclosure by transmission, dissemination or otherwise making available, alignment or combination,
+        restriction, erasure, or destruction.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >“</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >
+        Sensitive
+        Data
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ”
+        or “
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >
+        Sensitive
+        Personal Information
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ”
+        is a subset of Personal Information which, due to its nature, has been classified by law or by policy as
+        deserving additional privacy and security protections. Sensitive Personal Information includes Personal
+        Information consisting of the following data elements: (1) race or ethnic origin; (2) political opinions; (3)
+        religious or philosophical beliefs; (4) trade union membership; (5) genetic data; (6) biometric data where
+        Processed to uniquely identify a person; (6) health information; (7) sexual orientation or information about the
+        Individual’s sex life; or (8) information relating to the commission of a criminal offense.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >“</span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; text-decoration:none; vertical-align:baseline"
+      >
+        Third
+        Party
+      </span>
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:normal; text-decoration:none; vertical-align:baseline"
+      >
+        ”
+        is any company, natural or legal person, public authority, agency, or body other than you, us or our
+        Agents.
+      </span>
+    </p>
+    <p style="margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-36pt">
+      <span
+        style="color:#010000; font-family:'Times New Roman'; font-size:11pt; font-variant:normal; text-decoration:none; vertical-align:baseline"
+      >16.</span>
+      <span
+        style="font:7.0pt 'Times New Roman'"
+      ></span>
+      <span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Contact Us</span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">
+        . If you would like to contact us about our privacy
+        practices, or exercise any of your data subject rights, please send a written request to us at
+        service@tresso.com
+      </span>
+      <span style="font-family:'Times New Roman'; font-size:11pt">.</span>
+    </p>
+  </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-              
-            }
-        },
-        methods: {
-        },
-        computed:{
-             languageChange(){
-                return  this.$store.state.app.countryLanguage;//  返回全局state的状态值
-            },
-        },
-        watch:{
-              languageChange(val,oldVal){//监听全局语言的状态
-            },
-        },
-        mounted(){
-        }
+export default {
+  data() {
+    return {};
+  },
+  methods: {},
+  computed: {
+    languageChange() {
+      return this.$store.state.app.countryLanguage; //  返回全局state的状态值
     }
+  },
+  watch: {
+    languageChange(val, oldVal) {
+      //监听全局语言的状态
+    }
+  },
+  mounted() {}
+};
 </script>
 
 <style scoped lang="less">
-.aboutBox{
-        padding:40px 0.1rem;
-        font-size: 14px;
-        font-weight: bolder;
-        background: #fff;
-        ul{
-            li{
-                font-size: 14px;
-                line-height: 41px;
-                a{
-                    color: rgb(175, 175, 175);
-                }
-                .active{
-                    color: rgb(18, 134, 154);
-                }
-            }
-		}
-		p{
-			margin:10px 0;
-			color: #5c6166;
-			text-align: justify;
-		}
-        .title{
-            font-size: 14px;
-            color: rgb(52, 72, 87);
-            line-height: 40px;
-        }
-        .panel-title{
-            color: #344857;
-            border-bottom: 1px solid rgba(24,24,62,0.3);
-            margin: 0;
-        }
-        .panel-gray{
-            background: #202a39;
-            color: #a7a7a7;
-        }
-        .font-weight{
-            font-weight: bold;
-			padding: 15px 0px 0px;
-			font-size: 17px;
-        }
-    }
+.about-privice {
+  color: #000;
+  p {
+    color: #000;
+  }
+}
 </style>

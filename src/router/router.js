@@ -39,9 +39,9 @@ import terms from "../views/legal/terms.vue";
 import legal from "../views/legal/legal.vue";
 import tradingRules from "../views/legal/TradingRules.vue";
 import privacy from "../views/legal/privice.vue";
-import fee from "../views/legal/fee.vue";
-import disclaimer from "../views/legal/disclaimer.vue";
-import aml from "../views/legal/aml.vue";
+// import fee from "../views/legal/fee.vue";
+// import disclaimer from "../views/legal/disclaimer.vue";
+// import aml from "../views/legal/aml.vue";
 import setGoogle from "../views/google/setGoogle.vue";
 import closeGoogle from "../views/google/closeGoogle.vue";
 import identiy from "../views/identity/identity.vue"
@@ -476,22 +476,22 @@ const router = new Router({
                      },
                      component: privacy
                   },
-                  {//disclaimer
-                     path: 'disclaimer',
-                     name: 'disclaimer',
-                     meta: {
-                        title: 'HomeTitle'
-                     },
-                     component: disclaimer
-                  },
-                  {//fee
-                     path: 'fee',
-                     name: 'fee',
-                     meta: {
-                        title: 'HomeTitle'
-                     },
-                     component: fee
-                  },
+                  // {//disclaimer
+                  //    path: 'disclaimer',
+                  //    name: 'disclaimer',
+                  //    meta: {
+                  //       title: 'HomeTitle'
+                  //    },
+                  //    component: disclaimer
+                  // },
+                  // {//fee
+                  //    path: 'fee',
+                  //    name: 'fee',
+                  //    meta: {
+                  //       title: 'HomeTitle'
+                  //    },
+                  //    component: fee
+                  // },
                   {//tradingRules
                      path: 'tradingRules',
                      name: 'tradingRules',
@@ -527,14 +527,14 @@ const router = new Router({
                },
                component: editAmlKyc
             },
-            {//disclaimer
-               path: 'aml',
-               name: 'aml',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: aml
-            },
+            // {//disclaimer
+            //    path: 'aml',
+            //    name: 'aml',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: aml
+            // },
             {
                path: 'about55',
                name: 'about55',
