@@ -90,22 +90,22 @@ const router = new Router({
          redirect: '/home',
          component: Layout,
          children: [
-            {
-               path: '/exchangeGBBO',
-               name: 'exchangeGBBO',
-               beforeEnter: (to, from, next) => {
-                  checkSSOToken(to, next)
-               },
-               meta: {
-                  // title:'HomeTokenExchange'
-               },
-               component: ExchangeGBBO,
-            },
+            // {
+            //    path: '/exchangeGBBO',
+            //    name: 'exchangeGBBO',
+            //    beforeEnter: (to, from, next) => {
+            //       checkSSOToken(to, next)
+            //    },
+            //    meta: {
+            //       // title:'HomeTokenExchange'
+            //    },
+            //    component: ExchangeGBBO,
+            // },
             {
                path: '/exchange',
                name: 'exchange',
                beforeEnter: (to, from, next) => {
-                  checkSSOToken(to, next)
+                  // checkSSOToken(to, next)
                },
                meta: {
                   // title:'HomeTokenExchange'
