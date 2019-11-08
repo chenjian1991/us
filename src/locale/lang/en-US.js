@@ -1260,6 +1260,8 @@ export default {
    kycModalText2: 'You must pass identity verification before engaging in any deposit, withdrawal, trade, and all other fund, token, and currency functions.',
    headerBalances: 'Balances',
    CreateAPISMSAuthentication: 'SMS Authentication',
+   usernameexg: "Username should be a combination of 4-30 letters, digitals or underscores with no space.",
+
 
 
 

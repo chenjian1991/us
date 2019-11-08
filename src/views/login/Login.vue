@@ -207,7 +207,6 @@ import {geeTest} from '../../../api/usersystem.js'
                     localStorage.setItem('deviceCode',this.deviceObj.browserVersion)
                     this.loginObj = res;
                     if(res.beforeToken){//绑定谷歌了
-                        // localStorage.setItem('deviceCode',this.deviceObj.browserVersion)
                         localStorage.setItem('loginGoogleUserId', res.userId)
                         localStorage.setItem('beforeToken',res.beforeToken)
                          if(this.fromSocial=='null'&&this.fromSite==undefined){//本站过来
