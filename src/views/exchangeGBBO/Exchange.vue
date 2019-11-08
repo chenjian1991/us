@@ -15,11 +15,12 @@
                            <!--<span v-if="siteName == 'F'">{{$t('headerfranceexchange')}}</span>-->
                            <span v-if="siteName == 'C'">{{$t('headercustomerexchange')}}</span>
                            <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
-                           <ul @click="changeBoard">
+                           <ul>
+                           <!-- <ul @click="changeBoard"> -->
                               <li data-site="BTC" siteName="B">{{$t('headerblockexchange')}}</li>
                               <!-- <li  data-site="USDT" siteName="S">{{$t('headerstockexchange')}}</li> -->
                               <!--<li data-site="USDD" siteName="F">{{$t('headerfranceexchange')}}</li>-->
-                              <li data-site="USDT" siteName="C">{{$t('headercustomerexchange')}}</li>
+                              <!-- <li data-site="USDT" siteName="C">{{$t('headercustomerexchange')}}</li> -->
                            </ul>
                         </div>
                         <div class="myCoin" @click="openMyCoin" :class="[isShowMainBoard? '' : 'markActive']">

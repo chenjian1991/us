@@ -104,9 +104,9 @@ const router = new Router({
             {
                path: '/exchange',
                name: 'exchange',
-               beforeEnter: (to, from, next) => {
-                  // checkSSOToken(to, next)
-               },
+               // beforeEnter: (to, from, next) => {
+               //    // checkSSOToken(to, next)
+               // },
                meta: {
                   // title:'HomeTokenExchange'
                },

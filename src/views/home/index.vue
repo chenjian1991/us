@@ -77,7 +77,7 @@
                                     <div class="f-14 c-fff">Est Return {{gbboList.avg.change}}</div>
                                  </div>
                                  <div class="d-flex align-items-center">
-                                    <router-link :to="{path:'exchange',query:{symbol:symbol}}"
+                                    <router-link :to="{path:'/exchange',query:{symbol:symbol}}"
                                                 class="btn btn-sm btn-primary transition-3d-hover c-blue f-14 trade-btn">
                                        Instant Trade
                                     </router-link>
