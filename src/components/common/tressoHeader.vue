@@ -177,7 +177,7 @@
                }
                );
             //更新自选的币种
-            this.$store.dispatch("updateMarkSymbol");
+            // this.$store.dispatch("updateMarkSymbol");
             this.$store.commit("changeLoingStatus", false);
          },
       },
