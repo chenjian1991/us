@@ -1430,6 +1430,8 @@
                }
             }
             this.quoteWS.onerror = (e) => {
+               console.log("The 'this.quoteWS' connect error");
+               
             }
             //关闭时候触发
             this.quoteWS.onclose = (e) => {
