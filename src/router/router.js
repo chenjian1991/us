@@ -93,6 +93,9 @@ const about = () => import('../views/about/about_new.vue')
 
 const kyc = () => import('../views/kyc/kyc.vue')
 
+/* new-gbbo */
+const NewGBBO = () => import('../views/gbbo/GBBOMain.vue')
+
 import i18n from '@/locale/index.js';
 
 Vue.use(Router)
@@ -221,6 +224,12 @@ const router = new Router({
                   // title:'HomeTokenExchange'
                },
                component: ExchangeMain,
+            },
+            {
+               path: '/gbbo',
+               name: 'exchange',
+               meta: {},
+               component: NewGBBO
             },
             {
                path: 'home',
