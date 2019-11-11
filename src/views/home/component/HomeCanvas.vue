@@ -82,6 +82,7 @@ export default {
     }
 
     const animate = () => {
+      cancelAnimationFrame(this._requestAnimation)
       this._requestAnimation = requestAnimationFrame(animate);
       render();
     }
