@@ -4,10 +4,9 @@ import {userStatus} from './urls'
 export const queryUserStatus = (params)=>{
     return getApi(userStatus, params);
 }
-export const geeTest = (id,interactive,successFun)=>{
-    debugger
+export const geeTest = (id,interactive,successFun,closeFunc)=>{
     Sense.onClose(function(){
-        debugger
+        closeFunc()
     })
     Sense.judge({
         id: id,       

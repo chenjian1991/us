@@ -200,6 +200,8 @@ import {geeTest} from '../../../api/usersystem.js'
                                 },
                             }
                             this.loginFunc(params)
+                    },()=>{
+                         this.loaded = true;
                     }).catch((error)=>{
                             this.loaded = true;
                     })
