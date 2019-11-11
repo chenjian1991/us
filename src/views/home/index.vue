@@ -11,7 +11,7 @@
                opportunities to win. All in a single account.
             </section>
             <router-link to='/register' class="btn btn-sm btn-primary transition-3d-hover button bgc-blue f-14 mt-7">
-               GET STARTED
+               Join the Beta
             </router-link>
          </div>
       </div>
@@ -485,6 +485,7 @@
                      }
                   });
                }, () => {
+                  console.log('The websocket connet error')
                   this.stompClient = null
                });
             }

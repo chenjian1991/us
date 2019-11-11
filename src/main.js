@@ -1,11 +1,11 @@
 import Vue from 'vue';
+import iView from 'iview';
 import App from './App.vue';
+import VueCookies from 'vue-cookies'
 import router from './router/router';
 import store from './store';
-import iView from 'iview';
 import i18n from './locale';
 import 'iview/dist/styles/iview.css';
-// import animated from 'animate.css';
 import 'font-awesome/css/font-awesome.min.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import {scientificToNumber} from '@/lib/utils.js';
@@ -16,7 +16,7 @@ import VueLazyload from 'vue-lazyload'
 
 Vue.config.productionTip = false
 Vue.use(iView)
-// Vue.use(animated)
+Vue.use(VueCookies)
 Vue.use(VueAwesomeSwiper)
 Vue.use(MetaInfo)
 Vue.use(VueClipboard)

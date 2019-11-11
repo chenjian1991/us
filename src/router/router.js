@@ -1,19 +1,36 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from '../views/main/Layout.vue';
-import Cookies from 'js-cookie'
+import VueCookies from 'vue-cookies'
+
+Vue.use(VueCookies)
+
 import store from '../store/index'
 import {getCreateAccount} from '_api/exchange.js'
 import {clearLocalStorage} from '@/config'
 
+
+//zmw
+//首页
 const index = () => import('../views/home/index.vue')
-const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
+
+const balances = () => import('../views/newBalances/balances.vue')
+const deposit = () => import('../views/newBalances/deposit.vue')
+const withdrawal = () => import('../views/newBalances/withdrawal.vue')
+const transaction_history = () => import('../views/newBalances/transactionHistory.vue')
+//us balance
+import deposit_usd from '../views/balances/deposit_usd.vue'
+import withdrawal_usd from '../views/balances/withdrawal_usd.vue'
+import bankSetting from '../views/balances/bankSetting.vue'
+
+const order = () => import('../views/newBalances/order.vue')
+const kyc = () => import('../views/kyc/kyc.vue')
+
+// const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import('../views/exchangeGBBO/Exchange.vue')
-import download from "../views/download/download.vue";
+
 const Login = () => import('../views/login/Login.vue')
 const Register = () => import('../views/login/register.vue')
-const About = () => import('../views/about/About.vue')
-const Captial = () => import('../views/captial/Captial.vue')
 
 import Google from '../views/login/google.vue';
 import Forgot from '../views/forgotPassword/forgot.vue';
@@ -22,76 +39,26 @@ import resetNewpass from '../views/forgotPassword/resetNewpass.vue';
 import safeCenter from '../views/sateCenter/safeCenter.vue';
 import bandEmail from '../views/sateCenter/bandEmail.vue';
 import bandPhone from '../views/sateCenter/bandPhone.vue';
-import order from '../views/order/order.vue'
+const PersonCenter = () => import('../views/account/PersonCenter.vue') // 归到资产块
 
-const balances = () => import('../views/balances/balances.vue')
-import deposit from '../views/balances/deposit.vue'
-import withdrawal from '../views/balances/withdrawal.vue'
-import transaction_history from '../views/balances/transaction_history.vue'
-
-import originLoginPassword from "../views/resetLoginPassword/originPasswrod.vue";
-import newPassword from "../views/resetLoginPassword/newPassword.vue";
-import originTradePassword from "../views/resetTradePasswrod/originTradePassword.vue";
-import newtradePassword from "../views/resetTradePasswrod/newtradePassword.vue"
+import LoginPass from "../views/resetLoginPassword/LoginOrigin.vue";
+import NewLoginpwd from "../views/resetLoginPassword/LoginNewpws.vue";
+import OriginTradePassword from "../views/resetTradePasswrod/TradeOriginpwd.vue";
+import NewTradePassword from "../views/resetTradePasswrod/TradeNewpwd.vue"
 import verfifyEmail from "../views/login/verifyEmail.vue";
 import activeEmail from "../views/login/activeEmail.vue";
 import terms from "../views/legal/terms.vue";
 import legal from "../views/legal/legal.vue";
 import tradingRules from "../views/legal/TradingRules.vue";
 import privacy from "../views/legal/privice.vue";
-import fee from "../views/legal/fee.vue";
-import disclaimer from "../views/legal/disclaimer.vue";
-import aml from "../views/legal/aml.vue";
+// import fee from "../views/legal/fee.vue";
+// import disclaimer from "../views/legal/disclaimer.vue";
+// import aml from "../views/legal/aml.vue";
 import setGoogle from "../views/google/setGoogle.vue";
 import closeGoogle from "../views/google/closeGoogle.vue";
-import identiy from "../views/identity/identity.vue"
 import identityResult from "../views/identity/identityResult.vue"
-import Invite from "../views/invite/Invite.vue"
-import Test from "../views/TestUtil/Test";
 
-//usdd
-import FF from "../views/FF/FF.vue";
-import stock from "../views/assestInfo/s/stock.vue"
-import cinfo from "../views/assestInfo/c/CInfo.vue"
-
-import StockToken from "../views/tongzheng/s/stock.vue"
-//aml
-import amlKyc from '../views/aml/amlkyc.vue';
-import amlkycResult from '../views/aml/amlkycResult.vue';
-import editAmlKyc from "../views/aml/editAmlKyc.vue";
-
-//us balance
-import deposit_usd from '../views/balances/deposit_usd.vue'
-import withdrawal_usd from '../views/balances/withdrawal_usd.vue'
-import bankSetting from '../views/balances/bankSetting.vue'
-
-const interFinanceOne = () => import( '../views/interFinance/interFinanceOne.vue')
-const interFinanceTWO = () => import( '../views/interFinance/interFinanceTWO.vue')
-const interFinanceThree = () => import( '../views/interFinance/interFinanceThree.vue')
-const inviteAto = () => import( '../views/inviteAto/inviteAto.vue')
-const beinvited = () => import( '../views/inviteAto/beinvited.vue')
-const registerSuccess = () => import( '../views/inviteAto/registerSuccess.vue')
-
-const atoInivteplus = () => import( '../views/inviteAtoplus/inviteAtoplus.vue')
-const beinvitedplus = () => import( '../views/inviteAtoplus/beinvitedplus.vue')
-const registerSuccessplus = () => import( '../views/inviteAtoplus/registerSuccessplus.vue')
-
-const card = () => import('../views/visa.vue')
-const redeemsupreme = () => import('../views/redeemsupreme.vue')
-const tokenizeyeezy = () => import('../views/tokenizeyeezy.vue')
-const Supreme = () => import('../views/Supreme.vue')
-//header toggle
-const whyus = () => import('../views/headerToggle/whyus.vue')
-const crypto = () => import('../views/headerToggle/criptoTrading.vue')
-const smartexecution = () => import('../views/headerToggle/smartexecution.vue')
-const termsfront = () => import('../views/headerToggle/terms.vue')
-const faqs = () => import('../views/headerToggle/faqs.vue')
-const ourcompany = () => import('../views/headerToggle/ourcompany.vue')
-const team = () => import('../views/headerToggle/TheTeam.vue')
-const contactus = () => import('../views/headerToggle/contactus.vue')
 const about = () => import('../views/about/about_new.vue')
-
-const kyc = () => import('../views/kyc/kyc.vue')
 
 /* new-gbbo */
 const NewGBBO = () => import('../views/gbbo/GBBOMain.vue')
@@ -100,11 +67,9 @@ import i18n from '@/locale/index.js';
 
 Vue.use(Router)
 
-
 const router = new Router({
    //history 路由 
    mode: 'history',
-
    routes: [
       {
          path: '/activeEmail',
@@ -115,83 +80,11 @@ const router = new Router({
          component: activeEmail
       },
       {
-         path: '/download',
-         name: 'download',
-         meta: {
-            title: 'HomeTitle'
-         },
-         component: download,
-      },
-      {
-         path: '/test',
-         name: 'test',
-         meta: {
-            title: 'HomeTitle'
-         },
-         component: Test
-      },
-      {
-         path: '/supreme',
-         name: 'supreme',
-         meta: {
-            title: 'HomeTitle'
-         },
-         component: Supreme
-      },
-      {//inviteAto
-         path: '/inviteAto',
-         name: 'inviteAto',
-         meta: {
-            title: 'supretitle'
-         },
-         component: inviteAto
-      },
-      {//beinvited
-         path: '/beinvited',
-         name: 'beinvited',
-         meta: {
-            title: 'supretitle'
-         },
-         component: beinvited
-      },
-      {//registerSuccess
-         path: '/registerSuccess',
-         name: 'registerSuccess',
-         meta: {
-            title: 'supretitle'
-         },
-         component: registerSuccess
-      },
-      {//atoInivtePlus
-         path: '/atoInivteplus',
-         name: 'atoInivteplus',
-         meta: {
-            title: 'supinviteplus'
-         },
-         component: atoInivteplus
-      },
-      {//beinvitedplus
-         path: '/beinvitedplus',
-         name: 'beinvitedplus',
-         meta: {
-            title: 'supinviteplus'
-         },
-         component: beinvitedplus
-      },
-      {//registerSuccessplus
-         path: '/registerSuccessplus',
-         name: 'registerSuccessplus',
-         meta: {
-            title: 'supinviteplus'
-         },
-         component: registerSuccessplus
-      },
-      {
          path: '/kyc',
          name: 'kyc',
-         // beforeEnter: (to, from, next) => {
-         //    checkSSOToken(to, next)
-         // },
+         beforeEnter: (to, from, next) => {
+            checkSSOToken(to, next)
+         },
          meta: {
             title: 'KYCTitle'
          },
@@ -203,23 +96,23 @@ const router = new Router({
          redirect: '/home',
          component: Layout,
          children: [
-            {
-               path: '/exchangeGBBO',
-               name: 'exchangeGBBO',
-               beforeEnter: (to, from, next) => {
-                  checkSSOToken(to,next)
-               },
-               meta: {
-                  // title:'HomeTokenExchange'
-               },
-               component: ExchangeGBBO,
-            },
+            // {
+            //    path: '/exchangeGBBO',
+            //    name: 'exchangeGBBO',
+            //    beforeEnter: (to, from, next) => {
+            //       checkSSOToken(to, next)
+            //    },
+            //    meta: {
+            //       // title:'HomeTokenExchange'
+            //    },
+            //    component: ExchangeGBBO,
+            // },
             {
                path: '/exchange',
                name: 'exchange',
-               beforeEnter: (to, from, next) => {
-                  checkSSOToken(to, next)
-               },
+               // beforeEnter: (to, from, next) => {
+               //    // checkSSOToken(to, next)
+               // },
                meta: {
                   // title:'HomeTokenExchange'
                },
@@ -238,70 +131,6 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: index,
-            }, 
-             {
-               path: 'whyus',
-               name: 'whyus',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: whyus,
-            },
-            {
-               path: 'crypto',
-               name: 'crypto',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: crypto,
-            },
-            {
-               path: 'smartexecution',
-               name: 'smartexecution',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: smartexecution,
-            },
-            {
-               path: 'termsfront',
-               name: 'termsfront',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: termsfront,
-            },
-            {
-               path: 'faqs',
-               name: 'faqs',
-               meta: {
-                  title: 'FAQ'
-               },
-               component: faqs,
-            },
-            {
-               path: 'ourcompany',
-               name: 'ourcompany',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: ourcompany,
-            },
-            {
-               path: 'team',
-               name: 'team',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: team,
-            },
-            {
-               path: 'contactus',
-               name: 'contactus',
-               meta: {
-                  title: '55 Trade - Buy and Sell Crypto at Our Most Competitive Pricing'
-               },
-               component: contactus,
             },
             {
                path: 'login',
@@ -352,6 +181,17 @@ const router = new Router({
                component: resetNewpass
             },
             {
+               path: '/Dashboard',
+               name: 'Dashboard',
+               meta: {
+                  title: '个人中心title'
+               },
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               component: PersonCenter
+            },
+            {
                path: 'safeCenter',
                name: 'safeCenter',
                beforeEnter: (to, from, next) => {
@@ -379,71 +219,52 @@ const router = new Router({
                component: bandPhone
             },
             {//修改登录密码
-               path: 'originLoginPassword',
-               name: 'originLoginPassword',
+               path: 'LoginPass',
+               name: 'LoginPass',
                meta: {
                   title: 'ChangePasswordTitle'
                },
-               component: originLoginPassword
+               component: LoginPass
             },
             {//修改登录密码
-               path: 'newPassword',
-               name: 'newPassword',
+               path: 'NewLoginpwd',
+               name: 'NewLoginpwd',
                meta: {
                   title: 'ChangePasswordTitle'
                },
-               component: newPassword
+               component: NewLoginpwd
             },
             {//修改交易密码
-               path: 'originTradePassword',
-               name: 'originTradePassword',
+               path: 'OriginTradePassword',
+               name: 'OriginTradePassword',
                meta: {
                   title: 'ResetTradePasswordTitle'
                },
-               component: originTradePassword
+               component: OriginTradePassword
             },
             {//修改交易密码
-               path: 'newtradePassword',
-               name: 'newtradePassword',
+               path: 'NewTradePassword',
+               name: 'NewTradePassword',
                meta: {
                   title: 'ResetTradePasswordTitle'
                },
-               component: newtradePassword
+               component: NewTradePassword
             },
             {//设置谷歌验证
-               path: 'setGoogle',
-               name: 'setGoogle',
+               path: 'setGoogleCode',
+               name: 'setGoogleCode',
                meta: {
                   title: 'HomeTitle'
                },
                component: setGoogle
             },
-            {//邀请好友
-               path: 'invite',
-               name: 'invite',
-               beforeEnter: (to, from, next) => {
-                  checkSSOToken(to, next)
-               },
-               meta: {
-                  title: 'InvitationProgramTitle'
-               },
-               component: Invite
-            },
             {//关闭谷歌验证
-               path: 'closeGoogle',
-               name: 'closeGoogle',
+               path: 'closeGoogleCode',
+               name: 'closeGoogleCode',
                meta: {
                   title: ''
                },
                component: closeGoogle
-            },
-            {//实名认证
-               path: 'identiy',
-               name: 'identiy',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: identiy
             },
             {//实名认证
                path: 'identityResult',
@@ -468,7 +289,7 @@ const router = new Router({
                   title: 'HomeTitle'
                },
                component: legal,
-               children:[
+               children: [
                   {//terms
                      path: 'terms',
                      name: 'terms',
@@ -485,22 +306,22 @@ const router = new Router({
                      },
                      component: privacy
                   },
-                  {//disclaimer
-                     path: 'disclaimer',
-                     name: 'disclaimer',
-                     meta: {
-                        title: 'HomeTitle'
-                     },
-                     component: disclaimer
-                  },
-                  {//fee
-                     path: 'fee',
-                     name: 'fee',
-                     meta: {
-                        title: 'HomeTitle'
-                     },
-                     component: fee
-                  },
+                  // {//disclaimer
+                  //    path: 'disclaimer',
+                  //    name: 'disclaimer',
+                  //    meta: {
+                  //       title: 'HomeTitle'
+                  //    },
+                  //    component: disclaimer
+                  // },
+                  // {//fee
+                  //    path: 'fee',
+                  //    name: 'fee',
+                  //    meta: {
+                  //       title: 'HomeTitle'
+                  //    },
+                  //    component: fee
+                  // },
                   {//tradingRules
                      path: 'tradingRules',
                      name: 'tradingRules',
@@ -512,54 +333,54 @@ const router = new Router({
                ]
             },
 
-            {//amlKyc
-               path: 'amlKyc',
-               name: 'amlKyc',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: amlKyc
-            },
-            {//amlkycResult
-               path: 'amlkycResult',
-               name: 'amlkycResult',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: amlkycResult
-            },
-            {//editAmlKyc
-               path: 'editAmlKyc',
-               name: 'editAmlKyc',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: editAmlKyc
-            },
-            {//disclaimer
-               path: 'aml',
-               name: 'aml',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: aml
-            },
-            {
-               path: 'about55',
-               name: 'about55',
-               meta: {
-                  title: 'aboutTitle'
-               },
-               component: About
-            },
-            {
-               path: 'capital',
-               name: 'capital',
-               meta: {
-                  title: 'capital'
-               },
-               component: Captial
-            },
+            // {//amlKyc
+            //    path: 'amlKyc',
+            //    name: 'amlKyc',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: amlKyc
+            // },
+            // {//amlkycResult
+            //    path: 'amlkycResult',
+            //    name: 'amlkycResult',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: amlkycResult
+            // },
+            // {//editAmlKyc
+            //    path: 'editAmlKyc',
+            //    name: 'editAmlKyc',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: editAmlKyc
+            // },
+            // {//disclaimer
+            //    path: 'aml',
+            //    name: 'aml',
+            //    meta: {
+            //       title: 'HomeTitle'
+            //    },
+            //    component: aml
+            // },
+            // {
+            //    path: 'about55',
+            //    name: 'about55',
+            //    meta: {
+            //       title: 'aboutTitle'
+            //    },
+            //    component: About
+            // },
+            // {
+            //    path: 'capital',
+            //    name: 'capital',
+            //    meta: {
+            //       title: 'capital'
+            //    },
+            //    component: Captial
+            // },
             //订单
             {
                path: 'order',
@@ -651,84 +472,6 @@ const router = new Router({
                },
                component: bankSetting
             },
-            {//FF
-               path: 'FF',
-               name: 'FF',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: FF
-            }, {//stock
-               path: 'stock',
-               name: 'stock',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: stock
-            }, {//usdd
-               path: 'cinfo',
-               name: 'cinfo',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: cinfo
-            },
-            {//usdd
-               path: 'StockToken',
-               name: 'cintongzhengStockfo',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: StockToken
-            },
-            {//api
-               path: 'card',
-               name: 'card',
-               meta: {
-                  title: 'card'
-               },
-               component: card
-            },
-            {//api
-               path: 'redeemsupreme',
-               name: 'redeemsupreme',
-               meta: {
-                  title: 'Redeem Yeezy Sneaker with Yeezy Tokens'
-               },
-               component: redeemsupreme
-            },
-            {//api
-               path: 'tokenizeyeezy',
-               name: 'tokenizeyeezy',
-               meta: {
-                  title: 'Tokenize Your Yeezy Sneaker for Yeezy Tokens'
-               },
-               component: tokenizeyeezy
-            },
-            {//interFinance
-               path: 'interFinanceOne',
-               name: 'interFinanceOne',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: interFinanceOne
-            },
-            {//interFinance
-               path: 'interFinanceTWO',
-               name: 'interFinanceTWO',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: interFinanceTWO
-            },
-            {//interFinance
-               path: 'interFinanceThree',
-               name: 'interFinanceThree',
-               meta: {
-                  title: 'HomeTitle'
-               },
-               component: interFinanceThree
-            },
             {//about
                path: 'about',
                name: 'about',
@@ -748,27 +491,30 @@ const router = new Router({
 })
 
 function checkSSOToken(to, next) {
-   let loginToken = Cookies.get('loginToken');
+   let loginToken = $cookies.get('loginToken');
    if (loginToken) {
-      getCreateAccount({'ssoToken': loginToken}, {}).then(data => {
+      getCreateAccount({
+         'ssoToken': loginToken
+      }, {}).then(data => {
          if (data) {
-            // window.localStorage.setItem("ACCOUNT_TOKEN", JSON.stringify(data));
             next()
          }
       }).catch(error => {
-         //clearLocalStorage()
-         // store.commit('changeLoingStatus', false);
-         if (to.name == "exchange") {
+         if (to.name === "exchange") {
             next();
          } else {
-            next({path: '/login'})
+            $cookies.remove('loginToken', '', document.domain.split('.').slice(-2).join('.'))
+            clearLocalStorage()
+            next({
+               path: '/login'
+            })
          }
-         //取消登录的状态
-         // clearLocalStorage()
-
       })
    } else {
-      next()
+      clearLocalStorage()
+      next({
+         path: '/login'
+      })
    }
 }
 
@@ -784,13 +530,4 @@ router.beforeEach((to, from, next) => {
    next()
 })
 
-// router.afterEach((to, from) => {
-//    console.log(2222,'afterEach')
-//    /* 路由发生变化修改页面title */
-//    if (to.meta.title) {
-//       document.title = i18n.t(to.meta.title)
-//    }
-//    window.scroll(0, 0); //跳转到新页面，将页面头部置顶；
-//    // next()
-// })
 export default router
