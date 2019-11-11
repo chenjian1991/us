@@ -1,12 +1,12 @@
 <template>
-    <div id="google" class="root">
+    <div class="root">
         <div class="wrapper">
             <div class="register_wraper">
                 <div class="inner_input_login">
                     <div class="login_title">{{$t('googleVerify')}}</div>
                      <Form onsubmit="return false;" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='googleNumber'>
-                            <img src="../../assets/images/register/accountnew.svg" alt="">
+                            <img src="../../assets/images/register/accountnew.svg">
                             <Input :maxlength="6" v-model="formValidate.googleNumber" :placeholder="$t('goolePlaceholder')"></Input>
                         </FormItem>
                         <Button v-if="loaded" class="loginbtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('confrim')}}</Button>
@@ -28,6 +28,10 @@ import {postHeaderTokenBodyApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 import {setCookies} from '@/config';
 import {getCommouityBaseURL} from '../../config/index.js';
+import { debuglog } from 'util';
+import {getBrowserMessage} from "@/lib/utils.js"
+
+
     export default {
         name:'login',
         components:{
@@ -56,10 +60,11 @@ import {getCommouityBaseURL} from '../../config/index.js';
                 },
                 showModal:false,
                 text:'',
-                fromSocial:"",
-                fromSite:'',
+                fromSocial:'',
                 responseSocialToken:'',
                 domain:'',
+                deviceObj:{},
+                fromSite:'',
                 ruleValidate: {
                     googleNumber: [
                         { validator: validatePhone, trigger: 'blur' }
@@ -90,111 +95,47 @@ import {getCommouityBaseURL} from '../../config/index.js';
               if(loginToken){//登陆了
                   postHeaderTokenBodyApi(socialToken,loginToken,{}).then((res)=>{
                          this.responseSocialToken = res.token;
-                         console.log('social-token',this.responseSocialToken)
-                        window.location.href= this.domain+'/api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
-                    
+                         window.location.href= this.domain+'/api/v1/memberinterface'+'/'+this.responseSocialToken+'/'+this.fromSocial;
                   }) 
               }else{
               
               }
          },
-            getUserInfo(token){
-                postHeaderTokenBodyApi(userInfo,token,{}).then((res) =>{
-                    let tradingPasswordFlag = res.isSetTradePasswrod;
-                    localStorage.setItem('tradingPasswordFlag',tradingPasswordFlag);
-                    localStorage.setItem('userPhone',res.phone);
-                    console.log(res.isSetTradePasswrod);
-                }).catch((res) =>{
-                    console.log(res)
-                })
-            },
-             gitlogHistory(token){//登录历史接口
-                  postHeaderTokenBodyApi(loginHistory,token,{}).then((res) =>{
-                    let loginHistory = res.length;
-                    if(loginHistory==1){//首次登录
-                    
-                          this.$store.commit('CHANGEFIRSTLOGIIN',true);
-                          this.$store.commit('changeLoingStatus', true);
-                          if(this.fromSocial==undefined&&this.fromSite==undefined){//既不是social也不是ato
-                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot'];
-                                if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
-                                     this.$router.push('/safeCenter')
-                                }else{
-                                    this.$router.go(-1)
-                                }
-                          }else if(this.fromSite){//来自ato
-                                this.$router.push(this.fromSite)
-                          }else{//来自social
-                                 this.gotoSocial(token)
-                          }
-                        // let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
-                        // if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
-                        //     this.$router.push('/safeCenter')
-                        // }else{
-                        //      this.$router.go(-1)
-                        // }
-                    }else{//非首次登录
-                          this.$store.commit('CHANGEFIRSTLOGIIN',false);
-                          this.$store.commit('changeLoingStatus', true);
-                          if(this.fromSocial==undefined&&this.fromSite==undefined){//既不是social也不是ato
-                                let router = this.previousRouterName;
-                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot'];
-                                if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
-                                    this.$router.push('/safeCenter')
-                                }else{
-                                    this.$router.go(-1)
-                                }
-                            }else if(this.fromSite){//如果是ato
-                                this.$router.push(this.fromSite)
-                          }else{//如果是social
-                                 this.gotoSocial(token)
-                          }
-                        // let arr = ['resetNewpass','newPassword','activeEmail','register','login','','null'];
-                        // if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
-                        //     this.$router.push('/safeCenter')
-                        // }else{
-                        //      this.$router.go(-1)
-                        // }
-
-                    }
-                    //请求自选的币种
-                    this.$store.dispatch("getMarkSymbol");
-
-                }).catch((res) =>{
-                    console.log(res)
-                    this.loaded=true;
-                })
-            },
             loginFun(){//绑定谷歌后的登录，走的是谷歌验证的接口
                 let params = {
-                    "ex55Pin":localStorage.getItem('ex55Pin'),
-                    "googleCode":this.formValidate.googleNumber,
-                    "userClientInfo":{
-                        "deviceModel":"MI 2S",
-                        "deviceId": "xxxsllsj",
-                        "resolution":"1920*1080",
-                        "os":"Android",
-                        "netType":"4G",
-                        "operator":"China Mobile"
+                    "userId": localStorage.getItem('loginGoogleUserId'),
+                    "googleCode": this.formValidate.googleNumber,
+                    "deviceType": "WEB",
+                    "deviceCode": localStorage.getItem('deviceCode'),
+                    "deviceInfo": {
+                        "deviceModel": this.deviceObj.browserType,
+                        "resolution": this.deviceObj.windowWith
                     }
 
                 }
-                postHeaderTokenBodyApi(googleLogin,localStorage.getItem('googleToken'),params).then((res) =>{
-                    if(res.code){
-                        this.showModal = !(this.showModal);//！取非解决了弹出只谈一次的bug
-                         this.text = this.$t(res.code);
-                         this.loaded = true;
-                    }else{
-                         this.showModal = !(this.showModal);//！取非解决了弹出只谈一次的bug
-                         this.text = this.$t(11001);
-                        setCookies(res.token)
-                        this.$store.commit('changeLoingStatus',true)// 登录后把token 复制给 isLogin  res.token  就是登录token
-                        this.gitlogHistory(res.token);
-                        this.getUserInfo(res.token);
-                        
+                postHeaderTokenBodyApi(googleLogin,localStorage.getItem('beforeToken'),params).then((res) =>{
+                    if(res.loginToken){
+                            this.$Notice.success({
+                                title:this.$t(11001),
+                                desc:this.$t(11001)
+                            });
+                            setCookies(res.loginToken)
+                            localStorage.setItem('loginUserId',res.userId)
+                            this.$store.commit('changeLoingStatus',true)// 登录后把token 复制给 isLogin  res.token  就是登录token
+                            if(this.fromSocial==undefined&&this.fromSite==undefined){//既不是social也不是ato
+                                let router = this.previousRouterName;
+                                let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login','',null,'forgot','safeVatification','login'];
+                                if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
+                                    this.$router.push('/home')
+                                }else{
+                                    this.$router.go(-2)
+                                }
+                            } else if(this.fromSite){//来自ato
+                                    this.$router.push(this.fromSite)
+                            }else{//说明来自social
+                                    this.gotoSocial(token)
+                            }
                     }
-                       
-
                 }).catch((error)=>{
                         this.loaded = true;
 
@@ -215,7 +156,7 @@ import {getCommouityBaseURL} from '../../config/index.js';
             googleNumberlength(){
                 return this.formValidate.googleNumber.length;
             },
-             previousRouterName(){
+            previousRouterName(){
                 return this.$store.state.app.routerHistory;
             }
            
@@ -233,17 +174,17 @@ import {getCommouityBaseURL} from '../../config/index.js';
         },
         mounted(){
             this.fromSocial = this.$route.query.fromSocial;
-             this.fromSite = this.$route.query.fromWhere;
-             console.log('this.fromSocial',this.fromSocial)
-             console.log(' this.fromSite', this.fromSite)
+            this.fromSite = this.$route.query.fromWhere;
             this.domain = getCommouityBaseURL();
+            this.deviceObj = getBrowserMessage();
+
+
         }
         
         
     }
 </script>
 <style lang='less'>
-#google{
     .main_container{
         min-height:100%;
         display: flex;
@@ -252,7 +193,9 @@ import {getCommouityBaseURL} from '../../config/index.js';
      .headerbox{
         flex: 0 0 auto;
      }
-   
+    //  #app{
+    //      height: 100%;
+    //  }
     .footerBox{
          flex: 0 0 auto;
      }
@@ -281,8 +224,6 @@ import {getCommouityBaseURL} from '../../config/index.js';
         
         
      }
-}
-    
 
 </style>
 <style scoped lang="less">

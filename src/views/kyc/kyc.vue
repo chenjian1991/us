@@ -53,134 +53,55 @@
                         :class="currentStep===i+1?'active':''" :disabled="true">{{$t(item)}}</a>
                   </div>
                   <!-- 第一步 -->
-                  <div v-show="showStep1" class="firstStep">
+                      <div v-show="showStep1" class="firstStep">
                      <input type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
                      <div id="captcha"></div>
-                     <form class="mt-5 mb-5" v-model="stepOneForm" ref="stepOneForm">
+                     <form class="mt-5 mb-5">
                         <section v-if='banddingEmailFlag' class="bandingEmail">
-                           <!-- 绑定邮箱 -->
-                           <label class="h6 d-block font-size-14 mb-3"
-                                  for="exampleInputEmail1">{{$t('newK1mail')}}</label>
-                           <div style="position:relative;" class="input-group mb-4">
-                              <input @blur.prevent='exgCheckt()' @input="EnterEmail" required=""
-                                     v-model.trim='stepOneForm.emailAddress'
-                                     type="email" class="form-control" id="exampleInputEmail1"
-                                     aria-describedby="emailHelp"/>
-                              <div class="input-group-append">
-                                 <sendBtn robotDiv='robotDiv' :fatherClass='fatherClass' @sendCick='sendSMSfun' :empty='empty'
-                                          :ssoEmail='ssoEmail'></sendBtn>
-                              </div>
-                              <span style="color:#ed4014;position:absolute;top:40px;" v-if="emailFlag">{{$t('newK1mailpopf')}}</span>
-
+                           <div class="form-group">
+                              <label class="h6 d-block text-uppercase"
+                                     for="disabledTextInput">{{$t('newK1mailBD')}}</label>
+                              <input disabled v-model="email" type="text" id="disabledTextInput"
+                                     class="form-control"
+                                     :placeholder="email"/>
                            </div>
-                           <section v-if='banddingGoogleFlag' class="bandingEmail">
-                              <label class="h6 d-block  font-size-14 mb-3"
-                                     for="disabledTextInput">{{$t('googleVerify')}}</label>
-                              <div class="input-group mb-4">
-                                 <input :maxlength="6" @input='EnterGoogleCodeEmail'
-                                        v-model.trim='stepOneForm.googleCode' type="text"
-                                        class="form-control" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"/>
-                              </div>
-                           </section>
-                           <section>
-                              <label class="h6 d-block  font-size-14 mb-3"
-                                     for="disabledTextInput">{{$t('emialCodePlaceholder')}}</label>
-                              <div class="input-group mb-4">
-                                 <input :maxlength="6" @input='EnterEmailCode' v-model.trim='stepOneForm.emailCode'
-                                        type="text"
-                                        class="form-control" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"/>
-                                 <div class="input-group-append">
-                                    <button @click='bandEmialFunc' :disabled='btnFlagEmail'
-                                            class="btn selfDefineBtn"
-                                            type="button">{{$t('newK1buttonBind')}}
-                                    </button>
-                                 </div>
-                              </div>
-                           </section>
-
-                           <!-- 绑定邮箱结束 -->
                         </section>
                         <section v-else class="bandingEmail">
                            <div class="form-group">
                               <label class="h6 d-block text-uppercase"
-                                     for="disabledTextInput">{{$t('newK1mailBD')}}</label>
-                              <input disabled v-model="bandEmail" type="text" id="disabledTextInput"
-                                     class="form-control"
-                                     :placeholder="userInfoObj.profileEmail"/>
+                                     for="disabledTextInput">{{$t('aqzxBandEmail')}}</label>
+                              <router-link  v-if="type==='ios'||type==='android'"
+                                           class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
+                                           to='/BandEmail?origin=kyc&type=mobile'>{{$t('去绑定')}}
+                              </router-link>
+                              <router-link v-else
+                                           class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
+                                           to='/BandEmail?origin=kyc'>{{$t('去绑定')}}
+                              </router-link>
                            </div>
                         </section>
                         <section v-if="banddingPhoneFlag" class="bandingPhone">
-                           <!-- 绑定手机号 -->
-                           <label class="h6 d-block  font-size-14 mb-3"
-                                  for="disabledTextInput">{{$t('newK1phone')}}</label>
-                           <div class="input-group mb-4">
-                              <div class="input-group-prepend">
-                                 <button type="button" class="btn btn-outline-secondary">+{{countryNumber}}
-                                 </button>
-                                 <button type="button"
-                                         class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 </button>
-                                 <div class="dropdown-menu overflow-height">
-                                    <a @click="chooseCountry(item.code)" v-for="item in ossJSON" class="dropdown-item"
-                                       href="#">
-                                       <img class="flag" :src="item.image"></img>
-                                       <span style="color:#000;margin-left:10px;" v-html="item.en"></span>
-                                       <span class="pull-right" v-html="item.code"></span>
-                                    </a>
-                                 </div>
-                              </div>
-                              <input @blur.prevent='exgChecktphone()' :maxlength="12" @input='EnterPhone'
-                                     v-model='stepOneForm.phoneNumber' type="text"
-                                     class="form-control"
-                                     aria-label="Text input with segmented dropdown button"/>
-                              <div class="input-group-append">
-                                 <sendBtn robotDiv='robotsecondDiv' :fatherClass='fatherClass' @sendCick='sendSMSfun' :empty='empty'
-                                             :ssoPhone='ssoPhone'></sendBtn>
-                              </div>
-                              <span v-if="phoneFlag" style="color:#ed4014;position:absolute;top:40px;">{{$t('newK1phonepopf')}}</span>
-                           </div>
-                           <!-- 绑定谷歌 -->
-                           <section v-if='banddingGoogleFlag' class="bandingEmail">
-                              <label class="h6 d-block  font-size-14 mb-3"
-                                     for="disabledTextInput">{{$t('googleVerify')}}</label>
-                              <div class="input-group mb-4">
-                                 <input :maxlength="6" @input='EnterGoogleCode' v-model.trim='stepOneForm.googleCode'
-                                        type="text"
-                                        class="form-control" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"/>
-                              </div>
-                           </section>
-                           <section>
-                              <label class="h6 d-block  font-size-14 mb-3"
-                                     for="disabledTextInput">{{$t('SMSPlacehodler')}}</label>
-                              <div class="input-group mb-4">
-                                 <input :maxlength="6" @input='EntersmsCode' v-model='stepOneForm.smsCode' type="text"
-                                        class="form-control" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2"/>
-                                 <div class="input-group-append">
-                                    <button :disabled='btnFlagPhone' @click="bandingFunc"
-                                            class="btn selfDefineBtn"
-                                            type="button">{{$t('newK1buttonBind')}}
-                                    </button>
-                                 </div>
-                              </div>
-                           </section>
-
-                           <!-- 绑定手机号结束 -->
-                        </section>
-                        <section v-else class="bandingPhone">
-                           <!-- 绑定手机 -->
                            <div class="form-group">
                               <label class="h6 d-block text-uppercase"
                                      for="disabledTextInput">{{$t('newK1phoneBD')}}</label>
-                              <input disabled v-model="bandPhone" type="text" id="disabledTextInput"
+                              <input disabled v-model="phone" type="text" id="disabledTextInput"
                                      class="form-control"
-                                     :placeholder="userInfoObj.profilePhone"/>
+                                     :placeholder="phone"/>
                            </div>
-                           <!-- 绑定手机结束 -->
+                        </section>
+                        <section v-else class="bandingPhone">
+                           <div class="form-group">
+                              <label class="h6 d-block text-uppercase"
+                                     for="disabledTextInput">{{$t('aqzxBandPhone')}}</label>
+                              <router-link v-if="type==='ios'||type==='android'"
+                                           class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
+                                           to='/BandPhone?origin=kyc&type=mobile'>{{$t('去绑定')}}
+                              </router-link>
+                              <router-link v-else
+                                           class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
+                                           to='/BandPhone?origin=kyc'>{{$t('去绑定')}}
+                              </router-link>
+                           </div>
                         </section>
                      </form>
                      <!-- Button -->
@@ -204,7 +125,7 @@
                         <div class="mb-4">
                            <label class="h6 font-size-14 mb-3">{{$t('newK1idC')}}</label>
                            <Select @on-change='changeCountry' v-model="stepTwoForm.country" size="large" disabled>
-                              <Option v-for="item in country" :value="item.locale"
+                              <Option v-for="(item,i) in country" :value="item.locale" :key="i"
                                       :label="language==='zh-CN'?item.zh:item.en">
                                  <img class="flag" :src="item.image"/>
                                  <span
@@ -214,18 +135,17 @@
                         </div>
                         <div class="mb-4">
                            <label class="h6 font-size-14 mb-3">{{$t('newK1idT')}}</label>
-                           <Select @on-change='changeIdType' v-model="stepTwoForm.idType" size="large">
-                              <Option v-for="item in idType" :value="item.value" :label="$t(item.label)">
+                           <Select @on-change='changeIdType' v-model="stepTwoForm.idType" size="large"
+                                   :disabled="!isUS">
+                              <Option v-for="(item,i) in idType" :key="i" :value="item.value" :label="$t(item.label)">
                                  {{$t(item.label)}}
                               </Option>
                            </Select>
                         </div>
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1idNo')}}</label>
-                           <div class="js-focus-state in put-group u-form">
-                              <input type="text" class="form-control form-control-sm" maxlength="20"
-                                     v-model="stepTwoForm.idNumber">
-                           </div>
+                           <input type="text" class="form-control form-control-sm" maxlength="20"
+                                  v-model="stepTwoForm.idNumber">
                         </div>
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1idEPD')}}</label>
@@ -245,7 +165,7 @@
                                       alt="">
                                  <div class="upload-img-contain" style="visibility:visible;">
                                     <div v-if="item.status === 'finished' && urlPath" class="demo-upload-list"
-                                         v-for="item in uploadList">
+                                         v-for="(item,i) in uploadList" :key="i">
                                        <template>
                                           <img v-if="urlPath" :src="urlPath">
                                           <div class="demo-upload-list-cover">
@@ -274,7 +194,7 @@
                                        :data='uploadParams'
                                        :headers="headerObj"
                                        :action="uploadUrl"
-                                       >
+                                    >
                                        <div style="width: 304px;height:200px;position: absolute;top: 0px;">
                                           <span>上传</span>
                                        </div>
@@ -295,7 +215,7 @@
                                       alt="">
                                  <div class="upload-img-contain" style="visibility:visible;">
                                     <div v-if="item.status === 'finished' && urlPathTWO " class="demo-upload-list"
-                                         v-for="item in uploadListTWO">
+                                         v-for="(item,i) in uploadListTWO" :key="i">
                                        <template>
                                           <img v-if="urlPathTWO" :src="urlPathTWO">
                                           <div class="demo-upload-list-cover">
@@ -325,7 +245,7 @@
                                        :data='uploadBack'
                                        :headers="headerObj"
                                        :action="uploadUrl"
-                                       >
+                                    >
                                        <div style="width: 304px;height:200px;position: absolute;top: 0px;">
                                           <span>上传</span>
                                        </div>
@@ -345,7 +265,7 @@
                                       alt="">
                                  <div class="upload-img-contain" style="visibility:show;">
                                     <div v-if="item.status === 'finished'&& urlPathTHREE" class="demo-upload-list"
-                                         v-for="item in uploadListThree">
+                                         v-for="(item,i) in uploadListThree" :key="i">
                                        <template>
                                           <img v-if="urlPathTHREE" :src="urlPathTHREE">
                                           <div class="demo-upload-list-cover">
@@ -371,9 +291,10 @@
                                        :on-format-error="handleFormatErrorTHREE"
                                        :on-exceeded-size="handleMaxSizeTHREE"
                                        multiple
+                                       :data='uploadHandself'
                                        :headers="headerObj"
-                                       :action="uploadUrlPic"
-                                       >
+                                       :action="uploadUrl"
+                                    >
                                        <div style="width: 304px;height:200px;position: absolute;top: 0px;">
                                           <span>上传</span>
                                        </div>
@@ -417,233 +338,158 @@
                   </div>
                   <!--第三步-->
                   <div v-show="showStep3">
-                     <!--中国-->
-                     <div v-show="showCN">
-                        <form class="mt-5 mb-5" v-model="stepThreeForm" ref="stepThreeForm">
-                           <!-- Input -->
-                           <div class="form-row mb-3">
-                              <div class="form-group col-md-6">
-                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1name3')}}</label>
-                                 <input type="text" class="form-control form-control-sm" maxlength="20"
-                                        v-model="stepThreeForm.lastName">
-                              </div>
-                              <div class="form-group col-md-6">
-                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1name1')}}</label>
-                                 <input type="text" class="form-control form-control-sm" maxlength="20"
-                                        v-model="stepThreeForm.firstName">
-                              </div>
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1gen')}}</label>
-                              <Select v-model="stepThreeForm.gender" size="large">
-                                 <Option value="男">{{$t('newK1Male')}}</Option>
-                                 <Option value="女">{{$t('newK1Female')}}</Option>
-                              </Select>
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1birth')}}</label>
-                              <DatePicker type="date" size="large" style="width: 100%" format="MM-dd-yyyy"
-                                          :options="optionsBirthday"
-                                          v-model="stepThreeForm.birthday"></DatePicker>
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddSt')}}</label>
-                              <input type="text" class="form-control form-control-sm" maxlength="225"
-                                     v-model="stepThreeForm.street">
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddCity')}}</label>
-                              <input type="text" class="form-control form-control-sm" maxlength="20"
-                                     v-model="stepThreeForm.city">
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1Addtype')}}</label>
-                              <Select v-model="stepThreeForm.address" size="large">
-                                 <Option value="home">{{$t('newK1Addtype1')}}</Option>
-                                 <Option value="company">{{$t('newK1Addtype2')}}</Option>
-                              </Select>
-                           </div>
-                           <!--同意框-->
-                           <div class="mb-4">
-                              <div class="custom-checkbox d-flex align-items-center text-muted">
-                                 <input type="checkbox" class="custom-control-input" id="termsCheckbox" checked
-                                        v-model="addressShow">
-                                 <label class="custom-control-label" for="termsCheckbox">
-                                    <small class="ml-4">{{$t('newK1AddAgree')}}</small>
-                                 </label>
-                              </div>
-                           </div>
-                           <!--上传地址证明-->
-                           <div class="mb-4" v-show="!addressShow">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddPrf')}}</label>
-                              <div class="position-relative">
-                                 <input type="text" class="form-control form-control-sm" v-model="file.fileName">
-                                 <button
-                                    class="btn btn-sm btn-primary u-btn-primary btn-color position-absolute upload-btn">
-                                    {{$t('newK1buttonUP')}}
-                                 </button>
-                                 <input type="file"
-                                        class="form-control form-control-sm form-control-file position-absolute upload-file"
-                                        @change="changeFile">
-                              </div>
-
-                              <div class="red-color mt-2">
-                                 {{$t('newK1Addtip')}}<br/>
-                                 {{$t('newK1Addsize')}}
-                              </div>
-                           </div>
-                        </form>
-                        <!-- Button -->
-                        <div class="row align-items-center mb-5">
-                           <div class="col-6">
-                              <button type="submit"
-                                      class="btn btn-sm btn-primary u-btn-primary transition-3d-hover btn-color"
-                                      @click="previous">
-                                 {{$t('newK1buttonP')}}
-                              </button>
-                           </div>
-
-                           <div class="col-6 text-right">
-                              <button type="submit"
-                                      class="btn btn-sm btn-primary u-btn-primary transition-3d-hover btn-color"
-                                      @click="nextStep3('stepThreeForm')">{{$t('newK1buttonN')}}
-                              </button>
-                           </div>
-                        </div>
-                        <!-- End Button -->
-                     </div>
-                     <!--非中国-->
-                     <div v-show="!showCN">
-                        <form class="mt-5" v-model="stepThreeForm" ref="stepThreeForm">
-                           <!-- Input -->
-                           <div class="form-row mb-3">
-                              <div class="form-group col-md-4">
-                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1name1')}}<span
-                                    class="red-color"> *</span></label>
-                                 <input type="text" class="form-control form-control-sm" maxlength="20"
-                                        v-model="stepThreeForm.firstName">
-                              </div>
-                              <div class="form-group col-md-4">
-                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1name2')}}</label>
-                                 <input type="text" class="form-control form-control-sm" maxlength="20"
-                                        v-model="stepThreeForm.middleName">
-                              </div>
-                              <div class="form-group col-md-4">
-                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1name3')}}<span
-                                    class="red-color"> *</span></label>
-                                 <input type="text" class="form-control form-control-sm" maxlength="20"
-                                        v-model="stepThreeForm.lastName">
-                              </div>
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1gen')}}<span
-                                 class="red-color"> *</span></label>
-                              <Select v-model="stepThreeForm.gender" size="large">
-                                 <Option value="男">{{$t('newK1Male')}}</Option>
-                                 <Option value="女">{{$t('newK1Female')}}</Option>
-                              </Select>
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1birth')}}<span
-                                 class="red-color"> *</span></label>
-                              <DatePicker type="date" size="large" style="width: 100%" format="MM-dd-yyyy"
-                                          :options="optionsBirthday"
-                                          v-model="stepThreeForm.birthday"></DatePicker>
-                           </div>
-                           <div v-show="isUS" v-model="dataUS" class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1TIN')}}<span
-                                 class="red-color"> *</span></label>
-                              <input type="text" class="form-control form-control-sm" maxlength="9"
-                                     v-model="dataUS.tin"
-                                     @input="changeNumber('tin','9')">
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddSt')}}<span
-                                 class="red-color"> *</span></label>
-                              <input type="text" class="form-control form-control-sm" maxlength="225"
-                                     v-model="stepThreeForm.street">
-                           </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddCity')}}<span
+                     <form class="mt-5" v-model="stepThreeForm" ref="stepThreeForm">
+                        <!-- Input -->
+                        <div class="form-row mb-3">
+                           <div class="form-group col-md-4">
+                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1name1')}}<span
                                  class="red-color"> *</span></label>
                               <input type="text" class="form-control form-control-sm" maxlength="20"
-                                     v-model="stepThreeForm.city">
+                                     v-model="stepThreeForm.firstName">
                            </div>
-                           <!--美国人税号、州、邮编-->
-                           <div v-show="isUS" v-model="dataUS">
-                              <div class="form-row mb-3">
-                                 <div class="form-group col-md-6">
-                                    <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddReg')}}<span
-                                       class="red-color"> *</span></label>
-                                    <Select v-model="dataUS.region" size="large">
-                                       <Option v-for="item in state" :value="item.locale"
-                                               :label="language==='zh-CN'?item.zh:item.en">
-                                          <img class="flag" :src="item.image"/>
-                                          <span style="color:#5a626d;font-size:14px;margin-left:10px;">{{language==='zh-CN'?item.zh:item.en}}</span>
-                                       </Option>
-                                    </Select>
-                                 </div>
-                                 <div class="form-group col-md-6">
-                                    <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddZip')}}<span
-                                       class="red-color"> *</span></label>
-                                    <input type="text" class="form-control form-control-sm" maxlength="5"
-                                           v-model="dataUS.zipCode"
-                                           @input="changeNumber('zipCode','5')">
-                                 </div>
-                              </div>
+                           <div class="form-group col-md-4">
+                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1name2')}}</label>
+                              <input type="text" class="form-control form-control-sm" maxlength="20"
+                                     v-model="stepThreeForm.middleName">
                            </div>
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1Addtype')}}</label>
-                              <Select v-model="stepThreeForm.address" size="large">
-                                 <Option value="home">{{$t('newK1Addtype1')}}</Option>
-                                 <Option value="company">{{$t('newK1Addtype2')}}</Option>
-                              </Select>
-                           </div>
-                           <!--上传地址-->
-                           <div class="mb-4">
-                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddPrf')}}<span
-                                 class="red-color">*</span></label>
-                              <div class="position-relative">
-                                 <input type="text" class="form-control form-control-sm" v-model="file.fileName">
-                                 <button
-                                    class="btn btn-sm btn-primary u-btn-primary btn-color position-absolute upload-btn">
-                                    {{$t('newK1buttonUP')}}
-                                 </button>
-                                 <input type="file"
-                                        class="form-control form-control-sm form-control-file position-absolute upload-file"
-                                        @change="changeFile">
-                              </div>
-                              <div class="red-color mt-2">
-                                 {{$t('newK1Addtip')}}<br/>
-                                 {{$t('newK1Addsize')}}
-                              </div>
-                           </div>
-                        </form>
-                        <!-- Button -->
-                        <div class="row align-items-center mb-5">
-                           <div class="col-6">
-                              <button type="submit"
-                                      class="btn btn-sm btn-primary u-btn-primary transition-3d-hover btn-color"
-                                      @click="previous">
-                                 {{$t('newK1buttonP')}}
-                              </button>
-                           </div>
-                           <div class="col-6 text-right">
-                              <button type="submit"
-                                      class="btn btn-sm btn-primary u-btn-primary transition-3d-hover btn-color"
-                                      @click="nextStep3('stepThreeForm')">{{$t('newK1buttonN')}}
-                              </button>
+                           <div class="form-group col-md-4">
+                              <label class="h6 d-block font-size-14 mb-3">{{$t('newK1name3')}}<span
+                                 class="red-color"> *</span></label>
+                              <input type="text" class="form-control form-control-sm" maxlength="20"
+                                     v-model="stepThreeForm.lastName">
                            </div>
                         </div>
-                        <!-- End Button -->
+                        <div class="mb-4">
+                           <label class="h6 d-block font-size-14 mb-3">{{$t('newK1gen')}}<span
+                              class="red-color"> *</span></label>
+                           <Select v-model="stepThreeForm.gender" size="large">
+                              <Option value="Select One">Select One</Option>
+                              <Option value="男">{{$t('newK1Male')}}</Option>
+                              <Option value="女">{{$t('newK1Female')}}</Option>
+                           </Select>
+                        </div>
+                        <div class="mb-4">
+                           <label class="h6 d-block font-size-14 mb-3">{{$t('newK1birth')}}<span
+                              class="red-color"> *</span></label>
+                           <DatePicker type="date" size="large" style="width: 100%" format="MM-dd-yyyy"
+                                       :options="optionsBirthday"
+                                       v-model="stepThreeForm.birthday"></DatePicker>
+                        </div>
+                        <!--税号 美国人必填-->
+                        <div v-if="isUS" class="mb-4">
+                           <label class="h6 d-block font-size-14 mb-3">{{$t('newK1TIN')}}<span
+                              class="red-color"> *</span></label>
+                           <input type="text" class="form-control form-control-sm" maxlength="9"
+                                  v-model="stepThreeForm.tin"
+                                  @input="changeNumber('tin','9')">
+                        </div>
+                        <div class="mb-4">
+                           <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddSt')}}<span
+                              class="red-color"> *</span></label>
+                           <input type="text" class="form-control form-control-sm" maxlength="225"
+                                  v-model="stepThreeForm.street">
+                        </div>
+                        <div class="mb-4">
+                           <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddCity')}}<span
+                              class="red-color"> *</span></label>
+                           <input type="text" class="form-control form-control-sm" maxlength="20"
+                                  v-model="stepThreeForm.city">
+                        </div>
+                        <!--州、邮编 美国人时“州/省”需要下拉列表，Zip美国人仅5位数字-->
+                        <div v-if="isUS">
+                           <div class="form-row mb-3">
+                              <div class="form-group col-md-6">
+                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddReg')}}<span
+                                    class="red-color"> *</span></label>
+                                 <Select v-model="stepThreeForm.region" size="large">
+                                    <Option v-for="(item,i) in state" :value="item.locale" :key="i"
+                                            :label="language==='zh-CN'?item.zh:item.en">
+                                       <img class="flag" :src="item.image"/>
+                                       <span style="color:#5a626d;font-size:14px;margin-left:10px;">{{language==='zh-CN'?item.zh:item.en}}</span>
+                                    </Option>
+                                 </Select>
+
+                              </div>
+                              <div class="form-group col-md-6">
+                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddZip')}}<span
+                                    class="red-color"> *</span></label>
+                                 <input type="text" class="form-control form-control-sm" maxlength="5"
+                                        v-model="stepThreeForm.zipCode"
+                                        @input="changeNumber('zipCode','5')">
+                              </div>
+                           </div>
+                        </div>
+                        <!--非美国人时为输入框 Zip数字10位以内即可-->
+                        <div v-else>
+                           <div class="form-row mb-3">
+                              <div class="form-group col-md-6">
+                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddReg')}}<span
+                                    class="red-color"> *</span></label>
+                                 <input type="text" class="form-control form-control-sm" maxlength="50"
+                                        v-model="stepThreeForm.region">
+                              </div>
+                              <div class="form-group col-md-6">
+                                 <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddZip')}}<span
+                                    class="red-color"> *</span></label>
+                                 <input type="text" class="form-control form-control-sm" maxlength="10"
+                                        v-model="stepThreeForm.zipCode"
+                                        @input="changeNumber('zipCode','10')">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="mb-4">
+                           <label class="h6 d-block font-size-14 mb-3">{{$t('newK1Addtype')}}<span
+                              class="red-color"> *</span></label>
+                           <Select v-model="stepThreeForm.address" size="large">
+                              <Option value="Select One">Select One</Option>
+                              <Option value="home">{{$t('newK1Addtype1')}}</Option>
+                              <Option value="company">{{$t('newK1Addtype2')}}</Option>
+                           </Select>
+                        </div>
+                        <!--上传地址-->
+                        <div class="mb-4">
+                           <label class="h6 d-block font-size-14 mb-3">{{$t('newK1AddPrf')}}<span
+                              class="red-color">*</span></label>
+                           <div class="position-relative">
+                              <input type="text" class="form-control form-control-sm" v-model="file.fileName">
+                              <button
+                                 class="btn btn-sm btn-primary u-btn-primary btn-color position-absolute upload-btn">
+                                 {{$t('newK1buttonUP')}}
+                              </button>
+                              <input type="file"
+                                     class="form-control form-control-sm form-control-file position-absolute upload-file"
+                                     @change="changeFile">
+                           </div>
+                           <div class="red-color mt-2">
+                              {{$t('newK1Addtip')}}<br/>
+                              {{$t('newK1Addsize')}}
+                           </div>
+                        </div>
+                     </form>
+                     <!-- Button -->
+                     <div class="row align-items-center mb-5">
+                        <div class="col-6">
+                           <button type="submit"
+                                   class="btn btn-sm btn-primary u-btn-primary transition-3d-hover btn-color"
+                                   @click="previous">
+                              {{$t('newK1buttonP')}}
+                           </button>
+                        </div>
+                        <div class="col-6 text-right">
+                           <button type="submit"
+                                   class="btn btn-sm btn-primary u-btn-primary transition-3d-hover btn-color"
+                                   @click="nextStep3('stepThreeForm')">{{$t('newK1buttonN')}}
+                           </button>
+                        </div>
                      </div>
+                     <!-- End Button -->
                   </div>
                   <div v-show="showStep4">
                      <form class="mt-5 mb-5" v-model="stepFourForm" ref="stepFourForm">
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq1')}}</label>
                            <Select v-model="stepFourForm.goal" size="large">
-                              <Option v-for="item in goal" :value="item.value" :label="item.title">
+                              <Option v-for="(item,i) in goal" :value="item.value" :label="item.title" :key="i">
                                  {{item.title}}
                               </Option>
                            </Select>
@@ -651,7 +497,7 @@
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq2')}}</label>
                            <Select v-model="stepFourForm.source" size="large">
-                              <Option v-for="item in source" :value="item.value" :label="item.title">
+                              <Option v-for="(item,i) in source" :value="item.value" :label="item.title" :key="i">
                                  {{item.title}}
                               </Option>
                            </Select>
@@ -659,7 +505,7 @@
                         <div class="mb-4">
                            <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq3')}}</label>
                            <Select v-model="stepFourForm.occupation" size="large">
-                              <Option v-for="item in occupation" :value="item.value" :label="item.title">
+                              <Option v-for="(item,i) in occupation" :value="item.value" :label="item.title" :key="i">
                                  {{item.title}}
                               </Option>
                            </Select>
@@ -688,7 +534,6 @@
                      </div>
                      <!-- End Button -->
                   </div>
-                  <Modaltips :modal='showModal' :text="text"></Modaltips>
                </div>
             </div>
          </div>
@@ -698,26 +543,20 @@
 </template>
 
 <script>
-   import Cookies from 'js-cookie'
    import moment from 'moment'
 
    import {Exchange} from '@/interface/exchange.js'
    import {
-      queryUserInfo, identifySubmit, identifyUpdate, identifyQuery, uploadImg,
+      queryUserInfo, identifySubmit, identifyUpdate, identifyQuery, uploadImg, getPhoto,
    } from '_api/balances.js'
    import {
-      ssoCodeVerify,
-      binding,
       identifyPhoto,
       userInfo
    } from '../../../api/urls.js';
    import {
-      getApi,
-      postHeaderTokenBodyApi,
-      postHeaderSeveralTokenBodyApi,
-      getHeaderTokenApi
+      getHeaderTokenApi,
+      postHeaderTokenBodyParamsApi
    } from '../../../api/axios.js';
-   import sendBtn from '../../components/sendBtn'
 
    import Modaltips from '@/components/Modal';
 
@@ -726,29 +565,28 @@
    } from '@/lib/utils.js'
    import {state, country, goal, source, occupation} from './state_country.js'
 
-   import {debuglog} from 'util';
-
    export default {
       name: "kyc",
       data() {
          return {
             //移动端
-            showHeader: false,
-            type: '',
+            showHeader: true,
 
             //pc
             showStep1: true,
             showStep2: false,
             showStep3: false,
             showStep4: false,
-            showCN: false,
             isUS: false,
-            addressShow: true,
-            loginToken: '',
+            loginToken: $cookies.get('loginToken'),
 
+            state: state,
             country: country,
+            goal: goal,
+            source: source,
+            occupation: occupation,
+
             ossJSON: [], //国家
-            state: [],
             file: {
                fileName: '',
                filePath: '',
@@ -758,13 +596,12 @@
             currentStep: 1,
             stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
             idType: [
+               {label: "newK1DL", value: 'license'},
                {label: 'newK1ID', value: 'idCard'},
                {label: 'newK1PP', value: 'passport'},
-               {label: "newK1DL", value: 'license'}
             ],
-            goal: goal,
-            source: source,
-            occupation: occupation,
+
+            //modal
             stepOneForm: {
                emailAddress: '',
                emailCode: '',
@@ -782,23 +619,22 @@
                firstName: '',
                middleName: '',
                lastName: '',
+               gender: 'Select One',
                birthday: '',
+               tin: '',
                street: '',
                city: '',
-               gender: '',
-               address: '',
+               region: '',
+               zipCode: '',
+               address: 'Select One',
             },
             stepFourForm: {
-               goal: '',
-               source: '',
-               occupation: '',
+               goal: 'Select One',
+               source: 'Select One',
+               occupation: 'Select One',
                Employer: '',
             },
-            dataUS: {
-               tin: '',
-               zipCode: '',
-               region: '',
-            },
+            // error pop
             stepOneError: ['emailPlacehodler', 'newK1vcodepop', 'phonePlacehodlerphone', 'newK1vcodepop'],// 新添加
             stepTwoError: {idNumber: 'newK1idNopop', expireDate: 'newK1idEPDpop'},
             stepThreeError: {
@@ -806,17 +642,20 @@
                lastName: 'newK1name3pop',
                gender: 'newK1genfill',
                birthday: 'newK1birthpop',
+               tin: 'newK1TINpop',
                street: 'newK1AddStpop',
                city: 'newK1AddCitypop',
+               region: this.isUS ? 'newK1AddRegfill' : 'newK1AddRegfillNoUS',
+               zipCode: 'newK1AddZippop',
+               address: 'newK1Addpop',
             },
             stepFourError: {
-               Employer: 'newK1Employerpop'
+               goal: 'newK1surveyselect',
+               source: 'newK1surveyselect',
+               occupation: 'newK1surveyselect',
+               Employer: 'newK1Employerpop',
             },
-            dataUSError: {
-               tin: 'newK1TINpop',
-               zipCode: 'newK1AddZippop',
-               region: 'newK1AddRegfill',
-            },
+            //证件不可选时间
             optionsExpireDate: {
                disabledDate(date) {
                   return date && date.valueOf() < new Date().getTime()
@@ -827,14 +666,13 @@
                   return date && date.valueOf() > new Date().getTime()
                }
             },
+            //参数
             step2Params: {},
             step3Params: {},
             formJson: {},
 
-            //开始
-            countryNumber: '',
+            //chen开始
             phoneNumber: '',
-            showModal: false,
             text: '',
             empty: true,
             ssoPhone: {
@@ -861,7 +699,6 @@
             //图片上传部分
             idCard: true,// 新添加
             PASSPORT: false,// 新添加
-            userInfoObj: {},
             uploadList: [],
             uploadListTWO: [],
             uploadListThree: [],
@@ -872,16 +709,25 @@
             headerObj: {
                token: ''
             },
-            uploadUrl: "",
-            uploadUrlPic: '',
+            uploadUrl: `/api/sso/identify/upload`,
+            // uploadUrlPic: `/api/sso/user/identify.upload`,
             fileUrl: "",
             uploadParams: {
                side: 'front',
                ocr: true,
+               userId:localStorage.getItem('loginUserId'),
             },
             uploadBack: {
                side: 'back',
                ocr: true,
+               userId:localStorage.getItem('loginUserId'),
+            },
+            uploadHandself: {
+               userId: localStorage.getItem('loginUserId')
+            },
+            userSelf: {
+               userId:localStorage.getItem('loginUserId'),
+               selfPathSelf: '',//最新更改
             },
             userFrontMessage: {
                nameFront: '',
@@ -898,9 +744,6 @@
                organizationBack: '',
                backPathBack: ''//最新更改
             },
-            userSelf: {
-               selfPathSelf: '',//最新更改
-            },
             bandPhone: '',
             bandEmail: '',
             disabledFlag: true,
@@ -911,36 +754,78 @@
             phoneFlag: false,
             banddingGoogleFlag: true,
             val: '',
-
+            userId: localStorage.getItem('loginUserId'),
+            deviceCode:localStorage.getItem('deviceCode'),
+            email:'',
+            phone:'',
+            type:'',
          }
       },
       components: {
-         sendBtn,
          Modaltips
       },
       methods: {
-         init() {
-            identifyQuery(this.loginToken).then(res => {
+         async getUserInfo(token) {
+            await new Promise(resolve => {
+               let params = {
+                  "userId": this.userId,
+               }
+               getHeaderTokenApi(userInfo, params, token).then((res) => {
+                  let userInfo = res.data;
+                  this.banddingEmailFlag = res.data.email ? true : false;
+                  this.banddingPhoneFlag = res.data.phone ? true : false;
+                  this.email = res.data.email;
+                  this.phone = res.data.phone;
+                  if (this.banddingEmailFlag && this.banddingPhoneFlag) {
+                     this.disabledFlag = false;
+                  }
+                  this.stepTwoForm.country = userInfo.country
+
+                  if (userInfo.country === 'US') {
+                     this.isUS = true
+                     this.stepThreeForm.region = this.state[0].locale
+                  } else {
+                     this.stepTwoForm.idType = this.idType[2].value
+                  }
+                  resolve()
+               })
+            })
+            await new Promise(resolve => {
+               this.identifyQuery()
+               resolve()
+            })
+         },
+         identifyQuery() {
+            //查询用户信息
+            identifyQuery({
+               userId: this.userId,
+               nameList: 'THIRD_PT'
+            }, this.loginToken).then(res => {
                //有数据
-               if (res.data) {
-                  const formJson = JSON.parse(res.data['formJson'])
-                  if (res.data.dataStatus === 1 || res.data.dataStatus === 4) {
+               if (res.data.length) {
+                  const formJson = res.data[0].data
+                  const identifyState = res.data[0]['thirdState']
+                  console.log(identifyState)
+                  if (identifyState === 'INIT' || identifyState === 'FAIL') {
                      this.formJson = formJson
                      this.stepTwoForm = {
                         idNumber: formJson.idNumber,
-                        expireDate: formJson.expireDate,
-                        country: formJson.country || country[0].locale,
+                        expireDate: formJson.expireDate === 'Invalid date' ? '' : formJson.expireDate,
+                        country: formJson.country || this.country[0].locale,
                         idType: formJson.idType || this.idType[0].value,
                      }
                      this.stepThreeForm = {
                         firstName: formJson.firstName,
                         middleName: formJson['middleName'],
                         lastName: formJson.lastName,
-                        gender: formJson.gender || '男',
-                        birthday: formJson.birthday,
+                        gender: formJson.gender || 'Select One',
+                        birthday: formJson.birthday === 'Invalid date' ? '' : formJson.birthday,
+                        tin: formJson.tin,
                         street: formJson.street,
                         city: formJson.city,
-                        address: formJson.address || 'home',
+                        region: this.isUS ? formJson.region || this.state[0].locale : formJson.region,
+                        zipCode: formJson.zipCode,
+                        address: formJson.address || 'Select One',
                      }
                      this.stepFourForm = {
                         goal: formJson.goal || this.goal[0].value,
@@ -948,19 +833,9 @@
                         occupation: formJson.occupation || this.occupation[0].value,
                         Employer: formJson.Employer || '',
                      }
-                     if (formJson['fileName']) {
-                        this.addressShow = false
-                     }
                      this.file = {
                         fileName: formJson['fileName'],
                         filePath: formJson['filePath'],
-                     }
-                     if (this.isUS) {
-                        this.dataUS = {
-                           tin: formJson.tin,
-                           zipCode: formJson.zipCode,
-                           region: formJson.region || this.state[0].locale,
-                        }
                      }
                      //回显示图片
                      this.userFrontMessage = {
@@ -979,6 +854,7 @@
                      this.userSelf = {
                         selfPathSelf: formJson.selfPathSelf,
                      }
+
                      //今天
                      let frontUrl = formJson.frontPathFront;
                      let backUrl = formJson.backPathBack;
@@ -989,11 +865,8 @@
                      this.imgFallBack(frontUrl, "front")
                      this.imgFallBack(backUrl, "back")
                      this.imgFallBack(selfUrl, "self")
-                     if (res.data.dataStatus === 1 && this.showCN === true) {
-                        this.dealData()
-                     }
-                  } else if (res.data.dataStatus === 2 || res.data.dataStatus === 3) {
-                     // this.$router.push('/identityResult')
+                  } else if (identifyState === 'SUBMIT' || identifyState === 'SUCCESS') {
+                     this.$router.push('/identityResult')
                   }
                }
             })
@@ -1002,15 +875,22 @@
             let file = e.target.files[0]
             let param = new FormData() // 创建form对象
             param.append('file', file)// 通过append向form对象添加数据
+            param.append('userId', this.userId)// 通过append向form对象添加数据
+
             uploadImg(this.loginToken, param).then(res => {
-               this.file = {filePath: res.filePath, fileName: res.originalName}
+               this.getPubUrl(res.result)
+            })
+         },
+         getPubUrl(key) {
+            getPhoto(this.loginToken, {'userId': this.userId, key: key}).then(res => {
+               this.file = {filePath: res.result, fileName: res.result}
             })
          },
          previous() {
             //   调接口 数据回填
             this.goStep('back')
          },
-         nextStep1(name) {
+         nextStep1() {
             this.goStep()
          },
          nextStep2(name) {
@@ -1020,26 +900,33 @@
                      throw this.stepTwoError[v]
                   }
                })
-               let idNumber = /^[A-Z0-9]{0,20}$/;
+
+               let idNumber = /^[A-Z0-9*]{0,20}$/;
                if (!idNumber.test(this[name].idNumber)) {
                   throw 'newK1idNopopf'
                }
                this[name].expireDate = this.transitTimestamp(this[name].expireDate)
-               let params = {}
-               Object.assign(params, this[name]);
+               if (this[name].expireDate === 'Invalid date') {
+                  throw this.stepTwoError['expireDate']
+               }
                //判断图片非空   最新更改
                if (this.urlPath && this.urlPathTWO && this.urlPathTHREE) {//全部填完
                } else {
                   throw 'newK1Imgrequired'
                }
                this.step2Params = {}
+               Object.assign(this.step2Params, this.stepTwoForm, {frontPathFront: this.userFrontMessage.frontPathFront}, {backPathBack: this.userBackMessage.backPathBack}, {selfPathSelf: this.userSelf.selfPathSelf});
 
-               Object.assign(this.step2Params, params, this.userFrontMessage, this.userBackMessage, this.userSelf);
-
-               let stepParams = {}
-               Object.assign(stepParams, this.formJson, this.step2Params);
-               //   调接口
-               identifyUpdate(this.loginToken, stepParams).then(res => {
+               let newParams = {
+                  userId: this.userId,
+                  identifyCode: this.stepTwoForm.idNumber,
+                  identifyThirdNameList: ['THIRD_PT'],
+                  identifyData: this.step2Params,
+                  deviceType: this.getDeviceType(),
+                  deviceCode: this.deviceCode,
+               }
+               // 调接口
+               identifyUpdate(this.loginToken, newParams).then(res => {
                   if (res.result) {
                      this.goStep()
                      //能识别
@@ -1049,35 +936,85 @@
                   }
                })
             } catch (message) {
-               //    弹窗
+               console.log(message)
+
                this.$Message.warning(this.$t(message));
             }
          },
          nextStep3(name) {
-            if (this.showCN === true) {
-               this.submitCN(name)
-            } else {
-               this.submit(name)
+            try {
+               Object.keys(this[name]).map((v) => {
+                  if (!this[name][v] || this[name][v] === 'Select One') {
+                     if (v !== 'middleName') {
+                        if (!this.isUS && v === 'tin') {
+                        } else {
+                           throw this.stepThreeError[v]
+                        }
+                     }
+                  }
+               })
+               this[name].birthday = this.transitTimestamp(this[name].birthday)
+               if (!this.file.fileName) {
+                  throw 'newK1AddPrfpop'
+               }
+               let params = {}
+               Object.assign(params, this[name], this.file);
+               if (this.isUS) {
+                  let tinReg = /^[0-9]{9}$/;
+                  let codeReg = /^[0-9]{5}$/;
+                  if (!tinReg.test(this[name].tin)) {
+                     throw 'newK1TINpopf'
+                  }
+                  if (!codeReg.test(this[name].zipCode)) {
+                     throw 'newK1AddZippopf'
+                  }
+                  Object.assign(params, this[name]);
+
+               }
+               let stepParams = {}
+               Object.assign(stepParams, this.step2Params, params, {deviceCode: localStorage.getItem('deviceID')});
+               this.step3Params = stepParams
+               let newParams = {
+                  userId: this.userId,
+                  identifyCode: this.stepTwoForm.idNumber,
+                  identifyThirdNameList: ['THIRD_PT'],
+                  identifyData: stepParams,
+                  deviceType: this.getDeviceType(),
+                  deviceCode: this.deviceCode,
+               }
+               //   调接口
+               identifyUpdate(this.loginToken, newParams).then(res => {
+                  if (res.result) {
+                     this.goStep()
+                  }
+               })
+            } catch (message) {
+               //    弹窗
+               this.$Message.warning(this.$t(message));
             }
          },
          nextStep4(name) {
             try {
-               if (!this[name]['Employer']) {
-                  throw this.stepFourError['Employer']
-               }
+               Object.keys(this[name]).map((v) => {
+                  if (!this[name][v] || this[name][v] === 'Select One') {
+                     throw this.stepFourError[v]
+                  }
+               })
                let stepParams = {}
                Object.assign(stepParams, this[name], this.step3Params, {us: true});
+               let newParams = {
+                  userId: this.userId,
+                  identifyCode: this.stepTwoForm.idNumber,
+                  identifyThirdNameList: ['THIRD_PT'],
+                  identifyData: stepParams,
+                  deviceType: this.getDeviceType(),
+                  deviceCode: this.deviceCode,
+               }
                //   调接口
-               identifySubmit(this.loginToken, stepParams).then(res => {
+               identifySubmit(this.loginToken, newParams).then(res => {
                   if (res.result) {
                      //   跳转到结果页
-                     if (this.type === 'ios') {
-                        window.webkit.messageHandlers.getDataFormVue.postMessage("success")
-                     } else if (this.type === 'android') {
-                        window.nativeObjectHelp.postMessage("success");
-                     } else {
-                        this.$router.push('/identityResult')
-                     }
+                     this.$router.push('/identityResult')
                   }
                })
             } catch (message) {
@@ -1091,91 +1028,7 @@
             this.stepThreeForm.lastName = this.userFrontMessage.nameFront.slice(0, 1)
             this.stepThreeForm.birthday = `${birthday.slice(4, 6)}-${birthday.slice(6, 8)}-${birthday.slice(0, 4)}`
             this.stepThreeForm.street = this.userFrontMessage.addressFront
-            this.stepThreeForm.gender = this.userFrontMessage.genderFront || '男'
-         },
-         submitCN(name) {
-            try {
-               Object.keys(this[name]).map((v) => {
-                  if (!this[name][v]) {
-                     if (v !== 'middleName') {
-                        //没填
-                        throw this.stepThreeError[v]
-                     }
-                  }
-               })
-               this[name].birthday = this.transitTimestamp(this[name].birthday)
-               let params = {}
-               Object.assign(params, this.stepThreeForm);
-               //上传地址证明
-               if (!this.addressShow) {
-                  if (this.file.fileName) {
-                     Object.assign(params, this.file);
-                  } else {
-                     throw 'newK1AddPrfpop'
-                  }
-               } else {
-                  Object.assign(params, {addressPath: this.userFrontMessage.frontPathFront});
-               }
-               let stepParams = {}
-               Object.assign(stepParams, this.step2Params, params, {deviceCode: localStorage.getItem('deviceID')});
-               this.step3Params = stepParams
-               //   调接口
-               identifyUpdate(this.loginToken, stepParams).then(res => {
-                  if (res.result) {
-                     this.goStep()
-                  }
-               })
-            } catch (message) {
-               //    弹窗
-               this.$Message.warning(this.$t(message));
-            }
-         },
-         submit(name) {
-            try {
-               Object.keys(this[name]).map((v) => {
-                  if (!this[name][v]) {
-                     if (v !== 'middleName') {
-                        //没填
-                        throw this.stepThreeError[v]
-                     }
-                  }
-               })
-               this[name].birthday = this.transitTimestamp(this[name].birthday)
-               if (!this.file.fileName) {
-                  throw 'newK1AddPrfpop'
-               }
-               let params = {}
-               Object.assign(params, this.stepThreeForm, this.file);
-               if (this.isUS) {
-                  Object.keys(this.dataUS).map((v) => {
-                     if (!this.dataUS[v]) {
-                        throw this.dataUSError[v]
-                     }
-                  })
-                  let tinReg = /^[0-9]{9}$/;
-                  let codeReg = /^[0-9]{5}$/;
-                  if (!tinReg.test(this.dataUS.tin)) {
-                     throw 'newK1TINpopf'
-                  }
-                  if (!codeReg.test(this.dataUS.zipCode)) {
-                     throw 'newK1AddZippopf'
-                  }
-                  Object.assign(params, this.dataUS);
-
-               }
-               let stepParams = {}
-               Object.assign(stepParams, this.step2Params, params, {deviceCode: localStorage.getItem('deviceID')});
-               this.step3Params = stepParams
-               //   调接口
-               identifyUpdate(this.loginToken, stepParams).then(res => {
-                  if (res.result) {
-                     this.goStep()
-                  }
-               })
-            } catch (message) {
-               //    弹窗
-               this.$Message.warning(this.$t(message));
-            }
+            this.stepThreeForm.gender = this.userFrontMessage.genderFront || 'Select One'
          },
          goStep(type) {
             if (type === 'back') {
@@ -1188,265 +1041,57 @@
                this[`showStep${this.currentStep}`] = true
             }
          },
+         getDeviceType() {
+            const userAgentInfo = navigator.userAgent;
+            const agents = ["Android", "iPhone"];
+            let deviceType = 'WEB';
+            for (let i = 0; i < agents.length; i++) {
+               if (userAgentInfo.indexOf(agents[i]) > 0) {
+                  if (userAgentInfo.indexOf('iPhone') > 0) {
+                     deviceType = 'IOS'
+                  } else {
+                     deviceType = agents[i];
+                  }
+                  break;
+               }
+            }
+            return deviceType;
+         },
          transitTimestamp(date) {
             return moment(new Date(date).getTime()).format('MM-DD-YYYY')
 
          },
          changeNumber(name, count) {
             window.event.target.value = onlyInputNumAndPoint(window.event.target.value, count)
-            this.dataUS[name] = window.event.target['value']
+            this.stepThreeForm[name] = window.event.target['value']
          },
 
          //开始=====
-         bandingFunc() {//绑定手机按钮方法
-            this.ssoCodeVerify('phone');
-         },
-         bandEmialFunc() {
-            this.ssoCodeVerify('email');
-         },
-         getOSSfunc() {
-            getApi('https://oss.55gm.co/content/country/55-country.json', {}).then((res) => {
-               this.ossJSON = res;
-               let FrencyCountry = [];
-               res.forEach(item => {
-                  if (item.type == 'recommend') {
-                     FrencyCountry.push(item);
-                  }
-               });
-               this.countryNumber = FrencyCountry[4].code;
-               console.log(FrencyCountry[3].code)
-            })
-
-         },
-         chooseCountry(code) {
-            this.countryNumber = code;
-         },
-         sendSMSfun(callback) {
-            //绑定手机
-            // let len = this.countryNumber.length;
-            let itc = this.countryNumber;
-            let value = {
-               "operateType": "BIND_PHONE",
-               "codeType": "PHONE",
-               "itc": itc,
-               "phone": this.stepOneForm.phoneNumber
-            }
-            this.$store.commit('changebandPhoneObj', value)
-            this.ssoPhone = {
-               "operateType": "BIND_PHONE",
-               "codeType": "PHONE",
-               "itc": itc,
-               "phone": this.stepOneForm.phoneNumber
-            }
-            //绑定邮箱
-            let valueEmail = {
-               "operateType": "BIND_EMAIL",
-               "codeType": "EMAIL",
-               "email": this.stepOneForm.emailAddress,
-               "language": localStorage.getItem('countryLanguage')
-            }
-            this.$store.commit('changeBandEmail', valueEmail);
-            this.ssoEmail = {
-               "operateType": "BIND_EMAIL",
-               "codeType": "EMAIL",
-               "email": this.stepOneForm.emailAddress,
-               "language": localStorage.getItem('countryLanguage')
-            }
-            if (callback) {//callback是从子组件传递过来的参数
-               this.showModal = !this.showModal;
-               this.text = callback;
-            }
-         },
-         ssoCodeVerify(account) {
-            let params;
-            if (account == 'phone') {//绑定手机
-               params = {
-                  "operateType": "BIND_PHONE",
-                  "codeType": "PHONE",
-                  "phone": this.stepOneForm.phoneNumber,
-                  "phoneCode": this.stepOneForm.smsCode,
-                  "googleCode": this.stepOneForm.googleCode
-               }
-            } else {//绑定邮箱
-               params = {
-                  "operateType": "BIND_EMAIL",
-                  "codeType": "EMAIL",
-                  "email": this.stepOneForm.emailAddress,
-                  "emailCode": this.stepOneForm.emailCode,
-                  "googleCode": this.stepOneForm.googleCode
-               }
-            }
-            postHeaderTokenBodyApi(ssoCodeVerify, this.loginToken, params).then((res) => {
-               if (res.code) {
-                  this.showModal = !this.showModal;
-                  this.text = this.$t(res.code);
-               } else {
-                  this.token = res.token;
-                  this.bindMetond(account)
-               }
-            })
-
-
-         },
-         bindMetond(whicCount) {
-            let itc = this.countryNumber;
-            let ssoToken = this.loginToken;
-            let params;
-            if (whicCount == 'phone') {//绑定手机
-               params = {
-                  "phone": this.stepOneForm.phoneNumber,
-                  "phoneCode": this.stepOneForm.smsCode,
-                  "operateType": "BIND_PHONE",
-                  "bindType": "PHONE",
-                  "itc": itc,
-                  "googleCode": this.stepOneForm.googleCode
-               }
-            } else {//绑定邮箱
-               params = {
-                  "email": this.stepOneForm.emailAddress,
-                  "emailCode": this.stepOneForm.emailCode,
-                  "operateType": "BIND_EMAIL",
-                  "bindType": "EMAIL",
-                  "googleCode": this.stepOneForm.googleCode
-               }
-            }
-            postHeaderSeveralTokenBodyApi(binding, ssoToken, this.token, params).then((res) => {
-               if (res.result == true) {
-                  this.bandPhone = this.stepOneForm.phoneNumber;
-                  this.bandEmail = this.stepOneForm.emailAddress;
-                  if (whicCount == 'phone') {
-                     this.banddingPhoneFlag = false;
-                  } else {
-                     this.banddingEmailFlag = false;
-                  }
-                  if (!this.banddingPhoneFlag && !this.banddingEmailFlag) {//只在绑定后才可以点击下一步
-                     this.disabledFlag = false;
-                  }
-               } else {
-                  this.showModal = !this.showModal;
-                  this.text = this.$t(res.code);
-               }
-            })
-         },
-         exgCheckt() {
-            if (!this.stepOneForm.emailAddress == '') {
-               let pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
-               if (pattern.test(this.stepOneForm.emailAddress)) {
-                  this.emailFlag = false;
-                  this.empty = false;
-
-               } else {
-                  this.emailFlag = true;
-                  this.empty = true;
-               }
-            } else {
-               this.emailFlag = false;
-               this.disabledFlag = true;
-            }
-         },
-         exgChecktphone() {
-            let patternnew = /[^\d]/;
-            this.phoneFlag = patternnew.test(this.stepOneForm.phoneNumber);
-            if (this.phoneFlag) {
-               this.empty = true
-            } else {
-               this.empty = false;
-            }
-         },
-         EnterEmail() {
-            if (!this.stepOneForm.emailAddress == '') {
-               this.empty = false;
-               this.emailFlag = false;
-            } else {
-               this.emailFlag = false;
-               this.empty = true;
-               this.disabledFlag = true;
-            }
-         },
-         EnterPhone() {
-            if (!this.stepOneForm.phoneNumber == '') {
-               this.empty = false;
-
-            } else {
-               this.empty = true;
-               this.stepOneForm.phoneNumber = this.stepOneForm.phoneNumber.replace(/[^\d]g/, '');
-               this.disabledFlag = true;
-            }
-         },
-         EntersmsCode() {
-            if (this.banddingGoogleFlag) {
-               if (this.stepOneForm.smsCode.length >= 6 && this.stepOneForm.googleCode.length >= 6) {
-                  this.btnFlagPhone = false;
-               } else {
-                  this.btnFlagPhone = true;
-                  this.disabledFlag = true;
-               }
-            } else {
-               if (this.stepOneForm.smsCode.length >= 6) {
-                  this.btnFlagPhone = false;
-               } else {
-                  this.btnFlagPhone = true;
-                  this.disabledFlag = true;
-               }
-            }
-
-         },
-         EnterGoogleCode(e) {
-            this.stepOneForm.googleCode = e.target.value.replace(/[^\d]/g, '');
-            if (this.stepOneForm.googleCode.length >= 6 && this.stepOneForm.smsCode.length >= 6) {
-               this.btnFlagPhone = false;
-            } else {
-               this.btnFlagPhone = true;
-               this.disabledFlag = true;
-            }
-         },
-         EnterGoogleCodeEmail(e) {//谷歌的监听
-            this.stepOneForm.googleCode = e.target.value.replace(/[^\d]/g, '');
-            if (this.stepOneForm.emailCode.length >= 6 && this.stepOneForm.googleCode.length >= 6) {
-               this.btnFlagEmail = false;
-            } else {
-               this.btnFlagEmail = true;
-               this.disabledFlag = true;
-            }
-         },
-         EnterEmailCode() {//邮件验证码监听
-            if (this.banddingGoogleFlag) {
-               if (this.stepOneForm.emailCode.length >= 6 && this.stepOneForm.googleCode.length >= 6) {
-                  this.btnFlagEmail = false;
-               } else {
-                  this.btnFlagEmail = true;
-                  this.disabledFlag = true;
-               }
-            } else {
-               if (this.stepOneForm.emailCode.length >= 6) {
-                  this.btnFlagEmail = false;
-               } else {
-                  this.btnFlagEmail = true;
-                  this.disabledFlag = true;
-               }
-            }
-
-         },
          changeIdType(e) {//新添加
             this.firstIdcard = e;
             if (e == 'idCard' && this.countryName == 'China') {
                this.uploadParams = {
                   side: 'front',
                   ocr: true,
+                  userId:this.userId,
+
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: true,
+                  userId:this.userId,
                }
 
             } else {
                this.uploadParams = {
                   side: 'front',
                   ocr: false,
+                  userId:this.userId,
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: false,
+                  userId:this.userId,
                }
             }
             if (e == 'idCard' || e == 'license') {
@@ -1461,20 +1106,28 @@
                this.uploadParams = {
                   side: 'front',
                   ocr: true,
+                  userId:this.userId,
+
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: true,
+                  userId:this.userId,
+
                }
 
             } else {
                this.uploadParams = {
                   side: 'front',
                   ocr: false,
+                  userId:this.userId,
+
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: false,
+                  userId:this.userId,
+
                }
             }
          },
@@ -1484,113 +1137,144 @@
          // 图片上传部分
          beforeUploadFront(file) {
             this.uploadList = this.$refs.upload.fileList;
-            let size = file.size/1024000;
+            let size = file.size / 1024000;
             console.log(size)
-            if(size>1){
-                let _that = this;
-                  this.photoCompress(file,{quality: 0.6},function(base64Codes){
-                     _that.convertBase64UrlToBlob(base64Codes)
-                      console.log(_that.convertBase64UrlToBlob(base64Codes).size)
+            if (size > 1) {
+               let _that = this;
+               this.photoCompress(file, {quality: 0.6}, function (base64Codes) {
+                  _that.convertBase64UrlToBlob(base64Codes)
+                  console.log(_that.convertBase64UrlToBlob(base64Codes).size)
 
-                  })
+               })
             }
-           
+
          },
-         photoCompress(file,w,objDiv){
+         photoCompress(file, w, objDiv) {
             let _that = this;
-            var ready=new FileReader();
+            var ready = new FileReader();
             /*开始读取指定的Blob对象或File对象中的内容. 当读取操作完成时,readyState属性的值会成为DONE,如果设置了onloadend事件处理程序,则调用之.同时,result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容.*/
             ready.readAsDataURL(file);
-            ready.onload=function(){
-                var re = this.result;
-                _that.canvasDataURL(re,w,objDiv)
+            ready.onload = function () {
+               var re = this.result;
+               _that.canvasDataURL(re, w, objDiv)
             }
          },
-         canvasDataURL(path, obj, callback){
+         canvasDataURL(path, obj, callback) {
             var img = new Image();
             img.src = path;
-            img.onload = function(){
-                var that = this;
-                // 默认按比例压缩
-                var w = that.width,
-                    h = that.height,
-                    scale = w / h;
-                w = obj.width || w;
-                h = obj.height || (w / scale);
-                var quality = 0.7;  // 默认图片质量为0.7
-                //生成canvas
-                var canvas = document.createElement('canvas');
-                var ctx = canvas.getContext('2d');
-                // 创建属性节点
-                var anw = document.createAttribute("width");
-                anw.nodeValue = w;
-                var anh = document.createAttribute("height");
-                anh.nodeValue = h;
-                canvas.setAttributeNode(anw);
-                canvas.setAttributeNode(anh);
-                ctx.drawImage(that, 0, 0, w, h);
-                // 图像质量
-                if(obj.quality && obj.quality <= 1 && obj.quality > 0){
-                    quality = obj.quality;
-                }
-                // quality值越小，所绘制出的图像越模糊
-                var base64 = canvas.toDataURL('image/jpeg', quality);
-                // 回调函数返回base64的值
-                callback(base64);
+            img.onload = function () {
+               var that = this;
+               // 默认按比例压缩
+               var w = that.width,
+                  h = that.height,
+                  scale = w / h;
+               w = obj.width || w;
+               h = obj.height || (w / scale);
+               var quality = 0.7;  // 默认图片质量为0.7
+               //生成canvas
+               var canvas = document.createElement('canvas');
+               var ctx = canvas.getContext('2d');
+               // 创建属性节点
+               var anw = document.createAttribute("width");
+               anw.nodeValue = w;
+               var anh = document.createAttribute("height");
+               anh.nodeValue = h;
+               canvas.setAttributeNode(anw);
+               canvas.setAttributeNode(anh);
+               ctx.drawImage(that, 0, 0, w, h);
+               // 图像质量
+               if (obj.quality && obj.quality <= 1 && obj.quality > 0) {
+                  quality = obj.quality;
+               }
+               // quality值越小，所绘制出的图像越模糊
+               var base64 = canvas.toDataURL('image/jpeg', quality);
+               // 回调函数返回base64的值
+               callback(base64);
             }
          },
-         convertBase64UrlToBlob(urlData){
+         convertBase64UrlToBlob(urlData) {
             var arr = urlData.split(','), mime = arr[0].match(/:(.*?);/)[1],
-                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-               while(n--){
-                u8arr[n] = bstr.charCodeAt(n);
+               bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while (n--) {
+               u8arr[n] = bstr.charCodeAt(n);
             }
-             return new Blob([u8arr], {type:mime});
+            return new Blob([u8arr], {type: mime});
          },
          beforeUploadBack(file) {
-            let size = file.size/1024000;
-            if(size>1){
-                let _that = this;
-                  this.photoCompress(file,{quality: 0.6},function(base64Codes){
-                     _that.convertBase64UrlToBlob(base64Codes)
-                  })
+            let size = file.size / 1024000;
+            if (size > 1) {
+               let _that = this;
+               this.photoCompress(file, {quality: 0.6}, function (base64Codes) {
+                  _that.convertBase64UrlToBlob(base64Codes)
+               })
             }
             this.uploadListTWO = this.$refs.uploadTwo.fileList;
          },
          beforeUploadSelf(file) {
-            let size = file.size/1024000;
-            if(size>1){
-                let _that = this;
-                  this.photoCompress(file,{quality: 0.6},function(base64Codes){
-                     _that.convertBase64UrlToBlob(base64Codes)
-                  })
+            let size = file.size / 1024000;
+            if (size > 1) {
+               let _that = this;
+               this.photoCompress(file, {quality: 0.6}, function (base64Codes) {
+                  _that.convertBase64UrlToBlob(base64Codes)
+               })
             }
             this.uploadListThree = this.$refs.uploadThird.fileList;
          },
-         handleSuccess(res, file) {
-            let fileUrl = res.filePath.filePath;
-            getHeaderTokenApi(identifyPhoto, {filePath: fileUrl}, this.loginToken).then((res) => {
-               if (res.code) {
-                  this.$Notice.error({
-                     title: this.$t(res.code),
-                     desc: this.$t(res.code)
-                  });
-                  return;
-               }
-               this.urlPath = res.data.filePath;
-            }).catch((error) => {
-               console.log(error)
-            })
-            this.userFrontMessage.frontPathFront = fileUrl;
-            if (JSON.stringify(res.info) !== "{}") {
-               this.uploadSelfFlag = true;
-               this.userFrontMessage.addressFront = res.info.words_result['住址'].words;
-               this.userFrontMessage.idnumberFront = res.info.words_result['公民身份号码'].words;
-               this.userFrontMessage.birthdayFront = res.info.words_result['出生'].words;
-               this.userFrontMessage.nameFront = res.info.words_result['姓名'].words;
-               this.userFrontMessage.genderFront = res.info.words_result['性别'].words;
-               this.userFrontMessage.NationalityFront = res.info.words_result['民族'].words;
+          handleSuccess(res, file) {
+            let fileUrl = res.result;
+            let params = {
+               userId: this.userId,
+               key: res.result
             }
+            postHeaderTokenBodyParamsApi(identifyPhoto, this.loginToken, {}, params).then((res) => {
+               this.urlPath = res.result;
+            }).catch((error) => {
+            })
+
+            this.userFrontMessage.frontPathFront = fileUrl;
+            // if (Object.keys(JSON.parse(res.info)).length !== 0) {// 不要删
+            //    this.uploadSelfFlag = true;
+            //    this.userFrontMessage.addressFront = res.info.words_result['住址'].words;
+            //    this.userFrontMessage.idnumberFront = res.info.words_result['公民身份号码'].words;
+            //    this.userFrontMessage.birthdayFront = res.info.words_result['出生'].words;
+            //    this.userFrontMessage.nameFront = res.info.words_result['姓名'].words;
+            //    this.userFrontMessage.genderFront = res.info.words_result['性别'].words;
+            //    this.userFrontMessage.NationalityFront = res.info.words_result['民族'].words;
+            // }
+         },
+            handleSuccessTWO(res, file) {
+            let fileUrl = res.result;
+            let params = {
+               userId: this.userId,
+               key: res.result
+            }
+            postHeaderTokenBodyParamsApi(identifyPhoto, this.loginToken, {}, params).then((res) => {
+               this.urlPathTWO = res.result;
+            })
+            this.userBackMessage.backPathBack = fileUrl;
+            // if (Object.keys(JSON.parse(res.info)).length !== 0) {//不要删
+            //    this.userBackMessage.expireTimeBack = res.info.words_result['失效日期'].words;
+            //    this.userBackMessage.dateIssuanceBack = res.info.words_result['签发日期'].words;
+            //    this.userBackMessage.organizationBack = res.info.words_result['签发机关'].words;
+            // }
+         },
+         handleSuccessTHREE(res, file) {
+            this.userSelf.selfPathSelf = res.result;
+            let params = {
+               userId: this.userId,
+               key: res.result
+            }
+            postHeaderTokenBodyParamsApi(identifyPhoto, this.loginToken, {}, params).then((res) => {
+               this.urlPathTHREE = res.result;
+            })
+         },
+         handleError(error, file, fileList) {
+            let errore = error;
+            this.$Notice.error({
+               title: this.$t('uploadError'),
+               desc: this.$t('uploadError')
+            });
+
          },
          handleRemove(file) {
             const fileList = this.$refs.upload.fileList;
@@ -1624,40 +1308,6 @@
             this.userSelf = {
                selfPathSelf: '',
             }
-         },
-         handleSuccessTWO(res, file) {
-            let fileUrl = res.filePath.filePath;
-            getHeaderTokenApi(identifyPhoto, {filePath: fileUrl}, this.loginToken).then((res) => {
-               this.urlPathTWO = res.data.filePath;
-               if (res.code) {
-                  this.$Notice.error({
-                     title: this.$t(res.code),
-                     desc: this.$t(res.code)
-                  });
-               }
-            })
-            this.userBackMessage.backPathBack = fileUrl;
-            if (JSON.stringify(res.info) !== "{}") {
-               this.userBackMessage.expireTimeBack = res.info.words_result['失效日期'].words;
-               this.userBackMessage.dateIssuanceBack = res.info.words_result['签发日期'].words;
-               this.userBackMessage.organizationBack = res.info.words_result['签发机关'].words;
-            }
-
-
-         },
-         handleSuccessTHREE(res, file) {
-            this.idcardURLSignature = res.filePath;
-            let fileUrl = res.filePath;
-            this.userSelf.selfPathSelf = fileUrl;
-            if (res.code) {
-               this.$Notice.error({
-                  title: this.$t(res.code),
-                  desc: this.$t(res.code)
-               });
-            }
-            getHeaderTokenApi(identifyPhoto, {filePath: fileUrl}, this.loginToken).then((res) => {
-               this.urlPathTHREE = res.data.filePath;
-            })
          },
          handleError(error, file, fileList) {
             let errore = error;
@@ -1703,114 +1353,34 @@
                desc: this.$t('picIsToolarge')
             });
          },
-         imgFallBack(fileUrl, which) {//今天
-            let _that = this;
-            getHeaderTokenApi(identifyPhoto, {filePath: fileUrl}, this.loginToken).then((res) => {
-               if (res.data.code) {
-                  _that.$Notice.error({
-                     title: _that.$t(res.data.code),
-                     desc: _that.$t(res.data.code)
-                  });
-               }
+         imgFallBack(fileUrl, which) {//  图片回显
+            let params = {
+               userId: this.userId,
+               key: fileUrl
+            }
+            postHeaderTokenBodyParamsApi(identifyPhoto, this.loginToken, {}, params).then((res) => {
                if (which == 'front') {
-                  _that.urlPath = res.data.filePath;
+                  this.urlPath = res.result;
                } else if (which == 'back') {
-                  _that.urlPathTWO = res.data.filePath;
+                  this.urlPathTWO = res.result;
                } else if (which == 'self') {
-                  _that.urlPathTHREE = res.data.filePath;
+                  this.urlPathTHREE = res.result;
                }
             })
-         },
-         //图片上传结束
-         //查询用户信息
-         getUserInfo(token) {
-            postHeaderTokenBodyApi(userInfo, token, {}).then((res) => {
-               if (res.code) {
-                  this.showModal = !(this.showModal);//！取非解决了弹出只谈一次的bug
-                  this.text = this.$t(res.code);
-                  if (res.code == '10013') {
-                     setTimeout(() => {
-                        this.$router.push('/login');
-                     }, 2000);
-                  }
-               } else {
-                  this.banddingGoogleFlag = res.isBindingGoogle;
-                  // this.banddingGoogleFlag = true;
-               }
 
-            }).catch((res) => {
-            })
+
          },
       },
       mounted() {
-         const params = this.$route.query
          let ssoProvider = {};
          //创建实例
          this.exchange = new Exchange(ssoProvider);
-         if (params['token']) {
-            this.loginToken = params['token']
-            this.headerObj = {token: params['token']}
-            this.exchange.ssoProvider.getSsoToken = function (fn) {
-               fn(params['token']);
-            };
-         } else {
-            let loginToken = Cookies.get('loginToken')
-            if (loginToken) {
-               this.loginToken = loginToken
-               this.headerObj = {token: loginToken}
-               this.exchange.ssoProvider.getSsoToken = function (fn) {
-                  fn(loginToken);
-               };
-            } else {
-               this.$router.push({
-                  path: '/login',
-               })
-               return
-            }
-         }
-         this.type = this.$route.query['type']
-         this.showHeader = (this.type === 'ios' || this.type === 'android') ? false : true
-         const language = this.$route.query['language']
-         if (language) {
-            this.$store.commit('changeCurentLange', language);
-         }
-         queryUserInfo(this.loginToken).then(res => {
-            let obj = res.data;//今天
-            this.userInfoObj = obj;
-            obj.profileEmail ? this.banddingEmailFlag = false : this.banddingEmailFlag = true;
-            obj.profilePhone ? this.banddingPhoneFlag = false : this.banddingPhoneFlag = true;
-            if (obj.profileEmail && obj.profilePhone) {
-               this.disabledFlag = false;
-            }
-            localStorage.setItem('kycCountry', res.data.country)
-            this.stepTwoForm.country = res.data.country
-
-            if (res.data.country === 'CN') {
-               this.showCN = true
-            } else if (res.data.country === 'US') {
-               this.isUS = true
-               this.state = state
-               this.dataUS.region = this.state[0].locale
-            }
-            //非美国人仅可选择护照
-            if (res.data.country !== 'US') {
-               this.idType = [{label: 'newK1PP', value: 'passport'},]
-            }
-            this.stepTwoForm.idType = this.idType[0].value
-         })
-         this.init();
-         this.getOSSfunc()
-         this.uploadUrl = `/api/sso/new-identify/upload-front`;//新添加
-         this.uploadUrlPic = `/api/sso/user/identify.upload`;//新添加
+         this.headerObj = {token: this.loginToken}
+         this.exchange.ssoProvider.getSsoToken = function (fn) {
+            fn(this.loginToken);
+         };
          this.getUserInfo(this.loginToken)
-         this.stepThreeForm.gender = '男'
-         this.stepThreeForm.address = 'home'
-         this.stepFourForm = {
-            goal: this.goal[0].value,
-            source: this.source[0].value,
-            occupation: this.occupation[0].value,
-            Employer: '',
-         }
+         this.stepTwoForm.idType = this.idType[0].value
       }
    }
 </script>

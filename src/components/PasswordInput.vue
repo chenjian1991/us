@@ -26,161 +26,150 @@
                 <div :class="[count == 6?pointClass:noneClass]"></div>
             </li>
         </ul>
-        <input type="tel" ref="passwordInput" id="passwordInput" @click="showLine" @focus="myfocus" class="mask_input" v-model="pswData" @input="change">
+        <input type="tel" ref="passwordInput" autocomplete="off" id="passwordInput" @click="showLine" @focus="myfocus" class="mask_input" v-model="pswData" @input="change">
     </div>
 </template>
 
 <script>
-export default {
-    name: "PasswordInput",
-    data() {
-        return {
+   export default {
+      name: "PasswordInput",
+      data() {
+         return {
             pointClass: "point",
             lineClass: "line",
             noneClass: "display",
             border_active: "border_active",
             pswData: null,
-            // nowIndex: 1, //当前输入的密码框序号
-            // count: 0,//已经输入的密码数量
             nowIndex: 0, //当前输入的密码框序号
             count: 0,//已经输入的密码数量
-        };
-    },
-    props: {
+         };
+      },
+      props: {
 
-    },
-    watch: {
-        pswData: function(newV, oldV) {
+      },
+      watch: {
+         pswData: function(newV, oldV) {
             switch (newV.length) {
-                case 0:
-                    this.nowIndex = 1;
-                    this.count = 0;
-                    break;
-                case 1:
-                    this.nowIndex = 2;
-                    this.count = 1;
-                    break;
-                case 2:
-                    this.nowIndex = 3;
-                    this.count = 2;
-                    break;
-                case 3:
-                    this.nowIndex = 4;
-                    this.count = 3;
-                    break;
-                case 4:
-                    this.nowIndex = 5;
-                    this.count = 4;
-                    break;
-                case 5:
-                    this.nowIndex = 6;
-                    this.count = 5;
-                    break;
-                case 6:
-                    this.nowIndex = 7;
-                    this.count = 6;
-                    break;
-                default:
-                    // this.nowIndex = 1;
-                    // this.count = 0;
-                    break;
+               case 0:
+                  this.nowIndex = 1;
+                  this.count = 0;
+                  break;
+               case 1:
+                  this.nowIndex = 2;
+                  this.count = 1;
+                  break;
+               case 2:
+                  this.nowIndex = 3;
+                  this.count = 2;
+                  break;
+               case 3:
+                  this.nowIndex = 4;
+                  this.count = 3;
+                  break;
+               case 4:
+                  this.nowIndex = 5;
+                  this.count = 4;
+                  break;
+               case 5:
+                  this.nowIndex = 6;
+                  this.count = 5;
+                  break;
+               case 6:
+                  this.nowIndex = 7;
+                  this.count = 6;
+                  break;
+               default:
+                  break;
             }
             //隐藏错误提示信息
-            //this.showtip = false;
             this.$emit("getPassWord", newV, "111");
-        },
-    },
-    methods: {
-        setMaxLength() {
-            
-        },
-        showLine(){
+         },
+      },
+      methods: {
+         showLine(){
             if(this.nowIndex == 0){
-                this.nowIndex = 1;
+               this.nowIndex = 1;
             }
-
-        },
-        change(){
+         },
+         change(){
             this.pswData = this.pswData.replace(/\D/gi,"");
             this.pswData = this.pswData.substring(0, 6);
-        },
-        myfocus(){
+         },
+         myfocus(){
             if(this.nowIndex == 0){
-                this.nowIndex = 1;
-            };
-        },
-        getFocus(){
+               this.nowIndex = 1;
+            }
+         },
+         getFocus(){
             this.$refs.passwordInput.focus();
-        }
-    },
-    mounted(){
-        this.$refs.passwordInput.focus();
-    }
-};
+         }
+      },
+      mounted(){
+         this.$refs.passwordInput.focus();
+      }
+   };
 </script>
 
 <style scoped lang="less">
-.psw_wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    ul {
+    .psw_wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
         width: 100%;
         height: 100%;
-        display: flex;
-        position: relative;
-        li {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            flex:1;
+        ul {
             height: 100%;
-            border: solid 1px #5a6cb1;
-            .point {
-                background: #5a6cb1;
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-            }
-            .line {
-                background: #ccc;
-                width: 1px;
-                height: 17px;
-                animation: blink 1s infinite steps(1, start);
-            }
-            .display {
-                display: none;
-            }
-            @keyframes blink {
-                0% {
-                    background-color: #5a6cb1;
+            display: flex;
+            position: relative;
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+                width: 45px;
+                height: 45px;
+                border: solid 1px #2D4859;
+                .point {
+                    background: #2D4859;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
                 }
-                50% {
-                    background-color: transparent;
+                .line {
+                    background: #ccc;
+                    width: 1px;
+                    height: 17px;
+                    animation: blink 1s infinite steps(1, start);
                 }
-                100% {
-                    background-color: #5a6cb1;
+                .display {
+                    display: none;
                 }
+                @keyframes blink {
+                    0% {
+                        background-color: #2D4859;
+                    }
+                    50% {
+                        background-color: transparent;
+                    }
+                    100% {
+                        background-color: #2D4859;
+                    }
+                }
+            }
+            .li_border {
+                border-right: none;
             }
         }
-        .li_border {
-            border-right: none;
+        .mask_input {
+            position: absolute;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: none;
+            opacity: 0;
+            color:transparent;
         }
     }
-    .mask_input {
-        position: absolute;
-        top: 0;
-        left:-10%;
-        display: block;
-        width: 110%;
-        height: 100%;
-        outline: none;
-        border: none;
-        opacity: 0;
-        color:transparent;
-    }
-}
 </style>

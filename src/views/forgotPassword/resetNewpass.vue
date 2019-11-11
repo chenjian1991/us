@@ -6,12 +6,12 @@
                     <div class="login_title">{{$t('zhmmSetNewPassword')}}</div>
                      <Form onsubmit="return false;" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='password'>
-                            <img src="../../assets/images/register/security.svg" alt="">
-                            <Input type="password" v-model="formValidate.password" :placeholder="$t('signPasswordPlaceholder')"></Input>
+                            <img src="../../assets/images/register/security.svg">
+                            <Input type="password" v-model="formValidate.password" :placeholder="$t('zhmmInputNewPassword')"></Input>
                         </FormItem>
                           <FormItem class="form_item" prop='confrimPassword'>
-                            <img src="../../assets/images/register/password.svg" alt="">
-                            <Input type="password" v-model="formValidate.confrimPassword" :placeholder="$t('confirmPasswordPlacehodler')"></Input>
+                            <img src="../../assets/images/register/password.svg">
+                            <Input type="password" v-model="formValidate.confrimPassword" :placeholder="$t('zhmmConfirmPassword')"></Input>
                         </FormItem>
                         <Button v-if="loaded"  class="loginbtn"  @click="handleSubmit('formValidate')" type="primary">{{$t('zhmmSetSubmit')}}</Button>
                         <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button>
@@ -28,10 +28,12 @@
 </template>
 
 <script>
-import {resetNewpass} from '../../../api/urls.js';
+import {resetLoginPassword} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 import { duration } from 'moment';
+ import {getBrowserMessage,splitDomain} from "@/lib/utils.js"
+
 
 
     export default {
@@ -81,6 +83,7 @@ import { duration } from 'moment';
                     
                     
                 },
+                deviceObj:{}
                
 
 
@@ -94,40 +97,46 @@ import { duration } from 'moment';
             handleSubmit (name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        this.loaded = false;
+                        // this.loaded = false;
                         this.postResetPass()
                     } else {
-                        //this.$Message.error('Fail!');
+                        // this.$Message.error('Fail!');
                     }
                 })
             },
             postResetPass(){
                 let parasm = {
-                    "ex55Pin":localStorage.getItem('ex55pin'),
+                    'userId':localStorage.getItem('outerUserId'),
                     "password":this.setSha(this.formValidate.password),
+                    "deviceType": "WEB",
+                    "deviceCode":this.deviceObj.browserVersion,
                 }
-                postHeaderTokenBodyApi(resetNewpass,localStorage.getItem('codeVerifyToken'),parasm).then((res) =>{
-                        if(res.code){
-                            this.showModal = !this.showModal;
-                            this.text = this.$t(res.code);
-                            this.loaded = true;
-                        }else{
-                             this.showModal = true;
-                             this.text = this.$t(11001);
-                             setTimeout(() => {
+                postHeaderTokenBodyApi(resetLoginPassword,localStorage.getItem('codeVerifyToken'),parasm).then((res) =>{
+                    if(res.result){
+                        this.$Notice.success({
+                                    title:this.$t(11001),
+                                    desc: this.$t(11001)
+                        });
+                        setTimeout(() => {
+                            if(this.$route.query.originFrom==='otc'){
+                                    let domainurl = splitDomain(document.domain);
+                                    let protocol = document.location.protocol+'//'
+                                    let url = protocol+'otc.'+domainurl+'/#/login' // 测试
+                                    window.location.href = url;
+                            }else{
                                 this.$router.push('/login')
-                             }, 1000);
-                        }
+                            }
+                         }, 1000);
+                    }
+                }).catch((error)=>{
+
                 })
             },
             setSha(passwrod){
                 let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
-                let pw = '::'+ sha256(passwrod)//要加密的密码
+                let pw = sha256(passwrod)//要加密的密码
                 return pw;
             },
-
-
-
         },
         computed:{
             inputValidate(){
@@ -145,7 +154,7 @@ import { duration } from 'moment';
             },
         },
         mounted(){
-
+            this.deviceObj = getBrowserMessage();
 
 
         },

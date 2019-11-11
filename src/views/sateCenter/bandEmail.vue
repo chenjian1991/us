@@ -1,155 +1,188 @@
 <template>
-    <div  id="bandemail" class="root">
-        <div  class="wrapper">
-            <div  class="register_wraper">
-                   <div class="band-nav">
-                        <router-link to='/safeCenter'>{{$t('aqzxSafeCeneter')}} </router-link>><router-link to=''> {{$t('aqzxBandEmail')}}</router-link>
-                    </div>
-                    <div class="tips">
-                           {{$t('aqzxTips')}}
-                    </div>
-                  <div class="divider"></div>
-                <div class="inner_input">
-                    <div class="register-container bandPhone">
-                        <div  class="phone">
-                            <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
-                            <div class="phone-item">
-                                <div>
-                                    <!-- <span v-if="emailFlag==0">Email：</span>
-                                    <span v-if="emailFlag==1">Original Email：</span> -->
-                                    <span> {{$t('aqzxEmail')}}</span>
-                                    <FormItem class="form_item" prop='emailName'>
-                                         <Input   type="text"  :maxlength="30" v-model="formValidate.emailName"  :placeholder="$t('emailPlacehodler')"></Input>
-                                     </FormItem>
-                                </div>
-                                <div>
-                                    <div>
-                                        <span> {{$t('aqzxEmailCode')}}</span>
-                                    </div>
-                                    <div>
-                                        <FormItem class="form_item smsCode" prop='smsCode'>
-                                        <Input :maxlength="6" v-model="formValidate.smsCode" :placeholder="$t('emialCodePlaceholder')"></Input>
-                                        <sendBtn  robotDiv='robotBandemail' @sendCick= 'sendSMSfun' :empty='empty' :ssoEmail='ssoEmail'></sendBtn>
-                                        </FormItem>
-                                    </div>
-                                </div>
-                             <div v-if="googleFlag">
-                                    <span>{{$t('aqzxGooglecode')}}</span>
-                                    <FormItem class="form_item" prop='googleCode'>
-                                        <Input :maxlength="6" type="text" v-model="formValidate.googleCode" :placeholder="$t('goolePlaceholder')"></Input>
-                                    </FormItem>
-                             </div>
-                                
-
-                            </div>
-                            <Button v-if="loaded" class="pull-right"  @click="handleSubmit('formValidate')" type="primary">{{$t('zhmmResetSubmit')}}</Button>
-                           <Button v-else disabled loading class="loginbtn pull-right"  @click="handleSubmit('formValidate')" type="primary"></Button>
-
-                        </Form>
-                    </div>
-                    </div>
-                </div>
-
-
-            </div>
-        <Modal :modal='showModal' :text="text"></Modal>
-
-
+    <div id="bandemail" class="root">
+          <!-- Title Section -->
+    <div v-if='!DeviceType' class="bg-light">
+      <div class="container py-5">
+        <div class="row align-items-sm-center">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <h1 class="h4 mb-0">{{$t('aqzxBandEmail')}}</h1>
+          </div>
+          <div class="col-sm-6">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-no-gutter justify-content-sm-end mb-0">
+                <li class="breadcrumb-item"><router-link to='/SafeCenter' >{{$t('tbdhAccountSecurity')}}</router-link></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$t('aqzxBandEmail')}}</li>
+              </ol>
+            </nav>
+            <!-- End Breadcrumb -->
+          </div>
         </div>
-
-
+      </div>
+    </div>
+    <!-- End Title Section -->
+             <!-- ========== MAIN ========== -->
+  <main id="content" role="main">
+    <!-- Login Form -->
+    <div class="container space-2">
+      <form autocomplete="off" action=''  @submit.prevent="handleSubmit" class="js-validate w-md-75 w-lg-50 mx-md-auto">
+        <!-- Title -->
+        <div class="mb-7">
+          <!-- <h2 class="h3  font-weight-normal mb-3">{{$t('aqzxBandEmail')}}</h2> -->
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{$t('aqzxTips')}}</strong>
+          </div>
+        </div>
+        <!-- End Title -->
+        <!-- Title -->
+        <div class="row align-items-center mb-4">
+          <div class="col-md-8 mb-3 mb-md-0">
+            <h2 class="h5 mb-0">{{$t('zhmmSecurity')}}</h2>
+          </div>
+        </div>
+        <!-- End Title -->
+    
+        <!--邮箱验证-->
+         <div class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="" for="signupPassword">
+                    <span class="d-flex justify-content-between align-items-center">
+                        {{$t('aqzxEmailAdders')}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="signupPasswordLabel">
+                        <span class="fas fa-lock"></span>
+                        </span>
+                    </div>
+                    <input @input='inputEmail'  v-model='emailAddress' type="email" class="form-control" name="password" id="signupPassword" :placeholder="this.$t('newK1mailpop')" aria-label="Password" aria-describedby="signupPasswordLabel" required
+                            data-msg="只允许英文字母、数字、下划线、英文句号、以及中划线组成"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="" for="emailNumber">
+                    <span class="d-flex justify-content-between align-items-center">
+                        {{$t('aqzxEmailSms')}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="phonecodeLabel">
+                        <span class="fas fa-key"></span>
+                        </span>
+                    </div>
+                    <input  :maxlength='6' v-model='EmailCode' type="number" class="form-control" name="emailcode" id="emailNumber" :placeholder="this.$t('aqzxEmailSms')" aria-label="Password" aria-describedby="phonecodeLabel" required
+                            data-msg="邮箱验证码必须是6位数字"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                            <div class="input-group-append">
+                                <span style='padding:0px;' class="input-group-text">
+                                   <sendBtn business='business' :Bindmachine='false' :fatherClass='fatherClass'  @sendCick= 'sendSMSfun' :empty='empty' :ssoEmail='ssoEmail'></sendBtn>
+                                </span>
+                            </div>
+                </div>
+            </div>
+         </div>
+             <!--  手机验证 -->
+        <div v-if='phoneNumber' class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="" for="phoneNumber">
+                    <span class="d-flex justify-content-between align-items-center">
+                        {{$t('aqzxtsendsma')}}  {{phoneNumber}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="phonecodeLabel">
+                        <span class="fas fa-key"></span>
+                        </span>
+                    </div>
+                    <input :maxlength='6' v-model='phoneCode' type="number" class="form-control" name="emailcode" id="emailNumber" :placeholder="this.$t('SMSPlacehodler')" aria-label="Password" aria-describedby="phonecodeLabel" required
+                            :data-msg="this.$t('phoneNumberRequier')"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                            <div class="input-group-append">
+                                <span style='padding:0px;' class="input-group-text">
+                                    <sendBtn business='business' :Bindmachine='false' :fatherClass='fatherClass'  @sendCick= 'sendSMSfun' :ssoPhone='ssoPhone'></sendBtn>
+                                </span>
+                            </div>
+                </div>
+            </div>
+         </div>
+          <!-- google -->
+        <div v-if='googleFlag' class="form-group">
+            <div class="js-form-message js-focus-state">
+                <label class="" for="signupPassword">
+                    <span class="d-flex justify-content-between align-items-center">
+                         {{$t('aqzxGooglecode')}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="signinSrPassword">
+                        <span class="fas fa-key"></span>
+                        </span>
+                    </div>
+                    <input  :maxlength='6' v-model='googlecode' type="number" class="form-control" name="googleCode" id="signinSrPassword" :placeholder="this.$t('goolePlaceholder')" aria-label="请输入谷歌验证码" aria-describedby="signupConfirmPasswordLabel" required
+                            data-msg="谷歌验证码必须是6位数字"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                </div>
+            </div>
+        </div>
+        <!-- Button -->
+        <div class="row align-items-center mb-5">
+          <div class="col-12 text-left">
+            <button type="button" value="button" @click="handleSubmit" class="btn btn-primary-55 transition-3d-hover">{{$t('zhmmResetSubmit')}}</button>
+          </div>
+        </div>
+        <!-- End Button -->
+      </form>
+    </div>
+    <!-- End Login Form -->
+  </main>
+   <Modal :modal='showModal' :text="text"></Modal>
     </div>
 </template>
-
 <script>
 import '../../lib/utils.js'
 import sendBtn from '../../components/sendBtn'
-import Cookies from 'js-cookie'
-import {ssoCodeVerify,binding,verifyEmail} from '../../../api/urls.js';
-import {postHeaderTokenBodyApi,postHeaderSeveralTokenBodyApi} from '../../../api/axios.js';
+import {bindAccount,userInfo,verifyBusinessCode} from '../../../api/urls.js';
+import {postHeaderTokenBodyApi,postHeaderSeveralTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-
+import {countrylist} from '../login/country.js'
     export default {
         name:'register',
         data() {
-             const validateEmail = (rule, value, callback) => {
-                if (value === ''||value ==undefined) {
-                    callback(new Error(this.$t('phoneNumberRequier')));
-                } else{
-                  let pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
-                    if(!pattern.test(value)){
-                        callback(new Error(this.$t('emailMustExg')))
-                    }else{
-                        
-                    }
-                    callback()
-                    
-                } 
-            };
-            const validateSms = (rule,value,callback) => {
-                if(value === ''){
-                    callback(new Error(this.$t('smsRequired')))
-                }else{
-                    callback()
-                }
-            };
-            const validateGoogle = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error(this.$t('phoneNumberRequier')));
-                } else{
-                    let pattern =/[^\d]/;
-                    if(pattern.test(value)){
-                        callback(new Error(this.$t('numberMust')))
-                    }else{
-                        
-                    }
-                    callback()
-                    
-                } 
-            };
-
-
-       
             return {
+                //front
+                emailAddress:'',
+                EmailCode:'',
+                googlecode:'',
+                googleFlag:false,
                 countryLanguage:localStorage.getItem('countryLanguage'),
                 model1: '',
                 empty:true,
                 token:'',
-                formValidate:{
-                    emailName:'',
-                    smsCode:'',
-                    googleCode:'',
-                },
-                loaded:true,
                 ssoEmail:{
-                     "operateType":"BIND_EMAIL",
-                     "codeType":"EMAIL",
-                     "email":'',
-                     "language":localStorage.getItem('countryLanguage')
                 },
+                ssoPhone:{},
                 showModal:false,
                 text:'',
-                ruleValidate: {
-                    emailName: [
-                        { validator: validateEmail, trigger: 'blur' }
-                    ],
-                    smsCode: [
-                        { validator: validateSms, trigger: 'blur' }
-                    ],
-                    googleCode: [
-                        { validator: validateGoogle, trigger: 'blur' }
-                    ],
-                },
                 countryNumber:'',
-                shows:1,
-                emailFlag:0,
-                googleFlag:false
-
+                fatherClass: 'newBtn',
+                phoneCode:'',
+                phoneNumber:'',
+                FromOrigin:'',
+                DeviceType:'',
+                
 
             }
-
-
-
         },
         components:{
             sendBtn,
@@ -157,81 +190,106 @@ import Modal from '@/components/Modal';
         },
         methods:{
             handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.loaded=false;
-                         this.ssoCodeVerifyMethod();
-                    } else {
-
+                  if(this.emailAddress==''||this.EmailCode==''){
+                    this.$Notice.error({
+                           title:this.$t('输入框不能为空'),
+                            desc: this.$t('输入框不能为空')
+                        });
+                    return false;
+                }else{
+                    if(this.phoneNumber){
+                        if(this.phoneCode==''){
+                            this.$Notice.error({
+                                title:this.$t('输入框不能为空'),
+                                    desc: this.$t('输入框不能为空')
+                                });
+                            return false;
+                        }
                     }
+                    if(this.googleFlag){
+                        if(this.googlecode==''){
+                            this.$Notice.error({
+                                title:this.$t('输入框不能为空'),
+                                    desc: this.$t('输入框不能为空')
+                                });
+                            return false;
+                        }
+                    }
+                     let pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+                    if(pattern.test(this.confirmTradepwd)){
+                            this.$Notice.error({
+                                title:this.$t('emailMustExg'),
+                                desc: this.$t('emailMustExg')
+                            });
+                            return
+                    }
+                    if($('.invalid-feedback').text()!==''){//如果有红色的提示语则阻止其提交
+                        return false;
+                    }
+                        this.loaded=false;
+                        this.codeVerify();
+
+                }
+              
+               
+            },
+             getUserInfo(token){
+                let params = {
+                     "userId":localStorage.getItem('loginUserId'),
+                }
+                getHeaderTokenApi(userInfo,params,token).then((res) =>{
+                    let userInfo = res.data;
+                    this.phoneNumber = res.data.phone;
+                    this.googleFlag = res.data.bindGoogle;
+                }).catch((res) =>{
+
                 })
             },
-    
+            inputEmail(){
+                this.ssoEmail = {
+                    "userId":localStorage.getItem('loginUserId'),
+                    "businessType":"bind_email",
+                    "sendCodeType":'email',
+                    "bindAccount":this.emailAddress,
+                }
+            },
             sendSMSfun(callback){
                 let value = {
-                    "operateType":"BIND_EMAIL",
-                    "codeType":"EMAIL",
-                    "email":this.formValidate.emailName,
-                    "language":localStorage.getItem('countryLanguage')
+                        "userId": localStorage.getItem('loginUserId'),
+                        "businessType":"bind_email",
+                        "account":this.emailAddress
                 }
                 this.$store.commit('changeBandEmail',value);
-                  this.ssoEmail = {
-                          "operateType":"BIND_EMAIL",
-                          "codeType":"EMAIL",
-                          "email":this.formValidate.emailName,
-                          "language":localStorage.getItem('countryLanguage')
-                    }
                 if(callback){//callback是从子组件传递过来的参数
                     this.showModal = !this.showModal;
                     this.text = callback;
                 }
             },
-            ssoCodeVerifyMethod(){//验证验证码
-                let  params = {
-                    "operateType":"BIND_EMAIL",
-                    "codeType":"EMAIL",
-                    "email":this.formValidate.emailName,
-                    "emailCode":this.formValidate.smsCode,
-                    "googleCode":this.formValidate.googleCode
-
+            codeVerify(){
+                let bodyParam  = {
+                    "userId":localStorage.getItem('loginUserId'),
+                    "businessType":'bind_email',
+                    "phoneCode":this.phoneCode,
+                    "emailCode":this.EmailCode,
+                    "googleCode":this.googlecode,
+                    "bindAccount":this.emailAddress,
                 }
-                postHeaderTokenBodyApi(ssoCodeVerify,Cookies.get('loginToken'),params).then((res) =>{
-                    if(res.code){
-                        this.loaded=true;
-                        this.showModal = !this.showModal;
-                        this.text = this.$t(res.code);
-                    }else{
-                        this.token = res.token;
-                        this.bindMetond()
+                postHeaderTokenBodyApi(verifyBusinessCode,$cookies.get('loginToken'),bodyParam).then((res) =>{
+                    if(res.result){
+                        this.$Notice.success({
+                           title:this.$t(11001),
+                           desc:this.$t(11001)
+                     });
+                      if(this.FromOrigin){
+                         this.$router.push('kyc')
+                     }else{
+                        this.$router.push('/SafeCenter')
+                     }
+                     
                     }
                 }).catch((error)=>{
-                        this.loaded=true;
+                    this.loaded = true;
                 })
-
-
-            },
-            bindMetond(){
-                 let len = this.countryNumber.length;
-                let itc = this.countryNumber.substring(1);
-                let ssoToken = Cookies.get('loginToken');
-                let params = {
-                    "email":this.formValidate.emailName,
-                    "emailCode":this.formValidate.smsCode,
-                    "googleCode":this.formValidate.googleCode,
-                    "operateType":"BIND_EMAIL",
-                    "bindType":"EMAIL",
-                }
-                    postHeaderSeveralTokenBodyApi(binding,ssoToken,this.token,params).then((res)=>{
-                        if(res.result==true){
-                             this.loaded=true;
-                            this.$router.push('/safeCenter')
-                        }else{
-                             this.showModal = !this.showModal;
-                             this.text = this.$t(res.code);
-                        }
-                    }).catch((error)=>{
-                        this.loaded=true;
-                    })
             },
             interFunc(){
                  var _this = this;
@@ -258,39 +316,21 @@ import Modal from '@/components/Modal';
 						
 			    }
             }
-           
-            
-            // emailDisable(){
-            //     if(this.emailFlag==1){
-            //         this.empty = false;
-            //         let emailAddress = localStorage.getItem('email');
-            //         this.formValidate.emailName = emailAddress;
-            //     }
-            // }
-
-
         },
         computed:{
             languageChange(){
                 return  this.$store.state.app.countryLanguage;//返回全局state的状态值
             },
             EmailNumberChange(){
-               return this.formValidate.emailName;   
+               return this.emailAddress;   
             },
             
         },
         watch:{
-            ruleValidate:{
-                handler(curVal,oldVal){
-
-                },
-                deep:true
-            },
             languageChange(val,oldVal){
-                this.$refs.formValidate.resetFields();
             },
             EmailNumberChange(val,oldVal){
-                if(!this.formValidate.emailName==''){
+                if(!this.emailAddress==''){
                     this.empty = false;
                 }else{
                     this.empty = true;
@@ -298,90 +338,41 @@ import Modal from '@/components/Modal';
             },
         },
         mounted(){
-            this.emailFlag = this.$route.query.emailFlag;
-            if(localStorage.getItem('google')=='true'){//  获取的是字符串类型的true和false
-               this.googleFlag = true
-           }else{
-               this.googleFlag = false;
-           }
-           //this.emailDisable()
+            this.getUserInfo($cookies.get('loginToken'));
+            this.FromOrigin = this.$route.query.origin;
+
+            this.ssoPhone = {
+                "userId":localStorage.getItem('loginUserId'),
+                "businessType":"bind_email",
+                "sendCodeType":'phone'
+            }
 
         },
         created(){
-            this.interFunc()
+            this.interFunc();
+            this.DeviceType = this.$route.query.type;
+            if(this.$route.query.type === 'mobile'){
+                    this.$emit('public_header', false);
+                    this.$emit('public_footer', false);
+             }
         }
-        
         
     }
 </script>
 <style lang='less'>
 #bandemail{
-      .inner_input{
-        .bandPhone{
-            .ivu-input-wrapper{
-                width: auto;
-            }
-            .ivu-input{
-                padding-left: 15px;
-                width: 580px;
-                border: solid 1px #E7EAED;
-                color: #344857;
-                background: none;
-                font-size: 14px;
-                
-            }
-        }
-    }
-    .btn_contain{
-        .sendMs{
-            background: #12869a;
-            border: none;
-        }
+    .btn-primary-55{
+    color: #fff;
+    background-color: #12869a;
+    border-color: #12869a;
+    &:hover{
+         color: #fff;
+       text-decoration: none;
     }
 }
-  
+}
 </style>
 
-<style scoped lang='less'>
-    .main_container{
-        min-height: 100%;
-        display: flex;
-        flex-direction: column; 
-     }
-     .headerbox{
-        flex: 0 0 auto;
-     }
-    //  #app{
-    //      height: 100%;
-    //  }
-    .footerBox{
-         flex: 0 0 auto;
-     }
-     .inner_input{
-         .ivu-btn{
-            border-radius: 0px;
-        }
-         .ivu-input{
-            width: 580px;
-            height: 48px;
-            padding-left: 53px;
-            border-radius: 0px;
-            border:solid 1px #BDC4E1;
-            font-size: 14px;
-            background: #353948;
-            color:#fff;
-        }
-        
-        
-     }
 
 
-
-
-
-    
-</style>
-<style scoped lang="less">
-    @import './bandEmail.less';
-</style>
 

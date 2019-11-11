@@ -5,7 +5,9 @@
  * @Last Modified time: 2019-05-06 15:31:37
  */
 
-import Cookies from 'js-cookie'
+import Vue from 'vue'
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
 export default {
     /**
      * @description 配置
@@ -17,46 +19,53 @@ export function clearLocalStorage(){
   setTimeout(function () {
     let index = document.domain.indexOf('.')+1
     let siteDoamin = document.domain.substr(index)
-    Cookies.remove('loginToken',{domain:siteDoamin})
-    
-    localStorage.removeItem("ACCOUNT_TOKEN");
-    localStorage.removeItem("ORDER_TOKEN");
-    localStorage.removeItem("ASSET_TOKEN");
-    localStorage.removeItem("UTIL_TOKEN");
-    localStorage.removeItem("accountId");
-    localStorage.removeItem("ACCOUNT_SESSION");
-    localStorage.removeItem("ORDER_SESSION");
-    localStorage.removeItem("ASSET_SESSION");
-    localStorage.removeItem("orderTicket");
-    localStorage.removeItem("curPage");
-    localStorage.removeItem("bankAccountName");
-    localStorage.removeItem("googleFlag");
-    localStorage.removeItem("phoneNumber");
-    localStorage.removeItem("userNumer");
-    localStorage.removeItem("ex55pin");
-    localStorage.removeItem("emailFlag");
-    localStorage.removeItem("ifEmail");
-    localStorage.removeItem("ifsetgoogle");
-    localStorage.removeItem("isSetTradePasswrod");
-    localStorage.removeItem("securitPhone");
-    localStorage.removeItem("Emailtoken");
-    localStorage.removeItem("phoneToken");
-    localStorage.removeItem("PASSWORDTOKEN")
+    let lan = localStorage.getItem('countryLanguage')
+    let deviceCode = localStorage.getItem('deviceCode')
+    let currentCurrency = localStorage.getItem('currentCurrency')
+    localStorage.clear();
+    localStorage.setItem('countryLanguage',lan)
+    localStorage.setItem('deviceCode',deviceCode)
+    localStorage.setItem('currentCurrency',currentCurrency)
+    $cookies.remove('loginToken','',siteDoamin)
+
+     // localStorage.removeItem("ACCOUNT_TOKEN");
+    // localStorage.removeItem("ORDER_TOKEN");
+    // localStorage.removeItem("ASSET_TOKEN");
+    // localStorage.removeItem("UTIL_TOKEN");
+    // localStorage.removeItem("accountId");
+    // localStorage.removeItem("ACCOUNT_SESSION");
+    // localStorage.removeItem("ORDER_SESSION");
+    // localStorage.removeItem("ASSET_SESSION");
+    // localStorage.removeItem("orderTicket");
+    // localStorage.removeItem("curPage");
+    // localStorage.removeItem("bankAccountName");
+    // localStorage.removeItem("googleFlag");
+    // localStorage.removeItem("phoneNumber");
+    // localStorage.removeItem("userNumer");
+    // localStorage.removeItem("ex55pin");
+    // localStorage.removeItem("emailFlag");
+    // localStorage.removeItem("ifEmail");
+    // localStorage.removeItem("ifsetgoogle");
+    // localStorage.removeItem("isSetTradePasswrod");
+    // localStorage.removeItem("securitPhone");
+    // localStorage.removeItem("Emailtoken");
+    // localStorage.removeItem("phoneToken");
+    // localStorage.removeItem("PASSWORDTOKEN")
     // window.location.reload();
   }, 100)
 }
-//种cookies 
+//种cookies
 export function setCookies(token){
-  let index = document.domain.indexOf('.')+1
-  let siteDoamin = document.domain.substr(index)
-  Cookies.set('loginToken',token,{expires:2,domain:siteDoamin})
+   let index = document.domain.indexOf('.')+1
+   let siteDoamin = document.domain.substr(index)
+   $cookies.set('loginToken',token,2*24*60*60,'',siteDoamin)
+
 }
 
 //币币交易页面聊天服务地址
 
 export const CHAT_URL = {
   'baseURL':getCommouityBaseURL()+'api/v1/memberinterface/',
-  // loginToken:Cookies.get('loginToken') || 'not',
   'chineseURL':'/groups/chat/962701706544549892/feed',
   'englishURL':'/groups/chat/967250642861035532/feed',
   'vietnamURL':'/groups/chat/967249785415274499/feed',

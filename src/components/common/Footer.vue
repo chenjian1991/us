@@ -35,7 +35,7 @@ export default {
     return {
       whereAbout: {
         title: 'Locations',
-        addressOne: ['199 Water Street, Floor 33rd', 'New York, NY 10038'],
+        addressOne: ['199 Water Street, 33rd Floor', 'New York, NY 10038'],
         addressTwo: ['353 Sacramento Street, 8th Floor', 'San Francisco, CA 94111']
       },
       legalTerms: {

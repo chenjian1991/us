@@ -1,137 +1,318 @@
 <template>
-    <div id="googlepage" class="root">
-        <div class="wrapper">
-            <div class="google-content">
-                <div class="title">
-                   <router-link to='/safeCenter'>{{$t('ggyzMAcountSecurity')}} </router-link> 
-                   <router-link to=''>{{$t('ggyzMGoogleAuthentication')}}</router-link>
-                </div>
-                <div class="content">
-                    <div class="content-title">
-                        {{$t('ggyzMGoogleAuthentication')}}
-                    </div>
-                    <div class="inner-step">
-                        {{$t('ggyzGoogleTip')}}
-                    </div>
-                    <div class="step-content">
-                        <Tabs :animated='false' type='card' @on-click='currenttabChange'  v-model='currenttab'>
-                            <TabPane :label="stepOne" name="1">
-                                <div class="app-down">
-                                    <div class="down-title">{{$t('ggyzDownloadAndInstall')}}</div>
-                                    <div class="down-address">
-                                        <div class="ios pull-left">
-                                            <div class="ios-title">IOS</div>
-                                            <div class="ios-description">{{$t('ggyzIOSMethod')}}</div>
-                                            <div  class="clearfix img-container">
-                                                <a target="_blank" href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8"> <img src="../../assets/images/google/APP-STORE.png" alt=""></a>
-                                                <em  @mouseenter="showMth('ios')" @mouseleave="hideMth('ios')" class="scancode"></em>
-                                                <img v-if="showPic" class="scanpic" src="../../assets/images/google/step-1.png" alt="">
-                                            </div>
-                                           
-                                        </div>
-                                         <div class="android pull-right">
-                                            <div class="ios-title">Android</div>
-                                            <div class="ios-description">{{$t('ggyzAndroidMethod')}}</div>
-                                            <div  class="clearfix img-container">
-                                                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">  <img src="../../assets/images/google/Google-play.png" alt=""></a>
-                                                <em  @mouseenter="showMth('android')" @mouseleave='hideMth("android")' class="scancode"></em>
-                                                <img style="width:97px;height:98px;" v-if="showAdroindpic" class="scanpic android-pic" src="../../assets/images/google/android-google.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<div>
+     <!-- Title Section -->
+    <div class="bg-light mb-5">
+      <div class="container py-5">
+        <div class="row align-items-sm-center">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <h1 class="h4 mb-0">{{$t('ggyzMGoogleAuthentication')}}</h1>
+          </div>
+          <div class="col-sm-6">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-no-gutter justify-content-sm-end mb-0">
+                <li class="breadcrumb-item"><router-link to='/SafeCenter' >{{$t('tbdhAccountSecurity')}}</router-link></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$t('ggyzMGoogleAuthentication')}}</li>
+              </ol>
+            </nav>
+            <!-- End Breadcrumb -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Title Section -->
+    <div id="setGoogle" class="container">
+        <!-- <h3 class="mt-6 mb-6">{{$t('ggyzMGoogleAuthentication')}}</h3> -->
+        <h6 class="mb-6">{{$t('ggyzGoogleTip')}}</h6>
+        <!-- Step Form -->
+<form class="js-validate js-step-form mb-5"
+      data-progress-id="#progressStepForm"
+      data-steps-id="#contentStepForm"
+      novalidate="novalidate">
+  <div class="card">
+    <div class="card-header p-5">
+      <nav id="progressStepForm" class="js-step-progress nav nav-icon nav-justified text-center">
 
+        <a :data-previous-step="item.step" :class="num == index ? 'colorTab nav-item':'nav-item'" @click="tabIcon(index)" v-for="(item,index) in arricon" :key="index" style="font-size:14px;">
+          <span :class="num == index ?'trans nav-icon-action':'nav-icon-action'">
+            <span :class="item.icon"></span>
+          </span>
+          {{$t(item.name)}}
+        </a>
+        <!-- <a data-previous-step="#selectStepOne" class="nav-item">
+          <span class="nav-icon-action">
+            <span class="fas fa-download nav-icon-action-inner"></span>
+          </span>
+          {{$t('ggyzDownloadApp')}}
+        </a> -->
+        <!-- <a data-previous-step="#selectStepTwo" class="nav-item">
+          <span class="nav-icon-action">
+            <span  class="fas fa-qrcode nav-icon-action-inner"></span>
+          </span>
+          {{$t('ggyzScanQRCode')}}
+        </a>
+        <a href="javascript:;" data-previous-step="#selectStepThree" class="nav-item">
+          <span class="nav-icon-action">
+            <span class="fas fa-save nav-icon-action-inner"></span>
+          </span>
+          {{$t('ggyzBackupKey')}}
+        </a>
+          <a data-next-step="#selectStepFour" class="nav-item">
+          <span class="nav-icon-action">
+            <span class="fas fa-check-square nav-icon-action-inner"></span>
+          </span>
+         {{$t('ggyzEnableGoogle')}}
+        </a> -->
+      </nav>
+    </div>
 
-                            </TabPane>
-                            <TabPane :label="stepTwo" name="2">
-                                 <div class="step-two-content">
-                                     <div class="steptwo-title">{{$t('ggyzUseAPPScan')}}</div>
-                                     <div class="content">
-                                         <div class="pull-left secrit-img">
-                                             <!-- <div id="qrcode"></div> -->
-                                              <vue-qr  :margin='3' :size='115' :text="QRCodeurl"></vue-qr>
-                                         </div>
-                                         <div class="pull-left Key">
-                                             <p>{{$t('ggyzManuallyAPP')}}</p>
-                                             <p>{{$t('ggyzProvidedKey')}}</p>
-                                             <p style="color:#12869a">{{qrCodeString}}</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                            </TabPane>
-                            <TabPane :label="stepThree" name="3">
-                                 <div class="step-two-content">
-                                     <div class="steptwo-title">{{$t('ggyzSaveKeyOnPaper')}}</div>
-                                     <div class="content">
-                                         <div class="pull-left secrit-img key-img">
-                                            {{qrCodeString}}
-                                         </div>
-                                         <div class="pull-left Key step-three-key">
-                                             <p>{{$t('ggyzRecoverTip')}}</p>
-                                             <p>{{$t('ggyzSupportTicket')}}</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                            </TabPane>
-                            <TabPane :label="stepFour" name="4">
-                                    <div class="stepfour-title">{{$t('ggyzEnter6GA')}}</div>
-                                <div class="step-four">
-                                <Form class="form-item clearfix" ref="formValidate" :model='formValidate' :rules='ruleValidate'>
-                                    <!-- 秘钥 -->
-                                    <div class="clearfix">
-                                        <div class="pull-left span-label">
-                                            <span>{{$t("aqzxgooglekey")}}</span>
-                                        </div>
-                                        <FormItem class="form_item pull-left" prop='keyNumber'>
-                                            <Input type="password" v-model="formValidate.keyNumber" :placeholder="$t('aqzxgoogleplaceholder')"></Input>
-                                        </FormItem>
-                                    </div>
-                                    <!-- 登录密码 -->
-                                     <div class="clearfix">
-                                        <div class="pull-left span-label">
-                                            <span>{{$t("aqzxloginpass")}}</span>
-                                        </div>
-                                        <FormItem class="form_item pull-left" prop='passwordNumber'>
-                                            <Input type="password" v-model="formValidate.passwordNumber" :placeholder="$t('aqzxpasswordplaceholder')"></Input>
-                                        </FormItem>
-                                    </div>
-                                    <!-- 谷歌验证 -->
-                                    <div class="clearfix">
-                                        <div class="pull-left span-label">
-                                            <span>{{$t("googleCodenumCode")}}</span>
-                                        </div>
-                                        <FormItem class="form_item pull-left" prop='googleNumber'>
-                                            <Input :maxlength="10" v-model="formValidate.googleNumber" :placeholder="$t('aqzxgooglecodeplaceholder')"></Input>
-                                        </FormItem>
-                                    </div>
-                                 </Form>
-                                 </div>
-                            </TabPane>
-                        </Tabs>
-                        
-                    </div>
-                    <div class="footer-button">
-                        <button class="pull-left" @click="prveStep">{{$t("ggyzPrevStep1")}}</button>
-                        <button v-if="currenttab!=='4'" class="pull-right" @click="nextStep">{{$t("ggyzNextStep3")}}</button>
-                        <button @click="handleSubmit('formValidate')" v-if="currenttab=='4'&&loaded==true" class="pull-right" >{{$t('ggyzEnableGA')}}</button>
-                        <!-- <Button v-if="currenttab=='4'&&loaded==false" disabled loading class="loginbtn pull-right"  @click="handleSubmit('formValidate')" type="primary"></Button> -->
+    <!-- Content Step Form -->
+    <div id="contentStepForm" class="card-body p-5">
+      <div id="selectStepOne" class="active">
+          <!-- Title -->
+      <div class="w-md-80 w-lg-50 text-center mx-md-auto">
+        <h2>{{$t('步骤一')}}</h2>
+        <span class="btn btn-xs btn-soft-success btn-pill mb-2">{{$t('ggyzDownloadAndInstall')}}</span>
+      </div>
+      <!-- End Title -->
+            <!-- Blog Card Section -->
+    <div class="container space-top-1">
+      <div class="w-lg-80 mx-lg-auto">
+        <div class="card-deck d-block d-md-flex card-md-gutters-3">
+          <!-- Blog Card -->
+          <article class="card border-0 text-white shadow-sm transition-3d-hover mb-5 mb-md-0">
+            <div class="card-body p-6">
+                <h1 class="text-dark h4">iOS</h1>
+                <div class="text-dark mb-6">{{$t('ggyzIOSMethod')}}</div>
+               <!-- Button -->
+                <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1442483182" target="_blank">
+                    <button type="button" class="btn btn-xs btn-primary btn-wide transition-3d-hover text-left mb-2 mr-sm-1">
+                    <span class="media align-items-center">
+                        <span class="fab fa-apple font-size-2 mr-3"></span>
+                        <span class="media-body">
+                        <span class="d-block">{{$t('fronthomefootAPPios')}}</span>
+                        <strong class="font-size-1">App Store</strong>
+                        </span>
+                    </span>
+                    </button>
+                </a >
+                 <!-- End Button -->
+                <em  @mouseenter="showMth('ios')" @mouseleave="hideMth('ios')" class="scancode"></em>
+                <img v-if="showPic" class="scanpic" src="../../assets/images/google/step-1.png">
 
-                    </div>
+                 
+            </div>
+          </article>
+          <!-- End Blog Card -->
+
+          <!-- Blog Card -->
+          <article class="card border-0 shadow-sm transition-3d-hover">
+            <div class="card-body p-6">
+              <h1 class="text-dark h4">Android</h1>
+              <div class="text-dark mb-6">{{$t('ggyzAndroidMethod')}}</div>
+                <!-- Button -->
+                    <a href="https://play.google.com/store/apps/details?id=com.ex55.app" target="_blank">
+                        <button type="button" class="btn btn-xs btn-dark btn-wide transition-3d-hover text-left mb-2">
+                        <span class="media align-items-center">
+                            <span class="fab fa-google-play font-size-2 mr-3"></span>
+                            <span class="media-body">
+                            <span class="d-block">{{$t('fronthomefootAPPandroid')}}</span>
+                            <strong class="font-size-1">Google Play</strong>
+                            </span>
+                        </span>
+                        </button>
+                    </a >
+                    <!-- End Button -->
+                    <em  @mouseenter="showMth('android')" @mouseleave='hideMth("android")' class="scancode"></em>
+                    <img style="width:97px;height:98px;" v-if="showAdroindpic" class="scanpic android-pic" src="../../assets/images/google/android-google.png">
+            </div>
+          </article>
+          <!-- End Blog Card -->
+        </div>
+      </div>
+    </div>
+    <!-- End Blog Card Section -->
+
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-sm btn-primary transition-3d-hover mr-1" @click="next(1)" data-next-step="#selectStepTwo">{{$t('newK1buttonN')}}</button>
+        </div>
+      </div>
+
+      <div id="selectStepTwo" style="display: none;">
+              <!-- Title -->
+      <div class="w-md-80 w-lg-50 text-center mx-md-auto">
+        <h2>{{$t('步骤二')}}</h2>
+        <span class="btn btn-xs btn-soft-success btn-pill mb-2">{{$t('ggyzUseAPPScan')}}</span>
+      </div>
+      <!-- End Title -->
+            <!-- Blog Card Section -->
+    <div class="container space-top-1">
+      <div class="w-lg-65 mx-lg-auto">
+        <div class="card-deck d-block d-md-flex card-md-gutters-3">
+          <!-- Blog Card -->
+          <article class="card border-0 text-white shadow-sm transition-3d-hover mb-5 mb-md-0 pb-4">
+            <div class="card-body p-6 mx-md-auto">
+                      <VueQr  :margin='3' :size='115' :text="QRCodeurl"></VueQr>
+            </div>
+             <div class="mx-md-auto text-dark text-center p-5">
+                  <h6 class="text-center mb-2">{{$t('ggyzManuallyAPP')}}</h6>
+                  <h4 style="color:rgb(18, 134, 154)" class="text-center">{{qrCodeString}}</h4>
+             </div>
+
+          </article>
+          <!-- End Blog Card -->
+        </div>
+      </div>
+    </div>
+    <!-- End Blog Card Section -->
+        <div class="d-flex justify-content-end">
+          <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;" @click="next(0)" data-previous-step="#selectStepOne">{{$t('newK1buttonP')}}</a>
+          <button type="button" class="btn btn-sm btn-primary transition-3d-hover" @click="next(2)" data-next-step="#selectStepThree">{{$t('newK1buttonN')}}</button>
+        </div>
+      </div>
+
+      <div id="selectStepThree" style="display: none;">
+              <!-- Title -->
+      <div class="w-md-80 w-lg-50 text-center mx-md-auto">
+        <h2>{{$t('步骤三')}}</h2>
+        <span class="btn btn-xs btn-soft-success btn-pill mb-2">{{$t('ggyzSaveKeyOnPaper')}}，{{$t('ggyzRecoverTip')}} </span>
+      </div>
+      <!-- End Title -->
+            <!-- Blog Card Section -->
+    <div class="container space-top-1">
+      <div class="w-lg-65 mx-lg-auto">
+        <div class="card-deck d-block d-md-flex card-md-gutters-3">
+          <!-- Blog Card -->
+          <article class="card border-0 text-white shadow-sm transition-3d-hover mb-5 mb-md-0 pb-4">
+            <div class="card-body p-6 mx-md-auto">
+                <div class="key-img text-dark text-left">
+                    {{qrCodeString}}
                 </div>
             </div>
+             <div class="mx-md-auto text-dark text-center p-5">
+                  <h6 class="text-center mb-2">{{$t('ggyzSupportTicket')}}</h6>
+             </div>
 
+          </article>
+          <!-- End Blog Card -->
         </div>
-        <Modal :modal='showModal' :text="text"></Modal>
-
-
+      </div>
     </div>
+    <!-- End Blog Card Section -->
+
+        <div class="d-flex justify-content-end">
+          <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;" @click="next(1)" data-previous-step="#selectStepTwo">{{$t('newK1buttonP')}}</a>
+          <button type="button" data-next-step="#selectStepFour" @click="next(3)"  class="btn btn-sm btn-primary transition-3d-hover">{{$t('newK1buttonN')}}</button>
+        </div>
+      </div>
+      <div id="selectStepFour" style="display: none;">
+                    <!-- Title -->
+            <div class="w-md-80 w-lg-50 text-center mx-md-auto">
+                <h2>{{$t('步骤四')}}</h2>
+                <span class="btn btn-xs btn-soft-success btn-pill mb-2">{{$t('ggyzMGoogleAuthentication')}}</span>
+            </div>
+            <!-- End Title -->
+            <div class="w-lg-65 mx-lg-auto space-top-1">
+                <article class="card border-0 text-white shadow-sm transition-3d-hover mb-5 mb-md-0 pb-4">
+                    <div class="card-body p-6">
+                             <!-- Form Group -->
+         <div class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="form-label" for="signupPassword">
+                    <span class="d-flex text-dark justify-content-between align-items-center">
+                        {{$t("aqzxgooglekey")}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="signupPasswordLabel">
+                        <span class="fas fa-lock"></span>
+                        </span>
+                    </div>
+                    <input  v-model='kyeofsecret' type="password" class="form-control" name="password" id="signupPassword" :placeholder="this.$t('aqzxgoogleplaceholder')" aria-label="Password" aria-describedby="signupPasswordLabel" required
+                            :data-msg="this.$t('phoneNumberRequier')"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                </div>
+            </div>
+        </div>
+        <!-- 登录密码-->
+        <div class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="" for="phoneNumber">
+                    <span class="d-flex text-dark justify-content-between align-items-center">
+                        {{$t("aqzxloginpass")}}
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="phonecodeLabel">
+                        <span class="fas fa-key"></span>
+                        </span>
+                    </div>
+                    <input  v-model='loginPwd' type="password" class="form-control" name="phonecode" id="phoneNumber" :placeholder="this.$t('aqzxpasswordplaceholder')" aria-label="Password" aria-describedby="phonecodeLabel" required
+                            :data-msg="this.$t('phoneNumberRequier')"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                            <div class="input-group-append">
+                                <span style='padding:0px;' class="input-group-text">
+                                </span>
+                            </div>
+                </div>
+            </div>
+         </div>
+        <!-- 谷歌验证 -->
+        <div  class="form-group">
+            <div class="js-form-message js-focus-state">
+                 <label class="" for="emailNumber">
+                    <span class="d-flex text-dark justify-content-between align-items-center">
+                        {{$t('googleCodenumCode')}}  
+                    </span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="phonecodeLabel">
+                        <span class="fas fa-key"></span>
+                        </span>
+                    </div>
+                    <input :maxlength='6' v-model='codeOfGoogle' type="number" class="form-control" name="emailcode" id="emailNumber" :placeholder="this.$t('aqzxgooglecodeplaceholder')" aria-label="Password" aria-describedby="phonecodeLabel" required
+                            :data-msg="this.$t('phoneNumberRequier')"
+                            data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                            <div class="input-group-append">
+                                <span style='padding:0px;' class="input-group-text">
+                                </span>
+                            </div>
+                </div>
+            </div>
+         </div>
+        <!-- form end -->
+            </div>
+                       
+          </article>
+            </div>
+        <div class="d-flex justify-content-end mt-3">
+          <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;" @click="next(2)" data-previous-step="#selectStepThree">{{$t('newK1buttonP')}}</a>
+          <button type="button" @click="handleSubmit('formValidate')" class="btn btn-sm btn-primary transition-3d-hover">{{$t('ggyzMGoogleAuthentication')}}</button>
+        </div>
+      </div>
+    </div>
+    <!-- End Content Step Form -->
+  </div>
+</form>
+<!-- End Step Form -->
+    </div>
+</div>
+          
 </template>
+
 
 <script>
 import {queryGoogleURL,bindGoogle} from '../../../api/urls.js';
-import {postBaseApi,postHeaderTokenBodyApi} from '../../../api/axios.js';
+import {postHeaderTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import Cookies from 'js-cookie';
+
+
 //import QRCode from 'qrcodejs2'//二维码
 import VueQr from 'vue-qr'
     export default {
@@ -141,19 +322,6 @@ import VueQr from 'vue-qr'
             VueQr
         },
         data() {
-            const validatePhone = (rule,value,callback) =>{
-                if(value === ''){
-                    callback(new Error(this.$t('phoneNumberRequier')))
-                }else{
-                    let pattern =/[*]/;
-                    if(pattern.test(value)){
-                        callback(new Error(this.$t('numberMust')))
-                    }else{
-                        
-                    }
-                    callback()
-                }
-            };
              const validatePass = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error(this.$t('passwordRequier')));
@@ -166,110 +334,84 @@ import VueQr from 'vue-qr'
                     
                 } 
             };
-               const validateGoogle = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error(this.$t('phoneNumberRequier')));
-                } else{
-                    let pattern =/[^\d]/;
-                    if(pattern.test(value)){
-                        callback(new Error(this.$t('googleMust')))
-                    }else{
-                        
-                    }
-                    callback()
-                    
-                } 
-            };
+             
             return {
+                num: 0,
+                arricon:[{
+                    ind: 0,
+                    name: 'ggyzDownloadApp',
+                    icon: 'fas fa-download nav-icon-action-inner',
+                    step: '#selectStepOne',
+                    isShow: true
+                  },{
+                    ind: 1,
+                    name: 'ggyzScanQRCode',
+                    icon: 'fas fa-qrcode nav-icon-action-inner',
+                    step: '#selectStepTwo',
+                    isShow: false
+                  },{
+                    ind: 2,
+                    name: 'ggyzBackupKey',
+                    icon: 'fas fa-save nav-icon-action-inner',
+                    step: '#selectStepThree',
+                    isShow: false
+                  },{
+                    ind:3,
+                    name: 'ggyzEnableGoogle',
+                    icon: 'fas fa-check-square nav-icon-action-inner',
+                    step: '#selectStepFour',
+                    isShow: false
+                  }],
+                //front
+                kyeofsecret:'',
+                loginPwd:'',
+                codeOfGoogle:'',
+
                 empty:true,
                 token:'',
                 ex55Pin:'',
                 captchaIns:'',
                 loaded:true,
                 paramsObj:{},
-                formValidate:{
-                    keyNumber:'',
-                    passwordNumber:'',
-                    googleNumber:'',
-                },
+               
                 QRCodeurl:"",
                 qrCodeString:"",
                 showModal:false,
                 text:'',
                 currenttab:'1',
-                ruleValidate: {
-                    keyNumber: [
-                        { validator: validatePhone, trigger: 'blur' }
-                    ],
-                    passwordNumber: [
-                        { validator: validatePass, trigger: 'blur' }
-                    ],
-                    googleNumber:[
-                        {validator:validateGoogle,trigger:'blur'}
-                    ]
 
-                    
-                },
-                stepOne: (h) => {
-                    return h('div', [
-                        h('span', this.$t('ggyzDownloadApp')),
-                    ])
-                },
-                 stepTwo: (h) => {
-                    return h('div', [
-                        h('span', this.$t('ggyzScanQRCode')),
-                    ])
-                },
-                 stepThree: (h) => {
-                    return h('div', [
-                        h('span', this.$t('ggyzBackupKey')),
-                    ])
-                },
-                 stepFour: (h) => {
-                    return h('div', [
-                        h('span', this.$t('ggyzEnableGoogle')),
-                    ])
-                },
                 showPic:false,
                 showAdroindpic:false
 
             }
 
-
-
         },
-      
         methods:{
+          tabIcon (index) {
+            this.num = index
+            this.arricon.map((v,i) => {
+              if (v.step == this.arricon[index].step) {
+                $(this.arricon[i].step).show()
+              }else{
+                $(this.arricon[i].step).hide()
+              }
+            })
+          },
+          next (inde) {
+            this.tabIcon(inde)
+          },
             handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.bindGoogleMthod()
-                    } else {
-                        //this.$Message.error('Fail!');
-                    }
-                })
-            },
-            currenttabChange(){
-            },
-            nextStep(){
-                let currentInex = this.currenttab;
-                if(currentInex==1){
-                    this.currenttab='2'
-                }else if(currentInex ==2){
-                    this.currenttab = '3'
-                }else if(currentInex==3){
-                    this.currenttab = '4'
-                }
-            },
-            prveStep(){
-                let currentInex = this.currenttab;
-                if(currentInex==4){
-                    this.currenttab='3'
-                }else if(currentInex ==3){
-                    this.currenttab = '2'
-                }else if(currentInex==2){
-                    this.currenttab = '1'
-                }
+                 if(this.kyeofsecret==''||this.loginPwd==''||this.codeOfGoogle=='') {
+                  this.$Notice.error({
+                        title:this.$t('输入框不能为空'),
+                        desc: this.$t('输入框不能为空')
+                    });
+                  return false;
+              }
+               if($('.invalid-feedback').text()!==''){//如果有红色的提示语则阻止其提交
+                return false;
+              }
+                this.bindGoogleMthod()
             },
             showMth(name)
             {
@@ -287,16 +429,18 @@ import VueQr from 'vue-qr'
                 }
             },
             getQrcode(){
-                postHeaderTokenBodyApi(queryGoogleURL,Cookies.get('loginToken'),{}).then((res)=>{
-                    this.QRCodeurl = res.qrCode;
-                    this.qrCodeString = res.secretKey;
+              let params = {
+                userId:localStorage.getItem('loginUserId')
+              }
+                getHeaderTokenApi(queryGoogleURL,params,$cookies.get('loginToken')).then((res)=>{
+                    this.QRCodeurl = res.data.qrCode;
+                    this.qrCodeString = res.data.secretKey;
                 }).catch((error)=>{
-                    console.log(error)
                 })
             },
             setSha(passwrod){
                 let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
-                let pw = '::'+ sha256(passwrod)//要加密的密码
+                let pw = sha256(passwrod)//要加密的密码
                 return pw;
             },
             bindGoogleMthod(){
@@ -308,31 +452,27 @@ import VueQr from 'vue-qr'
                     hashFlag = false;
                 }
                 let params = {
-                        "secretKey":this.formValidate.keyNumber,
-                        "password":hashFlag?this.setSha(this.formValidate.passwordNumber):this.formValidate.passwordNumber,
-                        "googleCode":this.formValidate.googleNumber
+                        "userId": localStorage.getItem('loginUserId'),
+                        "password":this.setSha(this.loginPwd),
+                        "googleKey": this.kyeofsecret,
+                        "googleCode": this.codeOfGoogle
                     }
-                    postHeaderTokenBodyApi(bindGoogle,Cookies.get('loginToken'),params).then((res)=>{
-                        let result = res.result;
-                        if(result==true){
-                            // this.showModal = !this.showModal;
-                            // this.text = this.$t(11001);
-                            this.$Message.success(this.$t(11001))
-                            this.$router.push('/safeCenter');
-                        }else if(res.code){
-                            // this.showModal = !this.showModal;
-                            // this.text = this.$t(res.code);
-                            this.$Message.error(this.$t(res.code))
-                            this.loaded = true;
+                    postHeaderTokenBodyApi(bindGoogle,$cookies.get('loginToken'),params).then((res)=>{
+                        if(res.result){
+                             this.$Notice.success({
+                                    title:this.$t(11001),
+                                    desc: this.$t(11001)
+                             });
+                            this.$router.push('/SafeCenter');
                         }
                     }).catch((error)=>{
-                        console.log('error')
+
                     })
             
 
 
             },
-             interFunc(){
+      interFunc(){
                  var _this = this;
 			    document.onkeydown = function(e) {
                 //1.规避页面上方的搜索框等是否获取了焦点，是则不触发本次快捷键
@@ -359,99 +499,74 @@ import VueQr from 'vue-qr'
             }
         },
         computed:{
-            inputValidate(){
-               return this.formValidate.phoneNumber;   
-            },
              languageChange(){
                 return  this.$store.state.app.countryLanguage;//  返回全局state的状态值
             },
-           
             
         },
         watch:{
             languageChange(val,oldVal){
-                 this.$refs.formValidate.resetFields();
+
             },
         },
         mounted(){
-            this.getQrcode()
+            this.getQrcode();
+            // $.HSCore.components.HSStepForm.init('.js-step-form');
+            //  $.HSCore.components.HSValidation.init('.js-validate', {//实例化表单验证方法 js-validate
+               
+            //    });
         },
         created(){
             this.interFunc()
         }
-     
         
         
     }
 </script>
+<style lang="less" scoped>
+.trans{
+  background-color: #12869A;
+  transform: scale(1);
+  transition: all 0.6s;
+  span{
+    color:#fff;
+  }
+
+}
+
+.colorTab{
+  color:#12869A !important;
+}
+</style>
 <style lang="less">
-     #googlepage{
-         .ivu-btn-primary[disabled]{
-            color: #fff !important;
-            background-color: #d1d3df !important;
-        }
-        .ivu-icon-ios-loading:before{
-            font-size: 35px !important;
-            font-weight:bold !important;
-        }
-        .ivu-btn>.ivu-icon{
-            line-height:1 !important;
-        }
-        .ivu-form-item{
-            margin-bottom: 24px !important;
-        }
-                .ivu-tabs-nav{
-            width: 100%;
-            .ivu-tabs-tab{
-                width: 25%;
-                text-align: center;
-                color: #AAB0CC;
-                font-size: 14px;
-                border-radius: 0px;
-                background: #E7EAED;
-                border:none;
-                border-right: 1px solid #d6dee1;
-                margin-right: 0px;
-                &:nth-child(1){
-                    border-left: none;
-                }
-            }
-        }
-        .ivu-tabs-bar{
-            border-bottom: none;
-            span{
-                color: #344857;
-            }
-        }
-        .ivu-tabs-tab-active{
-            background: #12869a !important;
-            border-right: none !important;
-            border-left: none !important;
-           div{
-               span{
-                   color: #fff;
-               }
-           }
-        }
-        .ivu-form{
-            margin: 0 auto;
-            .ivu-input{
-                padding-left: 10px;
-                width: 400px;
-                border: solid 1px #E7EAED;
-                color: #344857;
-                height: 48px;
-                line-height: 48px;
-                background: none;
-                font-size: 14px;
-            }
-        } 
+#setGoogle{
+    .key-img{
+        background: url('../../assets/images/google/key.png');
+        background-size: cover;
+        width: 200px;
+        height: 120px;
+        line-height: 120px;
+        font-size: 14px;
 
+    }
+     .scancode{
+            margin-left: 20px;
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: url(../../assets/images/google/erweima-tubiao.png) no-repeat;
+            vertical-align:top;
         }
+        .scanpic{
+            position: absolute;
+            right: -1px;
+        }
+        .android-pic{
+            position: absolute;
+            right: -1px; 
+        }
+}
 </style>
 
-<style scoped lang="less">
-    @import './setGoogle.less';
-</style>
 
 

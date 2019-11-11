@@ -7,7 +7,7 @@
                     <p class="tips">{{$t('sendEmailto')}} <span class="font-bold" v-html="emailName"></span>. 
                         {{$t('emailSendclick')}}
                     </p>
-                    <div v-if="arrive" @click="sendAgain" class="not-arrive">{{$t('emailDontArrive')}}</div>
+                    <div v-if="arrive" @click="handleSubmit" class="not-arrive">{{$t('emailDontArrive')}}</div>
                     <div v-else class="not-arrive resentemail">{{$t('emailreSend')}}</div>
                 </div>
             </div>
@@ -19,10 +19,11 @@
 </template>
 
 <script>
-import {reSendEmail} from '../../../api/urls.js';
-import {postBaseApi} from '../../../api/axios.js';
+import {reSendEmail,ipQuery} from '../../../api/urls.js';
+import {postBaseApi,getApiLoin} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
-import Cookies from 'js-cookie'
+import { debug } from 'util';
+import {geeTest} from '../../../api/usersystem.js'
 
 
     export default {
@@ -36,6 +37,10 @@ import Cookies from 'js-cookie'
                 text:'',
                 arrive:true,
                 emailName:'',
+                ipCountry:'',
+                captchaIns:'',
+                robotModalflag:false,
+                googleID:'',
                 
 
             }
@@ -43,53 +48,32 @@ import Cookies from 'js-cookie'
         },
       
         methods:{
-            handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-
-                    } else {    
-                        //this.$Message.error('Fail!');
-                    }
-                })
+            handleSubmit() {
+               this.checkGeetest()
             },
-            sendAgain(){
-                this.arrive = false;
-                setTimeout(() => {
-                    this.arrive = true;
-                }, 5000);
-                let emailParam = {
-                     "email":localStorage.getItem('emailAdderss'),
-                     "language":localStorage.getItem('countryLanguage'),
-                }
+            checkGeetest(){
+                    geeTest('0e50ea14c3b178745d1b5cbeefb96b23','1',(data)=>{
+                            let emailParam = {
+                                    "domainCode": document.domain==='www.55com.io'?"china":'global',
+                                    "personType": "GEETEST",
+                                    "personCode": data,
+                                    "email": localStorage.getItem('emailAdderss'),
+                                    "deviceType": "WEB"
+                                }
+                                this.sendAgain(emailParam)
+                    })
+            },
+            sendAgain(emailParam){
                 postBaseApi(reSendEmail,{},emailParam).then((res) =>{
-                    if(res.code){
-                         this.showModal = !(this.showModal);//！取非解决了弹出只谈一次的bug
-                         this.text = this.$t(res.code);
-                         if(res.code == '10045'){//已经激活成功，直接跳转登录页面
-                             setTimeout(() => {
-                                 this.$router.push('/login');
-                             }, 3000);
-                         }
-                       
-                    }else{
-                        console.log(res)
-                        // let ex55Pin = res.ex55Pin;
-                        // localStorage.setItem('ex55Pin',ex55Pin)
-                        // this.ex55Pin = ex55Pin;
-                        // this.$router.push('/google');
-                    }
-                    
-
+                     this.arrive = false;
+                    setTimeout(() => {
+                        this.arrive = true;
+                    }, 5000);
+                  
+                }).catch((eror)=>{
+                     
                 })
-
-
-
-
             }
-            
-         
-
-
         },
         computed:{
              languageChange(){
@@ -105,16 +89,30 @@ import Cookies from 'js-cookie'
         },
         mounted(){
             this.emailName = localStorage.getItem('emailAdderss')
-            console.log('aaa')
-            //把头，脚，侧边栏隐藏的方法；
-            // this.$store.commit('changeLeftCol',false);
-            // this.$store.commit('changeHeaderPart',false);
-            // this.$store.commit('changeFooterPart',false);
         }
         
         
     }
 </script>
+<style lang='less'>
+    .main_container{
+        min-height:100%;
+        display: flex;
+        flex-direction: column; 
+     }
+     .headerbox{
+        flex: 0 0 auto;
+     }
+    //  #app{
+    //      height: 100%;
+    //      background: #18183e;
+    //  }
+    .footerBox{
+         flex: 0 0 auto;
+     }
+
+
+</style>
 <style lang='less'>
     .main_container{
         min-height:100%;

@@ -15,11 +15,12 @@
                            <!--<span v-if="siteName == 'F'">{{$t('headerfranceexchange')}}</span>-->
                            <span v-if="siteName == 'C'">{{$t('headercustomerexchange')}}</span>
                            <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
-                           <ul @click="changeBoard">
+                           <ul>
+                           <!-- <ul @click="changeBoard"> -->
                               <li data-site="BTC" siteName="B">{{$t('headerblockexchange')}}</li>
                               <!-- <li  data-site="USDT" siteName="S">{{$t('headerstockexchange')}}</li> -->
                               <!--<li data-site="USDD" siteName="F">{{$t('headerfranceexchange')}}</li>-->
-                              <li data-site="USDT" siteName="C">{{$t('headercustomerexchange')}}</li>
+                              <!-- <li data-site="USDT" siteName="C">{{$t('headercustomerexchange')}}</li> -->
                            </ul>
                         </div>
                         <div class="myCoin" @click="openMyCoin" :class="[isShowMainBoard? '' : 'markActive']">
@@ -702,7 +703,6 @@
    import Stomp from 'stompjs';
    // import CHAT from '@/components/exchange/CHAT.vue'
    import _ from 'lodash'
-   import Cookies from 'js-cookie'
    import moment, {isMoment, defineLocale} from 'moment'
    import bigDecimal from 'js-big-decimal' //除法失效
    import {BigNumber} from 'bignumber.js';
@@ -724,6 +724,7 @@
       },
       data() {
          return {
+           openTradePassword: false, // 是否打开交易密码
            // 是否设置交易密码
            isSetTradePasswrod: false,
             //2019性能优化-左侧币种选择栏
@@ -772,7 +773,7 @@
             asksArr: [],
             //****交易相关 */
             exchange: null,//交易接口函数
-            loginToken: Cookies.get('loginToken'),//登陆token
+            loginToken: $cookies.get('loginToken'),//登陆token
             // ***** 买入 卖出 ******//
             FFDeductible: 0,//1 开启手续费折扣 2.FF余额低 3.手续费折扣中
             commissionTemplateId: false,//开启折扣开关 true 开启
@@ -1429,6 +1430,8 @@
                }
             }
             this.quoteWS.onerror = (e) => {
+               console.log("The 'this.quoteWS' connect error");
+               
             }
             //关闭时候触发
             this.quoteWS.onclose = (e) => {
@@ -1795,7 +1798,7 @@
                }.bind(this), 1000);
 
                //继续撤单
-            } else if (this.$store.state.exchange.inputTradePassWordStatus) {
+            } else if (this.openTradePassword) {
                //密码
                if (getValue("ORDER_SESSION")) {
                   //密码为失效
@@ -1921,7 +1924,7 @@
                   this.$router.push('/originTradePassword')
                }.bind(this), 1000);
             }
-            else if (this.$store.state.exchange.inputTradePassWordStatus) {              
+            else if (this.openTradePassword) {              
               //需要输入密码
               if (getValue("ORDER_SESSION")) {
                 this.exchange.createGBBOOrder({
@@ -2039,7 +2042,7 @@
                   this.$router.push('/originTradePassword')
                }.bind(this), 1000);
             }
-            else if (this.$store.state.exchange.inputTradePassWordStatus) {
+            else if (this.openTradePassword) {
                //需要输入交易密码
                if (getValue("ORDER_SESSION")) {
                   this.sellDisabled = true;                  
@@ -2123,7 +2126,7 @@
             this.$refs.tradeHistory.scrollTop = 0
          },
          submitPassWord() {//提交交易密码页面
-            if (this.$store.state.exchange.inputTradePassWordStatus && this.showPassWordPage) {
+            if (this.openTradePassword && this.showPassWordPage) {
                if (this.exchangePassWord == null || this.exchangePassWord.length < 6) {
                   this.$Notice.warning({
                      title: this.$t('bbjyInputPassword'),
@@ -2336,13 +2339,15 @@
             //     }
             // })
          }
-        if(Cookies.get('loginToken')){
-          getUserInfo(Cookies.get('loginToken'))
-              .then((res) => {
-                if(!res.code) {
-                  // 是否设置交易密码
-                  this.isSetTradePasswrod = res.isSetTradePasswrod
-                }
+        if($cookies.get('loginToken')){
+          getUserInfo({userId: localStorage.getItem('loginUserId')},$cookies.get('loginToken'))
+              .then((res) => {                
+                const { data: { setTradePassword, openTradePassword } } = res
+                // 是否设置交易密码
+                this.isSetTradePasswrod = setTradePassword
+                // 是否打开交易密码
+                this.openTradePassword = openTradePassword
+                
               })
         }
       },
@@ -2361,7 +2366,7 @@
          this.$store.commit('changeHeaderColor', '#15232C');
          this.$store.commit('changeFooterColor', '#15232C');
          // 登录的情况下
-         if (Cookies.get('loginToken') && localStorage.getItem('loginUserId')) {
+         if ($cookies.get('loginToken') && localStorage.getItem('loginUserId')) {
             //获取交易密码开关
             this.$store.dispatch("getTradePassWordStatus");
          }

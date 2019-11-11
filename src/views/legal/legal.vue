@@ -1,5 +1,5 @@
 <template>
-  <div class="aboutBox" style="font-family: helvetica, 'Microsoft YaHei', 'PingFang SC;">
+  <div class="about-main" style="font-family: helvetica, 'Microsoft YaHei', 'PingFang SC;">
     <div class="container">
       <div class="row">
         <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 mb-3">
@@ -29,10 +29,10 @@
   </div>
 </template>
 <style scoped lang="less">
-.aboutBox {
+.about-main {
   padding: 40px 0.1rem;
-  font-size: 14px;
-  font-weight: bolder;
+  // font-size: 14px;
+  // font-weight: bolder;
   background: #fff;
   ul {
     li {
@@ -46,11 +46,11 @@
       }
     }
   }
-  p {
-    margin: 10px 0;
-    color: #5c6166;
-    text-align: justify;
-  }
+  // p {
+  //   margin: 10px 0;
+  //   color: #5c6166;
+  //   text-align: justify;
+  // }
   .title {
     font-size: 14px;
     color: rgb(52, 72, 87);
@@ -104,7 +104,7 @@
 @media screen and (max-width: 768px) {
   .aboutBox {
     .fees {
-      width: 100% !important;
+      width: 100%;
     }
   }
 }
