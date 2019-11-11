@@ -498,6 +498,10 @@ const clickoutside = {
                                         }  
                                         this.phoneRegisterFun(params)
                              }
+                    },()=>{
+                         this.loaded = true;
+                    }).catch(error=>{
+                         this.loaded = true;
                     })
             },
             setSha(passwrod){
