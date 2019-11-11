@@ -5,6 +5,10 @@ export const queryUserStatus = (params)=>{
     return getApi(userStatus, params);
 }
 export const geeTest = (id,interactive,successFun)=>{
+    debugger
+    Sense.onClose(function(){
+        debugger
+    })
     Sense.judge({
         id: id,       
         interactive: interactive, //场景
@@ -28,5 +32,8 @@ export const geeTest = (id,interactive,successFun)=>{
                     })
             }
         }
+
     )
+
+
 }
