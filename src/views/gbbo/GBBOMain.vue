@@ -16,7 +16,7 @@
     </div>
     <!-- two 买入卖出 历史成交 -->
     <div class="gbbomain-transaction">
-
+        <createOrder></createOrder>
     </div>
     <!-- 当前订单，历史订单 -->
     <div class="gbbomain-order">
@@ -25,6 +25,7 @@
   </div>
 </template>
 <script>
+import createOrder from './component/GBBOCreateOrder.vue'
 export default {
   name: 'gbbo',
   data(){
@@ -46,7 +47,7 @@ export default {
 
   },
   components:{
-
+    createOrder
   }
 }
 </script>
