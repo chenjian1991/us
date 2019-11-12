@@ -709,7 +709,6 @@
             })
          },
          getValuation() {//计算估值
-            console.log(this.realTimeList)
             let BTC_USDD = this.realTimeList['BTCUSD']
             this.total_USDT = 0
             this.total_BTC = 0
@@ -728,7 +727,6 @@
                   this.mapCurrencyList(v, ['available', 'frozen', 'total'], [v['available'], v['frozen'], v['total']])
                })
                this.balancesList.map(v => {
-                  console.log(v)
                   if (this.realTimeList[`${v.currency}USD`]) {//和USDD有交易对
                      v['USDT'] = this.transferNumber(bigDecimal.multiply(v.total, this.realTimeList[`${v.currency}USD`]), 2)
                   } else if (v.currency === 'USD') {//usdd本身
@@ -968,7 +966,6 @@
          },
          getIdentify(currency, path) {
             this.getUserInfo().then(res => {
-               console.log(res)
                switch (res) {
                   case 'INIT':
                      this.showNoVerification1 = true

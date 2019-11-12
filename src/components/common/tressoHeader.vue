@@ -281,28 +281,9 @@
 <style scoped lang="less">
    @import '../../assets/css/common.less';
 
-   /*@import "../../assets/css/header-Front.css";*/
-
-   .appdownload {
-      position: relative;
-      &:hover {
-         img {
-            width: 104px;
-            height: 104px;
-            display: block;
-         }
-      }
-      img {
-         border: 12px solid #121f28;
-         border-radius: 2px;
-         position: absolute;
-         top: 29px;
-         left: -16px;
-         z-index: 1000;
-         display: none;
-      }
+   #tressoHeader{
+      width: 100%;
    }
-
    .loginBtn:hover {
       color: #fff !important;
    }

@@ -1,8 +1,8 @@
 <template>
-   <div>
+   <div id="layout">
       <tressoHeader></tressoHeader>
       <!-- Content 内容 -->
-      <div style="flex:1;height:100%;width:100%;flex-basis:auto;">
+      <div class="router-view">
          <router-view></router-view>
       </div>
       <Footer></Footer>
@@ -70,6 +70,19 @@
    }
 </style>
 <style lang="less" scoped>
+   #layout{
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+      height: 100%;
+   }
+   .router-view{
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
+      width: 100%;
+   }
    .footerTips {
       bottom: 0;
       position: fixed;
