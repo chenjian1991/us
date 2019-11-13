@@ -680,6 +680,10 @@
          :myOpenList="myOpenList" 
          :myCompletedList="myCompletedList" 
          @cancelMyOrder="cancelMyOrder"></GBBOMainOrder>
+      <GBBOCreateOrder 
+         @buyBtn='buyBtn'
+      ></GBBOCreateOrder>
+
       
       
    </div>
@@ -688,6 +692,7 @@
 <script>
 import GBBOMainOrder from '../gbbo/component/GBBOMainOrder'
 import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
+import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
 
   import {
     getSymbolList,
@@ -741,11 +746,6 @@ import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
                content: this.pageDescription
             }],
          }
-      },
-      components: {
-         PasswordInput: PasswordInput,
-         TVChartContainer: TVChartContainer,
-         Ticket,
       },
       data() {
          return {
@@ -867,7 +867,9 @@ import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
          PasswordInput: PasswordInput,
          TVChartContainer: TVChartContainer,
          GBBOMainOrder,
-         GBBOMainRealtimeBox
+         GBBOMainRealtimeBox,
+         GBBOCreateOrder,
+         Ticket,
          // CHAT,
       },
       methods: {
@@ -1850,7 +1852,9 @@ import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
             }
 
          },
-         buyBtn() {
+         buyBtn(callbackData) {
+            debugger
+            let aa = callbackData;
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易

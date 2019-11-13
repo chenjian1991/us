@@ -476,123 +476,23 @@ export default {
           }
       },
        buyBtn() {
-            if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
-               //暂停交易
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyStop'),
-               });
-               return
-            }
-               console.log('symbolList',this.symbolList[this.currentSymbol])
-            this.orderType = 'BUY'
-            this.buyDisabled = true
-            let minPrice = this.symbolList[this.currentSymbol].minPrice
-            let maxPrice = this.symbolList[this.currentSymbol].maxPrice
-            let minQuantity = this.symbolList[this.currentSymbol].minQuantity
-            let maxQuantity = this.symbolList[this.currentSymbol].maxQuantity
-            let status = this.symbolList[this.currentSymbol].status
-            let priceTickSize = this.symbolList[this.currentSymbol].priceTickSize
-            let quantityStepSize = this.symbolList[this.currentSymbol].quantityStepSize
-            let isPriceSize = isDivideAll(this.buyPriceInput, priceTickSize)
-            let isQuantitySize = isDivideAll(this.buyCountInput, quantityStepSize)
-            if (!this.buyPriceInput) {
-               this.buyPriceEmpty = true
-               //买入价格
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyEnterBuyPrice'),
-               });
-               this.buyDisabled = false
-            } else if (!this.buyCountInput) {
-               this.buyCountEmpty = true
-               //数量
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyEnterBuyVolume'),
-               });
-               this.buyDisabled = false
-            } else if (Number(this.buyPriceInput) > Number(maxPrice)) {
-               //买入价格不能超过
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyBuyPriceNotMore') + maxPrice,
-               });
-               this.buyDisabled = false
-            } else if (Number(this.buyPriceInput) < Number(minPrice)) {
-               // this.$Message.warning('买入价格不能少于'+minPrice);
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyBuyPriceNotLess') + minPrice,
-               });
-               this.buyDisabled = false
-            } else if (Number(this.buyCountInput) > Number(maxQuantity)) {
-               // this.$Message.warning('买入数量不能超过'+maxQuantity);
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyBuyVolumeNotMore') + maxQuantity,
-               });
-               this.buyDisabled = false
-            } else if (Number(this.buyCountInput) < Number(minQuantity)) {
-               // this.$Message.warning('买入数量不能少于'+minPrice);
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyBuyVolumeNotLess') + minQuantity,
-               });
-               this.buyDisabled = false
-            } else if (!isPriceSize) {
-               // 价格整数倍于
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyBuyPriceMultiple') + priceTickSize,
-               });
-               this.buyDisabled = false
-            } else if (!isQuantitySize) {
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyBuyVolumeMultiple') + quantityStepSize,
-               });
-               this.buyDisabled = false
-            } else if (status == "HALT") {
-               //账户停止
-               this.$Notice.warning({
-                  title: this.$t('tsTips'),
-                  desc: this.$t('bbjyAccountError'),
-               });
-               this.buyDisabled = false
-            }
-            else if (!this.isSetTradePasswrod) { //没有设置交易密码时要去设置交易密码
-               this.$Notice.warning({
-                  title: this.$t('bbjyNoPasswordError'),
-               });
-               this.buyDisabled = false
-               setTimeout(function () {
-                  this.$router.push('/originTradePassword')
-               }.bind(this), 1000);
-            } else if (!this.openTradePassword) {// 关闭了交易密码，，直接下单
-                  this.exchange.createGBBOOrder({
-                        "symbol": this.currentSymbol,
-                        "orderType": "LIMIT",
-                        "orderSide": this.orderType,
-                        "quantity": this.buyCountInput,
-                        "limitPrice": this.buyPriceInput
-                     }, null, (data) => {
-                        this.buyDisabled = false
-                        this.$Notice.success({
-                           title: this.$t('tsTips'),
-                           desc: this.$t('bbjyOrderSuccess'),
-                        });
-                     },
-                     (data) => {
-                        this.buyDisabled = false;
-                     }
-                  );
-                 return;
-            } else {//开启了交易密码，需要弹窗
-                this.openPassWordPage();
-               //交易密码的弹窗
-               this.submitPassWord()
-            }
+           debugger
+           let aa = this.symbolList[this.currentSymbol]
+           let params = {
+                orderType : 'BUY',
+                buyDisabled : true,
+                minPrice : this.symbolList[this.currentSymbol].minPrice,
+                maxPrice : this.symbolList[this.currentSymbol].maxPrice,
+                minQuantity : this.symbolList[this.currentSymbol].minQuantity,
+                maxQuantity : this.symbolList[this.currentSymbol].maxQuantity,
+                status : this.symbolList[this.currentSymbol].status,
+                priceTickSize : this.symbolList[this.currentSymbol].priceTickSize,
+                quantityStepSize : this.symbolList[this.currentSymbol].quantityStepSize,
+                isPriceSize : isDivideAll(this.buyPriceInput, priceTickSize),
+                isQuantitySize : isDivideAll(this.buyCountInput, quantityStepSize),
+           }
+           this.$emit('buyBtn',params)
+            
          },
          sellBtn() {
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
