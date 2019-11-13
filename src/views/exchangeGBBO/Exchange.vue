@@ -748,6 +748,10 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
       },
       data() {
          return {
+            briefInputData:{
+               quoteCoinAvailable:'',
+               baseAssetAvailable:'',
+            },
             openTradePassword: false, // 是否打开交易密码
             // 是否设置交易密码
             isSetTradePasswrod: false,
@@ -1679,6 +1683,11 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                // this.quoteCoinAvailable = '--'
                this.baseAssetAvailable = subNumberPoint(0, baseAssetQuantityLong)
                this.quoteCoinAvailable = subNumberPoint(0, quoteAssetQuantityLong)
+               this.briefInputData = {
+                  quoteCoinAvailable:this.quoteCoinAvailable,
+                  baseAssetAvailable:this.baseAssetAvailable,
+               }
+               console.log('cccc',this.briefInputData)
                data.map((v, i) => {
                   if (v.currency === 'FF' && v.available == 0 && this.commissionTemplateId) {
                      //FF为0 折扣开关一打开
