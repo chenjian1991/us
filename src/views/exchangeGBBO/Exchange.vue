@@ -687,6 +687,8 @@
          @cancelMyOrder="cancelMyOrder"></GBBOMainOrder>
       <GBBOCreateOrder 
          @buyBtn='buyBtn'
+         :briefInputData='briefInputData'
+         :buyInputPrice='buyInputPrice'
       ></GBBOCreateOrder>
 
       
@@ -755,9 +757,10 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
       data() {
          return {
             briefInputData:{
-               quoteCoinAvailable:'',
-               baseAssetAvailable:'',
+               quoteCoinAvailable:'1000',
+               baseAssetAvailable:'2000',
             },
+            buyInputPrice:0,
             openTradePassword: false, // 是否打开交易密码
             // 是否设置交易密码
             isSetTradePasswrod: false,
@@ -1350,7 +1353,9 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
                this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
                this.buyPriceInput = this.bestSellPrice
-               this.$refs.buyInput.value = this.bestSellPrice
+               this.$refs.buyInput.value = this.bestSellPrice;
+               this.buyInputPrice = this.bestSellPrice;
+
             }
             if (this.isInitOrderBook) {
                var div = this.$refs.buyOrderContainer;
@@ -1689,10 +1694,7 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                // this.quoteCoinAvailable = '--'
                this.baseAssetAvailable = subNumberPoint(0, baseAssetQuantityLong)
                this.quoteCoinAvailable = subNumberPoint(0, quoteAssetQuantityLong)
-               this.briefInputData = {
-                  quoteCoinAvailable:this.quoteCoinAvailable,
-                  baseAssetAvailable:this.baseAssetAvailable,
-               }
+              
                console.log('cccc',this.briefInputData)
                data.map((v, i) => {
                   if (v.currency === 'FF' && v.available == 0 && this.commissionTemplateId) {
@@ -1703,6 +1705,10 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                      this.baseAssetAvailable = subNumberPoint(v.available, baseAssetQuantityLong)
                   } else if (v.currency === this.currentSymbolObj.quoteAsset) {
                      this.quoteCoinAvailable = subNumberPoint(v.available, quoteAssetQuantityLong)
+                  }
+                   this.briefInputData = {// 给子组件传餐
+                     quoteCoinAvailable:this.quoteCoinAvailable,
+                     baseAssetAvailable:this.baseAssetAvailable,
                   }
                })
                this.myBanalceTimer = setTimeout(() => {

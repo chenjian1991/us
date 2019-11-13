@@ -10,7 +10,7 @@
           </div>
           <div>
             <img src="../images/Wallet.svg" alt="">
-            <span v-if="isLogin">{{quoteCoinAvailable | scientificToNumber}}</span>
+            <span v-if="isLogin">{{briefInputData.quoteCoinAvailable | scientificToNumber}}</span>
             <span v-else>--</span>&nbsp;
             <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
           </div>
@@ -100,7 +100,7 @@
           </div>
           <div> 
                 <img src="../images/Wallet.svg" alt="">
-                <span v-if="isLogin">{{quoteCoinAvailable | scientificToNumber}}</span>
+                <span v-if="isLogin">{{briefInputData.quoteCoinAvailable | scientificToNumber}}</span>
                 <em v-else>--</em>&nbsp;
                 <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
           </div>
@@ -116,6 +116,7 @@
               <div class="inputbox">
                 <input
                   @input="handleBuyPriceInput"
+                  :value="buyInputPrice"
                   type="text"
                   ref="buyInput"
                   maxlength="14"
@@ -191,7 +192,7 @@
           </div>
           <div>
             <img src="../images/Wallet.svg" alt="">
-            <span v-if="isLogin">{{baseAssetAvailable | scientificToNumber}}</span>
+            <span v-if="isLogin">{{briefInputData.baseAssetAvailable | scientificToNumber}}</span>
             <em v-else>--</em>&nbsp;
             <span class="baseAsset">{{currentInfo.baseAsset}}</span>
          </div>
@@ -230,6 +231,7 @@
                   @input="handleSellCountInput"
                   type="text"
                   ref="sellCountInputRef"
+                  
                   maxlength="14"
                   :class="{'input-empty-color':sellCountEmpty}"
                   class="input-price"
@@ -411,7 +413,8 @@ export default {
     //        type:String,
     //        default:'BTCUSD'
     //    },
-       briefInputData:Object
+       briefInputData:Object,
+       buyInputPrice:Number
   },
   created() {
         var ssoProvider = {};
@@ -430,7 +433,7 @@ export default {
         //  this.getSymbolListData();
   },
   mounted() {
-      console.log('briefInputData',this.briefInputData)
+      console.log('briefInputData',this.buyInputPrice)
   },
  
   computed: {
