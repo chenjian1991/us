@@ -393,12 +393,14 @@ Exchange.prototype.createNewOrder = function (orderInfo, userpassword, fn, error
    })
 };
 Exchange.prototype.createGBBOOrder = function (orderInfo, userpassword, fn, errorFn) {
+   debugger
    var _this = this;
    if (userpassword) {
       _this.userPassWord = userpassword
    }
    _this.getAccountId(function (_accountId) {
       _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
+         debugger
          // _this.getOrderTicket(function (_orderId) {
          const userId = localStorage.getItem('ex55Pin')
          const fourRandDigit = Math.floor(Math.random() * (999 - 100)) + 100

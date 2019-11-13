@@ -322,6 +322,30 @@
 import moment, {isMoment} from 'moment'
 import bigDecimal from 'js-big-decimal' //除法失效
 import {BigNumber} from 'bignumber.js';
+import {Exchange} from '@/interface/exchange.js'
+import {
+    getSymbolList,
+    // getSymbolList_realtime,
+    // getdepthList,
+    // getDeleteFavoritesPair,
+    getUserInfo
+  } from '_api/exchange.js'
+ import {
+    //   getObjFirstKey,
+      getDecimalsNum,
+      onlyInputNumAndPoint,
+      getTokenByKey as getValue,
+    //   addSymbolSplitLine,
+    //   storage,
+      isDivideAll,
+    //   getLastUTCMinutes,
+    //   getIndexInObject,
+      scientificToNumber,
+    //   isSameUTCDay,
+      subNumberPoint,
+    //   getObjFirstValue,
+    //   dealNumber
+   } from '@/lib/utils.js'
 export default {
   name: "gbbo",
   data() {
@@ -357,17 +381,65 @@ export default {
         itemIndex:0,
         itemIndexBuy:0,
         itemIndexSell:0,
-
-
+        orderType: null,//撤单 cancle  下单  输入密码用
+        orderID: null,
+        showPassWordPage: false,
+        exchangePassWord: null,//交易密码
+        setTradePassword: false,//localstorage 是否
+        symbolList: {},//交易接口的symbolList 接口
+        loginToken: $cookies.get('loginToken'),//登陆token
     };
   },
-  created() {},
-  mounted() {},
-  props: {
-    //   currentInfo:{
-    //       quoteAsset:'USDT'
-    //   }
+   props: {
+       isSetTradePasswrod:{
+           type:Boolean,
+           default:true
+       },
+       openTradePassword:{
+           type:Boolean,
+           default:false
+       },
+       currentSymbol:{// 当前交易对
+           type:String,
+           default:'BTCUSD'
+       },
+    //    currentInfo: {
+    //         type:Object,
+    //         quoteAsset:'USD',
+    //         baseAsset:'BTC'
+    //     },
   },
+  created() {
+        var ssoProvider = {};
+         //创建实例
+         this.exchange = new Exchange(ssoProvider);
+         if (this.isLogin) {
+            this.exchange.ssoProvider.getSsoToken = function (fn) {
+               if (this.loginToken) {
+                  fn(this.loginToken);
+               }
+            }.bind(this)
+         }
+        // if($cookies.get('loginToken')){
+        //   getUserInfo({userId: localStorage.getItem('loginUserId')},$cookies.get('loginToken'))
+        //       .then((res) => {                
+        //         const { data: { setTradePassword, openTradePassword } } = res
+        //         // 是否设置交易密码
+        //         this.isSetTradePasswrod = setTradePassword
+        //         // 是否打开交易密码
+        //         this.openTradePassword = openTradePassword
+        //         console.log(setTradePassword)
+                
+        //       })
+        // }
+  },
+  beforeMount(){
+         this.getSymbolListData();
+  },
+  mounted() {
+
+  },
+ 
   computed: {
        buyInTotal: function () { //买入总价
             return bigDecimal.multiply(this.buyPriceInput, this.buyCountInput);
@@ -384,7 +456,7 @@ export default {
   },
   methods: {
        buyBtn() {
-            window._czc.push(["_trackEvent", '买入按钮', '点击', '币币交易页面', 0, 'buyBtn']);
+           debugger
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易
                this.$Notice.warning({
@@ -393,6 +465,7 @@ export default {
                });
                return
             }
+               console.log('symbolList',this.symbolList[this.currentSymbol])
             this.orderType = 'BUY'
             this.buyDisabled = true
             let minPrice = this.symbolList[this.currentSymbol].minPrice
@@ -469,8 +542,7 @@ export default {
                });
                this.buyDisabled = false
             }
-            //没有设置交易密码直接下单 增加逻辑
-            else if (this.setTradePassword == false) {
+            else if (!this.isSetTradePasswrod) { //没有设置交易密码时要去设置交易密码
                this.$Notice.warning({
                   title: this.$t('bbjyNoPasswordError'),
                });
@@ -478,16 +550,16 @@ export default {
                setTimeout(function () {
                   this.$router.push('/originTradePassword')
                }.bind(this), 1000);
-            } else if (this.$store.state.exchange.inputTradePassWordStatus) {
-               //需要输入密码
-               if (getValue("ORDER_SESSION")) {
-                  this.exchange.createNewOrder({
+            } else if (!this.openTradePassword) {// 关闭了交易密码，，直接下单
+            debugger
+                  this.exchange.createGBBOOrder({
                         "symbol": this.currentSymbol,
                         "orderType": "LIMIT",
                         "orderSide": this.orderType,
                         "quantity": this.buyCountInput,
                         "limitPrice": this.buyPriceInput
                      }, null, (data) => {
+                         debugger
                         this.buyDisabled = false
                         this.$Notice.success({
                            title: this.$t('tsTips'),
@@ -498,24 +570,22 @@ export default {
                         this.buyDisabled = false;
                      }
                   );
-               } else {
-                  this.openPassWordPage();
-               }
-               return
-            } else {
-               //直接下单
-               this.submitPassWord()
+                 return;
+            } else {//开启了交易密码，需要弹窗
+
+                // this.openPassWordPage();
+               //交易密码的弹窗
+            //    this.submitPassWord()
             }
          },
          sellBtn() {
-            // window._czc.push(["_trackEvent", '卖出按钮', '点击', '币币交易页面', 0, 'sellBtn']);
-            if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
-               //暂停交易
-               this.$Notice.warning({
-                  title: this.$t('bbjyStop'),
-               })
-               return
-            }
+            // if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
+            //    //暂停交易
+            //    this.$Notice.warning({
+            //       title: this.$t('bbjyStop'),
+            //    })
+            //    return
+            // }
             this.orderType = 'SELL'
             let minPrice = this.symbolList[this.currentSymbol].minPrice
             let maxPrice = this.symbolList[this.currentSymbol].maxPrice
@@ -583,7 +653,7 @@ export default {
                this.sellDisabled = false;
             }
             //未设置交易密码直接下单
-            else if (this.setTradePassword == false) {
+            else if (!this.setTradePassword) {
                this.$Notice.warning({
                   title: this.$t('bbjyNoPasswordError'),
                });
@@ -622,6 +692,24 @@ export default {
                //下单
                this.submitPassWord()
             }
+         },
+         getSymbolListData() {
+            getSymbolList().then(res => {
+               if (this.loginToken) {
+                  this.isLogin = true
+               }
+               this.symbolList = {};
+               res.map((v, i) => {
+                  this.symbolList[v.symbol] = v;
+               })
+               console.log('symbolList',this.symbolList)
+               //增加蒙层逻辑
+            //    this.isShowTradeMask();
+               //查询委托订单
+            //    this.getSSEOrderList()
+            }).catch(error => {
+
+            })
          },
          choosePercent(index,direction){
             switch(direction){
