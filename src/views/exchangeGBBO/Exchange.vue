@@ -1696,7 +1696,6 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                }, 60000)
             })
          },
-         
          /****
           * 委托单 我的成交记录
           *
@@ -1855,7 +1854,8 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
          },
          buyBtn(callbackData) {
             debugger
-            let aa = callbackData;
+            this.buyPriceInput = callbackData.buyPriceInput;
+            this.buyCountInput = callbackData.buyCountInput;
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易

@@ -125,7 +125,7 @@ export default {
   },
   computed: {
     myCompletedList_sort: function() {
-      return myCompletedList.filter(item => {
+      return this.myCompletedList.filter(item => {
         if (this.hideCancleOrder) {
           return item.orderStatus !== "CANCELLED";
         } else {

@@ -393,9 +393,9 @@ export default {
         setTradePassword: false,//localstorage 是否
         symbolList: {},//交易接口的symbolList 接口
         loginToken: $cookies.get('loginToken'),//登陆token
-        arbFlag:true,
-        changeFlag:true,
-        sellFlag:true,
+        arbFlag:false,
+        changeFlag:false,
+        sellFlag:false,
     };
   },
    props: {
@@ -476,21 +476,24 @@ export default {
           }
       },
        buyBtn() {
-           debugger
-           let aa = this.symbolList[this.currentSymbol]
-           let params = {
-                orderType : 'BUY',
-                buyDisabled : true,
-                minPrice : this.symbolList[this.currentSymbol].minPrice,
-                maxPrice : this.symbolList[this.currentSymbol].maxPrice,
-                minQuantity : this.symbolList[this.currentSymbol].minQuantity,
-                maxQuantity : this.symbolList[this.currentSymbol].maxQuantity,
-                status : this.symbolList[this.currentSymbol].status,
-                priceTickSize : this.symbolList[this.currentSymbol].priceTickSize,
-                quantityStepSize : this.symbolList[this.currentSymbol].quantityStepSize,
-                isPriceSize : isDivideAll(this.buyPriceInput, priceTickSize),
-                isQuantitySize : isDivideAll(this.buyCountInput, quantityStepSize),
-           }
+        //    console.log(this.symbolList[this.currentSymbol].priceTickSize)
+        //    let params = {
+        //         orderType : 'BUY',
+        //         buyDisabled : true,
+        //         minPrice : this.symbolList[this.currentSymbol].minPrice,
+        //         maxPrice : this.symbolList[this.currentSymbol].maxPrice,
+        //         minQuantity : this.symbolList[this.currentSymbol].minQuantity,
+        //         maxQuantity : this.symbolList[this.currentSymbol].maxQuantity,
+        //         status : this.symbolList[this.currentSymbol].status,
+        //         priceTickSize : this.symbolList[this.currentSymbol].priceTickSize,
+        //         quantityStepSize : this.symbolList[this.currentSymbol].quantityStepSize,
+        //         isPriceSize : isDivideAll(this.buyPriceInput, priceTickSize),
+        //         isQuantitySize : isDivideAll(this.buyCountInput, quantityStepSize),
+        //    }
+            let params = {
+                buyPriceInput:this.buyPriceInput,
+                buyCountInput:this.buyCountInput,
+            }
            this.$emit('buyBtn',params)
             
          },
@@ -609,24 +612,23 @@ export default {
                this.submitPassWord()
             }
          },
-         getSymbolListData() {
-            getSymbolList().then(res => {
-               if (this.loginToken) {
-                  this.isLogin = true
-               }
-               this.symbolList = {};
-               res.map((v, i) => {
-                  this.symbolList[v.symbol] = v;
-               })
-               console.log('symbolList',this.symbolList)
-               //增加蒙层逻辑
-            //    this.isShowTradeMask();
-               //查询委托订单
-            //    this.getSSEOrderList()
-            }).catch(error => {
+        //  getSymbolListData() {
+        //     getSymbolList().then(res => {
+        //        if (this.loginToken) {
+        //           this.isLogin = true
+        //        }
+        //        this.symbolList = {};
+        //        res.map((v, i) => {
+        //           this.symbolList[v.symbol] = v;
+        //        })
+        //        //增加蒙层逻辑
+        //     //    this.isShowTradeMask();
+        //        //查询委托订单
+        //     //    this.getSSEOrderList()
+        //     }).catch(error => {
 
-            })
-         },
+        //     })
+        //  },
          choosePercent(index,direction){
             switch(direction){
                 case 'Arbitrage':
