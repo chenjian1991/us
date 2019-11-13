@@ -532,7 +532,6 @@
                </div>
 
             </div>
-
             <!-- 下部 委托单 成交记录 交易历史 -->
             <div class="below clearfix">
                <!--当前委托单-->
@@ -606,7 +605,7 @@
                               <div>{{$t("bbjyHistoryTotal")}}</div>
                               <div>{{$t("bbjyHistoryStatus")}}</div>
                            </li>
-                           <!--无历史-->
+                           <!-- 无历史 -->
                            <li class="no-order" v-if="myCompletedList.length === 0">
                               <img src="../../assets/images/exchange/no_order.png" width="50px" height="42px" alt="">
                               {{$t("bbjyHistoryTIP")}}
@@ -668,10 +667,26 @@
       <!-- 聊天 -->
       <!-- <div class="chat_container"></div> -->
       <!-- <CHAT/> -->
+      <GBBOMainRealtimeBox
+         :gbbo_asksArr="gbbo_asksArr"
+         :gbbo_bidsArr="gbbo_bidsArr"
+         :bestSellPrice="bestSellPrice"
+         :bestBuyPrice="bestBuyPrice"
+         @getClickSellPrice="getClickSellPrice"
+         @getClickBuyPrice="getClickBuyPrice"></GBBOMainRealtimeBox>
+      <GBBOMainOrder
+         :myOpenList="myOpenList" 
+         :myCompletedList="myCompletedList" 
+         @cancelMyOrder="cancelMyOrder"></GBBOMainOrder>
+      
+      
    </div>
 </template>
 
 <script>
+import GBBOMainOrder from '../gbbo/component/GBBOMainOrder'
+import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
+
   import {
     getSymbolList,
     getSymbolList_realtime,
@@ -841,6 +856,8 @@
       components: {
          PasswordInput: PasswordInput,
          TVChartContainer: TVChartContainer,
+         GBBOMainOrder,
+         GBBOMainRealtimeBox
          // CHAT,
       },
       methods: {
@@ -1298,6 +1315,7 @@
             // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
             this.gbbo_asksArr = result.asks.map((val) => {
+               val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
                if(val.provider && orderBookName.includes(val.provider)) {
                   return val
                }else if(val.provider && val.provider === 'E55') {
@@ -1323,6 +1341,7 @@
             }
 
             this.gbbo_bidsArr = result.bids.map((val) => {
+               val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
                if(val.provider && orderBookName.includes(val.provider)) {
                   return val
                }else if(val.provider && val.provider === 'E55') {

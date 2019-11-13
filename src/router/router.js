@@ -28,6 +28,8 @@ const kyc = () => import('../views/kyc/kyc.vue')
 
 // const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import('../views/exchangeGBBO/Exchange.vue')
+// const ExchangeMain = () => import('../views/gbbo/GBBOMain.vue')
+
 
 const Login = () => import('../views/login/Login.vue')
 const Register = () => import('../views/login/register.vue')
