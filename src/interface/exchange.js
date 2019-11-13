@@ -149,7 +149,7 @@ Exchange.prototype.getAccountToken = function (fn) {
       // })
    });
 };
-Exchange.prototype.getAccountId = function (fn) {
+Exchange.prototype.getAccountId = function (fn) {//获取用户账户id
    var _this = this;
    if (_this.accountId) {
       fn(_this.accountId);
@@ -250,6 +250,7 @@ Exchange.prototype.getOrderTicket = function (fn) {
 };
 
 Exchange.prototype.getSession = function (tokenType, fn) {
+   debugger
    //查本地缓存
    var _this = this;
    var cacheSession = this.sessionCache[tokenType];
@@ -281,6 +282,7 @@ Exchange.prototype.getSession = function (tokenType, fn) {
    })
 };
 Exchange.prototype.issuedTradePassword = function (token, password, fn) {
+   debugger
    var _this = this;
    var tradePasswordCache = _this.tradePassword;
    var expiredAblepassword = Exchange.checkExpiredAblePassWord(tradePasswordCache);
@@ -393,6 +395,7 @@ Exchange.prototype.createNewOrder = function (orderInfo, userpassword, fn, error
    })
 };
 Exchange.prototype.createGBBOOrder = function (orderInfo, userpassword, fn, errorFn) {
+   debugger
    var _this = this;
    if (userpassword) {
       _this.userPassWord = userpassword
@@ -400,7 +403,7 @@ Exchange.prototype.createGBBOOrder = function (orderInfo, userpassword, fn, erro
    _this.getAccountId(function (_accountId) {
       _this.getSession(Exchange.TokenType.ORDER, function (_orderSession) {
          // _this.getOrderTicket(function (_orderId) {
-         const userId = localStorage.getItem('ex55Pin')
+         const userId = localStorage.getItem('loginUserId')
          const fourRandDigit = Math.floor(Math.random() * (999 - 100)) + 100
          const orderId = `${userId}${new Date().getTime()}${fourRandDigit}`
          getCreateGBBOOrder({"session": _orderSession}, {

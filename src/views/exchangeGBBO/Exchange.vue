@@ -440,7 +440,7 @@
                         </li>
                      </ul>
                      <!-- 右侧盘口信息 -->
-                     <div class="order-book" v-show="isShowDepth === 1">
+                     <!-- <div class="order-book" v-show="isShowDepth === 1">
                         <ul class="item-title-list list-title">
                            <li class="text-title price">
                               {{$t('bbjyNowPrice')}} ({{currentInfo.quoteAsset }})
@@ -470,7 +470,7 @@
                                     <span class="price redText pointer">{{v.priceWithFee}}</span>
                                     <span class="amount">{{v.qty | formatNumberLength}}</span>
                                     <span class="time">{{v.provider}}</span>
-                                    <!-- <b class="sell-order-color" :style="{width:v.width+'px'}"></b> -->
+                                    <b class="sell-order-color" :style="{width:v.width+'px'}"></b>
                                  </li>
                               </ul>
                            </div>
@@ -503,12 +503,12 @@
                                     <span class="price greenText">{{v.priceWithFee}}</span>
                                     <span class="amount">{{v.qty | formatNumberLength}}</span>
                                     <span class="time">{{v.provider}}</span>
-                                    <!-- <b class="buy-order-color" :style="{width:v.width+'px'}"></b> -->
+                                    <b class="buy-order-color" :style="{width:v.width+'px'}"></b>
                                  </li>
                               </ul>
                            </div>
                         </div>
-                     </div>
+                     </div> -->
                      <!--21条成交历史-->
                      <div class="below-right" v-show="isShowDepth === 2">
                         <ul class="item-title-list list-title">
@@ -540,11 +540,10 @@
                </div>
 
             </div>
-
             <!-- 下部 委托单 成交记录 交易历史 -->
-            <div class="below clearfix">
+            <!-- <div class="below clearfix"> -->
                <!--当前委托单-->
-               <div class="below-left">
+               <!-- <div class="below-left">
                   <div class="open-order">
                      <ul class="space-between item-title">
                         <li>{{$t("bbjyOpenOrders")}}</li>
@@ -578,7 +577,7 @@
                               <div>{{v.filledCumulativeQuantity +'/'+ v.quantity}}</div>
                               <div>{{v.percent}}%</div>
                               <div>{{v.total}}</div>
-                              <!-- 撤单 -->
+                              撤单
                               <div class="cancleBtn">
                                  <a
                                     class="cancel"
@@ -591,7 +590,7 @@
                         </ul>
                      </div>
                   </div>
-                  <!-- 历史委托单 -->
+                  历史委托单
                   <div class="history">
                      <ul class="space-between item-title">
                         <li>{{$t("bbjyHistory")}}</li>
@@ -614,7 +613,7 @@
                               <div>{{$t("bbjyHistoryTotal")}}</div>
                               <div>{{$t("bbjyHistoryStatus")}}</div>
                            </li>
-                           <!--无历史-->
+                           无历史
                            <li class="no-order" v-if="myCompletedList.length === 0">
                               <img src="../../assets/images/exchange/no_order.png" width="50px" height="42px" alt="">
                               {{$t("bbjyHistoryTIP")}}
@@ -643,9 +642,8 @@
                         </ul>
                      </div>
                   </div>
-               </div>
-
-            </div>
+               </div> -->
+            <!-- </div> -->
          </div>
       </div>
       <!--交易密码6个框-->
@@ -676,17 +674,38 @@
       <!-- 聊天 -->
       <!-- <div class="chat_container"></div> -->
       <!-- <CHAT/> -->
+      <GBBOMainRealtimeBox
+         :gbbo_asksArr="gbbo_asksArr"
+         :gbbo_bidsArr="gbbo_bidsArr"
+         :bestSellPrice="bestSellPrice"
+         :bestBuyPrice="bestBuyPrice"
+         @getClickSellPrice="getClickSellPrice"
+         @getClickBuyPrice="getClickBuyPrice"></GBBOMainRealtimeBox>
+      <GBBOMainOrder
+         :myOpenList="myOpenList" 
+         :myCompletedList="myCompletedList" 
+         @cancelMyOrder="cancelMyOrder"></GBBOMainOrder>
+      <GBBOCreateOrder 
+         @buyBtn='buyBtn'
+      ></GBBOCreateOrder>
+
+      
+      
    </div>
 </template>
 
 <script>
-   import {
-      getSymbolList,
-      getSymbolList_realtime,
-      getdepthList,
-      getDeleteFavoritesPair,
-      getUserInfo
-   } from '_api/exchange.js'
+import GBBOMainOrder from '../gbbo/component/GBBOMainOrder'
+import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
+import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
+
+  import {
+    getSymbolList,
+    getSymbolList_realtime,
+    getdepthList,
+    getDeleteFavoritesPair,
+    getUserInfo
+  } from '_api/exchange.js'
    import {
       getObjFirstKey,
       getDecimalsNum,
@@ -732,11 +751,6 @@
                content: this.pageDescription
             }],
          }
-      },
-      components: {
-         PasswordInput: PasswordInput,
-         TVChartContainer: TVChartContainer,
-         // Ticket,
       },
       data() {
          return {
@@ -853,6 +867,15 @@
             orderTicketTimer: null,//orderTicket定时器
             updateAt: '',//路总需求 要加这个隐藏字段
          }
+      },
+      components: {
+         PasswordInput: PasswordInput,
+         TVChartContainer: TVChartContainer,
+         GBBOMainOrder,
+         GBBOMainRealtimeBox,
+         GBBOCreateOrder,
+         // Ticket,
+         // CHAT,
       },
       methods: {
          //切换版块
@@ -1309,7 +1332,8 @@
             // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
             this.gbbo_asksArr = result.asks.map((val) => {
-               if (val.provider && orderBookName.includes(val.provider)) {
+               val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
+               if(val.provider && orderBookName.includes(val.provider)) {
                   return val
                } else if (val.provider && val.provider === 'E55') {
                   return Object.assign({}, val, {provider: 'TRESSO'})
@@ -1334,7 +1358,8 @@
             }
 
             this.gbbo_bidsArr = result.bids.map((val) => {
-               if (val.provider && orderBookName.includes(val.provider)) {
+               val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
+               if(val.provider && orderBookName.includes(val.provider)) {
                   return val
                } else if (val.provider && val.provider === 'E55') {
                   return Object.assign({}, val, {provider: 'TRESSO'})
@@ -1832,7 +1857,10 @@
             }
 
          },
-         buyBtn() {
+         buyBtn(callbackData) {
+            debugger
+            this.buyPriceInput = callbackData.buyPriceInput;
+            this.buyCountInput = callbackData.buyCountInput;
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="14px" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>Wallet</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="交易页面" transform="translate(-696.000000, -446.000000)">
+            <g id="Wallet" transform="translate(696.000000, 446.000000)">
+                <rect id="矩形" stroke="#788390" x="0.5" y="0.5" width="17" height="13" rx="2"></rect>
+                <path d="M17.5,10.5 L17.5,3.5 L11,3.5 C9.06700338,3.5 7.5,5.06700338 7.5,7 C7.5,8.93299662 9.06700338,10.5 11,10.5 L17.5,10.5 Z" id="矩形" stroke="#788390"></path>
+                <circle id="椭圆形" fill="#788390" cx="11" cy="7" r="1"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

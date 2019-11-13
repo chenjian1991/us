@@ -12,7 +12,9 @@
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->
-          <div class="gbbomain-realtime__box"></div>
+          <div class="gbbomain-realtime__box">
+            <GBBOMain-RealtimeBox></GBBOMain-RealtimeBox>
+          </div>
         </div>
         <!--K线-->
         <div class="gbbomain-realtime__line">
@@ -21,7 +23,7 @@
       </div>
       <!-- two 买入卖出 历史成交 -->
       <div class="gbbomain-transaction">
-
+        <createOrder></createOrder>
       </div>
       <!-- 当前订单，历史订单 -->
       <div class="gbbomain-order">
@@ -127,6 +129,8 @@ import { BigNumber } from 'bignumber.js';
 import { orderBookName } from './config'
 
 let allNowPriceObject = {}//所有币种快照的最新价格的对象
+import createOrder from './component/GBBOCreateOrder.vue'
+import GBBOMainRealtimeBox from './component/GBBOMainRealtimeBox'
 export default {
   name: 'gbbo',
   metaInfo() {
@@ -1557,6 +1561,8 @@ export default {
     GbboKline,
     GbboTicker,
     PasswordInput,
+    createOrder,
+    GBBOMainRealtimeBox
   }
 }
 </script>
@@ -1566,6 +1572,7 @@ export default {
   &-bg{
     filter: blur(10px);
   }
+  background: #000;
   &-realtime{
     display: flex;
   }
