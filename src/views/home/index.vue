@@ -558,6 +558,7 @@
                      }
                   });
                }, () => {
+                  console.log('The websocket connet error')
                   this.stompClient = null
                });
             }
