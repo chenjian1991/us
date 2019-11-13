@@ -7,7 +7,9 @@
         <!-- 切换 header -->
         <div class="gbbomain-realtime__hd"></div>
         <!-- 盘口 -->
-        <div class="gbbomain-realtime__box"></div>
+        <div class="gbbomain-realtime__box">
+          <GBBOMain-RealtimeBox></GBBOMain-RealtimeBox>
+        </div>
       </div>
       <!--K线-->
       <div class="gbbomain-realtime__line">
@@ -26,6 +28,7 @@
 </template>
 <script>
 import createOrder from './component/GBBOCreateOrder.vue'
+import GBBOMainRealtimeBox from './component/GBBOMainRealtimeBox'
 export default {
   name: 'gbbo',
   data(){
@@ -47,13 +50,15 @@ export default {
 
   },
   components:{
-    createOrder
+    createOrder,
+    GBBOMainRealtimeBox
   }
 }
 </script>
 <style lang="less">
 .gbbomain{
   min-width: 1280px;
+  background: #000;
   &-realtime{
     display: flex;
   }
