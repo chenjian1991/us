@@ -125,7 +125,7 @@ export default {
   },
   computed: {
     myCompletedList_sort: function() {
-      return myCompletedList.filter(item => {
+      return this.myCompletedList.filter(item => {
         if (this.hideCancleOrder) {
           return item.orderStatus !== "CANCELLED";
         } else {
@@ -152,7 +152,7 @@ export default {
   .history {
     width: 100%;
     background: #031419;
-    min-height: 286px;
+    min-height: 160px;
 
     .space-between {
       display: flex;

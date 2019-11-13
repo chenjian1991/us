@@ -434,7 +434,7 @@
                         </li>
                      </ul>
                      <!-- 右侧盘口信息 -->
-                     <div class="order-book" v-show="isShowDepth === 1">
+                     <!-- <div class="order-book" v-show="isShowDepth === 1">
                         <ul class="item-title-list list-title">
                            <li class="text-title price">
                               {{$t('bbjyNowPrice')}} ({{currentInfo.quoteAsset }})
@@ -464,7 +464,7 @@
                                     <span class="price redText pointer">{{v.priceWithFee}}</span>
                                     <span class="amount">{{v.qty | formatNumberLength}}</span>
                                     <span class="time">{{v.provider}}</span>
-                                    <!-- <b class="sell-order-color" :style="{width:v.width+'px'}"></b> -->
+                                    <b class="sell-order-color" :style="{width:v.width+'px'}"></b>
                                  </li>
                               </ul>
                            </div>
@@ -497,12 +497,12 @@
                                     <span class="price greenText">{{v.priceWithFee}}</span>
                                     <span class="amount">{{v.qty | formatNumberLength}}</span>
                                     <span class="time">{{v.provider}}</span>
-                                    <!-- <b class="buy-order-color" :style="{width:v.width+'px'}"></b> -->
+                                    <b class="buy-order-color" :style="{width:v.width+'px'}"></b>
                                  </li>
                               </ul>
                            </div>
                         </div>
-                     </div>
+                     </div> -->
                      <!--21条成交历史-->
                      <div class="below-right" v-show="isShowDepth === 2">
                         <ul class="item-title-list list-title">
@@ -535,9 +535,9 @@
 
             </div>
             <!-- 下部 委托单 成交记录 交易历史 -->
-            <div class="below clearfix">
+            <!-- <div class="below clearfix"> -->
                <!--当前委托单-->
-               <div class="below-left">
+               <!-- <div class="below-left">
                   <div class="open-order">
                      <ul class="space-between item-title">
                         <li>{{$t("bbjyOpenOrders")}}</li>
@@ -571,7 +571,7 @@
                               <div>{{v.filledCumulativeQuantity +'/'+ v.quantity}}</div>
                               <div>{{v.percent}}%</div>
                               <div>{{v.total}}</div>
-                              <!-- 撤单 -->
+                              撤单
                               <div class="cancleBtn">
                                  <a
                                     class="cancel"
@@ -584,7 +584,7 @@
                         </ul>
                      </div>
                   </div>
-                  <!-- 历史委托单 -->
+                  历史委托单
                   <div class="history">
                      <ul class="space-between item-title">
                         <li>{{$t("bbjyHistory")}}</li>
@@ -607,7 +607,7 @@
                               <div>{{$t("bbjyHistoryTotal")}}</div>
                               <div>{{$t("bbjyHistoryStatus")}}</div>
                            </li>
-                           <!-- 无历史 -->
+                           无历史
                            <li class="no-order" v-if="myCompletedList.length === 0">
                               <img src="../../assets/images/exchange/no_order.png" width="50px" height="42px" alt="">
                               {{$t("bbjyHistoryTIP")}}
@@ -636,9 +636,8 @@
                         </ul>
                      </div>
                   </div>
-               </div>
-
-            </div>
+               </div> -->
+            <!-- </div> -->
          </div>
       </div>
       <!--交易密码6个框-->
