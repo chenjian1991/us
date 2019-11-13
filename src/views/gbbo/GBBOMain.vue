@@ -11,7 +11,7 @@
       </div>
       <!--K线-->
       <div class="gbbomain-realtime__line">
-
+        <gbbo-kline></gbbo-kline>
       </div>
     </div>
     <!-- two 买入卖出 历史成交 -->
@@ -25,10 +25,16 @@
   </div>
 </template>
 <script>
+import GbboKline from './component/GBBOKLine'
+
+
+
 export default {
   name: 'gbbo',
   data(){
-    return{}
+    return{
+      
+    }
   },
   created() {
     
@@ -46,7 +52,7 @@ export default {
 
   },
   components:{
-
+    GbboKline
   }
 }
 </script>
