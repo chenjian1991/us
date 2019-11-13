@@ -1,5 +1,6 @@
 <template>
    <div class="wrapper" id="exchange">
+      <!-- <Ticket :currentInfo="currentInfo"></Ticket> -->
       <div class="exchange-container">
          <div class="content">
             <!-- 上部  左侧列表 K线 下单-->
@@ -16,14 +17,15 @@
                            <span v-if="siteName == 'C'">{{$t('headercustomerexchange')}}</span>
                            <Icon type="md-arrow-dropdown" size="16" class="triangle"/>
                            <ul>
-                           <!-- <ul @click="changeBoard"> -->
+                              <!-- <ul @click="changeBoard"> -->
                               <li data-site="BTC" siteName="B">{{$t('headerblockexchange')}}</li>
                               <!-- <li  data-site="USDT" siteName="S">{{$t('headerstockexchange')}}</li> -->
                               <!--<li data-site="USDD" siteName="F">{{$t('headerfranceexchange')}}</li>-->
                               <!-- <li data-site="USDT" siteName="C">{{$t('headercustomerexchange')}}</li> -->
                            </ul>
                         </div>
-                        <div class="myCoin" @click="openMyCoin" :class="[isShowMainBoard? '' : 'markActive']">
+                        <div class="myCoin" :class="[isShowMainBoard? '' : 'markActive']">
+                        <!-- <div class="myCoin" @click="openMyCoin" :class="[isShowMainBoard? '' : 'markActive']"> -->
                            <Icon type="md-star" size="16" style="margin-top:-4px"/>
                            {{$t('自选')}}
                         </div>
@@ -34,7 +36,8 @@
                         </Input>
                      </div>
                      <!-- 板块滑动选择 -->
-                     <Carousel v-model="siteIndexNumber" :dots="'none'" :arrow="'never'" v-if="isShowMainBoard" id="ex-carousel">
+                     <Carousel v-model="siteIndexNumber" :dots="'none'" :arrow="'never'" v-if="isShowMainBoard"
+                               id="ex-carousel">
                         <CarouselItem v-for="(siteItem, siteKey,siteIndex) in symbolListSelf" :key="siteIndex">
                            <Tabs :value="currentQuoteCoinName" size="small" :animated="false">
                               <TabPane v-for="(item, key,index) in siteItem" :key="index" :label="key" :name="key">
@@ -47,13 +50,17 @@
                                     <li class="priceList" v-for="(v, key,index) in getFilterList(item)"
                                         @click="changeBaseAssetList(v)" :key="key">
                                        <div class="priceItme">
-                                          <Icon type="md-star" color="#12869A" size="14" v-if="v.marked"
+                                          <!-- <Icon type="md-star" color="#12869A" size="14" v-if="v.marked"
                                                 @click.stop="addMarkCoin(v,key,false)"/>
                                           <Icon type="md-star" color="#374853" size="14" v-else
-                                                @click.stop="addMarkCoin(v,key,true)"/>
+                                                @click.stop="addMarkCoin(v,key,true)"/> -->
+                                          <Icon type="md-star" color="#12869A" size="14" v-if="v.marked" />
+                                                <!-- @click.stop="addMarkCoin(v,key,false)" -->
+                                          <Icon type="md-star" color="#374853" size="14" v-else />
+                                                <!-- @click.stop="addMarkCoin(v,key,true)" -->
                                           {{v.baseAsset}}
                                           <!-- <i class="gbbo-img" v-if="v.symbol==='BTCUSDD'&&isGBBO"></i> -->
-                                          <i class="gbbo-img" ></i>
+                                          <i class="gbbo-img"></i>
                                        </div>
                                        <div class="priceItme">{{v.last?v.last:'--' | scientificToNumber}}</div>
                                        <div class="priceItme redText" v-if="v.showColor === -1">{{v.percent || '--'}}
@@ -81,8 +88,9 @@
                            <li v-else class="priceList" v-for="(v, key,index) in searchIn "
                                @click="changeBaseAssetList(v)" :key="key">
                               <div class="priceItme">
-                                 <Icon type="md-star" color="#12869A" size="14"
-                                       @click.stop="deleteMarkCoin(v,key,false)"/>
+                                 <!-- <Icon type="md-star" color="#12869A" size="14"
+                                       @click.stop="deleteMarkCoin(v,key,false)"/> -->
+                                 <Icon type="md-star" color="#12869A" size="14" />
                                  {{v.baseAsset}}/{{v.quoteAsset}}
                               </div>
                               <div class="priceItme price-priceItme">{{v.last?v.last:'--' | scientificToNumber}}</div>
@@ -479,7 +487,7 @@
                                  <span
                                     class="costMoney"> {{currentInfo.quoteAsset}} ≈ {{GBBO_rate}}{{currencyName}}</span>
                               </div>
-                              <span :class="isShowARB === 'Arbitrage' ? 'gbbo-arb' : ''" >{{isShowARB}}</span>
+                              <span :class="isShowARB === 'Arbitrage' ? 'gbbo-arb' : ''">{{isShowARB}}</span>
                            </div>
                            <div class="sell-buy-orders">
                               <ul class="orders-body buy-orders-body" ref="sellOrderContainer" v-if="!isGBBO">
@@ -572,12 +580,12 @@
                               <div>{{v.total}}</div>
                               <!-- 撤单 -->
                               <div class="cancleBtn">
-                                <a 
-                                  class="cancel"
-                                  @click="cancelMyOrder(v.orderId,v)"
-                                  :disabled="v.isDisabled">
-                                {{$t(v.btnText)}}
-                                </a>
+                                 <a
+                                    class="cancel"
+                                    @click="cancelMyOrder(v.orderId,v)"
+                                    :disabled="v.isDisabled">
+                                    {{$t(v.btnText)}}
+                                 </a>
                               </div>
                            </li>
                         </ul>
@@ -672,13 +680,13 @@
 </template>
 
 <script>
-  import {
-    getSymbolList,
-    getSymbolList_realtime,
-    getdepthList,
-    getDeleteFavoritesPair,
-    getUserInfo
-  } from '_api/exchange.js'
+   import {
+      getSymbolList,
+      getSymbolList_realtime,
+      getdepthList,
+      getDeleteFavoritesPair,
+      getUserInfo
+   } from '_api/exchange.js'
    import {
       getObjFirstKey,
       getDecimalsNum,
@@ -699,6 +707,9 @@
    import {Exchange} from '@/interface/exchange.js'
    import PasswordInput from '@/components/PasswordInput.vue'
    import TVChartContainer from '@/components/KLine/TVChartContainer.vue'
+
+   // import Ticket from './component/Ticker'
+
    import SockJS from 'sockjs-client';
    import Stomp from 'stompjs';
    // import CHAT from '@/components/exchange/CHAT.vue'
@@ -707,7 +718,7 @@
    import bigDecimal from 'js-big-decimal' //除法失效
    import {BigNumber} from 'bignumber.js';
 
-   import { orderBookName } from './config'
+   import {orderBookName} from './config'
 
    let allNowPriceObject = {}//所有币种快照的最新价格的对象
    export default {
@@ -722,11 +733,16 @@
             }],
          }
       },
+      components: {
+         PasswordInput: PasswordInput,
+         TVChartContainer: TVChartContainer,
+         // Ticket,
+      },
       data() {
          return {
-           openTradePassword: false, // 是否打开交易密码
-           // 是否设置交易密码
-           isSetTradePasswrod: false,
+            openTradePassword: false, // 是否打开交易密码
+            // 是否设置交易密码
+            isSetTradePasswrod: false,
             //2019性能优化-左侧币种选择栏
             siteName: 'B',
             siteIndexNumber: 0,//站点序号 数字
@@ -838,21 +854,16 @@
             updateAt: '',//路总需求 要加这个隐藏字段
          }
       },
-      components: {
-         PasswordInput: PasswordInput,
-         TVChartContainer: TVChartContainer,
-         // CHAT,
-      },
       methods: {
          //切换版块
-         changeBoard(e) {
-            this.isShowMainBoard = true
-            let quoteCoinName = e.target.getAttribute('data-site');
-            let siteName = e.target.getAttribute('siteName');
-            this.siteIndexNumber = getIndexInObject(this.symbolListSelf, siteName)
-            this.currentQuoteCoinName = quoteCoinName
-            this.siteName = siteName
-         },
+         // changeBoard(e) {
+         //    this.isShowMainBoard = true
+         //    let quoteCoinName = e.target.getAttribute('data-site');
+         //    let siteName = e.target.getAttribute('siteName');
+         //    this.siteIndexNumber = getIndexInObject(this.symbolListSelf, siteName)
+         //    this.currentQuoteCoinName = quoteCoinName
+         //    this.siteName = siteName
+         // },
          //切换交易资产
          changeBaseAssetList(v) {
             //以后优化 改为 params传参就好了
@@ -882,8 +893,8 @@
             //是否是GBBO
             // if(v.symbol == 'BTCUSDD'){
             // if (this.$route.query['type'] === 'gbbo' && v.symbol === 'BTCUSDD') {
-              //  this.isGBBO = true
-               this.getGBBODepth()
+            //  this.isGBBO = true
+            this.getGBBODepth()
             // } else {
             //    this.isGBBO = false
             //    if (this.stompClient) {
@@ -930,64 +941,64 @@
             })
          },
          //打开自选
-         openMyCoin() {
-            this.isShowMainBoard = !this.isShowMainBoard
-         },
+         // openMyCoin() {
+         //    this.isShowMainBoard = !this.isShowMainBoard
+         // },
          //添加自选
-         addMarkCoin(v, index, params) {
-            //页面渲染
-            let number = _.findIndex(this.symbolListSelf[this.siteName][this.currentQuoteCoinName], {'symbol': v.symbol});
-            this.symbolListSelf[this.siteName][this.currentQuoteCoinName][number] = Object.assign(v, {marked: params})
-            this.symbolListSelf = Object.assign({}, this.symbolListSelf)
-            //缓存到本地存储
-            let local_symbol = JSON.parse(localStorage.getItem('mark_symbol'))
-            if (params) {
-               let obj = {}
-               obj[v.symbol] = 'marked'
-               if (local_symbol) {
-                  let result = Object.assign(local_symbol, obj)
-                  localStorage.setItem('mark_symbol', JSON.stringify(result))
-               } else {
-                  localStorage.setItem('mark_symbol', JSON.stringify(obj))
-               }
-               this.$store.dispatch("updateMarkSymbol");
-               this.markSymbolArr.push(v)
-            } else {
-               //删除
-               let index = _.findIndex(this.markSymbolArr, {'symbol': v.symbol});
-               //删除列表
-               this.markSymbolArr.splice(index, 1)
+         // addMarkCoin(v, index, params) {
+         //    //页面渲染
+         //    let number = _.findIndex(this.symbolListSelf[this.siteName][this.currentQuoteCoinName], {'symbol': v.symbol});
+         //    this.symbolListSelf[this.siteName][this.currentQuoteCoinName][number] = Object.assign(v, {marked: params})
+         //    this.symbolListSelf = Object.assign({}, this.symbolListSelf)
+         //    //缓存到本地存储
+         //    let local_symbol = JSON.parse(localStorage.getItem('mark_symbol'))
+         //    if (params) {
+         //       let obj = {}
+         //       obj[v.symbol] = 'marked'
+         //       if (local_symbol) {
+         //          let result = Object.assign(local_symbol, obj)
+         //          localStorage.setItem('mark_symbol', JSON.stringify(result))
+         //       } else {
+         //          localStorage.setItem('mark_symbol', JSON.stringify(obj))
+         //       }
+         //       this.$store.dispatch("updateMarkSymbol");
+         //       this.markSymbolArr.push(v)
+         //    } else {
+         //       //删除
+         //       let index = _.findIndex(this.markSymbolArr, {'symbol': v.symbol});
+         //       //删除列表
+         //       this.markSymbolArr.splice(index, 1)
 
-               delete local_symbol[v.symbol]
-               localStorage.setItem('mark_symbol', JSON.stringify(local_symbol))
-               if (this.isLogin) {
-                  //删除接口
-                  getDeleteFavoritesPair([v.symbol]).then(data => {
-                  })
-               }
-            }
-         },
+         //       delete local_symbol[v.symbol]
+         //       localStorage.setItem('mark_symbol', JSON.stringify(local_symbol))
+         //       if (this.isLogin) {
+         //          //删除接口
+         //          getDeleteFavoritesPair([v.symbol]).then(data => {
+         //          })
+         //       }
+         //    }
+         // },
          //删除自选
-         deleteMarkCoin(v, index, params) {
-            let site = this.symbolList_quote[v.symbol].siteType[0]
-            let quoteCoinName = this.symbolList_quote[v.symbol].quoteAsset
-            // let number = getIndexInObject(this.symbolListSelf[site][quoteCoinName],v.symbol)
-            let number = _.findIndex(this.symbolListSelf[site][quoteCoinName], {'symbol': v.symbol});
-            //改变数据
-            this.symbolListSelf[site][quoteCoinName][number] = Object.assign(v, {marked: params})
-            this.symbolListSelf = Object.assign({}, this.symbolListSelf)
-            //删除本地缓存
-            let local_symbol = JSON.parse(localStorage.getItem('mark_symbol'))
-            delete local_symbol[v.symbol]
-            localStorage.setItem('mark_symbol', JSON.stringify(local_symbol))
-            if (this.isLogin) {
-               //删除接口
-               getDeleteFavoritesPair([v.symbol]).then(data => {
-               })
-            }
-            //删除列表
-            this.markSymbolArr.splice(index, 1)
-         },
+         // deleteMarkCoin(v, index, params) {
+         //    let site = this.symbolList_quote[v.symbol].siteType[0]
+         //    let quoteCoinName = this.symbolList_quote[v.symbol].quoteAsset
+         //    // let number = getIndexInObject(this.symbolListSelf[site][quoteCoinName],v.symbol)
+         //    let number = _.findIndex(this.symbolListSelf[site][quoteCoinName], {'symbol': v.symbol});
+         //    //改变数据
+         //    this.symbolListSelf[site][quoteCoinName][number] = Object.assign(v, {marked: params})
+         //    this.symbolListSelf = Object.assign({}, this.symbolListSelf)
+         //    //删除本地缓存
+         //    let local_symbol = JSON.parse(localStorage.getItem('mark_symbol'))
+         //    delete local_symbol[v.symbol]
+         //    localStorage.setItem('mark_symbol', JSON.stringify(local_symbol))
+         //    if (this.isLogin) {
+         //       //删除接口
+         //       getDeleteFavoritesPair([v.symbol]).then(data => {
+         //       })
+         //    }
+         //    //删除列表
+         //    this.markSymbolArr.splice(index, 1)
+         // },
          //判断是否展示交易蒙层
          isShowTradeMask() {
             this.isStopTrade = false
@@ -1179,39 +1190,39 @@
                //只有站点默认展示第一个交易对
                let siteRouter = this.$route.query.site
                //url 只有site
-              //  if (siteRouter && !this.$route.query.symbol) {
-              //     let index = getIndexInObject(siteObj, siteRouter)
-              //     this.siteIndexNumber = index
-              //     this.siteName = siteRouter
-              //     if (siteRouter == 'S') {
-              //        this.isShowStockPage = true
-              //     }
-              //     this.currentSymbol = getObjFirstValue(siteObj[siteRouter])[0].symbol
-              //     this.currentSymbolObj = this.symbolList_quote[this.currentSymbol]
-              //     //当前的计价资产名称
-              //     this.currentQuoteCoinName = this.currentSymbolObj && this.currentSymbolObj.quoteAsset
-              //     //增加蒙层逻辑
-              //     this.isShowTradeMask()
-              //  } else if (this.$route.query.symbol || storage.has('currentSymbol')) { //根据url展示默认的交易对
-              //     this.currentSymbol = this.$route.query.symbol || storage.get('currentSymbol')
-              //     this.currentSymbolObj = this.symbolList_quote[this.currentSymbol]
-              //     if (this.currentSymbolObj) {
-              //        this.siteName = this.currentSymbolObj.siteType[0]
-              //        //站点的顺序
-              //        this.siteIndexNumber = getIndexInObject(siteObj, this.currentSymbolObj.siteType[0])
-              //        //股票详情入口
-              //        if (this.siteName == 'S') {
-              //           this.isShowStockPage = true
-              //        }
-              //        //当前的计价资产名称
-              //        this.currentQuoteCoinName = this.currentSymbolObj && this.currentSymbolObj.quoteAsset
-              //        //增加蒙层逻辑
-              //        this.isShowTradeMask()
-              //     }
-              //  } else {
-                  this.currentSymbol = sortArr[0].symbol //默认排序后的第一个交易对
-                  this.currentSymbolObj = sortArr[0]
-              //  }
+               //  if (siteRouter && !this.$route.query.symbol) {
+               //     let index = getIndexInObject(siteObj, siteRouter)
+               //     this.siteIndexNumber = index
+               //     this.siteName = siteRouter
+               //     if (siteRouter == 'S') {
+               //        this.isShowStockPage = true
+               //     }
+               //     this.currentSymbol = getObjFirstValue(siteObj[siteRouter])[0].symbol
+               //     this.currentSymbolObj = this.symbolList_quote[this.currentSymbol]
+               //     //当前的计价资产名称
+               //     this.currentQuoteCoinName = this.currentSymbolObj && this.currentSymbolObj.quoteAsset
+               //     //增加蒙层逻辑
+               //     this.isShowTradeMask()
+               //  } else if (this.$route.query.symbol || storage.has('currentSymbol')) { //根据url展示默认的交易对
+               //     this.currentSymbol = this.$route.query.symbol || storage.get('currentSymbol')
+               //     this.currentSymbolObj = this.symbolList_quote[this.currentSymbol]
+               //     if (this.currentSymbolObj) {
+               //        this.siteName = this.currentSymbolObj.siteType[0]
+               //        //站点的顺序
+               //        this.siteIndexNumber = getIndexInObject(siteObj, this.currentSymbolObj.siteType[0])
+               //        //股票详情入口
+               //        if (this.siteName == 'S') {
+               //           this.isShowStockPage = true
+               //        }
+               //        //当前的计价资产名称
+               //        this.currentQuoteCoinName = this.currentSymbolObj && this.currentSymbolObj.quoteAsset
+               //        //增加蒙层逻辑
+               //        this.isShowTradeMask()
+               //     }
+               //  } else {
+               this.currentSymbol = sortArr[0].symbol //默认排序后的第一个交易对
+               this.currentSymbolObj = sortArr[0]
+               //  }
                //K线基本数据配置使用
                storage.set('currentSymbolObj', this.currentSymbolObj)
                if (this.currentSymbolObj) {
@@ -1219,8 +1230,8 @@
                   this.isInitPage = true
                   // if(this.currentSymbol == 'BTCUSDD'){
                   // if (this.$route.query['type'] === 'gbbo' && this.currentSymbol === 'BTCUSDD') {
-                    //  this.isGBBO = true
-                     this.getGBBODepth()
+                  //  this.isGBBO = true
+                  this.getGBBODepth()
                   // } else {
                   //    this.isGBBO = false
                   //    // //盘口深度轮询查询
@@ -1257,56 +1268,56 @@
                }, 10000)
             })
          },
-        getGBBODepth() {
-          if (this.stompClient == null || !this.stompClient.connected) {
-              const domain = document.domain;
-              let socket = null
-              if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-                socket = new SockJS('https://' + domain + '/xchange/marketdata');
-              } else {
-                // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
-                socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
-              }
-              // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
-              // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
-              this.stompClient = Stomp.over(socket);
-              this.stompClient.debug = null
-              this.stompClient.heartbeat.outgoing = 1000;
-              this.stompClient.connect({}, (frame) => {
-                this.stompClient.subscribe('/topic/orderbook/BTCUSD', (message) => {
-                // this.stompClient.subscribe('/topic/orderbook/BTCUSDD', (message) => {
-                    if (message.body) {
-                      this.sortOrderBook(JSON.parse(message.body))
-                    }
-                });
-              }, (error) => {
-                console.log('new Sockjs  error')
-                this.stompClient.disconnect()
-                this.stompClient = null
-                this.getGBBODepth()
-              });
-          }
-        },
+         getGBBODepth() {
+            if (this.stompClient == null || !this.stompClient.connected) {
+               const domain = document.domain;
+               let socket = null
+               if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+                  socket = new SockJS('https://' + domain + '/xchange/marketdata');
+               } else {
+                  // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
+                  socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+               }
+               // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+               // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
+               this.stompClient = Stomp.over(socket);
+               this.stompClient.debug = null
+               this.stompClient.heartbeat.outgoing = 1000;
+               this.stompClient.connect({}, (frame) => {
+                  this.stompClient.subscribe('/topic/orderbook/BTCUSD', (message) => {
+                     // this.stompClient.subscribe('/topic/orderbook/BTCUSDD', (message) => {
+                     if (message.body) {
+                        this.sortOrderBook(JSON.parse(message.body))
+                     }
+                  });
+               }, (error) => {
+                  console.log('new Sockjs  error')
+                  this.stompClient.disconnect()
+                  this.stompClient = null
+                  this.getGBBODepth()
+               });
+            }
+         },
          sortOrderBook(data) {
             let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
             // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
             var result = data
-            
+
             //路总需求 要加这个隐藏字段
             this.updateAt = result.updateAt
 
             // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
             this.gbbo_asksArr = result.asks.map((val) => {
-               if(val.provider && orderBookName.includes(val.provider)) {
+               if (val.provider && orderBookName.includes(val.provider)) {
                   return val
-               }else if(val.provider && val.provider === 'E55') {
-                  return Object.assign({}, val, { provider: 'TRESSO' })
-               }else if(val.provider) {
-                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
+               } else if (val.provider && val.provider === 'E55') {
+                  return Object.assign({}, val, {provider: 'TRESSO'})
+               } else if (val.provider) {
+                  return Object.assign({}, val, {provider: 'Node of Apifiny'})
                }
             })
-            
+
             if (!this.buy_input_change) {
                this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
                this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
@@ -1323,12 +1334,12 @@
             }
 
             this.gbbo_bidsArr = result.bids.map((val) => {
-               if(val.provider && orderBookName.includes(val.provider)) {
+               if (val.provider && orderBookName.includes(val.provider)) {
                   return val
-               }else if(val.provider && val.provider === 'E55') {
-                  return Object.assign({}, val, { provider: 'TRESSO' })
-               }else if(val.provider) {
-                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
+               } else if (val.provider && val.provider === 'E55') {
+                  return Object.assign({}, val, {provider: 'TRESSO'})
+               } else if (val.provider) {
+                  return Object.assign({}, val, {provider: 'Node of Apifiny'})
                }
             })
             if (!this.sell_input_change) {
@@ -1406,6 +1417,7 @@
                      }
                      //展示当前的交易对的大盘上方行情
                      if (this.currentSymbol === result.symbol) {
+                        console.log(1)
                         this.currentSymbolObj = Object.assign(result, v, this.symbolList_quote[result.symbol])
                         this.showCurrentPriceInfo(this.currentSymbolObj)
                      }
@@ -1413,17 +1425,17 @@
                   }
                   //处理币种列表行情
                   if (this.symbolList_quote[result.symbol]) {
-                     let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
-                     let siteType = this.symbolList_quote[result.symbol].siteType[0]
-                     this.symbolListSelf[siteType][quoteAsset].map((item, i) => {
-                        if (item.symbol === result.symbol) {
-                           this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v, item, result)
-                           return
-                        }
-                     })
-                     //计算法币估值
-                     //板块部分双向绑定
-                     this.symbolListSelf = Object.assign({}, this.symbolListSelf)
+                     // let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
+                     // let siteType = this.symbolList_quote[result.symbol].siteType[0]
+                     // this.symbolListSelf[siteType][quoteAsset].map((item, i) => {
+                     //    if (item.symbol === result.symbol) {
+                     //       this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v, item, result)
+                     //       return
+                     //    }
+                     // })
+                     // //计算法币估值
+                     // //板块部分双向绑定
+                     // this.symbolListSelf = Object.assign({}, this.symbolListSelf)
                      //处理当前
                      SSEcache = result
                   }
@@ -1431,7 +1443,7 @@
             }
             this.quoteWS.onerror = (e) => {
                console.log("The 'this.quoteWS' connect error");
-               
+
             }
             //关闭时候触发
             this.quoteWS.onclose = (e) => {
@@ -1820,7 +1832,7 @@
             }
 
          },
-           buyBtn() {
+         buyBtn() {
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易
@@ -1914,8 +1926,8 @@
                this.buyDisabled = false
             }
             //没有设置交易密码直接下单 增加逻辑
-            else if(!this.isSetTradePasswrod) { // 未设置交易密码
-            // else if (!this.$store.state.exchange.inputTradePassWordStatus) {
+            else if (!this.isSetTradePasswrod) { // 未设置交易密码
+               // else if (!this.$store.state.exchange.inputTradePassWordStatus) {
                this.$Notice.warning({
                   title: this.$t('bbjyNoPasswordError'),
                });
@@ -1924,34 +1936,34 @@
                   this.$router.push('/originTradePassword')
                }.bind(this), 1000);
             }
-            else if (this.openTradePassword) {              
-              //需要输入密码
-              if (getValue("ORDER_SESSION")) {
-                this.exchange.createGBBOOrder({
-                      "symbol": this.currentSymbol,
-                      "orderType": "LIMIT",
-                      "orderSide": this.orderType,
-                      "quantity": this.buyCountInput,
-                      "limitPrice": this.buyPriceInput
-                  }, null, () => {
-                      this.buyDisabled = false
-                      this.$Notice.success({
-                        title: this.$t('tsTips'),
-                        desc: this.$t('bbjyOrderSuccess'),
-                      });
-                      this.getOrderId()
-                  },() => {
-                    this.buyDisabled = false;
-                  }
-                );
-              } else {
-                this.openPassWordPage();
-              }
-            }else {
-              //直接下单
-              this.submitPassWord()
+            else if (this.openTradePassword) {
+               //需要输入密码
+               if (getValue("ORDER_SESSION")) {
+                  this.exchange.createGBBOOrder({
+                        "symbol": this.currentSymbol,
+                        "orderType": "LIMIT",
+                        "orderSide": this.orderType,
+                        "quantity": this.buyCountInput,
+                        "limitPrice": this.buyPriceInput
+                     }, null, () => {
+                        this.buyDisabled = false
+                        this.$Notice.success({
+                           title: this.$t('tsTips'),
+                           desc: this.$t('bbjyOrderSuccess'),
+                        });
+                        this.getOrderId()
+                     }, () => {
+                        this.buyDisabled = false;
+                     }
+                  );
+               } else {
+                  this.openPassWordPage();
+               }
+            } else {
+               //直接下单
+               this.submitPassWord()
             }
-           },
+         },
          sellBtn() {
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '卖出按钮', 0, 'sellBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
@@ -2045,27 +2057,27 @@
             else if (this.openTradePassword) {
                //需要输入交易密码
                if (getValue("ORDER_SESSION")) {
-                  this.sellDisabled = true;                  
+                  this.sellDisabled = true;
                   this.exchange.createGBBOOrder({
                         "symbol": this.currentSymbol,
                         "orderType": "LIMIT",
                         "orderSide": this.orderType,
                         "quantity": this.sellCountInput,
                         "limitPrice": this.sellPriceInput
-                    },
-                    null,
-                    (data) => {
+                     },
+                     null,
+                     (data) => {
                         // orderComplete();
                         this.sellDisabled = false;
                         this.$Notice.success({
-                          title: this.$t('tsTips'),
-                          desc: this.$t('bbjyOrderSuccess'),
+                           title: this.$t('tsTips'),
+                           desc: this.$t('bbjyOrderSuccess'),
                         });
                         this.getOrderId()
-                    },
-                    (data) => {
+                     },
+                     (data) => {
                         this.sellDisabled = false;
-                    }
+                     }
                   );
                } else {
                   this.openPassWordPage();
@@ -2077,8 +2089,8 @@
          },
          openPassWordPage() {
             // if (this.$store.state.exchange.openTradePasswordStatus) {
-               document.body.style.overflow = 'hidden';
-               this.showPassWordPage = true;
+            document.body.style.overflow = 'hidden';
+            this.showPassWordPage = true;
             // } else {
             //    this.submitPassWord()
             // }
@@ -2339,17 +2351,17 @@
             //     }
             // })
          }
-        if($cookies.get('loginToken')){
-          getUserInfo({userId: localStorage.getItem('loginUserId')},$cookies.get('loginToken'))
-              .then((res) => {                
-                const { data: { setTradePassword, openTradePassword } } = res
-                // 是否设置交易密码
-                this.isSetTradePasswrod = setTradePassword
-                // 是否打开交易密码
-                this.openTradePassword = openTradePassword
-                
-              })
-        }
+         if ($cookies.get('loginToken')) {
+            getUserInfo({userId: localStorage.getItem('loginUserId')}, $cookies.get('loginToken'))
+               .then((res) => {
+                  const {data: {setTradePassword, openTradePassword}} = res
+                  // 是否设置交易密码
+                  this.isSetTradePasswrod = setTradePassword
+                  // 是否打开交易密码
+                  this.openTradePassword = openTradePassword
+
+               })
+         }
       },
       beforeMount() {
 
@@ -2360,7 +2372,7 @@
       },
       mounted() {
          let loginUserId = localStorage.getItem('loginUserId') || this.$route.query.loginUserId;
-         if (this.$route.query.loginUserId!=='null'||this.$route.query.loginUserId!=='undefined' ||this.$route.query.loginUserId !==undefined) {
+         if (this.$route.query.loginUserId !== 'null' || this.$route.query.loginUserId !== 'undefined' || this.$route.query.loginUserId !== undefined) {
             localStorage.setItem('loginUserId', loginUserId);
          }
          this.$store.commit('changeHeaderColor', '#15232C');
