@@ -13,7 +13,9 @@
           </div>
           <!-- 盘口 -->
           <div class="gbbomain-realtime__box">
-            <GBBOMain-RealtimeBox></GBBOMain-RealtimeBox>
+            <GBBOMain-RealtimeBox
+              :gbboAsksArr="gbbo_asksArr"
+              :gbboBidsArr="gbbo_bidsArr"></GBBOMain-RealtimeBox>
           </div>
         </div>
         <!--K线-->
@@ -24,10 +26,11 @@
       <!-- two 买入卖出 历史成交 -->
       <div class="gbbomain-transaction">
         <createOrder></createOrder>
+        <gbbo-histories></gbbo-histories>
       </div>
       <!-- 当前订单，历史订单 -->
       <div class="gbbomain-order">
-
+        
       </div>
     </div>
     <!--交易密码6个框-->
@@ -92,6 +95,7 @@
 <script>
 import GbboKline from './component/GBBOKLine'
 import GbboTicker from './component/Ticker'
+import GbboHistories from './component/Histories'
 import {
   getSymbolList_realtime as getSymbolListRealtime,
   getSymbolList,
@@ -506,7 +510,7 @@ export default {
       getSymbolListRealtime().then(res => {
         let symbolUrl = ''
         //注释排序
-        res.farEach((val) => {
+        res.forEach((val) => {
           // 拼装推送数据查询url
           symbolUrl += `symbol=${val.symbol}&${val.symbol}_least=1&`
           // 拼装行情的symbol为Key的symbolList 对象
@@ -530,8 +534,8 @@ export default {
         }
         // 当有快照驱动时数据变化
         this.getSSERealTime(symbolUrl)
-        // 成交历史
-        this.updateSymbolHistory()
+        
+        
       })
     },
     getGBBODepth() {
@@ -575,6 +579,7 @@ export default {
       // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
       this.gbbo_asksArr = result.asks.map((val) => {
+          val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
           if (val.provider && orderBookName.includes(val.provider)) {
             return val
           } else if (val.provider && val.provider === 'E55') {
@@ -583,6 +588,8 @@ export default {
             return Object.assign({}, val, {provider: 'Node of Apifiny'})
           }
       })
+
+      
 
       if (!this.buy_input_change) {
           this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
@@ -600,6 +607,7 @@ export default {
       }
 
       this.gbbo_bidsArr = result.bids.map((val) => {
+          val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
           if (val.provider && orderBookName.includes(val.provider)) {
             return val
           } else if (val.provider && val.provider === 'E55') {
@@ -1562,7 +1570,8 @@ export default {
     GbboTicker,
     PasswordInput,
     createOrder,
-    GBBOMainRealtimeBox
+    GBBOMainRealtimeBox,
+    GbboHistories
   }
 }
 </script>
