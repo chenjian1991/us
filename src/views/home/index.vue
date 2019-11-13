@@ -3,8 +3,8 @@
       <!--top-->
       <div class="top bgc1">
          <div class="container">
-            <h1 class="c-fff f-48 f-w">Maximize Returns, Minimize Hassle</h1>
-            <section class="c-l-gray f-18 mt-1 top-desc">
+            <h1 class="c-fff f-48 f-w pt-6 pt-lg-0">Maximize Returns, Minimize Hassle</h1>
+            <section class="c-l-gray f-18 mt-1 top-desc pt-6 pt-lg-0">
                Tresso’s institutional-grade Global Best Bid and Offer (GBBO™) technology scans the deepest global
                liquidity pools to deliver the best prices on digital currencies. Coupled with no fees, high-speed
                conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest
@@ -15,8 +15,83 @@
             </router-link>
          </div>
       </div>
-      <!--3D-->
-      <home-canvas style="overflow: hidden"></home-canvas>
+      <div class="gbbo bgc-fff pt-lg-11 pb-lg-11 pt-3 pb-5" id="GBBO">
+         <div class="container">
+            <div class="d-flex align-items-center"><span class="f-28 c-1C2730 f-w mr-4">GBBO™</span><span
+               class="f-14 c-77838F">Global Best Bid and Offer</span></div>
+            <!-- <div class="bgc3 f-16 c-blue br-4 f-w mt-4 mb-3 title-box">USD</div> -->
+            <div class="container gbboTableWrap">
+               <div class="gbboTable">
+                  <div class="row justify-content-between" v-model="gbboList">
+                     <div class="col-3 p-0" v-model="gbboList.base">
+                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Market Avg Price</div>
+                        <div class="dataWrap pb-3">
+                           <div class="dataInner pl-5 pr-5">
+                              <div class="f-16 d-flex justify-content-between mb-2">
+                                 <div>
+                                    <span class="c-fff f-w-5">{{gbboList.base.baseAssets}}</span>
+                                    <span class="c-fff f-w-5">{{gbboList.base.quoteAssets}}</span>
+                                 </div>
+                                 <div>{{gbboList.base.price}}</div>
+                              </div>
+                              <div>
+                                 <span class="f-14 c-fff">24h Vol：{{gbboList.base.vol}}</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-3 p-0" v-model="gbboList.sell">
+                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Buy at Global Lowest Price</div>
+                        <div class="dataWrap pb-3">
+                           <div class="dataInner pl-5 pr-5">
+                              <div class="f-16 d-flex justify-content-between mb-2">
+                                 <span class="redNum">{{gbboList.sell.price}}</span>
+                                 <span>From:{{gbboList.sell.exchange|marketName}}</span>
+                              </div>
+                              <div class="f-14 c-fff">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-3 p-0" v-model="gbboList.buy">
+                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Sell at Global Highest Price</div>
+                        <div class="dataWrap pb-3">
+                           <div class="dataInner pl-5 pr-5">
+                              <div class="f-16 d-flex justify-content-between mb-2">
+                                 <span class="greenNum">{{gbboList.buy.price}}</span>
+                                 <span class="c-fff">From:{{gbboList.buy.exchange|marketName}}</span>
+                              </div>
+                              <div class="f-14 c-fff">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-3 p-0" v-model="gbboList.avg">
+                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Arbitrage</div>
+                        <div class="dataWrap pb-3">
+                           <div class="dataInner pl-5 noBorder">
+                              <div class="d-flex justify-content-between">
+                                 <div>
+                                    <div class="f-16 c-fff mb-2 c-blue">{{gbboList.avg.price|compare}}</div>
+                                    <div class="f-14 c-fff">Est Return {{gbboList.avg.change}}</div>
+                                 </div>
+                                 <div class="d-flex align-items-center">
+                                    <!-- <router-link :to="{path:'exchange',query:{symbol:symbol}}"
+                                                class="btn btn-sm btn-primary transition-3d-hover c-blue f-14 trade-btn">
+                                       Instant Trade
+                                    </router-link> -->
+                                    <div class="btn btn-sm btn-primary c-blue f-14 trade-btn lock">
+                                       Instant Trade
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
       <!--GBBO-->
       <div class="gbbo bgc2 pt-lg-11 pb-lg-11 pt-3 pb-5" id="GBBO">
          <div class="container">
@@ -252,14 +327,12 @@
       getDecimalsNum,
    } from "@/lib/utils.js";
 
-   import HomeCanvas from './component/HomeCanvas'
    import Collapse from './component/Collapse'
 
    export default {
       name: "index",
       components: {
          'Rowbox': Rowbox,
-         HomeCanvas,
          Collapse
       },
       filters: {
@@ -555,9 +628,9 @@
    @import '../../assets/css/common.less';
 
    .home {
-      @media screen and (min-width: 1140px) {
+      @media screen and (min-width: 768px) {
          .top {
-            padding-top: 170px;
+            padding-top: 189px;
          }
 
          .connected-box {
@@ -571,6 +644,9 @@
          }
       }
       .top {
+         background: url("../../assets/images/tresso/banner.png") top center no-repeat;
+         background-size: cover;
+         height: 800px;
          .top-desc {
             max-width: 750px;
          }
