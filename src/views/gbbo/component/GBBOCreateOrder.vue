@@ -399,23 +399,19 @@ export default {
     };
   },
    props: {
-       isSetTradePasswrod:{
-           type:Boolean,
-           default:true
-       },
-       openTradePassword:{
-           type:Boolean,
-           default:false
-       },
-       currentSymbol:{// 当前交易对
-           type:String,
-           default:'BTCUSD'
-       },
-    //    currentInfo: {
-    //         type:Object,
-    //         quoteAsset:'USD',
-    //         baseAsset:'BTC'
-    //     },
+    //    isSetTradePasswrod:{
+    //        type:Boolean,
+    //        default:true
+    //    },
+    //    openTradePassword:{
+    //        type:Boolean,
+    //        default:false
+    //    },
+    //    currentSymbol:{// 当前交易对
+    //        type:String,
+    //        default:'BTCUSD'
+    //    },
+       briefInputData:Object
   },
   created() {
         var ssoProvider = {};
@@ -428,24 +424,13 @@ export default {
                }
             }.bind(this)
          }
-        // if($cookies.get('loginToken')){
-        //   getUserInfo({userId: localStorage.getItem('loginUserId')},$cookies.get('loginToken'))
-        //       .then((res) => {                
-        //         const { data: { setTradePassword, openTradePassword } } = res
-        //         // 是否设置交易密码
-        //         this.isSetTradePasswrod = setTradePassword
-        //         // 是否打开交易密码
-        //         this.openTradePassword = openTradePassword
-        //         console.log(setTradePassword)
-                
-        //       })
-        // }
+      
   },
   beforeMount(){
-         this.getSymbolListData();
+        //  this.getSymbolListData();
   },
   mounted() {
-
+      console.log('briefInputData',this.briefInputData)
   },
  
   computed: {
