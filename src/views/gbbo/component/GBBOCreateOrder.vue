@@ -33,9 +33,10 @@
                   autocomplete="off"
                   style="ime-mode:disabled"
                   ondragenter="return false"
+                  :disabled='arbFlag'
                 />
                 <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                <i  :class="[buy_input_change?'gbbo_lock':'gbbo_unlock']"/>
+                <i  @click="clickLock('Arbi')" :class="[buy_input_change_Arbitrage?'gbbo_lock':'gbbo_unlock']"/>
                 <!-- <div class="currencyInput">
                   ≈ {{buyPriceCurrency | scientificToNumber}}
                   {{currencyName}}
@@ -123,9 +124,10 @@
                   autocomplete="off"
                   style="ime-mode:disabled"
                   ondragenter="return false"
+                  :disabled='changeFlag'
                 />
                 <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                <i  :class="[buy_input_change?'gbbo_lock':'gbbo_unlock']"/>
+                <i  @click="clickLock('change')" :class="[buy_input_change?'gbbo_lock':'gbbo_unlock']"/>
 
                 <!-- <div class="currencyInput">
                   ≈ {{buyPriceCurrency | scientificToNumber}}
@@ -213,9 +215,10 @@
                   autocomplete="off"
                   style="ime-mode:disabled"
                   ondragenter="return false"
+                  :disabled="sellFlag"
                 />
                 <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                <i  :class="[buy_input_change?'gbbo_lock':'gbbo_unlock']"/>
+                <i  @click="clickLock('sell')" :class="[buy_input_change_sell?'gbbo_lock':'gbbo_unlock']"/>
 
                 <!-- <div class="currencyInput">
                   ≈ {{sellPriceCurrency | scientificToNumber}}
@@ -377,6 +380,8 @@ export default {
         buyBallPercentage: '0',//下单买入百分比 0 0.25 0.5 0.75 1
         sellBallPercentage: '0',//下单卖出百分比
         buy_input_change: true,//是否输入
+        buy_input_change_Arbitrage:true,
+        buy_input_change_sell:true,
         percentArr:[25,50,75,100],
         itemIndex:0,
         itemIndexBuy:0,
@@ -388,6 +393,9 @@ export default {
         setTradePassword: false,//localstorage 是否
         symbolList: {},//交易接口的symbolList 接口
         loginToken: $cookies.get('loginToken'),//登陆token
+        arbFlag:true,
+        changeFlag:true,
+        sellFlag:true,
     };
   },
    props: {
@@ -455,8 +463,19 @@ export default {
          },
   },
   methods: {
+      clickLock(name){
+          if(name==='Arbi'){
+             this.buy_input_change_Arbitrage = !this.buy_input_change_Arbitrage;
+             this.arbFlag = !this.arbFlag;
+          }else if(name==='change'){
+             this.buy_input_change = !this.buy_input_change;
+             this.changeFlag = !this.changeFlag;
+          }else if(name==='sell'){
+             this.buy_input_change_sell = !this.buy_input_change_sell;
+             this.sellFlag = !this.sellFlag;
+          }
+      },
        buyBtn() {
-           debugger
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易
                this.$Notice.warning({
@@ -551,7 +570,6 @@ export default {
                   this.$router.push('/originTradePassword')
                }.bind(this), 1000);
             } else if (!this.openTradePassword) {// 关闭了交易密码，，直接下单
-            debugger
                   this.exchange.createGBBOOrder({
                         "symbol": this.currentSymbol,
                         "orderType": "LIMIT",
@@ -559,7 +577,6 @@ export default {
                         "quantity": this.buyCountInput,
                         "limitPrice": this.buyPriceInput
                      }, null, (data) => {
-                         debugger
                         this.buyDisabled = false
                         this.$Notice.success({
                            title: this.$t('tsTips'),
@@ -572,20 +589,19 @@ export default {
                   );
                  return;
             } else {//开启了交易密码，需要弹窗
-
-                // this.openPassWordPage();
+                this.openPassWordPage();
                //交易密码的弹窗
-            //    this.submitPassWord()
+               this.submitPassWord()
             }
          },
          sellBtn() {
-            // if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
-            //    //暂停交易
-            //    this.$Notice.warning({
-            //       title: this.$t('bbjyStop'),
-            //    })
-            //    return
-            // }
+            if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
+               //暂停交易
+               this.$Notice.warning({
+                  title: this.$t('bbjyStop'),
+               })
+               return
+            }
             this.orderType = 'SELL'
             let minPrice = this.symbolList[this.currentSymbol].minPrice
             let maxPrice = this.symbolList[this.currentSymbol].maxPrice
