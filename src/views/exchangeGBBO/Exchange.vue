@@ -1694,6 +1694,7 @@ import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
                }, 60000)
             })
          },
+         
          /****
           * 委托单 我的成交记录
           *
