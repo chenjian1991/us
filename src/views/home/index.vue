@@ -20,6 +20,9 @@
             <div class="d-flex align-items-center"><span class="f-28 c-1C2730 f-w mr-4">GBBO™</span><span
                class="f-14 c-77838F">Global Best Bid and Offer</span></div>
             <!-- <div class="bgc3 f-16 c-blue br-4 f-w mt-4 mb-3 title-box">USD</div> -->
+            <ul class="gbbo-title-box">
+               <li class="d-i-b f-16 t-c f-w-5 c-77838F" v-for="item in gbboTitle">{{item.title}}</li>
+            </ul>
             <div class="container gbboTableWrap">
                <div class="gbboTable">
                   <div class="row justify-content-between" v-model="gbboList">
@@ -198,45 +201,6 @@
                size, and only available at Tresso.</p>
          </Rowbox>
       </div>
-      <!--CONNECTED EXCHANGES 需求先隐藏-->
-      <!--<div class="connected-box bgc4 position-relative">-->
-      <!--<div class="pt-lg-11">-->
-      <!--<div class="row justify-content-center pt-lg-8">-->
-      <!--<div class="col-3 mt-3" style="transform: translate3d(0, 0, 0px);">-->
-      <!--<img class="img-fluid" src="../../assets/images/tresso/2.png" alt="Image Description">-->
-      <!--</div>-->
-      <!--<div class="col-3" style="transform: translate3d(30%, 0, 0px);">-->
-      <!--<img class="img-fluid" src="../../assets/images/tresso/3.png" alt="Image Description">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="row justify-content-between mt-6">-->
-      <!--<div class="col-3 t-c">-->
-      <!--<img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">-->
-      <!--</div>-->
-      <!--<div class="col-3 t-c">-->
-      <!--<img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="row justify-content-between mt-11">-->
-      <!--<div class="col-4 t-c">-->
-      <!--<img class="img-fluid" src="../../assets/images/tresso/4.png" alt="Image Description">-->
-      <!--</div>-->
-      <!--<div class="col-4 t-c mt-5">-->
-      <!--<img class="img-fluid" src="../../assets/images/tresso/1.png" alt="Image Description">-->
-      <!--</div>-->
-      <!--<div class="col-4 t-c">-->
-      <!--<img class="img-fluid" src="../../assets/images/tresso/5.png" alt="Image Description">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="t-c connected">-->
-      <!--<div class="p-5">-->
-      <!--<h3 class="f-36 c-d-black f-w">CONNECTED EXCHANGES</h3>-->
-      <!--<p class="f-18 c-d-gray mt-2">[LOGOS  OF CONNECTED EXCHANGES, APPROVED AND SUPPLIED BY CHARLIE YEH]</p>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-
       <!--Keep more of your margin with FREE trading-->
       <div class="free-box bgc-fff t-c pt-11 pb-11">
          <div class="container p-3">
@@ -357,7 +321,7 @@
             stompClient: null,
             symbolList_quote: [],
             currentSymbolObj: {},
-            gbboTitle: [{title: 'GBBO Markets',}, {title: 'Buy at Lowest',}, {title: 'Sell at Highest',}, {title: 'Arbitrage',}],
+            gbboTitle: [{title: 'Max Arbitrage',}, {title: 'Buy at Global Lowest Price',}, {title: 'Sell at Global Highest Price',}, {title: 'Market Avg Price',}],
             gbboList: {
                base: {
                   baseAssets: 'BTC',
