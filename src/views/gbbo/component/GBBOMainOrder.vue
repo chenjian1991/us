@@ -152,7 +152,7 @@ export default {
   .history {
     width: 100%;
     background: #031419;
-    min-height: 286px;
+    min-height: 160px;
 
     .space-between {
       display: flex;
