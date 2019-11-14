@@ -39,7 +39,8 @@
           <gbbo-kline></gbbo-kline>
           <div class="gbbomain-realtime__line-history">
             <gbbo-histories
-            :currentSymbol="currentSymbol"></gbbo-histories>
+              :currentSymbol="currentSymbol">
+            </gbbo-histories>
           </div>
         </div>
       </div>

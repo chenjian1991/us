@@ -92,6 +92,10 @@
 import bigDecimal from 'js-big-decimal' //除法失效
 import moment from 'moment'
 
+import {
+  getDecimalsNum
+} from '@/lib/utils.js'
+
 export default {
   data() {
     return {
@@ -106,16 +110,22 @@ export default {
       default: "BTCUSD",
       required: true
     },    
-    priceLong: {
-      type: Number,
-      default: 8,
-      required: true
-    },    
-    volumeLong: {
-      type: Number,
-      default: 8,
-      required: true
-    },    
+    // priceLong: {
+    //   type: Number,
+    //   default: 8,
+    //   required: true
+    // },    
+    // volumeLong: {
+    //   type: Number,
+    //   default: 8,
+    //   required: true
+    // },
+    currentSymbolObj: {
+      type: Object,
+      default: function(){
+        return {}
+      }
+    }
   },
   methods: {
     showTable(tab) {
@@ -152,7 +162,7 @@ export default {
       this.WSHistory.onerror = e => {
         console.log('history_websocket_err',e)
       };
-      this.WSHistory.onclose = e => {
+      this.WSHistory.onclose = () => {
         this.WSHistory.close()
         console.log('history_websocket','关闭')
       };
@@ -160,11 +170,11 @@ export default {
     //重置交易历史数组
     resetTradeHistoryArr(result){
       let arr = this.tradeHistoryArr;
-      /* let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize);
-      let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize); */
+      const priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize);
+      const volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize);
       let obj = {};
-      obj.price = bigDecimal.round(result.price, this.priceLong);
-      obj.volumeData = bigDecimal.round(result.amount, this.volumeLong);
+      obj.price = bigDecimal.round(result.price, priceLong);
+      obj.volumeData = bigDecimal.round(result.amount, volumeLong);
       obj.date = moment(result.tradeTime).format("HH:mm:ss");
       obj.showColor = result.direction === "buy" ? 1 : -1;
       //控制数组长度
