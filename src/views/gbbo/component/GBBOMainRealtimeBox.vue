@@ -104,7 +104,7 @@
         </div>
         <div class="realtime-item-content">
           <ul class="realtime-item-list lowest-list" ref="buyOrderContainer">
-            <li v-for="v in gbbo_asksArr" @click="getClickSellPrice(v.priceWithFee,v.qty)">
+            <li v-for="v in gbboAsksArr" @click="getClickSellPrice(v.priceWithFee,v.qty)">
               <span class="lowest">
                 {{v.priceWithFee}}
                 <em>{{v.provider}}</em>
@@ -127,7 +127,7 @@
         </div>
         <div class="realtime-item-content">
           <ul class="realtime-item-list highest-list" ref="sellOrderContainer">
-            <li v-for="v in gbbo_bidsArr" @click="getClickBuyPrice(v.priceWithFee,v.qty)">
+            <li v-for="v in gbboBidsArr" @click="getClickBuyPrice(v.priceWithFee,v.qty)">
               <span class="highest">
                 {{v.priceWithFee}}
                 <em>{{v.provider}}</em>
@@ -160,14 +160,14 @@ export default {
     
   },
   props: {
-    gbbo_asksArr:{
-      type:Array,
+    gbboAsksArr:{
+      type: Array,
       default: function() {
         return []
       }
     },
-    gbbo_bidsArr:{
-      type:Array,
+    gbboBidsArr:{
+      type: Array,
       default: function() {
         return []
       }

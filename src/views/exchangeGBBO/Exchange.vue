@@ -1,6 +1,6 @@
 <template>
    <div class="wrapper" id="exchange">
-      <Ticket :currentInfo="currentInfo"></Ticket>
+      <!-- <Ticket :currentInfo="currentInfo"></Ticket> -->
       <div class="exchange-container">
          <div class="content">
             <!-- 上部  左侧列表 K线 下单-->
@@ -24,7 +24,8 @@
                               <!-- <li data-site="USDT" siteName="C">{{$t('headercustomerexchange')}}</li> -->
                            </ul>
                         </div>
-                        <div class="myCoin" @click="openMyCoin" :class="[isShowMainBoard? '' : 'markActive']">
+                        <div class="myCoin" :class="[isShowMainBoard? '' : 'markActive']">
+                        <!-- <div class="myCoin" @click="openMyCoin" :class="[isShowMainBoard? '' : 'markActive']"> -->
                            <Icon type="md-star" size="16" style="margin-top:-4px"/>
                            {{$t('自选')}}
                         </div>
@@ -49,10 +50,14 @@
                                     <li class="priceList" v-for="(v, key,index) in getFilterList(item)"
                                         @click="changeBaseAssetList(v)" :key="key">
                                        <div class="priceItme">
-                                          <Icon type="md-star" color="#12869A" size="14" v-if="v.marked"
+                                          <!-- <Icon type="md-star" color="#12869A" size="14" v-if="v.marked"
                                                 @click.stop="addMarkCoin(v,key,false)"/>
                                           <Icon type="md-star" color="#374853" size="14" v-else
-                                                @click.stop="addMarkCoin(v,key,true)"/>
+                                                @click.stop="addMarkCoin(v,key,true)"/> -->
+                                          <Icon type="md-star" color="#12869A" size="14" v-if="v.marked" />
+                                                <!-- @click.stop="addMarkCoin(v,key,false)" -->
+                                          <Icon type="md-star" color="#374853" size="14" v-else />
+                                                <!-- @click.stop="addMarkCoin(v,key,true)" -->
                                           {{v.baseAsset}}
                                           <!-- <i class="gbbo-img" v-if="v.symbol==='BTCUSDD'&&isGBBO"></i> -->
                                           <i class="gbbo-img"></i>
@@ -83,8 +88,9 @@
                            <li v-else class="priceList" v-for="(v, key,index) in searchIn "
                                @click="changeBaseAssetList(v)" :key="key">
                               <div class="priceItme">
-                                 <Icon type="md-star" color="#12869A" size="14"
-                                       @click.stop="deleteMarkCoin(v,key,false)"/>
+                                 <!-- <Icon type="md-star" color="#12869A" size="14"
+                                       @click.stop="deleteMarkCoin(v,key,false)"/> -->
+                                 <Icon type="md-star" color="#12869A" size="14" />
                                  {{v.baseAsset}}/{{v.quoteAsset}}
                               </div>
                               <div class="priceItme price-priceItme">{{v.last?v.last:'--' | scientificToNumber}}</div>
@@ -669,8 +675,8 @@
       <!-- <div class="chat_container"></div> -->
       <!-- <CHAT/> -->
       <GBBOMainRealtimeBox
-         :gbbo_asksArr="gbbo_asksArr"
-         :gbbo_bidsArr="gbbo_bidsArr"
+         :gbboAsksArr="gbbo_asksArr"
+         :gbboBidsArr="gbbo_bidsArr"
          :bestSellPrice="bestSellPrice"
          :bestBuyPrice="bestBuyPrice"
          @getClickSellPrice="getClickSellPrice"
@@ -681,6 +687,8 @@
          @cancelMyOrder="cancelMyOrder"></GBBOMainOrder>
       <GBBOCreateOrder 
          @buyBtn='buyBtn'
+         :briefInputData='briefInputData'
+         :buyInputPrice='buyInputPrice'
       ></GBBOCreateOrder>
 
       
@@ -721,7 +729,7 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
    import PasswordInput from '@/components/PasswordInput.vue'
    import TVChartContainer from '@/components/KLine/TVChartContainer.vue'
 
-   import Ticket from './component/Ticker'
+   // import Ticket from './component/Ticker'
 
    import SockJS from 'sockjs-client';
    import Stomp from 'stompjs';
@@ -748,6 +756,11 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
       },
       data() {
          return {
+            briefInputData:{
+               quoteCoinAvailable:'1000',
+               baseAssetAvailable:'2000',
+            },
+            buyInputPrice:0,
             openTradePassword: false, // 是否打开交易密码
             // 是否设置交易密码
             isSetTradePasswrod: false,
@@ -868,19 +881,19 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
          GBBOMainOrder,
          GBBOMainRealtimeBox,
          GBBOCreateOrder,
-         Ticket,
+         // Ticket,
          // CHAT,
       },
       methods: {
          //切换版块
-         changeBoard(e) {
-            this.isShowMainBoard = true
-            let quoteCoinName = e.target.getAttribute('data-site');
-            let siteName = e.target.getAttribute('siteName');
-            this.siteIndexNumber = getIndexInObject(this.symbolListSelf, siteName)
-            this.currentQuoteCoinName = quoteCoinName
-            this.siteName = siteName
-         },
+         // changeBoard(e) {
+         //    this.isShowMainBoard = true
+         //    let quoteCoinName = e.target.getAttribute('data-site');
+         //    let siteName = e.target.getAttribute('siteName');
+         //    this.siteIndexNumber = getIndexInObject(this.symbolListSelf, siteName)
+         //    this.currentQuoteCoinName = quoteCoinName
+         //    this.siteName = siteName
+         // },
          //切换交易资产
          changeBaseAssetList(v) {
             //以后优化 改为 params传参就好了
@@ -958,64 +971,64 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
             })
          },
          //打开自选
-         openMyCoin() {
-            this.isShowMainBoard = !this.isShowMainBoard
-         },
+         // openMyCoin() {
+         //    this.isShowMainBoard = !this.isShowMainBoard
+         // },
          //添加自选
-         addMarkCoin(v, index, params) {
-            //页面渲染
-            let number = _.findIndex(this.symbolListSelf[this.siteName][this.currentQuoteCoinName], {'symbol': v.symbol});
-            this.symbolListSelf[this.siteName][this.currentQuoteCoinName][number] = Object.assign(v, {marked: params})
-            this.symbolListSelf = Object.assign({}, this.symbolListSelf)
-            //缓存到本地存储
-            let local_symbol = JSON.parse(localStorage.getItem('mark_symbol'))
-            if (params) {
-               let obj = {}
-               obj[v.symbol] = 'marked'
-               if (local_symbol) {
-                  let result = Object.assign(local_symbol, obj)
-                  localStorage.setItem('mark_symbol', JSON.stringify(result))
-               } else {
-                  localStorage.setItem('mark_symbol', JSON.stringify(obj))
-               }
-               this.$store.dispatch("updateMarkSymbol");
-               this.markSymbolArr.push(v)
-            } else {
-               //删除
-               let index = _.findIndex(this.markSymbolArr, {'symbol': v.symbol});
-               //删除列表
-               this.markSymbolArr.splice(index, 1)
+         // addMarkCoin(v, index, params) {
+         //    //页面渲染
+         //    let number = _.findIndex(this.symbolListSelf[this.siteName][this.currentQuoteCoinName], {'symbol': v.symbol});
+         //    this.symbolListSelf[this.siteName][this.currentQuoteCoinName][number] = Object.assign(v, {marked: params})
+         //    this.symbolListSelf = Object.assign({}, this.symbolListSelf)
+         //    //缓存到本地存储
+         //    let local_symbol = JSON.parse(localStorage.getItem('mark_symbol'))
+         //    if (params) {
+         //       let obj = {}
+         //       obj[v.symbol] = 'marked'
+         //       if (local_symbol) {
+         //          let result = Object.assign(local_symbol, obj)
+         //          localStorage.setItem('mark_symbol', JSON.stringify(result))
+         //       } else {
+         //          localStorage.setItem('mark_symbol', JSON.stringify(obj))
+         //       }
+         //       this.$store.dispatch("updateMarkSymbol");
+         //       this.markSymbolArr.push(v)
+         //    } else {
+         //       //删除
+         //       let index = _.findIndex(this.markSymbolArr, {'symbol': v.symbol});
+         //       //删除列表
+         //       this.markSymbolArr.splice(index, 1)
 
-               delete local_symbol[v.symbol]
-               localStorage.setItem('mark_symbol', JSON.stringify(local_symbol))
-               if (this.isLogin) {
-                  //删除接口
-                  getDeleteFavoritesPair([v.symbol]).then(data => {
-                  })
-               }
-            }
-         },
+         //       delete local_symbol[v.symbol]
+         //       localStorage.setItem('mark_symbol', JSON.stringify(local_symbol))
+         //       if (this.isLogin) {
+         //          //删除接口
+         //          getDeleteFavoritesPair([v.symbol]).then(data => {
+         //          })
+         //       }
+         //    }
+         // },
          //删除自选
-         deleteMarkCoin(v, index, params) {
-            let site = this.symbolList_quote[v.symbol].siteType[0]
-            let quoteCoinName = this.symbolList_quote[v.symbol].quoteAsset
-            // let number = getIndexInObject(this.symbolListSelf[site][quoteCoinName],v.symbol)
-            let number = _.findIndex(this.symbolListSelf[site][quoteCoinName], {'symbol': v.symbol});
-            //改变数据
-            this.symbolListSelf[site][quoteCoinName][number] = Object.assign(v, {marked: params})
-            this.symbolListSelf = Object.assign({}, this.symbolListSelf)
-            //删除本地缓存
-            let local_symbol = JSON.parse(localStorage.getItem('mark_symbol'))
-            delete local_symbol[v.symbol]
-            localStorage.setItem('mark_symbol', JSON.stringify(local_symbol))
-            if (this.isLogin) {
-               //删除接口
-               getDeleteFavoritesPair([v.symbol]).then(data => {
-               })
-            }
-            //删除列表
-            this.markSymbolArr.splice(index, 1)
-         },
+         // deleteMarkCoin(v, index, params) {
+         //    let site = this.symbolList_quote[v.symbol].siteType[0]
+         //    let quoteCoinName = this.symbolList_quote[v.symbol].quoteAsset
+         //    // let number = getIndexInObject(this.symbolListSelf[site][quoteCoinName],v.symbol)
+         //    let number = _.findIndex(this.symbolListSelf[site][quoteCoinName], {'symbol': v.symbol});
+         //    //改变数据
+         //    this.symbolListSelf[site][quoteCoinName][number] = Object.assign(v, {marked: params})
+         //    this.symbolListSelf = Object.assign({}, this.symbolListSelf)
+         //    //删除本地缓存
+         //    let local_symbol = JSON.parse(localStorage.getItem('mark_symbol'))
+         //    delete local_symbol[v.symbol]
+         //    localStorage.setItem('mark_symbol', JSON.stringify(local_symbol))
+         //    if (this.isLogin) {
+         //       //删除接口
+         //       getDeleteFavoritesPair([v.symbol]).then(data => {
+         //       })
+         //    }
+         //    //删除列表
+         //    this.markSymbolArr.splice(index, 1)
+         // },
          //判断是否展示交易蒙层
          isShowTradeMask() {
             this.isStopTrade = false
@@ -1340,7 +1353,9 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
                this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
                this.buyPriceInput = this.bestSellPrice
-               this.$refs.buyInput.value = this.bestSellPrice
+               this.$refs.buyInput.value = this.bestSellPrice;
+               this.buyInputPrice = this.bestSellPrice;
+
             }
             if (this.isInitOrderBook) {
                var div = this.$refs.buyOrderContainer;
@@ -1444,17 +1459,17 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                   }
                   //处理币种列表行情
                   if (this.symbolList_quote[result.symbol]) {
-                     let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
-                     let siteType = this.symbolList_quote[result.symbol].siteType[0]
-                     this.symbolListSelf[siteType][quoteAsset].map((item, i) => {
-                        if (item.symbol === result.symbol) {
-                           this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v, item, result)
-                           return
-                        }
-                     })
-                     //计算法币估值
-                     //板块部分双向绑定
-                     this.symbolListSelf = Object.assign({}, this.symbolListSelf)
+                     // let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
+                     // let siteType = this.symbolList_quote[result.symbol].siteType[0]
+                     // this.symbolListSelf[siteType][quoteAsset].map((item, i) => {
+                     //    if (item.symbol === result.symbol) {
+                     //       this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v, item, result)
+                     //       return
+                     //    }
+                     // })
+                     // //计算法币估值
+                     // //板块部分双向绑定
+                     // this.symbolListSelf = Object.assign({}, this.symbolListSelf)
                      //处理当前
                      SSEcache = result
                   }
@@ -1679,6 +1694,8 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                // this.quoteCoinAvailable = '--'
                this.baseAssetAvailable = subNumberPoint(0, baseAssetQuantityLong)
                this.quoteCoinAvailable = subNumberPoint(0, quoteAssetQuantityLong)
+              
+               console.log('cccc',this.briefInputData)
                data.map((v, i) => {
                   if (v.currency === 'FF' && v.available == 0 && this.commissionTemplateId) {
                      //FF为0 折扣开关一打开
@@ -1689,13 +1706,16 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                   } else if (v.currency === this.currentSymbolObj.quoteAsset) {
                      this.quoteCoinAvailable = subNumberPoint(v.available, quoteAssetQuantityLong)
                   }
+                   this.briefInputData = {// 给子组件传餐
+                     quoteCoinAvailable:this.quoteCoinAvailable,
+                     baseAssetAvailable:this.baseAssetAvailable,
+                  }
                })
                this.myBanalceTimer = setTimeout(() => {
                   this.getMyAssetData()
                }, 60000)
             })
          },
-         
          /****
           * 委托单 我的成交记录
           *
@@ -1854,7 +1874,8 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
          },
          buyBtn(callbackData) {
             debugger
-            let aa = callbackData;
+            this.buyPriceInput = callbackData.buyPriceInput;
+            this.buyCountInput = callbackData.buyCountInput;
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易

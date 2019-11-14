@@ -122,7 +122,7 @@ const router = new Router({
             },
             {
                path: '/gbbo',
-               name: 'exchange',
+               name: 'gbbo',
                meta: {},
                component: NewGBBO
             },

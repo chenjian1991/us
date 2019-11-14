@@ -57,7 +57,9 @@
 
    export default {
       name: "Ticker",
-      props: {currentInfo: Object},
+      props: {
+         currentInfo: Object
+      },
       filters: {
          noData: function (value) {
             if (!value) return '--'

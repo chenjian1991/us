@@ -10,7 +10,7 @@
           </div>
           <div>
             <img src="../images/Wallet.svg" alt="">
-            <span v-if="isLogin">{{quoteCoinAvailable | scientificToNumber}}</span>
+            <span v-if="isLogin">{{briefInputData.quoteCoinAvailable | scientificToNumber}}</span>
             <span v-else>--</span>&nbsp;
             <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
           </div>
@@ -100,7 +100,7 @@
           </div>
           <div> 
                 <img src="../images/Wallet.svg" alt="">
-                <span v-if="isLogin">{{quoteCoinAvailable | scientificToNumber}}</span>
+                <span v-if="isLogin">{{briefInputData.quoteCoinAvailable | scientificToNumber}}</span>
                 <em v-else>--</em>&nbsp;
                 <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
           </div>
@@ -116,6 +116,7 @@
               <div class="inputbox">
                 <input
                   @input="handleBuyPriceInput"
+                  :value="buyInputPrice"
                   type="text"
                   ref="buyInput"
                   maxlength="14"
@@ -191,7 +192,7 @@
           </div>
           <div>
             <img src="../images/Wallet.svg" alt="">
-            <span v-if="isLogin">{{baseAssetAvailable | scientificToNumber}}</span>
+            <span v-if="isLogin">{{briefInputData.baseAssetAvailable | scientificToNumber}}</span>
             <em v-else>--</em>&nbsp;
             <span class="baseAsset">{{currentInfo.baseAsset}}</span>
          </div>
@@ -230,6 +231,7 @@
                   @input="handleSellCountInput"
                   type="text"
                   ref="sellCountInputRef"
+                  
                   maxlength="14"
                   :class="{'input-empty-color':sellCountEmpty}"
                   class="input-price"
@@ -393,29 +395,26 @@ export default {
         setTradePassword: false,//localstorage 是否
         symbolList: {},//交易接口的symbolList 接口
         loginToken: $cookies.get('loginToken'),//登陆token
-        arbFlag:true,
-        changeFlag:true,
-        sellFlag:true,
+        arbFlag:false,
+        changeFlag:false,
+        sellFlag:false,
     };
   },
    props: {
-       isSetTradePasswrod:{
-           type:Boolean,
-           default:true
-       },
-       openTradePassword:{
-           type:Boolean,
-           default:false
-       },
-       currentSymbol:{// 当前交易对
-           type:String,
-           default:'BTCUSD'
-       },
-    //    currentInfo: {
-    //         type:Object,
-    //         quoteAsset:'USD',
-    //         baseAsset:'BTC'
-    //     },
+    //    isSetTradePasswrod:{
+    //        type:Boolean,
+    //        default:true
+    //    },
+    //    openTradePassword:{
+    //        type:Boolean,
+    //        default:false
+    //    },
+    //    currentSymbol:{// 当前交易对
+    //        type:String,
+    //        default:'BTCUSD'
+    //    },
+       briefInputData:Object,
+       buyInputPrice:Number
   },
   created() {
         var ssoProvider = {};
@@ -428,24 +427,13 @@ export default {
                }
             }.bind(this)
          }
-        // if($cookies.get('loginToken')){
-        //   getUserInfo({userId: localStorage.getItem('loginUserId')},$cookies.get('loginToken'))
-        //       .then((res) => {                
-        //         const { data: { setTradePassword, openTradePassword } } = res
-        //         // 是否设置交易密码
-        //         this.isSetTradePasswrod = setTradePassword
-        //         // 是否打开交易密码
-        //         this.openTradePassword = openTradePassword
-        //         console.log(setTradePassword)
-                
-        //       })
-        // }
+      
   },
   beforeMount(){
-         this.getSymbolListData();
+        //  this.getSymbolListData();
   },
   mounted() {
-
+      console.log('briefInputData',this.buyInputPrice)
   },
  
   computed: {
@@ -476,21 +464,24 @@ export default {
           }
       },
        buyBtn() {
-           debugger
-           let aa = this.symbolList[this.currentSymbol]
-           let params = {
-                orderType : 'BUY',
-                buyDisabled : true,
-                minPrice : this.symbolList[this.currentSymbol].minPrice,
-                maxPrice : this.symbolList[this.currentSymbol].maxPrice,
-                minQuantity : this.symbolList[this.currentSymbol].minQuantity,
-                maxQuantity : this.symbolList[this.currentSymbol].maxQuantity,
-                status : this.symbolList[this.currentSymbol].status,
-                priceTickSize : this.symbolList[this.currentSymbol].priceTickSize,
-                quantityStepSize : this.symbolList[this.currentSymbol].quantityStepSize,
-                isPriceSize : isDivideAll(this.buyPriceInput, priceTickSize),
-                isQuantitySize : isDivideAll(this.buyCountInput, quantityStepSize),
-           }
+        //    console.log(this.symbolList[this.currentSymbol].priceTickSize)
+        //    let params = {
+        //         orderType : 'BUY',
+        //         buyDisabled : true,
+        //         minPrice : this.symbolList[this.currentSymbol].minPrice,
+        //         maxPrice : this.symbolList[this.currentSymbol].maxPrice,
+        //         minQuantity : this.symbolList[this.currentSymbol].minQuantity,
+        //         maxQuantity : this.symbolList[this.currentSymbol].maxQuantity,
+        //         status : this.symbolList[this.currentSymbol].status,
+        //         priceTickSize : this.symbolList[this.currentSymbol].priceTickSize,
+        //         quantityStepSize : this.symbolList[this.currentSymbol].quantityStepSize,
+        //         isPriceSize : isDivideAll(this.buyPriceInput, priceTickSize),
+        //         isQuantitySize : isDivideAll(this.buyCountInput, quantityStepSize),
+        //    }
+            let params = {
+                buyPriceInput:this.buyPriceInput,
+                buyCountInput:this.buyCountInput,
+            }
            this.$emit('buyBtn',params)
             
          },
@@ -609,24 +600,23 @@ export default {
                this.submitPassWord()
             }
          },
-         getSymbolListData() {
-            getSymbolList().then(res => {
-               if (this.loginToken) {
-                  this.isLogin = true
-               }
-               this.symbolList = {};
-               res.map((v, i) => {
-                  this.symbolList[v.symbol] = v;
-               })
-               console.log('symbolList',this.symbolList)
-               //增加蒙层逻辑
-            //    this.isShowTradeMask();
-               //查询委托订单
-            //    this.getSSEOrderList()
-            }).catch(error => {
+        //  getSymbolListData() {
+        //     getSymbolList().then(res => {
+        //        if (this.loginToken) {
+        //           this.isLogin = true
+        //        }
+        //        this.symbolList = {};
+        //        res.map((v, i) => {
+        //           this.symbolList[v.symbol] = v;
+        //        })
+        //        //增加蒙层逻辑
+        //     //    this.isShowTradeMask();
+        //        //查询委托订单
+        //     //    this.getSSEOrderList()
+        //     }).catch(error => {
 
-            })
-         },
+        //     })
+        //  },
          choosePercent(index,direction){
             switch(direction){
                 case 'Arbitrage':
