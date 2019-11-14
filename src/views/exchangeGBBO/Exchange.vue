@@ -674,17 +674,17 @@
       <!-- 聊天 -->
       <!-- <div class="chat_container"></div> -->
       <!-- <CHAT/> -->
-      <GBBOMainRealtimeBox
-         :gbbo_asksArr="gbbo_asksArr"
-         :gbbo_bidsArr="gbbo_bidsArr"
+      <gbbo-realtime
+         :gbboAsksArr="gbbo_asksArr"
+         :gbboBidsArr="gbbo_bidsArr"
          :bestSellPrice="bestSellPrice"
          :bestBuyPrice="bestBuyPrice"
          @getClickSellPrice="getClickSellPrice"
-         @getClickBuyPrice="getClickBuyPrice"></GBBOMainRealtimeBox>
-      <GBBOMainOrder
+         @getClickBuyPrice="getClickBuyPrice"></gbbo-realtime>
+      <gbbo-order
          :myOpenList="myOpenList" 
          :myCompletedList="myCompletedList" 
-         @cancelMyOrder="cancelMyOrder"></GBBOMainOrder>
+         @cancelMyOrder="cancelMyOrder"></gbbo-order>
       <GBBOCreateOrder 
          @buyBtn='buyBtn'
          @sellBtn='sellBtn'
@@ -701,8 +701,8 @@
 </template>
 
 <script>
-import GBBOMainOrder from '../gbbo/component/GBBOMainOrder'
-import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
+import GbboOrder from '../gbbo/component/GBBOOrder'
+import GbboRealtime from '../gbbo/component/GBBORealtime'
 import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
 
   import {
@@ -883,8 +883,8 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
       components: {
          PasswordInput: PasswordInput,
          TVChartContainer: TVChartContainer,
-         GBBOMainOrder,
-         GBBOMainRealtimeBox,
+         GbboOrder,
+         GbboRealtime,
          GBBOCreateOrder,
          // Ticket,
          // CHAT,

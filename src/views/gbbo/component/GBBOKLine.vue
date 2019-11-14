@@ -131,7 +131,7 @@ export default {
 
       // 实时更新数据
       this._timestamp = setInterval(() => {
-        console.log(this.flogCount)
+        // console.log(this.flogCount)
         const time = this.timeFormat()
         const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
         const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
