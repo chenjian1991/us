@@ -225,16 +225,20 @@ export default {
 
             div {
               font-size: 12px;
-              text-align: left;
+              text-align: right;
               line-height: 30px;
               font-weight: 400;
-              // color: #d4d4d4;
-              color: #c2d8e8;
+              color: #d4d4d4;
               flex: 1;
-
-              &:last-child {
-                text-align: right;
+              &:nth-child(1),
+              &:nth-child(2),
+              &:nth-child(3),
+              &:nth-child(4){
+                text-align: left;
               }
+              // &:last-child {
+              //   text-align: right;
+              // }
             }
           }
 
