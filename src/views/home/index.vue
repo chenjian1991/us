@@ -15,7 +15,7 @@
             </router-link>
          </div>
       </div>
-      <div class="gbbo bgc-fff pt-lg-11 pb-lg-11 pt-3" id="GBBO">
+      <div class="gbbo bgc-fff pt-lg-11 pb-lg-11 pt-3 gbboPC" id="GBBO">
          <div class="container">
             <div class="d-flex align-items-center"><span class="f-28 c-1C2730 f-w-6 mr-4">GBBO™</span><span
                class="f-14 c-77838F">Global Best Bid and Offer</span></div>
@@ -31,7 +31,7 @@
                         <span class="symbol f-w-5">{{gbboBase.quoteAssets}}</span>
                      </div>
                      <router-link :to="{path:'exchange',query:{symbol:symbol}}"
-                                  class="btn btn-sm btn-primary transition-3d-hover c-01B2D6 f-12 trade-btn">
+                                  class="btn btn-sm btn-primary transition-3d-hover c-01B2D6 f-12 trade-btn disabled">
                         One-Click Arbitrage
                      </router-link>
                   </div>
@@ -68,34 +68,33 @@
                   </div>
                </div>
             </div>
-
-            <div class="container gbboTableWrap">
-               <div class="gbboTable">
-               </div>
-            </div>
          </div>
       </div>
-      <div class="gbbo-mobile d-none">
-         <div>
-            <div class="d-flex justify-content-between mobile-title">
-               <div class="f-16 f-w-6 c-151D24">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</div>
-               <div><span class="f-14 f-w-5 c-151D24">Max Arbitrage: </span><span class="f-18 f-w-6 c-01B2D6">{{gbboList.avg}}</span>
-               </div>
+      <div class="gbbo-mobile gbboMobile" id="GBBO">
+         <div class="d-flex justify-content-between align-items-center mobile-title">
+            <div class="f-18 f-w-6 c-151D24">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</div>
+            <div><span class="f-18 f-w-5 c-151D24 va-m">Max Arbitrage: </span><span class="f-20 f-w-6 c-01B2D6 va-m">{{gbboList.avg}}</span>
             </div>
+         </div>
+         <div class="mobile-content pb-6">
             <ul class="list">
-               <li class="item">
-                  <h4 class="f-30 c-EB4D59">{{gbboList.sellPrice}}</h4>
-                  <p class="f-16 c-77838F">Buy at Lowest</p>
+               <li class="item mobile-line">
+                  <h4 class="f-20 c-EB4D59">{{gbboList.sellPrice}}</h4>
+                  <p class="f-14 c-77838F mt-1">Buy at Lowest</p>
+               </li>
+               <li class="item mobile-line">
+                  <h4 class="f-20 c-66B76D">{{gbboList.buyPrice}}</h4>
+                  <p class="f-14 c-77838F mt-1">Sell at Highest</p>
                </li>
                <li class="item">
-                  <h4 class="f-30 c-EB4D59">{{gbboList.buyPrice}}</h4>
-                  <p class="f-16 c-77838F">Sell at Highest</p>
-               </li>
-               <li class="item">
-                  <h4 class="f-30 c-151D24">{{gbboList.sellPrice}}</h4>
-                  <p class="f-16 c-77838F">Market Avg Price</p>
+                  <h4 class="f-20 c-151D24">{{gbboList.sellPrice}}</h4>
+                  <p class="f-14 c-77838F mt-1">Market Avg Price</p>
                </li>
             </ul>
+            <router-link :to="{path:'exchange',query:{symbol:symbol}}"
+                         class="btn btn-sm btn-primary transition-3d-hover c-01B2D6 f-14 trade-btn disabled mt-2">
+               One-Click Arbitrage
+            </router-link>
          </div>
       </div>
 
@@ -149,7 +148,7 @@
       </div>
       <!--Why Tresso?-->
       <div class="pb-11 bgc2">
-         <Rowbox :rowLists="tresso">
+         <Rowbox :rowLists="tresso" class="pl-8 pr-8 pl-lg-0 pr-lg-0">
             <div :slot="item.name" class="tresso mt-4" v-for="(item,i) in tressoList" :key="i">
                <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
                   <img v-lazy='item.img' class="tresso-img">
@@ -162,7 +161,8 @@
       <!--2 ways to connect-->
       <div class="connect-box bgc-EBEFF5">
          <Rowbox :rowLists="connect" class="pb-5">
-            <div :slot="item.name" class="connect bgc-fff br-8 p-lg-7 pr-lg-9 mt-3 p-5" v-for="(item,i) in connectList"
+            <div :slot="item.name" class="connect bgc-fff br-8 p-lg-7 pr-lg-9 mt-5 mt-lg-3 p-5"
+                 v-for="(item,i) in connectList"
                  :key="i">
                <img v-lazy='item.img' class="connect-img">
                <p class="f-20 c-d-black mt-4 mb-2 f-w-6">{{item.title}}</p>
@@ -182,7 +182,7 @@
                   <div class=" mt-3 mt-lg-0">
                      <img src="../../assets/images/tresso/left.png" class="manager-icon" alt="">
                   </div>
-                  <div class="pl-lg-10 pr-lg-10 mt-3 mt-lg-0">
+                  <div class="pl-lg-10 pr-lg-10 mt-3 mt-lg-0 p-4 p-lg-0">
                      <h4 class="f-30 c-d-black mb-2 mt-lg-7">Join the Innovation.</h4>
                      <p class="f-16 f-w-5 c-d-black mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
                      <section class="f-16 c-77838F mb-2 f-w-5">
@@ -257,7 +257,7 @@
             } else if (name === 'GEMINI' || name === 'KRAKEN' || name === 'BITTREX' || name === 'COINBASEPRO') {
                return name
             } else {
-               return 'Node of Apifiny'
+               return 'Market Maker'
             }
          }
       },
@@ -587,6 +587,24 @@
             }
          }
       }
+      @media screen and (min-width: 992px) {
+         .gbboPC {
+            display: block !important;
+         }
+
+         .gbboMobile {
+            display: none !important;
+         }
+      }
+      @media screen and (max-width: 991px) {
+         .gbboPC {
+            display: none !important;
+         }
+
+         .gbboMobile {
+            display: block !important;
+         }
+      }
       @media screen and (min-width: 768px) {
          .top {
             padding-top: 189px;
@@ -599,22 +617,23 @@
          .connected-box {
             height: 600px;
          }
-
-         .manager-box {
-            .manager-img {
-               width: 370px !important;
-            }
-         }
       }
       @media screen and (max-width: 767px) {
          .gbboTMBg {
             background-size: contain;
          }
+
+         .partners-img {
+            width: 192*0.8px !important;
+         }
+
+
       }
+
       .top {
          background: url("../../assets/images/tresso/banner.png") top center no-repeat;
          background-size: cover;
-         height: 800px;
+         height: 730px;
          .top-desc {
             max-width: 750px;
          }
@@ -622,7 +641,7 @@
       .gbbo {
          .gbbo-title-list {
             width: 100%;
-            border-radius: 4px 4px 0px 0px;
+            border-radius: 4px 4px 0 0;
             .gbbo-title-item {
                width: 25%;
                height: 50px;
@@ -720,6 +739,7 @@
       .manager-box {
          .manager-img {
             width: 100%;
+            max-width: 370px;
          }
          .manager-icon {
             width: 23px;
@@ -759,26 +779,29 @@
    .gbbo-mobile {
       .mobile-title {
          padding: 20px;
-         line-height: 60px;
       }
-      .list {
+      .mobile-content {
          .bgc-F1F5FA;
-         padding: 22px 0;
-         .item {
-            position: relative;
-            .d-ib;
-            width: 100/3%;
-            .t-c;
-            &:after {
-               content: "";
-               position: absolute;
-               border-right: solid 1px #E2E5EE;
-               right: -1px;
-               top: 18px;
-               bottom: 18px;
+         .list {
+            padding: 22px 0;
+            .item {
+               position: relative;
+               .d-ib;
+               width: 100/3%;
+               .t-c;
             }
-
+            .mobile-line {
+               &:after {
+                  content: "";
+                  position: absolute;
+                  border-right: solid 1px #E2E5EE;
+                  right: -1px;
+                  top: 10px;
+                  bottom: 10px;
+               }
+            }
          }
+         text-align: center;
       }
    }
 
@@ -792,8 +815,6 @@
          content: "";
          position: absolute;
          border-right: solid 1px #E2E5EE;
-         /*width: 1px;*/
-         /*background-color: #E2E5EE;*/
          right: -1px;
          top: 12px;
          bottom: 12px;
