@@ -9,85 +9,10 @@
         </div>
         <div class="realtime-item-content">
           <ul class="realtime-item-list arb-list">
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount text-right">0.071348</span>
-              <span class="time text-right">16:56:28</span>
+            <li v-for="v in maxArbitrageList">
+              <span class="arb">{{v.priceSubtract}}</span>
+              <span class="amount text-right">{{v.qtySubtract}}</span>
+              <span class="time text-right">{{v.dateTime}}</span>
             </li>
           </ul>
         </div>
@@ -169,6 +94,12 @@ export default {
       }
     },
     gbboBidsArr:{
+      type: Array,
+      default: function() {
+        return []
+      }
+    },
+    maxArbitrageList:{
       type: Array,
       default: function() {
         return []
