@@ -250,7 +250,6 @@ Exchange.prototype.getOrderTicket = function (fn) {
 };
 
 Exchange.prototype.getSession = function (tokenType, fn) {
-   debugger
    //查本地缓存
    var _this = this;
    var cacheSession = this.sessionCache[tokenType];
@@ -282,7 +281,6 @@ Exchange.prototype.getSession = function (tokenType, fn) {
    })
 };
 Exchange.prototype.issuedTradePassword = function (token, password, fn) {
-   debugger
    var _this = this;
    var tradePasswordCache = _this.tradePassword;
    var expiredAblepassword = Exchange.checkExpiredAblePassWord(tradePasswordCache);
@@ -395,7 +393,6 @@ Exchange.prototype.createNewOrder = function (orderInfo, userpassword, fn, error
    })
 };
 Exchange.prototype.createGBBOOrder = function (orderInfo, userpassword, fn, errorFn) {
-   debugger
    var _this = this;
    if (userpassword) {
       _this.userPassWord = userpassword

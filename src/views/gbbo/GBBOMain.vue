@@ -105,9 +105,9 @@
 import GbboKline from './component/GBBOKLine'
 import GbboTicker from './component/Ticker'
 import GbboHistories from './component/Histories'
-import CreateOrder from './component/GBBOCreateOrder.vue'
-import GbboRealtime from './component/GBBOMainRealtimeBox'
-import GbboOrder from '../gbbo/component/GBBOMainOrder'
+import CreateOrder from './component/GBBOCreateOrder'
+import GbboRealtime from './component/GBBORealtime'
+import GbboOrder from '../gbbo/component/GBBOOrder'
 
 import {
   getSymbolList_realtime as getSymbolListRealtime,

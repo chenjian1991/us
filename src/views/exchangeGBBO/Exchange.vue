@@ -674,21 +674,25 @@
       <!-- 聊天 -->
       <!-- <div class="chat_container"></div> -->
       <!-- <CHAT/> -->
-      <GBBOMainRealtimeBox
-         :gbbo_asksArr="gbbo_asksArr"
-         :gbbo_bidsArr="gbbo_bidsArr"
+      <gbbo-realtime
+         :gbboAsksArr="gbbo_asksArr"
+         :gbboBidsArr="gbbo_bidsArr"
          :bestSellPrice="bestSellPrice"
          :bestBuyPrice="bestBuyPrice"
          @getClickSellPrice="getClickSellPrice"
-         @getClickBuyPrice="getClickBuyPrice"></GBBOMainRealtimeBox>
-      <GBBOMainOrder
+         @getClickBuyPrice="getClickBuyPrice"></gbbo-realtime>
+      <gbbo-order
          :myOpenList="myOpenList" 
          :myCompletedList="myCompletedList" 
-         @cancelMyOrder="cancelMyOrder"></GBBOMainOrder>
+         @cancelMyOrder="cancelMyOrder"></gbbo-order>
       <GBBOCreateOrder 
          @buyBtn='buyBtn'
+         @sellBtn='sellBtn'
          :briefInputData='briefInputData'
          :buyInputPrice='buyInputPrice'
+         :sellInputPrice='sellInputPrice'
+         :currentSymbol='currentSymbol'
+         :symbolList='symbolList'
       ></GBBOCreateOrder>
 
       
@@ -697,8 +701,8 @@
 </template>
 
 <script>
-import GBBOMainOrder from '../gbbo/component/GBBOMainOrder'
-import GBBOMainRealtimeBox from '../gbbo/component/GBBOMainRealtimeBox'
+import GbboOrder from '../gbbo/component/GBBOOrder'
+import GbboRealtime from '../gbbo/component/GBBORealtime'
 import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
 
   import {
@@ -757,10 +761,11 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
       data() {
          return {
             briefInputData:{
-               quoteCoinAvailable:'1000',
-               baseAssetAvailable:'2000',
+               quoteCoinAvailable:'',
+               baseAssetAvailable:'',
             },
             buyInputPrice:0,
+            sellInputPrice:0,
             openTradePassword: false, // 是否打开交易密码
             // 是否设置交易密码
             isSetTradePasswrod: false,
@@ -878,8 +883,8 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
       components: {
          PasswordInput: PasswordInput,
          TVChartContainer: TVChartContainer,
-         GBBOMainOrder,
-         GBBOMainRealtimeBox,
+         GbboOrder,
+         GbboRealtime,
          GBBOCreateOrder,
          // Ticket,
          // CHAT,
@@ -1381,6 +1386,8 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                this.sell_exchange_logo = result.bids[0].provider // 交易所logo
                this.sellPriceInput = this.bestBuyPrice
                this.$refs.sellInput.value = this.bestBuyPrice
+               this.sellInputPrice = this.bestBuyPrice;
+
 
             }
             var diff = this.bestSellPrice - this.bestBuyPrice
@@ -1583,6 +1590,7 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
          //**********************下单 买入卖出 */
          //数量百分比球
          changeBuyBall(e, val) {
+            debugger
             if (this.isLogin) {
                let value = ''
                if (e) {
@@ -1873,7 +1881,6 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
 
          },
          buyBtn(callbackData) {
-            debugger
             this.buyPriceInput = callbackData.buyPriceInput;
             this.buyCountInput = callbackData.buyCountInput;
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
@@ -2007,7 +2014,10 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                this.submitPassWord()
             }
          },
-         sellBtn() {
+         sellBtn(callbackData) {
+            debugger
+            this.sellCountInput = callbackData.sellCountInput;
+            this.sellPriceInput = callbackData.sellPriceInput;
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '卖出按钮', 0, 'sellBtn']);
             if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
                //暂停交易
@@ -2207,6 +2217,7 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                this.sellDisabled = true;
                this.buyDisabled = true;
                if (this.isGBBO) {
+                  debugger
                   this.exchange.createGBBOOrder(
                      {
                         "symbol": this.currentSymbol,
@@ -2231,7 +2242,7 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                         this.closePassWordPage()
                      }
                   );
-               } else {
+               } else {//非gbbo
                   this.exchange.createNewOrder(
                      {
                         "symbol": this.currentSymbol,

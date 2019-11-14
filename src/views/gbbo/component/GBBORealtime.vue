@@ -153,7 +153,9 @@ import bigDecimal from 'js-big-decimal' //除法失效
 export default {
   name: "GBBOMainRealtimeBox",
   data() {
-    return {};
+    return {
+      isScroll:false,
+    };
   },
   created() {},
   mounted() {
@@ -174,14 +176,34 @@ export default {
     },
     bestSellPrice:{
       type:Number,
-      default:null,
+      default:null
     },
     bestBuyPrice:{
       type:Number,
-      default:null,
+      default:null
     },
   },
-  computed: {},
+  watch: {
+    isInitOrderBook(val) {
+      if(val) {
+        var div = this.$refs.buyOrderContainer;
+        setTimeout(() => {
+          div.scrollTop = div.scrollHeight;
+        }, 0)
+        val = false
+      }
+    },
+  },
+  computed: {
+    isInitOrderBook() {
+      if(this.gbboAsksArr.length > 12) {
+        this.isScroll = true
+      } else {
+        this.isScroll = false
+      }
+      return this.isScroll
+    }
+  },
   methods: {
     getClickSellPrice(price, count){
       this.$emit("getClickSellPrice", price, count)
@@ -206,7 +228,7 @@ export default {
 <style lang="less">
 .gbbomain-realtime-box {
   .realtime-box {
-    width:822px;
+    // width:822px;
     display: flex;
     .realtime-item {
       flex: 1;
@@ -318,12 +340,16 @@ export default {
         bottom: 0;
         width: 100%;
         height: 40px;
-        padding: 0 8px;
+        padding: 5px 8px;
         p {
+          height: 14px;
+          line-height: 14px;
           color: #788390;
         }
         span {
           padding-right: 8px;
+          height: 14px;
+          line-height: 14px;
           color: #d4d4d4;
         }
         .last-arb {
@@ -343,7 +369,7 @@ export default {
           right: 0;
           background: #041d25;
           text-align: center;
-          padding: 12px 0;
+          padding: 11px 0 12px;
           a {
             display: inline-block;
             height: 14px;

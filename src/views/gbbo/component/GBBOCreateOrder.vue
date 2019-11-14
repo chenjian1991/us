@@ -60,7 +60,7 @@
           </div>
           <div class="rangePercent">
               <ul>
-                  <li @click="choosePercent(index,'Arbitrage')" :class="{active:itemIndex===index}" v-for="(item,index) in percentArr">{{item}}%</li>
+                  <li @click="choosePercent(item,index,'Arbitrage')" :class="{active:itemIndex===index}" v-for="(item,index) in percentArr">{{item}}%</li>
               </ul>
           </div>
           <div class="totalMoney-label">
@@ -129,7 +129,6 @@
                 />
                 <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
                 <i  @click="clickLock('change')" :class="[buy_input_change?'gbbo_lock':'gbbo_unlock']"/>
-
                 <!-- <div class="currencyInput">
                   ≈ {{buyPriceCurrency | scientificToNumber}}
                   {{currencyName}}
@@ -153,7 +152,7 @@
           </div>
           <div class="rangePercent">
               <ul>
-                  <li @click="choosePercent(index,'buy')" :class="{active:itemIndexBuy===index}" v-for="(item,index) in percentArr">{{item}}%</li>
+                  <li @click="choosePercent(item,index,'buy')" :class="{active:itemIndexBuy===index}" v-for="(item,index) in percentArr">{{item}}%</li>
               </ul>
           </div>
           <div class="totalMoney-label">
@@ -217,6 +216,7 @@
                   style="ime-mode:disabled"
                   ondragenter="return false"
                   :disabled="sellFlag"
+                  :value="sellInputPrice"
                 />
                 <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
                 <i  @click="clickLock('sell')" :class="[buy_input_change_sell?'gbbo_lock':'gbbo_unlock']"/>
@@ -231,7 +231,6 @@
                   @input="handleSellCountInput"
                   type="text"
                   ref="sellCountInputRef"
-                  
                   maxlength="14"
                   :class="{'input-empty-color':sellCountEmpty}"
                   class="input-price"
@@ -246,7 +245,7 @@
           </div>
           <div class="rangePercent">
               <ul>
-                  <li @click="choosePercent(index,'sell')" :class="{active:itemIndexSell===index}" v-for="(item,index) in percentArr">{{item}}%</li>
+                  <li @click="choosePercent(item,index,'sell')" :class="{active:itemIndexSell===index}" v-for="(item,index) in percentArr">{{item}}%</li>
               </ul>
           </div>
           <!-- <div class="range">
@@ -352,7 +351,7 @@ import {
     //   dealNumber
    } from '@/lib/utils.js'
 export default {
-  name: "CreateOrder",
+  name: "createOrder",
   data() {
     return {
         isLogin:true,
@@ -385,15 +384,14 @@ export default {
         buy_input_change_Arbitrage:true,
         buy_input_change_sell:true,
         percentArr:[25,50,75,100],
-        itemIndex:0,
-        itemIndexBuy:0,
-        itemIndexSell:0,
+        itemIndex:'',
+        itemIndexBuy:'',
+        itemIndexSell:'',
         orderType: null,//撤单 cancle  下单  输入密码用
         orderID: null,
         showPassWordPage: false,
         exchangePassWord: null,//交易密码
         setTradePassword: false,//localstorage 是否
-        symbolList: {},//交易接口的symbolList 接口
         loginToken: $cookies.get('loginToken'),//登陆token
         arbFlag:false,
         changeFlag:false,
@@ -401,20 +399,26 @@ export default {
     };
   },
    props: {
-    //    isSetTradePasswrod:{
-    //        type:Boolean,
-    //        default:true
-    //    },
-    //    openTradePassword:{
-    //        type:Boolean,
-    //        default:false
-    //    },
-    //    currentSymbol:{// 当前交易对
-    //        type:String,
-    //        default:'BTCUSD'
-    //    },
+       currentSymbol:{// 当前交易对
+           type:String,
+           default:'BTCUSD'
+       },
+       symbolList:Object,
        briefInputData:Object,
-       buyInputPrice:Number
+       buyInputPrice:Number,
+       sellInputPrice:Number
+  },
+  watch:{
+      buyInputPrice(){
+          this.buyPriceInput = this.buyInputPrice;
+      },
+      sellInputPrice(){
+          this.sellPriceInput = this.sellInputPrice;
+      },
+      briefInputData(){
+          this.quoteCoinAvailable = this.briefInputData.quoteCoinAvailable;
+          this.baseAssetAvailable = this.briefInputData.baseAssetAvailable;
+      }
   },
   created() {
         var ssoProvider = {};
@@ -433,11 +437,10 @@ export default {
         //  this.getSymbolListData();
   },
   mounted() {
-      console.log('briefInputData',this.buyInputPrice)
   },
  
   computed: {
-       buyInTotal: function () { //买入总价
+        buyInTotal: function () { //买入总价
             return bigDecimal.multiply(this.buyPriceInput, this.buyCountInput);
          },
          sellOutTatal: function () { //卖出总价
@@ -464,171 +467,47 @@ export default {
           }
       },
        buyBtn() {
-        //    console.log(this.symbolList[this.currentSymbol].priceTickSize)
-        //    let params = {
-        //         orderType : 'BUY',
-        //         buyDisabled : true,
-        //         minPrice : this.symbolList[this.currentSymbol].minPrice,
-        //         maxPrice : this.symbolList[this.currentSymbol].maxPrice,
-        //         minQuantity : this.symbolList[this.currentSymbol].minQuantity,
-        //         maxQuantity : this.symbolList[this.currentSymbol].maxQuantity,
-        //         status : this.symbolList[this.currentSymbol].status,
-        //         priceTickSize : this.symbolList[this.currentSymbol].priceTickSize,
-        //         quantityStepSize : this.symbolList[this.currentSymbol].quantityStepSize,
-        //         isPriceSize : isDivideAll(this.buyPriceInput, priceTickSize),
-        //         isQuantitySize : isDivideAll(this.buyCountInput, quantityStepSize),
-        //    }
             let params = {
                 buyPriceInput:this.buyPriceInput,
                 buyCountInput:this.buyCountInput,
             }
            this.$emit('buyBtn',params)
-            
          },
          sellBtn() {
-            if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
-               //暂停交易
-               this.$Notice.warning({
-                  title: this.$t('bbjyStop'),
-               })
-               return
+             debugger
+             let params = {
+                sellPriceInput:this.sellPriceInput,
+                sellCountInput:this.sellCountInput,
             }
-            this.orderType = 'SELL'
-            let minPrice = this.symbolList[this.currentSymbol].minPrice
-            let maxPrice = this.symbolList[this.currentSymbol].maxPrice
-            let minQuantity = this.symbolList[this.currentSymbol].minQuantity
-            let maxQuantity = this.symbolList[this.currentSymbol].maxQuantity
-            let status = this.symbolList[this.currentSymbol].status
-            let priceTickSize = this.symbolList[this.currentSymbol].priceTickSize
-            let quantityStepSize = this.symbolList[this.currentSymbol].quantityStepSize
-            let isPriceSize = isDivideAll(this.sellPriceInput, priceTickSize)
-            let isQuantitySize = isDivideAll(this.sellCountInput, quantityStepSize)
-            if (!this.sellPriceInput) {
-               this.sellPriceEmpty = true
-               // this.$Message.warning('请输入卖出价格');
-               this.$Notice.warning({
-                  title: this.$t('bbjyEnterSellPrice'),
-               });
-               this.sellDisabled = false;
-            } else if (!this.sellCountInput) {
-               this.sellCountEmpty = true
-               // this.$Message.warning('请输入卖出数量');
-               this.$Notice.warning({
-                  title: this.$t('bbjyEnterSellVolume'),
-               });
-               this.sellDisabled = false;
-            } else if (Number(this.sellPriceInput) > Number(maxPrice)) {
-               // this.$Message.warning('卖出价格不能超过'+maxPrice);
-               this.$Notice.warning({
-                  title: this.$t('bbjySellPriceNotMore') + maxPrice,
-               });
-               this.sellDisabled = false;
-            } else if (Number(this.sellPriceInput) < Number(minPrice)) {
-               // this.$Message.warning('卖出价格不能少于'+minPrice);
-               this.$Notice.warning({
-                  title: this.$t('bbjySellPriceNotLess') + minPrice,
-               });
-               this.sellDisabled = false;
-            } else if (Number(this.sellCountInput) > Number(maxQuantity)) {
-               // this.$Message.warning('卖出数量不能超过'+maxQuantity);
-               this.$Notice.warning({
-                  title: this.$t('bbjySellVolumeNotMore') + maxQuantity,
-               });
-               this.sellDisabled = false;
-            } else if (Number(this.sellCountInput) < Number(minQuantity)) {
-               // this.$Message.warning('卖出数量不能少于'+minPrice);
-               this.$Notice.warning({
-                  title: this.$t('bbjySellVolumeNotLess') + minQuantity,
-               });
-               this.sellDisabled = false;
-            } else if (!isPriceSize) {
-               // 价格整数倍于
-               this.$Notice.warning({
-                  title: this.$t('bbjySellPriceMultiple') + priceTickSize,
-               });
-               this.sellDisabled = false;
-            } else if (!isQuantitySize) {
-               this.$Notice.warning({
-                  title: this.$t('bbjySellVolumeMultiple') + quantityStepSize,
-               });
-               this.sellDisabled = false;
-            } else if (status == "HALT") {
-               //账户停止
-               this.$Notice.warning({
-                  title: this.$t('bbjyAccountError'),
-               });
-               this.sellDisabled = false;
-            }
-            //未设置交易密码直接下单
-            else if (!this.setTradePassword) {
-               this.$Notice.warning({
-                  title: this.$t('bbjyNoPasswordError'),
-               });
-               setTimeout(function () {
-                  this.$router.push('/originTradePassword')
-               }.bind(this), 1000);
-            } else if (this.$store.state.exchange.inputTradePassWordStatus) {
-               //需要输入交易密码
-               if (getValue("ORDER_SESSION")) {
-                  this.sellDisabled = true;
-                  this.exchange.createNewOrder({
-                        "symbol": this.currentSymbol,
-                        "orderType": "LIMIT",
-                        "orderSide": this.orderType,
-                        "quantity": this.sellCountInput,
-                        "limitPrice": this.sellPriceInput
-                     },
-                     null,
-                     (data) => {
-                        // orderComplete();
-                        this.sellDisabled = false;
-                        this.$Notice.success({
-                           title: this.$t('tsTips'),
-                           desc: this.$t('bbjyOrderSuccess'),
-                        });
-                     },
-                     (data) => {
-                        this.sellDisabled = false;
-
-                     }
-                  );
-               } else {
-                  this.openPassWordPage();
-               }
-            } else {
-               //下单
-               this.submitPassWord()
-            }
+           this.$emit('sellBtn',params)
          },
-        //  getSymbolListData() {
-        //     getSymbolList().then(res => {
-        //        if (this.loginToken) {
-        //           this.isLogin = true
-        //        }
-        //        this.symbolList = {};
-        //        res.map((v, i) => {
-        //           this.symbolList[v.symbol] = v;
-        //        })
-        //        //增加蒙层逻辑
-        //     //    this.isShowTradeMask();
-        //        //查询委托订单
-        //     //    this.getSSEOrderList()
-        //     }).catch(error => {
-
-        //     })
-        //  },
-         choosePercent(index,direction){
+         choosePercent(itemPercent,index,direction){
             switch(direction){
                 case 'Arbitrage':
                 this.itemIndex = index;
                 break;
                 case 'buy' :
                 this.itemIndexBuy = index;
+                if (this.isLogin) {
+                    let volumeLong = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
+                    this.buyBallPercentage = itemPercent/100;
+                    this.$refs.buyCountInputRef.value = bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage) === "0" ? '0' : subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
+                    this.buyCountInput = subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
+                }
                 break;
                 case 'sell' :
                 this.itemIndexSell = index;
+                if(this.isLogin){
+                    let volumeLong = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
+                    this.sellBallPercentage = itemPercent/100;
+                    this.$refs.sellCountInputRef.value = bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage) === '0' ? '0' : subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
+                    this.sellCountInput = subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
+                }
+                 
                 break;
             }
+              
+
          },
           showCurrentPriceInfo(v) {
             //给title赋值行情
@@ -679,22 +558,6 @@ export default {
             let quantityStepSize = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
             e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize)
             this.sellCountInput = e.target.value
-         },
-         changeBuyBall(e) {
-            if (e.target.getAttribute('data-num')) {
-               let volumeLong = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-               this.buyBallPercentage = e.target.getAttribute('data-num')
-               this.$refs.buyCountInputRef.value = bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage) === "0" ? '0' : subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
-               this.buyCountInput = subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
-            }
-         },
-         changeSailBall(e) {
-            if (e.target.getAttribute('data-num')) {
-               let volumeLong = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-               this.sellBallPercentage = e.target.getAttribute('data-num')
-               this.$refs.sellCountInputRef.value = bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage) === '0' ? '0' : subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
-               this.sellCountInput = subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
-            }
          },
   },
   components: {}
