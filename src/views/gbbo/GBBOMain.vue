@@ -13,9 +13,10 @@
           </div>
           <!-- 盘口 -->
           <div class="gbbomain-realtime__box">
-            <GBBOMain-RealtimeBox
-              :gbboAsksArr="gbbo_asksArr"
-              :gbboBidsArr="gbbo_bidsArr"></GBBOMain-RealtimeBox>
+          <gbbo-realtime
+            :gbboAsksArr="gbbo_asksArr"
+            :gbboBidsArr="gbbo_bidsArr">
+          </gbbo-realtime>
           </div>
         </div>
         <!--K线-->
@@ -96,6 +97,9 @@
 import GbboKline from './component/GBBOKLine'
 import GbboTicker from './component/Ticker'
 import GbboHistories from './component/Histories'
+import createOrder from './component/GBBOCreateOrder.vue'
+import GbboRealtime from './component/GBBOMainRealtimeBox'
+
 import {
   getSymbolList_realtime as getSymbolListRealtime,
   getSymbolList,
@@ -133,8 +137,7 @@ import { BigNumber } from 'bignumber.js';
 import { orderBookName } from './config'
 
 let allNowPriceObject = {}//所有币种快照的最新价格的对象
-import createOrder from './component/GBBOCreateOrder.vue'
-import GBBOMainRealtimeBox from './component/GBBOMainRealtimeBox'
+
 export default {
   name: 'gbbo',
   metaInfo() {
@@ -147,6 +150,14 @@ export default {
           content: this.pageDescription
       }],
     }
+  },
+  components:{
+    GbboKline,
+    GbboTicker,
+    PasswordInput,
+    createOrder,
+    GbboRealtime,
+    GbboHistories
   },
   data(){
     return{
@@ -595,15 +606,7 @@ export default {
           this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
           this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
           this.buyPriceInput = this.bestSellPrice
-          this.$refs.buyInput.value = this.bestSellPrice
-      }
-      if (this.isInitOrderBook) {
-          var div = this.$refs.buyOrderContainer;
-          //此时必须异步执行滚动条滑动至底部
-          setTimeout(() => {
-            div.scrollTop = div.scrollHeight;
-          }, 0)
-          this.isInitOrderBook = false
+          // this.$refs.buyInput.value = this.bestSellPrice
       }
 
       this.gbbo_bidsArr = result.bids.map((val) => {
@@ -620,7 +623,7 @@ export default {
           this.bestBuyPrice = result.bids[0].priceWithFee
           this.sell_exchange_logo = result.bids[0].provider // 交易所logo
           this.sellPriceInput = this.bestBuyPrice
-          this.$refs.sellInput.value = this.bestBuyPrice
+          // this.$refs.sellInput.value = this.bestBuyPrice
 
       }
       var diff = this.bestSellPrice - this.bestBuyPrice
@@ -1564,14 +1567,6 @@ export default {
     if (this.stompClient != null) {
       this.stompClient.disconnect();
     }
-  },
-  components:{
-    GbboKline,
-    GbboTicker,
-    PasswordInput,
-    createOrder,
-    GBBOMainRealtimeBox,
-    GbboHistories
   }
 }
 </script>
