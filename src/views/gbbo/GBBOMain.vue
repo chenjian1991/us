@@ -4,7 +4,7 @@
       <!-- one 包括盘口  K线 -->
       <div class="gbbomain-realtime">
         <!-- 盘口 -->
-        <div class="gbbomain-realtime__item">
+        <div class="gbbomain-realtime__operat">
           <!-- 切换 header -->
           <div class="gbbomain-realtime__hd">
             <gbbo-ticker 
@@ -13,25 +13,33 @@
           </div>
           <!-- 盘口 -->
           <div class="gbbomain-realtime__box">
-          <gbbo-realtime
-            :gbboAsksArr="gbbo_asksArr"
-            :gbboBidsArr="gbbo_bidsArr">
-          </gbbo-realtime>
+            <gbbo-realtime
+              :gbboAsksArr="gbbo_asksArr"
+              :gbboBidsArr="gbbo_bidsArr"
+              :bestSellPrice="bestSellPrice"
+              :bestBuyPrice="bestBuyPrice"
+              @getClickSellPrice="getClickSellPrice"
+              @getClickBuyPrice="getClickBuyPrice">
+            </gbbo-realtime>
+          </div>
+          <!--买入卖出 -->
+          <div class="gbbomain-realtime_transaction">
+            <create-order></create-order>
           </div>
         </div>
         <!--K线-->
         <div class="gbbomain-realtime__line">
           <gbbo-kline></gbbo-kline>
+          <gbbo-histories></gbbo-histories>
         </div>
-      </div>
-      <!-- two 买入卖出 历史成交 -->
-      <div class="gbbomain-transaction">
-        <createOrder></createOrder>
-        <gbbo-histories></gbbo-histories>
       </div>
       <!-- 当前订单，历史订单 -->
       <div class="gbbomain-order">
-        
+        <gbbo-order
+          :myOpenList="myOpenList" 
+          :myCompletedList="myCompletedList" 
+          @cancelMyOrder="cancelMyOrder"
+        ></gbbo-order>
       </div>
     </div>
     <!--交易密码6个框-->
@@ -97,8 +105,9 @@
 import GbboKline from './component/GBBOKLine'
 import GbboTicker from './component/Ticker'
 import GbboHistories from './component/Histories'
-import createOrder from './component/GBBOCreateOrder.vue'
+import CreateOrder from './component/GBBOCreateOrder.vue'
 import GbboRealtime from './component/GBBOMainRealtimeBox'
+import GbboOrder from '../gbbo/component/GBBOMainOrder'
 
 import {
   getSymbolList_realtime as getSymbolListRealtime,
@@ -155,9 +164,10 @@ export default {
     GbboKline,
     GbboTicker,
     PasswordInput,
-    createOrder,
+    CreateOrder,
     GbboRealtime,
-    GbboHistories
+    GbboHistories,
+    GbboOrder
   },
   data(){
     return{
@@ -1571,156 +1581,5 @@ export default {
 }
 </script>
 <style lang="less">
-.gbbomain{
-  min-width: 1280px;
-  &-bg{
-    filter: blur(10px);
-  }
-  background: #000;
-  &-realtime{
-    display: flex;
-  }
-  &-transaction{
-    display: flex;
-  }
-  &-order{
-    display: flex;
-  }
-  //交易密码start
-  .mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 15;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .alert-trade-password {
-      width: 500px;
-      background-color: #1B2A34;
-
-      .alert-title {
-        height: 55px;
-        line-height: 50px;
-        text-align: center;
-        color: #C2D8E8;
-        border-bottom: solid 1px #2D4859;
-        position: relative;
-        font-size: 16px;
-
-        p {
-          color: #8d9ace;
-        }
-
-        .closePs {
-          position: absolute;
-          top: 13px;
-          right: 15px;
-          font-size: 22px;
-          color: #2D4859;
-          cursor: pointer;
-
-          &:hover {
-            color: #bbb;
-          }
-        }
-      }
-
-      .alert-content {
-        //padding: 30px 100px 35px;
-        display: flex;
-        justify-content: center;
-
-        //align-items: center;
-        .content-box {
-          display: inline-block;
-          text-align: left;
-          padding: 30px 0;
-        }
-
-        .text {
-          font-size: 14px;
-          color: #C2D8E8;
-        }
-
-        .square {
-          position: relative;
-          margin-top: 15px;
-          height: 44px;
-
-          border-radius: 3px;
-
-          .active {
-            position: absolute;
-            top: 5px;
-            left: 0;
-            z-index: 2;
-            width: 304/6px;
-            height: 32px;
-            text-align: center;
-          }
-        }
-
-        .expired {
-          margin-top: 13px;
-          margin-bottom: 30px;
-
-          span {
-            color: #3F647D;
-          }
-
-          a {
-            color: #688A9D;
-          }
-        }
-
-        .space-between {
-          display: flex;
-          justify-content: space-between;
-
-          button {
-            border: 0;
-            outline: none;
-          }
-        }
-
-        /*input password 输入框变黄处理*/
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus {
-          -webkit-box-shadow: 0 0 0 1000px #353948 inset !important;
-        }
-
-        .cancel,
-        .confirm {
-          display: inline-block;
-          min-width: 120px;
-          max-width: 160px;
-          //width: 145px;
-          height: 40px;
-          padding: 0 10px;
-          background-color: #5a6cb1;
-          color: #fff;
-          font-size: 16px;
-          border: 0;
-          border-radius: 2px;
-          text-align: center;
-        }
-
-        .cancel {
-          background-color: #d6483e;
-        }
-
-        .confirm {
-          background-color: #27a781;
-        }
-      }
-    }
-  }
-}
+@import './GBBOMain.less';
 </style>

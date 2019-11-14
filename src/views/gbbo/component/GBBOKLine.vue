@@ -70,9 +70,15 @@ export default {
     klineInit() {
       const { highData, lowData, marketData } = this.kline
       const baseDom = this.$refs.kline
+      const klineBox = {
+        width: baseDom.offsetWidth,
+        height: baseDom.offsetHeight
+      }
+      console.log('klineBox', klineBox);
+      
       this._chart = createChart(baseDom, {
-        width: 450,
-        height: 340,
+        width: klineBox.width,
+        height: klineBox.height,
         priceScale: {
           mode: 1,
         },
@@ -108,12 +114,12 @@ export default {
       const areaSeries = this._chart.addLineSeries({
         color: "#2CB48C",
         crosshairMarkerVisible: true,
-        lineWidth: 3
+        lineWidth: 2
       });
       // 最低
       const extraSeries = this._chart.addLineSeries({
         color: "#E83160",
-        lineWidth: 3
+        lineWidth: 2
       });
       // 平均
       const barSeries = this._chart.addLineSeries({
@@ -180,12 +186,7 @@ export default {
 }
 </script>
 <style lang="less">
-  .gbboline{
-    &-box{
-      width: 450px;
-      height: 340px;
-      color: #fff;
-    }
+  .gbboline{    
     &-btns{
       text-align: right;
       background: #041D25;
@@ -198,6 +199,11 @@ export default {
         color: #788390;
         background: transparent;
       }
+    }
+    &-box{
+      width: 450px;
+      height: 320px;
+      color: #fff;
     }
   }
 </style>

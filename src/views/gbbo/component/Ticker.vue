@@ -135,7 +135,7 @@
    .ticker {
       .d-f;
       justify-content: space-between;
-      width: 824px;
+      // width: 824px;
       min-width: 824px;
       height: 40px;
       padding: 2px 6px;

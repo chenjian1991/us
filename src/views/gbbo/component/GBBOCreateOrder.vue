@@ -352,7 +352,7 @@ import {
     //   dealNumber
    } from '@/lib/utils.js'
 export default {
-  name: "gbbo",
+  name: "CreateOrder",
   data() {
     return {
         isLogin:true,
