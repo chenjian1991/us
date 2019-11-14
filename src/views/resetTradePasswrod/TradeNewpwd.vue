@@ -105,7 +105,7 @@
 <script>
 import {setTradingPassword} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi} from '../../../api/axios.js';
-import {getBrowserMessage,splitDomain} from "@/lib/utils.js"
+import {getBrowserMessage} from "@/lib/utils.js"
 
 
     export default {
@@ -168,15 +168,7 @@ import {getBrowserMessage,splitDomain} from "@/lib/utils.js"
                       localStorage.removeItem('ORDER_SESSION')
                       localStorage.setItem('tradingPasswordFlag',true);
                        setTimeout(() => {
-                         if(this.$route.query.originFrom==='otc'){
-                                    let domainurl = splitDomain(document.domain);
-                                    let protocol = document.location.protocol+'//'
-                                    let url = protocol+'otc.'+domainurl+'/#/safeCenter' //测试
-                                    window.location.href = url;
-                         }else{
-                            this.$router.push('/SafeCenter')
-
-                         }
+                         this.$router.push('/SafeCenter')
                        }, 1000);
                   }
                 }).catch((error)=>{

@@ -32,7 +32,7 @@ import {resetLoginPassword} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 import { duration } from 'moment';
- import {getBrowserMessage,splitDomain} from "@/lib/utils.js"
+ import {getBrowserMessage} from "@/lib/utils.js"
 
 
 
@@ -118,14 +118,7 @@ import { duration } from 'moment';
                                     desc: this.$t(11001)
                         });
                         setTimeout(() => {
-                            if(this.$route.query.originFrom==='otc'){
-                                    let domainurl = splitDomain(document.domain);
-                                    let protocol = document.location.protocol+'//'
-                                    let url = protocol+'otc.'+domainurl+'/#/login' // 测试
-                                    window.location.href = url;
-                            }else{
-                                this.$router.push('/login')
-                            }
+                            this.$router.push('/login')
                          }, 1000);
                     }
                 }).catch((error)=>{

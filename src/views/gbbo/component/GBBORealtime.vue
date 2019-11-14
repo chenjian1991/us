@@ -151,7 +151,7 @@
 <script>
 import bigDecimal from 'js-big-decimal' //除法失效
 export default {
-  name: "GBBOMainRealtimeBox",
+  name: "GBBORealtime",
   data() {
     return {
       isScroll:false,

@@ -5,9 +5,11 @@
         <div class="buy-panel buy-sell-common">
             <div>
         <div class="available-container">
-          <div>
-              One Click Arbitrage
-          </div>
+            <Tooltip placement='top' content='One Click Arbitrage'>
+                <div >
+                    Arbitrage
+                </div>
+          </Tooltip>
           <div>
             <img src="../images/Wallet.svg" alt="">
             <span v-if="isLogin">{{briefInputData.quoteCoinAvailable | scientificToNumber}}</span>
@@ -84,7 +86,7 @@
             <em>{{$t("bbjyToTrade")}}</em>
           </button>
           <!-- 买入按钮 -->
-          <button class="mybtn  Arbitrage-btn" :disabled="buyDisabled" @click="buyBtn" v-else>
+          <button class="mybtn  Arbitrage-btn" disabled="true" @click="buyBtn" v-else>
             <span>One Click Arbitrage</span>
           </button>
         </div>
@@ -165,7 +167,7 @@
            <div class="totalMoney-label">
             <em>Fee</em>&nbsp;&nbsp;
             <div>
-                <span id="buy_total" class="total-num">{{buyInTotal}}</span>&nbsp;
+                <span id="buy_total" class="total-num">00</span>&nbsp;
                 <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
             </div>
           </div>
@@ -248,49 +250,6 @@
                   <li @click="choosePercent(item,index,'sell')" :class="{active:itemIndexSell===index}" v-for="(item,index) in percentArr">{{item}}%</li>
               </ul>
           </div>
-          <!-- <div class="range">
-            <div class="path sell-path"></div>
-            <div class="range-ball" data-side="sell" :data="sellBallTotal" @click="changeSailBall">
-              <div class="ball sell-ball" style="left: 0;transform: translateX(0);" data-num="0">
-                <div v-if="sellBallPercentage == '0'" class="active-sellball"></div>
-              </div>
-              <div
-                class="ball sell-ball"
-                style="left: 25%;transform: translateX(-25%);"
-                data-num="0.25"
-              >
-                <div v-if="sellBallPercentage == '0.25'" class="active-sellball"></div>
-              </div>
-              <div
-                class="ball sell-ball"
-                style="left: 50%;transform: translateX(-50%);"
-                data-num="0.5"
-              >
-                <div v-if="sellBallPercentage == '0.5'" class="active-sellball"></div>
-              </div>
-              <div
-                class="ball sell-ball"
-                style="left: 75%;transform: translateX(-75%);"
-                data-num="0.75"
-              >
-                <div v-if="sellBallPercentage == '0.75'" class="active-sellball"></div>
-              </div>
-              <div
-                class="ball sell-ball"
-                style="left: 100%;transform: translateX(-100%);"
-                data-num="1"
-              >
-                <div v-if="sellBallPercentage == '1'" class="active-sellball"></div>
-              </div>
-            </div>
-            <div class="range-num">
-              <div class="num" style="left: 0;transform: translateX(0);">&nbsp;0</div>
-              <div class="num" style="left: 25%;transform: translateX(-25%);">25</div>
-              <div class="num" style="left: 50%;transform: translateX(-50%);">50</div>
-              <div class="num" style="left: 75%;transform: translateX(-75%);">75</div>
-              <div class="num" style="left: 100%;transform: translateX(-100%);">100</div>
-            </div>
-          </div> -->
           <!-- 总价 -->
           <div class="totalMoney-label">
             <em>{{$t("bbjySellTotal")}}</em>&nbsp;&nbsp;
@@ -302,7 +261,7 @@
            <div class="totalMoney-label">
             <em>Fee</em>&nbsp;&nbsp;
             <div>
-                <span id="buy_total" class="total-num">{{buyInTotal}}</span>&nbsp;
+                <span id="buy_total" class="total-num">00</span>&nbsp;
                 <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
             </div>
           </div>
@@ -393,9 +352,9 @@ export default {
         exchangePassWord: null,//交易密码
         setTradePassword: false,//localstorage 是否
         loginToken: $cookies.get('loginToken'),//登陆token
-        arbFlag:false,
-        changeFlag:false,
-        sellFlag:false,
+        arbFlag:true,
+        changeFlag:true,
+        sellFlag:true,
     };
   },
    props: {

@@ -211,7 +211,7 @@ import sendBtn from '../../components/sendBtn'
 import {register,emailRegister,ossjson,ipQuery} from '../../../api/urls.js';
 import {postBaseApi,getApi,getApiLoin} from '../../../api/axios.js';
 import Modaltips from '@/components/Modal';
-import {getBrowserMessage,splitDomain,getUrlKeyandEncode} from "@/lib/utils.js"
+import {getBrowserMessage,getUrlKeyandEncode} from "@/lib/utils.js"
 import {geeTest} from '../../../api/usersystem.js'
 const clickoutside = {
     // 初始化指令
@@ -560,20 +560,13 @@ const clickoutside = {
                             title: this.$t('11001'),
                             desc:this.$t('11001')
                         });
-                        if(this.origin==='otc'){// 从otc过来的注册
-                             let domainurl = splitDomain(document.domain);
-                             let protocol = document.location.protocol+'//'
-                             let url = protocol+'otc.'+domainurl+'/#/login' //测试
-                             window.location.href=url
-                        }else{
-                            this.$router.push({
+                       this.$router.push({
                             path:'/login',
                             query:{
                                 fromWhere:this.$route.query.fromWhere,
                                 src:this.$route.query.src,
                             } 
                         })
-                        }
                         
                     }
                 }).catch((res)=>{
