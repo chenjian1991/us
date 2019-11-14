@@ -15,16 +15,16 @@
             </router-link>
          </div>
       </div>
-      <div class="gbbo bgc-fff pt-lg-11 pb-lg-11 pt-3 pb-5 d-none" id="GBBO">
+      <div class="gbbo bgc-fff pt-lg-11 pb-lg-11 pt-3" id="GBBO">
          <div class="container">
-            <div class="d-flex align-items-center"><span class="f-28 c-1C2730 f-w mr-4">GBBO™</span><span
+            <div class="d-flex align-items-center"><span class="f-28 c-1C2730 f-w-6 mr-4">GBBO™</span><span
                class="f-14 c-77838F">Global Best Bid and Offer</span></div>
             <ul class="gbbo-title-list bgc-F1F5FA mt-4">
                <li class="d-ib f-16 t-c f-w-5 c-77838F gbbo-title-item" v-for="item in gbboTitle">{{item.title}}</li>
             </ul>
             <div class="row justify-content-between pt-3 pb-3 gbbo-box" v-model="gbboList">
                <!--Max Arbitrage-->
-               <div class="col-3 border-right">
+               <div class="col-3 item-line">
                   <div class="f-16 d-flex justify-content-between mb-2">
                      <div>
                         <span class="symbol f-w-5">{{gbboBase.baseAssets}}</span>
@@ -41,7 +41,7 @@
                   </div>
                </div>
                <!--Buy at Global Lowest Price-->
-               <div class="col-3 border-right">
+               <div class="col-3 item-line">
                   <div class="f-16 d-flex justify-content-between align-items-center mb-3">
                      <span class="f-18 c-EB4D59">{{gbboList.sellPrice}}</span>
                      <span class="f-14 c-151D24">From: {{gbboList.sellExchange|marketName}}</span>
@@ -49,7 +49,7 @@
                   <div class="common-style">< Market Avg {{gbboList.sellDiffAvg|compare}}</div>
                </div>
                <!--Sell at Global Highest Price-->
-               <div class="col-3 border-right">
+               <div class="col-3 item-line">
                   <div class="f-16 d-flex justify-content-between align-items-center mb-3">
                      <span class="f-18 c-66B76D">{{gbboList.buyPrice}}</span>
                      <span class="f-14 c-151D24">From: {{gbboList.buyExchange|marketName}}</span>
@@ -75,25 +75,28 @@
             </div>
          </div>
       </div>
-      <div class="gbbo-mobile">
-         <div class="d-flex justify-content-between">
-            <div>{{symbol}}</div>
-            <div>Max Arbitrage:{{gbboList.avg}}</div>
+      <div class="gbbo-mobile d-none">
+         <div>
+            <div class="d-flex justify-content-between mobile-title">
+               <div class="f-16 f-w-6 c-151D24">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</div>
+               <div><span class="f-14 f-w-5 c-151D24">Max Arbitrage: </span><span class="f-18 f-w-6 c-01B2D6">{{gbboList.avg}}</span>
+               </div>
+            </div>
+            <ul class="list">
+               <li class="item">
+                  <h4 class="f-30 c-EB4D59">{{gbboList.sellPrice}}</h4>
+                  <p class="f-16 c-77838F">Buy at Lowest</p>
+               </li>
+               <li class="item">
+                  <h4 class="f-30 c-EB4D59">{{gbboList.buyPrice}}</h4>
+                  <p class="f-16 c-77838F">Sell at Highest</p>
+               </li>
+               <li class="item">
+                  <h4 class="f-30 c-151D24">{{gbboList.sellPrice}}</h4>
+                  <p class="f-16 c-77838F">Market Avg Price</p>
+               </li>
+            </ul>
          </div>
-         <ul class="list">
-            <li class="item">
-               <h4 class="f-30 c-EB4D59">{{gbboList.sellPrice}}</h4>
-               <p class="f-16 c-77838F">Buy at Lowest</p>
-            </li>
-            <li class="item">
-               <h4 class="f-30 c-EB4D59">{{gbboList.buyPrice}}</h4>
-               <p class="f-16 c-77838F">Sell at Highest</p>
-            </li>
-            <li class="item">
-               <h4 class="f-30 c-151D24">{{gbboList.sellPrice}}</h4>
-               <p class="f-16 c-77838F">Market Avg Price</p>
-            </li>
-         </ul>
       </div>
 
       <!--GBBOTM-->
@@ -182,7 +185,7 @@
                   <div class="pl-lg-10 pr-lg-10 mt-3 mt-lg-0">
                      <h4 class="f-30 c-d-black mb-2 mt-lg-7">Join the Innovation.</h4>
                      <p class="f-16 f-w-5 c-d-black mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
-                     <section class="f-16 c-d-black mb-2 f-w-5">
+                     <section class="f-16 c-77838F mb-2 f-w-5">
                         Given the maturation of the crypto, token, and digital asset markets, the trading standards and
                         operations found in current exchanges are woefully underdeveloped when compared with those of
                         traditional markets. Tresso’s institutional-grade trading with Global Best Bid and Offer is a
@@ -752,19 +755,49 @@
       }
 
    }
-   .gbbo-mobile{
 
+   .gbbo-mobile {
+      .mobile-title {
+         padding: 20px;
+         line-height: 60px;
+      }
+      .list {
+         .bgc-F1F5FA;
+         padding: 22px 0;
+         .item {
+            position: relative;
+            .d-ib;
+            width: 100/3%;
+            .t-c;
+            &:after {
+               content: "";
+               position: absolute;
+               border-right: solid 1px #E2E5EE;
+               right: -1px;
+               top: 18px;
+               bottom: 18px;
+            }
+
+         }
+      }
    }
 
    .gbbo-box {
+      position: relative;
       border-bottom: 1px #E2E5EE solid;
-
    }
 
-   .border-right {
-      width: 0;
-      height: 46px;
-      border-right: solid 1px #E2E5EE;
+   .item-line {
+      &:after {
+         content: "";
+         position: absolute;
+         border-right: solid 1px #E2E5EE;
+         /*width: 1px;*/
+         /*background-color: #E2E5EE;*/
+         right: -1px;
+         top: 12px;
+         bottom: 12px;
+      }
    }
 
 </style>
