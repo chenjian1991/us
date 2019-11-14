@@ -1703,7 +1703,6 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                this.baseAssetAvailable = subNumberPoint(0, baseAssetQuantityLong)
                this.quoteCoinAvailable = subNumberPoint(0, quoteAssetQuantityLong)
               
-               console.log('cccc',this.briefInputData)
                data.map((v, i) => {
                   if (v.currency === 'FF' && v.available == 0 && this.commissionTemplateId) {
                      //FF为0 折扣开关一打开
