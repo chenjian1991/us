@@ -19,171 +19,144 @@
          <div class="container">
             <div class="d-flex align-items-center"><span class="f-28 c-1C2730 f-w mr-4">GBBO™</span><span
                class="f-14 c-77838F">Global Best Bid and Offer</span></div>
-            <!-- <div class="bgc3 f-16 c-blue br-4 f-w mt-4 mb-3 title-box">USD</div> -->
-            <ul class="gbbo-title-box">
-               <li class="d-i-b f-16 t-c f-w-5 c-77838F" v-for="item in gbboTitle">{{item.title}}</li>
+            <ul class="gbbo-title-list bgc-F1F5FA mt-4">
+               <li class="d-ib f-16 t-c f-w-5 c-77838F gbbo-title-item" v-for="item in gbboTitle">{{item.title}}</li>
             </ul>
+            <div class="row justify-content-between pt-3 pb-3 gbbo-box">
+               <!--Max Arbitrage-->
+               <div class="col-3 border-right">
+                  <div class="f-16 d-flex justify-content-between mb-2">
+                     <div>
+                        <span class="symbol f-w-5">{{gbboList.base.baseAssets}}</span>
+                        <span class="symbol f-w-5">{{gbboList.base.quoteAssets}}</span>
+                     </div>
+                     <router-link :to="{path:'exchange',query:{symbol:symbol}}"
+                                  class="btn btn-sm btn-primary transition-3d-hover c-01B2D6 f-12 trade-btn">
+                        One-Click Arbitrage
+                     </router-link>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-baseline">
+                     <span class="f-20 c-01B2D6">{{gbboList.base.price}}</span>
+                     <span class="common-style">Amount：{{gbboList.base.vol}}</span>
+                  </div>
+               </div>
+               <!--Buy at Global Lowest Price-->
+               <div class="col-3 border-right" v-model="gbboList.sell">
+                  <div class="f-16 d-flex justify-content-between align-items-center mb-3">
+                     <span class="f-18 c-EB4D59">{{gbboList.sell.price}}</span>
+                     <span class="f-14 c-151D24">From: {{gbboList.sell.exchange|marketName}}</span>
+                  </div>
+                  <div class="common-style">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
+               </div>
+               <!--Sell at Global Highest Price-->
+               <div class="col-3 border-right" v-model="gbboList.buy">
+                  <div class="f-16 d-flex justify-content-between align-items-center mb-3">
+                     <span class="f-18 c-66B76D">{{gbboList.buy.price}}</span>
+                     <span class="f-14 c-151D24">From: {{gbboList.buy.exchange|marketName}}</span>
+                  </div>
+                  <div class="common-style">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
+               </div>
+               <!--Market Avg Price-->
+               <div class="col-3" v-model="gbboList.avg">
+                  <div class="f-16 d-flex justify-content-between align-items-center mb-3">
+                     <span class="f-18 c-151D24">{{gbboList.avg.price|compare}}</span>
+                     <span class="f-14 c-66B76D">{{gbboList.avg.change}}</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                     <span class="common-style">24h Vol：</span>
+                     <span class="common-style">{{gbboList.base.vol}}</span>
+                  </div>
+               </div>
+            </div>
+
             <div class="container gbboTableWrap">
                <div class="gbboTable">
-                  <div class="row justify-content-between" v-model="gbboList">
-                     <div class="col-3 p-0" v-model="gbboList.base">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Market Avg Price</div>
-                        <div class="dataWrap pb-3">
-                           <div class="dataInner pl-5 pr-5">
-                              <div class="f-16 d-flex justify-content-between mb-2">
-                                 <div>
-                                    <span class="c-fff f-w-5">{{gbboList.base.baseAssets}}</span>
-                                    <span class="c-fff f-w-5">{{gbboList.base.quoteAssets}}</span>
-                                 </div>
-                                 <div>{{gbboList.base.price}}</div>
-                              </div>
-                              <div>
-                                 <span class="f-14 c-fff">24h Vol：{{gbboList.base.vol}}</span>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-3 p-0" v-model="gbboList.sell">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Buy at Global Lowest Price</div>
-                        <div class="dataWrap pb-3">
-                           <div class="dataInner pl-5 pr-5">
-                              <div class="f-16 d-flex justify-content-between mb-2">
-                                 <span class="redNum">{{gbboList.sell.price}}</span>
-                                 <span>From:{{gbboList.sell.exchange|marketName}}</span>
-                              </div>
-                              <div class="f-14 c-fff">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-3 p-0" v-model="gbboList.buy">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Sell at Global Highest Price</div>
-                        <div class="dataWrap pb-3">
-                           <div class="dataInner pl-5 pr-5">
-                              <div class="f-16 d-flex justify-content-between mb-2">
-                                 <span class="greenNum">{{gbboList.buy.price}}</span>
-                                 <span class="c-fff">From:{{gbboList.buy.exchange|marketName}}</span>
-                              </div>
-                              <div class="f-14 c-fff">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-3 p-0" v-model="gbboList.avg">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Arbitrage</div>
-                        <div class="dataWrap pb-3">
-                           <div class="dataInner pl-5 noBorder">
-                              <div class="d-flex justify-content-between">
-                                 <div>
-                                    <div class="f-16 c-fff mb-2 c-blue">{{gbboList.avg.price|compare}}</div>
-                                    <div class="f-14 c-fff">Est Return {{gbboList.avg.change}}</div>
-                                 </div>
-                                 <div class="d-flex align-items-center">
-                                    <!-- <router-link :to="{path:'exchange',query:{symbol:symbol}}"
-                                                class="btn btn-sm btn-primary transition-3d-hover c-blue f-14 trade-btn">
-                                       Instant Trade
-                                    </router-link> -->
-                                    <div class="btn btn-sm btn-primary c-blue f-14 trade-btn lock">
-                                       Instant Trade
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
                </div>
             </div>
          </div>
       </div>
 
       <!--GBBO-->
-      <div class="gbbo bgc2 pt-lg-11 pb-lg-11 pt-3 pb-5" id="GBBO">
-         <div class="container">
-            <div class="d-flex align-items-center"><span class="f-28 c-fff f-w mr-4">GBBO™</span><span
-               class="f-14 c-d-gray">Global Best Bid and Offer</span></div>
-            <!-- <div class="bgc3 f-16 c-blue br-4 f-w mt-4 mb-3 title-box">USD</div> -->
-            <div class="container gbboTableWrap">
-               <div class="gbboTable">
-                  <div class="row justify-content-between" v-model="gbboList">
-                     <div class="col-3 p-0" v-model="gbboList.base">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Market Avg Price</div>
-                        <div class="dataWrap pb-3">
-                           <div class="dataInner pl-5 pr-5">
-                              <div class="f-16 d-flex justify-content-between mb-2">
-                                 <div>
-                                    <span class="c-fff f-w-5">{{gbboList.base.baseAssets}}</span>
-                                    <span class="c-fff f-w-5">{{gbboList.base.quoteAssets}}</span>
-                                 </div>
-                                 <div>{{gbboList.base.price}}</div>
-                              </div>
-                              <div>
-                                 <span class="f-14 c-fff">24h Vol：{{gbboList.base.vol}}</span>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-3 p-0" v-model="gbboList.sell">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Buy at Global Lowest Price</div>
-                        <div class="dataWrap pb-3">
-                           <div class="dataInner pl-5 pr-5">
-                              <div class="f-16 d-flex justify-content-between mb-2">
-                                 <span class="redNum">{{gbboList.sell.price}}</span>
-                                 <span>From:{{gbboList.sell.exchange|marketName}}</span>
-                              </div>
-                              <div class="f-14 c-fff">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-3 p-0" v-model="gbboList.buy">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Sell at Global Highest Price</div>
-                        <div class="dataWrap pb-3">
-                           <div class="dataInner pl-5 pr-5">
-                              <div class="f-16 d-flex justify-content-between mb-2">
-                                 <span class="greenNum">{{gbboList.buy.price}}</span>
-                                 <span class="c-fff">From:{{gbboList.buy.exchange|marketName}}</span>
-                              </div>
-                              <div class="f-14 c-fff">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-3 p-0" v-model="gbboList.avg">
-                        <div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Arbitrage</div>
-                        <div class="dataWrap pb-3">
-                           <div class="dataInner pl-5 noBorder">
-                              <div class="d-flex justify-content-between">
-                                 <div>
-                                    <div class="f-16 c-fff mb-2 c-blue">{{gbboList.avg.price|compare}}</div>
-                                    <div class="f-14 c-fff">Est Return {{gbboList.avg.change}}</div>
-                                 </div>
-                                 <div class="d-flex align-items-center">
-                                    <!-- <router-link :to="{path:'exchange',query:{symbol:symbol}}"
-                                                class="btn btn-sm btn-primary transition-3d-hover c-blue f-14 trade-btn">
-                                       Instant Trade
-                                    </router-link> -->
-                                    <div class="btn btn-sm btn-primary c-blue f-14 trade-btn lock">
-                                       Instant Trade
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!--Why Tresso?-->
-      <div class="pb-11">
-         <Rowbox :rowLists="tresso">
-            <div :slot="item.name" class="tresso mt-4" v-for="(item,i) in tressoList" :key="i">
-               <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
-                  <img v-lazy='item.img' class="tresso-img">
-                  <p class="f-20 c-d-black mt-6 mb-2 f-w-6">{{item.title}}</p>
-                  <section class="f-16 c-d-gray f-w-5">{{item.section}}</section>
-               </div>
-            </div>
-         </Rowbox>
-      </div>
+      <!--<div class="gbbo bgc2 pt-lg-11 pb-lg-11 pt-3 pb-5" id="GBBO">-->
+      <!--<div class="container">-->
+      <!--<div class="d-flex align-items-center"><span class="f-28 c-fff f-w mr-4">GBBO™</span><span-->
+      <!--class="f-14 c-d-gray">Global Best Bid and Offer</span></div>-->
+      <!--&lt;!&ndash; <div class="bgc3 f-16 c-01B2D6 br-4 f-w mt-4 mb-3 title-box">USD</div> &ndash;&gt;-->
+      <!--<div class="container gbboTableWrap">-->
+      <!--<div class="gbboTable">-->
+      <!--<div class="row justify-content-between" v-model="gbboList">-->
+      <!--<div class="col-3 p-0" v-model="gbboList.base">-->
+      <!--<div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Market Avg Price</div>-->
+      <!--<div class="dataWrap pb-3">-->
+      <!--<div class="dataInner pl-5 pr-5">-->
+      <!--<div class="f-16 d-flex justify-content-between mb-2">-->
+      <!--<div>-->
+      <!--<span class="c-fff f-w-5">{{gbboList.base.baseAssets}}</span>-->
+      <!--<span class="c-fff f-w-5">{{gbboList.base.quoteAssets}}</span>-->
+      <!--</div>-->
+      <!--<div>{{gbboList.base.price}}</div>-->
+      <!--</div>-->
+      <!--<div>-->
+      <!--<span class="f-14 c-fff">24h Vol：{{gbboList.base.vol}}</span>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-3 p-0" v-model="gbboList.sell">-->
+      <!--<div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Buy at Global Lowest-->
+      <!--Price-->
+      <!--</div>-->
+      <!--<div class="dataWrap pb-3">-->
+      <!--<div class="dataInner pl-5 pr-5">-->
+      <!--<div class="f-16 d-flex justify-content-between mb-2">-->
+      <!--<span class="redNum">{{gbboList.sell.price}}</span>-->
+      <!--<span>From:{{gbboList.sell.exchange|marketName}}</span>-->
+      <!--</div>-->
+      <!--<div class="f-14 c-fff">< Market Avg {{gbboList.sell.diffAvg|compare}}</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-3 p-0" v-model="gbboList.buy">-->
+      <!--<div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Sell at Global Highest-->
+      <!--Price-->
+      <!--</div>-->
+      <!--<div class="dataWrap pb-3">-->
+      <!--<div class="dataInner pl-5 pr-5">-->
+      <!--<div class="f-16 d-flex justify-content-between mb-2">-->
+      <!--<span class="greenNum">{{gbboList.buy.price}}</span>-->
+      <!--<span class="c-fff">From:{{gbboList.buy.exchange|marketName}}</span>-->
+      <!--</div>-->
+      <!--<div class="f-14 c-fff">> Market Avg {{gbboList.buy.diffAvg|compare}}</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-3 p-0" v-model="gbboList.avg">-->
+      <!--<div class="f-16 bgc3 br-4 text-center list-box c-fff mb-3 dataTitle">Arbitrage</div>-->
+      <!--<div class="dataWrap pb-3">-->
+      <!--<div class="dataInner pl-5 noBorder">-->
+      <!--<div class="d-flex justify-content-between">-->
+      <!--<div>-->
+      <!--<div class="f-16 c-fff mb-2 c-01B2D6">{{gbboList.avg.price|compare}}</div>-->
+      <!--<div class="f-14 c-fff">Est Return {{gbboList.avg.change}}</div>-->
+      <!--</div>-->
+      <!--<div class="d-flex align-items-center">-->
+      <!--&lt;!&ndash; <router-link :to="{path:'exchange',query:{symbol:symbol}}"-->
+      <!--class="btn btn-sm btn-primary transition-3d-hover c-01B2D6 f-14 trade-btn">-->
+      <!--Instant Trade-->
+      <!--</router-link> &ndash;&gt;-->
+      <!--<div class="btn btn-sm btn-primary c-01B2D6 f-14 trade-btn lock">-->
+      <!--Instant Trade-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
       <!--GBBO-->
       <div class="gbboTM-box pb-11 bgc2">
          <Rowbox :rowLists="gbboTM">
@@ -196,8 +169,11 @@
                   with:
                </section>
             </div>
-            <Collapse></Collapse>
-            <p class="f-16 c-blue">This power is not currently available in any single exchange, regardless of
+            <!--<Collapse></Collapse>-->
+            <div>
+
+            </div>
+            <p class="f-16 c-01B2D6">This power is not currently available in any single exchange, regardless of
                size, and only available at Tresso.</p>
          </Rowbox>
       </div>
@@ -210,8 +186,20 @@
             </div>
          </div>
       </div>
+      <!--Why Tresso?-->
+      <div class="pb-11 bgc2">
+         <Rowbox :rowLists="tresso">
+            <div :slot="item.name" class="tresso mt-4" v-for="(item,i) in tressoList" :key="i">
+               <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
+                  <img v-lazy='item.img' class="tresso-img">
+                  <p class="f-20 c-fff mt-6 mb-2 f-w-6">{{item.title}}</p>
+                  <section class="f-16 c-gray-b f-w-5">{{item.section}}</section>
+               </div>
+            </div>
+         </Rowbox>
+      </div>
       <!--2 ways to connect-->
-      <div class="connect-box bgc3">
+      <div class="connect-box bgc-EBEFF5">
          <Rowbox :rowLists="connect" class="pb-5">
             <div :slot="item.name" class="connect bgc-fff br-8 p-lg-7 pr-lg-9 mt-3 p-5" v-for="(item,i) in connectList"
                  :key="i">
@@ -230,11 +218,12 @@
                   <img v-lazy='require("../../assets/images/tresso/manager.png")' class="manager-img">
                </div>
                <div class="col-md-7">
-                  <div>
+                  <div class=" mt-3 mt-lg-0">
                      <img src="../../assets/images/tresso/left.png" class="manager-icon" alt="">
                   </div>
-                  <div class="pl-lg-10 pr-lg-10">
-                     <h4 class="f-30 c-d-black mb-3 mt-lg-7">Join the Innovation.</h4>
+                  <div class="pl-lg-10 pr-lg-10 mt-3 mt-lg-0">
+                     <h4 class="f-30 c-d-black mb-2 mt-lg-7">Join the Innovation.</h4>
+                     <p class="f-16 f-w-5 c-d-black mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
                      <section class="f-16 c-d-black mb-2 f-w-5">
                         Given the maturation of the crypto, token, and digital asset markets, the trading standards and
                         operations found in current exchanges are woefully underdeveloped when compared with those of
@@ -245,12 +234,10 @@
                         participation
                         in nontraditional digital assets such as crypto.
                      </section>
-                     <p class="f-14 c-d-gray mb-2">David Weild, Former Vice Chairman of Nasdaq</p>
                   </div>
-                  <div class="t-r mt-lg-7">
+                  <div class="t-r mt-lg-7 mt-3 mt-lg-0">
                      <img src="../../assets/images/tresso/right.png" class="manager-icon" alt="">
                   </div>
-
                </div>
             </div>
          </div>
@@ -259,8 +246,8 @@
       <div class="partners-box bgc3 pt-lg-11 pb-lg-11">
          <div class="container pt-4 pb-4">
             <h3 class="f-36 c-fff f-w t-c">PARTNERS</h3>
-            <ul class="row p-3 mt-lg-11 d-flex justify-content-between">
-               <li v-for="item in partnersList">
+            <ul class="p-3 mt-lg-11 partners">
+               <li v-for="item in partnersList" class="partners-li">
                   <img v-lazy="item.img" class="partners-img">
                </li>
             </ul>
@@ -271,7 +258,7 @@
          <div class="container p-lg-11">
             <h3 class="f-36 c-d-black f-w t-c">Want more efficient trading?</h3>
             <p class="f-18 c-d-gray mt-3">Tresso is currently in closed beta. Sign up now to be first on the list.</p>
-            <router-link to='/register' class="btn btn-sm transition-3d-hover bgc-blue f-14 mt-7 c-fff trading-btn">
+            <router-link to='/register' class="btn btn-sm btn-primary transition-3d-hover button bgc-blue f-14 mt-7">
                Join the Beta
             </router-link>
          </div>
@@ -305,12 +292,12 @@
             if (value < 0) return 0
             return value
          },
-         marketName(name){
-            if(name === 'E55'){
+         marketName(name) {
+            if (name === 'E55') {
                return 'TRESSO'
-            }else if(name === 'GEMINI' || name === 'KRAKEN' || name === 'BITTREX' || name === 'COINBASEPRO'){
+            } else if (name === 'GEMINI' || name === 'KRAKEN' || name === 'BITTREX' || name === 'COINBASEPRO') {
                return name
-            }else{
+            } else {
                return 'Node of Apifiny'
             }
          }
@@ -348,7 +335,7 @@
             },
             tresso: {
                title: 'Why Tresso?',
-               default: true,
+               default: false,
                list: [
                   [{
                      num: 4,
@@ -397,7 +384,7 @@
             },
             connect: {
                title: 'Two ways to connect',
-               default: false,
+               default: true,
                list: [
                   [{
                      num: 6,
@@ -593,6 +580,19 @@
    @import '../../assets/css/common.less';
 
    .home {
+      @media screen and (min-width: 1200px) {
+         .partners{
+            .d-f;
+            justify-content: space-between;
+         }
+      }
+      @media screen and (max-width: 1200px) {
+         .partners{
+            .partners-li{
+               text-align: center;
+            }
+         }
+      }
       @media screen and (min-width: 768px) {
          .top {
             padding-top: 189px;
@@ -616,7 +616,24 @@
             max-width: 750px;
          }
       }
-
+      .gbbo {
+         .gbbo-title-list {
+            width: 100%;
+            border-radius: 4px 4px 0px 0px;
+            .gbbo-title-item {
+               width: 25%;
+               height: 50px;
+               line-height: 50px;
+            }
+         }
+         .symbol {
+            .c-151D24;
+         }
+         .common-style {
+            .c-77838F;
+            .f-14
+         }
+      }
       .title-box {
          height: 60px;
          line-height: 60px;
@@ -629,7 +646,7 @@
       .trade-btn {
          border-color: #01B2D6;
          background-color: transparent;
-         padding: 7px 11px;
+         padding: 5px 8px;
       }
       .tresso {
          .tresso-img {
@@ -669,7 +686,7 @@
          }
       }
       .connect-bg {
-         background: #1A232B url("../../assets/images/tresso/connectBg.png") top center;
+         background: #EBEFF5 url("../../assets/images/tresso/connectBg.png") top center;
          background-size: cover;
          height: 80px;
       }
@@ -682,8 +699,7 @@
       }
       .free-box {
          .free-img {
-            width: 1110px;
-            /*width: 100%;*/
+            width: 100%;
          }
       }
       .manager-box {
@@ -724,36 +740,39 @@
       }
 
    }
-   .gbboTableWrap{
-      overflow: auto;
-      padding:0;
-      .gbboTable{
-         width:1095px;
-         color: #fff;
-         .dataTitle{
-            color: #fff;
+
+   .gbbo-box {
+      border-bottom: 1px #E2E5EE solid;
+
+   }
+
+   .border-right {
+      width: 0;
+      height: 46px;
+      border-right: solid 1px #E2E5EE;
+   }
+
+   .dataTitle {
+      color: #fff;
+   }
+
+   .dataWrap {
+      .dataInner {
+         border-right: 1px #2E3D49 solid;
+         &.noBorder {
+            border-right: none;
          }
-         .dataWrap{
-            border-bottom: 1px #2E3D49 solid;
+         .redNum {
+            color: #EB4D59;
+         }
+         .greenNum {
+            color: #66B76D;
+         }
+         .lock {
+            background-color: gray;
+            border: none;
             color: #fff;
-            .dataInner{
-               border-right: 1px #2E3D49 solid;
-               &.noBorder{
-                  border-right: none;
-               }
-               .redNum{
-                  color: #EB4D59;
-               }
-               .greenNum{
-                  color:#66B76D;
-               }
-               .lock{
-                  background-color: gray;
-                  border: none;
-                  color: #fff;
-                  cursor: not-allowed;
-               }
-            }
+            cursor: not-allowed;
          }
       }
    }
