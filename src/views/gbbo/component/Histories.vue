@@ -1,5 +1,5 @@
 <template>
-  <div id="historisWrap">
+  <div class="gbbo-historiswrap">
     <div class="historis">
       <ul class="tabName">
         <li :class="{active:arbitrageIsShow}" @click="showTable('arbitrageIsShow')">Arbitrage History</li>
@@ -191,8 +191,8 @@ export default {
 </script>
 
 <style lang="less">
-#historisWrap {
-  width: 100%;
+.gbbo-historiswrap {
+  
   .historis {
     width: 100%;
     background-color: #031419;
@@ -242,6 +242,7 @@ export default {
     .tableWrap{
       position: relative;
       height: 221px;
+      padding: 0 6px;
       overflow: auto;
       table {
         width: 100%;

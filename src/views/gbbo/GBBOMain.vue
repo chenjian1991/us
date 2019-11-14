@@ -36,7 +36,10 @@
         <!--K线-->
         <div class="gbbomain-realtime__line">
           <gbbo-kline></gbbo-kline>
-          <!-- <gbbo-histories></gbbo-histories> -->
+          <div class="gbbomain-realtime__line-history">
+            <gbbo-histories
+            :currentSymbol="currentSymbol"></gbbo-histories>
+          </div>
         </div>
       </div>
       <!-- 当前订单，历史订单 -->
@@ -445,7 +448,7 @@ export default {
       this.buyDisabled = false
       this.sellDisabled = false
       //更新交易历史 传入v 获取精度
-      this.updateSymbolHistory()
+      // this.updateSymbolHistory()
       this.getGBBODepth()
       this.buy_input_change = false
       this.sell_input_change = false
