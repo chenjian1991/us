@@ -625,7 +625,8 @@ export default {
           
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD', (message) => {
             if (message.body) {
-              this.maxArbitrageBook(JSON.parse(message.body))
+              // this.maxArbitrageBook(JSON.parse(message.body))
+              this.maxArbitrageList = JSON.parse(message.body)
             }
           });
         }, (error) => {
@@ -696,11 +697,9 @@ export default {
           this.isShowARB = "Spread"
       }
     },
-    maxArbitrageBook(data) {
-      
-      this.maxArbitrageList = data;
-
-    },
+    // maxArbitrageBook(data) {
+    //   this.maxArbitrageList = data;
+    // },
     //获取推送行情
     getSSERealTime(url) {
       let SSEcache = null

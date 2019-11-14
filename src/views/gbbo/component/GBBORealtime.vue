@@ -12,13 +12,13 @@
             <li v-for="v in maxArbitrageList">
               <span class="arb">{{v.priceSubtract}}</span>
               <span class="amount text-right">{{v.qtySubtract}}</span>
-              <span class="time text-right">{{v.dateTime}}</span>
+              <span class="time text-right">{{v.dateTime | formatTime}}</span>
             </li>
           </ul>
         </div>
         <div class="realtime-item-footer arb-footer">
           <p>Last Arbitrage</p>
-          <span class="last-arb">21.31</span>
+          <span v-if="maxArbitrageList.length > 0" class="last-arb">{{maxArbitrageList[0].priceSubtract}}</span>
         </div>
       </div>
       <div class="realtime-item" style="margin: 0 6px;">
@@ -154,7 +154,8 @@ export default {
     },
     formatTime: function (value) {
       if (!value) return ''
-      return bigDecimal.round(value, 2)
+      // 2019-11-14T11:52:46.063+0000
+      return value.slice(11,19)
     }
   },
   components: {}
