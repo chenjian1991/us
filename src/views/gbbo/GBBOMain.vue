@@ -23,8 +23,16 @@
             </gbbo-realtime>
           </div>
           <!--买入卖出 -->
-          <div class="gbbomain-realtime_transaction">
-            <create-order></create-order>
+          <div class="gbbomain-realtime__transaction">
+            <create-order
+              @buyBtn='buyBtn'
+              @sellBtn='sellBtn'
+              :briefInputData='briefInputData'
+              :buyInputPrice='buyInputPrice'
+              :sellInputPrice='sellInputPrice'
+              :currentSymbol='currentSymbol'
+              :symbolList='symbolList'
+            ></create-order>
           </div>
         </div>
         <!--K线-->
@@ -171,6 +179,12 @@ export default {
   },
   data(){
     return{
+      briefInputData:{
+        quoteCoinAvailable:'',
+        baseAssetAvailable:'',
+      },
+      buyInputPrice:0,
+      sellInputPrice:0,
       openTradePassword: false, // 是否打开交易密码
       // 是否设置交易密码
       isSetTradePasswrod: false,
@@ -617,6 +631,7 @@ export default {
           this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
           this.buyPriceInput = this.bestSellPrice
           // this.$refs.buyInput.value = this.bestSellPrice
+          this.buyInputPrice = this.bestSellPrice;
       }
 
       this.gbbo_bidsArr = result.bids.map((val) => {
@@ -634,6 +649,7 @@ export default {
           this.sell_exchange_logo = result.bids[0].provider // 交易所logo
           this.sellPriceInput = this.bestBuyPrice
           // this.$refs.sellInput.value = this.bestBuyPrice
+          this.sellInputPrice = this.bestBuyPrice;
 
       }
       var diff = this.bestSellPrice - this.bestBuyPrice
@@ -1014,6 +1030,11 @@ export default {
               this.baseAssetAvailable = subNumberPoint(v.available, baseAssetQuantityLong)
           } else if (v.currency === this.currentSymbolObj.quoteAsset) {
               this.quoteCoinAvailable = subNumberPoint(v.available, quoteAssetQuantityLong)
+          }
+          // 给子组件传餐
+          this.briefInputData = {
+            quoteCoinAvailable: this.quoteCoinAvailable,
+            baseAssetAvailable: this.baseAssetAvailable,
           }
         })
         this.myBanalceTimer = setTimeout(() => {
