@@ -797,6 +797,7 @@ export default {
           this.symbolList = {};
           res.map((v, i) => {
             this.symbolList[v.symbol] = v
+            
           })
           //增加蒙层逻辑
           this.isShowTradeMask();
