@@ -18,9 +18,7 @@
               :gbboBidsArr="gbbo_bidsArr"
               :bestSellPrice="bestSellPrice"
               :bestBuyPrice="bestBuyPrice"
-              @getClickSellPrice="getClickSellPrice"
-              @getClickBuyPrice="getClickBuyPrice">
-            </gbbo-realtime>
+            ></gbbo-realtime>
           </div>
           <!--买入卖出 -->
           <div class="gbbomain-realtime__transaction">
