@@ -1594,6 +1594,13 @@ export default {
   background: #000;
   &-realtime{
     display: flex;
+    padding: 6px 0;
+    &__item{
+      margin-right: 6px;
+    }
+    &__box{
+      padding-top: 6px;
+    }
   }
   &-transaction{
     display: flex;
