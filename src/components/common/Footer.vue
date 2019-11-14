@@ -99,8 +99,8 @@ export default {
         }
       }
       &__logo{
-        width: 110px;
-        height: 40px;
+        width: 120px;
+        height: 45px;
         background: url('../../assets/images/tressoHeader/logo.png') center center no-repeat/100% 100%;
       }
       &__subTitle{
@@ -120,15 +120,23 @@ export default {
   @media screen and (max-width: 710px){
     .footer{
       &-info{
-        width: 410px;
+        width: 100%;
         margin: 0 auto;
         justify-content: center;
-        flex-direction: column; 
+        flex-direction: column;
+        padding-left: 10%;
+        &__img{
+          width: 100%;
+          height: auto;
+        } 
+        &__link{
+          margin-top: 28px;
+        }
         &__title{
           padding-bottom: 20px;
         }
         &__logo{
-          margin-top: 30px;
+          margin-top: 41px;
         }
       }
     }
