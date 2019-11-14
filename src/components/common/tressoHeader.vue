@@ -26,12 +26,12 @@
                   <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
                      <!--left-->
                      <ul class="navbar-nav">
-                        <li class="nav-item u-header__nav-item header-box">
-                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
-                        </li>
                         <li
                            class="nav-item u-header__nav-item header-box">
                            <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO™</a>
+                        </li>
+                        <li class="nav-item u-header__nav-item header-box">
+                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box header-box">
