@@ -429,7 +429,6 @@ export default {
           }
       },
        buyBtn() {
-           debugger
             let params = {
                 buyPriceInput:this.buyPriceInput,
                 buyCountInput:this.buyCountInput,
@@ -437,7 +436,6 @@ export default {
            this.$emit('buyBtn',params)
          },
          sellBtn() {
-             debugger
              let params = {
                 sellPriceInput:this.sellPriceInput,
                 sellCountInput:this.sellCountInput,
@@ -537,9 +535,8 @@ export default {
                   align-items: center;
                 }
                 .border-line{
-                    >div{
-                         border-right: 1px dashed #083441;
-                    }
+                         border-right: 1px dashed#083441;
+                         height: 240px;
                 }
                 .buy-sell-common {
                   width: 270px;

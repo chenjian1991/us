@@ -1590,7 +1590,6 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
          //**********************下单 买入卖出 */
          //数量百分比球
          changeBuyBall(e, val) {
-            debugger
             if (this.isLogin) {
                let value = ''
                if (e) {
@@ -2014,7 +2013,6 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
             }
          },
          sellBtn(callbackData) {
-            debugger
             this.sellCountInput = callbackData.sellCountInput;
             this.sellPriceInput = callbackData.sellPriceInput;
             window._czc.push(["_trackEvent", '币币交易页面', '点击', '卖出按钮', 0, 'sellBtn']);
@@ -2216,7 +2214,6 @@ import GBBOCreateOrder from '../gbbo/component/GBBOCreateOrder'
                this.sellDisabled = true;
                this.buyDisabled = true;
                if (this.isGBBO) {
-                  debugger
                   this.exchange.createGBBOOrder(
                      {
                         "symbol": this.currentSymbol,
