@@ -78,9 +78,7 @@
             <li v-else v-for="v in myCompletedList_sort" class="orderItem">
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.createdAt}}</div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.symbol}}</div>
-              <div
-                :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
-              >{{$t(v.orderType)}}</div>
+              <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{$t(v.orderType)}}</div>
               <div
                 :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'',v.orderSide === 'BUY'?'greenText':'redText']"
               >{{$t(v.orderSide)}}</div>
@@ -108,7 +106,7 @@ export default {
   name: "gbbo",
   data() {
     return {
-      hideCancleOrder: false,
+      hideCancleOrder: false
     };
   },
   created() {},
@@ -117,13 +115,13 @@ export default {
     myOpenList: {
       type: Array,
       default: function() {
-        return []
+        return [];
       }
     },
     myCompletedList: {
       type: Array,
       default: function() {
-        return []
+        return [];
       }
     }
   },
@@ -139,146 +137,149 @@ export default {
     }
   },
   methods: {
-    cancelMyOrder(orderId, v){
-      this.$emit("cancelMyOrder", orderId, v)
-    },
+    cancelMyOrder(orderId, v) {
+      this.$emit("cancelMyOrder", orderId, v);
+    }
   },
   components: {}
 };
 </script>
 <style lang="less">
-.below {
-
-  .open-order {
-    margin-bottom:6px;
-  }
-  .open-order,
-  .history {
+.gbbomain-order-box {
+  flex: 1;
+  .below {
     width: 100%;
-    background: #031419;
-    min-height: 160px;
+    .open-order {
+      margin-bottom: 6px;
+    }
+    .open-order,
+    .history {
+      width: 100%;
+      background: #031419;
+      min-height: 160px;
 
-    .space-between {
-      display: flex;
-      justify-content: space-between;
-      box-sizing: border-box;
-      height: 30px;
-      background: #041D25;
-      padding: 0 6px;
-      border-bottom: 1px solid #000;
-      li {
+      .space-between {
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
         height: 30px;
-        line-height: 30px;
-        font-size: 12px;
-        color: #D4D4D4;
-        font-weight: 500;
-
-        a {
-          color: #D4D4D4;
+        background: #041d25;
+        padding: 0 6px;
+        border-bottom: 1px solid #000;
+        li {
+          height: 30px;
+          line-height: 30px;
           font-size: 12px;
-        }
+          color: #d4d4d4;
+          font-weight: 500;
 
-        &:last-child {
-          .text {
-            display: inline-block;
-            height: 50px;
-            line-height: 50px;
-            padding: 0 8px;
-            font-weight: bold;
-            cursor: pointer;
+          a {
+            color: #d4d4d4;
+            font-size: 12px;
+          }
+
+          &:last-child {
+            .text {
+              display: inline-block;
+              height: 50px;
+              line-height: 50px;
+              padding: 0 8px;
+              font-weight: bold;
+              cursor: pointer;
+            }
           }
         }
       }
-    }
 
-    .table-box {
-      padding-bottom: 25px;
-      background: #031419;
-      ul {
-        li {
-          height: 30px;
-          display: flex;
-          justify-content: space-between;
-          border-bottom: 1px solid #000;
-          
-          div {
-            font-size: 12px;
-            text-align: left;
-            line-height: 30px;
-            font-weight: 400;
-            color: #D4D4D4;
-            flex: 1;
+      .table-box {
+        padding-bottom: 25px;
+        background: #031419;
+        ul {
+          li {
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #000;
 
-            &:last-child {
-              text-align: right;
+            div {
+              font-size: 12px;
+              text-align: left;
+              line-height: 30px;
+              font-weight: 400;
+              color: #d4d4d4;
+              flex: 1;
+
+              &:last-child {
+                text-align: right;
+              }
+            }
+          }
+
+          .tr-title {
+            padding: 0 6px;
+            height: 24px;
+            line-height: 24px;
+            background: #031419;
+            border-bottom: 0;
+
+            div {
+              height: 24px;
+              line-height: 24px;
+              color: #688a9d;
+              font-size: 12px;
+            }
+          }
+
+          .orderItem {
+            border-bottom: 1px solid #1e303c;
+            height: 48px;
+
+            .redText {
+              color: #d74c58;
+            }
+
+            .greenText {
+              color: #27a781;
+            }
+
+            .CANCELLED_Text {
+              color: #3f647d;
+            }
+          }
+
+          .cancel {
+            display: inline-block;
+            height: 28px;
+            line-height: 28px;
+            width: 66px;
+            margin-left: 10px;
+            text-align: center;
+            border: solid 1px #688a9d;
+            color: #688a9d;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #12869a;
+              color: #fff;
+              border: solid 1px #12869a;
             }
           }
         }
 
-        .tr-title {
-          padding:0 6px;
-          height: 24px;
-          line-height: 24px;
-          background: #031419;
-          border-bottom: 0;
-
-          div {
-            height: 24px;
-            line-height: 24px;
-            color: #688a9d;
-            font-size: 12px;
-          }
-        }
-
-        .orderItem {
-          border-bottom: 1px solid #1e303c;
-          height: 48px;
-
-          .redText {
-            color: #d74c58;
-          }
-
-          .greenText {
-            color: #27a781;
-          }
-
-          .CANCELLED_Text {
-            color: #3f647d;
-          }
-        }
-
-        .cancel {
-          display: inline-block;
-          height: 28px;
-          line-height: 28px;
-          width: 66px;
-          margin-left: 10px;
-          text-align: center;
-          border: solid 1px #688a9d;
+        .no-order {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
           color: #688a9d;
-          cursor: pointer;
+          border: none;
+          background: #041d25;
+          padding: 40px;
+          height: 100%;
 
-          &:hover {
-            background-color: #12869a;
-            color: #fff;
-            border: solid 1px #12869a;
+          img {
+            margin-bottom: 20px;
           }
-        }
-      }
-
-      .no-order {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        color: #688a9d;
-        border: none;
-        background: #041D25;
-        padding: 40px;
-        height: 100%;
-
-        img {
-          margin-bottom: 20px;
         }
       }
     }

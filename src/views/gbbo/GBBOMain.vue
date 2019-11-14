@@ -13,13 +13,13 @@
           </div>
           <!-- 盘口 -->
           <div class="gbbomain-realtime__box">
-            <GBBOMain-RealtimeBox
+            <gbbo-realtime
               :gbboAsksArr="gbbo_asksArr"
               :gbboBidsArr="gbbo_bidsArr"
               :bestSellPrice="bestSellPrice"
               :bestBuyPrice="bestBuyPrice"
               @getClickSellPrice="getClickSellPrice"
-              @getClickBuyPrice="getClickBuyPrice"></GBBOMain-RealtimeBox>
+              @getClickBuyPrice="getClickBuyPrice"></gbbo-realtime>
           </div>
         </div>
         <!--K线-->
@@ -34,10 +34,10 @@
       </div>
       <!-- 当前订单，历史订单 -->
       <div class="gbbomain-order">
-        <GBBOMain-Order
+        <gbbo-Order
          :myOpenList="myOpenList" 
          :myCompletedList="myCompletedList" 
-         @cancelMyOrder="cancelMyOrder"></GBBOMain-Order>
+         @cancelMyOrder="cancelMyOrder"></gbbo-Order>
       </div>
     </div>
     <!--交易密码6个框-->
@@ -141,8 +141,8 @@ import { orderBookName } from './config'
 
 let allNowPriceObject = {}//所有币种快照的最新价格的对象
 import createOrder from './component/GBBOCreateOrder.vue'
-import GBBOMainRealtimeBox from './component/GBBOMainRealtimeBox'
-import GBBOMainOrder from './component/GBBOMainOrder'
+import GbboRealtime from './component/GBBORealtime'
+import GbboOrder from './component/GBBOOrder'
 
 export default {
   name: 'gbbo',
@@ -1579,8 +1579,8 @@ export default {
     GbboTicker,
     PasswordInput,
     createOrder,
-    GBBOMainRealtimeBox,
-    GBBOMainOrder,
+    GbboRealtime,
+    GbboOrder,
     GbboHistories
   }
 }

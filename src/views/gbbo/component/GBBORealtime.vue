@@ -153,7 +153,9 @@ import bigDecimal from 'js-big-decimal' //除法失效
 export default {
   name: "gbbo",
   data() {
-    return {};
+    return {
+      isScroll:false,
+    };
   },
   created() {},
   mounted() {
@@ -174,14 +176,34 @@ export default {
     },
     bestSellPrice:{
       type:Number,
-      default:null,
+      default:null
     },
     bestBuyPrice:{
       type:Number,
-      default:null,
+      default:null
     },
   },
-  computed: {},
+  watch: {
+    isInitOrderBook(val) {
+      if(val) {
+        var div = this.$refs.buyOrderContainer;
+        setTimeout(() => {
+          div.scrollTop = div.scrollHeight;
+        }, 0)
+        val = false
+      }
+    },
+  },
+  computed: {
+    isInitOrderBook() {
+      if(this.gbboAsksArr.length > 12) {
+        this.isScroll = true
+      } else {
+        this.isScroll = false
+      }
+      return this.isScroll
+    }
+  },
   methods: {
     getClickSellPrice(price, count){
       this.$emit("getClickSellPrice", price, count)
