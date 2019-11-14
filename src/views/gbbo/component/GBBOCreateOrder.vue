@@ -5,9 +5,11 @@
         <div class="buy-panel buy-sell-common">
             <div>
         <div class="available-container">
-          <div title="One Click Arbitrage">
-              Arbitrage
-          </div>
+            <Tooltip placement='top' content='One Click Arbitrage'>
+                <div >
+                    Arbitrage
+                </div>
+          </Tooltip>
           <div>
             <img src="../images/Wallet.svg" alt="">
             <span v-if="isLogin">{{briefInputData.quoteCoinAvailable | scientificToNumber}}</span>
@@ -84,7 +86,7 @@
             <em>{{$t("bbjyToTrade")}}</em>
           </button>
           <!-- 买入按钮 -->
-          <button class="mybtn  Arbitrage-btn" :disabled="buyDisabled" @click="buyBtn" v-else>
+          <button class="mybtn  Arbitrage-btn" disabled="true" @click="buyBtn" v-else>
             <span>One Click Arbitrage</span>
           </button>
         </div>
