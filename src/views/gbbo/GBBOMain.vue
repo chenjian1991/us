@@ -36,7 +36,7 @@
         <!--K线-->
         <div class="gbbomain-realtime__line">
           <gbbo-kline></gbbo-kline>
-          <gbbo-histories></gbbo-histories>
+          <!-- <gbbo-histories></gbbo-histories> -->
         </div>
       </div>
       <!-- 当前订单，历史订单 -->
