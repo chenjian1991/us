@@ -101,7 +101,21 @@ export default {
     };
   },
   props:{
-    currentSymbol:String
+    currentSymbol: {
+      type: String,
+      default: "BTCUSD",
+      required: true
+    },    
+    priceLong: {
+      type: Number,
+      default: 8,
+      required: true
+    },    
+    volumeLong: {
+      type: Number,
+      default: 8,
+      required: true
+    },    
   },
   methods: {
     showTable(tab) {
@@ -116,7 +130,7 @@ export default {
         //清空交易历史
         this.tradeHistoryArr = [];
       }
-      this.WSHistory = this.reconnectingWebSocket('/quote/tradeHistory.ws?symbol=BTCUSD&least=21')
+      this.WSHistory = this.reconnectingWebSocket(`/quote/tradeHistory.ws?symbol=${this.currentSymbol}&least=21`)
       this.WSHistory.onopen = e => {
         console.log('history_websocket','打开')
       };
@@ -149,8 +163,8 @@ export default {
       /* let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize);
       let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize); */
       let obj = {};
-      obj.price = bigDecimal.round(result.price, 8);
-      obj.volumeData = bigDecimal.round(result.amount, 8);
+      obj.price = bigDecimal.round(result.price, this.priceLong);
+      obj.volumeData = bigDecimal.round(result.amount, this.volumeLong);
       obj.date = moment(result.tradeTime).format("HH:mm:ss");
       obj.showColor = result.direction === "buy" ? 1 : -1;
       //控制数组长度
