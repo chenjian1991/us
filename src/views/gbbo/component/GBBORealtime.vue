@@ -151,6 +151,10 @@ export default {
     formatNumberLength2: function (value) {
       if (!value) return ''
       return bigDecimal.round(value, 2)
+    },
+    formatTime: function (value) {
+      if (!value) return ''
+      return bigDecimal.round(value, 2)
     }
   },
   components: {}

@@ -695,21 +695,9 @@ export default {
       }
     },
     maxArbitrageBook(data) {
-      var arbData = data;
-      console.log(arbData)
-    
-      this.maxArbitrageList.unshift({
-        priceSubtract:data.priceSubtract,
-        qtySubtract:data.qtySubtract,
-        dateTime:data.dateTime,
-        highEx:data.highEx,
-        lowEx:data.lowEx
-      })
+      
+      this.maxArbitrageList = data;
 
-      if(this.maxArbitrageList.length > 45) {
-        this.maxArbitrageList.length = 45
-      }
-      console.log(this.maxArbitrageList)
     },
     //获取推送行情
     getSSERealTime(url) {
