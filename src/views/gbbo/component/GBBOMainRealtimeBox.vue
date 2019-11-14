@@ -162,11 +162,15 @@ export default {
   props: {
     gbbo_asksArr:{
       type:Array,
-      default:[]
+      default: function() {
+        return []
+      }
     },
     gbbo_bidsArr:{
       type:Array,
-      default:[]
+      default: function() {
+        return []
+      }
     },
     bestSellPrice:{
       type:Number,
@@ -314,12 +318,16 @@ export default {
         bottom: 0;
         width: 100%;
         height: 40px;
-        padding: 0 8px;
+        padding: 5px 8px;
         p {
+          height: 14px;
+          line-height: 14px;
           color: #788390;
         }
         span {
           padding-right: 8px;
+          height: 14px;
+          line-height: 14px;
           color: #d4d4d4;
         }
         .last-arb {
@@ -339,7 +347,7 @@ export default {
           right: 0;
           background: #041d25;
           text-align: center;
-          padding: 12px 0;
+          padding: 11px 0 12px;
           a {
             display: inline-block;
             height: 14px;

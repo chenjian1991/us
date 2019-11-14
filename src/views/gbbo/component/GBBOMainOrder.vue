@@ -116,11 +116,15 @@ export default {
   props: {
     myOpenList: {
       type: Array,
-      default: []
+      default: function() {
+        return []
+      }
     },
     myCompletedList: {
       type: Array,
-      default: []
+      default: function() {
+        return []
+      }
     }
   },
   computed: {
