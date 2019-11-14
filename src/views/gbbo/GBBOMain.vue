@@ -795,6 +795,7 @@ export default {
           this.symbolList = {};
           res.map((v, i) => {
             this.symbolList[v.symbol] = v
+            
           })
           //增加蒙层逻辑
           this.isShowTradeMask();
@@ -1187,7 +1188,9 @@ export default {
       }
 
     },
-    buyBtn() {
+    buyBtn(callbackData) {
+       this.buyPriceInput = callbackData.buyPriceInput;
+       this.buyCountInput = callbackData.buyCountInput;
       window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
       if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
         //暂停交易
@@ -1315,7 +1318,9 @@ export default {
         this.submitPassWord()
       }
     },
-    sellBtn() {
+    sellBtn(callbackData) {
+      this.sellCountInput = callbackData.sellCountInput;
+      this.sellPriceInput = callbackData.sellPriceInput;
       window._czc.push(["_trackEvent", '币币交易页面', '点击', '卖出按钮', 0, 'sellBtn']);
       if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
           //暂停交易

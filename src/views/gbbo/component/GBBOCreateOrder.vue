@@ -167,7 +167,7 @@
            <div class="totalMoney-label">
             <em>Fee</em>&nbsp;&nbsp;
             <div>
-                <span id="buy_total" class="total-num">00</span>&nbsp;
+                <span id="buy_total" class="total-num">{{buyTotalFee}}</span>&nbsp;
                 <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
             </div>
           </div>
@@ -184,6 +184,7 @@
         </div>
         </div>
       </div>
+      <div class="border-line"></div>
       <!--卖出-->
       <div class="buy-panel buy-sell-common">
           <div>
@@ -261,7 +262,7 @@
            <div class="totalMoney-label">
             <em>Fee</em>&nbsp;&nbsp;
             <div>
-                <span id="buy_total" class="total-num">00</span>&nbsp;
+                <span id="buy_total" class="total-num">{{sellTotalFee}}</span>&nbsp;
                 <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
             </div>
           </div>
@@ -355,6 +356,8 @@ export default {
         arbFlag:true,
         changeFlag:true,
         sellFlag:true,
+        buyTotalFee:0,
+        sellTotalFee:0,
     };
   },
    props: {
@@ -433,7 +436,6 @@ export default {
            this.$emit('buyBtn',params)
          },
          sellBtn() {
-             debugger
              let params = {
                 sellPriceInput:this.sellPriceInput,
                 sellCountInput:this.sellCountInput,
@@ -453,6 +455,8 @@ export default {
                     this.$refs.buyCountInputRef.value = bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage) === "0" ? '0' : subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
                     this.buyCountInput = subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
                 }
+                let Fee = this.symbolList[this.currentSymbol].commissionRate;
+                this.buyTotalFee = bigDecimal.multiply(this.buyCountInput, Fee)
                 break;
                 case 'sell' :
                 this.itemIndexSell = index;
@@ -462,21 +466,22 @@ export default {
                     this.$refs.sellCountInputRef.value = bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage) === '0' ? '0' : subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
                     this.sellCountInput = subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
                 }
-                 
+                let sellFee = this.symbolList[this.currentSymbol].commissionRate;
+                this.sellTotalFee = bigDecimal.multiply(this.sellCountInput, sellFee)
                 break;
             }
               
 
          },
-          showCurrentPriceInfo(v) {
-            //给title赋值行情
-            if (v.last) {
-               document.title = `${v.last}  | ${v.baseAsset}/${v.quoteAsset}`
-            } else {
-               document.title = `-- | ${v.baseAsset}/${v.quoteAsset}`
-            }
-            this.currentInfo = v
-         },
+        //   showCurrentPriceInfo(v) {
+        //     //给title赋值行情
+        //     if (v.last) {
+        //        document.title = `${v.last}  | ${v.baseAsset}/${v.quoteAsset}`
+        //     } else {
+        //        document.title = `-- | ${v.baseAsset}/${v.quoteAsset}`
+        //     }
+        //     this.currentInfo = v
+        //  },
       handleBuyPriceInput(e) {
             if (!this.symbolList[this.currentSymbol]) {
                return
@@ -525,13 +530,17 @@ export default {
 <style lang="less">
   @fontColor:#688A9D;
 .gbbomain-create-order{
-    background:#031419;
     .inputOrderBox{
                   display: flex;
                   align-items: center;
                 }
+                .border-line{
+                         border-right: 1px dashed#083441;
+                         height: 240px;
+                }
                 .buy-sell-common {
                   width: 270px;
+                  flex: 1;
                   >div{
                      padding:20px 12px 10px 12px;
                   }
@@ -564,12 +573,11 @@ export default {
                     }
                   .trade-msg {
                       .rangePercent{
-                          margin-bottom: 5px;
                           ul{
                             display: flex;
                             justify-content: space-between;
                             margin-left:67px;
-                            margin-top:8px;
+                            margin-top:6px;
                             li{
                                 padding:2px 6px;
                                 background:rgba(4,29,37,1);
@@ -590,8 +598,8 @@ export default {
                       display: flex;
                       .price-box-label{
                         div{
-                          height: 34px;
-                          line-height: 34px;
+                          height: 23px;
+                          line-height: 23px;
                           padding-right: 25px;
                           color: #788390;
                           font-size: 12px;
@@ -607,7 +615,7 @@ export default {
                         .inputbox{
                           position: relative;
                           &:nth-child(2){
-                              margin-top: 22px;
+                              margin-top: 12px;
                           }
                         }
                       }
@@ -619,7 +627,7 @@ export default {
                       input {
                         box-sizing: border-box;
                         width: 100%;
-                        height: 34px;
+                        height: 30px;
                         padding: 0 5px;
                         color:#C2D8E8;
                         border-radius: 2px;
@@ -737,7 +745,7 @@ export default {
                     .totalMoney-label{
                         display: flex;
                         justify-content: space-between;
-                        margin-top: 5px;
+                        margin-top: 3px;
                       em,span{
                         font-size: 14px;
                         color: #788390;
