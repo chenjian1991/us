@@ -429,6 +429,7 @@ export default {
           }
       },
        buyBtn() {
+           debugger
             let params = {
                 buyPriceInput:this.buyPriceInput,
                 buyCountInput:this.buyCountInput,
@@ -458,7 +459,6 @@ export default {
                 }
                 let Fee = this.symbolList[this.currentSymbol].commissionRate;
                 this.buyTotalFee = bigDecimal.multiply(this.buyCountInput, Fee)
-
                 break;
                 case 'sell' :
                 this.itemIndexSell = index;
@@ -543,7 +543,7 @@ export default {
                 }
                 .buy-sell-common {
                   width: 270px;
-                  background: red;
+                  flex: 1;
                   >div{
                      padding:20px 12px 10px 12px;
                   }

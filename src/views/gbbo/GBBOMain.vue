@@ -1191,6 +1191,7 @@ export default {
 
     },
     buyBtn() {
+      debugger
       window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
       if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
         //暂停交易
