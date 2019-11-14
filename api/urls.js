@@ -111,3 +111,4 @@ export const identifySubmitUrl = `${proxyURLUcenter}/identify/submit` //实名�
 export const identifyUpdateUrl = `${proxyURLUcenter}/identify/update` //实名认证表单修改
 export const uploadPic = `${proxyURLUcenter}/identify/upload`//上传图片
 
+export const fabiCost = `${proxyURL}/content/rate/front/info.query` //法币估值

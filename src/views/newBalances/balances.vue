@@ -670,10 +670,16 @@
                }.bind(this))
             })
             Promise.all([currencyList, quoteList, balanceList]).then(() => {
-               this.getCurrencyList()
-               this.getValuation()
-               this.getCurrencyImgList()
-               this.getQuoteList()
+               if(Object.keys(this.balancesList).length){
+                  this.getCurrencyList()
+                  this.getValuation()
+                  this.getCurrencyImgList()
+                  this.getQuoteList()
+               }else{
+                  //没有资产 不请求行情
+                  this.getCurrencyList()
+                  this.getCurrencyImgList()
+               }
             }).catch(() => {
                setTimeout(function () {
                   this.showSpin = false  //加载完成
