@@ -18,6 +18,7 @@
               :gbboBidsArr="gbbo_bidsArr"
               :bestSellPrice="bestSellPrice"
               :bestBuyPrice="bestBuyPrice"
+              :maxArbitrageList="maxArbitrageList"
             ></gbbo-realtime>
           </div>
           <!--买入卖出 -->
@@ -283,6 +284,7 @@ export default {
       //GBBO业务相关
       isGBBO: true,
       stompClient: null,
+      arbStompClient: null,
       gbbo_asksArr: [],
       gbbo_bidsArr: [],
       bestSellPrice: null,
@@ -299,6 +301,7 @@ export default {
       sellRangeValue: 0,
       orderTicketTimer: null,//orderTicket定时器
       updateAt: '',//路总需求 要加这个隐藏字段
+      maxArbitrageList:[],
     }
   },
   created() {
@@ -583,7 +586,7 @@ export default {
           socket = new SockJS('https://' + domain + '/xchange/marketdata');
         } else {
           // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
-          socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+          socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata');
         }
         // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
         // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
@@ -592,10 +595,9 @@ export default {
         this.stompClient.heartbeat.outgoing = 1000;
         this.stompClient.connect({}, (frame) => {
           this.stompClient.subscribe('/topic/orderbook/BTCUSD', (message) => {
-              // this.stompClient.subscribe('/topic/orderbook/BTCUSDD', (message) => {
-              if (message.body) {
-                this.sortOrderBook(JSON.parse(message.body))
-              }
+            if (message.body) {
+              this.sortOrderBook(JSON.parse(message.body))
+            }
           });
         }, (error) => {
           console.log('new Sockjs  error')
@@ -604,7 +606,37 @@ export default {
           this.getGBBODepth()
         });
       }
+      if (this.arbStompClient == null || !this.arbStompClient.connected) {
+        const domain = document.domain;
+        let arbSocket = null
+        if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+          sockets = new SockJS('https://' + domain + '/xchange/marketdata');
+        } else {
+          // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
+          arbSocket = new SockJS('http://10.11.9.57:20013/xchange/marketdata');
+        }
+        // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+        // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
+        this.arbStompClient = Stomp.over(arbSocket);
+        this.arbStompClient.debug = null
+        this.arbStompClient.heartbeat.outgoing = 1000;
+        this.arbStompClient.connect({}, (frame) => {
+          
+          this.arbStompClient.subscribe('/topic/runtime/BTCUSD', (message) => {
+            if (message.body) {
+              this.maxArbitrageBook(JSON.parse(message.body))
+            }
+          });
+        }, (error) => {
+          console.log('new Sockjs  error')
+          this.arbStompClient.disconnect()
+          this.arbStompClient = null
+          this.getGBBODepth()
+        });
+      }
+
     },
+
     sortOrderBook(data) {
       let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
       // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
@@ -662,6 +694,23 @@ export default {
       } else {
           this.isShowARB = "Spread"
       }
+    },
+    maxArbitrageBook(data) {
+      var arbData = data;
+      console.log(arbData)
+    
+      this.maxArbitrageList.unshift({
+        priceSubtract:data.priceSubtract,
+        qtySubtract:data.qtySubtract,
+        dateTime:data.dateTime,
+        highEx:data.highEx,
+        lowEx:data.lowEx
+      })
+
+      if(this.maxArbitrageList.length > 45) {
+        this.maxArbitrageList.length = 45
+      }
+      console.log(this.maxArbitrageList)
     },
     //获取推送行情
     getSSERealTime(url) {
@@ -924,87 +973,6 @@ export default {
           // this.sellCountInput = sell_count
       }
       this.isInitPage = false
-    },
-    //**********************下单 买入卖出 */
-    //数量百分比球
-    changeBuyBall(e, val) {
-      if (this.isLogin) {
-          let value = ''
-          if (e) {
-            value = e.target.getAttribute('data-num')
-            if (value) {
-                this.buyRangeValue = value * 100
-            }
-          } else {
-            value = val / 100
-          }
-          let volumeLong = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-          this.buyBallPercentage = value
-          this.$refs.buyCountInputRef.value = bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage) === "0" ? '0' : subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
-          this.buyCountInput = subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
-      }
-    },
-    changeSellBall(e, val) {
-      if (this.isLogin) {
-        let value = ''
-        if (e) {
-          value = e.target.getAttribute('data-num')
-          if (value) {
-              this.sellRangeValue = value * 100
-          }
-        } else {
-          value = val / 100
-        }
-        let volumeLong = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-        this.sellBallPercentage = value
-        this.$refs.sellCountInputRef.value = bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage) === '0' ? '0' : subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
-        this.sellCountInput = subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
-      }
-    },
-    handleBuyPriceInput(e) {
-      if (!this.symbolList[this.currentSymbol]) {
-          return
-      }
-      //GBBO 锁图标打开
-      this.buy_input_change = true
-      //重置为空样式
-      this.buyPriceEmpty = false
-      let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
-      //    e.target.value = onlyInputNumAndPoint(e.target.value,6)
-      e.target.value = onlyInputNumAndPoint(e.target.value, pricelong)
-      this.buyPriceInput = e.target.value
-    },
-    handleBuyCountInput(e) {
-      if (!this.symbolList[this.currentSymbol]) {
-          return
-      }
-      //重置样式
-      this.buyCountEmpty = false
-      let quantityStepSize = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-      e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize)
-      this.buyCountInput = e.target.value
-    },
-    handleSellPriceInput(e) {
-      if (!this.symbolList[this.currentSymbol]) {
-          return
-      }
-      //GBBO 锁图标打开
-      this.sell_input_change = true
-      //重置为空样式
-      this.sellPriceEmpty = false
-      let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
-      e.target.value = onlyInputNumAndPoint(e.target.value, pricelong)
-      this.sellPriceInput = e.target.value
-    },
-    handleSellCountInput(e) {
-      if (!this.symbolList[this.currentSymbol]) {
-          return
-      }
-      //重置样式
-      this.sellCountEmpty = false
-      let quantityStepSize = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-      e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize)
-      this.sellCountInput = e.target.value
     },
     //展示可用的资产
     getMyAssetData() {
@@ -1604,6 +1572,9 @@ export default {
 
     if (this.stompClient != null) {
       this.stompClient.disconnect();
+    }
+    if (this.arbStompClient != null) {
+      this.arbStompClient.disconnect();
     }
   }
 }
