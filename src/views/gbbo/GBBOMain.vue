@@ -37,7 +37,10 @@
         <!--K线-->
         <div class="gbbomain-realtime__line">
           <gbbo-kline></gbbo-kline>
-          <gbbo-histories></gbbo-histories>
+          <div class="gbbomain-realtime__line-history">
+            <gbbo-histories
+            :currentSymbol="currentSymbol"></gbbo-histories>
+          </div>
         </div>
       </div>
       <!-- 当前订单，历史订单 -->
@@ -448,7 +451,7 @@ export default {
       this.buyDisabled = false
       this.sellDisabled = false
       //更新交易历史 传入v 获取精度
-      this.updateSymbolHistory()
+      // this.updateSymbolHistory()
       this.getGBBODepth()
       this.buy_input_change = false
       this.sell_input_change = false
@@ -969,87 +972,6 @@ export default {
           // this.sellCountInput = sell_count
       }
       this.isInitPage = false
-    },
-    //**********************下单 买入卖出 */
-    //数量百分比球
-    changeBuyBall(e, val) {
-      if (this.isLogin) {
-          let value = ''
-          if (e) {
-            value = e.target.getAttribute('data-num')
-            if (value) {
-                this.buyRangeValue = value * 100
-            }
-          } else {
-            value = val / 100
-          }
-          let volumeLong = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-          this.buyBallPercentage = value
-          this.$refs.buyCountInputRef.value = bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage) === "0" ? '0' : subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
-          this.buyCountInput = subNumberPoint(bigDecimal.multiply(this.buyBallTotal, this.buyBallPercentage), volumeLong)
-      }
-    },
-    changeSellBall(e, val) {
-      if (this.isLogin) {
-        let value = ''
-        if (e) {
-          value = e.target.getAttribute('data-num')
-          if (value) {
-              this.sellRangeValue = value * 100
-          }
-        } else {
-          value = val / 100
-        }
-        let volumeLong = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-        this.sellBallPercentage = value
-        this.$refs.sellCountInputRef.value = bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage) === '0' ? '0' : subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
-        this.sellCountInput = subNumberPoint(bigDecimal.multiply(this.sellBallTotal, this.sellBallPercentage), volumeLong)
-      }
-    },
-    handleBuyPriceInput(e) {
-      if (!this.symbolList[this.currentSymbol]) {
-          return
-      }
-      //GBBO 锁图标打开
-      this.buy_input_change = true
-      //重置为空样式
-      this.buyPriceEmpty = false
-      let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
-      //    e.target.value = onlyInputNumAndPoint(e.target.value,6)
-      e.target.value = onlyInputNumAndPoint(e.target.value, pricelong)
-      this.buyPriceInput = e.target.value
-    },
-    handleBuyCountInput(e) {
-      if (!this.symbolList[this.currentSymbol]) {
-          return
-      }
-      //重置样式
-      this.buyCountEmpty = false
-      let quantityStepSize = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-      e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize)
-      this.buyCountInput = e.target.value
-    },
-    handleSellPriceInput(e) {
-      if (!this.symbolList[this.currentSymbol]) {
-          return
-      }
-      //GBBO 锁图标打开
-      this.sell_input_change = true
-      //重置为空样式
-      this.sellPriceEmpty = false
-      let pricelong = getDecimalsNum(this.symbolList[this.currentSymbol].priceTickSize)
-      e.target.value = onlyInputNumAndPoint(e.target.value, pricelong)
-      this.sellPriceInput = e.target.value
-    },
-    handleSellCountInput(e) {
-      if (!this.symbolList[this.currentSymbol]) {
-          return
-      }
-      //重置样式
-      this.sellCountEmpty = false
-      let quantityStepSize = getDecimalsNum(this.symbolList[this.currentSymbol].quantityStepSize)
-      e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize)
-      this.sellCountInput = e.target.value
     },
     //展示可用的资产
     getMyAssetData() {
