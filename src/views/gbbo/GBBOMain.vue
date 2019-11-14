@@ -19,7 +19,7 @@
               :bestSellPrice="bestSellPrice"
               :bestBuyPrice="bestBuyPrice"
               @getClickSellPrice="getClickSellPrice"
-              @getClickBuyPrice="getClickBuyPrice"></GBBOMainRealtimeBox>
+              @getClickBuyPrice="getClickBuyPrice"></GBBOMain-RealtimeBox>
           </div>
         </div>
         <!--K线-->
@@ -34,10 +34,10 @@
       </div>
       <!-- 当前订单，历史订单 -->
       <div class="gbbomain-order">
-        <GBBOMainOrder
+        <GBBOMain-Order
          :myOpenList="myOpenList" 
          :myCompletedList="myCompletedList" 
-         @cancelMyOrder="cancelMyOrder"></GBBOMainOrder>
+         @cancelMyOrder="cancelMyOrder"></GBBOMain-Order>
       </div>
     </div>
     <!--交易密码6个框-->
