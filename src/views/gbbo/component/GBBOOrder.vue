@@ -41,7 +41,10 @@
                   class="cancel"
                   @click="cancelMyOrder(v.orderId,v)"
                   :disabled="v.isDisabled"
-                >{{$t(v.btnText)}}</a>
+                >
+                <Icon type="md-close" />
+                {{$t(v.btnText)}}
+                </a>
               </div>
             </li>
           </ul>
@@ -174,8 +177,26 @@ export default {
           font-weight: 500;
 
           a {
+            margin-left: 10px;
             color: #d4d4d4;
             font-size: 12px;
+            text-decoration: underline !important;
+          }
+
+          .hideCancleOrder {
+            color: #D4D4D4;
+            .ivu-checkbox-inner {
+              border: 1px solid #D4D4D4;
+              border-radius: 2px;
+              background-color: #041d25;
+            }
+            .ivu-checkbox-checked .ivu-checkbox-inner {
+              border-color: #D4D4D4;
+              background-color: #D4D4D4;
+            }
+            .ivu-checkbox-checked .ivu-checkbox-inner:after {
+              border-color: #041d25;
+            }
           }
 
           &:last-child {
@@ -196,6 +217,7 @@ export default {
         background: #031419;
         ul {
           li {
+            padding: 0 8px;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -206,7 +228,8 @@ export default {
               text-align: left;
               line-height: 30px;
               font-weight: 400;
-              color: #d4d4d4;
+              // color: #d4d4d4;
+              color: #c2d8e8;
               flex: 1;
 
               &:last-child {
@@ -216,7 +239,6 @@ export default {
           }
 
           .tr-title {
-            padding: 0 6px;
             height: 24px;
             line-height: 24px;
             background: #031419;
@@ -231,8 +253,7 @@ export default {
           }
 
           .orderItem {
-            border-bottom: 1px solid #1e303c;
-            height: 48px;
+            background: #041D25;
 
             .redText {
               color: #d74c58;
@@ -249,13 +270,14 @@ export default {
 
           .cancel {
             display: inline-block;
-            height: 28px;
-            line-height: 28px;
-            width: 66px;
+            width:72px;
+            height:22px;
+            line-height: 22px;
+            background:rgba(8,52,65,1);
+            border-radius:14px;           
             margin-left: 10px;
             text-align: center;
-            border: solid 1px #688a9d;
-            color: #688a9d;
+            color: #5D7C86;
             cursor: pointer;
 
             &:hover {

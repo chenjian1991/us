@@ -101,7 +101,21 @@ export default {
     };
   },
   props:{
-    currentSymbol:String
+    currentSymbol: {
+      type: String,
+      default: "BTCUSD",
+      required: true
+    },    
+    priceLong: {
+      type: Number,
+      default: 8,
+      required: true
+    },    
+    volumeLong: {
+      type: Number,
+      default: 8,
+      required: true
+    },    
   },
   methods: {
     showTable(tab) {
@@ -116,12 +130,10 @@ export default {
         //清空交易历史
         this.tradeHistoryArr = [];
       }
-      const baseURL = window.location.protocol === "http:" ? "ws://" : "wss://";
-      const host = window.location.host;
-      this.WSHistory = new ReconnectingWebSocket(
-        `${baseURL}${host}/quote/tradeHistory.ws?symbol=BTCUSD&least=21`
-      );
-      this.WSHistory.onopen = function(e) {};
+      this.WSHistory = this.reconnectingWebSocket(`/quote/tradeHistory.ws?symbol=${this.currentSymbol}&least=21`)
+      this.WSHistory.onopen = e => {
+        console.log('history_websocket','打开')
+      };
       this.WSHistory.onmessage = e => {
         //每次推送一条记录
         let result = JSON.parse(e.data);
@@ -135,25 +147,42 @@ export default {
         if (result.code) {
           return;
         }
-        let arr = this.tradeHistoryArr;
-        /* let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize);
-        let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize); */
-        let obj = {};
-        obj.price = bigDecimal.round(result.price, 2);
-        obj.volumeData = bigDecimal.round(result.amount, 2);
-        obj.date = moment(result.tradeTime).format("HH:mm:ss");
-        obj.showColor = result.direction === "buy" ? 1 : -1;
-        if (arr.length === 40) {
-          arr.unshift(obj);
-          arr.pop();
-        } else {
-          arr.unshift(obj);
-        }
-        this.tradeHistoryArr = arr;
+        this.resetTradeHistoryArr(result)
       };
-      this.WSHistory.onerror = e => {};
-      this.WSHistory.onclose = e => {};
-    }
+      this.WSHistory.onerror = e => {
+        console.log('history_websocket_err',e)
+      };
+      this.WSHistory.onclose = e => {
+        this.WSHistory.close()
+        console.log('history_websocket','关闭')
+      };
+    },
+    //重置交易历史数组
+    resetTradeHistoryArr(result){
+      let arr = this.tradeHistoryArr;
+      /* let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize);
+      let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize); */
+      let obj = {};
+      obj.price = bigDecimal.round(result.price, this.priceLong);
+      obj.volumeData = bigDecimal.round(result.amount, this.volumeLong);
+      obj.date = moment(result.tradeTime).format("HH:mm:ss");
+      obj.showColor = result.direction === "buy" ? 1 : -1;
+      //控制数组长度
+      if (arr.length === 40) {
+        arr.unshift(obj);
+        arr.pop();
+      } else {
+        arr.unshift(obj);
+      }
+    },
+    //连接websocket，采用ReconnectingWebSocket库，支持断线重连
+    reconnectingWebSocket(url){
+      const baseURL = window.location.protocol === "http:" ? "ws://" : "wss://";
+      const host = window.location.host;
+      return new ReconnectingWebSocket(
+        `${baseURL}${host}${url}`
+      );
+    },
   },
   mounted(){
     this.updateSymbolHistory()

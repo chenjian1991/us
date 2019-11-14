@@ -18,9 +18,7 @@
               :gbboBidsArr="gbbo_bidsArr"
               :bestSellPrice="bestSellPrice"
               :bestBuyPrice="bestBuyPrice"
-              @getClickSellPrice="getClickSellPrice"
-              @getClickBuyPrice="getClickBuyPrice">
-            </gbbo-realtime>
+            ></gbbo-realtime>
           </div>
           <!--买入卖出 -->
           <div class="gbbomain-realtime__transaction">
@@ -39,7 +37,8 @@
         <div class="gbbomain-realtime__line">
           <gbbo-kline></gbbo-kline>
           <div class="gbbomain-realtime__line-history">
-            <gbbo-histories></gbbo-histories>
+            <gbbo-histories
+            :currentSymbol="currentSymbol"></gbbo-histories>
           </div>
         </div>
       </div>
@@ -449,7 +448,7 @@ export default {
       this.buyDisabled = false
       this.sellDisabled = false
       //更新交易历史 传入v 获取精度
-      this.updateSymbolHistory()
+      // this.updateSymbolHistory()
       this.getGBBODepth()
       this.buy_input_change = false
       this.sell_input_change = false
@@ -799,6 +798,7 @@ export default {
           this.symbolList = {};
           res.map((v, i) => {
             this.symbolList[v.symbol] = v
+            
           })
           //增加蒙层逻辑
           this.isShowTradeMask();
@@ -1191,7 +1191,9 @@ export default {
       }
 
     },
-    buyBtn() {
+    buyBtn(callbackData) {
+       this.buyPriceInput = callbackData.buyPriceInput;
+       this.buyCountInput = callbackData.buyCountInput;
       window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
       if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
         //暂停交易
@@ -1319,7 +1321,9 @@ export default {
         this.submitPassWord()
       }
     },
-    sellBtn() {
+    sellBtn(callbackData) {
+      this.sellCountInput = callbackData.sellCountInput;
+      this.sellPriceInput = callbackData.sellPriceInput;
       window._czc.push(["_trackEvent", '币币交易页面', '点击', '卖出按钮', 0, 'sellBtn']);
       if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
           //暂停交易
