@@ -151,7 +151,7 @@
 <script>
 import bigDecimal from 'js-big-decimal' //除法失效
 export default {
-  name: "gbbo",
+  name: "GBBOMainRealtimeBox",
   data() {
     return {
       isScroll:false,
@@ -228,7 +228,7 @@ export default {
 <style lang="less">
 .gbbomain-realtime-box {
   .realtime-box {
-    width:822px;
+    // width:822px;
     display: flex;
     .realtime-item {
       flex: 1;
