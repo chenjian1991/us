@@ -103,7 +103,7 @@
 </template>
 <script>
 export default {
-  name: "gbbo",
+  name: "GBBOOrder",
   data() {
     return {
       hideCancleOrder: false
