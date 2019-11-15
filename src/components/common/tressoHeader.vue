@@ -223,7 +223,7 @@
          } else {
             this.isLogin = false;
          }
-         document.getElementsByClassName('u-header__navbar-nav').onclick = function () {
+         document.getElementsByClassName('u-header__sub-menu').onclick = function () {
             if (document.getElementsByClassName('hs-mega-menu-opened')[0]) {//交易
                setTimeout(() => {
                   document.getElementsByClassName('hs-mega-menu-opened')[0].childNodes[1].style.display = 'none'

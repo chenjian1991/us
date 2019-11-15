@@ -268,6 +268,7 @@
             symbolList_quote: [],
             currentSymbolObj: {},
             priceLong: 0,
+            quoteWS: null,//行情websocket推送
             gbboTitle: [{title: 'Max Arbitrage',}, {title: 'Buy at Global Lowest Price',}, {title: 'Sell at Global Highest Price',}, {title: 'Market Avg Price',}],
             gbboBase: {
                baseAssets: 'BTC',
@@ -521,17 +522,22 @@
          },
          // 计算平均价
          getAvgPrice(data) {
-            const providerBBOMap = Object.values(data.providerBBOMap)
+            const providerBBOMap = Object.values(data.providerBBOMap).filter((v) => {
+               if (v.provider !== 'TRESSO') return v
+            })
             let sum = 0
             let length = providerBBOMap.length
-            providerBBOMap.forEach((v) => {
-               if (v['askLevel'] && v['bidLevel']) {
-                  sum += v['askLevel']['priceWithFee'] + v['bidLevel']['priceWithFee']
-               } else {
-                  --length
-               }
-            })
+            sum = providerBBOMap.reduce((total, currentValue) => {
+               return total + currentValue['askLevel']['priceWithFee'] + currentValue['bidLevel']['priceWithFee']
+            }, 0)
             this.gbboList.avgPrice = new BigNumber(sum).dividedBy(length * 2).toFixed(2);
+            // providerBBOMap.forEach((v) => {
+            //    if (v['askLevel'] && v['bidLevel']) {
+            //       sum += v['askLevel']['priceWithFee'] + v['bidLevel']['priceWithFee']
+            //    } else {
+            //       --length
+            //    }
+            // })
          },
          sortOrderBook(data) {
             const result = data
@@ -563,6 +569,7 @@
          this.init()
       },
       beforeDestroy() {
+         this.quoteWS && this.quoteWS.close();
          if (this.stompClient != null) {
             this.stompClient.disconnect();
          }
@@ -626,7 +633,6 @@
          .partners-img {
             width: 192*0.8px !important;
          }
-
 
       }
 
