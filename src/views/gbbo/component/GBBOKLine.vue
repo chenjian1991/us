@@ -14,10 +14,8 @@
   </div>
 </template>
 <script>
-
-
-
 import { createChart, LineStyle } from 'lightweight-charts'
+import { getKlineHistoryData } from '_api/exchange'
 
 export default {
   name: 'GBBOKLine',
@@ -43,7 +41,15 @@ export default {
     }
   },
   created(){
-    
+    getKlineHistoryData({
+      url: 'http://10.11.9.57:20013/',
+      symbol: this.currentSymbol || 'BTCUSD',
+      startDateTime: new Date().getTime() - 500000,
+      endDateTime: new Date().getTime(),
+      interval: 'MINUTE_1'
+    }).then(res => {
+      console.log(res)
+    })
   },
   mounted(){
     const { highData, lowData, marketData } = this.kline
@@ -195,11 +201,15 @@ export default {
     },
     addZero(num){
       return num < 10 ? `0${num}` : num
+    },
+    getKlineHistoryData() {
+
     }
   },
   beforeDestroy() {
     clearInterval(this._timestamp)
     this._chart = null
+    this.klineConnect.close()
   },
   
   
