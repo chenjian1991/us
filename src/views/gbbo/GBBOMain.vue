@@ -615,16 +615,12 @@ export default {
           arbSocket = new SockJS('https://' + domain + '/xchange/marketdata');
         } else {
           arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
-          // arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
-
         }
-        // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
         // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
         this.arbStompClient = Stomp.over(arbSocket);
         this.arbStompClient.debug = null
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
-          
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD', (message) => {
             if (message.body) {
               // this.maxArbitrageBook(JSON.parse(message.body))
