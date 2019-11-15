@@ -31,6 +31,8 @@
               :sellInputPrice='sellInputPrice'
               :currentSymbol='currentSymbol'
               :symbolList='symbolList'
+              :currentInfo="currentInfo"
+              :maxArbitrageList="maxArbitrageList"
             ></create-order>
           </div>
         </div>
@@ -607,10 +609,11 @@ export default {
         const domain = document.domain;
         let arbSocket = null
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-          sockets = new SockJS('https://' + domain + '/xchange/marketdata');
+          arbSocket = new SockJS('https://' + domain + '/xchange/marketdata');
         } else {
-          // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
-          arbSocket = new SockJS('http://10.11.9.57:20013/xchange/marketdata');
+          arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
+          // arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
+
         }
         // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
         // socket = new SockJS('https://www.tresso.com/xchange/marketdata');

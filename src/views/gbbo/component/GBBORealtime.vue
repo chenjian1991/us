@@ -8,7 +8,7 @@
           <div class="text-right time">Time</div>
         </div>
         <div class="realtime-item-content">
-          <ul class="realtime-item-list arb-list">
+          <ul v-if="maxArbitrageList.length > 0" class="realtime-item-list arb-list">
             <li v-for="v in maxArbitrageList">
               <span class="arb">{{v.priceSubtract}}</span>
               <span class="amount text-right">{{v.qtySubtract}}</span>
