@@ -645,7 +645,6 @@ export default {
       let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
       // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
       var result = data
-
       //路总需求 要加这个隐藏字段
       this.updateAt = result.updateAt
 
@@ -661,8 +660,6 @@ export default {
             return Object.assign({}, val, {provider: 'Node of Apifiny'})
           }
       })
-
-      
 
       if (!this.buy_input_change) {
           this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
