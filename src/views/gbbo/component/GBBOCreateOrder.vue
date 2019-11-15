@@ -444,7 +444,6 @@ export default {
   mounted() {
     this.availableCoin = this.briefInputData.quoteCoinAvailable;
     this.assetName = this.currentInfo.quoteAsset;
-    console.log('currentInfo',this.currentInfo)
   },
 
   computed: {
@@ -574,7 +573,6 @@ export default {
               volumeLong
             );
           }
-          debugger
           let Fee = this.symbolList[this.currentSymbol].commissionRate;
           this.buyTotalFee = bigDecimal.multiply(this.buyCountInput, Fee);
           break;
