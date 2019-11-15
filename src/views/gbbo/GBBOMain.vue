@@ -575,7 +575,6 @@ export default {
           this.getGBBODepth()
           this.getMyAssetData()
         }
-        debugger
         // 当有快照驱动时数据变化
         this.getSSERealTime(symbolUrl)
         
@@ -701,8 +700,6 @@ export default {
     // },
     //获取推送行情
     getSSERealTime(url) {
-                  debugger
-
       let SSEcache = null
       const baseURL = (window.location.protocol === 'http:') ? 'ws://' : 'wss://';
       const host = window.location.host;
@@ -760,7 +757,6 @@ export default {
                 }
                 //展示当前的交易对的大盘上方行情
                 if (this.currentSymbol === result.symbol) {
-                  debugger
                   console.log(1)
                   this.currentSymbolObj = Object.assign(result, v, this.symbolList_quote[result.symbol])
                   this.showCurrentPriceInfo(this.currentSymbolObj)
@@ -796,7 +792,6 @@ export default {
     //展示最新的交易资产行情信息
     //v symbol 行情合并后的对象
     showCurrentPriceInfo(v) {
-      debugger
       //给title赋值行情
       if (v.last) {
           document.title = `${v.last}  | ${v.baseAsset}/${v.quoteAsset}`
@@ -804,6 +799,7 @@ export default {
           document.title = `-- | ${v.baseAsset}/${v.quoteAsset}`
       }
       this.currentInfo = v
+      console.log('this.currentInfo',this.currentInfo)
     },
     //处理法币估值
     getCurrencyData() {

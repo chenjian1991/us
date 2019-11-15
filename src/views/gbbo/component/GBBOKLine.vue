@@ -85,7 +85,7 @@ export default {
         console.log('kline start');
       }
       this.klineConnect.onmessage = (res) => {
-        console.log(res)
+        // console.log(res)
       }
     },
     restoreDefault(){
