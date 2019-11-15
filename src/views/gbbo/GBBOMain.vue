@@ -647,6 +647,8 @@ export default {
       // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
       var result = data
 
+      console.log(result)
+
       //路总需求 要加这个隐藏字段
       this.updateAt = result.updateAt
 

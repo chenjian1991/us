@@ -9,7 +9,7 @@
         </div>
         <div class="realtime-item-content">
           <ul v-if="maxArbitrageList.length > 0" class="realtime-item-list arb-list">
-            <li v-for="v in maxArbitrageList">
+            <li v-for="(v, index) in maxArbitrageList" :key="index">
               <span class="arb">{{v.priceSubtract}}</span>
               <span class="amount text-right">{{v.qtySubtract}}</span>
               <span class="time text-right">{{v.dateTime | formatTime}}</span>
@@ -29,7 +29,7 @@
         </div>
         <div class="realtime-item-content">
           <ul class="realtime-item-list lowest-list" ref="buyOrderContainer">
-            <li v-for="v in gbboAsksArr" @click="getClickSellPrice(v.priceWithFee,v.qty)">
+            <li v-for="(v, index) in gbboAsksArr" :key="index" @click="getClickSellPrice(v.priceWithFee,v.qty)">
               <span class="lowest">
                 {{v.priceWithFee}}
                 <em>{{v.provider}}</em>
@@ -52,7 +52,7 @@
         </div>
         <div class="realtime-item-content">
           <ul class="realtime-item-list highest-list" ref="sellOrderContainer">
-            <li v-for="v in gbboBidsArr" @click="getClickBuyPrice(v.priceWithFee,v.qty)">
+            <li v-for="(v, index) in gbboBidsArr" :key="index" @click="getClickBuyPrice(v.priceWithFee,v.qty)">
               <span class="highest">
                 {{v.priceWithFee}}
                 <em>{{v.provider}}</em>
