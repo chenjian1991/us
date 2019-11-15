@@ -21,7 +21,7 @@
           <span v-if="maxArbitrageList.length > 0" class="last-arb">{{maxArbitrageList[0].priceSubtract}}</span>
         </div>
       </div>
-      <div class="realtime-item" style="margin: 0 6px;">
+      <div class="realtime-item mx-px">
         <div class="realtime-item-header">
           <div class="lowest">Global Lowest Price</div>
           <div class="text-right amount">Amount</div>
@@ -324,6 +324,9 @@ export default {
       .highest-footer {
         background: #083326;
       }
+    }
+    .mx-px {
+      margin: 0 6px;
     }
   }
 }
