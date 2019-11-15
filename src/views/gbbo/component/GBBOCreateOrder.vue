@@ -9,7 +9,7 @@
               <div>Arbitrage</div>
             </Tooltip>
             <div class="coinContainer">
-              <div @click="changeStatus">
+              <div  @click="changeStatus">
                 <img src="../images/Wallet.svg" alt />
                 <span v-if="isLogin">{{availableCoin | scientificToNumber}}</span>
                 <span v-if="!isLogin">--</span>&nbsp;
@@ -40,6 +40,7 @@
                     @input="handleBuyPriceInput"
                     type="text"
                     ref="buyInput"
+                    :value="maxArbitrageList.length > 0? maxArbitrageList[0].priceSubtract:''"
                     maxlength="14"
                     :class="{'input-empty-color':buyPriceEmpty}"
                     class="input-price"
@@ -407,6 +408,7 @@ export default {
     briefInputData: Object,
     buyInputPrice: Number,
     sellInputPrice: Number,
+    maxArbitrageList:Array,
     // currentInfo:Object,
    
   },
