@@ -574,6 +574,7 @@ export default {
               volumeLong
             );
           }
+          debugger
           let Fee = this.symbolList[this.currentSymbol].commissionRate;
           this.buyTotalFee = bigDecimal.multiply(this.buyCountInput, Fee);
           break;
