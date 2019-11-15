@@ -344,10 +344,10 @@ export default {
   data() {
     return {
       isLogin: true,
-      currentInfo: {
-        quoteAsset: "USD",
-        baseAsset: "BTC"
-      }, //当前交易对的基本信息集合
+      // currentInfo: {
+      //   quoteAsset: "USD",
+      //   baseAsset: "BTC"
+      // }, //当前交易对的基本信息集合
       buyPriceEmpty: false,
       buyCountEmpty: false,
       sellPriceEmpty: false,
@@ -409,7 +409,7 @@ export default {
     buyInputPrice: Number,
     sellInputPrice: Number,
     maxArbitrageList:Array,
-    // currentInfo:Object,
+    currentInfo:Object,
    
   },
   watch: {
