@@ -251,7 +251,7 @@ export default {
     }
     .tableWrap{
       position: relative;
-      height: 221px;
+      height: 226px;
       padding: 0 6px;
       overflow: auto;
       table {

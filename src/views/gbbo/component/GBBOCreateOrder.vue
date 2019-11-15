@@ -2,7 +2,7 @@
   <div class="gbbomain-create-order">
     <div class="inputOrderBox">
       <!-- 一键套利 -->
-      <div class="buy-panel buy-sell-common">
+      <div class="buy-sell-common">
         <div>
           <div class="available-container">
             <Tooltip placement="top" content="One Click Arbitrage">
@@ -98,7 +98,7 @@
         </div>
       </div>
       <!--买入-->
-      <div class="buy-panel buy-sell-common">
+      <div class="buy-sell-common" style="margin-left:6px;">
         <div>
           <div class="available-container">
             <!-- 可用币种数量 -->
@@ -193,9 +193,11 @@
           </div>
         </div>
       </div>
-      <div class="border-line"></div>
+      <div class="border-line">
+        <span></span>
+      </div>
       <!--卖出-->
-      <div class="buy-panel buy-sell-common">
+      <div class="buy-sell-common">
         <div>
           <div class="available-container">
             <div>Sell BTC</div>
@@ -593,17 +595,21 @@ export default {
     align-items: center;
   }
   .border-line {
-    border-right: 1px dashed#083441;
-    height: 240px;
+    padding: 28px 3px 0;
+    height: 264px;
+    background: #031419;
+
+    span{
+      display: inline-block;
+      width: 0;
+      height: 207px;
+      border-right: 1px dashed#083441;
+    }
   }
   .buy-sell-common {
-    width: 270px;
     flex: 1;
+    width: 270px;
     background: #031419;
-    margin-right: 6px;
-    &:nth-child(2){
-        margin-right: 0px;
-    }
     > div {
       padding: 20px 12px 10px 12px;
     }
@@ -614,7 +620,7 @@ export default {
     .available-container {
       display: flex;
       justify-content: space-between;
-      padding-bottom: 25px;
+      padding-bottom: 24px;
       div {
         color: #d4d4d4;
         font-size: 14px;
@@ -639,8 +645,7 @@ export default {
         ul {
           display: flex;
           justify-content: space-between;
-          margin-left: 67px;
-          margin-top: 6px;
+          padding: 8px 0 7px 67px;
           li {
             padding: 2px 6px;
             background: rgba(4, 29, 37, 1);
@@ -660,14 +665,14 @@ export default {
         display: flex;
         .price-box-label {
           div {
-            height: 23px;
-            line-height: 23px;
+            height: 30px;
+            line-height: 30px;
             padding-right: 25px;
             color: #788390;
             font-size: 12px;
             font-weight: 500;
             &:first-child {
-              margin-bottom: 22px;
+              margin-bottom: 12px;
             }
           }
         }
@@ -806,7 +811,9 @@ export default {
       .totalMoney-label {
         display: flex;
         justify-content: space-between;
-        margin-top: 3px;
+        padding-top: 3px;
+        height: 20px;
+        line-height: 20px;
         em,
         span {
           font-size: 14px;
@@ -831,15 +838,12 @@ export default {
         width: 100%;
         height: 30px;
         border-radius: 3px;
-        margin-top: 11px;
+        margin-top: 8px;
         span {
           color: #fff;
           font-weight: 500;
           font-size: 12px;
         }
-        //   a {
-        //     font-weight: bold;
-        //   }
       }
       .Arbitrage-btn {
         background-color: #12869a;
