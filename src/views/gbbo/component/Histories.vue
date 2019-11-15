@@ -25,47 +25,11 @@
             <th>Time</th>
           </thead>
           <tbody>
-            <tr>
-              <td>28.87</td>
-              <td>Binance</td>
-              <td>Binance</td>
-              <td>16:56:28</td>
-            </tr>
-            <tr>
-              <td>28.87</td>
-              <td>Binance</td>
-              <td>Binance</td>
-              <td>16:56:28</td>
-            </tr>
-            <tr>
-              <td>28.87</td>
-              <td>Binance</td>
-              <td>Binance</td>
-              <td>16:56:28</td>
-            </tr>
-            <tr>
-              <td>28.87</td>
-              <td>Binance</td>
-              <td>Binance</td>
-              <td>16:56:28</td>
-            </tr>
-            <tr>
-              <td>28.87</td>
-              <td>Binance</td>
-              <td>Binance</td>
-              <td>16:56:28</td>
-            </tr>
-            <tr>
-              <td>28.87</td>
-              <td>Binance</td>
-              <td>Binance</td>
-              <td>16:56:28</td>
-            </tr>
-            <tr>
-              <td>28.87</td>
-              <td>Binance</td>
-              <td>Binance</td>
-              <td>16:56:28</td>
+            <tr v-for="(v,index) in maxArbitrageList" :key="index">
+              <td>{{v.priceSubtract}}</td>
+              <td>{{v.lowEx}}</td>
+              <td>{{v.highEx}}</td>
+              <td>{{v.dateTime | formatTime}}</td>
             </tr>
           </tbody>
         </table>
@@ -115,7 +79,14 @@ export default {
         }
       },
       required: true
-    }
+    },
+    maxArbitrageList:{
+      type:Array,
+      default:function(){
+        return []
+      },
+      required: true
+    }    
   },
   methods: {
     showTable(tab) {
@@ -188,7 +159,14 @@ export default {
     currentSymbolObj(){
       this.updateSymbolHistory()
     }
-  }
+  },
+  filters:{
+    formatTime (value) {
+      if (!value) return ''
+      // 2019-11-14T11:52:46.063+0000
+      return value.slice(11,19)
+    }
+  },
 };
 </script>
 
