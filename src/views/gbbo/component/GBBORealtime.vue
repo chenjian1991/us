@@ -209,7 +209,7 @@ export default {
 
               em {
                 display: block;
-                width: 60px;
+                width: 50%;
                 float: right;
                 color: #788390;
                 font-style: normal;
