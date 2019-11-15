@@ -105,26 +105,16 @@ export default {
     };
   },
   props:{
-    currentSymbol: {
-      type: String,
-      default: "BTCUSD",
-      required: true
-    },    
-    // priceLong: {
-    //   type: Number,
-    //   default: 8,
-    //   required: true
-    // },    
-    // volumeLong: {
-    //   type: Number,
-    //   default: 8,
-    //   required: true
-    // },
     currentSymbolObj: {
       type: Object,
       default: function(){
-        return {}
-      }
+        return {
+          symbol:"BTCUSD",
+          priceTickSize:"0.00000001",
+          quantityStepSize:"0.00000001",
+        }
+      },
+      required: true
     }
   },
   methods: {
@@ -140,7 +130,7 @@ export default {
         //清空交易历史
         this.tradeHistoryArr = [];
       }
-      this.WSHistory = this.reconnectingWebSocket(`/quote/tradeHistory.ws?symbol=${this.currentSymbol}&least=21`)
+      this.WSHistory = this.reconnectingWebSocket(`/quote/tradeHistory.ws?symbol=${this.currentSymbolObj.symbol}&least=21`)
       this.WSHistory.onopen = e => {
         console.log('history_websocket','打开')
       };
@@ -194,8 +184,10 @@ export default {
       );
     },
   },
-  mounted(){
-    this.updateSymbolHistory()
+  watch:{
+    currentSymbolObj(){
+      this.updateSymbolHistory()
+    }
   }
 };
 </script>
