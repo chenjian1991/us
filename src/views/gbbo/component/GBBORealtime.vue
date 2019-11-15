@@ -174,7 +174,7 @@ export default {
       background: #031419;
       position: relative;
       .realtime-item-header {
-        padding: 0 6px 0 8px;
+        padding: 0 8px 0 8px;
         height: 20px;
         line-height: 20px;
         color: #788390;
@@ -199,7 +199,7 @@ export default {
           overflow-y: scroll;
           padding-bottom: 40px;
           li {
-            padding: 0 6px 0 8px;
+            padding: 0 3px 0 8px;
             display: flex;
             cursor: pointer;
             span {
