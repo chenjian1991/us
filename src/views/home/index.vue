@@ -36,8 +36,8 @@
                      </router-link>
                   </div>
                   <div class="d-flex justify-content-between align-items-baseline">
-                     <span class="f-20 c-01B2D6">{{gbboList.avg|compare}}</span>
-                     <span class="common-style">Amount：{{gbboList.vol}}</span>
+                     <span class="f-20 c-01B2D6">{{diff|compare}}</span>
+                     <span class="common-style">Amount：{{gbboList.vol||0}}</span>
                   </div>
                </div>
                <!--Buy at Global Lowest Price-->
@@ -73,7 +73,7 @@
       <div class="gbbo-mobile gbboMobile" id="GBBO">
          <div class="d-flex justify-content-between align-items-center mobile-title">
             <div class="f-18 f-w-6 c-151D24">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</div>
-            <div><span class="f-18 f-w-5 c-151D24 va-m">Max Arbitrage: </span><span class="f-20 f-w-6 c-01B2D6 va-m">{{gbboList.avg}}</span>
+            <div><span class="f-18 f-w-5 c-151D24 va-m">Max Arbitrage: </span><span class="f-20 f-w-6 c-01B2D6 va-m">{{diff|compare}}</span>
             </div>
          </div>
          <div class="mobile-content pb-6">
@@ -87,7 +87,7 @@
                   <p class="f-14 c-77838F mt-1">Sell at Highest</p>
                </li>
                <li class="item">
-                  <h4 class="f-20 c-151D24">{{gbboList.sellPrice}}</h4>
+                  <h4 class="f-20 c-151D24">{{gbboList.avgPrice}}</h4>
                   <p class="f-14 c-77838F mt-1">Market Avg Price</p>
                </li>
             </ul>
@@ -276,16 +276,14 @@
             },
             gbboList: {
                avgPrice: 0,
+               avgChange: 0,
                vol: 0,
-               change: 0,
                buyPrice: 0,
                buyExchange: '',
                buyDiffAvg: 0,
                sellPrice: 0,
                sellExchange: '',
                sellDiffAvg: 0,
-               avg: 0,
-               avgChange: 0,
             },
             tresso: {
                title: 'Why Tresso?',
@@ -522,6 +520,7 @@
          },
          // 计算平均价
          getAvgPrice(data) {
+            //每个交易所的value的数组
             const providerBBOMap = Object.values(data.providerBBOMap).filter((v) => {
                if (v.provider !== 'TRESSO') return v
             })
@@ -544,7 +543,6 @@
             //卖盘 最低价买
             this.gbboList.sellPrice = result.asks[result.asks.length - 1].priceWithFee.toFixed(2)
             this.gbboList.sellExchange = result.asks[result.asks.length - 1].provider
-
             //买盘 最高价卖
             this.gbboList.buyPrice = result.bids[0].priceWithFee.toFixed(2)
             this.gbboList.buyExchange = result.bids[0].provider // 交易所logo
@@ -556,17 +554,22 @@
 
             // 差价
             const diff = this.gbboList.buyPrice - this.gbboList.sellPrice
-            this.gbboList.avg = bigDecimal.round(diff, this.priceLong)
 
             if (diff <= 0) {
                this.gbboList.avgChange = 0
             } else {
-               this.gbboList.avgChange = new BigNumber(this.gbboList.avg).dividedBy(avg).multipliedBy(100).toFixed(4) + '%';
+               this.gbboList.avgChange = new BigNumber(diff).dividedBy(avg).multipliedBy(100).toFixed(4) + '%';
             }
          },
       },
       mounted() {
          this.init()
+      },
+      computed: {
+         //差价可能不变
+         diff: function () {
+            return bigDecimal.round(this.gbboList.buyPrice - this.gbboList.sellPrice, this.priceLong)
+         }
       },
       beforeDestroy() {
          this.quoteWS && this.quoteWS.close();
