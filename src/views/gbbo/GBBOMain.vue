@@ -185,6 +185,7 @@ export default {
   },
   data(){
     return{
+      historySymbolObj: {},
       briefInputData:{
         quoteCoinAvailable:'',
         baseAssetAvailable:'',
