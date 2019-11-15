@@ -252,8 +252,13 @@ export default {
           }
 
           &::-webkit-scrollbar {
-            display: none;
+            width: 5px;
+            // display: none;
           }
+          &::-webkit-scrollbar-thumb{
+            background: #093A49;
+          }
+
         }
         .arb-list {
           li:hover{
