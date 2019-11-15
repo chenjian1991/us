@@ -41,6 +41,7 @@
           <gbbo-kline></gbbo-kline>
           <div class="gbbomain-realtime__line-history">
             <gbbo-histories
+              :maxArbitrageList='maxArbitrageList'
               :currentSymbol="currentSymbol"
               :currentSymbolObj="currentSymbolObj">
             </gbbo-histories>
