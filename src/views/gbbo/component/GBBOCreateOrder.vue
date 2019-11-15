@@ -42,7 +42,7 @@
                     ref="buyInput"
                     :value="maxArbitrageList.length > 0? maxArbitrageList[0].priceSubtract:''"
                     maxlength="14"
-                    :class="{'input-empty-color':buyPriceEmpty}"
+                    :class="{'input-empty-color':buyPriceEmpty,'gbbo_lock_arbitra':buy_input_change_Arbitrage}"
                     class="input-price"
                     autocomplete="off"
                     style="ime-mode:disabled"
@@ -860,6 +860,10 @@ export default {
         .gbbo_lock_input_sell{
              border:1px solid #041D25;
             color: #2cb48c;
+        }
+        .gbbo_lock_arbitra{
+            border:1px solid #041D25;
+            color: #12869A;
         }
         .gbbo_lock_input{
            border:1px solid #041D25;
