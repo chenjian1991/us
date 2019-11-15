@@ -1303,7 +1303,7 @@
                }else if(val.provider && val.provider === 'E55') {
                   return Object.assign({}, val, { provider: 'TRESSO' })
                }else if(val.provider) {
-                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
+                  return Object.assign({}, val, { provider: 'Market Maker' })
                }
             })
             
