@@ -185,6 +185,7 @@ export default {
         padding: 10px;
         color: #788390;
         font-size: 12px;
+        font-weight: 700;
         background-color: #041d25;
         cursor: pointer;
         &.active {
@@ -232,6 +233,7 @@ export default {
           th {
             text-align: right;
             width: 25%;
+            font-weight: 500;
             &:first-child {
               text-align: left;
             }
