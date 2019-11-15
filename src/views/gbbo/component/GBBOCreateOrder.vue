@@ -115,7 +115,7 @@
         <div>
           <div class="available-container">
             <!-- 可用币种数量 -->
-            <div>Buy BTC</div>
+            <div>Buy {{currentInfo.baseAsset}}</div>
             <div>
               <img src="../images/Wallet.svg" alt />
               <span v-if="isLogin">{{briefInputData.quoteCoinAvailable | scientificToNumber}}</span>
@@ -213,7 +213,7 @@
       <div class="buy-sell-common">
         <div>
           <div class="available-container">
-            <div>Sell BTC</div>
+            <div>Sell {{currentInfo.baseAsset}}</div>
             <div>
               <img src="../images/Wallet.svg" alt />
               <span v-if="isLogin">{{briefInputData.baseAssetAvailable | scientificToNumber}}</span>
@@ -394,6 +394,7 @@ export default {
       quoteName:true,
       availableCoin:'',
       assetName:'',
+      
     };
   },
   props: {
@@ -406,6 +407,7 @@ export default {
     briefInputData: Object,
     buyInputPrice: Number,
     sellInputPrice: Number,
+    // currentInfo:Object,
    
   },
   watch: {
@@ -439,7 +441,7 @@ export default {
   mounted() {
     this.availableCoin = this.briefInputData.quoteCoinAvailable;
     this.assetName = this.currentInfo.quoteAsset;
-    console.log('currentInfo',this.briefInputData)
+    console.log('currentInfo',this.currentInfo)
   },
 
   computed: {
