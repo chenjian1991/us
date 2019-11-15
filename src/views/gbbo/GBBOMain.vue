@@ -613,7 +613,7 @@ export default {
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
           arbSocket = new SockJS('https://' + domain + '/xchange/marketdata');
         } else {
-          arbSocket = new SockJS('http://10.11.9.57:20013/xchange/marketdata');
+          arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
           // arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
 
         }
