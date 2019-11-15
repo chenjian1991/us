@@ -31,6 +31,7 @@
               :sellInputPrice='sellInputPrice'
               :currentSymbol='currentSymbol'
               :symbolList='symbolList'
+              :currentInfo="currentInfo"
             ></create-order>
           </div>
         </div>
@@ -801,6 +802,7 @@ export default {
       } else {
           document.title = `-- | ${v.baseAsset}/${v.quoteAsset}`
       }
+      debugger
       this.currentInfo = v
     },
     //处理法币估值
