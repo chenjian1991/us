@@ -108,9 +108,11 @@
 </template>
 
 <script>
-   import {postHeaderTokenBodyApi,getHeaderTokenApi} from "_api/axios.js";
+   import {postHeaderTokenBodyApi, getHeaderTokenApi} from "_api/axios.js";
    import {logout} from "../../../api/urls.js";
    import {getUserInfo} from "_api/balances.js";
+   import {getLegalTenderValue} from "_api/header.js";
+
    import {clearLocalStorage} from "../../config/index";
 
    export default {
@@ -121,6 +123,21 @@
          };
       },
       methods: {
+         getLegalTenderData() {
+            let param = {
+               fromCurrency: 'USD',
+               toCurrency: 'USD'
+            };
+            getLegalTenderValue(param).then(result => {
+               let info = {
+                  name: result.toCurrency,
+                  rate: result.rate,
+               };
+               localStorage.setItem("currentCurrency", JSON.stringify(info));
+               // //目标页面监听store中的数据变动
+               this.$store.commit("changeCurrencyState", result.toCurrency);
+            });
+         },
          gbboHref() {
             if (location.href.includes('/home')) {
                location.href = '#GBBO'
@@ -159,23 +176,23 @@
             })
          },
          quitFun() {
-               let params = {
-                  userId: localStorage.getItem("loginUserId")
-               };
-               getHeaderTokenApi(logout, params, $cookies.get("loginToken")).then(
-                res => {
+            let params = {
+               userId: localStorage.getItem("loginUserId")
+            };
+            getHeaderTokenApi(logout, params, $cookies.get("loginToken")).then(
+               res => {
                   if (res.data.result) {
                      clearLocalStorage();
-                        setTimeout(() => {
+                     setTimeout(() => {
                         this.$router.push("/home");
-                        }, 500);
+                     }, 500);
                      this.$Notice.success({
                         title: this.$t(11001),
                         desc: this.$t(11001)
                      });
                   }
                }
-               );
+            );
             //更新自选的币种
             // this.$store.dispatch("updateMarkSymbol");
             this.$store.commit("changeLoingStatus", false);
@@ -195,6 +212,9 @@
             }
          },
       },
+      created(){
+         this.getLegalTenderData()
+      },
       mounted() {
          //判断是否登录有效
          let isLogin = this.$store.state.app.isLogin;
@@ -203,7 +223,7 @@
          } else {
             this.isLogin = false;
          }
-         document.getElementsByClassName('u-header__navbar-nav').onclick=function(){
+         document.getElementsByClassName('u-header__navbar-nav').onclick = function () {
             if (document.getElementsByClassName('hs-mega-menu-opened')[0]) {//交易
                setTimeout(() => {
                   document.getElementsByClassName('hs-mega-menu-opened')[0].childNodes[1].style.display = 'none'
