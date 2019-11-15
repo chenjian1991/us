@@ -613,22 +613,28 @@ export default {
           arbSocket = new SockJS('https://' + domain + '/xchange/marketdata');
         } else {
           arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
-          // arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
-
         }
-        // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
-        // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
+        
         this.arbStompClient = Stomp.over(arbSocket);
         this.arbStompClient.debug = null
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
           
+          this.arbStompClient.send("/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
+
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD', (message) => {
             if (message.body) {
               // this.maxArbitrageBook(JSON.parse(message.body))
               this.maxArbitrageList = JSON.parse(message.body)
             }
           });
+          this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
+            // console.log(message)
+            if(message.body){
+              this.kLineData = JSON.parse(message.body)
+            }
+          })
+          
         }, (error) => {
           console.log('new Sockjs  error')
           this.arbStompClient.disconnect()
@@ -763,7 +769,7 @@ export default {
                   this.currentSymbolObj = Object.assign(result, v, this.symbolList_quote[result.symbol])
                   this.showCurrentPriceInfo(this.currentSymbolObj)
                 }
-                this.getCurrencyData()
+                // this.getCurrencyData()
             }
             //处理币种列表行情
             if (this.symbolList_quote[result.symbol]) {

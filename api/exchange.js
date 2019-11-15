@@ -57,8 +57,7 @@ export const getUserInfo = (params,token) => {
 }
 // 获取newKline历史数据
 export const getKlineHistoryData = (params) => {
-   const reqUrl = params['url'] || klineHistory
-   return getApi(reqUrl, params)
+   return getApi(klineHistory, params)
 }
 
 //下单交易对

@@ -42,10 +42,9 @@ export default {
   },
   created(){
     getKlineHistoryData({
-      url: 'http://10.11.9.57:20013/',
       symbol: this.currentSymbol || 'BTCUSD',
-      startDateTime: new Date().getTime() - 500000,
-      endDateTime: new Date().getTime(),
+      startDateTime:  new Date().getTime(),
+      endDateTime: new Date().getTime() - 500000,
       interval: 'MINUTE_1'
     }).then(res => {
       console.log(res)

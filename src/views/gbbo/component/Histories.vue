@@ -157,7 +157,8 @@ export default {
   },
   watch:{
     currentSymbolObj(){
-      this.updateSymbolHistory()
+      console.log('enter history')
+      // this.updateSymbolHistory()
     }
   },
   filters:{

@@ -88,8 +88,18 @@ module.exports = {
             pathRewrite: {
                // '^/quote': ''
             },
+            // ws: true,
             secure: false
          },
+         '/runtime': {
+            target: 'http://10.11.9.57:20013', // k线
+            changeOrigin: true,
+            pathRewrite: {
+               // '^/quote': ''
+            },
+            // ws: true,
+            secure: false
+         }
       },
    }
 }
