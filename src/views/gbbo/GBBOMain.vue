@@ -1298,68 +1298,79 @@ export default {
           this.sellPriceEmpty = true
           // this.$Message.warning('请输入卖出价格');
           this.$Notice.warning({
-            title: this.$t('bbjyEnterSellPrice'),
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjyEnterSellPrice'),
           });
           this.sellDisabled = false;
       } else if (!this.sellCountInput) {
           this.sellCountEmpty = true
           // this.$Message.warning('请输入卖出数量');
           this.$Notice.warning({
-            title: this.$t('bbjyEnterSellVolume'),
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjyEnterSellVolume'),
           });
           this.sellDisabled = false;
       } else if (Number(this.sellPriceInput) > Number(maxPrice)) {
           // this.$Message.warning('卖出价格不能超过'+maxPrice);
           this.$Notice.warning({
-            title: this.$t('bbjySellPriceNotMore') + ' ' + maxPrice,
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjySellPriceNotMore') + ' ' + maxPrice,
           });
           this.sellDisabled = false;
       } else if (Number(this.sellPriceInput) < Number(minPrice)) {
           // this.$Message.warning('卖出价格不能少于'+minPrice);
           this.$Notice.warning({
-            title: this.$t('bbjySellPriceNotLess') + ' ' + minPrice,
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjySellPriceNotLess') + ' ' + minPrice,
           });
           this.sellDisabled = false;
       } else if (Number(this.sellCountInput) > Number(maxQuantity)) {
           // this.$Message.warning('卖出数量不能超过'+maxQuantity);
           this.$Notice.warning({
-            title: this.$t('bbjySellVolumeNotMore') + ' ' + maxQuantity,
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjySellVolumeNotMore') + ' ' + maxQuantity,
           });
           this.sellDisabled = false;
       } else if (Number(this.sellCountInput) < Number(minQuantity)) {
           // this.$Message.warning('卖出数量不能少于'+minPrice);
           this.$Notice.warning({
-            title: this.$t('bbjySellVolumeNotLess') + ' ' + minQuantity,
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjySellVolumeNotLess') + ' ' + minQuantity,
           });
           this.sellDisabled = false;
       } else if (Number(this.sellCountInput) > Number(this.baseAssetAvailable)) {
           // this.$Message.warning('卖出数量不能超过'+可用资产);
           this.$Notice.warning({
-            title: this.$t('bbjySellVolumeNotMore') + ' ' + this.$t('bbjyBuyAvailable').toLowerCase(),
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjySellVolumeNotMore') + ' ' + this.$t('bbjyBuyAvailable').toLowerCase(),
           });
           this.sellDisabled = false;
       } else if (!isPriceSize) {
           // 价格整数倍于
           this.$Notice.warning({
-            title: this.$t('bbjySellPriceMultiple') + ' ' + priceTickSize,
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjySellPriceMultiple') + ' ' + priceTickSize,
           });
           this.sellDisabled = false;
       } else if (!isQuantitySize) {
           this.$Notice.warning({
-            title: this.$t('bbjySellVolumeMultiple') + ' ' + quantityStepSize,
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjySellVolumeMultiple') + ' ' + quantityStepSize,
           });
           this.sellDisabled = false;
       } else if (status == "HALT") {
           //账户停止
           this.$Notice.warning({
-            title: this.$t('bbjyAccountError'),
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjyAccountError'),
           });
           this.sellDisabled = false;
       }
       //未设置交易密码直接下单
       else if (!this.isSetTradePasswrod) {
           this.$Notice.warning({
-            title: this.$t('bbjyNoPasswordError'),
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjyNoPasswordError'),
           });
           setTimeout(function () {
             this.$router.push('/originTradePassword')
