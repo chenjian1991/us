@@ -437,7 +437,7 @@ export default {
       this.asksArr = []
       this.isInitOrderBook = true
 
-      ////K线基本数据配置使用
+      //K线基本数据配置使用
       storage.set('currentSymbolObj', v)
       this.currentSymbol = v.symbol
       this.currentSymbolObj = v;
@@ -551,7 +551,7 @@ export default {
           // 拼装行情的symbol为Key的symbolList 对象
           this.symbolList_quote[val.symbol] = val
         })
-        
+        console.log('aaaaa',this.symbolList_quote)
         // 第一个交易对信息
         const firstSymbol = res[0]
         const { priceTickSize, quantityStepSize } = firstSymbol
@@ -575,6 +575,7 @@ export default {
           this.getGBBODepth()
           this.getMyAssetData()
         }
+        debugger
         // 当有快照驱动时数据变化
         this.getSSERealTime(symbolUrl)
         
@@ -703,6 +704,8 @@ export default {
     // },
     //获取推送行情
     getSSERealTime(url) {
+                  debugger
+
       let SSEcache = null
       const baseURL = (window.location.protocol === 'http:') ? 'ws://' : 'wss://';
       const host = window.location.host;
@@ -760,6 +763,7 @@ export default {
                 }
                 //展示当前的交易对的大盘上方行情
                 if (this.currentSymbol === result.symbol) {
+                  debugger
                   console.log(1)
                   this.currentSymbolObj = Object.assign(result, v, this.symbolList_quote[result.symbol])
                   this.showCurrentPriceInfo(this.currentSymbolObj)
@@ -795,6 +799,7 @@ export default {
     //展示最新的交易资产行情信息
     //v symbol 行情合并后的对象
     showCurrentPriceInfo(v) {
+      debugger
       //给title赋值行情
       if (v.last) {
           document.title = `${v.last}  | ${v.baseAsset}/${v.quoteAsset}`
