@@ -39,8 +39,8 @@
           <gbbo-kline></gbbo-kline>
           <div class="gbbomain-realtime__line-history">
             <gbbo-histories
-              :currentSymbol="currentSymbol"
-              :currentSymbolObj="currentSymbolObj">
+              :currentSymbolObj="historySymbolObj"
+              :maxArbitrageList="maxArbitrageList">
             </gbbo-histories>
           </div>
         </div>
@@ -398,16 +398,6 @@ export default {
     sellBallTotal: function () { //能卖出的总数量
       return this.baseAssetAvailable
     },
-    buyPriceCurrency: function () {
-      if (this.buyPriceInput) {
-        return new BigNumber(this.buyPriceInput).multipliedBy(new BigNumber(this.symbolCurrency)).dividedBy(new BigNumber(this.currentInfo.last)).toFixed(4)
-      }
-    },
-    sellPriceCurrency: function () {
-      if (this.sellPriceInput) {
-          return new BigNumber(this.sellPriceInput).multipliedBy(new BigNumber(this.symbolCurrency)).dividedBy(new BigNumber(this.currentInfo.last)).toFixed(4)
-      }
-    },
     //监听vuex中数据的变化
     listenstage() {
       return this.$store.state.app.currentCurrencyState;
@@ -560,10 +550,18 @@ export default {
         
         // 第一个交易对信息
         const firstSymbol = res[0]
-
+        const { priceTickSize, quantityStepSize } = firstSymbol
         this.currentSymbol = firstSymbol.symbol // 第一个交易对
         this.currentSymbolObj = firstSymbol 
         
+        
+
+        this.historySymbolObj = {
+          symbol: this.currentSymbol,
+          priceTickSize: getDecimalsNum(priceTickSize),
+          quantityStepSize: getDecimalsNum(quantityStepSize)
+        }
+
         //K线基本数据配置使用
         storage.set('currentSymbolObj', firstSymbol)
 
@@ -586,11 +584,9 @@ export default {
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
           socket = new SockJS('https://' + domain + '/xchange/marketdata');
         } else {
-          // socket = new SockJS('http://52.68.13.17:8090/xchange/marketdata');
           socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata');
         }
-        // const socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
-        // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
+        
         this.stompClient = Stomp.over(socket);
         this.stompClient.debug = null
         this.stompClient.heartbeat.outgoing = 1000;
