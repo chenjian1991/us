@@ -31,12 +31,16 @@ export default {
         lowData: [],
         marketData: []
       },
+      
       _timestamp: '',
       _chart: ''
     }
   },
   props: {
-    
+    currentSymbol: {
+      type: String,
+      default: "BTCUSD"
+    }
   },
   created(){
     
@@ -61,8 +65,23 @@ export default {
       })
     }
     this.klineInit()
+    // this.connect()
   },
   methods: {
+    connect() {
+      if(this.klineConnect) {
+        this.klineConnect.close()
+      }
+      const baseURL = window.location.protocol === "http:" ? "ws://" : "wss://";
+      const host = window.location.host;
+      this.klineConnect = new ReconnectingWebSocket(`${baseURL}${host}/quote/summarized.timeRange?symbol=${this.currentSymbol}&startDateTime=${new Date().getTime()}&endDateTime=${new Date().getTime() - 500000}&interval=MINUTE_1`);
+      this.klineConnect.onopen = () => {
+        console.log('kline start');
+      }
+      this.klineConnect.onmessage = (res) => {
+        console.log(res)
+      }
+    },
     restoreDefault(){
       this._chart.timeScale().scrollToRealTime()
     },
@@ -180,6 +199,7 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this._timestamp)
+    this._chart = null
   },
   
   
