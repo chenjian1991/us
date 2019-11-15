@@ -596,7 +596,7 @@ export default {
         this.stompClient.debug = null
         this.stompClient.heartbeat.outgoing = 1000;
         this.stompClient.connect({}, (frame) => {
-          this.stompClient.subscribe('/topic/orderbook/BTCUSD', (message) => {
+          this.stompClient.subscribe(`/topic/orderbook/${this.currentSymbol}`, (message) => {
             if (message.body) {
               this.sortOrderBook(JSON.parse(message.body))
             }
@@ -621,7 +621,7 @@ export default {
         this.arbStompClient.debug = null
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
-          this.arbStompClient.subscribe('/topic/runtime/BTCUSD', (message) => {
+          this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
             if (message.body) {
               // this.maxArbitrageBook(JSON.parse(message.body))
               this.maxArbitrageList = JSON.parse(message.body)
