@@ -201,7 +201,7 @@ export default {
           li {
             padding: 0 3px 0 8px;
             display: flex;
-            cursor: pointer;
+            // cursor: pointer;
             span {
               height: 20px;
               line-height: 20px;
@@ -245,9 +245,6 @@ export default {
             }
             .time {
               color: #5d7c86;
-            }
-            &:hover{
-              cursor: pointer;
             }
           }
 
