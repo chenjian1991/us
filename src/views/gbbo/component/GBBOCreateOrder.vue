@@ -8,12 +8,25 @@
             <Tooltip placement="top" content="One Click Arbitrage">
               <div>Arbitrage</div>
             </Tooltip>
-            <div>
-              <img src="../images/Wallet.svg" alt />
-              <span v-if="isLogin">{{briefInputData.quoteCoinAvailable | scientificToNumber}}</span>
-              <span v-else>--</span>&nbsp;
-              <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
+            <div class="coinContainer">
+              <div @click="changeStatus">
+                <img src="../images/Wallet.svg" alt />
+                <span v-if="isLogin">{{availableCoin | scientificToNumber}}</span>
+                <span v-if="!isLogin">--</span>&nbsp;
+                <span class="quoteAsset">{{assetName}}</span>
+                <Icon v-if="showCoin"  type="md-arrow-dropup" />
+                <Icon  v-else type="md-arrow-dropdown" />
+              </div>
+              <ul @click="changeCoin($event)" v-if="showCoin" class="available-assets">
+                <li value='quote'> 
+                  <span  class="quoteAsset">{{currentInfo.quoteAsset}}</span>
+                </li>
+                <li value='base'> 
+                  <span  class="quoteAsset">{{currentInfo.baseAsset}}</span>
+                </li>
+              </ul>
             </div>
+              
           </div>
           <div class="trade-msg">
             <div class="price-box">
@@ -50,14 +63,14 @@
                     @input="handleBuyCountInput"
                     type="text"
                     maxlength="14"
-                    ref="buyCountInputRef"
+                    ref="buyArbitraCountInputRef"
                     :class="{'input-empty-color':buyCountEmpty}"
                     class="input-num"
                     autocomplete="off"
                     style="ime-mode:disabled"
                     ondragenter="return false"
                   />
-                  <div class="name-show baseAsset">{{currentInfo.baseAsset}}</div>
+                  <div class="name-show baseAsset">{{assetName}}</div>
                 </div>
               </div>
             </div>
@@ -73,15 +86,15 @@
             <div class="totalMoney-label">
               <em>Expect</em>&nbsp;&nbsp;
               <div>
-                <span id="buy_total" class="total-num">{{buyInTotal}}</span>&nbsp;
-                <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
+                <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp;
+                <span class="quoteAsset">{{assetName}}</span>
               </div>
             </div>
             <div class="totalMoney-label">
               <em>Fee</em>&nbsp;&nbsp;
               <div>
-                <span id="buy_total" class="total-num">{{buyInTotal}}</span>&nbsp;
-                <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
+                <span id="buy_total" class="total-num">{{buyArbitraInTotalFee}}</span>&nbsp;
+                <span class="quoteAsset">{{assetName}}</span>
               </div>
             </div>
             <button class="mybtn btn-back" v-if="!isLogin">
@@ -338,6 +351,8 @@ export default {
       buyCountEmpty: false,
       sellPriceEmpty: false,
       sellCountEmpty: false,
+      // buyArbitraPriceInput: "",
+      buyArbitraCountInput: "",
       buyPriceInput: "",
       buyCountInput: "",
       sellCountInput: "",
@@ -353,6 +368,7 @@ export default {
       buyDisabled: false,
       sellDisabled: false,
       myBanalceTimer: null,
+      arbitraBallPercentage:'0',
       buyBallPercentage: "0", //下单买入百分比 0 0.25 0.5 0.75 1
       sellBallPercentage: "0", //下单卖出百分比
       buy_input_change: true, //是否输入
@@ -372,7 +388,12 @@ export default {
       changeFlag: true,
       sellFlag: true,
       buyTotalFee: 0,
-      sellTotalFee: 0
+      sellTotalFee: 0,
+      buyArbitraInTotalFee:0,
+      showCoin:false,
+      quoteName:true,
+      availableCoin:'',
+      assetName:'',
     };
   },
   props: {
@@ -384,7 +405,8 @@ export default {
     symbolList: Object,
     briefInputData: Object,
     buyInputPrice: Number,
-    sellInputPrice: Number
+    sellInputPrice: Number,
+   
   },
   watch: {
     buyInputPrice() {
@@ -396,7 +418,8 @@ export default {
     briefInputData() {
       this.quoteCoinAvailable = this.briefInputData.quoteCoinAvailable;
       this.baseAssetAvailable = this.briefInputData.baseAssetAvailable;
-    }
+      this.availableCoin = this.briefInputData.quoteCoinAvailable;
+    },
   },
   created() {
     var ssoProvider = {};
@@ -413,9 +436,16 @@ export default {
   beforeMount() {
     //  this.getSymbolListData();
   },
-  mounted() {},
+  mounted() {
+    this.availableCoin = this.briefInputData.quoteCoinAvailable;
+    this.assetName = this.currentInfo.quoteAsset;
+    console.log('currentInfo',this.briefInputData)
+  },
 
   computed: {
+    buyArbitraInTotal:function(){
+      return bigDecimal.multiply(this.buyPriceInput, this.buyArbitraCountInput);
+    },
     buyInTotal: function() {
       //买入总价
       return bigDecimal.multiply(this.buyPriceInput, this.buyCountInput);
@@ -438,6 +468,22 @@ export default {
     }
   },
   methods: {
+    changeStatus(){
+      this.showCoin = !this.showCoin;
+    },
+    changeCoin(e){
+      this.showCoin = !this.showCoin;
+      let direction = e.target.getAttribute('value');
+      if(direction==='quote'){
+          this.availableCoin = this.briefInputData.quoteCoinAvailable;
+          this.assetName = this.currentInfo.quoteAsset;
+      }else{
+          this.availableCoin = this.briefInputData.baseAssetAvailable;
+          this.assetName = this.currentInfo.baseAsset;
+
+      }
+      this.quoteName = !this.quoteName;
+    },
     clickLock(name) {
       if (name === "Arbi") {
         this.buy_input_change_Arbitrage = !this.buy_input_change_Arbitrage;
@@ -468,6 +514,30 @@ export default {
       switch (direction) {
         case "Arbitrage":
           this.itemIndex = index;
+            if (this.isLogin) {
+            let volumeLong = getDecimalsNum(//精度
+              this.symbolList[this.currentSymbol].quantityStepSize
+            );
+            this.arbitraBallPercentage = itemPercent / 100;//百分比
+            this.$refs.buyArbitraCountInputRef.value =
+              bigDecimal.multiply(this.buyBallTotal, this.arbitraBallPercentage) ===
+              "0"
+                ? "0"
+                : subNumberPoint(
+                    bigDecimal.multiply(
+                      this.buyBallTotal,//能够买的数量
+                      this.arbitraBallPercentage
+                    ),
+                    volumeLong
+                  );
+            this.buyArbitraCountInput = subNumberPoint(
+              bigDecimal.multiply(this.buyBallTotal, this.arbitraBallPercentage),
+              volumeLong
+            );
+          }
+          let arbitraFee = this.symbolList[this.currentSymbol].commissionRate;
+          this.buyArbitraInTotalFee = bigDecimal.multiply(this.buyArbitraCountInput, arbitraFee);
+
           break;
         case "buy":
           this.itemIndexBuy = index;
@@ -621,6 +691,31 @@ export default {
       display: flex;
       justify-content: space-between;
       padding-bottom: 24px;
+      .coinContainer{
+        position: relative;
+        .available-assets{
+          position: absolute;
+          width: 100%;
+          z-index: 999;
+          li{
+            background: #041D25;
+            text-align:right;
+            height: 32px;
+            line-height: 32px;
+            cursor: pointer;
+            &:hover{
+              background:#0C242C;
+            }
+            span{
+              color: #FFFFFF;
+              font-size: 12px;
+              font-weight: 500;
+            }
+            
+          }
+      }
+      }
+      
       div {
         color: #d4d4d4;
         font-size: 14px;
