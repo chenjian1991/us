@@ -167,8 +167,8 @@
          }
       }
       .ticker-right {
-         display: none;
          .d-f;
+         display: none;
          align-items: center;
          .fiat {
             padding: 2px 10px 2px 14px;
