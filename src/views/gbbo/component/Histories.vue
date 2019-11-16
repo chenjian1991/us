@@ -158,7 +158,7 @@ export default {
   watch:{
     currentSymbolObj(){
       console.log('enter history')
-      // this.updateSymbolHistory()
+      this.updateSymbolHistory()
     }
   },
   filters:{
@@ -167,6 +167,9 @@ export default {
       // 2019-11-14T11:52:46.063+0000
       return value.slice(11,19)
     }
+  },
+  beforeDestroy() {
+    this.WSHistory && this.WSHistory.close()
   },
 };
 </script>

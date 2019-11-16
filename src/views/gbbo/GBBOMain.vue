@@ -43,7 +43,7 @@
             <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
               :currentSymbol="currentSymbol"
-              :currentSymbolObj="currentSymbolObj">
+              :currentSymbolObj="historySymbolObj">
             </gbbo-histories>
           </div>
         </div>
@@ -134,7 +134,6 @@ import {
 import {
   storage,
   getDecimalsNum,
-  onlyInputNumAndPoint,
   getTokenByKey as getValue,
   addSymbolSplitLine,
   isDivideAll,
@@ -350,14 +349,6 @@ export default {
       //获取交易密码开关
       this.$store.dispatch("getTradePassWordStatus");
     }
-
-    // this.depthPageWidth = this.$refs.buyOrderContainer.offsetWidth
-    //盘口深度 监听窗口大小改变
-    // window.onresize = () => {
-    //   return (() => {
-    //       this.depthPageWidth = this.$refs.buyOrderContainer && this.$refs.buyOrderContainer.offsetWidth
-    //   })()
-    // }
   },
   filters: {
     formatNumberLength: function (value) {
@@ -1573,10 +1564,10 @@ export default {
     this.SSE_order && this.SSE_order.close();
     this.WSHistory && this.WSHistory.close();
 
-    if (this.stompClient != null) {
+    if (this.stompClient !== null) {
       this.stompClient.disconnect();
     }
-    if (this.arbStompClient != null) {
+    if (this.arbStompClient !== null) {
       this.arbStompClient.disconnect();
     }
   }

@@ -161,6 +161,9 @@
          }
          .market-avg {
             margin-right: 45px;
+            dt{
+               font-weight: 400;
+            }
          }
       }
       .ticker-right {
