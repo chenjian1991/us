@@ -164,6 +164,7 @@
          }
       }
       .ticker-right {
+         display: none;
          .d-f;
          align-items: center;
          .fiat {

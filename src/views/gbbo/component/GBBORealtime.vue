@@ -9,7 +9,7 @@
         </div>
         <div class="realtime-item-content">
           <ul v-if="maxArbitrageList.length > 0" class="realtime-item-list arb-list">
-            <li v-for="v in maxArbitrageList">
+            <li v-for="(v, index) in maxArbitrageList" :key="index">
               <span class="arb">{{v.priceSubtract}}</span>
               <span class="amount text-right">{{v.qtySubtract}}</span>
               <span class="time text-right">{{v.dateTime | formatTime}}</span>
@@ -29,7 +29,7 @@
         </div>
         <div class="realtime-item-content">
           <ul class="realtime-item-list lowest-list" ref="buyOrderContainer">
-            <li v-for="v in gbboAsksArr" @click="getClickSellPrice(v.priceWithFee,v.qty)">
+            <li v-for="(v, index) in gbboAsksArr" :key="index" @click="getClickSellPrice(v.priceWithFee,v.qty)">
               <span class="lowest">
                 {{v.priceWithFee}}
                 <em>{{v.provider}}</em>
@@ -52,7 +52,7 @@
         </div>
         <div class="realtime-item-content">
           <ul class="realtime-item-list highest-list" ref="sellOrderContainer">
-            <li v-for="v in gbboBidsArr" @click="getClickBuyPrice(v.priceWithFee,v.qty)">
+            <li v-for="(v, index) in gbboBidsArr" :key="index" @click="getClickBuyPrice(v.priceWithFee,v.qty)">
               <span class="highest">
                 {{v.priceWithFee}}
                 <em>{{v.provider}}</em>
@@ -174,7 +174,7 @@ export default {
       background: #031419;
       position: relative;
       .realtime-item-header {
-        padding: 0 6px 0 8px;
+        padding: 0 8px 0 8px;
         height: 20px;
         line-height: 20px;
         color: #788390;
@@ -199,9 +199,9 @@ export default {
           overflow-y: scroll;
           padding-bottom: 40px;
           li {
-            padding: 0 6px 0 8px;
+            padding: 0 3px 0 8px;
             display: flex;
-            cursor: pointer;
+            // cursor: pointer;
             span {
               height: 20px;
               line-height: 20px;
@@ -245,9 +245,6 @@ export default {
             }
             .time {
               color: #5d7c86;
-            }
-            &:hover{
-              cursor: pointer;
             }
           }
 

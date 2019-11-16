@@ -42,7 +42,7 @@
                     ref="buyInput"
                     :value="maxArbitrageList.length > 0? maxArbitrageList[0].priceSubtract:''"
                     maxlength="14"
-                    :class="{'input-empty-color':buyPriceEmpty}"
+                    :class="{'input-empty-color':buyPriceEmpty,'gbbo_lock_arbitra':buy_input_change_Arbitrage}"
                     class="input-price"
                     autocomplete="off"
                     style="ime-mode:disabled"
@@ -61,7 +61,7 @@
                 </div>
                 <div class="inputbox">
                   <input
-                    @input="handleBuyCountInput"
+                    @input="handleArbitraBuyCountInput"
                     type="text"
                     maxlength="14"
                     ref="buyArbitraCountInputRef"
@@ -138,7 +138,7 @@
                     type="text"
                     ref="buyInput"
                     maxlength="14"
-                    :class="{'input-empty-color':buyPriceEmpty}"
+                    :class="{'input-empty-color':buyPriceEmpty,'gbbo_lock_input':buy_input_change}"
                     class="input-price"
                     autocomplete="off"
                     style="ime-mode:disabled"
@@ -235,7 +235,7 @@
                     type="text"
                     maxlength="14"
                     ref="sellInput"
-                    :class="{'input-empty-color':sellPriceEmpty}"
+                    :class="{'input-empty-color':sellPriceEmpty,'gbbo_lock_input_sell':buy_input_change_sell}"
                     class="input-price"
                     autocomplete="off"
                     style="ime-mode:disabled"
@@ -344,10 +344,10 @@ export default {
   data() {
     return {
       isLogin: true,
-      currentInfo: {
-        quoteAsset: "USD",
-        baseAsset: "BTC"
-      }, //当前交易对的基本信息集合
+      // currentInfo: {
+      //   quoteAsset: "USD",
+      //   baseAsset: "BTC"
+      // }, //当前交易对的基本信息集合
       buyPriceEmpty: false,
       buyCountEmpty: false,
       sellPriceEmpty: false,
@@ -395,6 +395,7 @@ export default {
       quoteName:true,
       availableCoin:'',
       assetName:'',
+      buyArbitraInTotal:'',
       
     };
   },
@@ -409,7 +410,7 @@ export default {
     buyInputPrice: Number,
     sellInputPrice: Number,
     maxArbitrageList:Array,
-    // currentInfo:Object,
+    currentInfo:Object,
    
   },
   watch: {
@@ -443,13 +444,15 @@ export default {
   mounted() {
     this.availableCoin = this.briefInputData.quoteCoinAvailable;
     this.assetName = this.currentInfo.quoteAsset;
-    console.log('currentInfo',this.currentInfo)
   },
 
   computed: {
-    buyArbitraInTotal:function(){
-      return bigDecimal.multiply(this.buyPriceInput, this.buyArbitraCountInput);
-    },
+    // buyArbitraInTotal:function(){
+    //    let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
+    //    let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
+    //    let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
+    //    return bigDecimal.add(profits,this.buyArbitraCountInput)
+    // },
     buyInTotal: function() {
       //买入总价
       return bigDecimal.multiply(this.buyPriceInput, this.buyCountInput);
@@ -524,24 +527,28 @@ export default {
             );
             this.arbitraBallPercentage = itemPercent / 100;//百分比
             this.$refs.buyArbitraCountInputRef.value =
-              bigDecimal.multiply(this.buyBallTotal, this.arbitraBallPercentage) ===
+              bigDecimal.multiply(Number(this.availableCoin), this.arbitraBallPercentage) ===
               "0"
                 ? "0"
                 : subNumberPoint(
                     bigDecimal.multiply(
-                      this.buyBallTotal,//能够买的数量
+                      Number(this.availableCoin),//能够买的数量
                       this.arbitraBallPercentage
                     ),
                     volumeLong
                   );
             this.buyArbitraCountInput = subNumberPoint(
-              bigDecimal.multiply(this.buyBallTotal, this.arbitraBallPercentage),
+              bigDecimal.multiply(Number(this.availableCoin), this.arbitraBallPercentage),
               volumeLong
             );
           }
           let arbitraFee = this.symbolList[this.currentSymbol].commissionRate;
           this.buyArbitraInTotalFee = bigDecimal.multiply(this.buyArbitraCountInput, arbitraFee);
 
+          let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
+          let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
+          let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
+          this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
           break;
         case "buy":
           this.itemIndexBuy = index;
@@ -617,9 +624,27 @@ export default {
       let pricelong = getDecimalsNum(
         this.symbolList[this.currentSymbol].priceTickSize
       );
-      //    e.target.value = onlyInputNumAndPoint(e.target.value,6)
       e.target.value = onlyInputNumAndPoint(e.target.value, pricelong);
       this.buyPriceInput = e.target.value;
+
+       
+    },
+    handleArbitraBuyCountInput(e){
+      if (!this.symbolList[this.currentSymbol]) {
+        return;
+      }
+      //重置样式
+      this.buyCountEmpty = false;
+      let quantityStepSize = getDecimalsNum(
+        this.symbolList[this.currentSymbol].quantityStepSize
+      );
+      e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize);
+      this.buyArbitraCountInput = e.target.value;
+
+      let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
+       let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
+       let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
+       this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
     },
     handleBuyCountInput(e) {
       if (!this.symbolList[this.currentSymbol]) {
@@ -631,7 +656,7 @@ export default {
         this.symbolList[this.currentSymbol].quantityStepSize
       );
       e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize);
-      this.buyCountInput = e.target.value;
+      // this.buyCountInput = e.target.value;
     },
     handleSellPriceInput(e) {
       if (!this.symbolList[this.currentSymbol]) {
@@ -831,6 +856,18 @@ export default {
           height: 12px;
           background: url("../images/Lock.svg");
           background-size: 10px 12px;
+        }
+        .gbbo_lock_input_sell{
+             border:1px solid #041D25;
+            color: #2cb48c;
+        }
+        .gbbo_lock_arbitra{
+            border:1px solid #041D25;
+            color: #12869A;
+        }
+        .gbbo_lock_input{
+           border:1px solid #041D25;
+           color: #E83160;
         }
         .gbbo_unlock {
           position: absolute;

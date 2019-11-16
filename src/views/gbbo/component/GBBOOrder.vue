@@ -26,7 +26,7 @@
               <img src="../images/no_order.png" width="50px" height="42px" alt />
               {{$t("bbjyOrderTIP")}}
             </li>
-            <li v-else v-for="(v,i) in myOpenList" class="orderItem">
+            <li v-else v-for="(v,i) in myOpenList" :key="i" class="orderItem">
               <div>{{v.createdAt}}</div>
               <div>{{v.symbol}}</div>
               <div>{{$t(v.orderType)}}</div>
@@ -78,7 +78,7 @@
               <img src="../images/no_order.png" width="50px" height="42px" alt />
               {{$t("bbjyHistoryTIP")}}
             </li>
-            <li v-else v-for="v in myCompletedList_sort" class="orderItem">
+            <li v-else v-for="(v, i) in myCompletedList_sort" :key="i" class="orderItem">
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.createdAt}}</div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.symbol}}</div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{$t(v.orderType)}}</div>

@@ -41,8 +41,9 @@
           <gbbo-kline></gbbo-kline>
           <div class="gbbomain-realtime__line-history">
             <gbbo-histories
-              :currentSymbolObj="historySymbolObj"
-              :maxArbitrageList="maxArbitrageList">
+              :maxArbitrageList='maxArbitrageList'
+              :currentSymbol="currentSymbol"
+              :currentSymbolObj="currentSymbolObj">
             </gbbo-histories>
           </div>
         </div>
@@ -436,7 +437,7 @@ export default {
       this.asksArr = []
       this.isInitOrderBook = true
 
-      ////K线基本数据配置使用
+      //K线基本数据配置使用
       storage.set('currentSymbolObj', v)
       this.currentSymbol = v.symbol
       this.currentSymbolObj = v;
@@ -550,7 +551,7 @@ export default {
           // 拼装行情的symbol为Key的symbolList 对象
           this.symbolList_quote[val.symbol] = val
         })
-        
+        console.log('aaaaa',this.symbolList_quote)
         // 第一个交易对信息
         const firstSymbol = res[0]
         const { priceTickSize, quantityStepSize } = firstSymbol
@@ -594,7 +595,7 @@ export default {
         this.stompClient.debug = null
         this.stompClient.heartbeat.outgoing = 1000;
         this.stompClient.connect({}, (frame) => {
-          this.stompClient.subscribe('/topic/orderbook/BTCUSD', (message) => {
+          this.stompClient.subscribe(`/topic/orderbook/${this.currentSymbol}`, (message) => {
             if (message.body) {
               this.sortOrderBook(JSON.parse(message.body))
             }
@@ -615,14 +616,13 @@ export default {
           arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
         }
         
+        // socket = new SockJS('https://www.tresso.com/xchange/marketdata');
         this.arbStompClient = Stomp.over(arbSocket);
         this.arbStompClient.debug = null
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
-          
           this.arbStompClient.send("/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
-
-          this.arbStompClient.subscribe('/topic/runtime/BTCUSD', (message) => {
+          this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
             if (message.body) {
               // this.maxArbitrageBook(JSON.parse(message.body))
               this.maxArbitrageList = JSON.parse(message.body)
@@ -649,7 +649,6 @@ export default {
       let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
       // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
       var result = data
-
       //路总需求 要加这个隐藏字段
       this.updateAt = result.updateAt
 
@@ -665,8 +664,6 @@ export default {
             return Object.assign({}, val, {provider: 'Node of Apifiny'})
           }
       })
-
-      
 
       if (!this.buy_input_change) {
           this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
@@ -807,6 +804,7 @@ export default {
           document.title = `-- | ${v.baseAsset}/${v.quoteAsset}`
       }
       this.currentInfo = v
+      console.log('this.currentInfo',this.currentInfo)
     },
     //处理法币估值
     getCurrencyData() {

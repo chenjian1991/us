@@ -84,7 +84,7 @@ export default {
         console.log('kline start');
       }
       this.klineConnect.onmessage = (res) => {
-        console.log(res)
+        // console.log(res)
       }
     },
     restoreDefault(){
@@ -227,6 +227,7 @@ export default {
         border-right: 1px solid #000;
         color: #788390;
         background: transparent;
+        display: none;
       }
     }
     &-box{
