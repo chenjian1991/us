@@ -26,12 +26,12 @@
                   <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
                      <!--left-->
                      <ul class="navbar-nav">
-                        <li class="nav-item u-header__nav-item header-box">
-                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
-                        </li>
                         <li
                            class="nav-item u-header__nav-item header-box">
                            <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO™</a>
+                        </li>
+                        <li class="nav-item u-header__nav-item header-box">
+                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box header-box">
@@ -108,9 +108,11 @@
 </template>
 
 <script>
-   import {postHeaderTokenBodyApi,getHeaderTokenApi} from "_api/axios.js";
+   import {postHeaderTokenBodyApi, getHeaderTokenApi} from "_api/axios.js";
    import {logout} from "../../../api/urls.js";
    import {getUserInfo} from "_api/balances.js";
+   import {getLegalTenderValue} from "_api/header.js";
+
    import {clearLocalStorage} from "../../config/index";
 
    export default {
@@ -121,6 +123,21 @@
          };
       },
       methods: {
+         getLegalTenderData() {
+            let param = {
+               fromCurrency: 'USD',
+               toCurrency: 'USD'
+            };
+            getLegalTenderValue(param).then(result => {
+               let info = {
+                  name: result.toCurrency,
+                  rate: result.rate,
+               };
+               localStorage.setItem("currentCurrency", JSON.stringify(info));
+               // //目标页面监听store中的数据变动
+               this.$store.commit("changeCurrencyState", result.toCurrency);
+            });
+         },
          gbboHref() {
             if (location.href.includes('/home')) {
                location.href = '#GBBO'
@@ -159,23 +176,23 @@
             })
          },
          quitFun() {
-               let params = {
-                  userId: localStorage.getItem("loginUserId")
-               };
-               getHeaderTokenApi(logout, params, $cookies.get("loginToken")).then(
-                res => {
+            let params = {
+               userId: localStorage.getItem("loginUserId")
+            };
+            getHeaderTokenApi(logout, params, $cookies.get("loginToken")).then(
+               res => {
                   if (res.data.result) {
                      clearLocalStorage();
-                        setTimeout(() => {
+                     setTimeout(() => {
                         this.$router.push("/home");
-                        }, 500);
+                     }, 500);
                      this.$Notice.success({
                         title: this.$t(11001),
                         desc: this.$t(11001)
                      });
                   }
                }
-               );
+            );
             //更新自选的币种
             // this.$store.dispatch("updateMarkSymbol");
             this.$store.commit("changeLoingStatus", false);
@@ -195,6 +212,9 @@
             }
          },
       },
+      created(){
+         this.getLegalTenderData()
+      },
       mounted() {
          //判断是否登录有效
          let isLogin = this.$store.state.app.isLogin;
@@ -203,7 +223,7 @@
          } else {
             this.isLogin = false;
          }
-         document.getElementsByClassName('u-header__navbar-nav').onclick=function(){
+         document.getElementsByClassName('u-header__sub-menu').onclick = function () {
             if (document.getElementsByClassName('hs-mega-menu-opened')[0]) {//交易
                setTimeout(() => {
                   document.getElementsByClassName('hs-mega-menu-opened')[0].childNodes[1].style.display = 'none'
@@ -281,28 +301,9 @@
 <style scoped lang="less">
    @import '../../assets/css/common.less';
 
-   /*@import "../../assets/css/header-Front.css";*/
-
-   .appdownload {
-      position: relative;
-      &:hover {
-         img {
-            width: 104px;
-            height: 104px;
-            display: block;
-         }
-      }
-      img {
-         border: 12px solid #121f28;
-         border-radius: 2px;
-         position: absolute;
-         top: 29px;
-         left: -16px;
-         z-index: 1000;
-         display: none;
-      }
+   #tressoHeader{
+      width: 100%;
    }
-
    .loginBtn:hover {
       color: #fff !important;
    }
