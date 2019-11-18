@@ -227,7 +227,8 @@ export default {
         border-right: 1px solid #000;
         color: #788390;
         background: transparent;
-        display: none;
+        // display: none;
+        visibility: hidden;
       }
     }
     &-box{
