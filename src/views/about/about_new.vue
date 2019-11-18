@@ -22,6 +22,41 @@
         </div>
       </div>
     </div>
+    <div class="opportunity">
+      <div class="title container">
+        <div class="oppor_title">Opportunities at Tresso</div>
+        <div class="oppor_subTitle">Join our team to help reshape the future of trading</div>
+      </div>
+      <div class="why container">
+        <div class="why_ask">Why Work at Tresso?</div><br/>
+        <div class="why_answer">We’re an NYC-based team of visionaries, tech-geeks, enthusiasts, and innovators with a common goal: discover simple solutions to complex problems. Tresso is dedicated to helping our traders realize the best possible outcomes through amplified trading options, speed and efficiency, We’re elevating the trading experience in crypto, token and digital asset markets. Together, we’re driving trading innovation.</div>
+      </div>
+      <div class="benefit container">
+        <div class="headings">
+          Benefits:
+        </div>
+        <div class="tipsItems">
+          <div class="tips w-lg-50" v-for="(item,index) in tipsItems" :key="index">
+            <div class="name">{{item.name}}</div>
+            <div class="line"></div>
+            <div class="value">
+              <span v-html="item.value"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="opening container">
+        <div class="headings">
+          Current Openings:
+        </div>
+        <iframe src="https://boards.greenhouse.io/55globalmarket" 
+          frameborder="0"
+          height="300px"
+          width="100%"
+          scrolling="auto"
+        ></iframe>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -108,6 +143,29 @@ export default {
           experience:"Simon‘s background is mostly from the retail FX and IT solutions marketplace. Simon become a registered CTA (2006) to form Gallant FX and then co- founded Gallant VPS.",
           alpha:require("../../assets/images/about/SIMON GRUNFELD.png"),
         },
+      ],
+      tipsItems:[
+        {
+          name:"Passionate Environment",
+          value:"-A chance to write history and build an ecosystem<br/>"+
+          "-Be part of a team completely disrupting an industry"
+        },
+        {
+          name:"Global Network",
+          value:"-Be part of a global and mutli-cultural team<br/>"+
+          "-Collegiate Environment"
+        },
+        {
+          name:"Comprehensive Health Plans",
+          value:"-100% subsidized premiums for employees for Medical, Dental, and Vision<br/>"+
+          "-50% subsidized premiums for dependants for Medical, Dental, and Vision<br/>"+
+          "-HSA contributions"
+        },
+        {
+          name:" Financial Resources",
+          value:"-401K with a match<br/>"+
+          "-Meaningful equity"
+        },
       ]
     }
   }
@@ -118,17 +176,19 @@ export default {
 #about{
   background-color: #F8F9FA;
   .mainTitle{
+    padding-top: 83px;
+    padding-bottom: 98px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 310px;
     background-color: #151D24;
     .ask{
       font-size: 46px;
       color:#fff;
     }
     .answer{
+      margin-top: 36px;
       font-size: 20px;
       color: #fff;
     }
@@ -187,6 +247,72 @@ export default {
           }
         }
       }
+    }
+  }
+  .opportunity{
+    padding-top: 100px;
+    background-color: #fff;
+    .headings{
+      font-size: 24px;
+      color: #304454;
+      font-weight: 600;
+    }
+    .title{
+      .oppor_title{
+        text-align: center;
+        color:#304454;
+        font-size: 36px;
+        font-weight: 600;
+      }
+      .oppor_subTitle{
+        text-align: center;
+        color:#77838F;
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+    .why{
+      margin-top: 78px;
+      .why_ask{
+        color: #304454;
+        font-weight: 600;
+        font-size: 26px;
+      }
+      .why_answer{
+        color: #77838F;
+        font-size: 16px;
+      }
+    }
+    .benefit{
+      margin-top: 76px;
+      .tipsItems{
+        margin-top: 29px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .tips{
+          margin-bottom: 50px;
+          .name{
+            color: #304454;
+            font-size: 20px;
+          }
+          .line{
+            margin-top: 14px;
+            width:100px;
+            height:4px;
+            background:rgba(1,178,214,1);  
+          }
+          .value{
+            margin-top: 19px;
+            span{
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    .opening{
+      margin-bottom: 147px;
     }
   }
 }
