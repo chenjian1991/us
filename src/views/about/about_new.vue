@@ -137,12 +137,12 @@ export default {
           experience:"Prior to joining Tresso, Amit was Technical Product Manager of Tower Research Capital. He has also held roles in top-tier investment banks such as Lehman Brothers and Credit Suisse, and elite trading firms including Tower Research Capital and Knight Capital Group.",
           alpha:require("../../assets/images/about/Amit Khandelwal for WEB.jpg"),
         },
-        {
+        /* {
           name:"SIMON GRUNFELD",
           position:"SVP of Operations",
           experience:"Simon‘s background is mostly from the retail FX and IT solutions marketplace. Simon become a registered CTA (2006) to form Gallant FX and then co- founded Gallant VPS.",
           alpha:require("../../assets/images/about/SIMON GRUNFELD.png"),
-        },
+        }, */
       ],
       tipsItems:[
         {
