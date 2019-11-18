@@ -7,7 +7,7 @@
                     <div v-if="identifyState==='SUBMIT'" class="underReview">
                         <h3 class="nav">{{$t('IDVertification')}}</h3>
                         <p class="tips"><Icon class="warning" type="md-alert" />{{$t('newK1Subsuccess')}}</p>
-                        <p class="text-center font-size-40">We will review your submission and inform you about your approval status within 3 bussiness days</p>
+                        <p class="text-center font-size-40">We will review your submission and inform you about your approval status within 3 business days</p>
                         <p class="img-content">
                             <img src="../../assets/images/identify/dengdai.png" alt="">
                         </p>
@@ -57,7 +57,7 @@
                     </div>
                    
                 </div>
-                <div class="email-adderss">{{$t('newK1subtipbutt')}}</div>
+                <div class="email-adderss" v-html="$t('newK1subtipbutt')"></div>
                     
             </div>
     </div>

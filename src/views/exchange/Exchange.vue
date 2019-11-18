@@ -1549,7 +1549,7 @@
                //继续撤单
             } else if (this.$store.state.exchange.inputTradePassWordStatus) {
                //密码
-               if (getValue("ORDER_SESSION")) {
+               if (getValue("`ORDER_SESSION`")) {
                   //密码为失效
                   this.exchange.cancelOrder(this.orderID, null, (data) => {
                      //撤单成功

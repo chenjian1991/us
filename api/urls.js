@@ -38,6 +38,12 @@ export const deleteFavoritesPair = `${proxyURL}/sso/favorites-pair/delete` //收
 export const historicalTimeRange = `${proxyURL}/quote-historical/quote/historical.timeRange`//交易日级别以上行情数据 ((起止时间查询))
 export const summarizedTimeRange = `${proxyURL}/quote-summarized/quote/summarized.timeRange`//交易日级别以下行情数据 (起止时间查询)
 
+// k线-new
+export const klineHistory = `/runtime/quote/summarized.timeRange`
+
+
+
+
 //=============注册  start=============
 export const hashUrl = `${proxyURL}/sso/user/hash-password`//判断是否hash
 // export const  sendSms =  `${proxyURL}/sso/user/send`//发送验证码

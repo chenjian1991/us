@@ -28,6 +28,8 @@ const kyc = () => import('../views/kyc/kyc.vue')
 
 // const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
 const ExchangeMain = () => import('../views/exchangeGBBO/Exchange.vue')
+// const ExchangeMain = () => import('../views/gbbo/GBBOMain.vue')
+
 
 const Login = () => import('../views/login/Login.vue')
 const Register = () => import('../views/login/register.vue')
@@ -59,6 +61,9 @@ import closeGoogle from "../views/google/closeGoogle.vue";
 import identityResult from "../views/identity/identityResult.vue"
 
 const about = () => import('../views/about/about_new.vue')
+
+/* new-gbbo */
+const NewGBBO = () => import('../views/gbbo/GBBOMain.vue')
 
 import i18n from '@/locale/index.js';
 
@@ -100,7 +105,7 @@ const router = new Router({
             //       checkSSOToken(to, next)
             //    },
             //    meta: {
-            //       // title:'HomeTokenExchange'
+            //       title:'HomeTokenExchange'
             //    },
             //    component: ExchangeGBBO,
             // },
@@ -114,6 +119,12 @@ const router = new Router({
                   // title:'HomeTokenExchange'
                },
                component: ExchangeMain,
+            },
+            {
+               path: '/gbbo',
+               name: 'gbbo',
+               meta: {},
+               component: NewGBBO
             },
             {
                path: 'home',

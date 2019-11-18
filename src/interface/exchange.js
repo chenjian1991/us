@@ -149,7 +149,7 @@ Exchange.prototype.getAccountToken = function (fn) {
       // })
    });
 };
-Exchange.prototype.getAccountId = function (fn) {
+Exchange.prototype.getAccountId = function (fn) {//获取用户账户id
    var _this = this;
    if (_this.accountId) {
       fn(_this.accountId);

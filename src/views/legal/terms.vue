@@ -3745,10 +3745,20 @@
       account and visiting settings or by contacting our support team at
     </span>
     <span style="font-family:'Times New Roman'; font-size:11pt"></span>
-    <a style="color:#000000" href="mailto:service@Tresso.com">
+    <a style="color:#000000" href="mailto:support@tresso.com">
       <span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline"
-      >service@Tresso.com</span>
+      >service@</span>
+    </a>
+    <a style="color:#000000" href="mailto:support@tresso.com">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline"
+      >Tresso</span>
+    </a>
+    <a style="color:#000000" href="mailto:support@tresso.com">
+      <span
+        style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline"
+      >.com</span>
     </a>
     <span style="font-family:'Times New Roman'; font-size:11pt">.</span>
   </p>
