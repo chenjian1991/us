@@ -527,7 +527,11 @@
             let sum = 0
             let length = providerBBOMap.length
             sum = providerBBOMap.reduce((total, currentValue) => {
-               return total + currentValue['askLevel']['priceWithFee'] + currentValue['bidLevel']['priceWithFee']
+               if (currentValue['askLevel'] && currentValue['bidLevel']) {
+                  return total + currentValue['askLevel']['priceWithFee'] + currentValue['bidLevel']['priceWithFee']
+               } else {
+                  --length
+               }
             }, 0)
             this.gbboList.avgPrice = new BigNumber(sum).dividedBy(length * 2).toFixed(2);
             // providerBBOMap.forEach((v) => {
