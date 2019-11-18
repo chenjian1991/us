@@ -106,7 +106,6 @@ import {resetLoginPassword} from '../../../api/urls.js';
 import {postHeaderTokenBodyApi} from '../../../api/axios.js';
 import {getBrowserMessage} from "@/lib/utils.js"
 import {clearLocalStorage} from '../../config/index.js';
-import {splitDomain} from "@/lib/utils.js"
     export default {
         name:'login',
         components:{
@@ -171,14 +170,7 @@ import {splitDomain} from "@/lib/utils.js"
                                     desc: this.$t(11001)
                              });
                              setTimeout(() => {
-                               if(this.$route.query.originFrom==='otc'){
-                                  let domainurl = splitDomain(document.domain);
-                                  let protocol = document.location.protocol+'//'
-                                    let url = protocol+'otc.'+domainurl+'/#/login' //测试
-                                    window.location.href = url;
-                               }else{
-                                   this.$router.push('/login')
-                               }
+                               this.$router.push('/login')
                              }, 2000);
                   }
                 }).catch((error)=>{

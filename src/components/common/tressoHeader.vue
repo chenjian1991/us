@@ -26,12 +26,12 @@
                   <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
                      <!--left-->
                      <ul class="navbar-nav">
-                        <li class="nav-item u-header__nav-item header-box">
-                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
-                        </li>
                         <li
                            class="nav-item u-header__nav-item header-box">
                            <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO™</a>
+                        </li>
+                        <li class="nav-item u-header__nav-item header-box">
+                           <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
                         </li>
                         <li
                            class="nav-item u-header__nav-item header-box header-box">
@@ -223,7 +223,7 @@
          } else {
             this.isLogin = false;
          }
-         document.getElementsByClassName('u-header__navbar-nav').onclick = function () {
+         document.getElementsByClassName('u-header__sub-menu').onclick = function () {
             if (document.getElementsByClassName('hs-mega-menu-opened')[0]) {//交易
                setTimeout(() => {
                   document.getElementsByClassName('hs-mega-menu-opened')[0].childNodes[1].style.display = 'none'
@@ -301,28 +301,9 @@
 <style scoped lang="less">
    @import '../../assets/css/common.less';
 
-   /*@import "../../assets/css/header-Front.css";*/
-
-   .appdownload {
-      position: relative;
-      &:hover {
-         img {
-            width: 104px;
-            height: 104px;
-            display: block;
-         }
-      }
-      img {
-         border: 12px solid #121f28;
-         border-radius: 2px;
-         position: absolute;
-         top: 29px;
-         left: -16px;
-         z-index: 1000;
-         display: none;
-      }
+   #tressoHeader{
+      width: 100%;
    }
-
    .loginBtn:hover {
       color: #fff !important;
    }

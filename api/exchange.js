@@ -38,7 +38,8 @@ import {
    deleteFavoritesPair,
    completedList_v2,
    filledList_v2,
-   userInfo
+   userInfo,
+   klineHistory
 } from './urls'
 
 const checkExpiredAble = (expiredAble) => {
@@ -54,6 +55,11 @@ const checkExpiredAble = (expiredAble) => {
 export const getUserInfo = (params,token) => {
    return getHeaderTokenApi(userInfo, params, token)
 }
+// 获取newKline历史数据
+export const getKlineHistoryData = (params) => {
+   return getApi(klineHistory, params)
+}
+
 //下单交易对
 export const getSymbolList = () => {
    return getApi(symbolList)
