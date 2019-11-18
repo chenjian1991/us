@@ -39,7 +39,9 @@
         </div>
         <!--K线-->
         <div class="gbbomain-realtime__line">
-          <gbbo-kline></gbbo-kline>
+          <gbbo-kline
+            :kLineData="kLineData">
+          </gbbo-kline>
           <div class="gbbomain-realtime__line-history">
             <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
@@ -185,6 +187,7 @@ export default {
   },
   data(){
     return{
+      kLineData: {},
       historySymbolObj: {},
       briefInputData:{
         quoteCoinAvailable:'',
@@ -622,6 +625,7 @@ export default {
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
             // console.log(message)
             if(message.body){
+              // console.log(message.body)
               this.kLineData = JSON.parse(message.body)
             }
           })
