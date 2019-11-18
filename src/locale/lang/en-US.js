@@ -812,7 +812,7 @@ export default {
    depositNext: 'Continue Deposit',
    depositCopy: 'Copy MEMO',
    //资产
-   zcExchangeAccount: 'All Token',
+   zcExchangeAccount: 'All Assets',
    zcBSiteAccount: 'Blockchain Token',
    zcFSiteAccount: 'Forex Token',
    zcSSiteAccount: 'Stock Token',
@@ -1263,6 +1263,8 @@ export default {
    usernameexg: "Username should be a combination of 4-30 letters, digitals or underscores with no space.",
    userName: 'Username',
    headerOrder: 'Order',
+
+
 
 
 
