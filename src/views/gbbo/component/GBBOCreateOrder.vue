@@ -13,16 +13,16 @@
                 <img src="../images/Wallet.svg" alt />
                 <span v-if="isLogin">{{availableCoin | scientificToNumber}}</span>
                 <span v-if="!isLogin">--</span>&nbsp;
-                <span class="quoteAsset">{{assetName}}</span>
+                <span class="quoteAsset">{{assetName?assetName:currentInfo.quoteAsset}}</span>
                 <Icon v-if="showCoin"  type="md-arrow-dropup" />
                 <Icon  v-else type="md-arrow-dropdown" />
               </div>
               <ul @click="changeCoin($event)" v-if="showCoin" class="available-assets">
                 <li value='quote'> 
-                  <span  class="quoteAsset">{{currentInfo.quoteAsset}}</span>
+                  {{currentInfo.quoteAsset}}
                 </li>
                 <li value='base'> 
-                  <span  class="quoteAsset">{{currentInfo.baseAsset}}</span>
+                  {{currentInfo.baseAsset}}
                 </li>
               </ul>
             </div>
@@ -39,8 +39,7 @@
                   <input
                     @input="handleBuyPriceInput"
                     type="text"
-                    ref="buyInput"
-                    :value="maxArbitrageList.length > 0? maxArbitrageList[0].priceSubtract:''"
+                    ref="buyArbitraInput"
                     maxlength="14"
                     :class="{'input-empty-color':buyPriceEmpty,'gbbo_lock_arbitra':buy_input_change_Arbitrage}"
                     class="input-price"
@@ -134,7 +133,6 @@
                 <div class="inputbox">
                   <input
                     @input="handleBuyPriceInput"
-                    :value="buyInputPrice"
                     type="text"
                     ref="buyInput"
                     maxlength="14"
@@ -241,7 +239,6 @@
                     style="ime-mode:disabled"
                     ondragenter="return false"
                     :disabled="sellFlag"
-                    :value="sellInputPrice"
                   />
                   <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
                   <i
@@ -343,7 +340,6 @@ export default {
   name: "createOrder",
   data() {
     return {
-      isLogin: true,
       // currentInfo: {
       //   quoteAsset: "USD",
       //   baseAsset: "BTC"
@@ -400,6 +396,7 @@ export default {
     };
   },
   props: {
+    isLogin: Boolean,
     currentSymbol: {
       // 当前交易对
       type: String,
@@ -414,17 +411,32 @@ export default {
    
   },
   watch: {
+    maxArbitrageList(){
+      if(this.buy_input_change_Arbitrage){
+        let price = this.maxArbitrageList.length > 0 ? this.maxArbitrageList[0].priceSubtract:'';
+        this.$refs.buyArbitraInput.value = price;
+      } 
+    },  
     buyInputPrice() {
-      this.buyPriceInput = this.buyInputPrice;
+      if(this.buy_input_change){//锁定状态，才去获取最新价
+        this.$refs.buyInput.value = this.buyInputPrice;
+        this.buyPriceInput = this.buyInputPrice;
+      }
     },
     sellInputPrice() {
-      this.sellPriceInput = this.sellInputPrice;
+      if(this.buy_input_change_sell){
+        this.$refs.sellInput.value = this.sellInputPrice;
+        this.sellPriceInput = this.sellInputPrice;
+      }
     },
     briefInputData() {
       this.quoteCoinAvailable = this.briefInputData.quoteCoinAvailable;
       this.baseAssetAvailable = this.briefInputData.baseAssetAvailable;
       this.availableCoin = this.briefInputData.quoteCoinAvailable;
     },
+    currentInfo(){
+      this.assetName = this.currentInfo.quoteAsset;
+    }
   },
   created() {
     var ssoProvider = {};
@@ -439,11 +451,17 @@ export default {
     }
   },
   beforeMount() {
+
     //  this.getSymbolListData();
   },
   mounted() {
     this.availableCoin = this.briefInputData.quoteCoinAvailable;
-    this.assetName = this.currentInfo.quoteAsset;
+    this.$refs.sellInput.value = this.sellInputPrice;
+    this.$refs.buyInput.value = this.buyInputPrice;
+    let price = this.maxArbitrageList.length > 0 ? this.maxArbitrageList[0].priceSubtract:'';
+    this.$refs.buyArbitraInput.value = price;
+
+
   },
 
   computed: {
@@ -606,15 +624,6 @@ export default {
           break;
       }
     },
-    //   showCurrentPriceInfo(v) {
-    //     //给title赋值行情
-    //     if (v.last) {
-    //        document.title = `${v.last}  | ${v.baseAsset}/${v.quoteAsset}`
-    //     } else {
-    //        document.title = `-- | ${v.baseAsset}/${v.quoteAsset}`
-    //     }
-    //     this.currentInfo = v
-    //  },
     handleBuyPriceInput(e) {
       if (!this.symbolList[this.currentSymbol]) {
         return;
@@ -626,8 +635,6 @@ export default {
       );
       e.target.value = onlyInputNumAndPoint(e.target.value, pricelong);
       this.buyPriceInput = e.target.value;
-
-       
     },
     handleArbitraBuyCountInput(e){
       if (!this.symbolList[this.currentSymbol]) {
@@ -656,7 +663,7 @@ export default {
         this.symbolList[this.currentSymbol].quantityStepSize
       );
       e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize);
-      // this.buyCountInput = e.target.value;
+      this.buyCountInput = e.target.value;
     },
     handleSellPriceInput(e) {
       if (!this.symbolList[this.currentSymbol]) {
@@ -1003,6 +1010,8 @@ export default {
         em {
           font-size: 14px;
           color: #688a9d;
+          font-style: normal;
+          margin: 3px;
         }
         a {
           color: #c2d8e8;

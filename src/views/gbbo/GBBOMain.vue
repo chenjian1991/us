@@ -33,6 +33,7 @@
               :symbolList='symbolList'
               :currentInfo="currentInfo"
               :maxArbitrageList="maxArbitrageList"
+              :isLogin='isLogin'
             ></create-order>
           </div>
         </div>
@@ -795,7 +796,6 @@ export default {
           document.title = `-- | ${v.baseAsset}/${v.quoteAsset}`
       }
       this.currentInfo = v
-      console.log('this.currentInfo',this.currentInfo)
     },
     //处理法币估值
     getCurrencyData() {
