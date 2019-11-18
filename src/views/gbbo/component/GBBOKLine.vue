@@ -47,7 +47,7 @@ export default {
       endDateTime: new Date().getTime() - 500000,
       interval: 'MINUTE_1'
     }).then(res => {
-      console.log(res)
+      // console.log(res)
     })
   },
   mounted(){
