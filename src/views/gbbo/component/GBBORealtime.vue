@@ -553,6 +553,7 @@ export default {
           background: #041d25;
           text-align: center;
           padding: 11px 0 12px;
+          display: none;
           a {
             display: inline-block;
             height: 14px;
