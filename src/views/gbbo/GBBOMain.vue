@@ -43,8 +43,7 @@
           <div class="gbbomain-realtime__line-history">
             <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
-              :currentSymbol="currentSymbol"
-              :currentSymbolObj="historySymbolObj">
+              :currentSymbolObj="currentSymbolObj">
             </gbbo-histories>
           </div>
         </div>
@@ -554,8 +553,8 @@ export default {
 
         this.historySymbolObj = {
           symbol: this.currentSymbol,
-          priceTickSize: getDecimalsNum(priceTickSize),
-          quantityStepSize: getDecimalsNum(quantityStepSize)
+          priceTickSize,
+          quantityStepSize
         }
 
         //K线基本数据配置使用

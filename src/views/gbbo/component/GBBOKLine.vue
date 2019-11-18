@@ -31,7 +31,10 @@ export default {
       },
       
       _timestamp: '',
-      _chart: ''
+      _chart: '',
+      _areaSeries: '',
+      _extraSeries: '',
+      _barSeries: ''
     }
   },
   props: {
@@ -41,14 +44,7 @@ export default {
     }
   },
   created(){
-    getKlineHistoryData({
-      symbol: this.currentSymbol || 'BTCUSD',
-      startDateTime:  new Date().getTime(),
-      endDateTime: new Date().getTime() - 500000,
-      interval: 'MINUTE_1'
-    }).then(res => {
-      // console.log(res)
-    })
+    this.getHistoryData()
   },
   mounted(){
     const { highData, lowData, marketData } = this.kline
@@ -73,20 +69,7 @@ export default {
     // this.connect()
   },
   methods: {
-    connect() {
-      if(this.klineConnect) {
-        this.klineConnect.close()
-      }
-      const baseURL = window.location.protocol === "http:" ? "ws://" : "wss://";
-      const host = window.location.host;
-      this.klineConnect = new ReconnectingWebSocket(`${baseURL}${host}/quote/summarized.timeRange?symbol=${this.currentSymbol}&startDateTime=${new Date().getTime()}&endDateTime=${new Date().getTime() - 500000}&interval=MINUTE_1`);
-      this.klineConnect.onopen = () => {
-        console.log('kline start');
-      }
-      this.klineConnect.onmessage = (res) => {
-        // console.log(res)
-      }
-    },
+    
     restoreDefault(){
       this._chart.timeScale().scrollToRealTime()
     },
@@ -135,26 +118,26 @@ export default {
       });
 
       // 最高
-      const areaSeries = this._chart.addLineSeries({
+      this._areaSeries = this._chart.addLineSeries({
         color: "#2CB48C",
         crosshairMarkerVisible: true,
         lineWidth: 2
       });
       // 最低
-      const extraSeries = this._chart.addLineSeries({
+      this._extraSeries = this._chart.addLineSeries({
         color: "#E83160",
         lineWidth: 2
       });
       // 平均
-      const barSeries = this._chart.addLineSeries({
+      this._barSeries = this._chart.addLineSeries({
         lineStyle: 1,
         color: "#fff",
         lineWidth: 1
       })
       console.log('hight:', highData, 'low:', lowData, 'marketData:', marketData)
-      areaSeries.setData(highData)
-      extraSeries.setData(lowData)
-      barSeries.setData(marketData)
+      this._areaSeries.setData(highData)
+      this._extraSeries.setData(lowData)
+      this._barSeries.setData(marketData)
 
       // Automatically calculates the visible range to fit all series data.
       // this._chart.timeScale().fitContent()
@@ -165,23 +148,22 @@ export default {
         const time = this.timeFormat()
         const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
         const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
-        areaSeries.update({
+        this._areaSeries.update({
           time,
           value: hightVal
         })
-        extraSeries.update({
+        this._extraSeries.update({
           time,
           value: lowVal
         })
-        barSeries.update({
+        this._barSeries.update({
           time,
           value: (hightVal + lowVal) / 2
         })
       }, 3000)
       
     },
-    timeFormat(){
-      
+    timeFormat(){      
       if(this.flogCount > 30){
         this.flogCount = 1
         if(this.month === 12){
@@ -201,17 +183,34 @@ export default {
     addZero(num){
       return num < 10 ? `0${num}` : num
     },
-    getKlineHistoryData() {
-
+    getHistoryData() {
+      const matchTime = this.dateFormat()
+      console.log(matchTime)
+      getKlineHistoryData({
+        symbol: this.currentSymbol || 'BTCUSD',
+        // startDateTime: matchTime - 60 * 1000 * 1000,
+        // endDateTime: matchTime,
+        startDateTime: 1573617600000,
+        endDateTime: 1573642800000,
+        interval: 'MINUTE_1'
+      }).then(res => {
+        console.log(res)
+      })
+    },
+    dateFormat(){
+      const curDate = new Date()
+      const curYear = curDate.getFullYear()
+      const curMonth = curDate.getMonth() + 1
+      const curGetDate = curDate.getDate()
+      const curHours = curDate.getHours()
+      const curMinutes = curDate.getMinutes()
+      return new Date(`${curYear}-${curMonth}-${curGetDate} ${curHours}:${curMinutes}:00`).getTime()
     }
   },
   beforeDestroy() {
     clearInterval(this._timestamp)
     this._chart = null
-    this.klineConnect.close()
-  },
-  
-  
+  }
 }
 </script>
 <style lang="less">
