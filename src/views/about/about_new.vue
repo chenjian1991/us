@@ -148,6 +148,7 @@ export default {
   }
   .team{
     overflow: hidden;
+    margin-top: 100px;
     .title{
       text-align: center;
       font-size: 36px;
