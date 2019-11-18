@@ -227,7 +227,7 @@ export default {
               font-size: 12px;
               text-align: right;
               line-height: 30px;
-              font-weight: 400;
+              font-weight: 500;
               color: #d4d4d4;
               flex: 1;
               &:nth-child(1),
@@ -251,8 +251,9 @@ export default {
             div {
               height: 24px;
               line-height: 24px;
-              color: #688a9d;
+              color: #788390;
               font-size: 12px;
+              font-weight: 500;
             }
           }
 
@@ -299,7 +300,7 @@ export default {
           flex-direction: column;
           color: #688a9d;
           border: none;
-          background: #041d25;
+          background: #031419;
           padding: 40px;
           height: 100%;
 

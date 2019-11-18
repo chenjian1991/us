@@ -33,6 +33,7 @@
               :symbolList='symbolList'
               :currentInfo="currentInfo"
               :maxArbitrageList="maxArbitrageList"
+              :isLogin='isLogin'
             ></create-order>
           </div>
         </div>
@@ -42,8 +43,7 @@
           <div class="gbbomain-realtime__line-history">
             <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
-              :currentSymbol="currentSymbol"
-              :currentSymbolObj="historySymbolObj">
+              :currentSymbolObj="currentSymbolObj">
             </gbbo-histories>
           </div>
         </div>
@@ -553,8 +553,8 @@ export default {
 
         this.historySymbolObj = {
           symbol: this.currentSymbol,
-          priceTickSize: getDecimalsNum(priceTickSize),
-          quantityStepSize: getDecimalsNum(quantityStepSize)
+          priceTickSize,
+          quantityStepSize
         }
 
         //K线基本数据配置使用
@@ -795,7 +795,6 @@ export default {
           document.title = `-- | ${v.baseAsset}/${v.quoteAsset}`
       }
       this.currentInfo = v
-      console.log('this.currentInfo',this.currentInfo)
     },
     //处理法币估值
     getCurrencyData() {
