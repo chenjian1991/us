@@ -695,7 +695,7 @@ export default {
   }
   .border-line {
     padding: 28px 3px 0;
-    height: 264px;
+    height: 270px;
     background: #031419;
 
     span{
@@ -708,7 +708,9 @@ export default {
   .buy-sell-common {
     flex: 1;
     width: 270px;
+    min-height: 270px;
     background: #031419;
+
     > div {
       padding: 20px 12px 10px 12px;
     }
@@ -720,6 +722,7 @@ export default {
       display: flex;
       justify-content: space-between;
       padding-bottom: 24px;
+      height: 45px;
       .coinContainer{
         position: relative;
         .available-assets{

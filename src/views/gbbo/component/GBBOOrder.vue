@@ -299,7 +299,7 @@ export default {
           flex-direction: column;
           color: #688a9d;
           border: none;
-          background: #041d25;
+          background: #031419;
           padding: 40px;
           height: 100%;
 
