@@ -145,7 +145,7 @@
                   />
                   <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
                   <i
-                    @click="clickLock('change')"
+                    @click="clickLock('buy')"
                     :class="[buy_input_change?'gbbo_lock':'gbbo_unlock']"
                   />
                   <!-- <div class="currencyInput">
@@ -513,12 +513,20 @@ export default {
       if (name === "Arbi") {
         this.buy_input_change_Arbitrage = !this.buy_input_change_Arbitrage;
         this.arbFlag = !this.arbFlag;
-      } else if (name === "change") {
+      } else if (name === "buy") {
         this.buy_input_change = !this.buy_input_change;
         this.changeFlag = !this.changeFlag;
+        if(this.buy_input_change){
+           this.$refs.buyInput.value = this.buyInputPrice;
+          this.buyPriceInput = this.buyInputPrice;
+        }
       } else if (name === "sell") {
         this.buy_input_change_sell = !this.buy_input_change_sell;
         this.sellFlag = !this.sellFlag;
+        if(this.buy_input_change_sell){
+            this.$refs.sellInput.value = this.sellInputPrice;
+            this.sellPriceInput = this.sellInputPrice;
+        }
       }
     },
     buyBtn() {
