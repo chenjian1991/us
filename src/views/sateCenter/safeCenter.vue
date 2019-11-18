@@ -154,6 +154,18 @@
          <Button v-else disabled loading class="loginbtn"  @click="handleSubmit('formValidate')" type="primary"></Button> 
       </p>
     </Modal>
+
+    <Modal
+        v-model="modal2"
+        :title="$t('尊敬的用户')"
+        :mask-closable="false">
+        <p>{{$t('kycModalText1')}}</p>
+        <p>{{$t('kycModalText2')}}</p>
+         <div slot="footer">
+            <Button type="primary" size="default"  @click="ok">{{$t('去实名')}}</Button>
+            <Button size="default"  @click="cancel">{{$t('稍后再说')}}</Button>
+        </div>
+    </Modal>
    </div>
 </template>
 
@@ -253,9 +265,20 @@
                 },
                 validateToken:'',
                 deviceObj:{},
+                modal2:false,
          }
       },
       methods: {
+         ok(){
+            if (this.identifyState === 'INIT') {/*  */
+                  this.$router.push('/kyc')
+            }else{
+                  this.$router.push('/identityResult')
+            }
+         },
+         cancel(){
+            this.modal2 = false
+         },
          handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                if (valid) {

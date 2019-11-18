@@ -82,7 +82,7 @@
                                data-error-class="u-has-error"
                                data-success-class="u-has-success">
                       </div>
-                      <div class="errorTips mt-1" v-if="pwdEqualtoOrigin">两次输入密码不一致</div>
+                      <div class="errorTips mt-1" v-if="pwdEqualtoOrigin">{{$t('passwordNotMach')}}</div>
                     </div>
                   </div>
                   <!-- Form Group -->

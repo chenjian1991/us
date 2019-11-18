@@ -126,7 +126,7 @@ import {getBrowserMessage} from "@/lib/utils.js"
                                 let router = this.previousRouterName;
                                 let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login','',null,'forgot','safeVatification','login'];
                                 if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
-                                    this.$router.push('/home')
+                                    this.$router.push('/safeCenter')
                                 }else{
                                     this.$router.go(-2)
                                 }
