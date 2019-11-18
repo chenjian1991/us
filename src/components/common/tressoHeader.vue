@@ -42,7 +42,7 @@
                         </li>
                      </ul>
                      <!--login-->
-                     <ul class="navbar-nav u-header__navbar-nav" v-if="!isLogin">
+                     <ul class="navbar-nav u-header__navbar-nav" v-show="!isLogin">
                         <li
                            class="nav-item u-header__nav-item header-box">
                            <router-link class="nav-link u-header__nav-link mr-lg-5" to='/login' style="font-size: 14px">
@@ -57,7 +57,7 @@
                         </li>
                      </ul>
                      <!--account-->
-                     <ul class="navbar-nav u-header__navbar-nav" v-else>
+                     <ul class="navbar-nav u-header__navbar-nav" v-show="isLogin">
                         <li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"
                             data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">
                            <router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle"
@@ -212,7 +212,7 @@
             }
          },
       },
-      created(){
+      created() {
          this.getLegalTenderData()
       },
       mounted() {
@@ -223,28 +223,13 @@
          } else {
             this.isLogin = false;
          }
-         document.getElementsByClassName('u-header__sub-menu').onclick = function () {
-            if (document.getElementsByClassName('hs-mega-menu-opened')[0]) {//交易
-               setTimeout(() => {
-                  document.getElementsByClassName('hs-mega-menu-opened')[0].childNodes[1].style.display = 'none'
-               }, 300)
-            } else if (document.getElementsByClassName('hs-sub-menu-opened')[0]) {
-               setTimeout(() => {
-                  document.getElementsByClassName('hs-sub-menu-opened')[0].childNodes[1].style.display = 'none'
-               }, 300)
-            }
-         }
-         // document.onclick = function () {
-         //    if (document.getElementsByClassName('hs-mega-menu-opened')[0]) {//交易
-         //       setTimeout(() => {
-         //          document.getElementsByClassName('hs-mega-menu-opened')[0].childNodes[1].style.display = 'none'
-         //       }, 300)
-         //    } else if (document.getElementsByClassName('hs-sub-menu-opened')[0]) {
-         //       setTimeout(() => {
-         //          document.getElementsByClassName('hs-sub-menu-opened')[0].childNodes[1].style.display = 'none'
-         //       }, 300)
-         //    }
-         // }
+         //下拉框消失
+         let openList = document.getElementById("pagesSubMenu")
+         openList.addEventListener('click', function () {
+            setTimeout(() => {
+               this.style.display = 'none'
+            }, 300)
+         })
 
          $(".js-mega-menu").HSMegaMenu({
             event: "hover",
@@ -301,9 +286,10 @@
 <style scoped lang="less">
    @import '../../assets/css/common.less';
 
-   #tressoHeader{
+   #tressoHeader {
       width: 100%;
    }
+
    .loginBtn:hover {
       color: #fff !important;
    }
