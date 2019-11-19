@@ -391,7 +391,6 @@ export default {
     height: 294px;
     font-size: 12px;
     background: #031419;
-    position: relative;
     &__header {
       padding: 0 8px 0 8px;
       height: 20px;
@@ -422,13 +421,12 @@ export default {
       }
     }
     &__content {
-      height: 274px;
+      height: 234px;
       overflow: hidden;
       &-list {
         height: 100%;
         overflow-x: hidden;
         overflow-y: scroll;
-        padding-bottom: 40px;
         li {
           padding: 0 3px 0 8px;
           display: flex;
@@ -525,11 +523,10 @@ export default {
       }
     }
     &__footer {
-      position: absolute;
-      bottom: 0;
       width: 100%;
       height: 40px;
       padding: 5px 8px;
+      position: relative;
       p {
         height: 14px;
         line-height: 14px;
