@@ -39,7 +39,7 @@ export const historicalTimeRange = `${proxyURL}/quote-historical/quote/historica
 export const summarizedTimeRange = `${proxyURL}/quote-summarized/quote/summarized.timeRange`//交易日级别以下行情数据 (起止时间查询)
 
 // k线-new
-export const klineHistory = `/runtime/quote/summarized.timeRange`
+export const klineHistory = `/echart/quote/summarized.timeRange`
 
 
 

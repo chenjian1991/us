@@ -1,297 +1,89 @@
 <template>
-  <div class="gbbomain-realtime-box">
-    <div class="realtime-box">
-      <div class="realtime-item">
-        <div class="realtime-item-header">
-          <div class="arb">Arbitrage</div>
-          <div class="amount">Amount</div>
-          <div class="buy">Buy</div>
-          <div class="sell">Sell</div>
+  <div class="realtime">
+    <div class="realtime-item">
+      <div class="realtime-item__header">
+        <div class="arb">Arbitrage</div>
+        <div class="amount">Amount</div>
+        <div class="buy">Buy</div>
+        <div class="sell">Sell</div>
+      </div>
+      <div class="realtime-item__content">
+        <ul class="realtime-item__content-list arb-list">
+          <li v-for="(v, index) in arbData.matchMap" :key="index">
+            <span class="arb">{{v.arb}}</span>
+            <span class="amount">{{v.amount}}</span>
+            <span class="buy">{{v.buy}}</span>
+            <span class="sell">{{v.sell}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="realtime-item__footer arb-footer">
+        <div>
+          <p>Arbitrage Range</p>
+          <span
+            class="last-arb"
+          >{{arbData.minArb}}~{{arbData.maxArb}}</span>
         </div>
-        <div class="realtime-item-content">
-          <ul class="realtime-item-list arb-list">
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            <li>
-              <span class="arb">21.31</span>
-              <span class="amount">0.071348</span>
-              <span class="buy">Node of Apifiny</span>
-              <span class="sell">Node of Apifiny</span>
-            </li>
-            
-
-          </ul>
-        </div>
-        <div class="realtime-item-footer arb-footer">
-          <div>
-            <p>Arbitrage Range</p>
-            <span
-              class="last-arb"
-            >9.47~21.31</span>
-          </div>
-          <div>
-            <p>Total Amount</p>
-            <span>4.564839</span>
-          </div>
+        <div>
+          <p>Total Amount</p>
+          <span>{{arbData.totalAmount}}</span>
         </div>
       </div>
-      <div class="realtime-item mx-px">
-        <div class="realtime-item-header">
-          <div class="lowest">Global Lowest Price</div>
-          <div class="amount">Amount</div>
-          <div class="total">Total</div>
-        </div>
-        <div class="realtime-item-content">
-          <ul class="realtime-item-list lowest-list" ref="buyOrderContainer">
-            <li
-              v-for="(v, index) in gbboAsksArr"
-              :key="index"
-              @click="getClickSellPrice(v.priceWithFee,v.qty)"
-            >
-              <span class="lowest">
-                {{v.priceWithFee}}
-                <em>{{v.provider}}</em>
-              </span>
-              <span class="amount">{{v.qty | formatNumberLength}}</span>
-              <span class="total">{{v.total | formatNumberLength2}}</span>
-            </li>
-          </ul>
-        </div>
-        <div class="realtime-item-footer lowest-footer">
-          <p>Last Lowest Price</p>
-          <span>{{bestSellPrice}}</span>
-        </div>
+    </div>
+    <div class="realtime-item mx-px">
+      <div class="realtime-item__header">
+        <div class="lowest">Global Best Ask</div>
+        <div class="amount">Amount</div>
+        <div class="total">Total</div>
       </div>
-      <div class="realtime-item">
-        <div class="realtime-item-header">
-          <div class="highest">Global Highest Price</div>
-          <div class="amount">Amount</div>
-          <div class="total">Total</div>
-        </div>
-        <div class="realtime-item-content">
-          <ul class="realtime-item-list highest-list" ref="sellOrderContainer">
-            <li
-              v-for="(v, index) in gbboBidsArr"
-              :key="index"
-              @click="getClickBuyPrice(v.priceWithFee,v.qty)"
-            >
-              <span class="highest">
-                {{v.priceWithFee}}
-                <em>{{v.provider}}</em>
-              </span>
-              <span class="amount">{{v.qty | formatNumberLength}}</span>
-              <span class="total">{{v.total | formatNumberLength2}}</span>
-            </li>
-          </ul>
-        </div>
-        <div class="realtime-item-footer highest-footer">
-          <p>Last Highest Price</p>
-          <span>{{bestBuyPrice}}</span>
-          <div class="more">
-            <a>More</a>
-          </div>
+      <div class="realtime-item__content">
+        <ul class="realtime-item__content-list lowest-list" ref="buyOrderContainer">
+          <li
+            v-for="(v, index) in gbboAsksArr"
+            :key="index"
+            @click="getClickSellPrice(v.priceWithFee,v.qty)"
+          >
+            <span class="lowest">
+              {{v.priceWithFee}}
+              <em>{{v.provider}}</em>
+            </span>
+            <span class="amount">{{v.qty | formatNumberLength}}</span>
+            <span class="total">{{v.total | formatNumberLength2}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="realtime-item__footer lowest-footer">
+        <p>Last Best Ask Price</p>
+        <span>{{bestSellPrice}}</span>
+      </div>
+    </div>
+    <div class="realtime-item">
+      <div class="realtime-item__header">
+        <div class="highest">Global Best Bid</div>
+        <div class="amount">Amount</div>
+        <div class="total">Total</div>
+      </div>
+      <div class="realtime-item__content">
+        <ul class="realtime-item__content-list highest-list" ref="sellOrderContainer">
+          <li
+            v-for="(v, index) in gbboBidsArr"
+            :key="index"
+            @click="getClickBuyPrice(v.priceWithFee,v.qty)"
+          >
+            <span class="highest">
+              {{v.priceWithFee}}
+              <em>{{v.provider}}</em>
+            </span>
+            <span class="amount">{{v.qty | formatNumberLength}}</span>
+            <span class="total">{{v.total | formatNumberLength2}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="realtime-item__footer highest-footer">
+        <p>Last Best Bid Price</p>
+        <span>{{bestBuyPrice}}</span>
+        <div class="more">
+          <a>More</a>
         </div>
       </div>
     </div>
@@ -321,10 +113,10 @@ export default {
         return [];
       }
     },
-    maxArbitrageList: {
-      type: Array,
+    arbData: {
+      type: Object,
       default: function() {
-        return [];
+        return {};
       }
     },
     bestSellPrice: {
@@ -384,108 +176,76 @@ export default {
 };
 </script>
 <style lang="less">
-.gbbomain-realtime-box {
-  .realtime-box {
-    // width:822px;
-    display: flex;
-    .realtime-item {
-      flex: 1;
-      width: 270px;
-      height: 294px;
-      font-size: 12px;
-      background: #031419;
-      position: relative;
-      .realtime-item-header {
-        padding: 0 8px 0 8px;
-        height: 20px;
-        line-height: 20px;
-        color: #788390;
-        background: #041d25;
-        display: flex;
-        .arb {
-          flex: 0.8;
-        }
-        .buy,
-        .sell {
-          flex: 1;
-          padding-left: 15px;
-          text-align: right;
-        }
-        .lowest {
-          flex: 1.8;
-        }
-        .highest {
-          flex: 1.8;
-        }
-        .amount,
-        .total {
-          flex: 1;
-          text-align: right;
-        }
+.realtime {
+  // width:822px;
+  display: flex;
+  &-item {
+    flex: 1;
+    width: 270px;
+    height: 294px;
+    font-size: 12px;
+    background: #031419;
+    &__header {
+      padding: 0 8px 0 8px;
+      height: 20px;
+      line-height: 20px;
+      color: #788390;
+      font-weight: 500;
+      background: #041d25;
+      display: flex;
+      .arb {
+        flex: 0.8;
       }
-      .realtime-item-content {
-        height: 274px;
-        overflow: hidden;
-        .realtime-item-list {
-          height: 100%;
-          overflow-x: hidden;
-          overflow-y: scroll;
-          padding-bottom: 40px;
-          li {
-            padding: 0 3px 0 8px;
-            display: flex;
-            // cursor: pointer;
-            span {
-              height: 20px;
-              line-height: 20px;
-            }
-            .lowest {
-              flex: 1.8;
-              color: #e83160;
-            }
-            .highest {
-              flex: 1.8;
-              color: #0ab68a;
-            }
-            .lowest,
-            .highest {
-              em {
-                display: block;
-                width: 50%;
-                float: right;
-                color: #788390;
-                font-style: normal;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                position: relative;
-                &:after {
-                  content: "";
-                  position: absolute;
-                  right: 0;
-                  top: 50%;
-                  transform: translate(0, -50%);
-                  height: 20px;
-                  width: 0px;
-                }
-              }
-            }
-            .arb {
-              flex: 0.8;
-              color: #12869a;
-            }
-            .amount,
-            .total {
-              flex: 1;
-              color: #d4d4d4;
-              text-align: right;
-            }
-            .buy,
-            .sell {
-              flex: 1;
-              padding-left: 15px;
+      .buy,
+      .sell {
+        flex: 1;
+        padding-left: 15px;
+        text-align: right;
+      }
+      .lowest {
+        flex: 1.8;
+      }
+      .highest {
+        flex: 1.8;
+      }
+      .amount,
+      .total {
+        flex: 1;
+        text-align: right;
+      }
+    }
+    &__content {
+      height: 234px;
+      overflow: hidden;
+      &-list {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        li {
+          padding: 0 3px 0 8px;
+          display: flex;
+          // cursor: pointer;
+          span {
+            height: 20px;
+            line-height: 20px;
+          }
+          .lowest {
+            flex: 1.8;
+            color: #e83160;
+          }
+          .highest {
+            flex: 1.8;
+            color: #0ab68a;
+          }
+          .lowest,
+          .highest {
+            em {
+              display: block;
+              width: 55%;
+              float: right;
               color: #788390;
               text-align: right;
+              font-style: normal;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
@@ -501,97 +261,126 @@ export default {
               }
             }
           }
+          .arb {
+            flex: 0.8;
+            color: #12869a;
+          }
+          .amount,
+          .total {
+            flex: 1;
+            color: #d4d4d4;
+            text-align: right;
+          }
+          .buy,
+          .sell {
+            flex: 1;
+            padding-left: 15px;
+            color: #788390;
+            text-align: right;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+            &:after {
+              content: "";
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translate(0, -50%);
+              height: 20px;
+              width: 0px;
+            }
+          }
+        }
 
-          &::-webkit-scrollbar {
-            width: 5px;
-            // display: none;
-          }
-          &::-webkit-scrollbar-thumb {
-            background: #093a49;
-          }
+        &::-webkit-scrollbar {
+          width: 5px;
+          // display: none;
         }
-        .arb-list {
-          li:hover {
-            background: rgba(21, 148, 169, 0.1);
-          }
-        }
-        .lowest-list {
-          li:hover {
-            background: rgba(232, 49, 96, 0.15);
-          }
-        }
-        .highest-list {
-          li:hover {
-            background: rgba(44, 180, 140, 0.1);
-          }
+        &::-webkit-scrollbar-thumb {
+          background: #093a49;
         }
       }
-      .realtime-item-footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 40px;
-        padding: 5px 8px;
-        p {
-          height: 14px;
-          line-height: 14px;
-          color: #788390;
+      .arb-list {
+        li:hover {
+          background: rgba(21, 148, 169, 0.1);
         }
-        span {
-          padding-right: 8px;
+      }
+      .lowest-list {
+        li:hover {
+          background: rgba(232, 49, 96, 0.15);
+        }
+      }
+      .highest-list {
+        li:hover {
+          background: rgba(44, 180, 140, 0.1);
+        }
+      }
+    }
+    &__footer {
+      width: 100%;
+      height: 40px;
+      padding: 5px 8px;
+      position: relative;
+      p {
+        height: 14px;
+        line-height: 14px;
+        color: #788390;
+      }
+      span {
+        padding-right: 8px;
+        height: 14px;
+        line-height: 14px;
+        color: #d4d4d4;
+        font-weight: bold;
+      }
+      .more {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #041d25;
+        text-align: center;
+        padding: 11px 0 12px;
+        display: none;
+        a {
+          display: inline-block;
           height: 14px;
           line-height: 14px;
           color: #d4d4d4;
-          font-weight: bold;
-        }
-        .more {
-          width: 40px;
-          height: 40px;
-          position: absolute;
-          top: 0;
-          right: 0;
-          background: #041d25;
-          text-align: center;
-          padding: 11px 0 12px;
-          display: none;
-          a {
-            display: inline-block;
-            height: 14px;
-            line-height: 14px;
-            color: #d4d4d4;
-            text-decoration: underline !important;
-          }
-        }
-      }
-      .arb-footer {
-        background: #003139;
-        div {
-          margin-right: 20px;
-          display: inline-block;
-          span {
-            color: #d4d4d4;
-          }
-          .last-arb {
-            color: #12869a;
-          }
-        }
-      }
-      .lowest-footer {
-        background: #460f1d;
-        span {
-          color: #e83160;
-        }
-      }
-      .highest-footer {
-        background: #083326;
-        span {
-          color: #2cb48c;
+          text-decoration: underline !important;
         }
       }
     }
-    .mx-px {
-      margin: 0 6px;
+    .arb-footer {
+      background: #003139;
+      div {
+        margin-right: 20px;
+        display: inline-block;
+        span {
+          color: #d4d4d4;
+        }
+        .last-arb {
+          color: #12869a;
+        }
+      }
     }
+    .lowest-footer {
+      background: #460f1d;
+      span {
+        color: #e83160;
+      }
+    }
+    .highest-footer {
+      background: #083326;
+      span {
+        color: #2cb48c;
+      }
+    }
+  }
+  .mx-px {
+    margin: 0 6px;
   }
 }
 </style>

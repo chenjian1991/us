@@ -24,6 +24,7 @@ export default {
       flogCount: 30,
       month: 11,
       year: 2019,
+      isStart: false,
       kline: {
         highData: [],
         lowData: [],
@@ -41,6 +42,19 @@ export default {
     currentSymbol: {
       type: String,
       default: "BTCUSD"
+    },
+    kLineData: {
+      type: Object,
+      default: function(){
+        return {}
+      }
+    }
+  },
+  watch: {
+    kLineData(val, oldVal){
+      if(Object.keys(val).length > 0){
+        // this.updateData(val)
+      }
     }
   },
   created(){
@@ -69,7 +83,23 @@ export default {
     // this.connect()
   },
   methods: {
-    
+    updateData(val){
+      const { high, low, ma, dateTime } = val
+      const time = +`${new Date(dateTime).getTime()}`.replace(/.{3}$/, '')
+      if(!this.isStart) return
+      this._areaSeries.update({
+        time,
+        value: high
+      })
+      this._extraSeries.update({
+        time,
+        value: low
+      })
+      this._barSeries.update({
+        time,
+        value: ma
+      })
+    },
     restoreDefault(){
       this._chart.timeScale().scrollToRealTime()
     },
@@ -95,11 +125,11 @@ export default {
         },
         timeScale: {
           timeVisible: true,
-          visible: true,  // 横坐标是否显示时间坐标
+          // visible: true,  // 横坐标是否显示时间坐标
           secondsVisible: false,
-          rightOffset: 0,
-          barSpacing: 6,  // 横坐标间隔
-          borderColor: 'rgba(197, 203, 206, 0.4)',
+          // rightOffset: 0,
+          // barSpacing: 6,  // 横坐标间隔
+          // borderColor: 'rgba(197, 203, 206, 0.4)',
         },
         layout: {
           backgroundColor: '#07141A',
@@ -135,32 +165,50 @@ export default {
         lineWidth: 1
       })
       console.log('hight:', highData, 'low:', lowData, 'marketData:', marketData)
-      this._areaSeries.setData(highData)
-      this._extraSeries.setData(lowData)
-      this._barSeries.setData(marketData)
-
+      // this._areaSeries.setData(highData)
+      // this._extraSeries.setData(lowData)
+      // this._barSeries.setData(marketData)
+      this._areaSeries.setData([
+        {
+          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
+          value: 1000
+        }
+      ])
+      this._extraSeries.setData([
+        {
+          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
+          value: 100
+        }
+      ])
+      this._barSeries.setData([
+        {
+          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
+          value: 550
+        }
+      ])
+      this.isStart = true
       // Automatically calculates the visible range to fit all series data.
       // this._chart.timeScale().fitContent()
 
       // 实时更新数据
-      this._timestamp = setInterval(() => {
-        // console.log(this.flogCount)
-        const time = this.timeFormat()
-        const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
-        const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
-        this._areaSeries.update({
-          time,
-          value: hightVal
-        })
-        this._extraSeries.update({
-          time,
-          value: lowVal
-        })
-        this._barSeries.update({
-          time,
-          value: (hightVal + lowVal) / 2
-        })
-      }, 3000)
+      // this._timestamp = setInterval(() => {
+      //   // console.log(this.flogCount)
+      //   const time = this.timeFormat()
+      //   const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
+      //   const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
+      //   this._areaSeries.update({
+      //     time,
+      //     value: hightVal
+      //   })
+      //   this._extraSeries.update({
+      //     time,
+      //     value: lowVal
+      //   })
+      //   this._barSeries.update({
+      //     time,
+      //     value: (hightVal + lowVal) / 2
+      //   })
+      // }, 3000)
       
     },
     timeFormat(){      

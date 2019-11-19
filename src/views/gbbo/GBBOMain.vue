@@ -8,7 +8,8 @@
           <!-- 切换 header -->
           <div class="gbbomain-realtime__hd">
             <gbbo-ticker 
-              :currentInfo="currentInfo">
+              :currentInfo="currentInfo"
+              :maxArbitrageList="maxArbitrageList">
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->
@@ -18,7 +19,7 @@
               :gbboBidsArr="gbbo_bidsArr"
               :bestSellPrice="bestSellPrice"
               :bestBuyPrice="bestBuyPrice"
-              :maxArbitrageList="maxArbitrageList"
+              :arbData="arbData"
             ></gbbo-realtime>
           </div>
           <!--买入卖出 -->
@@ -39,7 +40,9 @@
         </div>
         <!--K线-->
         <div class="gbbomain-realtime__line">
-          <gbbo-kline></gbbo-kline>
+          <gbbo-kline
+            :kLineData="kLineData">
+          </gbbo-kline>
           <div class="gbbomain-realtime__line-history">
             <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
@@ -185,6 +188,7 @@ export default {
   },
   data(){
     return{
+      kLineData: {},
       historySymbolObj: {},
       briefInputData:{
         quoteCoinAvailable:'',
@@ -306,6 +310,7 @@ export default {
       orderTicketTimer: null,//orderTicket定时器
       updateAt: '',//路总需求 要加这个隐藏字段
       maxArbitrageList:[],
+      arbData:{},
     }
   },
   created() {
@@ -349,6 +354,8 @@ export default {
       //获取交易密码开关
       this.$store.dispatch("getTradePassWordStatus");
     }
+    console.log(this.currentSymbol)
+    // console.log(this.arbList)
   },
   filters: {
     formatNumberLength: function (value) {
@@ -542,7 +549,6 @@ export default {
           // 拼装行情的symbol为Key的symbolList 对象
           this.symbolList_quote[val.symbol] = val
         })
-        console.log('aaaaa',this.symbolList_quote)
         // 第一个交易对信息
         const firstSymbol = res[0]
         const { priceTickSize, quantityStepSize } = firstSymbol
@@ -613,15 +619,23 @@ export default {
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
           this.arbStompClient.send("/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
+          // 最大价差
           this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
             if (message.body) {
-              // this.maxArbitrageBook(JSON.parse(message.body))
               this.maxArbitrageList = JSON.parse(message.body)
             }
           });
+          // 价差
+          this.arbStompClient.subscribe(`/topic/arb/${this.currentSymbol}`, (message) => {
+            if (message.body) {
+              this.arbData = JSON.parse(message.body)
+            }
+          });
+          
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
             // console.log(message)
             if(message.body){
+              // console.log(message.body)
               this.kLineData = JSON.parse(message.body)
             }
           })
@@ -652,7 +666,7 @@ export default {
           } else if (val.provider && val.provider === 'E55') {
             return Object.assign({}, val, {provider: 'TRESSO'})
           } else if (val.provider) {
-            return Object.assign({}, val, {provider: 'Node of Apifiny'})
+            return Object.assign({}, val, {provider: 'market maker'})
           }
       })
 
@@ -671,7 +685,7 @@ export default {
           } else if (val.provider && val.provider === 'E55') {
             return Object.assign({}, val, {provider: 'TRESSO'})
           } else if (val.provider) {
-            return Object.assign({}, val, {provider: 'Node of Apifiny'})
+            return Object.assign({}, val, {provider: 'market maker'})
           }
       })
       if (!this.sell_input_change) {
@@ -691,9 +705,6 @@ export default {
           this.isShowARB = "Spread"
       }
     },
-    // maxArbitrageBook(data) {
-    //   this.maxArbitrageList = data;
-    // },
     //获取推送行情
     getSSERealTime(url) {
       let SSEcache = null
