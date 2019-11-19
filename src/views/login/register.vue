@@ -139,7 +139,8 @@
                                             </div>
                                         </transition>
                                     </div>
-                                        <div style="color:#fff;font-size:14px;margin-top:10px;">{{$t('lawTips')}}</div>
+                                        <div v-if="common" style="color:#fff;font-size:14px;margin-top:10px;">{{$t('lawTips')}}</div>
+                                        <div v-else style="color:#fff;font-size:14px;margin-top:10px;">Based on the region you selected, we have to comply with local regulations and perform EDD(Enhanced Due Diligence) during your KYC procedure</div>
                                 </FormItem>
                                  <FormItem class="form_item" prop='userName'>
                                     <img  style="top:18px;" src="../../assets/images/register/yonghu.svg" alt="">
@@ -208,7 +209,7 @@ import {countrylist} from '../login/country.js'
 import {getUrlKey} from '@/lib/utils.js'
 import '../../lib/utils.js'
 import sendBtn from '../../components/sendBtn'
-import {register,emailRegister,ossjson,ipQuery} from '../../../api/urls.js';
+import {register,emailRegister,ossjson,ipLimit} from '../../../api/urls.js';
 import {postBaseApi,getApi,getApiLoin} from '../../../api/axios.js';
 import Modaltips from '@/components/Modal';
 import {getBrowserMessage,getUrlKeyandEncode} from "@/lib/utils.js"
@@ -418,7 +419,8 @@ const clickoutside = {
                 seconds:5,
                 registerResult:false,
                 machine:true,
-                origin:''
+                origin:'',
+                common:true,
             }
 
 
@@ -443,8 +445,23 @@ const clickoutside = {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.loaded = false;
+                        this.ipRequest()
+                    }
+                })
+            },
+            ipRequest(){
+                getApi(ipLimit,'').then((res)=>{
+                    if(res.result){// 要限制
+                         this.loaded = true;
+                         this.$Notice.warning({
+                            title: 'Tips',
+                            desc:"We are sorry, but the service you are attempting to access is not intended for the country we've detected you are in."
+                        });
+                    }else{
                         this.checkGeetest()
                     }
+                }).catch((error)=>{
+                    this.loaded = true;
                 })
             },
             checkGeetest(){
@@ -510,7 +527,7 @@ const clickoutside = {
                 return pw;
             },
             getOSSjson(){
-                getApi('https://oss.55gm.co/content/country/55-country.json',{}).then((res)=>{
+                getApi('https://oss.55com.io/content/country/55-country.json',{}).then((res)=>{
                     this.ossJSON = res.slice(4,res.length);
                     let FrencyCountry = [];
                     res.forEach(item => {
@@ -556,7 +573,7 @@ const clickoutside = {
                     }else if(res.result){
                         this.registerResult = res.result;
                         this.loaded = true;
-                         this.$Notice.success({
+                        this.$Notice.success({
                             title: this.$t('11001'),
                             desc:this.$t('11001')
                         });
@@ -605,6 +622,13 @@ const clickoutside = {
                 this.countryNumber = code;
             },
             chooseGlobalCountry(name,img,locale,code){
+                // let countryArr = [Belarus, Belize, Bolivia, Burundi, Central African Repbuic, China, Comoros, Lebanon, Libya, Mauritania, Myanmar, Nicaragua, Papua New Guinea, Russia, Congo, Democratic Congo, Equatorial Guinea, Eritrea, Gabon, Iraq, Laos, Somalia, South Sudan, Turkmenistan, Ukraine, Crimea, Venezuela, Yemen, Zimbabwe]
+                let countryArr = ['BY','BZ','BO','BI','CF','CN','LB','LY','NI','PG','RU','CG','GA','Eritrea','GA','IQ','LA','TM','UA','YE','ZW'];
+                if(countryArr.indexOf(locale)===-1){
+                        this.common = true;
+                }else{
+                    this.common = false;
+                }
                 this.countrySelectFlag = false;
                 this.globalCountryNumber = name;
                 this.EmailcountryName = locale;

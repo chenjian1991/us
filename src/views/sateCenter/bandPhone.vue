@@ -54,9 +54,10 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <Select  v-model="countryName" style="width:110px;height:44px;">
-                            <Option  v-for="item in cityList" :value="item.label" :key="item.value" :label="item.label" >
-                                    <span v-html="item.value"></span>
+                            <Option  v-for="item in cityList" :value="item.value"  :label="item.value" >
                                     <span v-html="item.label"></span>
+                                    <span v-html="item.value"></span>
+                                <!-- <span>+{{item.code}}</span> -->
                                 </Option>
                         </Select>
                     </div>
@@ -158,7 +159,7 @@ import {countrylist} from '../login/country.js'
 import '../../lib/utils.js'
 import sendBtn from '../../components/sendBtn'
 import {bindAccount,userInfo,verifyBusinessCode} from '../../../api/urls.js';
-import {postHeaderTokenBodyApi,getHeaderTokenApi} from '../../../api/axios.js';
+import {postHeaderTokenBodyApi,getHeaderTokenApi,getApi} from '../../../api/axios.js';
 import Modal from '@/components/Modal';
 
     export default {
@@ -169,7 +170,7 @@ import Modal from '@/components/Modal';
                 phoneNumber:'',
                 phoneCode:'',
                 googlecode:'',
-                countryName:'',
+                countryName:'86',
                 countryLanguage:localStorage.getItem('countryLanguage'),
                 empty:true,
                 token:'',
@@ -191,6 +192,7 @@ import Modal from '@/components/Modal';
                 EmailCode:'',
                 FromOrigin:'',
                 DeviceType:'',
+                userCountry:'',
             }
 
 
@@ -262,19 +264,20 @@ import Modal from '@/components/Modal';
                 })
             },
              dealCountry(){
-                let countryArr = []
-                countrylist.map((v,i) => {
-                    let country = v.split('-');
-                    let name = country[0];
-                    let code = country[2];
-                    let countrylist = {
-                        value:name,
-                        label:code
-                    }
-                    countryArr.push(countrylist)
-                    this.cityList = countryArr;
-
-                })
+                    getApi('https://oss.55com.io/content/country/55-country.json',{}).then((res)=>{
+                             let arr = res.slice(4,res.length);
+                             let newArr = [];
+                             arr.forEach((v,i)=>{
+                                 newArr.push({
+                                     value:v.code,
+                                     label:v.en
+                                 })
+                             })
+                             this.cityList = newArr;
+                             this.countryName = this.cityList[0].value;
+                             
+                            console.log('ccc',this.userCountry);
+                    })
             },
             inputPhone(){
                  this.ssoPhone = {
@@ -292,6 +295,8 @@ import Modal from '@/components/Modal';
                     let userInfo = res.data;
                     this.googleFlag = res.data.bindGoogle;
                     this.emailAddress = res.data.email;
+                    this.userCountry = res.data.country;
+
                 }).catch((res) =>{
 
                 })
@@ -351,9 +356,9 @@ import Modal from '@/components/Modal';
             },
         },
         mounted(){
-            this.dealCountry();
-            this.countryName = '+86';
             this.getUserInfo($cookies.get('loginToken'))
+            this.dealCountry();
+
             this.ssoEmail = {
                 "userId":localStorage.getItem('loginUserId'),
                 "businessType":"bind_phone",
