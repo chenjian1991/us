@@ -90,6 +90,7 @@ export const switchTradingPassword = `${proxyURLUser}/switch-trade-password`//�
 export const logout = `${proxyURLUser}/logout`//退出
 export const identifyInfo = `${proxyURLUcenter}/identify/get-info`//实名认证查询
 export const identifyPhoto = `${proxyURLUcenter}/identify/get-pub-url`//查询图片地址
+export const ipLimit = `${proxyURL}/sso/utils/ip-country-limit`
 //**************** 注册  //
 
 

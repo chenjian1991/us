@@ -77,7 +77,7 @@
                               </li>
                               <li class="hs-has-sub-menu">
                                  <router-link to='/order' class="nav-link u-header__sub-menu-nav-link">
-                                    Order
+                                    Orders
                                  </router-link>
                               </li>
                               <li class="hs-has-sub-menu">

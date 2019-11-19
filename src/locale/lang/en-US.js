@@ -136,7 +136,7 @@ export default {
    passwordRequier: 'This field is required',
    comfrimpassRequier: 'This field is required',
    checkboxRequire: 'Check this box',
-   passwordNotMach: 'The two password inputs do not match.',
+   passwordNotMach: "Password doesn't match",
    passwordReg: 'It must be a combination of 8-20 numbers and letters',
    regAgree: 'I certify that I am over 18 and agree to tresso.com',
    regTermsOfUse: 'User Agreement',
