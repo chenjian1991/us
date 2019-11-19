@@ -33,7 +33,7 @@
               :currentSymbol='currentSymbol'
               :symbolList='symbolList'
               :currentInfo="currentInfo"
-              :maxArbitrageList="maxArbitrageList"
+              :arbData="arbData"
               :isLogin='isLogin'
             ></create-order>
           </div>

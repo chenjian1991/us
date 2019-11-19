@@ -50,7 +50,6 @@
                   />
                   <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
                   <i
-                    @click="clickLock('Arbi')"
                     :class="[buy_input_change_Arbitrage?'gbbo_lock':'gbbo_unlock']"
                   />
                   <!-- <div class="currencyInput">
@@ -408,13 +407,13 @@ export default {
     sellInputPrice: Number,
     maxArbitrageList:Array,
     currentInfo:Object,
+    arbData:Object,
    
   },
   watch: {
-    maxArbitrageList(){
+    arbData(){
       if(this.buy_input_change_Arbitrage){
-        let price = this.maxArbitrageList.length > 0 ? this.maxArbitrageList[0].priceSubtract:'';
-        this.$refs.buyArbitraInput.value = price;
+        this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
       } 
     },  
     buyInputPrice() {
@@ -458,19 +457,13 @@ export default {
     this.availableCoin = this.briefInputData.quoteCoinAvailable;
     this.$refs.sellInput.value = this.sellInputPrice;
     this.$refs.buyInput.value = this.buyInputPrice;
-    let price = this.maxArbitrageList.length > 0 ? this.maxArbitrageList[0].priceSubtract:'';
-    this.$refs.buyArbitraInput.value = price;
+    this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+    console.log('this.arbData.maxArb',this.briefInputData)
 
 
   },
 
   computed: {
-    // buyArbitraInTotal:function(){
-    //    let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
-    //    let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
-    //    let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
-    //    return bigDecimal.add(profits,this.buyArbitraCountInput)
-    // },
     buyInTotal: function() {
       //买入总价
       return bigDecimal.multiply(this.buyPriceInput, this.buyCountInput);
@@ -569,7 +562,7 @@ export default {
             );
           }
           let arbitraFee = this.symbolList[this.currentSymbol].commissionRate;
-          this.buyArbitraInTotalFee = bigDecimal.multiply(this.buyArbitraCountInput, arbitraFee);
+          this.buyArbitraInTotalFee = arbitraFee.toFixed(2);
 
           let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
           let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
@@ -600,7 +593,7 @@ export default {
             );
           }
           let Fee = this.symbolList[this.currentSymbol].commissionRate;
-          this.buyTotalFee = bigDecimal.multiply(this.buyCountInput, Fee);
+          this.buyTotalFee = Fee.toFixed(2);
           break;
         case "sell":
           this.itemIndexSell = index;
@@ -628,7 +621,8 @@ export default {
             );
           }
           let sellFee = this.symbolList[this.currentSymbol].commissionRate;
-          this.sellTotalFee = bigDecimal.multiply(this.sellCountInput, sellFee);
+          this.sellTotalFee =sellFee.toFixed(2);
+          
           break;
       }
     },
