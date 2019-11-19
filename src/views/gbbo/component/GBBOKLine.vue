@@ -53,32 +53,32 @@ export default {
   watch: {
     kLineData(val, oldVal){
       if(Object.keys(val).length > 0){
-        this.updateData(val)
+        // this.updateData(val)
       }
     }
   },
   created(){
-    // this.getHistoryData()
+    this.getHistoryData()
   },
   mounted(){
-    // const { highData, lowData, marketData } = this.kline
-    // for(var i=1; i<this.flogCount; i++){
-    //   const _time = `2019-11-${this.addZero(i)}`
-    //   const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
-    //   const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
-    //   highData.push({
-    //     time: _time,
-    //     value: hightVal
-    //   })
-    //   lowData.push({
-    //     time: _time,
-    //     value: lowVal
-    //   })
-    //   marketData.push({
-    //     time: _time,
-    //     value: (hightVal + lowVal) / 2
-    //   })
-    // }
+    const { highData, lowData, marketData } = this.kline
+    for(var i=1; i<this.flogCount; i++){
+      const _time = `2019-11-${this.addZero(i)}`
+      const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
+      const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
+      highData.push({
+        time: _time,
+        value: hightVal
+      })
+      lowData.push({
+        time: _time,
+        value: lowVal
+      })
+      marketData.push({
+        time: _time,
+        value: (hightVal + lowVal) / 2
+      })
+    }
     this.klineInit()
     // this.connect()
   },
