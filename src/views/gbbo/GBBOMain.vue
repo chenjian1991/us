@@ -630,7 +630,7 @@ export default {
           // 价差
           this.arbStompClient.subscribe(`/topic/arb/${this.currentSymbol}`, (message) => {
             if (message.body) {
-              this.arbData = JSON.parse(message.body)
+              this.getArbData(JSON.parse(message.body))
             }
           });
           
@@ -651,7 +651,7 @@ export default {
       }
 
     },
-
+    // 盘口最优ask and bid
     sortOrderBook(data) {
       let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
       // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
@@ -706,6 +706,24 @@ export default {
       } else {
           this.isShowARB = "Spread"
       }
+    },
+    // 价差列表
+    getArbData(data) {
+      this.arbData = data
+      this.arbData.matchMap.map((val) => {
+        // buy 过滤
+        if (val.buy && val.buy === 'E55') {
+          val.buy = 'TRESSO'
+        } else if (val.buy && !orderBookName.includes(val.buy)) {
+          val.buy = 'market maker'
+        } else {}
+        // sell 过滤
+        if (val.sell && val.sell === 'E55') {
+          val.sell = 'TRESSO'
+        } else if (val.sell &&  !orderBookName.includes(val.sell)) {
+          val.sell = 'market maker'
+        } else {}
+      })
     },
     //获取推送行情
     getSSERealTime(url) {

@@ -6,8 +6,8 @@
         <li :class="{active:marketsIsShow}" @click="showTable('marketsIsShow')">Markets History</li>
         <thead class="mask arbitrage" v-show="arbitrageIsShow">
           <th>Arbitrage</th>
-          <th>Lowest From</th>
-          <th>Highest From</th>
+          <th>Ask</th>
+          <th>Bid</th>
           <th>Time</th>
         </thead>
         <thead class="mask markets" v-show="marketsIsShow">

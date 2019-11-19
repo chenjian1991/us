@@ -4,8 +4,8 @@
       <div class="realtime-item__header">
         <div class="arb">Arbitrage</div>
         <div class="amount">Amount</div>
-        <div class="buy">Buy</div>
-        <div class="sell">Sell</div>
+        <div class="buy">Ask</div>
+        <div class="sell">Bid</div>
       </div>
       <div class="realtime-item__content">
         <ul class="realtime-item__content-list arb-list">
@@ -53,7 +53,7 @@
         </ul>
       </div>
       <div class="realtime-item__footer lowest-footer">
-        <p>Last Best Ask Price</p>
+        <p>Last Best Ask</p>
         <span>{{bestSellPrice}}</span>
       </div>
     </div>
@@ -80,7 +80,7 @@
         </ul>
       </div>
       <div class="realtime-item__footer highest-footer">
-        <p>Last Best Bid Price</p>
+        <p>Last Best Bid</p>
         <span>{{bestBuyPrice}}</span>
         <div class="more">
           <a>More</a>
