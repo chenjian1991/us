@@ -19,7 +19,6 @@ const BASE_URL = '/'
 // const targetUrl='http://www.dev_test_uat.55.exchange/' // 测试本地环境
 const targetUrl ='https://www.55.center/' //生产
 
-let flag = 0
 module.exports = {
    transpileDependencies: [
       'vue-echarts',
@@ -95,14 +94,6 @@ module.exports = {
             changeOrigin: true,
             pathRewrite: {
                // '^/quote': ''
-            },
-            bypass: function(req, res){
-               if (flag < 5){
-                  flag++
-                  console.log(req)
-                  console.log(res)
-               }
-               
             },
             secure: false
          }
