@@ -110,7 +110,7 @@
          width: 100%;
          height: 100%;
          background: rgba(33, 40, 48, .9);
-         padding: 10px 35px !important;
+         padding: 10px 135px 10px 35px !important;
          text-align: left;
          position: relative;
          display: flex;
@@ -119,6 +119,7 @@
          margin-bottom: 0;
          .closeBtn {
             margin-left: 20px;
+            line-height: 42px;
             color: #fff;
             &:hover {
                color: #fff;
