@@ -31,7 +31,7 @@
           <div class="trade-msg">
             <div class="price-box">
               <div class="price-box-label">
-                <div>{{$t("bbjyBuyPrice")}}</div>
+                <div>Arbitrage</div>
                 <div>{{$t("bbjyBuyAmount")}}</div>
               </div>
               <div class="input_container">
@@ -125,7 +125,7 @@
           <div class="trade-msg">
             <div class="price-box">
               <div class="price-box-label">
-                <div>Lowest</div>
+                <div>Price</div>
                 <div>Amount</div>
               </div>
               <div class="input_container">
@@ -199,7 +199,7 @@
             </button>
             <!-- 买入按钮 -->
             <button class="mybtn buy-btn" :disabled="buyDisabled" @click="buyBtn" v-else>
-              <span>Buy at Best Ask Price</span>
+              <span>Global  Best Ask</span>
             </button>
           </div>
         </div>
@@ -299,7 +299,7 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <button class="mybtn sell-btn" :disabled="sellDisabled" @click="sellBtn" v-else>
-              <span>Sell at Best Bid Price</span>
+              <span>Global Best Bid</span>
             </button>
           </div>
         </div>
