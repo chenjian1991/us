@@ -176,7 +176,7 @@ export default {
 
 <style lang="less">
 .gbbo-historiswrap {
-  
+  width:100%;
   .historis {
     width: 100%;
     background-color: #031419;
@@ -192,9 +192,11 @@ export default {
         font-weight: 700;
         background-color: #041d25;
         cursor: pointer;
+        border: 1px black solid;
         &.active {
           background-color: #031419;
           color: #d4d4d4;
+          border: none;
         }
       }
       .mask{
@@ -204,8 +206,9 @@ export default {
         width: 100%;
         background-color: #031419;
         z-index: 3;
+        height: 22px;
         th {
-          width: 1%;//支持到屏幕100%
+          width: 33%;//支持到屏幕100%
           &:nth-child(2) {
             text-align: center;
           }
@@ -215,7 +218,7 @@ export default {
         }
         &.arbitrage{
           th {
-            width: 10%;//支持到屏幕60%
+            width: 25%;//支持到屏幕60%
             text-align: right;
             &:first-child {
               text-align: left;
