@@ -149,7 +149,7 @@ export default {
 </script>
 <style lang="less">
 .gbbomain-order-box {
-  flex: 1;
+  // flex: 1;
   .below {
     width: 100%;
     .open-order {
