@@ -8,7 +8,7 @@
         <div class="sell">Sell</div>
       </div>
       <div class="realtime-item__content">
-        <ul class="list arb-list">
+        <ul class="realtime-item__content-list arb-list">
           <li>
             <span class="arb">21.31</span>
             <span class="amount">0.071348</span>
@@ -243,7 +243,7 @@
         <div class="total">Total</div>
       </div>
       <div class="realtime-item__content">
-        <ul class="list lowest-list" ref="buyOrderContainer">
+        <ul class="realtime-item__content-list lowest-list" ref="buyOrderContainer">
           <li
             v-for="(v, index) in gbboAsksArr"
             :key="index"
@@ -270,7 +270,7 @@
         <div class="total">Total</div>
       </div>
       <div class="realtime-item__content">
-        <ul class="list highest-list" ref="sellOrderContainer">
+        <ul class="realtime-item__content-list highest-list" ref="sellOrderContainer">
           <li
             v-for="(v, index) in gbboBidsArr"
             :key="index"
@@ -397,6 +397,7 @@ export default {
       height: 20px;
       line-height: 20px;
       color: #788390;
+      font-weight: 500;
       background: #041d25;
       display: flex;
       .arb {
@@ -423,7 +424,7 @@ export default {
     &__content {
       height: 274px;
       overflow: hidden;
-      .list {
+      &-list {
         height: 100%;
         overflow-x: hidden;
         overflow-y: scroll;

@@ -176,7 +176,6 @@ export default {
 
 <style lang="less">
 .gbbo-historiswrap {
-  
   .historis {
     width: 100%;
     background-color: #031419;
@@ -191,6 +190,7 @@ export default {
         font-size: 12px;
         font-weight: 700;
         background-color: #041d25;
+        border-right: 1px solid #000;
         cursor: pointer;
         &.active {
           background-color: #031419;
@@ -227,11 +227,11 @@ export default {
     .tableWrap{
       position: relative;
       height: 232px;
-      padding: 0 6px;
+      padding: 0 3px 0 8px;
       overflow: auto;
       table {
         width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 10px;
         thead {
           color: #788390;
           th {
@@ -293,9 +293,13 @@ export default {
           }
         }
       }
-      &::-webkit-scrollbar{
-        display: none;
-      }        
+      &::-webkit-scrollbar {
+        width: 5px;
+        // display: none;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #093a49;
+      }       
     }
   }
 }

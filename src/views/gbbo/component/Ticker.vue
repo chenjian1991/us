@@ -11,7 +11,7 @@
             </DropdownMenu>
          </Dropdown>
          <div class="d-ib">
-            <dl class="market-avg">
+            <dl>
                <dt>Market Avg</dt>
                <dd>{{currentInfo.last|noData|separate}}</dd>
             </dl>
@@ -144,6 +144,7 @@
          display: inline-block;
          margin-right: 33px;
          dt {
+            font-weight: 500;
             .c-788390;
             .f-12;
          }
@@ -158,12 +159,6 @@
          align-items: center;
          .dropdown {
             margin-right: 45px;
-         }
-         .market-avg {
-            margin-right: 45px;
-            dt{
-               font-weight: 400;
-            }
          }
       }
       .ticker-right {
