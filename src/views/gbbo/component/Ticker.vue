@@ -11,11 +11,12 @@
             </DropdownMenu>
          </Dropdown>
          <div class="d-ib">
-            <dl>
+            <dl class="maxArb">
                <dt>Max Arbitrage</dt>
-               <dd>{{maxArbitrageList[0].priceSubtract}}</dd>
+               <dd v-if="maxArbitrageList.length > 0">{{maxArbitrageList[0].priceSubtract}}</dd>
+               <dd v-else>--</dd>
             </dl>
-            <dl>
+            <dl class="marketAvg">
                <dt>Market Avg</dt>
                <dd>{{currentInfo.last|noData|separate}}</dd>
             </dl>
@@ -157,6 +158,16 @@
             .c-D4D4D4;
             .f-12;
             .f-w-5;
+         }
+      }
+      .marketAvg{
+         dd {
+            color:#2CB48C;
+         }
+      }
+      .maxArb{
+         dd {
+            color:#12869A;
          }
       }
       .ticker-left {
