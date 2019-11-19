@@ -46,14 +46,17 @@
             <div class="row no-gutters flex-center">
                <div class="col-md-8 col-lg-10 col-xl-8 p-2 pb-6 pt-7" style="margin-left: auto;margin-right: auto">
                   <h4 class="mt-2 mb-3">{{$t('newK1title')}}</h4>
-                  <h6 class="red-color mb-4">{{$t('newK1notice')}}</h6>
-                  <div class="btn-group btn-group-toggle card-group d-block d-md-flex">
+                  <article class="red-color f-14 f-w-5 mb-2" v-for="article of articleList" :key="article.id"
+                           v-show="currentStep===1">
+                     {{article}}
+                  </article>
+                  <div class="btn-group btn-group-toggle card-group d-block d-md-flex mt-4">
                      <a class="btn btn-outline-secondary u-btn-wide--xm col-lg-3 step-color"
                         v-for="(item,i) in stepList" :key="i"
                         :class="currentStep===i+1?'active':''" :disabled="true">{{$t(item)}}</a>
                   </div>
                   <!-- 第一步 -->
-                      <div v-show="showStep1" class="firstStep">
+                  <div v-show="showStep1" class="firstStep">
                      <input type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
                      <div id="captcha"></div>
                      <form class="mt-5 mb-5">
@@ -70,7 +73,7 @@
                            <div class="form-group">
                               <label class="h6 d-block text-uppercase"
                                      for="disabledTextInput">{{$t('aqzxBandEmail')}}</label>
-                              <router-link  v-if="type==='ios'||type==='android'"
+                              <router-link v-if="type==='ios'||type==='android'"
                                            class="btn btn-sm btn-primary transition-3d-hover d-inline-block loginBtn"
                                            to='/BandEmail?origin=kyc&type=mobile'>{{$t('去绑定')}}
                               </router-link>
@@ -511,9 +514,14 @@
                            </Select>
                         </div>
                         <div class="mb-4">
-                           <label class="h6 d-block font-size-14 mb-3">{{$t('newK1surveyq4')}}</label>
+                           <label class="h6 d-block font-size-14 mb-3">Current Employer</label>
                            <input type="text" class="form-control form-control-sm" maxlength="30"
                                   v-model="stepFourForm.Employer">
+                        </div>
+                        <div class="mb-4">
+                           <Checkbox v-model="stepFourForm.investor" class="f-14">Check the box if you are an accredited
+                              investor
+                           </Checkbox>
                         </div>
                      </form>
                      <!-- Button -->
@@ -577,6 +585,8 @@
             showStep2: false,
             showStep3: false,
             showStep4: false,
+            currentStep: 1,
+            stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
             isUS: false,
             loginToken: $cookies.get('loginToken'),
 
@@ -593,8 +603,12 @@
             },
             language: localStorage.getItem('countryLanguage'),
 
-            currentStep: 1,
-            stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
+            articleList: ['* please verify that all your information is accurate before submitting',
+               'Attention customers, trading is currently only open for U.S customers, you can get ready for trading by proceeding with KYC and we will notify you as soon as trading services in your region become available.',
+               'For U.S customers, trading is currently not open for those in Alabama, Connecticut, Georgia, Hawaii, Idaho, Louisiana, New York, North Carolina, Vermont, Washington, Alaska, Arkansas, Florida, Iowa, Kentucky, Massachusetts, Michigan, Mississippi, Nebraska, Oregon, North Dakota, South Dakota, New Mexico. However, you can get ready for trading by proceeding with KYC and we will notify you as soon as trading services in your state become available.',
+               'For users in Florida, Texas, New Jersey, Maine, Ohio, Mississippi, North Dakota, South Carolina, Tresso cannot accept fiat deposits from your state at this time but you may still register for an account, deposit, withdrawal and trade cryptocurrency against cryptocurrency. We will be in touch with you if your state becomes available.'],
+
+
             idType: [
                {label: "newK1DL", value: 'license'},
                {label: 'newK1ID', value: 'idCard'},
@@ -633,6 +647,7 @@
                source: 'Select One',
                occupation: 'Select One',
                Employer: '',
+               investor: false,
             },
             // error pop
             stepOneError: ['emailPlacehodler', 'newK1vcodepop', 'phonePlacehodlerphone', 'newK1vcodepop'],// 新添加
@@ -715,18 +730,18 @@
             uploadParams: {
                side: 'front',
                ocr: true,
-               userId:localStorage.getItem('loginUserId'),
+               userId: localStorage.getItem('loginUserId'),
             },
             uploadBack: {
                side: 'back',
                ocr: true,
-               userId:localStorage.getItem('loginUserId'),
+               userId: localStorage.getItem('loginUserId'),
             },
             uploadHandself: {
                userId: localStorage.getItem('loginUserId')
             },
             userSelf: {
-               userId:localStorage.getItem('loginUserId'),
+               userId: localStorage.getItem('loginUserId'),
                selfPathSelf: '',//最新更改
             },
             userFrontMessage: {
@@ -755,10 +770,10 @@
             banddingGoogleFlag: true,
             val: '',
             userId: localStorage.getItem('loginUserId'),
-            deviceCode:localStorage.getItem('deviceCode'),
-            email:'',
-            phone:'',
-            type:'',
+            deviceCode: localStorage.getItem('deviceCode'),
+            email: '',
+            phone: '',
+            type: '',
          }
       },
       components: {
@@ -832,6 +847,7 @@
                         source: formJson.source || this.source[0].value,
                         occupation: formJson.occupation || this.occupation[0].value,
                         Employer: formJson.Employer || '',
+                        investor: formJson.investor || false,
                      }
                      this.file = {
                         fileName: formJson['fileName'],
@@ -1073,25 +1089,25 @@
                this.uploadParams = {
                   side: 'front',
                   ocr: true,
-                  userId:this.userId,
+                  userId: this.userId,
 
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: true,
-                  userId:this.userId,
+                  userId: this.userId,
                }
 
             } else {
                this.uploadParams = {
                   side: 'front',
                   ocr: false,
-                  userId:this.userId,
+                  userId: this.userId,
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: false,
-                  userId:this.userId,
+                  userId: this.userId,
                }
             }
             if (e == 'idCard' || e == 'license') {
@@ -1106,13 +1122,13 @@
                this.uploadParams = {
                   side: 'front',
                   ocr: true,
-                  userId:this.userId,
+                  userId: this.userId,
 
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: true,
-                  userId:this.userId,
+                  userId: this.userId,
 
                }
 
@@ -1120,13 +1136,13 @@
                this.uploadParams = {
                   side: 'front',
                   ocr: false,
-                  userId:this.userId,
+                  userId: this.userId,
 
                }
                this.uploadBack = {
                   side: 'back',
                   ocr: false,
-                  userId:this.userId,
+                  userId: this.userId,
 
                }
             }
@@ -1220,7 +1236,7 @@
             }
             this.uploadListThree = this.$refs.uploadThird.fileList;
          },
-          handleSuccess(res, file) {
+         handleSuccess(res, file) {
             let fileUrl = res.result;
             let params = {
                userId: this.userId,
@@ -1242,7 +1258,7 @@
             //    this.userFrontMessage.NationalityFront = res.info.words_result['民族'].words;
             // }
          },
-            handleSuccessTWO(res, file) {
+         handleSuccessTWO(res, file) {
             let fileUrl = res.result;
             let params = {
                userId: this.userId,
@@ -1385,7 +1401,19 @@
    }
 </script>
 
+<style lang="less">
+   .ivu-checkbox-checked .ivu-checkbox-inner {
+      border-color: #1D8699;
+      background-color: #1D8699;
+   }
+
+   .ivu-checkbox-checked:hover .ivu-checkbox-inner {
+      border-color: #1D8699;
+   }
+</style>
 <style lang="less" scoped>
+   @import '../../assets/css/common.less';
+
    .kyc-overflow {
       height: 100%;
       min-height: 100%;
