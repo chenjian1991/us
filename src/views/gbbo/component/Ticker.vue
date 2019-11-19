@@ -12,6 +12,10 @@
          </Dropdown>
          <div class="d-ib">
             <dl>
+               <dt>Max Arbitrage</dt>
+               <dd>{{maxArbitrageList[0].priceSubtract}}</dd>
+            </dl>
+            <dl>
                <dt>Market Avg</dt>
                <dd>{{currentInfo.last|noData|separate}}</dd>
             </dl>
@@ -58,7 +62,8 @@
    export default {
       name: "Ticker",
       props: {
-         currentInfo: Object
+         currentInfo: Object,
+         maxArbitrageList:Array
       },
       filters: {
          noData: function (value) {

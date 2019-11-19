@@ -8,7 +8,8 @@
           <!-- 切换 header -->
           <div class="gbbomain-realtime__hd">
             <gbbo-ticker 
-              :currentInfo="currentInfo">
+              :currentInfo="currentInfo"
+              :maxArbitrageList="maxArbitrageList">
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->
@@ -618,11 +619,13 @@ export default {
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
           this.arbStompClient.send("/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
+          // 最大价差
           this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
             if (message.body) {
               this.maxArbitrageList = JSON.parse(message.body)
             }
           });
+          // 价差
           this.arbStompClient.subscribe(`/topic/arb/${this.currentSymbol}`, (message) => {
             if (message.body) {
               this.arbData = JSON.parse(message.body)
