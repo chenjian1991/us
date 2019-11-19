@@ -9,218 +9,12 @@
       </div>
       <div class="realtime-item__content">
         <ul class="realtime-item__content-list arb-list">
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
+          <li v-for="(v, index) in arbData.matchMap" :key="index">
+            <span class="arb">{{v.arb}}</span>
+            <span class="amount">{{v.amount}}</span>
+            <span class="buy">{{v.buy}}</span>
+            <span class="sell">{{v.sell}}</span>
           </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          <li>
-            <span class="arb">21.31</span>
-            <span class="amount">0.071348</span>
-            <span class="buy">Node of Apifiny</span>
-            <span class="sell">Node of Apifiny</span>
-          </li>
-          
-
         </ul>
       </div>
       <div class="realtime-item__footer arb-footer">
@@ -228,17 +22,17 @@
           <p>Arbitrage Range</p>
           <span
             class="last-arb"
-          >9.47~21.31</span>
+          >{{arbData.minArb}}~{{arbData.maxArb}}</span>
         </div>
         <div>
           <p>Total Amount</p>
-          <span>4.564839</span>
+          <span>{{arbData.totalAmount}}</span>
         </div>
       </div>
     </div>
     <div class="realtime-item mx-px">
       <div class="realtime-item__header">
-        <div class="lowest">Global Lowest Price</div>
+        <div class="lowest">Global Best Ask</div>
         <div class="amount">Amount</div>
         <div class="total">Total</div>
       </div>
@@ -259,13 +53,13 @@
         </ul>
       </div>
       <div class="realtime-item__footer lowest-footer">
-        <p>Last Lowest Price</p>
+        <p>Last Best Ask Price</p>
         <span>{{bestSellPrice}}</span>
       </div>
     </div>
     <div class="realtime-item">
       <div class="realtime-item__header">
-        <div class="highest">Global Highest Price</div>
+        <div class="highest">Global Best Bid</div>
         <div class="amount">Amount</div>
         <div class="total">Total</div>
       </div>
@@ -286,7 +80,7 @@
         </ul>
       </div>
       <div class="realtime-item__footer highest-footer">
-        <p>Last Highest Price</p>
+        <p>Last Best Bid Price</p>
         <span>{{bestBuyPrice}}</span>
         <div class="more">
           <a>More</a>
@@ -319,10 +113,10 @@ export default {
         return [];
       }
     },
-    maxArbitrageList: {
-      type: Array,
+    arbData: {
+      type: Object,
       default: function() {
-        return [];
+        return {};
       }
     },
     bestSellPrice: {
@@ -447,9 +241,10 @@ export default {
           .highest {
             em {
               display: block;
-              width: 50%;
+              width: 55%;
               float: right;
               color: #788390;
+              text-align: right;
               font-style: normal;
               overflow: hidden;
               text-overflow: ellipsis;

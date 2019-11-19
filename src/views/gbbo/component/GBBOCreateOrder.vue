@@ -200,7 +200,7 @@
             </button>
             <!-- 买入按钮 -->
             <button class="mybtn buy-btn" :disabled="buyDisabled" @click="buyBtn" v-else>
-              <span>Buy at Lowest Price</span>
+              <span>Buy at Best Ask Price</span>
             </button>
           </div>
         </div>
@@ -300,7 +300,7 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <button class="mybtn sell-btn" :disabled="sellDisabled" @click="sellBtn" v-else>
-              <span>Sell at Highest Price</span>
+              <span>Sell at Best Bid Price</span>
             </button>
           </div>
         </div>
