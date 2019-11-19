@@ -13,8 +13,7 @@
          <div class="d-ib">
             <dl class="maxArb">
                <dt>Max Arbitrage</dt>
-               <dd v-if="maxArbitrageList.length > 0">{{maxArbitrageList[0].priceSubtract}}</dd>
-               <dd v-else>--</dd>
+               <dd>{{maxArbitrage|noData|separate}}</dd>
             </dl>
             <dl class="marketAvg">
                <dt>Market Avg</dt>
@@ -64,7 +63,7 @@
       name: "Ticker",
       props: {
          currentInfo: Object,
-         maxArbitrageList:Array
+         maxArbitrage:Number
       },
       filters: {
          noData: function (value) {
@@ -82,7 +81,7 @@
          }
       },
       mounted() {
-         console.log(this.currentInfo)
+         // console.log(this.currentInfo)
       },
       watch: {
          currentInfo: {

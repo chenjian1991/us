@@ -164,7 +164,7 @@ export default {
         color: "#fff",
         lineWidth: 1
       })
-      console.log('hight:', highData, 'low:', lowData, 'marketData:', marketData)
+      // console.log('hight:', highData, 'low:', lowData, 'marketData:', marketData)
       // this._areaSeries.setData(highData)
       // this._extraSeries.setData(lowData)
       // this._barSeries.setData(marketData)
