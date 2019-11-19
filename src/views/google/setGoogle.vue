@@ -85,7 +85,7 @@
                 <h1 class="text-dark h4">iOS</h1>
                 <div class="text-dark mb-6">{{$t('ggyzIOSMethod')}}</div>
                <!-- Button -->
-                <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1442483182" target="_blank">
+                <a href="https://apps.apple.com/us/app/google-authenticator/id388497605" target="_blank">
                     <button type="button" class="btn btn-xs btn-primary btn-wide transition-3d-hover text-left mb-2 mr-sm-1">
                     <span class="media align-items-center">
                         <span class="fab fa-apple font-size-2 mr-3"></span>
@@ -111,7 +111,7 @@
               <h1 class="text-dark h4">Android</h1>
               <div class="text-dark mb-6">{{$t('ggyzAndroidMethod')}}</div>
                 <!-- Button -->
-                    <a href="https://play.google.com/store/apps/details?id=com.ex55.app" target="_blank">
+                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank">
                         <button type="button" class="btn btn-xs btn-dark btn-wide transition-3d-hover text-left mb-2">
                         <span class="media align-items-center">
                             <span class="fab fa-google-play font-size-2 mr-3"></span>

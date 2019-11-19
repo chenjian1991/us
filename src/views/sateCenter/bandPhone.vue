@@ -56,7 +56,7 @@
                         <Select  v-model="countryName" style="width:110px;height:44px;">
                             <Option  v-for="item in cityList" :value="item.value"  :label="item.value" >
                                     <span v-html="item.label"></span>
-                                    <span v-html="item.value"></span>
+                                    <span>+{{item.value}}</span>
                                 <!-- <span>+{{item.code}}</span> -->
                                 </Option>
                         </Select>
@@ -245,7 +245,7 @@ import Modal from '@/components/Modal';
                     "phoneCode":this.phoneCode,
                     "emailCode":this.EmailCode,
                     "googleCode":this.googlecode,
-                    "bindAccount":this.phoneNumber+'+'+this.countryName.substring(1),
+                    "bindAccount":this.phoneNumber+'+'+this.countryName,
                 }
                 postHeaderTokenBodyApi(verifyBusinessCode,$cookies.get('loginToken'),bodyParam).then((res) =>{
                     if(res.result){
@@ -272,11 +272,11 @@ import Modal from '@/components/Modal';
                                      value:v.code,
                                      label:v.en
                                  })
+                                 if(v.locale===this.userCountry){
+                                        this.countryName = v.code;
+                                 }
                              })
                              this.cityList = newArr;
-                             this.countryName = this.cityList[0].value;
-                             
-                            console.log('ccc',this.userCountry);
                     })
             },
             inputPhone(){
@@ -284,7 +284,7 @@ import Modal from '@/components/Modal';
                         "userId":localStorage.getItem('loginUserId'),
                         "businessType":"bind_phone",
                         "sendCodeType":'phone',
-                        "bindAccount":this.phoneNumber+'+'+this.countryName.substring(1),
+                        "bindAccount":this.phoneNumber+'+'+this.countryName,
                 }
             },
             getUserInfo(token){
@@ -296,7 +296,7 @@ import Modal from '@/components/Modal';
                     this.googleFlag = res.data.bindGoogle;
                     this.emailAddress = res.data.email;
                     this.userCountry = res.data.country;
-
+                    this.dealCountry();
                 }).catch((res) =>{
 
                 })
@@ -357,8 +357,6 @@ import Modal from '@/components/Modal';
         },
         mounted(){
             this.getUserInfo($cookies.get('loginToken'))
-            this.dealCountry();
-
             this.ssoEmail = {
                 "userId":localStorage.getItem('loginUserId'),
                 "businessType":"bind_phone",
