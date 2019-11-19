@@ -455,7 +455,7 @@ export default {
    Cx000006: "The name has been used",
    Cx000007: 'Invitation Code Error',
    Cx000008: 'Short Message Verification Error',
-   Cx000009: 'Mobile phone number format error',
+   Cx000009: 'Please login with your email address',
    Cx000010: 'User does not exist.',
    Cx000011: 'Error in mailbox activation code',
    Cx000012: 'The user has been activated',
