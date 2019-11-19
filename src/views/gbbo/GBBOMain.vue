@@ -7,9 +7,9 @@
         <div class="gbbomain-realtime__operat">
           <!-- 切换 header -->
           <div class="gbbomain-realtime__hd">
-            <gbbo-ticker 
+            <gbbo-ticker
               :currentInfo="currentInfo"
-              :maxArbitrageList="maxArbitrageList">
+              :maxArbitrage="maxArbitrage">
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->
@@ -310,6 +310,7 @@ export default {
       orderTicketTimer: null,//orderTicket定时器
       updateAt: '',//路总需求 要加这个隐藏字段
       maxArbitrageList:[],
+      maxArbitrage:null,
       arbData:{},
     }
   },
@@ -623,6 +624,7 @@ export default {
           this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
             if (message.body) {
               this.maxArbitrageList = JSON.parse(message.body)
+              this.maxArbitrage = this.maxArbitrageList.length > 0 ? this.maxArbitrageList[0].priceSubtract : '--';
             }
           });
           // 价差

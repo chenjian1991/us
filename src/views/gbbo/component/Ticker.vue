@@ -11,11 +11,11 @@
             </DropdownMenu>
          </Dropdown>
          <div class="d-ib">
-            <dl>
+            <dl class="maxArb">
                <dt>Max Arbitrage</dt>
-               <dd>{{maxArbitrageList[0].priceSubtract}}</dd>
+               <dd>{{maxArbitrage|noData|separate}}</dd>
             </dl>
-            <dl>
+            <dl class="marketAvg">
                <dt>Market Avg</dt>
                <dd>{{currentInfo.last|noData|separate}}</dd>
             </dl>
@@ -63,7 +63,7 @@
       name: "Ticker",
       props: {
          currentInfo: Object,
-         maxArbitrageList:Array
+         maxArbitrage:Number
       },
       filters: {
          noData: function (value) {
@@ -81,7 +81,7 @@
          }
       },
       mounted() {
-         console.log(this.currentInfo)
+         // console.log(this.currentInfo)
       },
       watch: {
          currentInfo: {
@@ -157,6 +157,16 @@
             .c-D4D4D4;
             .f-12;
             .f-w-5;
+         }
+      }
+      .marketAvg{
+         dd {
+            color:#2CB48C;
+         }
+      }
+      .maxArb{
+         dd {
+            color:#12869A;
          }
       }
       .ticker-left {
