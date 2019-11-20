@@ -19,9 +19,6 @@ export default {
   name: 'GBBOKLine',
   data() {
     return {
-      flogCount: 30,
-      month: 11,
-      year: 2019,
       isInited: false,
       kline: {
         highData: [],
@@ -36,21 +33,34 @@ export default {
     }
   },
   props: {
+    historyData: {
+      type: Object,
+      default(){
+        return {}
+      }
+    },
     currentSymbol: {
       type: String,
       default: "BTCUSD"
     },
     kLineData: {
       type: Object,
-      default: function(){
+      default(){
         return {}
       }
     }
   },
   watch: {
-    kLineData(val, oldVal){
+    kLineData(val){
       if(Object.keys(val).length > 0){
-        // this.updateData(val)
+        if(this.isInited){
+          this.updateData(val)
+        }
+      }
+    },
+    historyData(val){
+      if(Object.keys(val).length > 0){
+        this.setHistoryData(val)
       }
     }
   },
@@ -58,15 +68,21 @@ export default {
     // this.getHistoryData()
   },
   mounted(){
-    
     this.klineInit()
     // this.connect()
   },
   methods: {
+    // 设置历史数据
+    setHistoryData(res) {
+      const { high, low, ma } = res
+      this._areaSeries.setData(high)
+      this._extraSeries.setData(low)
+      this._barSeries.setData(ma)
+      this.isInited = true
+    },
     updateData(val){
       const { high, low, ma, dateTime } = val
-      const time = +`${new Date(dateTime).getTime()}`.replace(/.{3}$/, '')
-
+      const time = new Date(dateTime).getTime() / 1000
       this._areaSeries.update({
         time,
         value: high
@@ -80,6 +96,7 @@ export default {
         value: ma
       })
     },
+    // 复原折线图
     restoreDefault(){
       this._chart.timeScale().scrollToRealTime()
     },
@@ -141,43 +158,6 @@ export default {
         color: "#fff",
         lineWidth: 1
       })
-
-      
-
-    },
-    setHistoryData(res) {
-      const { high, low, dateTime } = res
-      const time = new Date(dateTime).getTime() / 1000
-      this._areaSeries.setData({
-        time,
-        value: high
-      })
-      this._extraSeries.setData({
-        time,
-        value: low
-      })
-      this._barSeries.setData({})
-    },
-    getHistoryData() {
-      const matchTime = this.dateFormat()
-      console.log(matchTime)
-      getKlineHistoryData({
-        symbol: this.currentSymbol || 'BTCUSD',
-        startDateTime: matchTime - 60 * 1000,
-        endDateTime: matchTime,
-        interval: 'MINUTE_1'
-      }).then(res => {
-        console.log(res)
-      })
-    },
-    dateFormat(){
-      const curDate = new Date()
-      const curYear = curDate.getFullYear()
-      const curMonth = curDate.getMonth() + 1
-      const curGetDate = curDate.getDate()
-      const curHours = curDate.getHours()
-      const curMinutes = curDate.getMinutes()
-      return new Date(`${curYear}-${curMonth}-${curGetDate} ${curHours}:${curMinutes}`).getTime()/1000
     }
   },
   beforeDestroy() {
