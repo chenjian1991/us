@@ -30,7 +30,7 @@
         },
         mounted() {
             this.$Notice.config({
-                duration: 3
+                duration: 5
             });
         }
     }
