@@ -448,14 +448,14 @@ export default {
 
    //==========新的用户系统错误code
    Cx000001: "Authorization Failed",
-   Cx000002: 'Please login with your email address',
+   Cx000002: 'Invalid email address format',
    Cx000003: 'Invalid Recaptcha',
    Cx000004: 'For security purposes, no withdrawals are permitted for 24 hours following any changes to your account security, including password resets.',
    Cx000005: 'User already exists',
    Cx000006: "Username already exists",
    Cx000007: 'Invalid Referral ID',
    Cx000008: 'Text message verification error',
-   Cx000009: 'Invalid phone number format',
+   Cx000009: 'Please login with your email address',
    Cx000010: 'User not found',
    Cx000011: 'Incorrect email verification code',
    Cx000012: 'This account has already been activated',
