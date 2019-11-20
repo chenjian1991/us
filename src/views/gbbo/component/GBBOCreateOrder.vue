@@ -32,7 +32,7 @@
             <div class="price-box">
               <div class="price-box-label">
                 <div>Arbitrage</div>
-                <div>{{$t("bbjyBuyAmount")}}</div>
+                <div>Size</div>
               </div>
               <div class="input_container">
                 <div class="inputbox">
@@ -71,21 +71,28 @@
                   />
                   <div class="name-show baseAsset">{{assetName}}</div>
                 </div>
+
+                <div class="rangePercent">
+                  <ul>
+                    <li
+                      :class="{active:itemIndex===index}"
+                      v-for="(item,index) in percentArr"
+                    >{{item}}%</li>
+                    <!-- <li
+                      @click="choosePercent(item,index,'Arbitrage')"
+                      :class="{active:itemIndex===index}"
+                      v-for="(item,index) in percentArr"
+                    >{{item}}%</li> -->
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="rangePercent">
-              <ul>
-                <li
-                  @click="choosePercent(item,index,'Arbitrage')"
-                  :class="{active:itemIndex===index}"
-                  v-for="(item,index) in percentArr"
-                >{{item}}%</li>
-              </ul>
-            </div>
+            
             <div class="totalMoney-label">
               <em>Expect</em>&nbsp;&nbsp;
               <div>
-                <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp;
+                <!-- <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp; -->
+                <span id="buy_total" class="total-num">--</span>&nbsp;
                 <span class="quoteAsset">{{assetName}}</span>
               </div>
             </div>
@@ -103,9 +110,12 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <!-- 买入按钮 -->
-            <button class="mybtn Arbitrage-btn" disabled="true" @click="buyBtn" v-else>
-              <span>One Click Arbitrage</span>
-            </button>
+               <Tooltip max-width="299"  class="mybtn Arbitrage-btn" v-else placement="top" content="One-Click Arbitrage is under development. Ready in 2020.">
+                  <button class="Arbitrage-btn"  disabled="true" @click="buyBtn" >
+                      <span>One Click Arbitrage</span>
+                  </button>
+               </Tooltip>
+
           </div>
         </div>
       </div>
@@ -126,7 +136,7 @@
             <div class="price-box">
               <div class="price-box-label">
                 <div>Price</div>
-                <div>Amount</div>
+                <div>Size</div>
               </div>
               <div class="input_container">
                 <div class="inputbox">
@@ -166,17 +176,19 @@
                   />
                   <div class="name-show baseAsset">{{currentInfo.baseAsset}}</div>
                 </div>
+
+                <div class="rangePercent">
+                  <ul>
+                    <li
+                      @click="choosePercent(item,index,'buy')"
+                      :class="{active:itemIndexBuy===index}"
+                      v-for="(item,index) in percentArr"
+                    >{{item}}%</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="rangePercent">
-              <ul>
-                <li
-                  @click="choosePercent(item,index,'buy')"
-                  :class="{active:itemIndexBuy===index}"
-                  v-for="(item,index) in percentArr"
-                >{{item}}%</li>
-              </ul>
-            </div>
+            
             <div class="totalMoney-label">
               <em>{{$t("bbjyBuyTotal")}}</em>&nbsp;&nbsp;
               <div>
@@ -223,7 +235,7 @@
             <div class="price-box">
               <div class="price-box-label">
                 <div>{{$t("bbjySellPrice")}}</div>
-                <div>{{$t("bbjySellAmount")}}</div>
+                <div>Size</div>
               </div>
               <div class="input_container">
                 <div class="inputbox">
@@ -265,17 +277,19 @@
                   />
                   <div class="name-show baseAsset">{{currentInfo.baseAsset}}</div>
                 </div>
+
+                <div class="rangePercent">
+                  <ul>
+                    <li
+                      @click="choosePercent(item,index,'sell')"
+                      :class="{active:itemIndexSell===index}"
+                      v-for="(item,index) in percentArr"
+                    >{{item}}%</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="rangePercent">
-              <ul>
-                <li
-                  @click="choosePercent(item,index,'sell')"
-                  :class="{active:itemIndexSell===index}"
-                  v-for="(item,index) in percentArr"
-                >{{item}}%</li>
-              </ul>
-            </div>
+            
             <!-- 总价 -->
             <div class="totalMoney-label">
               <em>{{$t("bbjySellTotal")}}</em>&nbsp;&nbsp;
@@ -781,7 +795,7 @@ export default {
         ul {
           display: flex;
           justify-content: space-between;
-          padding: 8px 0 7px 67px;
+          padding: 8px 0 7px 0px;
           li {
             padding: 2px 6px;
             background: rgba(4, 29, 37, 1);
@@ -995,6 +1009,8 @@ export default {
       }
       .Arbitrage-btn {
         background-color: #12869a;
+        text-align: center;
+        line-height: 30px;
         &:hover {
           background-color: #12869a;
         }

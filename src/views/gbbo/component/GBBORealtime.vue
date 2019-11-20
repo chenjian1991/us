@@ -3,7 +3,7 @@
     <div class="realtime-item">
       <div class="realtime-item__header">
         <div class="arb">Arbitrage</div>
-        <div class="amount">Amount</div>
+        <div class="amount">Size</div>
         <div class="buy">Ask</div>
         <div class="sell">Bid</div>
       </div>
@@ -25,7 +25,7 @@
           >{{arbData.minArb}}~{{arbData.maxArb}}</span>
         </div>
         <div>
-          <p>Total Amount</p>
+          <p>Total Size</p>
           <span>{{arbData.totalAmount}}</span>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="realtime-item mx-px">
       <div class="realtime-item__header">
         <div class="lowest">Global Best Ask</div>
-        <div class="amount">Amount</div>
+        <div class="amount">Size</div>
         <div class="total">Total</div>
       </div>
       <div class="realtime-item__content">
@@ -60,7 +60,7 @@
     <div class="realtime-item">
       <div class="realtime-item__header">
         <div class="highest">Global Best Bid</div>
-        <div class="amount">Amount</div>
+        <div class="amount">Size</div>
         <div class="total">Total</div>
       </div>
       <div class="realtime-item__content">
@@ -129,25 +129,25 @@ export default {
     }
   },
   watch: {
-    isInitOrderBook(val) {
-      if (val) {
-        var div = this.$refs.buyOrderContainer;
-        setTimeout(() => {
-          div.scrollTop = div.scrollHeight;
-        }, 0);
-        val = false;
-      }
-    }
+    // isInitOrderBook(val) {
+    //   if (val) {
+    //     var div = this.$refs.buyOrderContainer;
+    //     setTimeout(() => {
+    //       div.scrollTop = div.scrollHeight;
+    //     }, 0);
+    //     val = false;
+    //   }
+    // }
   },
   computed: {
-    isInitOrderBook() {
-      if (this.gbboAsksArr.length > 12) {
-        this.isScroll = true;
-      } else {
-        this.isScroll = false;
-      }
-      return this.isScroll;
-    }
+    // isInitOrderBook() {
+    //   if (this.gbboAsksArr.length > 12) {
+    //     this.isScroll = true;
+    //   } else {
+    //     this.isScroll = false;
+    //   }
+    //   return this.isScroll;
+    // }
   },
   methods: {
     getClickSellPrice(price, count) {
@@ -182,7 +182,8 @@ export default {
   &-item {
     flex: 1;
     width: 270px;
-    height: 294px;
+    height: 460px;
+    // height: 297px;
     font-size: 12px;
     background: #031419;
     &__header {
@@ -215,7 +216,8 @@ export default {
       }
     }
     &__content {
-      height: 234px;
+      height: 400px;
+      // height: 234px;
       overflow: hidden;
       &-list {
         height: 100%;
