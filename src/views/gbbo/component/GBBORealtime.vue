@@ -11,7 +11,7 @@
         <ul class="realtime-item__content-list arb-list">
           <li v-for="(v, index) in arbData.matchMap" :key="index">
             <span class="arb">{{v.arb}}</span>
-            <span class="amount">{{v.amount}}</span>
+            <span class="amount">{{v.amount | formatNumberLength}}</span>
             <span class="buy">{{v.buy}}</span>
             <span class="sell">{{v.sell}}</span>
           </li>
@@ -194,24 +194,20 @@ export default {
       font-weight: 500;
       background: #041d25;
       display: flex;
-      .arb {
-        flex: 0.8;
+      div{
+        flex: 1;
       }
       .buy,
       .sell {
-        flex: 1;
         padding-left: 15px;
         text-align: right;
       }
-      .lowest {
-        flex: 1.8;
-      }
+      .lowest,
       .highest {
         flex: 1.8;
       }
       .amount,
       .total {
-        flex: 1;
         text-align: right;
       }
     }
@@ -228,22 +224,22 @@ export default {
           display: flex;
           // cursor: pointer;
           span {
+            flex: 1;
             height: 20px;
             line-height: 20px;
           }
           .lowest {
-            flex: 1.8;
             color: #e83160;
           }
           .highest {
-            flex: 1.8;
             color: #0ab68a;
           }
           .lowest,
           .highest {
+            flex: 1.8;
             em {
               display: block;
-              width: 55%;
+              width: 51%;
               float: right;
               color: #788390;
               text-align: right;
@@ -264,18 +260,15 @@ export default {
             }
           }
           .arb {
-            flex: 0.8;
             color: #12869a;
           }
           .amount,
           .total {
-            flex: 1;
             color: #d4d4d4;
             text-align: right;
           }
           .buy,
           .sell {
-            flex: 1;
             padding-left: 15px;
             color: #788390;
             text-align: right;

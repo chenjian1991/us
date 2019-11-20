@@ -9,7 +9,7 @@
           <div class="gbbomain-realtime__hd">
             <gbbo-ticker
               :currentInfo="currentInfo"
-              :maxArbitrage="maxArbitrage">
+              :arbData="arbData">
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->

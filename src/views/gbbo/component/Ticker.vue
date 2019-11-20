@@ -11,9 +11,13 @@
             </DropdownMenu>
          </Dropdown>
          <div class="d-ib">
-            <dl class="maxArb">
+            <dl class="arb">
                <dt>Max Arbitrage</dt>
-               <dd>{{maxArbitrage|noData|separate}}</dd>
+               <dd>{{arbData.maxArb|noData|separate}}</dd>
+            </dl>
+            <dl class="arb">
+               <dt>Spread</dt>
+               <dd>{{arbData.maxArb|noData|separate}}</dd>
             </dl>
             <dl class="marketAvg">
                <dt>Market Avg</dt>
@@ -63,7 +67,12 @@
       name: "Ticker",
       props: {
          currentInfo: Object,
-         maxArbitrage:Number
+         arbData: {
+            type: Object,
+            default: function() {
+            return {};
+            }
+         },
       },
       filters: {
          noData: function (value) {
@@ -164,7 +173,7 @@
             color:#2CB48C;
          }
       }
-      .maxArb{
+      .arb{
          dd {
             color:#12869A;
          }
