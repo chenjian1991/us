@@ -90,7 +90,7 @@ module.exports = {
             secure: false
          },
          '/echart': {
-            target: 'http://52.68.13.17:20013', // k线
+            target: targetUrl, // k线 历史记录
             changeOrigin: true,
             pathRewrite: {
                // '^/quote': ''

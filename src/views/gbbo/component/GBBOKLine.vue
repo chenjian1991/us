@@ -24,13 +24,12 @@ export default {
       flogCount: 30,
       month: 11,
       year: 2019,
-      isStart: false,
+      isInited: false,
       kline: {
         highData: [],
         lowData: [],
         marketData: []
       },
-      
       _timestamp: '',
       _chart: '',
       _areaSeries: '',
@@ -53,7 +52,7 @@ export default {
   watch: {
     kLineData(val, oldVal){
       if(Object.keys(val).length > 0){
-        // this.updateData(val)
+        this.updateData(val)
       }
     }
   },
@@ -86,7 +85,7 @@ export default {
     updateData(val){
       const { high, low, ma, dateTime } = val
       const time = +`${new Date(dateTime).getTime()}`.replace(/.{3}$/, '')
-      if(!this.isStart) return
+
       this._areaSeries.update({
         time,
         value: high
@@ -168,25 +167,10 @@ export default {
       // this._areaSeries.setData(highData)
       // this._extraSeries.setData(lowData)
       // this._barSeries.setData(marketData)
-      this._areaSeries.setData([
-        {
-          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
-          value: 1000
-        }
-      ])
-      this._extraSeries.setData([
-        {
-          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
-          value: 100
-        }
-      ])
-      this._barSeries.setData([
-        {
-          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
-          value: 550
-        }
-      ])
-      this.isStart = true
+      // this._areaSeries.setData()
+      // this._extraSeries.setData()
+      // this._barSeries.setData()
+      
       // Automatically calculates the visible range to fit all series data.
       // this._chart.timeScale().fitContent()
 
@@ -210,6 +194,19 @@ export default {
       //   })
       // }, 3000)
       
+    },
+    setHistoryData(res) {
+      // const { high, low, dateTime } = res
+      const time = new Date(dateTime).getTime() / 1000
+      this._areaSeries.setData({
+        time,
+        value: high
+      })
+      this._extraSeries.setData({
+        time,
+        value: low
+      })
+      this._barSeries.setData({})
     },
     timeFormat(){      
       if(this.flogCount > 30){
@@ -236,10 +233,8 @@ export default {
       console.log(matchTime)
       getKlineHistoryData({
         symbol: this.currentSymbol || 'BTCUSD',
-        // startDateTime: matchTime - 60 * 1000 * 1000,
-        // endDateTime: matchTime,
-        startDateTime: 1573617600000,
-        endDateTime: 1573642800000,
+        startDateTime: matchTime - 60 * 1000,
+        endDateTime: matchTime,
         interval: 'MINUTE_1'
       }).then(res => {
         console.log(res)
@@ -252,7 +247,7 @@ export default {
       const curGetDate = curDate.getDate()
       const curHours = curDate.getHours()
       const curMinutes = curDate.getMinutes()
-      return new Date(`${curYear}-${curMonth}-${curGetDate} ${curHours}:${curMinutes}:00`).getTime()
+      return new Date(`${curYear}-${curMonth}-${curGetDate} ${curHours}:${curMinutes}`).getTime()/1000
     }
   },
   beforeDestroy() {
