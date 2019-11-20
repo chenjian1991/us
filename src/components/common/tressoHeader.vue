@@ -7,7 +7,7 @@
          data-header-fix-moment="500"
          data-header-fix-effect="slide">
          <div class="u-header__section">
-            <div id="logoAndNav" class="container">
+            <div id="logoAndNav" :class="{'gbbo-header':isgbbo}" class="container">
                <!-- Nav -->
                <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
                   <!-- Logo -->
@@ -120,6 +120,7 @@
       data() {
          return {
             isLogin: false,
+            isgbbo:false,
          };
       },
       methods: {
@@ -211,11 +212,23 @@
                this.isLogin = false;
             }
          },
+         $route(to,from){
+            if(to.path==='/gbbo'){
+               this.isgbbo = true;
+            }else{
+               this.isgbbo = false;
+            }
+         },
       },
       created() {
          this.getLegalTenderData()
       },
       mounted() {
+         if(this.$route.path==='/gbbo'){
+            this.isgbbo = true;
+         }else{
+            this.isgbbo = false;
+         }
          //判断是否登录有效
          let isLogin = this.$store.state.app.isLogin;
          if (isLogin) {
@@ -319,4 +332,10 @@
    .nav-link {
       font-weight: 500;
    }
+   @media(min-width: 1200px){
+      .gbbo-header{
+       max-width: 1440px;
+      }
+   }
+   
 </style>
