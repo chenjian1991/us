@@ -671,6 +671,7 @@ export default {
             return Object.assign({}, val, {provider: 'market maker'})
           }
       })
+      this.gbbo_asksArr = this.gbbo_asksArr.reverse()
 
       if (!this.buy_input_change) {
           this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee

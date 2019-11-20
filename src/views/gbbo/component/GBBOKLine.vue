@@ -280,7 +280,8 @@ export default {
     }
     &-box{
       width: 450px;
-      height: 320px;
+      // height: 320px;
+      height: 486px;
       color: #fff;
     }
   }

@@ -71,17 +71,19 @@
                   />
                   <div class="name-show baseAsset">{{assetName}}</div>
                 </div>
+
+                <div class="rangePercent">
+                  <ul>
+                    <li
+                      @click="choosePercent(item,index,'Arbitrage')"
+                      :class="{active:itemIndex===index}"
+                      v-for="(item,index) in percentArr"
+                    >{{item}}%</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="rangePercent">
-              <ul>
-                <li
-                  @click="choosePercent(item,index,'Arbitrage')"
-                  :class="{active:itemIndex===index}"
-                  v-for="(item,index) in percentArr"
-                >{{item}}%</li>
-              </ul>
-            </div>
+            
             <div class="totalMoney-label">
               <em>Expect</em>&nbsp;&nbsp;
               <div>
@@ -166,17 +168,19 @@
                   />
                   <div class="name-show baseAsset">{{currentInfo.baseAsset}}</div>
                 </div>
+
+                <div class="rangePercent">
+                  <ul>
+                    <li
+                      @click="choosePercent(item,index,'buy')"
+                      :class="{active:itemIndexBuy===index}"
+                      v-for="(item,index) in percentArr"
+                    >{{item}}%</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="rangePercent">
-              <ul>
-                <li
-                  @click="choosePercent(item,index,'buy')"
-                  :class="{active:itemIndexBuy===index}"
-                  v-for="(item,index) in percentArr"
-                >{{item}}%</li>
-              </ul>
-            </div>
+            
             <div class="totalMoney-label">
               <em>{{$t("bbjyBuyTotal")}}</em>&nbsp;&nbsp;
               <div>
@@ -265,17 +269,19 @@
                   />
                   <div class="name-show baseAsset">{{currentInfo.baseAsset}}</div>
                 </div>
+
+                <div class="rangePercent">
+                  <ul>
+                    <li
+                      @click="choosePercent(item,index,'sell')"
+                      :class="{active:itemIndexSell===index}"
+                      v-for="(item,index) in percentArr"
+                    >{{item}}%</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="rangePercent">
-              <ul>
-                <li
-                  @click="choosePercent(item,index,'sell')"
-                  :class="{active:itemIndexSell===index}"
-                  v-for="(item,index) in percentArr"
-                >{{item}}%</li>
-              </ul>
-            </div>
+            
             <!-- 总价 -->
             <div class="totalMoney-label">
               <em>{{$t("bbjySellTotal")}}</em>&nbsp;&nbsp;
@@ -781,7 +787,7 @@ export default {
         ul {
           display: flex;
           justify-content: space-between;
-          padding: 8px 0 7px 67px;
+          padding: 8px 0 7px 0px;
           li {
             padding: 2px 6px;
             background: rgba(4, 29, 37, 1);
