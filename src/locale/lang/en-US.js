@@ -1218,7 +1218,7 @@ export default {
    newK1partner: "PARTNERS",
    newK2back: "Back",
    newK1idEPDpop: "Please select the expire date of your ID",
-   newK1Imgrequired: '请正确上传图片',
+   newK1Imgrequired: 'Please upload photos correctly',
    newK1genfill: "Please select your gender",
    newK1AddRegfill: "Please select a region",
    newK1AddRegfillNoUS: "Please enter a region",
