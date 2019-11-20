@@ -31,8 +31,8 @@
           <div class="trade-msg">
             <div class="price-box">
               <div class="price-box-label">
-                <div>Arbitrage</div>
-                <div>Size</div>
+                <div class="arb-label">Arbitrage</div>
+                <div class="arb-label">Size</div>
               </div>
               <div class="input_container">
                 <div class="inputbox">
@@ -99,8 +99,8 @@
             <div class="totalMoney-label">
               <em>Fee</em>&nbsp;&nbsp;
               <div>
-                <span id="buy_total" class="total-num">{{buyArbitraInTotalFee}}</span>&nbsp;
-                <span class="quoteAsset">{{assetName}}</span>
+                <span id="buy_total" class="total-num">{{buyArbitraInTotalFee}}%</span>&nbsp;
+                <!-- <span class="quoteAsset">{{assetName}}</span> -->
               </div>
             </div>
             <button class="mybtn btn-back" v-if="!isLogin">
@@ -199,8 +199,8 @@
             <div class="totalMoney-label">
               <em>Fee</em>&nbsp;&nbsp;
               <div>
-                <span id="buy_total" class="total-num">{{buyTotalFee}}</span>&nbsp;
-                <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
+                <span id="buy_total" class="total-num">{{buyTotalFee}}%</span>&nbsp;
+                <!-- <span class="quoteAsset">{{currentInfo.quoteAsset}}</span> -->
               </div>
             </div>
             <button class="mybtn btn-back" v-if="!isLogin">
@@ -301,8 +301,8 @@
             <div class="totalMoney-label">
               <em>Fee</em>&nbsp;&nbsp;
               <div>
-                <span id="buy_total" class="total-num">{{sellTotalFee}}</span>&nbsp;
-                <span class="quoteAsset">{{currentInfo.quoteAsset}}</span>
+                <span id="buy_total" class="total-num">{{sellTotalFee}}%</span>&nbsp;
+                <!-- <span class="quoteAsset">{{currentInfo.quoteAsset}}</span> -->
               </div>
             </div>
             <!-- 卖出按钮 -->
@@ -575,7 +575,7 @@ export default {
               volumeLong
             );
           }
-          let arbitraFee = this.symbolList[this.currentSymbol].commissionRate;
+          let arbitraFee = this.symbolList[this.currentSymbol].commissionRate*100;
           this.buyArbitraInTotalFee = arbitraFee.toFixed(2);
 
           let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
@@ -606,7 +606,7 @@ export default {
               volumeLong
             );
           }
-          let Fee = this.symbolList[this.currentSymbol].commissionRate;
+          let Fee = this.symbolList[this.currentSymbol].commissionRate*100;
           this.buyTotalFee = Fee.toFixed(2);
           break;
         case "sell":
@@ -634,7 +634,7 @@ export default {
               volumeLong
             );
           }
-          let sellFee = this.symbolList[this.currentSymbol].commissionRate;
+          let sellFee = this.symbolList[this.currentSymbol].commissionRate*100;
           this.sellTotalFee =sellFee.toFixed(2);
           
           break;
@@ -824,6 +824,9 @@ export default {
             &:first-child {
               margin-bottom: 12px;
             }
+          }
+          .arb-label{
+            padding-right: 5px;
           }
         }
         .input_container {

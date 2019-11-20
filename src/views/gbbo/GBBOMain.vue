@@ -9,7 +9,7 @@
           <div class="gbbomain-realtime__hd">
             <gbbo-ticker
               :currentInfo="currentInfo"
-              :maxArbitrage="maxArbitrage">
+              :arbData="arbData">
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->
@@ -311,7 +311,6 @@ export default {
       orderTicketTimer: null,//orderTicket定时器
       updateAt: '',//路总需求 要加这个隐藏字段
       maxArbitrageList:[],
-      maxArbitrage:null,
       arbData:{},
     }
   },
@@ -588,11 +587,12 @@ export default {
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
           this.arbStompClient.send("/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
-          // 最大价差
+          // 最大价差记录
           this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
             if (message.body) {
-              this.maxArbitrageList = JSON.parse(message.body)
-              this.maxArbitrage = this.maxArbitrageList.length > 0 ? this.maxArbitrageList[0].priceSubtract : '--';
+              // console.log(this.maxArbitrageList)
+              // this.maxArbitrageList = JSON.parse(message.body)
+              this.getMaxArbitrageList(JSON.parse(message.body))
             }
           });
           // 价差
@@ -675,6 +675,23 @@ export default {
       } else {
           this.isShowARB = "Spread"
       }
+    },
+    // 价差记录
+    getMaxArbitrageList(data) {
+      data.map((val) => {
+        if (val.highEx && val.highEx === 'E55') {
+          val.highEx = 'TRESSO'
+        } else if (val.highEx && !orderBookName.includes(val.highEx)) {
+          val.highEx = 'market maker'
+        } else {}
+        // lowEx 过滤
+        if (val.lowEx && val.lowEx === 'E55') {
+          val.lowEx = 'TRESSO'
+        } else if (val.lowEx &&  !orderBookName.includes(val.lowEx)) {
+          val.lowEx = 'market maker'
+        } else {}
+      })
+      this.maxArbitrageList = data
     },
     // 价差列表
     getArbData(data) {

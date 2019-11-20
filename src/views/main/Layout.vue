@@ -15,8 +15,8 @@
             <div class="cookiesBtn" @click="closeCookiesBox">OK, I UNDERSTAND</div>
          </div>
          <div class="ipBox" v-if="isShowIPModal">
-            <div class="ipText">{{message}}</div>
-            <a class="closeBtn" @click="closeIpmodal">CLOSE</a>
+            <div class="ipText">{{message}} <span class="closeBtn" @click="closeIpmodal">CLOSE</span></div>
+            
          </div>
       </div>
    </div>
@@ -113,14 +113,14 @@
          padding: 10px 135px 10px 35px !important;
          text-align: left;
          position: relative;
-         display: flex;
+         // display: flex;
          color: #fff;
          font-size: 14px;
          margin-bottom: 0;
          .closeBtn {
-            margin-left: 20px;
+            // margin-left: 20px;
             line-height: 42px;
-            color: #fff;
+            color: #01B2D6;
             &:hover {
                color: #fff;
             }
