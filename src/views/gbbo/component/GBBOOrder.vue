@@ -17,7 +17,7 @@
               <div>{{$t("bbjyOrderType")}}</div>
               <div>{{$t("bbjyOrderSide")}}</div>
               <div>{{$t("bbjyOrderPrice")}}</div>
-              <div>{{$t("bbjyOrderAmount")}}</div>
+              <div>Size</div>
               <div>{{$t("bbjyOrderFilled")}}</div>
               <div>{{$t("bbjyOrderTotal")}}</div>
               <div>{{$t("bbjyOperation")}}</div>
@@ -68,7 +68,7 @@
               <div>{{$t("bbjyHistorySide")}}</div>
               <div>{{$t("bbjyHistoryAvg")}}</div>
               <div>{{$t("bbjyHistoryPrice")}}</div>
-              <div>{{$t("bbjyHistoryAmount")}}</div>
+              <div>Size</div>
               <div>{{$t("bbjyHistoryFilled")}}</div>
               <div>{{$t("bbjyHistoryTotal")}}</div>
               <div>{{$t("bbjyHistoryStatus")}}</div>

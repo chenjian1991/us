@@ -12,7 +12,7 @@
         </thead>
         <thead class="mask markets" v-show="marketsIsShow">
           <th>Price</th>
-          <th>Amount</th>
+          <th>Size</th>
           <th>Time</th>
         </thead>
       </ul>
@@ -36,7 +36,7 @@
         <table class="markets" v-show="marketsIsShow">
           <thead>
             <th>Price</th>
-            <th>Amount</th>
+            <th>Size</th>
             <th>Time</th>
           </thead>
           <tbody>
