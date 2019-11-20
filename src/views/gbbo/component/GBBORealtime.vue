@@ -3,7 +3,7 @@
     <div class="realtime-item">
       <div class="realtime-item__header">
         <div class="arb">Arbitrage</div>
-        <div class="amount">Amount</div>
+        <div class="amount">Size</div>
         <div class="buy">Ask</div>
         <div class="sell">Bid</div>
       </div>
@@ -25,7 +25,7 @@
           >{{arbData.minArb}}~{{arbData.maxArb}}</span>
         </div>
         <div>
-          <p>Total Amount</p>
+          <p>Total Size</p>
           <span>{{arbData.totalAmount}}</span>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="realtime-item mx-px">
       <div class="realtime-item__header">
         <div class="lowest">Global Best Ask</div>
-        <div class="amount">Amount</div>
+        <div class="amount">Size</div>
         <div class="total">Total</div>
       </div>
       <div class="realtime-item__content">
@@ -60,7 +60,7 @@
     <div class="realtime-item">
       <div class="realtime-item__header">
         <div class="highest">Global Best Bid</div>
-        <div class="amount">Amount</div>
+        <div class="amount">Size</div>
         <div class="total">Total</div>
       </div>
       <div class="realtime-item__content">

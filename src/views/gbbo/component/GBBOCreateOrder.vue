@@ -32,7 +32,7 @@
             <div class="price-box">
               <div class="price-box-label">
                 <div>Arbitrage</div>
-                <div>{{$t("bbjyBuyAmount")}}</div>
+                <div>Size</div>
               </div>
               <div class="input_container">
                 <div class="inputbox">
@@ -126,7 +126,7 @@
             <div class="price-box">
               <div class="price-box-label">
                 <div>Price</div>
-                <div>Amount</div>
+                <div>Size</div>
               </div>
               <div class="input_container">
                 <div class="inputbox">
@@ -223,7 +223,7 @@
             <div class="price-box">
               <div class="price-box-label">
                 <div>{{$t("bbjySellPrice")}}</div>
-                <div>{{$t("bbjySellAmount")}}</div>
+                <div>Size</div>
               </div>
               <div class="input_container">
                 <div class="inputbox">
