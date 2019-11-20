@@ -713,7 +713,9 @@
 
    const { search } = location
    const urlParamsInExchange = qs.parse(search, { ignoreQueryPrefix: true })
-   const isUserInExchange = !!urlParamsInExchange['test']
+   const isUserInExchange = (!!urlParamsInExchange['publicSystem'] && urlParamsInExchange['publicSystem'] === '9476248')
+
+   console.log(isUserInExchange)
 
    export default {
       metaInfo() {
