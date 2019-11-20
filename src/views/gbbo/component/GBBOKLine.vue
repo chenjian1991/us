@@ -8,9 +8,7 @@
       <button class="gbboline-btns__settime">1W</button>
       <button class="gbboline-btns__settime">1M</button>
     </div>
-    <div ref="kline" class="gbboline-box">
-
-    </div>
+    <div ref="kline" class="gbboline-box"></div>
   </div>
 </template>
 <script>
@@ -52,32 +50,15 @@ export default {
   watch: {
     kLineData(val, oldVal){
       if(Object.keys(val).length > 0){
-        this.updateData(val)
+        // this.updateData(val)
       }
     }
   },
   created(){
-    this.getHistoryData()
+    // this.getHistoryData()
   },
   mounted(){
-    const { highData, lowData, marketData } = this.kline
-    for(var i=1; i<this.flogCount; i++){
-      const _time = `2019-11-${this.addZero(i)}`
-      const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
-      const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
-      highData.push({
-        time: _time,
-        value: hightVal
-      })
-      lowData.push({
-        time: _time,
-        value: lowVal
-      })
-      marketData.push({
-        time: _time,
-        value: (hightVal + lowVal) / 2
-      })
-    }
+    
     this.klineInit()
     // this.connect()
   },
@@ -104,14 +85,11 @@ export default {
     },
     // K线初始化
     klineInit() {
-      const { highData, lowData, marketData } = this.kline
       const baseDom = this.$refs.kline
       const klineBox = {
         width: baseDom.offsetWidth,
         height: baseDom.offsetHeight
       }
-      console.log('klineBox', klineBox);
-      
       this._chart = createChart(baseDom, {
         width: klineBox.width,
         height: klineBox.height,
@@ -163,40 +141,12 @@ export default {
         color: "#fff",
         lineWidth: 1
       })
-      // console.log('hight:', highData, 'low:', lowData, 'marketData:', marketData)
-      // this._areaSeries.setData(highData)
-      // this._extraSeries.setData(lowData)
-      // this._barSeries.setData(marketData)
-      // this._areaSeries.setData()
-      // this._extraSeries.setData()
-      // this._barSeries.setData()
-      
-      // Automatically calculates the visible range to fit all series data.
-      // this._chart.timeScale().fitContent()
 
-      // 实时更新数据
-      // this._timestamp = setInterval(() => {
-      //   // console.log(this.flogCount)
-      //   const time = this.timeFormat()
-      //   const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
-      //   const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
-      //   this._areaSeries.update({
-      //     time,
-      //     value: hightVal
-      //   })
-      //   this._extraSeries.update({
-      //     time,
-      //     value: lowVal
-      //   })
-      //   this._barSeries.update({
-      //     time,
-      //     value: (hightVal + lowVal) / 2
-      //   })
-      // }, 3000)
       
+
     },
     setHistoryData(res) {
-      // const { high, low, dateTime } = res
+      const { high, low, dateTime } = res
       const time = new Date(dateTime).getTime() / 1000
       this._areaSeries.setData({
         time,
@@ -207,26 +157,6 @@ export default {
         value: low
       })
       this._barSeries.setData({})
-    },
-    timeFormat(){      
-      if(this.flogCount > 30){
-        this.flogCount = 1
-        if(this.month === 12){
-          this.month = 1
-          this.year += 1
-        } else {
-          this.month += 1
-        }        
-      }else{
-        this.flogCount += 1
-      }
-
-      const newNum = this.addZero(this.flogCount)
-      
-      return `${this.year}-${this.month}-${newNum}`
-    },
-    addZero(num){
-      return num < 10 ? `0${num}` : num
     },
     getHistoryData() {
       const matchTime = this.dateFormat()

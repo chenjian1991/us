@@ -130,12 +130,11 @@ import GbboOrder from '../gbbo/component/GBBOOrder'
 import {
   getSymbolList_realtime as getSymbolListRealtime,
   getSymbolList,
-  getdepthList,
-  getUserInfo
+  getUserInfo,
+  getKlineHistoryData
 } from '_api/exchange.js'
 
 import {
-  storage,
   getDecimalsNum,
   getTokenByKey as getValue,
   addSymbolSplitLine,
@@ -147,9 +146,9 @@ import {
 
 import _ from 'lodash'
 
-import { coinInfoLinks } from './config.js'
+// import { coinInfoLinks } from './config.js'
 import { Exchange } from '@/interface/exchange.js'
-import PasswordInput from '@/components/PasswordInput.vue'
+import PasswordInput from '@/components/PasswordInput'
 
 
 import SockJS from 'sockjs-client';
@@ -161,6 +160,7 @@ import bigDecimal from 'js-big-decimal' //除法失效
 import { BigNumber } from 'bignumber.js';
 
 import { orderBookName } from './config'
+
 
 let allNowPriceObject = {}//所有币种快照的最新价格的对象
 
@@ -188,8 +188,7 @@ export default {
   },
   data(){
     return{
-      kLineData: {},
-      historySymbolObj: {},
+      kLineData: {}, // k线实时数据
       briefInputData:{
         quoteCoinAvailable:'',
         baseAssetAvailable:'',
@@ -227,8 +226,8 @@ export default {
       baseAssetList: [], //交易资产
       pushData: {},
       tradeHistoryList: [], //快照交易历史
-      isShowCoinLink: true,//石否现实币种详情链接
-      coinInfoLink: '',//币种详情链接
+      // isShowCoinLink: true,//石否现实币种详情链接
+      // coinInfoLink: '',//币种详情链接
       currencyName: '',//当前的法币名称
       currencyRate: 1,//当前法币的比率
       currentSymbolRate: 1, //当前交易对 对USD的系数
@@ -237,7 +236,7 @@ export default {
       symbolCurrency: "--",//当前交易对法币估值
       // ****盘口****
       isShowDepth: 1,//1显示盘口 2为交易历史
-      isInitPage: true,//第一次进入页面 展示盘口的买入1 卖出1
+      // isInitPage: true,//第一次进入页面 展示盘口的买入1 卖出1
       depthListTimer: null,
       depthPageWidth: 100,
       depthTimer: false,
@@ -424,62 +423,26 @@ export default {
     }
   },
   methods: {
-    changeBaseAssetList(v) {
-      //以后优化 改为 params传参就好了
-      this.$router.push({
-          query: {
-            // symbol:''
-          }
-      })
-      //清空盘口深度
-      this.bidsArr = []
-      this.asksArr = []
-      this.isInitOrderBook = true
-
-      //K线基本数据配置使用
-      storage.set('currentSymbolObj', v)
-      this.currentSymbol = v.symbol
-      this.currentSymbolObj = v;
-      //更新大盘上方交易对行情
-      this.showCurrentPriceInfo(v)
-      //重置点击
-      this.buyDisabled = false
-      this.sellDisabled = false
-      //更新交易历史 传入v 获取精度
-      // this.updateSymbolHistory()
-      this.getGBBODepth()
-      this.buy_input_change = false
-      this.sell_input_change = false
-      //判断是否展示交易蒙层
-      this.isShowTradeMask();
-      //更新当前交易对法币估值
-      this.symbolCurrency = '--'
-      this.getCurrencyData()
-      this.getCoinInfoLinks(v.baseAsset)
-
-      //切换交易对清空买入卖出
-      this.buyPriceInput = ''
-      this.buyCountInput = ''
-      this.sellCountInput = ''
-      this.sellPriceInput = ''
-      this.$refs.buyInput.value = ''
-      this.$refs.sellInput.value = ''
-      this.$refs.buyCountInputRef.value = ''
-      this.$refs.sellCountInputRef.value = ''
-      this.isInitPage = true
-      //股票详情入口
-      if (this.siteName === 'S') {
-          this.isShowStockPage = true
-      } else {
-          this.isShowStockPage = false
-      }
-      // 百分比的球
-      this.buyBallPercentage = this.sellBallPercentage = 0
-      this.buyCountInput = this.sellCountInput = ''
+    // 当前分钟时间戳，到秒 10 位
+    dateTimeFormat(){
+      const curDate = new Date()
+      const curYear = curDate.getFullYear()
+      const curMonth = curDate.getMonth() + 1
+      const curGetDate = curDate.getDate()
+      const curHours = curDate.getHours()
+      const curMinutes = curDate.getMinutes()
+      return new Date(`${curYear}-${curMonth}-${curGetDate} ${curHours}:${curMinutes}`).getTime()
     },
-    getFilterList: function (rows) {
-      return rows.filter((row) => {
-          return row.baseAsset.indexOf(this.searchCoin.toUpperCase()) > -1
+    // k线历史数据
+    getKHistoryData() {
+      const matchTime = this.dateTimeFormat()
+      getKlineHistoryData({
+        symbol: this.currentSymbol,
+        startDateTime: matchTime - 60 * 1000 * 60,
+        endDateTime: matchTime,
+        interval: 'MINUTE_1'
+      }).then(res => {
+        console.log(res)
       })
     },
     //判断是否展示交易蒙层
@@ -531,15 +494,6 @@ export default {
           }, 1000)
       }
     },
-    //币种详情列表展示逻辑
-    getCoinInfoLinks(baseAsset) {
-      if (coinInfoLinks[baseAsset]) {
-          this.isShowCoinLink = true;
-          this.coinInfoLink = `https://coinmarketcap.com/currencies/${coinInfoLinks[baseAsset]}/`;
-      } else {
-          this.isShowCoinLink = false
-      }
-    },
     getSymbolListRealtimeData() {
       getSymbolListRealtime().then(res => {
         let symbolUrl = ''
@@ -552,31 +506,20 @@ export default {
         })
         // 第一个交易对信息
         const firstSymbol = res[0]
-        const { priceTickSize, quantityStepSize } = firstSymbol
+        
         this.currentSymbol = firstSymbol.symbol // 第一个交易对
-        this.currentSymbolObj = firstSymbol 
-        
-        
+        this.currentSymbolObj = firstSymbol
 
-        this.historySymbolObj = {
-          symbol: this.currentSymbol,
-          priceTickSize,
-          quantityStepSize
-        }
-
-        //K线基本数据配置使用
-        storage.set('currentSymbolObj', firstSymbol)
+        // 请求k线历史数据
+        this.getKHistoryData()
 
         if (firstSymbol) {
-          this.getCoinInfoLinks(firstSymbol.baseAsset)
-          this.isInitPage = true
+          // this.isInitPage = true
           this.getGBBODepth()
           this.getMyAssetData()
         }
         // 当有快照驱动时数据变化
         this.getSSERealTime(symbolUrl)
-        
-        
       })
     },
     getGBBODepth() {
@@ -849,10 +792,6 @@ export default {
           // }
       }
     },
-    //获取交易对的实时价格
-    getSymbolNowPrice(symbol) {
-      return _.last(this.pushData[symbol])
-    },
     //获取交易对 下单专用
     getSymbolListData() {
       getSymbolList().then(res => {
@@ -871,122 +810,6 @@ export default {
       }).catch(error => {
 
       })
-    },
-    //获取盘口深度
-    getDethTableData() {
-      if (this.depthListTimer) {
-          clearTimeout(this.depthListTimer)
-          this.depthListTimer = null
-      }
-      getdepthList({'symbol': this.currentSymbol}).then(res => {
-          if (res.data && !this.isShowMask) {//无数据时 是null  有蒙层时候不展示盘口数据
-            this.updateDepthArr(res.data, this.currentSymbolObj.depthPeak)
-            this.depthListTimer = setTimeout(() => {
-                this.getDethTableData()
-            }, 3000)
-          }
-      }).catch(e => {
-          this.depthListTimer = setTimeout(() => {
-            this.getDethTableData()
-          }, 10000)
-      })
-    },
-    //**********************组装处理盘口展示数据 */
-    getClickBuyPrice(price, count) {
-      if (price) {
-          this.$refs.sellInput.value = price
-          this.sellPriceInput = price
-          this.buyPriceInput = price
-          this.$refs.buyInput.value = price
-      }
-      if (count) {
-          this.buyCountInput = count
-          this.$refs.buyCountInputRef.value = count
-
-          this.$refs.sellCountInputRef.value = count
-          this.sellCountInput = count
-      }
-    },
-    getClickSellPrice(price, count) {
-      if (price) {
-          this.buyPriceInput = price
-          this.$refs.buyInput.value = price
-
-          this.$refs.sellInput.value = price
-          this.sellPriceInput = price
-      }
-      if (count) {
-          this.buyCountInput = count
-          this.$refs.buyCountInputRef.value = count
-
-          this.$refs.sellCountInputRef.value = count
-          this.sellCountInput = count
-      }
-    },
-    //把盘口的成交价 和成交历史的成交价格 赋值到下单口
-    getClickPrice(price) {
-      if (price) {
-          this.buyPriceInput = price
-          this.$refs.buyInput.value = price
-          this.$refs.sellInput.value = price
-          this.sellPriceInput = price
-      }
-    },
-    //盘口深度
-    updateDepthArr(json, depthPeak) {
-      let asks = json.asks;
-      let bids = json.bids;
-      let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
-      let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
-      let aArr = []
-      let bArr = []
-      //卖出
-      asks.map((v, i) => {
-          let obj = {}
-          obj.price = bigDecimal.round(scientificToNumber(v.price), priceLong)
-          obj.quantity = bigDecimal.round(v.quantity, volumeLong)
-          obj.total = bigDecimal.multiply(v.price, v.quantity)
-          obj.width = (Number(obj.total) / Number(depthPeak) * (this.depthPageWidth - 16)).toFixed(2)
-          aArr.unshift(obj)
-      })
-      this.asksArr = aArr
-      if (this.isInitOrderBook) {
-          var div = this.$refs.buyOrderContainer;
-          //此时必须异步执行滚动条滑动至底部
-          setTimeout(() => {
-            div.scrollTop = div.scrollHeight;
-          }, 0)
-          this.isInitOrderBook = false
-      }
-      //买入盘口
-      bids.map((v, i) => {
-          let obj = {}
-          obj.price = bigDecimal.round(scientificToNumber(v.price), priceLong)
-          obj.quantity = bigDecimal.round(v.quantity, volumeLong)
-          obj.total = bigDecimal.multiply(v.price, v.quantity)
-          obj.width = (Number(obj.total) / Number(depthPeak) * (this.depthPageWidth - 16)).toFixed(2)
-          bArr.push(obj)
-      })
-      this.bidsArr = bArr
-      //默认第一个盘口价格
-      if (this.isInitPage && asks.length > 0) {
-          let buyInput = subNumberPoint(scientificToNumber(asks[0].price), priceLong)
-          this.buyPriceInput = buyInput
-          this.$refs.buyInput.value = buyInput
-          // let  buy_count = bigDecimal.round(scientificToNumber(asks[0].quantity), volumeLong)
-          // this.buyCountInput = buy_count
-          // this.$refs.buyCountInputRef.value = buy_count
-      }
-      if (this.isInitPage && bids.length > 0) {
-          let sellInput = subNumberPoint(scientificToNumber(bids[0].price), priceLong)
-          this.$refs.sellInput.value = sellInput
-          this.sellPriceInput = sellInput
-
-          // let  sell_count = bigDecimal.round(scientificToNumber(bids[0].quantity), volumeLong)
-          // this.$refs.sellCountInputRef.value = sell_count
-          // this.sellCountInput = sell_count
-      }
-      this.isInitPage = false
     },
     //展示可用的资产
     getMyAssetData() {
@@ -1440,12 +1263,8 @@ export default {
       }
     },
     openPassWordPage() {
-      // if (this.$store.state.exchange.openTradePasswordStatus) {
       document.body.style.overflow = 'hidden';
       this.showPassWordPage = true;
-      // } else {
-      //    this.submitPassWord()
-      // }
     },
     closePassWordPage() {//关闭交易密码页面
       this.showPassWordPage = false;
@@ -1456,38 +1275,6 @@ export default {
     },
     clickMask() {//交易框获取焦点
       this.$refs.childPassWord.getFocus();
-    },
-    //跳转到股票详情页
-    gotoStockPage() {
-      if (this.currentSymbolObj) {
-          this.$router.push({
-            path: '/StockToken',
-            query: {
-                symbol: this.currentSymbolObj.symbol,
-                baseAsset: this.currentSymbolObj.baseAsset
-            }
-          })
-      }
-    },
-    //切换深度 交易历史
-    changeDepth(index) {
-      this.isShowDepth = index
-      //盘口保持卖一价可见
-      if (this.$refs.buyOrderContainer) {
-          var buyDiv = this.$refs.buyOrderContainer;
-          //此时必须异步执行滚动条滑动至底部
-          setTimeout(() => {
-            buyDiv.scrollTop = buyDiv.scrollHeight;
-          }, 0)
-      }
-      if (this.$refs.sellOrderContainer) {
-          var sellDiv = this.$refs.sellOrderContainer;
-          //此时必须异步执行滚动条滑动至底部
-          setTimeout(() => {
-            sellDiv.scrollTop = 0
-          }, 0)
-      }
-      this.$refs.tradeHistory.scrollTop = 0
     },
     submitPassWord() {//提交交易密码页面
       if (this.openTradePassword && this.showPassWordPage) {
@@ -1576,10 +1363,7 @@ export default {
           }
 
       }
-    },
-    rangeFormat(val) {
-      return `${val}%`;
-    },
+    }
   },
   beforeDestroy() {
     //关闭盘口轮询查询
