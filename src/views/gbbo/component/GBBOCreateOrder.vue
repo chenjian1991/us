@@ -31,8 +31,8 @@
           <div class="trade-msg">
             <div class="price-box">
               <div class="price-box-label">
-                <div>Arbitrage</div>
-                <div>Size</div>
+                <div class="arb-label">Arbitrage</div>
+                <div class="arb-label">Size</div>
               </div>
               <div class="input_container">
                 <div class="inputbox">
@@ -824,6 +824,9 @@ export default {
             &:first-child {
               margin-bottom: 12px;
             }
+          }
+          .arb-label{
+            padding-right: 5px;
           }
         }
         .input_container {
