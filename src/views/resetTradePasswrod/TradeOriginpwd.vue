@@ -358,6 +358,10 @@ import sendBtn from '../../components/sendBtn';
     }
 </script>
 <style lang='less'>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 #tradePassword{
 .btn-primary-55{
     color: #fff;
@@ -369,10 +373,7 @@ import sendBtn from '../../components/sendBtn';
     }
 }
 }
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-    }
+    
     .main_container{
         min-height:100%;
         display: flex;
