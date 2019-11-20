@@ -708,8 +708,13 @@
    import {BigNumber} from 'bignumber.js';
 
    import { orderBookName } from './config'
-
+   import qs from 'qs'
    let allNowPriceObject = {}//所有币种快照的最新价格的对象
+
+   const { search } = location
+   const urlParamsInExchange = qs.parse(search, { ignoreQueryPrefix: true })
+   const isUserInExchange = !!urlParamsInExchange['test']
+
    export default {
       metaInfo() {
          return {
@@ -1302,8 +1307,10 @@
                   return val
                }else if(val.provider && val.provider === 'E55') {
                   return Object.assign({}, val, { provider: 'TRESSO' })
-               }else if(val.provider) {
+               }else if(val.provider && !isUserInExchange) {
                   return Object.assign({}, val, { provider: 'Market Maker' })
+               }else{
+                  return val
                }
             })
             
@@ -1327,8 +1334,10 @@
                   return val
                }else if(val.provider && val.provider === 'E55') {
                   return Object.assign({}, val, { provider: 'TRESSO' })
-               }else if(val.provider) {
-                  return Object.assign({}, val, { provider: 'Node of Apifiny' })
+               }else if(val.provider && !isUserInExchange) {
+                  return Object.assign({}, val, { provider: 'Market Maker' })
+               }else{
+                  return val
                }
             })
             if (!this.sell_input_change) {
