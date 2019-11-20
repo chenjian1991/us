@@ -54,7 +54,7 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <Select  v-model="countryName" style="width:110px;height:44px;">
-                            <Option  v-for="item in cityList" :value="item.value"  :label="item.value" >
+                            <Option v-for="item in cityList" :value="item.value" :label="item.value" >
                                     <span v-html="item.label"></span>
                                     <span>+{{item.value}}</span>
                                 <!-- <span>+{{item.code}}</span> -->

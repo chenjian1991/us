@@ -8,9 +8,7 @@
       <button class="gbboline-btns__settime">1W</button>
       <button class="gbboline-btns__settime">1M</button>
     </div>
-    <div ref="kline" class="gbboline-box">
-
-    </div>
+    <div ref="kline" class="gbboline-box"></div>
   </div>
 </template>
 <script>
@@ -21,16 +19,12 @@ export default {
   name: 'GBBOKLine',
   data() {
     return {
-      flogCount: 30,
-      month: 11,
-      year: 2019,
-      isStart: false,
+      isInited: false,
       kline: {
         highData: [],
         lowData: [],
         marketData: []
       },
-      
       _timestamp: '',
       _chart: '',
       _areaSeries: '',
@@ -39,54 +33,56 @@ export default {
     }
   },
   props: {
+    historyData: {
+      type: Object,
+      default(){
+        return {}
+      }
+    },
     currentSymbol: {
       type: String,
       default: "BTCUSD"
     },
     kLineData: {
       type: Object,
-      default: function(){
+      default(){
         return {}
       }
     }
   },
   watch: {
-    kLineData(val, oldVal){
+    kLineData(val){
       if(Object.keys(val).length > 0){
-        // this.updateData(val)
+        if(this.isInited){
+          this.updateData(val)
+        }
+      }
+    },
+    historyData(val){
+      if(Object.keys(val).length > 0){
+        this.setHistoryData(val)
       }
     }
   },
   created(){
-    this.getHistoryData()
+    // this.getHistoryData()
   },
   mounted(){
-    const { highData, lowData, marketData } = this.kline
-    for(var i=1; i<this.flogCount; i++){
-      const _time = `2019-11-${this.addZero(i)}`
-      const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
-      const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
-      highData.push({
-        time: _time,
-        value: hightVal
-      })
-      lowData.push({
-        time: _time,
-        value: lowVal
-      })
-      marketData.push({
-        time: _time,
-        value: (hightVal + lowVal) / 2
-      })
-    }
     this.klineInit()
     // this.connect()
   },
   methods: {
+    // 设置历史数据
+    setHistoryData(res) {
+      const { high, low, ma } = res
+      this._areaSeries.setData(high)
+      this._extraSeries.setData(low)
+      this._barSeries.setData(ma)
+      this.isInited = true
+    },
     updateData(val){
       const { high, low, ma, dateTime } = val
-      const time = +`${new Date(dateTime).getTime()}`.replace(/.{3}$/, '')
-      if(!this.isStart) return
+      const time = new Date(dateTime).getTime() / 1000
       this._areaSeries.update({
         time,
         value: high
@@ -100,19 +96,17 @@ export default {
         value: ma
       })
     },
+    // 复原折线图
     restoreDefault(){
       this._chart.timeScale().scrollToRealTime()
     },
     // K线初始化
     klineInit() {
-      const { highData, lowData, marketData } = this.kline
       const baseDom = this.$refs.kline
       const klineBox = {
         width: baseDom.offsetWidth,
         height: baseDom.offsetHeight
       }
-      console.log('klineBox', klineBox);
-      
       this._chart = createChart(baseDom, {
         width: klineBox.width,
         height: klineBox.height,
@@ -164,95 +158,6 @@ export default {
         color: "#fff",
         lineWidth: 1
       })
-      // console.log('hight:', highData, 'low:', lowData, 'marketData:', marketData)
-      // this._areaSeries.setData(highData)
-      // this._extraSeries.setData(lowData)
-      // this._barSeries.setData(marketData)
-      this._areaSeries.setData([
-        {
-          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
-          value: 1000
-        }
-      ])
-      this._extraSeries.setData([
-        {
-          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
-          value: 100
-        }
-      ])
-      this._barSeries.setData([
-        {
-          time: Number(`${new Date().getTime()}`.replace(/.{3}$/, '')),
-          value: 550
-        }
-      ])
-      this.isStart = true
-      // Automatically calculates the visible range to fit all series data.
-      // this._chart.timeScale().fitContent()
-
-      // 实时更新数据
-      // this._timestamp = setInterval(() => {
-      //   // console.log(this.flogCount)
-      //   const time = this.timeFormat()
-      //   const hightVal = Math.floor(Math.random() * (999 - 600)) + 600
-      //   const lowVal = Math.floor(Math.random() * (599 - 200)) + 200
-      //   this._areaSeries.update({
-      //     time,
-      //     value: hightVal
-      //   })
-      //   this._extraSeries.update({
-      //     time,
-      //     value: lowVal
-      //   })
-      //   this._barSeries.update({
-      //     time,
-      //     value: (hightVal + lowVal) / 2
-      //   })
-      // }, 3000)
-      
-    },
-    timeFormat(){      
-      if(this.flogCount > 30){
-        this.flogCount = 1
-        if(this.month === 12){
-          this.month = 1
-          this.year += 1
-        } else {
-          this.month += 1
-        }        
-      }else{
-        this.flogCount += 1
-      }
-
-      const newNum = this.addZero(this.flogCount)
-      
-      return `${this.year}-${this.month}-${newNum}`
-    },
-    addZero(num){
-      return num < 10 ? `0${num}` : num
-    },
-    getHistoryData() {
-      const matchTime = this.dateFormat()
-      console.log(matchTime)
-      getKlineHistoryData({
-        symbol: this.currentSymbol || 'BTCUSD',
-        // startDateTime: matchTime - 60 * 1000 * 1000,
-        // endDateTime: matchTime,
-        startDateTime: 1573617600000,
-        endDateTime: 1573642800000,
-        interval: 'MINUTE_1'
-      }).then(res => {
-        console.log(res)
-      })
-    },
-    dateFormat(){
-      const curDate = new Date()
-      const curYear = curDate.getFullYear()
-      const curMonth = curDate.getMonth() + 1
-      const curGetDate = curDate.getDate()
-      const curHours = curDate.getHours()
-      const curMinutes = curDate.getMinutes()
-      return new Date(`${curYear}-${curMonth}-${curGetDate} ${curHours}:${curMinutes}:00`).getTime()
     }
   },
   beforeDestroy() {
