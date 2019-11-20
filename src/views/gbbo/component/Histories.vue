@@ -20,8 +20,8 @@
         <table class="arbitrage" v-show="arbitrageIsShow">
           <thead>
             <th>Arbitrage</th>
-            <th>Lowest From</th>
-            <th>Highest From</th>
+            <th>Ask</th>
+            <th>Bid</th>
             <th>Time</th>
           </thead>
           <tbody>
