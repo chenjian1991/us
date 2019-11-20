@@ -75,8 +75,12 @@
             </div>
             <div class="rangePercent">
               <ul>
-                <li
+                <!-- <li
                   @click="choosePercent(item,index,'Arbitrage')"
+                  :class="{active:itemIndex===index}"
+                  v-for="(item,index) in percentArr"
+                >{{item}}%</li> -->
+                <li
                   :class="{active:itemIndex===index}"
                   v-for="(item,index) in percentArr"
                 >{{item}}%</li>
@@ -85,7 +89,8 @@
             <div class="totalMoney-label">
               <em>Expect</em>&nbsp;&nbsp;
               <div>
-                <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp;
+                <!-- <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp; -->
+                <span id="buy_total" class="total-num">--</span>&nbsp;
                 <span class="quoteAsset">{{assetName}}</span>
               </div>
             </div>
@@ -103,9 +108,12 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <!-- 买入按钮 -->
-            <button class="mybtn Arbitrage-btn" disabled="true" @click="buyBtn" v-else>
-              <span>One Click Arbitrage</span>
-            </button>
+               <Tooltip max-width="299"  class="mybtn Arbitrage-btn" v-else placement="top" content="One-Click Arbitrage is under development. Ready in 2020.">
+                  <button class="Arbitrage-btn"  disabled="true" @click="buyBtn" >
+                      <span>One Click Arbitrage</span>
+                  </button>
+               </Tooltip>
+
           </div>
         </div>
       </div>
@@ -995,6 +1003,8 @@ export default {
       }
       .Arbitrage-btn {
         background-color: #12869a;
+        text-align: center;
+        line-height: 30px;
         &:hover {
           background-color: #12869a;
         }
