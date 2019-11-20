@@ -70,7 +70,7 @@
          arbData: {
             type: Object,
             default: function() {
-            return {};
+               return {};
             }
          },
       },
