@@ -80,9 +80,6 @@ import { debuglog } from 'util';
 import {getUrlKeyandEncode} from '@/lib/utils.js'
 import {getBrowserMessage} from "@/lib/utils.js"
 import {geeTest} from '../../../api/usersystem.js'
-
-
-
     export default {
         name:'login',
          metaInfo(){
