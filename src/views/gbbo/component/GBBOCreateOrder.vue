@@ -211,7 +211,7 @@
             </button>
             <!-- 买入按钮 -->
             <button class="mybtn buy-btn" :disabled="buyDisabled" @click="buyBtn" v-else>
-              <span>Global  Best Ask</span>
+              <span>Buy BTC</span>
             </button>
           </div>
         </div>
@@ -313,7 +313,7 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <button class="mybtn sell-btn" :disabled="sellDisabled" @click="sellBtn" v-else>
-              <span>Global Best Bid</span>
+              <span>Sell BTC</span>
             </button>
           </div>
         </div>
@@ -1017,11 +1017,11 @@ export default {
         }
       }
       .Arbitrage-btn {
-        background-color: #12869a;
+        background-color: #788390;
         text-align: center;
         line-height: 29px;
         &:hover {
-          background-color: #12869a;
+          background-color: #788390;
         }
       }
       .buy-btn {
