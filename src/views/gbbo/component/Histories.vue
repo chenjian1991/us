@@ -274,13 +274,13 @@ export default {
               padding-right: 30px;
               height: 20px;
               line-height: 20px;
-              &:last-child {
+              &:first-child {
                 color: #12869a;
-                text-align: right;
-                padding-right: 0px;
               }
               &:last-child {
                 color: #788390;
+                text-align: right;
+                padding-right: 0px;
               }
             }
           }

@@ -5,7 +5,7 @@
       <div class="buy-sell-common">
         <div>
           <div class="available-container">
-            <Tooltip placement="top" content="One Click Arbitrage">
+            <Tooltip class="tootips" placement="top" content="One Click Arbitrage">
               <div>Arbitrage</div>
             </Tooltip>
             <div class="coinContainer">
@@ -49,9 +49,9 @@
                     :disabled="arbFlag"
                   />
                   <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                  <i
+                  <!-- <i
                     :class="[buy_input_change_Arbitrage?'gbbo_lock':'gbbo_unlock']"
-                  />
+                  /> -->
                   <!-- <div class="currencyInput">
                   ≈ {{buyPriceCurrency | scientificToNumber}}
                   {{currencyName}}
@@ -747,6 +747,11 @@ export default {
       justify-content: space-between;
       padding-bottom: 24px;
       height: 45px;
+      .tootips{
+        .ivu-tooltip-inner{
+          font-weight: 300;
+        }
+      }
       .coinContainer{
         position: relative;
         .available-assets{
@@ -1014,7 +1019,7 @@ export default {
       .Arbitrage-btn {
         background-color: #12869a;
         text-align: center;
-        line-height: 30px;
+        line-height: 29px;
         &:hover {
           background-color: #12869a;
         }
