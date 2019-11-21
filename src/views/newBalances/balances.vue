@@ -107,7 +107,7 @@
       getSymbolList_realtime,
    } from '_api/exchange.js'
    import {
-      getRealtimeList, getUserInfo
+      getRealtimeList, getUserInfo, getAssertIsExist
    } from '_api/balances.js'
 
    import {
@@ -147,7 +147,9 @@
             activeStatus: 'BalancesConfirm',//按钮状态
             showNoVerification1: false,
             showNoBank: false,
-
+            accountStatus: null,//账户状态
+            identityStatus: null,//实名状态
+            bankStatus: null,//银行卡状态
             usd: 0,
             //排序
             animateStatus: '',
@@ -521,7 +523,8 @@
                               on: {
                                  click: () => {
                                     if (deposit) {
-                                       isUSD ? this.getIdentify(params.row.currency, '/deposit_usd') : this.getIdentify(params.row.currency, '/deposit')
+                                       let path = isUSD ? '/deposit_usd' : '/deposit'
+                                       this.deposit(params.row.currency, path)
                                     }
                                  }
                               }
@@ -543,13 +546,8 @@
                               on: {
                                  click: () => {
                                     if (withdraw) {
-                                       if (isUSD) {
-                                          // this.getIdentify(params.row.currency, '/withdrawal_usd')
-                                          this.getBankSetting()
-
-                                       } else {
-                                          this.getIdentify(params.row.currency, '/withdrawal')
-                                       }
+                                       let path = isUSD ? '/withdrawal_usd' : '/withdrawal'
+                                       this.withdraw(params.row.currency, path, isUSD)
                                     }
                                  }
                               }
@@ -566,7 +564,7 @@
                                  on: {
                                     click: () => {
                                        if (withdraw) {
-                                          this.getIdentify(params.row.currency, '/bankSetting')
+                                          this.getBankSetting(params.row.currency, '/bankSetting')
                                        }
                                     }
                                  }
@@ -670,12 +668,12 @@
                }.bind(this))
             })
             Promise.all([currencyList, quoteList, balanceList]).then(() => {
-               if(Object.keys(this.balancesList).length){
+               if (Object.keys(this.balancesList).length) {
                   this.getCurrencyList()
                   this.getValuation()
                   this.getCurrencyImgList()
                   this.getQuoteList()
-               }else{
+               } else {
                   //没有资产 不请求行情
                   this.getCurrencyList()
                   this.getCurrencyImgList()
@@ -958,63 +956,139 @@
             this.showCloseIcon = false
             this.filter()
          },
-         //实名信息
-         getUserInfo() {
-            return new Promise(resolve => {
-               getUserInfo({
-                  userId: this.userId
-               }, this.loginToken).then(res => {//实名认证
-                  if (res.data) {
-                     resolve(res.data['identifyState'])
+         async deposit(currency, path) {
+            try {
+               let identity = this.getUserInfo()
+               let account = this.getAccountStatus()
+               await identity
+               await account
+               this.$router.push({
+                  path: path,
+                  query: {
+                     'currency': currency
                   }
                })
-            })
+            } catch (e) {
+
+            }
+
          },
-         getIdentify(currency, path) {
-            this.getUserInfo().then(res => {
-               switch (res) {
-                  case 'INIT':
-                     this.showNoVerification1 = true
-                     break
-                  case 'SUBMIT':
-                     this.$router.push('/identityResult')
-                     break
-                  case 'SUCCESS':
-                     this.$router.push({
-                        path: path,
-                        query: {
-                           'currency': currency
-                        }
-                     })
-                     break
-                  case 'FAIL':
-                     this.$router.push('/identityResult')
-                     break
+         async withdraw(currency, path, isUSD) {
+            try {
+               let identity = this.getUserInfo()
+               await identity
+               if (isUSD) {
+                  let bank = this.getBank()
+                  await bank
+               }
+               let account = this.getAccountStatus()
+               await account
+               this.$router.push({
+                  path: path,
+                  query: {
+                     'currency': currency
+                  }
+               })
+            } catch (e) {
+
+            }
+         },
+         async getBankSetting() {
+            try {
+               let identity = this.getUserInfo()
+               let bank = this.getBank()
+               await identity
+               await bank
+               this.$router.push('/bankSetting')
+            } catch (e) {
+
+            }
+         },
+         //实名信息
+         getUserInfo() {
+            return new Promise((resolve, reject) => {
+               //处理状态跳转
+               const status = () => {
+                  if (this.identityStatus === 'SUCCESS') {
+                     resolve(this.identityStatus)
+                  } else {
+                     switch (this.identityStatus) {
+                        case 'INIT':
+                           this.showNoVerification1 = true
+                           break
+                        case 'SUBMIT':
+                           this.$router.push('/identityResult')
+                           break
+                        case 'FAIL':
+                           this.$router.push('/identityResult')
+                           break
+                     }
+                     reject()
+                  }
+               }
+               if (this.identityStatus) {
+                  status()
+               } else {
+                  getUserInfo({
+                     userId: this.userId
+                  }, this.loginToken).then(res => {//实名认证
+                     if (res.data) {
+                        this.identityStatus = res.data['identifyState']
+                        status()
+                     }
+                  })
                }
             })
          },
-         getBankSetting() {
-            this.getUserInfo().then(res => {
-               switch (res) {
-                  case 'INIT':
-                     this.showNoVerification1 = true
-                     break
-                  case 'SUBMIT':
-                     this.$router.push('/identityResult')
-                     break
-                  case 'SUCCESS':
-                     this.exchange.withdrawAddress('USD', function (res) {//提现的时候判断没有设置银行卡 跳转银行卡页面
-                        if (res.length === 0) {
-                           this.showNoBank = true
-                        } else {
-                           this.$router.push('/bankSetting')
-                        }
-                     }.bind(this))
-                     break
-                  case 'FAIL':
-                     this.$router.push('/identityResult')
-                     break
+         //银行卡设置状态
+         getBank() {
+            return new Promise((resolve, reject) => {
+               const status = () => {
+                  if (this.bankStatus.length === 0) {
+                     this.showNoBank = true
+                     reject()
+                  } else {
+                     resolve()
+                  }
                }
+               if (this.bankStatus) {
+                  status()
+               } else {
+                  this.exchange.withdrawAddress('USD', (res) => {//提现的时候判断没有设置银行卡 跳转银行卡页面
+                     this.bankStatus = res
+                     status()
+                  })
+               }
+
+            })
+         },
+         //获取账户状态
+         getAccountStatus() {
+            return new Promise((resolve, reject) => {
+               /*
+                   状态有OPENED, //正常
+                   RESTRICTED, //限制 不能使用 提交订单，撤单，出入金
+                   SUSPENDED, //暂停，不能使用任何操作
+               */
+               const getStatus = () => {
+                  if (this.accountStatus === 'OPENED') {
+                     resolve()
+                  } else {
+                     this.$Notice.error({
+                        title: 'Trade function is not activated yet',
+                     });
+                     reject()
+                  }
+               }
+               if (this.accountStatus) {
+                  getStatus()
+               } else {
+                  this.exchange.getAccountInfo((res) => {
+                     this.accountStatus = res.accountStatus
+                     getStatus()
+                  })
+               }
+
             })
          },
          cancel1() {
