@@ -171,7 +171,7 @@ export default {
   },
   beforeDestroy() {
     this.WSHistory && this.WSHistory.close()
-  },
+  }
 };
 </script>
 
