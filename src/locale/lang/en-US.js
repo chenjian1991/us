@@ -455,7 +455,7 @@ export default {
    Cx000006: "Username already exists",
    Cx000007: 'Invalid Referral ID',
    Cx000008: 'Text message verification error',
-   Cx000009: 'Invalid phone number format',
+   Cx000009: 'Please login with your email address',
    Cx000010: 'User not found',
    Cx000011: 'Incorrect email verification code',
    Cx000012: 'This account has already been activated',

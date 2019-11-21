@@ -53,11 +53,11 @@
                                     <div style="color:#fff;font-size:14px;margin-top:10px;">{{$t('lawTips')}}</div>
 
                                 </FormItem>
-                                <FormItem class="form_item" prop='userName'>
+                                <!-- <FormItem class="form_item" prop='userName'>
                                     <img  style="top:18px;" src="../../assets/images/register/yonghu.svg" alt="">
                                     <Input  type="text"   v-model="formValidate.userName"  :placeholder="this.$t('userName')"></Input>
                                     <div v-if="nameFlag" style="position:absolute;top:42px;color:#ed4014;right:0px;">{{$t('usernameused')}}</div>
-                                </FormItem>
+                                </FormItem> -->
                                 <FormItem class="form_item phone_item" prop='phoneNumber'>
                                     <div class="country_container">
                                         <div @click="controlSelect">
@@ -142,11 +142,11 @@
                                         <div v-if="common" style="color:#fff;font-size:14px;margin-top:10px;">{{$t('lawTips')}}</div>
                                         <div v-else style="color:#fff;font-size:14px;margin-top:10px;">Based on the region you selected, we have to comply with local regulations and perform EDD(Enhanced Due Diligence) during your KYC procedure</div>
                                 </FormItem>
-                                 <FormItem class="form_item" prop='userName'>
+                                 <!-- <FormItem class="form_item" prop='userName'>
                                     <img  style="top:18px;" src="../../assets/images/register/yonghu.svg" alt="">
                                     <Input  type="text"   v-model="formValidate.userName"  :placeholder="this.$t('userName')"></Input>
                                     <div v-if="nameFlag" style="position:absolute;top:42px;color:#ed4014;right:0px;">{{$t('usernameused')}}</div>
-                                </FormItem>
+                                </FormItem> -->
                                 <FormItem class="form_item" prop='emailNumber'>
                                     <img  style="top:18px;" src="../../assets/images/register/email.svg" alt="">
                                     <Input  type="text"   v-model="formValidate.emailNumber"  :placeholder="$t('emailPlacehodler')"></Input>
@@ -470,7 +470,7 @@ const clickoutside = {
                                 this.emailParams = {
                                     "domainCode":document.domain==='www.55com.io'?"china":'global',
                                     'country':this.EmailcountryName,
-                                    "name":this.formValidate.userName,
+                                    // "name":this.formValidate.userName,
                                     "email":this.formValidate.emailNumber,
                                     "personType": "GEETEST",
                                     "personCode":data,//人机校验码
@@ -493,7 +493,7 @@ const clickoutside = {
                              }else{//手机注册
                                       let params = {
                                         "country": this.phoneCountryName,
-                                        "name": this.formValidate.userName,
+                                        // "name": this.formValidate.userName,
                                         "phone": this.formValidate.phoneNumber+'+'+this.countryNumber,
                                         "phoneCode": this.formValidate.smsCode,
                                         "personType": "GEETEST",
