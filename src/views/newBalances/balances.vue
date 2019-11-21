@@ -957,39 +957,52 @@
             this.filter()
          },
          async deposit(currency, path) {
-            let identity = this.getUserInfo()
-            let account = this.getAccountStatus()
-            await identity
-            await account
-            this.$router.push({
-               path: path,
-               query: {
-                  'currency': currency
-               }
-            })
+            try {
+               let identity = this.getUserInfo()
+               let account = this.getAccountStatus()
+               await identity
+               await account
+               this.$router.push({
+                  path: path,
+                  query: {
+                     'currency': currency
+                  }
+               })
+            } catch (e) {
+
+            }
+
          },
          async withdraw(currency, path, isUSD) {
-            let identity = this.getUserInfo()
-            await identity
-            if (isUSD) {
-               let bank = this.getBank()
-               await bank
-            }
-            let account = this.getAccountStatus()
-            await account
-            this.$router.push({
-               path: path,
-               query: {
-                  'currency': currency
+            try {
+               let identity = this.getUserInfo()
+               await identity
+               if (isUSD) {
+                  let bank = this.getBank()
+                  await bank
                }
-            })
+               let account = this.getAccountStatus()
+               await account
+               this.$router.push({
+                  path: path,
+                  query: {
+                     'currency': currency
+                  }
+               })
+            } catch (e) {
+
+            }
          },
          async getBankSetting() {
-            let identity = this.getUserInfo()
-            let bank = this.getBank()
-            await identity
-            await bank
-            this.$router.push('/bankSetting')
+            try {
+               let identity = this.getUserInfo()
+               let bank = this.getBank()
+               await identity
+               await bank
+               this.$router.push('/bankSetting')
+            } catch (e) {
+
+            }
          },
          //实名信息
          getUserInfo() {
