@@ -772,22 +772,9 @@ export default {
               this.currentSymbolObj = Object.assign(result, v, this.symbolList_quote[result.symbol])
               this.showCurrentPriceInfo(this.currentSymbolObj)
             }
-            // this.getCurrencyData()
           }
           //处理币种列表行情
           if (this.symbolList_quote[result.symbol]) {
-            // let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
-            // let siteType = this.symbolList_quote[result.symbol].siteType[0]
-            // this.symbolListSelf[siteType][quoteAsset].map((item, i) => {
-            //    if (item.symbol === result.symbol) {
-            //       this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v, item, result)
-            //       return
-            //    }
-            // })
-            // //计算法币估值
-            // //板块部分双向绑定
-            // this.symbolListSelf = Object.assign({}, this.symbolListSelf)
-            //处理当前
             SSEcache = result
           }
         }
