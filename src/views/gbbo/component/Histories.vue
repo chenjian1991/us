@@ -166,7 +166,7 @@ export default {
       if (!value) return ''
       // 2019-11-14T11:52:46.063+0000
       // return value.slice(11,19)
-      return moment(value).format("HH:mm:ss")
+      return moment(value * 1000).format("HH:mm:ss")
     }
   },
   beforeDestroy() {
