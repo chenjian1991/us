@@ -49,9 +49,9 @@
                     :disabled="arbFlag"
                   />
                   <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                  <i
+                  <!-- <i
                     :class="[buy_input_change_Arbitrage?'gbbo_lock':'gbbo_unlock']"
-                  />
+                  /> -->
                   <!-- <div class="currencyInput">
                   ≈ {{buyPriceCurrency | scientificToNumber}}
                   {{currencyName}}
@@ -1014,7 +1014,7 @@ export default {
       .Arbitrage-btn {
         background-color: #12869a;
         text-align: center;
-        line-height: 30px;
+        line-height: 29px;
         &:hover {
           background-color: #12869a;
         }

@@ -332,7 +332,7 @@
    .nav-link {
       font-weight: 500;
    }
-   @media(min-width: 1200px){
+   @media(min-width: 976px){
       .gbbo-header{
        max-width: 1440px;
       }
