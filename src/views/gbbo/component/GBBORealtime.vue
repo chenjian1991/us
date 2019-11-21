@@ -243,10 +243,9 @@ export default {
             flex: 1.8;
             em {
               display: block;
-              width: 51%;
+              width: 50%;
               float: right;
               color: #788390;
-              text-align: right;
               font-style: normal;
               overflow: hidden;
               text-overflow: ellipsis;
