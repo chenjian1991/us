@@ -636,7 +636,7 @@ export default {
         } else if (val.provider && val.provider === 'E55') {
           return Object.assign({}, val, {provider: 'TRESSO'})
         } else if (val.provider) {
-          return Object.assign({}, val, {provider: 'market maker'})
+          return Object.assign({}, val, {provider: 'MARKET MAKER'})
         }
       })
       this.gbbo_asksArr = this.gbbo_asksArr.reverse()
@@ -656,7 +656,7 @@ export default {
           } else if (val.provider && val.provider === 'E55') {
             return Object.assign({}, val, {provider: 'TRESSO'})
           } else if (val.provider) {
-            return Object.assign({}, val, {provider: 'market maker'})
+            return Object.assign({}, val, {provider: 'MARKET MAKER'})
           }
       })
       if (!this.sell_input_change) {
@@ -682,13 +682,13 @@ export default {
         if (val.highEx && val.highEx === 'E55') {
           val.highEx = 'TRESSO'
         } else if (val.highEx && !orderBookName.includes(val.highEx)) {
-          val.highEx = 'market maker'
+          val.highEx = 'MARKET MAKER'
         } else {}
         // lowEx 过滤
         if (val.lowEx && val.lowEx === 'E55') {
           val.lowEx = 'TRESSO'
         } else if (val.lowEx &&  !orderBookName.includes(val.lowEx)) {
-          val.lowEx = 'market maker'
+          val.lowEx = 'MARKET MAKER'
         } else {}
       })
       this.maxArbitrageList = data
@@ -701,13 +701,13 @@ export default {
         if (val.buy && val.buy === 'E55') {
           val.buy = 'TRESSO'
         } else if (val.buy && !orderBookName.includes(val.buy)) {
-          val.buy = 'market maker'
+          val.buy = 'MARKET MAKER'
         } else {}
         // sell 过滤
         if (val.sell && val.sell === 'E55') {
           val.sell = 'TRESSO'
         } else if (val.sell &&  !orderBookName.includes(val.sell)) {
-          val.sell = 'market maker'
+          val.sell = 'MARKET MAKER'
         } else {}
       })
     },
