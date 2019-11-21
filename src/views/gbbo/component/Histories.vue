@@ -212,7 +212,6 @@ export default {
         display: flex;
         th {
           flex:1;
-          // width: 33%;//支持到屏幕100%
           height: 20px;
           line-height: 20px;
           color:#788390;
@@ -230,12 +229,11 @@ export default {
         }
         &.arbitrage{
           th {
-            // width: 25%;//支持到屏幕60%
-            padding-left: 30px;
-            text-align: right;
-            &:first-child {
-              padding-left: 8px;
-              text-align: left;
+            padding-right: 30px;
+            text-align: left;
+            &:last-child {
+              padding-right: 8px;
+              text-align: right;
             }
           }
         }
@@ -254,13 +252,12 @@ export default {
           color: #788390;
           th {
             flex:1;
-            // width: 25%;
             height: 20px;
             line-height: 20px;
             font-weight: 500;
-            text-align: right;
-            &:first-child {
-              text-align: left;
+            text-align: left;
+            &:last-child {
+              text-align: right;
             }
           }
         }
@@ -270,19 +267,17 @@ export default {
             color: #d4d4d4;
             td {
               flex:1;
-              // max-width: 0px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
-              text-align: right;
-              padding-left: 30px;
-              // width: 25%;
+              text-align: left;
+              padding-right: 30px;
               height: 20px;
               line-height: 20px;
-              &:first-child {
+              &:last-child {
                 color: #12869a;
-                text-align: left;
-                padding-left: 0px;
+                text-align: right;
+                padding-right: 0px;
               }
               &:last-child {
                 color: #788390;
@@ -293,7 +288,6 @@ export default {
         &.markets {
           thead {
             th {
-              // width: 33%;
               &:nth-child(2) {
                 text-align: center;
               }
@@ -302,7 +296,6 @@ export default {
           tbody{
             tr {
               td {
-                // width: 33%;
                 padding: 0;
                 &:nth-child(2) {
                   text-align: center;
