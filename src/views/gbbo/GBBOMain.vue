@@ -576,17 +576,17 @@ export default {
         const domain = document.domain;
         let arbSocket = null
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-          arbSocket = new SockJS('https://' + domain + '/xchange/marketdata');
+          arbSocket = new SockJS('https://' + domain + '/echart/xchange/marketdata');
         } else {
           arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
         }
-        // socket = new SockJS('https://www.55.center/xchange/marketdata')
+        arbSocket = new SockJS('https://www.55.center/echart/xchange/marketdata')
         
         this.arbStompClient = Stomp.over(arbSocket);
         this.arbStompClient.debug = null
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
-          this.arbStompClient.send("/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
+          this.arbStompClient.send("/echart/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
           // 最大价差记录
           this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
             if (message.body) {
@@ -630,14 +630,14 @@ export default {
       // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
       this.gbbo_asksArr = result.asks.map((val) => {
-          val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
-          if (val.provider && orderBookName.includes(val.provider)) {
-            return val
-          } else if (val.provider && val.provider === 'E55') {
-            return Object.assign({}, val, {provider: 'TRESSO'})
-          } else if (val.provider) {
-            return Object.assign({}, val, {provider: 'market maker'})
-          }
+        val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
+        if (val.provider && orderBookName.includes(val.provider)) {
+          return val
+        } else if (val.provider && val.provider === 'E55') {
+          return Object.assign({}, val, {provider: 'TRESSO'})
+        } else if (val.provider) {
+          return Object.assign({}, val, {provider: 'market maker'})
+        }
       })
       this.gbbo_asksArr = this.gbbo_asksArr.reverse()
 
