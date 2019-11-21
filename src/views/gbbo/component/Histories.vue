@@ -186,42 +186,55 @@ export default {
       display: flex;
       background-color: #041d25;
       li {
-        padding: 10px;
+        padding: 0 10px;
+        height: 30px;
+        line-height: 30px;
         color: #788390;
         font-size: 12px;
         font-weight: 700;
         background-color: #041d25;
         border-right: 1px solid #000;
         cursor: pointer;
-        border: 1px black solid;
         &.active {
           background-color: #031419;
           color: #d4d4d4;
-          border: none;
         }
       }
       .mask{
         position: absolute;
-        top: 38px;
+        top: 30px;
         left: 0; 
         width: 100%;
+        height: 20px;
+        line-height: 20px;
         background-color: #031419;
         z-index: 3;
-        height: 22px;
+        display: flex;
         th {
-          width: 33%;//支持到屏幕100%
+          flex:1;
+          // width: 33%;//支持到屏幕100%
+          height: 20px;
+          line-height: 20px;
+          color:#788390;
+          font-weight: 500;
+          &:first-child {
+            padding-left:8px;
+          }
           &:nth-child(2) {
             text-align: center;
           }
           &:last-child{
+            padding-right:8px;
             text-align: right;
           }
         }
         &.arbitrage{
           th {
-            width: 25%;//支持到屏幕60%
+            // width: 25%;//支持到屏幕60%
+            padding-left: 30px;
             text-align: right;
             &:first-child {
+              padding-left: 8px;
               text-align: left;
             }
           }
@@ -230,18 +243,22 @@ export default {
     }
     .tableWrap{
       position: relative;
-      height: 232px;
+      height: 240px;
       padding: 0 3px 0 8px;
       overflow: auto;
       table {
         width: 100%;
         margin-bottom: 10px;
         thead {
+          display: flex;
           color: #788390;
           th {
-            text-align: right;
-            width: 25%;
+            flex:1;
+            // width: 25%;
+            height: 20px;
+            line-height: 20px;
             font-weight: 500;
+            text-align: right;
             &:first-child {
               text-align: left;
             }
@@ -249,15 +266,19 @@ export default {
         }
         tbody{
           tr {
+            display: flex;
             color: #d4d4d4;
             td {
-              max-width: 0px;
+              flex:1;
+              // max-width: 0px;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
               text-align: right;
-              padding-left: 50px;
-              width: 25%;
+              padding-left: 30px;
+              // width: 25%;
+              height: 20px;
+              line-height: 20px;
               &:first-child {
                 color: #12869a;
                 text-align: left;
@@ -272,7 +293,7 @@ export default {
         &.markets {
           thead {
             th {
-              width: 33%;
+              // width: 33%;
               &:nth-child(2) {
                 text-align: center;
               }
@@ -281,7 +302,7 @@ export default {
           tbody{
             tr {
               td {
-                width: 33%;
+                // width: 33%;
                 padding: 0;
                 &:nth-child(2) {
                   text-align: center;

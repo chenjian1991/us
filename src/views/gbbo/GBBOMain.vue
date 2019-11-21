@@ -576,17 +576,17 @@ export default {
         const domain = document.domain;
         let arbSocket = null
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-          arbSocket = new SockJS('https://' + domain + '/xchange/marketdata');
+          arbSocket = new SockJS('https://' + domain + '/echart/xchange/marketdata');
         } else {
           arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
         }
-        // socket = new SockJS('https://www.55.center/xchange/marketdata')
+        arbSocket = new SockJS('https://www.55.center/echart/xchange/marketdata')
         
         this.arbStompClient = Stomp.over(arbSocket);
         this.arbStompClient.debug = null
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
-          this.arbStompClient.send("/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
+          this.arbStompClient.send("/echart/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
           // 最大价差记录
           this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
             if (message.body) {
@@ -630,14 +630,14 @@ export default {
       // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
       this.gbbo_asksArr = result.asks.map((val) => {
-          val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
-          if (val.provider && orderBookName.includes(val.provider)) {
-            return val
-          } else if (val.provider && val.provider === 'E55') {
-            return Object.assign({}, val, {provider: 'TRESSO'})
-          } else if (val.provider) {
-            return Object.assign({}, val, {provider: 'market maker'})
-          }
+        val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
+        if (val.provider && orderBookName.includes(val.provider)) {
+          return val
+        } else if (val.provider && val.provider === 'E55') {
+          return Object.assign({}, val, {provider: 'TRESSO'})
+        } else if (val.provider) {
+          return Object.assign({}, val, {provider: 'MARKET MAKER'})
+        }
       })
       this.gbbo_asksArr = this.gbbo_asksArr.reverse()
 
@@ -656,7 +656,7 @@ export default {
           } else if (val.provider && val.provider === 'E55') {
             return Object.assign({}, val, {provider: 'TRESSO'})
           } else if (val.provider) {
-            return Object.assign({}, val, {provider: 'market maker'})
+            return Object.assign({}, val, {provider: 'MARKET MAKER'})
           }
       })
       if (!this.sell_input_change) {
@@ -682,13 +682,13 @@ export default {
         if (val.highEx && val.highEx === 'E55') {
           val.highEx = 'TRESSO'
         } else if (val.highEx && !orderBookName.includes(val.highEx)) {
-          val.highEx = 'market maker'
+          val.highEx = 'MARKET MAKER'
         } else {}
         // lowEx 过滤
         if (val.lowEx && val.lowEx === 'E55') {
           val.lowEx = 'TRESSO'
         } else if (val.lowEx &&  !orderBookName.includes(val.lowEx)) {
-          val.lowEx = 'market maker'
+          val.lowEx = 'MARKET MAKER'
         } else {}
       })
       this.maxArbitrageList = data
@@ -701,13 +701,13 @@ export default {
         if (val.buy && val.buy === 'E55') {
           val.buy = 'TRESSO'
         } else if (val.buy && !orderBookName.includes(val.buy)) {
-          val.buy = 'market maker'
+          val.buy = 'MARKET MAKER'
         } else {}
         // sell 过滤
         if (val.sell && val.sell === 'E55') {
           val.sell = 'TRESSO'
         } else if (val.sell &&  !orderBookName.includes(val.sell)) {
-          val.sell = 'market maker'
+          val.sell = 'MARKET MAKER'
         } else {}
       })
     },
