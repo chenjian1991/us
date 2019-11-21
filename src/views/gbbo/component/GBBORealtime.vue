@@ -251,15 +251,6 @@ export default {
               text-overflow: ellipsis;
               white-space: nowrap;
               position: relative;
-              &:after {
-                content: "";
-                position: absolute;
-                right: 0;
-                top: 50%;
-                transform: translate(0, -50%);
-                height: 20px;
-                width: 0px;
-              }
             }
           }
           .arb {
@@ -279,15 +270,6 @@ export default {
             text-overflow: ellipsis;
             white-space: nowrap;
             position: relative;
-            &:after {
-              content: "";
-              position: absolute;
-              right: 0;
-              top: 50%;
-              transform: translate(0, -50%);
-              height: 20px;
-              width: 0px;
-            }
           }
         }
 
