@@ -5,7 +5,7 @@
       <div class="buy-sell-common">
         <div>
           <div class="available-container">
-            <Tooltip placement="top" content="One Click Arbitrage">
+            <Tooltip class="tootips" placement="top" content="One Click Arbitrage">
               <div>Arbitrage</div>
             </Tooltip>
             <div class="coinContainer">
@@ -747,6 +747,11 @@ export default {
       justify-content: space-between;
       padding-bottom: 24px;
       height: 45px;
+      .tootips{
+        .ivu-tooltip-inner{
+          font-weight: 300;
+        }
+      }
       .coinContainer{
         position: relative;
         .available-assets{
