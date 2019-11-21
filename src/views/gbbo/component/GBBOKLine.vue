@@ -81,18 +81,18 @@ export default {
       this.isInited = true
     },
     updateData(val){
-      const { high, low, ma, dateTime } = val
-      const time = new Date(dateTime).getTime() / 1000
+      const { high, low, ma, dateTimeStamp } = val
+      // const time = new Date(dateTime).getTime() / 1000
       this._areaSeries.update({
-        time,
+        time: dateTimeStamp,
         value: high
       })
       this._extraSeries.update({
-        time,
+        time: dateTimeStamp,
         value: low
       })
       this._barSeries.update({
-        time,
+        time: dateTimeStamp,
         value: ma
       })
     },
@@ -119,26 +119,22 @@ export default {
         },
         timeScale: {
           timeVisible: true,
-          // visible: true,  // 横坐标是否显示时间坐标
-          secondsVisible: false,
-          // rightOffset: 0,
-          // barSpacing: 6,  // 横坐标间隔
-          // borderColor: 'rgba(197, 203, 206, 0.4)',
+          secondsVisible: false
         },
         layout: {
           backgroundColor: '#07141A',
-          textColor: '#ffffff',
+          textColor: '#ffffff'
         },
         grid: {
           vertLines: {
             color: 'rgba(197, 203, 206, 0.4)',
-            style: LineStyle.Dotted,
+            style: LineStyle.Dotted
           },
           horzLines: {
             color: 'rgba(197, 203, 206, 0.4)',
-            style: LineStyle.Dotted,
-          },
-        },
+            style: LineStyle.Dotted
+          }
+        }
       });
 
       // 最高
@@ -154,7 +150,7 @@ export default {
       });
       // 平均
       this._barSeries = this._chart.addLineSeries({
-        lineStyle: 1,
+        // lineStyle: 1,
         color: "#fff",
         lineWidth: 1
       })

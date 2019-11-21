@@ -37,7 +37,8 @@
             </dl>
             <dl>
                <dt>24h Volume</dt>
-               <dd>{{currentInfo.hour24Volume|noData|separate}} {{currentInfo.quoteAsset|noData}}</dd>
+               <!-- <dd>{{currentInfo.hour24Volume|noData|separate}} {{currentInfo.quoteAsset|noData}}</dd> -->
+               <dd>{{currentInfo.hour24Volume|noData|separate}}</dd>
             </dl>
          </div>
       </div>
