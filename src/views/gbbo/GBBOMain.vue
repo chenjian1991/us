@@ -601,7 +601,6 @@ export default {
               this.getArbData(JSON.parse(message.body))
             }
           });
-          
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
             // console.log(message)
             if(message.body){
@@ -609,7 +608,6 @@ export default {
               this.kLineData = JSON.parse(message.body)
             }
           })
-          
         }, (error) => {
           console.log('new Sockjs  error')
           this.arbStompClient.disconnect()
