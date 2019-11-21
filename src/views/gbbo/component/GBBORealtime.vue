@@ -22,11 +22,11 @@
           <p>Arbitrage Range</p>
           <span
             class="last-arb"
-          >{{arbData.minArb}}~{{arbData.maxArb}}</span>
+          >{{arbData.minArb | noData}}~{{arbData.maxArb | noData}}</span>
         </div>
         <div>
           <p>Total Size</p>
-          <span>{{arbData.totalAmount}}</span>
+          <span>{{arbData.totalAmount | noData}}</span>
         </div>
       </div>
     </div>
@@ -158,6 +158,10 @@ export default {
     }
   },
   filters: {
+    noData: function (value) {
+      if (!value) return '--'
+      return value
+    },
     formatNumberLength: function(value) {
       if (!value) return "";
       return bigDecimal.round(value, 6);
