@@ -27,4 +27,4 @@ export const coinInfoLinks = {
   "ONG":"ong",
 }
 // export const orderBookName = ['BINANCE', 'HUOBI', 'INDODAX', 'BITSTAMP', 'COINFLOOR', 'INDEPENDENTRESERVE']
-export const orderBookName = ['GEMINI', 'KRAKEN', 'BITTREX', 'COINBASEPRO']
+export const orderBookName = ['GEMINI', 'KRAKEN', 'BITTREX', 'COINBASEPRO', 'TRESSO']
