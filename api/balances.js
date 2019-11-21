@@ -13,7 +13,7 @@ import {
    identifyUpdateUrl,
    identifyInfo as identifyQueryUrl,
    uploadPic,
-   identifyPhoto
+   identifyPhoto,
 } from "./urls";
 
 export const getRealtimeList = () => {

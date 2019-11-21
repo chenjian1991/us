@@ -119,3 +119,5 @@ export const identifyUpdateUrl = `${proxyURLUcenter}/identify/update` //实名�
 export const uploadPic = `${proxyURLUcenter}/identify/upload`//上传图片
 
 export const fabiCost = `${proxyURL}/content/rate/front/info.query` //法币估值
+
+export const assertIsExist = `${proxyURL}/spot/account.queryAccountInfoByAccountIdAssertIsExist` //查询账户

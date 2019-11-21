@@ -32,7 +32,7 @@
                <div>
                   <div>
                      <a target="_blank" href="https://www.gcodigital.com/">
-                        <img src="../../assets/images/balances/gco-logo@2x.png">
+                        <img src="../../assets/images/balances/gco-logo@2x.png" style="width: 171px">
                      </a>
                   </div>
                </div>
@@ -458,6 +458,7 @@
       position: relative;
       padding: 15px 0 10px;
       background-color: #F7F9FA;
+      height: 100%;
       .container {
          width: 1200px;
          margin: 0 auto;
