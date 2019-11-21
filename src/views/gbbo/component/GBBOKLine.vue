@@ -13,7 +13,6 @@
 </template>
 <script>
 import { createChart, LineStyle } from 'lightweight-charts'
-import { getKlineHistoryData } from '_api/exchange'
 
 export default {
   name: 'GBBOKLine',
@@ -25,10 +24,13 @@ export default {
         lowData: [],
         marketData: []
       },
-      _timestamp: '',
+      // eslint-disable-next-line vue/no-reserved-keys
       _chart: '',
+      // eslint-disable-next-line vue/no-reserved-keys
       _areaSeries: '',
+      // eslint-disable-next-line vue/no-reserved-keys
       _extraSeries: '',
+      // eslint-disable-next-line vue/no-reserved-keys
       _barSeries: ''
     }
   },
@@ -111,10 +113,10 @@ export default {
         width: klineBox.width,
         height: klineBox.height,
         priceScale: {
-          mode: 1,
+          mode: 1
         },
         localization: {
-          locale: 'en-US', // 语言
+          locale: 'en-US' // 语言
           // dateFormat: 'yyyy/MM/dd', // 日期显示格式
         },
         timeScale: {
@@ -157,13 +159,12 @@ export default {
     }
   },
   beforeDestroy() {
-    clearInterval(this._timestamp)
     this._chart = null
   }
 }
 </script>
 <style lang="less">
-  .gbboline{    
+  .gbboline{
     &-btns{
       text-align: right;
       background: #041D25;
