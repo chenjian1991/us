@@ -427,7 +427,7 @@ export default {
   watch: {
     arbData(){
       if(this.buy_input_change_Arbitrage){
-        this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+        this.$refs.buyArbitraInput.value = this.arbData.minArb?this.arbData.minArb:'--'+'-'+this.arbData.maxArb?this.arbData.maxArb:'--';
       } 
     },  
     buyInputPrice() {
@@ -471,7 +471,7 @@ export default {
     this.availableCoin = this.briefInputData.quoteCoinAvailable;
     this.$refs.sellInput.value = this.sellInputPrice;
     this.$refs.buyInput.value = this.buyInputPrice;
-    this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+    this.$refs.buyArbitraInput.value = this.arbData.minArb?this.arbData.minArb:'--'+'-'+this.arbData.maxArb?this.arbData.maxArb:'--';
     console.log('this.arbData.maxArb',this.briefInputData)
 
 
