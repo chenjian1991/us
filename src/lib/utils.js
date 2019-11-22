@@ -33,6 +33,7 @@ export const storage = {
 export function getUrlKey(name) {
    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
 }
+
 //获取url中的key并加码
 export function getUrlKeyandEncode(name) {
    return encodeURIComponent(decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null)
@@ -132,8 +133,8 @@ export function countDownTime(targetDate) {
 
 //数量直接倒计时
 export function countNumberDown(targetDate) {
-   var day = parseInt(targetDate/60 / 60 / 24, 10);
-   var hour = parseInt(targetDate /60 / 60 % 24, 10);//计算剩余的小时数
+   var day = parseInt(targetDate / 60 / 60 / 24, 10);
+   var hour = parseInt(targetDate / 60 / 60 % 24, 10);//计算剩余的小时数
    var minutes = parseInt(targetDate / 60 % 60, 10);//计算剩余的分钟数
    var second = parseInt(targetDate % 60, 10);//计算剩余的秒数
    if (hour < 10) {
@@ -349,8 +350,8 @@ Observer.prototype = {
 export const myObserver = new Observer()
 
 //每3位逗号分隔数字
-export function getParseFloat(number) {
-   return parseFloat(number).toLocaleString()
+export function getParseFloat(number, priceLong) {
+   return parseFloat(number).toFixed(priceLong).toLocaleString()
 }
 
 //解析url 例如 a=1&b=2
@@ -362,7 +363,7 @@ export function parseUrl(str) {
    return obj//{a:1,b:2}
 }
 
-export function dealNumber(number, long=8) {
+export function dealNumber(number, long = 8) {
    number = number.toString()
    if (number.includes('e')) {
       let reg = /^(\d+(?:\.\d+)?)(e)([\-]?\d+)$/;//匹配科学计数法正则
@@ -379,6 +380,7 @@ export function dealNumber(number, long=8) {
       }
    }
 }
+
 export function getBrowserMessage() {
    let userAgent = window.navigator.userAgent.toLowerCase()
    let browserType = ''
