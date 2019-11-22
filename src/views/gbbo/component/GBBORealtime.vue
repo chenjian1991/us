@@ -4,16 +4,16 @@
       <div class="realtime-item__header">
         <div class="arb">Arbitrage</div>
         <div class="amount">Size</div>
-        <div class="buy">Ask</div>
-        <div class="sell">Bid</div>
+        <div class="sell">Ask</div>
+        <div class="buy">Bid</div>
       </div>
       <div class="realtime-item__content">
         <ul class="realtime-item__content-list arb-list">
           <li v-for="(v, index) in arbData.matchMap" :key="index">
             <span class="arb">{{v.arb}}</span>
             <span class="amount">{{v.amount | formatNumberLength}}</span>
-            <span class="buy">{{v.buy}}</span>
             <span class="sell">{{v.sell}}</span>
+            <span class="buy">{{v.buy}}</span>
           </li>
         </ul>
       </div>

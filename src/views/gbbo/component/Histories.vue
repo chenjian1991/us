@@ -2,14 +2,14 @@
   <div class="gbbo-historiswrap">
     <div class="historis">
       <ul class="tabName">
-        <li :class="{active:arbitrageIsShow}" @click="showTable('arbitrageIsShow')">Arbitrage History</li>
+        <!-- <li :class="{active:arbitrageIsShow}" @click="showTable('arbitrageIsShow')">Arbitrage History</li> -->
         <li :class="{active:marketsIsShow}" @click="showTable('marketsIsShow')">Markets History</li>
-        <thead class="mask arbitrage" v-show="arbitrageIsShow">
+        <!-- <thead class="mask arbitrage" v-show="arbitrageIsShow">
           <th>Arbitrage</th>
           <th>Ask</th>
           <th>Bid</th>
           <th>Time</th>
-        </thead>
+        </thead> -->
         <thead class="mask markets" v-show="marketsIsShow">
           <th>Price</th>
           <th>Size</th>
@@ -18,7 +18,7 @@
       </ul>
       <div class="tableWrap">
         <table class="arbitrage" v-show="arbitrageIsShow">
-          <thead>
+          <!-- <thead>
             <th>Arbitrage</th>
             <th>Ask</th>
             <th>Bid</th>
@@ -31,7 +31,7 @@
               <td>{{v.highEx}}</td>
               <td>{{v.dateTimeStamp | formatTime}}</td>
             </tr>
-          </tbody>
+          </tbody> -->
         </table>
         <table class="markets" v-show="marketsIsShow">
           <thead>
@@ -63,8 +63,8 @@ import {
 export default {
   data() {
     return {
-      arbitrageIsShow: true,//初始化展示Tab
-      marketsIsShow: false,
+      arbitrageIsShow: false,//初始化展示Tab
+      marketsIsShow: true,
       tradeHistoryArr:[]//交易历史数据
     };
   },
@@ -80,13 +80,13 @@ export default {
       },
       required: true
     },
-    maxArbitrageList:{
-      type:Array,
-      default:function(){
-        return []
-      },
-      required: true
-    }    
+    // maxArbitrageList:{
+    //   type:Array,
+    //   default:function(){
+    //     return []
+    //   },
+    //   required: true
+    // }    
   },
   methods: {
     showTable(tab) {
