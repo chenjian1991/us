@@ -4,16 +4,16 @@
       <div class="realtime-item__header">
         <div class="arb">Arbitrage</div>
         <div class="amount">Size</div>
-        <div class="buy">Ask</div>
-        <div class="sell">Bid</div>
+        <div class="sell">Ask</div>
+        <div class="buy">Bid</div>
       </div>
       <div class="realtime-item__content">
         <ul class="realtime-item__content-list arb-list">
           <li v-for="(v, index) in arbData.matchMap" :key="index">
             <span class="arb">{{v.arb}}</span>
             <span class="amount">{{v.amount | formatNumberLength}}</span>
-            <span class="buy">{{v.buy}}</span>
             <span class="sell">{{v.sell}}</span>
+            <span class="buy">{{v.buy}}</span>
           </li>
         </ul>
       </div>
@@ -22,11 +22,11 @@
           <p>Arbitrage Range</p>
           <span
             class="last-arb"
-          >{{arbData.minArb}}~{{arbData.maxArb}}</span>
+          >{{arbData.minArb | noData}}~{{arbData.maxArb | noData}}</span>
         </div>
         <div>
           <p>Total Size</p>
-          <span>{{arbData.totalAmount}}</span>
+          <span>{{arbData.totalAmount | noData}}</span>
         </div>
       </div>
     </div>
@@ -158,6 +158,10 @@ export default {
     }
   },
   filters: {
+    noData: function (value) {
+      if (!value) return '--'
+      return value
+    },
     formatNumberLength: function(value) {
       if (!value) return "";
       return bigDecimal.round(value, 6);
@@ -239,24 +243,14 @@ export default {
             flex: 1.8;
             em {
               display: block;
-              width: 51%;
+              width: 50%;
               float: right;
               color: #788390;
-              text-align: right;
               font-style: normal;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
               position: relative;
-              &:after {
-                content: "";
-                position: absolute;
-                right: 0;
-                top: 50%;
-                transform: translate(0, -50%);
-                height: 20px;
-                width: 0px;
-              }
             }
           }
           .arb {
@@ -276,15 +270,6 @@ export default {
             text-overflow: ellipsis;
             white-space: nowrap;
             position: relative;
-            &:after {
-              content: "";
-              position: absolute;
-              right: 0;
-              top: 50%;
-              transform: translate(0, -50%);
-              height: 20px;
-              width: 0px;
-            }
           }
         }
 

@@ -13,7 +13,6 @@
 </template>
 <script>
 import { createChart, LineStyle } from 'lightweight-charts'
-import { getKlineHistoryData } from '_api/exchange'
 
 export default {
   name: 'GBBOKLine',
@@ -25,10 +24,13 @@ export default {
         lowData: [],
         marketData: []
       },
-      _timestamp: '',
+      // eslint-disable-next-line vue/no-reserved-keys
       _chart: '',
+      // eslint-disable-next-line vue/no-reserved-keys
       _areaSeries: '',
+      // eslint-disable-next-line vue/no-reserved-keys
       _extraSeries: '',
+      // eslint-disable-next-line vue/no-reserved-keys
       _barSeries: ''
     }
   },
@@ -64,35 +66,47 @@ export default {
       }
     }
   },
-  created(){
-    // this.getHistoryData()
-  },
+  created(){},
   mounted(){
     this.klineInit()
-    // this.connect()
   },
   methods: {
+    getUTCTime(timeStamp) {
+      const utcTime = new Date(timeStamp)
+      return new Date(
+        utcTime.getUTCFullYear(),
+        utcTime.getUTCMonth(),
+        utcTime.getUTCDate(),
+        utcTime.getUTCHours(),
+        utcTime.getUTCMinutes(),
+        utcTime.getUTCSeconds()
+      ).getTime()
+    },
     // 设置历史数据
     setHistoryData(res) {
       const { high, low, ma } = res
+      // const _high = high.map((val) => ({ ...val, time: this.getUTCTime(val.time) }))
+      // const _low = low.map((val) => ({ ...val, time: this.getUTCTime(val.time) }))
+      // const _ma = ma.map((val) => ({ ...val, time: this.getUTCTime(val.time) }))
       this._areaSeries.setData(high)
       this._extraSeries.setData(low)
       this._barSeries.setData(ma)
       this.isInited = true
     },
     updateData(val){
-      const { high, low, ma, dateTime } = val
-      const time = new Date(dateTime).getTime() / 1000
+      const { high, low, ma, dateTimeStamp } = val
+      // const time = new Date(dateTime).getTime() / 1000
+      // const time = this.getUTCTime(dateTimeStamp)
       this._areaSeries.update({
-        time,
+        time: dateTimeStamp,
         value: high
       })
       this._extraSeries.update({
-        time,
+        time: dateTimeStamp,
         value: low
       })
       this._barSeries.update({
-        time,
+        time: dateTimeStamp,
         value: ma
       })
     },
@@ -111,34 +125,30 @@ export default {
         width: klineBox.width,
         height: klineBox.height,
         priceScale: {
-          mode: 1,
+          mode: 1
         },
         localization: {
-          locale: 'en-US', // 语言
+          locale: 'en-US' // 语言
           // dateFormat: 'yyyy/MM/dd', // 日期显示格式
         },
         timeScale: {
           timeVisible: true,
-          // visible: true,  // 横坐标是否显示时间坐标
-          secondsVisible: false,
-          // rightOffset: 0,
-          // barSpacing: 6,  // 横坐标间隔
-          // borderColor: 'rgba(197, 203, 206, 0.4)',
+          secondsVisible: false
         },
         layout: {
           backgroundColor: '#07141A',
-          textColor: '#ffffff',
+          textColor: '#ffffff'
         },
         grid: {
           vertLines: {
             color: 'rgba(197, 203, 206, 0.4)',
-            style: LineStyle.Dotted,
+            style: LineStyle.Dotted
           },
           horzLines: {
             color: 'rgba(197, 203, 206, 0.4)',
-            style: LineStyle.Dotted,
-          },
-        },
+            style: LineStyle.Dotted
+          }
+        }
       });
 
       // 最高
@@ -154,22 +164,23 @@ export default {
       });
       // 平均
       this._barSeries = this._chart.addLineSeries({
-        lineStyle: 1,
+        // lineStyle: 1,
         color: "#fff",
         lineWidth: 1
       })
     }
   },
   beforeDestroy() {
-    clearInterval(this._timestamp)
     this._chart = null
   }
 }
 </script>
 <style lang="less">
-  .gbboline{    
+  .gbboline{
     &-btns{
+      height: 20px;
       text-align: right;
+      overflow: hidden;
       background: #041D25;
       &__settime{
         display: inline-block;

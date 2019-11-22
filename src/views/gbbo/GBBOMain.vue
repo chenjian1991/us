@@ -45,9 +45,12 @@
             :kLineData="kLineData">
           </gbbo-kline>
           <div class="gbbomain-realtime__line-history">
-            <gbbo-histories
+            <!-- <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
               :currentSymbolObj="currentSymbolObj">
+            </gbbo-histories> -->
+            <gbbo-histories
+              :tradeHistoryArr="tradeHistoryArr">
             </gbbo-histories>
           </div>
         </div>
@@ -55,8 +58,8 @@
       <!-- 当前订单，历史订单 -->
       <div class="gbbomain-order">
         <gbbo-order
-          :myOpenList="myOpenList" 
-          :myCompletedList="myCompletedList" 
+          :myOpenList="myOpenList"
+          :myCompletedList="myCompletedList"
           @cancelMyOrder="cancelMyOrder"
         ></gbbo-order>
       </div>
@@ -126,7 +129,7 @@ import GbboTicker from './component/Ticker'
 import GbboHistories from './component/Histories'
 import CreateOrder from './component/GBBOCreateOrder'
 import GbboRealtime from './component/GBBORealtime'
-import GbboOrder from '../gbbo/component/GBBOOrder'
+import GbboOrder from './component/GBBOOrder'
 
 import {
   getSymbolList_realtime as getSymbolListRealtime,
@@ -162,8 +165,13 @@ import { BigNumber } from 'bignumber.js';
 
 import { orderBookName } from './config'
 
+import qs from 'qs'
 
 const allNowPriceObject = {}//所有币种快照的最新价格的对象
+
+const { search } = window.location
+const urlParamsInExchange = qs.parse(search, { ignoreQueryPrefix: true })
+const isUserInExchange = (!!urlParamsInExchange.publicSystem && urlParamsInExchange.publicSystem === '9476248')
 
 export default {
   name: 'gbbo',
@@ -310,13 +318,13 @@ export default {
       sellRangeValue: 0,
       orderTicketTimer: null,//orderTicket定时器
       updateAt: '',//路总需求 要加这个隐藏字段
-      maxArbitrageList:[],
-      arbData:{},
+      // maxArbitrageList:[],
+      arbData:{}
     }
   },
   created() {
     //可以往data上挂载
-    var ssoProvider = {};
+    const ssoProvider = {};
     //创建实例
     this.exchange = new Exchange(ssoProvider);
     // //登录以后查询资产 挂单 成交记录
@@ -344,19 +352,11 @@ export default {
     this.getSymbolListRealtimeData()
   },
   mounted() {
-    let loginUserId = localStorage.getItem('loginUserId') || this.$route.query.loginUserId;
+    const loginUserId = localStorage.getItem('loginUserId') || this.$route.query.loginUserId;
     if (this.$route.query.loginUserId !== 'null' || this.$route.query.loginUserId !== 'undefined' || this.$route.query.loginUserId !== undefined) {
       localStorage.setItem('loginUserId', loginUserId);
     }
-    this.$store.commit('changeHeaderColor', '#15232C');
-    this.$store.commit('changeFooterColor', '#15232C');
-    // 登录的情况下
-    if ($cookies.get('loginToken') && localStorage.getItem('loginUserId')) {
-      //获取交易密码开关
-      this.$store.dispatch("getTradePassWordStatus");
-    }
     console.log(this.currentSymbol)
-    // console.log(this.arbList)
   },
   filters: {
     formatNumberLength(value) {
@@ -423,6 +423,68 @@ export default {
     }
   },
   methods: {
+    //交易对的交易历史列表
+    updateSymbolHistory() {
+      if (this.WSHistory) {
+        this.WSHistory.close();
+        //清空交易历史
+        this.tradeHistoryArr = [];
+      }
+      this.WSHistory = this.reconnectingWebSocket(`/quote/tradeHistory.ws?symbol=${this.currentSymbolObj.symbol}&least=21`)
+      this.WSHistory.onopen = () => {
+        console.log('history_websocket', '打开')
+      };
+      this.WSHistory.onmessage = (e) => {
+        //每次推送一条记录
+        const result = JSON.parse(e.data);
+        if (result.ping !== undefined) {
+          const pongResponse = {
+            pong: result.ping
+          }
+          this.WSHistory.send(JSON.stringify(pongResponse));
+          return;
+        }
+        //断网重连的问题
+        if (result.code) {
+          return;
+        }
+        this.resetTradeHistoryArr(result)
+      };
+      this.WSHistory.onerror = (e) => {
+        console.log('history_websocket_err', e)
+      };
+      this.WSHistory.onclose = () => {
+        this.WSHistory.close()
+        console.log('history_websocket', '关闭')
+      };
+    },
+    //重置交易历史数组
+    resetTradeHistoryArr(result){
+      const arr = this.tradeHistoryArr;
+      const priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize);
+      const volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize);
+      const obj = {
+        price: bigDecimal.round(result.price, priceLong),
+        volumeData: bigDecimal.round(result.amount, volumeLong),
+        date: moment(result.tradeTime).format("HH:mm:ss"),
+        showColor: result.direction === "buy" ? 1 : -1
+      }
+      //控制数组长度
+      if (arr.length === 40) {
+        arr.unshift(obj);
+        arr.pop();
+      } else {
+        arr.unshift(obj);
+      }
+    },
+    //连接websocket，采用ReconnectingWebSocket库，支持断线重连
+    reconnectingWebSocket(url){
+      const baseURL = window.location.protocol === "http:" ? "ws://" : "wss://"
+      const { host } = window.location
+      return new ReconnectingWebSocket(
+        `${baseURL}${host}${url}`
+      );
+    },
     // 当前分钟时间戳，到秒 10 位
     dateTimeFormat(){
       const curDate = new Date()
@@ -447,18 +509,17 @@ export default {
         const lowData = []
         const maData = []
         data.forEach((val) => {
-          const { high, low, ma, dateTime } = val
-          const time = new Date(dateTime).getTime() / 1000
+          const { high, low, ma, dateTimeStamp } = val
           highData[highData.length] = {
-            time,
+            time: dateTimeStamp,
             value: high
           }
           lowData[lowData.length] = {
-            time,
+            time: dateTimeStamp,
             value: low
           }
           maData[maData.length] = {
-            time,
+            time: dateTimeStamp,
             value: ma
           }
         })
@@ -467,7 +528,6 @@ export default {
           low: lowData,
           ma: maData
         }
-        console.log(res)
       })
     },
     //判断是否展示交易蒙层
@@ -541,6 +601,7 @@ export default {
           // this.isInitPage = true
           this.getGBBODepth()
           this.getMyAssetData()
+          this.updateSymbolHistory()
         }
         // 当有快照驱动时数据变化
         this.getSSERealTime(symbolUrl)
@@ -573,45 +634,40 @@ export default {
         });
       }
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
-        const domain = document.domain;
+        const { domain } = document
         let arbSocket = null
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-          arbSocket = new SockJS('https://' + domain + '/xchange/marketdata');
+          arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
         } else {
           arbSocket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
         }
-        // socket = new SockJS('https://www.55.center/xchange/marketdata')
-        
         this.arbStompClient = Stomp.over(arbSocket);
         this.arbStompClient.debug = null
         this.arbStompClient.heartbeat.outgoing = 1000;
         this.arbStompClient.connect({}, (frame) => {
-          this.arbStompClient.send("/app/summarized.ws", {}, JSON.stringify({symbol:"BTCUSD",interval:"MINUTE_1"}))
+          const params = JSON.stringify({ symbol:"BTCUSD", interval:"MINUTE_1" })
+          this.arbStompClient.send("/echart/app/summarized.ws", {}, params)
           // 最大价差记录
-          this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
-            if (message.body) {
-              // console.log(this.maxArbitrageList)
-              // this.maxArbitrageList = JSON.parse(message.body)
-              this.getMaxArbitrageList(JSON.parse(message.body))
-            }
-          });
+          // this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
+          //   if (message.body) {
+          //     // console.log(this.maxArbitrageList)
+          //     // this.maxArbitrageList = JSON.parse(message.body)
+          //     this.getMaxArbitrageList(JSON.parse(message.body))
+          //   }
+          // });
           // 价差
           this.arbStompClient.subscribe(`/topic/arb/${this.currentSymbol}`, (message) => {
             if (message.body) {
               this.getArbData(JSON.parse(message.body))
             }
           });
-          
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
-            // console.log(message)
             if(message.body){
-              // console.log(message.body)
               this.kLineData = JSON.parse(message.body)
             }
           })
-          
         }, (error) => {
-          console.log('new Sockjs  error')
+          console.log('new Sockjs  error', error)
           this.arbStompClient.disconnect()
           this.arbStompClient = null
           this.getGBBODepth()
@@ -621,7 +677,7 @@ export default {
     },
     // 盘口最优ask and bid
     sortOrderBook(data) {
-      let priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
+      const priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
       // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
       var result = data
       //路总需求 要加这个隐藏字段
@@ -630,86 +686,96 @@ export default {
       // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
       this.gbbo_asksArr = result.asks.map((val) => {
-          val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
-          if (val.provider && orderBookName.includes(val.provider)) {
-            return val
-          } else if (val.provider && val.provider === 'E55') {
-            return Object.assign({}, val, {provider: 'TRESSO'})
-          } else if (val.provider) {
-            return Object.assign({}, val, {provider: 'market maker'})
-          }
+        val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
+        if(isUserInExchange) return val
+        if (val.provider && orderBookName.includes(val.provider)) {
+          return val
+        } else if (val.provider && val.provider === 'E55') {
+          return { ...val, provider: 'TRESSO' }
+        } else if (val.provider) {
+          return { ...val, provider: 'MARKET MAKER' }
+        }
       })
       this.gbbo_asksArr = this.gbbo_asksArr.reverse()
 
       if (!this.buy_input_change) {
-          this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
-          this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
-          this.buyPriceInput = this.bestSellPrice
-          // this.$refs.buyInput.value = this.bestSellPrice
-          this.buyInputPrice = this.bestSellPrice;
+        this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
+        this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
+        this.buyPriceInput = this.bestSellPrice
+        // this.$refs.buyInput.value = this.bestSellPrice
+        this.buyInputPrice = this.bestSellPrice;
       }
 
       this.gbbo_bidsArr = result.bids.map((val) => {
-          val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
-          if (val.provider && orderBookName.includes(val.provider)) {
-            return val
-          } else if (val.provider && val.provider === 'E55') {
-            return Object.assign({}, val, {provider: 'TRESSO'})
-          } else if (val.provider) {
-            return Object.assign({}, val, {provider: 'market maker'})
-          }
+        val.total = new BigNumber(val.priceWithFee) * new BigNumber(val.qty)
+        if(isUserInExchange) return val
+        if (val.provider && orderBookName.includes(val.provider)) {
+          return val
+        } else if (val.provider && val.provider === 'E55') {
+          return { ...val, provider: 'TRESSO' }
+        } else if (val.provider) {
+          return { ...val, provider: 'MARKET MAKER' }
+        }
       })
       if (!this.sell_input_change) {
-          this.bestBuyPrice = result.bids[0].priceWithFee
-          this.sell_exchange_logo = result.bids[0].provider // 交易所logo
-          this.sellPriceInput = this.bestBuyPrice
-          // this.$refs.sellInput.value = this.bestBuyPrice
-          this.sellInputPrice = this.bestBuyPrice;
+        this.bestBuyPrice = result.bids[0].priceWithFee
+        this.sell_exchange_logo = result.bids[0].provider // 交易所logo
+        this.sellPriceInput = this.bestBuyPrice
+        // this.$refs.sellInput.value = this.bestBuyPrice
+        this.sellInputPrice = this.bestBuyPrice;
 
       }
-      var diff = this.bestSellPrice - this.bestBuyPrice
+      const diff = this.bestSellPrice - this.bestBuyPrice
       this.subNumber = bigDecimal.round(Math.abs(diff), priceLong)
       this.GBBO_rate = bigDecimal.round(new BigNumber(this.subNumber) * new BigNumber(this.currencyRate), 4)
       if (diff < 0) {
-          this.isShowARB = "Arbitrage"
+        this.isShowARB = "Arbitrage"
       } else {
-          this.isShowARB = "Spread"
+        this.isShowARB = "Spread"
       }
     },
     // 价差记录
-    getMaxArbitrageList(data) {
-      data.map((val) => {
-        if (val.highEx && val.highEx === 'E55') {
-          val.highEx = 'TRESSO'
-        } else if (val.highEx && !orderBookName.includes(val.highEx)) {
-          val.highEx = 'market maker'
-        } else {}
-        // lowEx 过滤
-        if (val.lowEx && val.lowEx === 'E55') {
-          val.lowEx = 'TRESSO'
-        } else if (val.lowEx &&  !orderBookName.includes(val.lowEx)) {
-          val.lowEx = 'market maker'
-        } else {}
-      })
-      this.maxArbitrageList = data
-    },
+    // getMaxArbitrageList(data) {
+    //   const maxArbitrageData = data.map((val) => {
+    //     if(isUserInExchange) return val
+    //     let { highEx, lowEx } = val
+    //     if (val.highEx && val.highEx === 'E55') {
+    //       highEx = 'TRESSO'
+    //     }
+    //     if(val.lowEx && val.lowEx === 'E55'){
+    //       lowEx = 'TRESSO'
+    //     }
+    //     if (val.highEx && !orderBookName.includes(val.highEx)) {
+    //       highEx = 'MARKET MAKER'
+    //     }
+    //     if(val.lowEx && !orderBookName.includes(val.lowEx)) {
+    //       lowEx = 'MARKET MAKER'
+    //     }
+    //     return { ...val, highEx, lowEx }
+    //   })
+    //   this.maxArbitrageList = maxArbitrageData
+    // },
     // 价差列表
     getArbData(data) {
-      this.arbData = data
-      this.arbData.matchMap.map((val) => {
-        // buy 过滤
-        if (val.buy && val.buy === 'E55') {
-          val.buy = 'TRESSO'
-        } else if (val.buy && !orderBookName.includes(val.buy)) {
-          val.buy = 'market maker'
-        } else {}
-        // sell 过滤
+      const matchMap = data.matchMap.map((val) => {
+        if(isUserInExchange) return val
+        let { buy, sell } = val
+        if (val.buy && val.buy === 'E55'){
+          buy = 'TRESSO'
+        }
         if (val.sell && val.sell === 'E55') {
-          val.sell = 'TRESSO'
-        } else if (val.sell &&  !orderBookName.includes(val.sell)) {
-          val.sell = 'market maker'
-        } else {}
+          sell = 'TRESSO'
+        }
+        if(val.buy && !orderBookName.includes(val.buy)){
+          buy = 'MARKET MAKER'
+        }
+        if(val.sell && !orderBookName.includes(val.sell)){
+          sell = 'MARKET MAKER'
+        }
+
+        return { ...val, sell, buy }
       })
+      this.arbData = { ...data, matchMap }
     },
     //获取推送行情
     getSSERealTime(url) {
@@ -774,22 +840,9 @@ export default {
               this.currentSymbolObj = Object.assign(result, v, this.symbolList_quote[result.symbol])
               this.showCurrentPriceInfo(this.currentSymbolObj)
             }
-            // this.getCurrencyData()
           }
           //处理币种列表行情
           if (this.symbolList_quote[result.symbol]) {
-            // let quoteAsset = this.symbolList_quote[result.symbol].quoteAsset
-            // let siteType = this.symbolList_quote[result.symbol].siteType[0]
-            // this.symbolListSelf[siteType][quoteAsset].map((item, i) => {
-            //    if (item.symbol === result.symbol) {
-            //       this.symbolListSelf[siteType][quoteAsset][i] = Object.assign(v, item, result)
-            //       return
-            //    }
-            // })
-            // //计算法币估值
-            // //板块部分双向绑定
-            // this.symbolListSelf = Object.assign({}, this.symbolListSelf)
-            //处理当前
             SSEcache = result
           }
         }
@@ -1040,8 +1093,8 @@ export default {
 
     },
     buyBtn(callbackData) {
-       this.buyPriceInput = callbackData.buyPriceInput;
-       this.buyCountInput = callbackData.buyCountInput;
+      this.buyPriceInput = callbackData.buyPriceInput;
+      this.buyCountInput = callbackData.buyCountInput;
       window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
       if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
         //暂停交易
@@ -1320,12 +1373,12 @@ export default {
     },
     submitPassWord() {//提交交易密码页面
       if (this.openTradePassword && this.showPassWordPage) {
-          if (this.exchangePassWord == null || this.exchangePassWord.length < 6) {
-            this.$Notice.warning({
-                title: this.$t('bbjyInputPassword'),
-            });
-            return false
-          }
+        if (this.exchangePassWord == null || this.exchangePassWord.length < 6) {
+          this.$Notice.warning({
+            title: this.$t('bbjyInputPassword'),
+          });
+          return false
+        }
       } else {
           this.exchangePassWord = ""
       }

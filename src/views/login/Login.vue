@@ -80,9 +80,6 @@ import { debuglog } from 'util';
 import {getUrlKeyandEncode} from '@/lib/utils.js'
 import {getBrowserMessage} from "@/lib/utils.js"
 import {geeTest} from '../../../api/usersystem.js'
-
-
-
     export default {
         name:'login',
          metaInfo(){
@@ -256,6 +253,7 @@ import {geeTest} from '../../../api/usersystem.js'
                     }
                 }).catch((error)=>{
                     this.loaded = true;
+                    localStorage.setItem('emailAdderss',this.formValidate.phoneNumber)
                     if(error.data.code==="Cx000024"){
                         this.$router.push('/verfifyEmail')
                     }

@@ -5,7 +5,7 @@
       <div class="buy-sell-common">
         <div>
           <div class="available-container">
-            <Tooltip placement="top" content="One Click Arbitrage">
+            <Tooltip class="tootips" placement="top" content="One Click Arbitrage">
               <div>Arbitrage</div>
             </Tooltip>
             <div class="coinContainer">
@@ -49,9 +49,9 @@
                     :disabled="arbFlag"
                   />
                   <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                  <i
+                  <!-- <i
                     :class="[buy_input_change_Arbitrage?'gbbo_lock':'gbbo_unlock']"
-                  />
+                  /> -->
                   <!-- <div class="currencyInput">
                   ≈ {{buyPriceCurrency | scientificToNumber}}
                   {{currencyName}}
@@ -211,7 +211,7 @@
             </button>
             <!-- 买入按钮 -->
             <button class="mybtn buy-btn" :disabled="buyDisabled" @click="buyBtn" v-else>
-              <span>Global  Best Ask</span>
+              <span>Buy BTC</span>
             </button>
           </div>
         </div>
@@ -313,7 +313,7 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <button class="mybtn sell-btn" :disabled="sellDisabled" @click="sellBtn" v-else>
-              <span>Global Best Bid</span>
+              <span>Sell BTC</span>
             </button>
           </div>
         </div>
@@ -427,7 +427,9 @@ export default {
   watch: {
     arbData(){
       if(this.buy_input_change_Arbitrage){
-        this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+        if(this.arbData.minArb&&this.arbData.maxArb){
+          this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+        }
       } 
     },  
     buyInputPrice() {
@@ -471,10 +473,9 @@ export default {
     this.availableCoin = this.briefInputData.quoteCoinAvailable;
     this.$refs.sellInput.value = this.sellInputPrice;
     this.$refs.buyInput.value = this.buyInputPrice;
-    this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
-    console.log('this.arbData.maxArb',this.briefInputData)
-
-
+    if(this.arbData.minArb&&this.arbData.maxArb){
+      this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+    }
   },
 
   computed: {
@@ -746,6 +747,11 @@ export default {
       justify-content: space-between;
       padding-bottom: 24px;
       height: 45px;
+      .tootips{
+        .ivu-tooltip-inner{
+          font-weight: 300;
+        }
+      }
       .coinContainer{
         position: relative;
         .available-assets{
@@ -1011,11 +1017,11 @@ export default {
         }
       }
       .Arbitrage-btn {
-        background-color: #12869a;
+        background-color: #788390;
         text-align: center;
-        line-height: 30px;
+        line-height: 29px;
         &:hover {
-          background-color: #12869a;
+          background-color: #788390;
         }
       }
       .buy-btn {
