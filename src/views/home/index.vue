@@ -146,7 +146,7 @@
                   GBBO™ connects disjointed, local exchanges into a unified global liquidity pool to provide its traders
                   with:
                </section>
-               <img v-lazy="require('../../assets/images/tresso/gbbotm.png')" style="width: 100%">
+               <img v-lazy="require('../../assets/images/tresso/gbboTM.png')" style="width: 100%">
                <p class="f-14 c-01B2D6 mt-7">This power is not currently available in any single exchange, regardless of
                   size, and only available at Tresso.</p>
             </div>
