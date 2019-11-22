@@ -20,7 +20,7 @@
                <dd>{{arbData.spread|noData|separate}}</dd>
             </dl>
             <dl class="marketAvg">
-               <dt>Market Avg</dt>
+               <dt>Last Price</dt>
                <dd>{{currentInfo.last|noData|separate}}</dd>
             </dl>
             <dl>

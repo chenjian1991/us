@@ -6,6 +6,9 @@ module.exports = {
     commonjs: true,
     es6: true
   },
+  globals: {
+    "$cookies": true
+  },
   'extends': [
     'plugin:vue/essential',
     'eslint:recommended',

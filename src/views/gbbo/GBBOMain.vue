@@ -50,7 +50,7 @@
               :currentSymbolObj="currentSymbolObj">
             </gbbo-histories> -->
             <gbbo-histories
-              :currentSymbolObj="currentSymbolObj">
+              :tradeHistoryArr="tradeHistoryArr">
             </gbbo-histories>
           </div>
         </div>
@@ -58,8 +58,8 @@
       <!-- 当前订单，历史订单 -->
       <div class="gbbomain-order">
         <gbbo-order
-          :myOpenList="myOpenList" 
-          :myCompletedList="myCompletedList" 
+          :myOpenList="myOpenList"
+          :myCompletedList="myCompletedList"
           @cancelMyOrder="cancelMyOrder"
         ></gbbo-order>
       </div>
@@ -171,7 +171,7 @@ const allNowPriceObject = {}//所有币种快照的最新价格的对象
 
 const { search } = window.location
 const urlParamsInExchange = qs.parse(search, { ignoreQueryPrefix: true })
-const isUserInExchange = (!!urlParamsInExchange['publicSystem'] && urlParamsInExchange['publicSystem'] === '9476248')
+const isUserInExchange = (!!urlParamsInExchange.publicSystem && urlParamsInExchange.publicSystem === '9476248')
 
 export default {
   name: 'gbbo',
@@ -319,12 +319,12 @@ export default {
       orderTicketTimer: null,//orderTicket定时器
       updateAt: '',//路总需求 要加这个隐藏字段
       // maxArbitrageList:[],
-      arbData:{},
+      arbData:{}
     }
   },
   created() {
     //可以往data上挂载
-    var ssoProvider = {};
+    const ssoProvider = {};
     //创建实例
     this.exchange = new Exchange(ssoProvider);
     // //登录以后查询资产 挂单 成交记录
@@ -352,19 +352,11 @@ export default {
     this.getSymbolListRealtimeData()
   },
   mounted() {
-    let loginUserId = localStorage.getItem('loginUserId') || this.$route.query.loginUserId;
+    const loginUserId = localStorage.getItem('loginUserId') || this.$route.query.loginUserId;
     if (this.$route.query.loginUserId !== 'null' || this.$route.query.loginUserId !== 'undefined' || this.$route.query.loginUserId !== undefined) {
       localStorage.setItem('loginUserId', loginUserId);
     }
-    this.$store.commit('changeHeaderColor', '#15232C');
-    this.$store.commit('changeFooterColor', '#15232C');
-    // 登录的情况下
-    if ($cookies.get('loginToken') && localStorage.getItem('loginUserId')) {
-      //获取交易密码开关
-      this.$store.dispatch("getTradePassWordStatus");
-    }
     console.log(this.currentSymbol)
-    // console.log(this.arbList)
   },
   filters: {
     formatNumberLength(value) {
@@ -431,6 +423,68 @@ export default {
     }
   },
   methods: {
+    //交易对的交易历史列表
+    updateSymbolHistory() {
+      if (this.WSHistory) {
+        this.WSHistory.close();
+        //清空交易历史
+        this.tradeHistoryArr = [];
+      }
+      this.WSHistory = this.reconnectingWebSocket(`/quote/tradeHistory.ws?symbol=${this.currentSymbolObj.symbol}&least=21`)
+      this.WSHistory.onopen = () => {
+        console.log('history_websocket', '打开')
+      };
+      this.WSHistory.onmessage = (e) => {
+        //每次推送一条记录
+        const result = JSON.parse(e.data);
+        if (result.ping !== undefined) {
+          const pongResponse = {
+            pong: result.ping
+          }
+          this.WSHistory.send(JSON.stringify(pongResponse));
+          return;
+        }
+        //断网重连的问题
+        if (result.code) {
+          return;
+        }
+        this.resetTradeHistoryArr(result)
+      };
+      this.WSHistory.onerror = (e) => {
+        console.log('history_websocket_err', e)
+      };
+      this.WSHistory.onclose = () => {
+        this.WSHistory.close()
+        console.log('history_websocket', '关闭')
+      };
+    },
+    //重置交易历史数组
+    resetTradeHistoryArr(result){
+      const arr = this.tradeHistoryArr;
+      const priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize);
+      const volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize);
+      const obj = {
+        price: bigDecimal.round(result.price, priceLong),
+        volumeData: bigDecimal.round(result.amount, volumeLong),
+        date: moment(result.tradeTime).format("HH:mm:ss"),
+        showColor: result.direction === "buy" ? 1 : -1
+      }
+      //控制数组长度
+      if (arr.length === 40) {
+        arr.unshift(obj);
+        arr.pop();
+      } else {
+        arr.unshift(obj);
+      }
+    },
+    //连接websocket，采用ReconnectingWebSocket库，支持断线重连
+    reconnectingWebSocket(url){
+      const baseURL = window.location.protocol === "http:" ? "ws://" : "wss://"
+      const { host } = window.location
+      return new ReconnectingWebSocket(
+        `${baseURL}${host}${url}`
+      );
+    },
     // 当前分钟时间戳，到秒 10 位
     dateTimeFormat(){
       const curDate = new Date()
@@ -456,7 +510,6 @@ export default {
         const maData = []
         data.forEach((val) => {
           const { high, low, ma, dateTimeStamp } = val
-          // const time = new Date(dateTime).getTime() / 1000
           highData[highData.length] = {
             time: dateTimeStamp,
             value: high
@@ -475,7 +528,6 @@ export default {
           low: lowData,
           ma: maData
         }
-        console.log(res)
       })
     },
     //判断是否展示交易蒙层
@@ -549,6 +601,7 @@ export default {
           // this.isInitPage = true
           this.getGBBODepth()
           this.getMyAssetData()
+          this.updateSymbolHistory()
         }
         // 当有快照驱动时数据变化
         this.getSSERealTime(symbolUrl)
@@ -1040,8 +1093,8 @@ export default {
 
     },
     buyBtn(callbackData) {
-       this.buyPriceInput = callbackData.buyPriceInput;
-       this.buyCountInput = callbackData.buyCountInput;
+      this.buyPriceInput = callbackData.buyPriceInput;
+      this.buyCountInput = callbackData.buyCountInput;
       window._czc.push(["_trackEvent", '币币交易页面', '点击', '买入按钮', 0, 'buyBtn']);
       if (!this.symbolList || JSON.stringify(this.symbolList) == "{}" || !this.symbolList[this.currentSymbol]) {
         //暂停交易
@@ -1320,12 +1373,12 @@ export default {
     },
     submitPassWord() {//提交交易密码页面
       if (this.openTradePassword && this.showPassWordPage) {
-          if (this.exchangePassWord == null || this.exchangePassWord.length < 6) {
-            this.$Notice.warning({
-                title: this.$t('bbjyInputPassword'),
-            });
-            return false
-          }
+        if (this.exchangePassWord == null || this.exchangePassWord.length < 6) {
+          this.$Notice.warning({
+            title: this.$t('bbjyInputPassword'),
+          });
+          return false
+        }
       } else {
           this.exchangePassWord = ""
       }

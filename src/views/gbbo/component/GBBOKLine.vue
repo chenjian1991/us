@@ -66,9 +66,7 @@ export default {
       }
     }
   },
-  created(){
-    
-  },
+  created(){},
   mounted(){
     this.klineInit()
   },
@@ -182,6 +180,7 @@ export default {
     &-btns{
       height: 20px;
       text-align: right;
+      overflow: hidden;
       background: #041D25;
       &__settime{
         display: inline-block;

@@ -53,114 +53,39 @@
 </template>
 
 <script>
-import bigDecimal from 'js-big-decimal' //除法失效
-import moment from 'moment'
 
-import {
-  getDecimalsNum
-} from '@/lib/utils.js'
+import moment from 'moment'
 
 export default {
   data() {
     return {
-      arbitrageIsShow: false,//初始化展示Tab
-      marketsIsShow: true,
-      tradeHistoryArr:[]//交易历史数据
+      arbitrageIsShow: false, //初始化展示Tab
+      marketsIsShow: true
     };
   },
   props:{
-    currentSymbolObj: {
-      type: Object,
-      default: function(){
-        return {
-          symbol:"BTCUSD",
-          priceTickSize:"0.00000001",
-          quantityStepSize:"0.00000001",
-        }
-      },
-      required: true
-    },
+    tradeHistoryArr: {
+      type: Array,
+      default(){
+        return []
+      }
+    }
     // maxArbitrageList:{
     //   type:Array,
     //   default:function(){
     //     return []
     //   },
     //   required: true
-    // }    
+    // }
   },
   methods: {
     showTable(tab) {
       this.marketsIsShow = false;
       this.arbitrageIsShow = false;
       this[tab] = true;
-    },
-    //交易对的交易历史列表
-    updateSymbolHistory() {
-      if (this.WSHistory) {
-        this.WSHistory.close();
-        //清空交易历史
-        this.tradeHistoryArr = [];
-      }
-      this.WSHistory = this.reconnectingWebSocket(`/quote/tradeHistory.ws?symbol=${this.currentSymbolObj.symbol}&least=21`)
-      this.WSHistory.onopen = e => {
-        console.log('history_websocket','打开')
-      };
-      this.WSHistory.onmessage = e => {
-        //每次推送一条记录
-        let result = JSON.parse(e.data);
-        if (result.ping !== undefined) {
-          var pongResponse = {};
-          pongResponse.pong = result.ping;
-          this.WSHistory.send(JSON.stringify(pongResponse));
-          return;
-        }
-        //断网重连的问题
-        if (result.code) {
-          return;
-        }
-        this.resetTradeHistoryArr(result)
-      };
-      this.WSHistory.onerror = e => {
-        console.log('history_websocket_err',e)
-      };
-      this.WSHistory.onclose = () => {
-        this.WSHistory.close()
-        console.log('history_websocket','关闭')
-      };
-    },
-    //重置交易历史数组
-    resetTradeHistoryArr(result){
-      let arr = this.tradeHistoryArr;
-      const priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize);
-      const volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize);
-      let obj = {};
-      obj.price = bigDecimal.round(result.price, priceLong);
-      obj.volumeData = bigDecimal.round(result.amount, volumeLong);
-      obj.date = moment(result.tradeTime).format("HH:mm:ss");
-      obj.showColor = result.direction === "buy" ? 1 : -1;
-      //控制数组长度
-      if (arr.length === 40) {
-        arr.unshift(obj);
-        arr.pop();
-      } else {
-        arr.unshift(obj);
-      }
-    },
-    //连接websocket，采用ReconnectingWebSocket库，支持断线重连
-    reconnectingWebSocket(url){
-      const baseURL = window.location.protocol === "http:" ? "ws://" : "wss://";
-      const host = window.location.host;
-      return new ReconnectingWebSocket(
-        `${baseURL}${host}${url}`
-      );
-    },
-  },
-  watch:{
-    currentSymbolObj(){
-      console.log('enter history')
-      this.updateSymbolHistory()
     }
   },
+  watch:{},
   filters:{
     formatTime (value) {
       if (!value) return ''
@@ -169,9 +94,7 @@ export default {
       return moment(value * 1000).format("HH:mm:ss")
     }
   },
-  beforeDestroy() {
-    this.WSHistory && this.WSHistory.close()
-  }
+  beforeDestroy() {}
 };
 </script>
 
