@@ -126,7 +126,7 @@ import GbboTicker from './component/Ticker'
 import GbboHistories from './component/Histories'
 import CreateOrder from './component/GBBOCreateOrder'
 import GbboRealtime from './component/GBBORealtime'
-import GbboOrder from '../gbbo/component/GBBOOrder'
+import GbboOrder from './component/GBBOOrder'
 
 import {
   getSymbolList_realtime as getSymbolListRealtime,

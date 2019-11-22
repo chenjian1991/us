@@ -67,16 +67,29 @@ export default {
     }
   },
   created(){
-    // this.getHistoryData()
+    
   },
   mounted(){
     this.klineInit()
-    // this.connect()
   },
   methods: {
+    getUTCTime(timeStamp) {
+      const utcTime = new Date(timeStamp)
+      return new Date(
+        utcTime.getUTCFullYear(),
+        utcTime.getUTCMonth(),
+        utcTime.getUTCDate(),
+        utcTime.getUTCHours(),
+        utcTime.getUTCMinutes(),
+        utcTime.getUTCSeconds()
+      ).getTime()
+    },
     // 设置历史数据
     setHistoryData(res) {
       const { high, low, ma } = res
+      // const _high = high.map((val) => ({ ...val, time: this.getUTCTime(val.time) }))
+      // const _low = low.map((val) => ({ ...val, time: this.getUTCTime(val.time) }))
+      // const _ma = ma.map((val) => ({ ...val, time: this.getUTCTime(val.time) }))
       this._areaSeries.setData(high)
       this._extraSeries.setData(low)
       this._barSeries.setData(ma)
@@ -85,6 +98,7 @@ export default {
     updateData(val){
       const { high, low, ma, dateTimeStamp } = val
       // const time = new Date(dateTime).getTime() / 1000
+      // const time = this.getUTCTime(dateTimeStamp)
       this._areaSeries.update({
         time: dateTimeStamp,
         value: high
