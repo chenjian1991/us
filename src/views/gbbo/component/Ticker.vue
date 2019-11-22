@@ -37,7 +37,8 @@
             </dl>
             <dl>
                <dt>24h Volume</dt>
-               <dd>{{currentInfo.hour24Volume|noData|separate}} {{currentInfo.quoteAsset|noData}}</dd>
+               <!-- <dd>{{currentInfo.hour24Volume|noData|separate}} {{currentInfo.quoteAsset|noData}}</dd> -->
+               <dd>{{currentInfo.hour24Volume|noData|separate}}</dd>
             </dl>
          </div>
       </div>
@@ -59,73 +60,73 @@
 </template>
 
 <script>
-   import {
-      getParseFloat,
-   } from "@/lib/utils.js";
+import {
+  getParseFloat
+} from "@/lib/utils.js";
 
-   export default {
-      name: "Ticker",
-      props: {
-         currentInfo: Object,
-         arbData: {
-            type: Object,
-            default: function() {
-               return {};
-            }
-         },
+export default {
+  name: "Ticker",
+  props: {
+    currentInfo: Object,
+    arbData: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
+  filters: {
+    noData(value) {
+      if (!value) return '--'
+      return value
+    },
+    separate(value) {
+      if (typeof value === "number") return getParseFloat(value)
+      return value
+    }
+  },
+  methods:{
+    changeSymbol(name){
+      console.log(name)
+    }
+  },
+  mounted() {
+    // console.log(this.currentInfo)
+  },
+  watch: {
+    currentInfo: {
+      handler(newval) {
+        this.currentInfo = newval
       },
-      filters: {
-         noData: function (value) {
-            if (!value) return '--'
-            return value
-         },
-         separate: function (value) {
-            if (typeof value === "number") return getParseFloat(value)
-            return value
-         },
-      },
-      methods:{
-         changeSymbol(name){
-
-         }
-      },
-      mounted() {
-         // console.log(this.currentInfo)
-      },
-      watch: {
-         currentInfo: {
-            handler(newval) {
-               this.currentInfo = newval
-            },
-            immediate: true
-         },
-         'currentInfo.last':{
-            handler(newval) {
-               this.currentInfo.last = newval
-            },
-         },
-         'currentInfo.percent':{
-            handler(newval) {
-               this.currentInfo.percent = newval
-            },
-         },
-         'currentInfo.high':{
-            handler(newval) {
-               this.currentInfo.high = newval
-            },
-         },
-         'currentInfo.low':{
-            handler(newval) {
-               this.currentInfo.low = newval
-            },
-         },
-         'currentInfo.hour24Volume':{
-            handler(newval) {
-               this.currentInfo.hour24Volume = newval
-            },
-         },
-      },
-   }
+      immediate: true
+    },
+    'currentInfo.last':{
+      handler(newval) {
+        this.currentInfo.last = newval
+      }
+    },
+    'currentInfo.percent':{
+      handler(newval) {
+        this.currentInfo.percent = newval
+      }
+    },
+    'currentInfo.high':{
+      handler(newval) {
+        this.currentInfo.high = newval
+      }
+    },
+    'currentInfo.low':{
+      handler(newval) {
+        this.currentInfo.low = newval
+      }
+    },
+    'currentInfo.hour24Volume':{
+      handler(newval) {
+        this.currentInfo.hour24Volume = newval
+      }
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
    @import '../../../assets/css/common.less';

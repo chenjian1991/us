@@ -80,7 +80,7 @@ export default {
         {
           name:"Ashu Swami",
           position:"Chief Technology Officer and Co-Founder",
-          experience:"Previously, Ashu headed an SPV of Quadeye Securities which pioneered and traded mining swaps, operated cloud mining data centers, and managed a mining investment fund.",
+          experience:"Previously, Ashu led a high-frequency trading business at Morgan Stanley, and was a Chief Advisor on blockchain initiatives to Fortune 50 companies such as Intel.",
           alpha:require("../../assets/images/about/Ashu Swami.png"),
         },
         {
@@ -133,7 +133,7 @@ export default {
         },
         {
           name:"Amit Khandelwal",
-          position:"Head of Engineering for Market Data",
+          position:"Head of Execution Services",
           experience:"Prior to joining Tresso, Amit was Technical Product Manager of Tower Research Capital. He has also held roles in top-tier investment banks such as Lehman Brothers and Credit Suisse, and elite trading firms including Tower Research Capital and Knight Capital Group.",
           alpha:require("../../assets/images/about/Amit Khandelwal for WEB.jpg"),
         },

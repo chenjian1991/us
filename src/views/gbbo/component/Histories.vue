@@ -29,7 +29,7 @@
               <td>{{v.priceSubtract}}</td>
               <td>{{v.lowEx}}</td>
               <td>{{v.highEx}}</td>
-              <td>{{v.dateTime | formatTime}}</td>
+              <td>{{v.dateTimeStamp | formatTime}}</td>
             </tr>
           </tbody>
         </table>
@@ -165,12 +165,13 @@ export default {
     formatTime (value) {
       if (!value) return ''
       // 2019-11-14T11:52:46.063+0000
-      return value.slice(11,19)
+      // return value.slice(11,19)
+      return moment(value).format("HH:mm:ss")
     }
   },
   beforeDestroy() {
     this.WSHistory && this.WSHistory.close()
-  },
+  }
 };
 </script>
 
