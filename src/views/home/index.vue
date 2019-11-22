@@ -522,7 +522,7 @@
                const domain = document.domain;
                let socket = null
                if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-                  socket = new SockJS('https://' + domain + '/xchange/marketdata');
+                  socket = new SockJS('https://' + domain + '/echart/xchange/marketdata');
                } else {
                   socket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
                }
