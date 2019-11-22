@@ -152,7 +152,7 @@
             </div>
             <div slot="right" class="mt-lg-3 p-5 p-lg-0 pl-lg-5">
                <div class="gbboTM mb-7 t-l" v-for="(item,i) in gbboTMList" :key="i">
-                  <img v-lazy="require('../../assets/images/tresso/checked.png')" class="gbboTM-img mr-4">
+                  <img src="../../assets/images/tresso/checked.png" class="gbboTM-img mr-4">
                   <dl class="d-ib gbboTM-dl">
                      <dt class="f-18 f-w-5 c-fff mb-2">{{item.title}}</dt>
                      <dd class="f-14 c-B9C9D6 gbboTM-dd">{{item.des}}</dd>
