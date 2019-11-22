@@ -169,6 +169,7 @@ export default {
 <style lang="less">
   .gbboline{    
     &-btns{
+      height: 20px;
       text-align: right;
       background: #041D25;
       &__settime{
