@@ -45,8 +45,11 @@
             :kLineData="kLineData">
           </gbbo-kline>
           <div class="gbbomain-realtime__line-history">
-            <gbbo-histories
+            <!-- <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
+              :currentSymbolObj="currentSymbolObj">
+            </gbbo-histories> -->
+            <gbbo-histories
               :currentSymbolObj="currentSymbolObj">
             </gbbo-histories>
           </div>
@@ -315,7 +318,7 @@ export default {
       sellRangeValue: 0,
       orderTicketTimer: null,//orderTicket定时器
       updateAt: '',//路总需求 要加这个隐藏字段
-      maxArbitrageList:[],
+      // maxArbitrageList:[],
       arbData:{},
     }
   },
@@ -592,13 +595,13 @@ export default {
           const params = JSON.stringify({ symbol:"BTCUSD", interval:"MINUTE_1" })
           this.arbStompClient.send("/echart/app/summarized.ws", {}, params)
           // 最大价差记录
-          this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
-            if (message.body) {
-              // console.log(this.maxArbitrageList)
-              // this.maxArbitrageList = JSON.parse(message.body)
-              this.getMaxArbitrageList(JSON.parse(message.body))
-            }
-          });
+          // this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
+          //   if (message.body) {
+          //     // console.log(this.maxArbitrageList)
+          //     // this.maxArbitrageList = JSON.parse(message.body)
+          //     this.getMaxArbitrageList(JSON.parse(message.body))
+          //   }
+          // });
           // 价差
           this.arbStompClient.subscribe(`/topic/arb/${this.currentSymbol}`, (message) => {
             if (message.body) {
@@ -679,26 +682,26 @@ export default {
       }
     },
     // 价差记录
-    getMaxArbitrageList(data) {
-      const maxArbitrageData = data.map((val) => {
-        if(isUserInExchange) return val
-        let { highEx, lowEx } = val
-        if (val.highEx && val.highEx === 'E55') {
-          highEx = 'TRESSO'
-        }
-        if(val.lowEx && val.lowEx === 'E55'){
-          lowEx = 'TRESSO'
-        }
-        if (val.highEx && !orderBookName.includes(val.highEx)) {
-          highEx = 'MARKET MAKER'
-        }
-        if(val.lowEx && !orderBookName.includes(val.lowEx)) {
-          lowEx = 'MARKET MAKER'
-        }
-        return { ...val, highEx, lowEx }
-      })
-      this.maxArbitrageList = maxArbitrageData
-    },
+    // getMaxArbitrageList(data) {
+    //   const maxArbitrageData = data.map((val) => {
+    //     if(isUserInExchange) return val
+    //     let { highEx, lowEx } = val
+    //     if (val.highEx && val.highEx === 'E55') {
+    //       highEx = 'TRESSO'
+    //     }
+    //     if(val.lowEx && val.lowEx === 'E55'){
+    //       lowEx = 'TRESSO'
+    //     }
+    //     if (val.highEx && !orderBookName.includes(val.highEx)) {
+    //       highEx = 'MARKET MAKER'
+    //     }
+    //     if(val.lowEx && !orderBookName.includes(val.lowEx)) {
+    //       lowEx = 'MARKET MAKER'
+    //     }
+    //     return { ...val, highEx, lowEx }
+    //   })
+    //   this.maxArbitrageList = maxArbitrageData
+    // },
     // 价差列表
     getArbData(data) {
       const matchMap = data.matchMap.map((val) => {
