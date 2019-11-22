@@ -58,13 +58,13 @@
                         <span class="f-16 c-fff f-w-6">{{gbbo.amount.toFixed(8)}}</span>
                      </div>
                      <div class="item">
-                        <span class="f-16 c-E83160 mr-4">{{gbbo.buyPrice}}</span>
-                        <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
+                        <span class="f-16 c-E83160 mr-4">{{gbbo.sellPrice}}</span>
+                        <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
                         <p class="f-14 c-8996A2 f-w-5">< Markets Avg {{sellDiffAvg|compare}}</p>
                      </div>
                      <div class="item">
-                        <span class="f-18 c-00A077 mr-4">{{gbbo.sellPrice}}</span>
-                        <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
+                        <span class="f-18 c-00A077 mr-4">{{gbbo.buyPrice}}</span>
+                        <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
                         <p class="f-14 c-8996A2 f-w-5">> Market Avg {{buyDiffAvg|compare}}</p>
                      </div>
                   </li>
@@ -76,12 +76,12 @@
                         <span class="f-16 c-fff f-w-6">{{gbbo.amount}}</span>
                      </div>
                      <div class="item">
-                        <span class="f-16 c-E83160 mr-4">{{gbbo.buyPrice}}</span>
-                        <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
+                        <span class="f-16 c-E83160 mr-4">{{gbbo.sellPrice}}</span>
+                        <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
                      </div>
                      <div class="item">
-                        <span class="f-18 c-00A077 mr-4">{{gbbo.sellPrice}}</span>
-                        <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
+                        <span class="f-18 c-00A077 mr-4">{{gbbo.buyPrice}}</span>
+                        <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
                      </div>
                   </li>
                </ul>
@@ -124,12 +124,12 @@
                <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
                <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
                <Col span="6" class="t-r">
-                  <p class="f-16 f-w-6 c-E83160">{{gbbo.buyPrice}}</p>
-                  <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
+                  <p class="f-16 f-w-6 c-E83160">{{gbbo.sellPrice}}</p>
+                  <p class="f-12 f-w-5 c-8996A2">{{gbbo.sell|marketName}}</p>
                </Col>
                <Col span="6" class="t-r">
-                  <p class="f-16 f-w-6 c-00A077">{{gbbo.sellPrice}}</p>
-                  <p class="f-12 f-w-5 c-8996A2">{{gbbo.sell|marketName}}</p>
+                  <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
+                  <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
                </Col>
             </Row>
          </div>
