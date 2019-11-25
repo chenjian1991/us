@@ -51,7 +51,7 @@
                         </li>
                         <li
                            class="nav-item u-header__nav-item">
-                           <router-link class="btn btn-sm btn-primary transition-3d-hover d-inline-block register-btn"
+                           <router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn"
                                         to='/register'>Join the Beta
                            </router-link>
                         </li>
