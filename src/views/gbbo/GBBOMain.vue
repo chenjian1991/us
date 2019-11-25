@@ -210,25 +210,25 @@ export default {
       isSetTradePasswrod: false,
       //2019性能优化-左侧币种选择栏
       siteName: 'B',
-      siteIndexNumber: 0,//站点序号 数字
-      quoteIndexName: '',//计价币种tab页签 币种名称 字符串格式
-      currentQuoteCoinName: '',//左侧币种列表计价资产币
+      siteIndexNumber: 0, //站点序号 数字
+      quoteIndexName: '', //计价币种tab页签 币种名称 字符串格式
+      currentQuoteCoinName: '', //左侧币种列表计价资产币
       //左侧币种选择栏
-      isShowMainBoard: true,//切换主板 自选
-      searchCoin: '',//币种搜索
-      markSymbolArr: [],//自选币种列表
+      isShowMainBoard: true, //切换主板 自选
+      searchCoin: '', //币种搜索
+      markSymbolArr: [], //自选币种列表
       currentSymbol: '', //当前行情交易对
-      currentSymbolObj: {},//当前行情+交易对的对象
+      currentSymbolObj: {}, //当前行情+交易对的对象
       currentInfo: {}, //当前交易对的基本信息集合
       isLogin: this.$store.state.app.isLogin || false,
       tradeHistoryArr: [], //交易历史列表
       pageKeyword: this.$t(this.$route.meta.keywords),
       pageDescription: this.$t(this.$route.meta.description),
       //页面初始化
-      symbolList: {},//交易接口的symbolList 接口
-      symbolList_quote: {},//行情快照需要的symboList
+      symbolList: {}, //交易接口的symbolList 接口
+      symbolList_quote: {}, //行情快照需要的symboList
       symbolListSelf: {},
-      quoteWS: null,//行情websocket推送
+      quoteWS: null, //行情websocket推送
       klineWS: null,
       noPadding: '--',
       // currentQuoteCoin: 0, //选中的计价资产
@@ -238,14 +238,14 @@ export default {
       tradeHistoryList: [], //快照交易历史
       // isShowCoinLink: true,//石否现实币种详情链接
       // coinInfoLink: '',//币种详情链接
-      currencyName: '',//当前的法币名称
-      currencyRate: 1,//当前法币的比率
+      currencyName: '', //当前的法币名称
+      currencyRate: 1, //当前法币的比率
       currentSymbolRate: 1, //当前交易对 对USD的系数
       // buyPriceCurrency:"--",//买入价格法币估值
       // sellPriceCurrency:"--",
-      symbolCurrency: "--",//当前交易对法币估值
+      symbolCurrency: "--", //当前交易对法币估值
       // ****盘口****
-      isShowDepth: 1,//1显示盘口 2为交易历史
+      isShowDepth: 1, //1显示盘口 2为交易历史
       // isInitPage: true,//第一次进入页面 展示盘口的买入1 卖出1
       depthListTimer: null,
       depthPageWidth: 100,
