@@ -531,7 +531,7 @@ export default {
    aqzxPhoneExplain: "Used to withdraw, retrieve password, change security settings, and verify while managing API.",
    aqzxPhoneExplaintwo: 'Used to promote the withdraw amount, And for retrieving account information.',
    交易密码失效: 'Trading password Validity',
-   仅应用于币币交易: 'Vaild for Crypto-to-Crypto Trade',
+   仅应用于币币交易: 'Enter Trading Password',
    每两小时输入: 'Every 2 hours',
    不输入: 'Never',
    safeVerify: 'Security Verification',
