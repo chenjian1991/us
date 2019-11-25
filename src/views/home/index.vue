@@ -10,7 +10,7 @@
           conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest
           opportunities to win. All in a single account.
         </section>
-        <router-link to='/register' class="btn btn-sm btn-primary transition-3d-hover button bgc-01B2D6 f-14 mt-7">
+        <router-link to='/register' class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7">
           Join the Beta
         </router-link>
       </div>
@@ -244,7 +244,7 @@
         <h3 class="f-36 c-d-black f-w t-c">Want more efficient trading?</h3>
         <p class="f-18 c-d-gray mt-3">Tresso is currently in closed beta. Sign up now to be first on the list.</p>
         <router-link to='/register'
-                     class="btn btn-sm btn-primary transition-3d-hover button bgc-01B2D6 f-14 mt-7 border-0">
+                     class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7 border-0">
           Join the Beta
         </router-link>
       </div>
