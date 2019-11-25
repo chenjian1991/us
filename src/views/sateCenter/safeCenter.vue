@@ -84,10 +84,10 @@
                             <router-link to='/OriginTradePassword?origin=safecenter' v-if="!setTradingPassword" style="background:#12869a;margin-top:10px;" class="btn btn-xs btn-primary transition-3d-hover mr-1" href="#">{{$t('aqzxset')}}</router-link>
                             <router-link to='/OriginTradePassword?origin=safecenter' v-else style="background:#12869a;margin-top:10px;" class="btn btn-xs btn-primary transition-3d-hover mr-1" href="#">{{$t('aqzxModify')}}</router-link>
                             <p class="font-size-1 mb-0 mt-2" v-if="setTradingPassword" >
-                                 <span class="trading_pass">
+                                 <!-- <span class="trading_pass">
                                    {{$t('交易密码失效')}}
-                                 </span>
-                                 <span class="pass_tips">{{$t('仅应用于币币交易')}}</span>
+                                 </span> -->
+                                 <div class="pass_tips">{{$t('仅应用于币币交易')}}</div>
                                  <RadioGroup @on-change='passwordSetTime' v-model="switchState">
                                              <Radio label="true">
                                                    <span >{{$t('每两小时输入')}}</span>
