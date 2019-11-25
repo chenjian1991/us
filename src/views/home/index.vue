@@ -29,7 +29,7 @@
                   <img src="../../assets/images/tresso/right-icon.png" alt="" class="img" v-show="!turn">
                 </div>
               </div>
-              <span class="symbol">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
+              <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
               <span class="desc">Max Arbitrage:</span>
               <span class="f-20 f-w-6 c-01B2D6 mr-4">{{gbboList.maxArb|compare}}</span>
               <router-link :to="{path:'exchange',query:{symbol:symbol}}"
@@ -42,7 +42,7 @@
               <span class="f-18 c-00A077 price">{{gbboList.avgPrice|separate}}</span>
               <!--<span class="change change-up">{{gbboList.avgChange}}</span>-->
               <span class="desc">24h Vol:</span>
-              <span class="symbol">{{gbboList.vol|separate}}</span>
+              <span class="symbol c-DBE8F2">{{gbboList.vol|separate}}</span>
             </div>
           </div>
           <ul class="list" v-show="turn">
@@ -51,19 +51,19 @@
             </li>
             <li v-for="(gbbo,i) of quoteList" :key="gbbo.id" v-show="i===0" class="bgc-131A21">
               <div class="item">
-                <p class="f-20 c-01B2D6">{{gbbo.arb|compare}}</p>
+                <p class="f-20 c-01B2D6 f-w-5">{{gbbo.arb|compare}}</p>
                 <p class="f-14 c-8996A2 f-w-5">Est Return：{{gbboList.avgChange|compare}}</p>
               </div>
               <div class="item">
-                <span class="f-16 c-fff f-w-6">{{gbbo.amount.toFixed(8)}}</span>
+                <span class="f-16 c-DBE8F2 f-w-5">{{gbbo.amount.toFixed(8)}}</span>
               </div>
               <div class="item">
-                <span class="f-16 c-E83160 mr-4">{{gbbo.sellPrice}}</span>
+                <span class="f-16 c-E83160 f-w-5 mr-4">{{gbbo.sellPrice}}</span>
                 <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
                 <p class="f-14 c-8996A2 f-w-5">< Markets Avg {{sellDiffAvg|compare}}</p>
               </div>
               <div class="item">
-                <span class="f-18 c-00A077 mr-4">{{gbbo.buyPrice}}</span>
+                <span class="f-18 c-00A077 f-w-5 mr-4">{{gbbo.buyPrice}}</span>
                 <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
                 <p class="f-14 c-8996A2 f-w-5">> Market Avg {{buyDiffAvg|compare}}</p>
               </div>
@@ -71,17 +71,17 @@
             <li v-for="(gbbo,i) of quoteList" :key="gbbo.id" v-show="i!==0"
                 :class="i%2!==0?'bgc-19232C':'bgc-131A21'">
               <div class="item">
-                <p class="f-20 c-01B2D6">{{gbbo.arb|compare}}</p>
+                <p class="f-20 c-01B2D6 f-w-5">{{gbbo.arb|compare}}</p>
               </div>
               <div class="item">
-                <span class="f-16 c-fff f-w-6">{{gbbo.amount}}</span>
+                <span class="f-16 c-DBE8F2 f-w-5">{{gbbo.amount}}</span>
               </div>
               <div class="item">
-                <span class="f-16 c-E83160 mr-4">{{gbbo.sellPrice}}</span>
+                <span class="f-16 c-E83160 f-w-5 mr-4">{{gbbo.sellPrice}}</span>
                 <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
               </div>
               <div class="item">
-                <span class="f-18 c-00A077 mr-4">{{gbbo.buyPrice}}</span>
+                <span class="f-18 c-00A077 f-w-5 mr-4">{{gbbo.buyPrice}}</span>
                 <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
               </div>
             </li>
@@ -750,7 +750,6 @@
           margin-right: 20px;
           .f-20;
           .f-w-6;
-          .c-fff;
         }
         .price {
           margin-right: 30px;
