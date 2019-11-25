@@ -84,9 +84,9 @@ const router = new Router({
       {
          path: '/kyc',
          name: 'kyc',
-         // beforeEnter: (to, from, next) => {
-         //    checkSSOToken(to, next)
-         // },
+         beforeEnter: (to, from, next) => {
+            checkSSOToken(to, next)
+         },
          meta: {
             title: 'KYCTitle'
          },
