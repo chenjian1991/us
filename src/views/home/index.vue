@@ -680,9 +680,11 @@
     }
 
     .top {
-      background: url("../../assets/images/tresso/banner.png") top center no-repeat;
+      background: url("../../assets/images/tresso/banner.png") no-repeat;
+      background-position: center;
       background-size: cover;
-      height: 530px;
+
+      min-height: 530px;
       .top-desc {
         max-width: 750px;
       }
