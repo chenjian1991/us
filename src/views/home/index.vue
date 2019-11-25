@@ -554,7 +554,6 @@
       },
       // 计算平均价
       getAvgPrice(data) {
-        console.log(data.ma)
         this.gbboList.avgPrice = data.ma
 
         //每个交易所的value的数组

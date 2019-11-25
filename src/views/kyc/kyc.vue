@@ -555,7 +555,7 @@
 
   import {Exchange} from '@/interface/exchange.js'
   import {
-    queryUserInfo, identifySubmit, identifyUpdate, identifyQuery, uploadImg, getPhoto,
+    queryUserInfo, identifySubmit, identifyUpdate, identifyQuery, uploadImg, getPhoto, getCountry, getState
   } from '_api/balances.js'
   import {
     identifyPhoto,
@@ -571,7 +571,7 @@
   import {
     onlyInputNumAndPoint
   } from '@/lib/utils.js'
-  import {state, country, goal, source, occupation} from './state_country.js'
+  import {goal, source, occupation} from './state_country.js'
 
   export default {
     name: "kyc",
@@ -590,8 +590,8 @@
         isUS: false,
         loginToken: $cookies.get('loginToken'),
 
-        state: state,
-        country: country,
+        state: [],
+        country: [],
         goal: goal,
         source: source,
         occupation: occupation,
@@ -1386,6 +1386,17 @@
 
       },
     },
+    beforeMount() {
+      getCountry().then(value => {
+        console.log(value)
+        this.country = value
+      })
+      getState().then(value => {
+        console.log(value)
+
+        this.state = value
+      })
+    },
     mounted() {
       let ssoProvider = {};
       //创建实例
@@ -1396,6 +1407,7 @@
       };
       this.getUserInfo(this.loginToken)
       this.stepTwoForm.idType = this.idType[0].value
+
     }
   }
 </script>
