@@ -451,7 +451,7 @@ export default {
    Cx000002: 'Invalid email address format',
    Cx000003: 'Invalid Recaptcha',
    Cx000004: 'For security purposes, no withdrawals are permitted for 24 hours following any changes to your account security, including password resets.',
-   Cx000005: 'User already exists',
+   Cx000005: 'email has already been used',
    Cx000006: "Username already exists",
    Cx000007: 'Invalid Referral ID',
    Cx000008: 'Text message verification error',
