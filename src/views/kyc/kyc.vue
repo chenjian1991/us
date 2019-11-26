@@ -581,11 +581,11 @@
         showHeader: true,
 
         //pc
-        showStep1: true,
+        showStep1: false,
         showStep2: false,
-        showStep3: false,
+        showStep3: true,
         showStep4: false,
-        currentStep: 1,
+        currentStep: 3,
         stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
         isUS: false,
         loginToken: $cookies.get('loginToken'),
@@ -819,7 +819,6 @@
           if (res.data.length) {
             const formJson = res.data[0].data
             const identifyState = res.data[0]['thirdState']
-            console.log(identifyState)
             if (identifyState === 'INIT' || identifyState === 'FAIL') {
               this.formJson = formJson
               this.stepTwoForm = {
@@ -887,17 +886,13 @@
         })
       },
       changeFile(e) {
+        this.file = {}
         let file = e.target.files[0]
         let param = new FormData() // 创建form对象
         param.append('file', file)// 通过append向form对象添加数据
         param.append('userId', this.userId)// 通过append向form对象添加数据
 
         uploadImg(this.loginToken, param).then(res => {
-          this.getPubUrl(res.result)
-        })
-      },
-      getPubUrl(key) {
-        getPhoto(this.loginToken, {'userId': this.userId, key: key}).then(res => {
           this.file = {filePath: res.result, fileName: res.result}
         })
       },
@@ -951,8 +946,6 @@
             }
           })
         } catch (message) {
-          console.log(message)
-
           this.$Message.warning(this.$t(message));
         }
       },
@@ -1153,13 +1146,10 @@
       beforeUploadFront(file) {
         this.uploadList = this.$refs.upload.fileList;
         let size = file.size / 1024000;
-        console.log(size)
         if (size > 1) {
           let _that = this;
           this.photoCompress(file, {quality: 0.6}, function (base64Codes) {
             _that.convertBase64UrlToBlob(base64Codes)
-            console.log(_that.convertBase64UrlToBlob(base64Codes).size)
-
           })
         }
 
@@ -1388,12 +1378,9 @@
     },
     beforeMount() {
       getCountry().then(value => {
-        console.log(value)
         this.country = value
       })
       getState().then(value => {
-        console.log(value)
-
         this.state = value
       })
     },
