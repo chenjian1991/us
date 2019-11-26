@@ -13,11 +13,11 @@
          <div class="d-ib">
             <dl class="arb">
                <dt>Max Arbitrage</dt>
-               <dd>{{arbData.maxArb|noData|separate}}</dd>
+               <dd>{{arbData.maxArb|noData}}</dd>
             </dl>
             <dl class="arb">
                <dt>Spread</dt>
-               <dd>{{arbData.spread|noData|separate}}</dd>
+               <dd>{{arbData.spread|noData}}</dd>
             </dl>
             <dl class="marketAvg">
                <dt>Last Price</dt>
