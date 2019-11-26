@@ -23,6 +23,14 @@ export const getVerifyAddress = (params) => {
    return getApi(verifyAddress, params)
 }
 
+export const getCountry = () => {
+  return getApi('https://oss.55com.io/content/country/55-country.json')
+}
+
+export const getState = () => {
+  return getApi('https://oss.55com.io/content/state/55-state.json')
+}
+
 export const getUserInfo = (params, token) => {
    return getHeaderTokenApi(userInfo, params, token)
 }
