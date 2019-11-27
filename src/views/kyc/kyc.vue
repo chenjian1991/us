@@ -606,7 +606,7 @@
         articleList: ['* please verify that all your information is accurate before submitting',
           'Attention customers, trading is currently only open for U.S customers, you can get ready for trading by proceeding with KYC and we will notify you as soon as trading services in your region become available.',
           'For U.S customers, trading is currently not open for those in Alabama, Alaska, Arkansas, Connecticut, Florida, Georgia, Hawaii, Idaho, Iowa, Kentucky, Louisiana, Massachusetts, Michigan, Mississippi, Nebraska, New Mexico, New York, North Carolina, North Dakota, Oregon, South Dakota, Vermont, Washington. However, you can get ready for trading by proceeding with KYC and we will notify you as soon as trading services in your state become available.',
-          'For users in Texas, New Jersey, Maine, Ohio, Tresso cannot accept fiat deposits from your state at this time but you may still register for an account, deposit, withdrawal and trade cryptocurrency against cryptocurrency. We will be in touch with you if your state becomes available.',
+          'For users in Maine, New Jersey, Ohio, Texas, Tresso cannot accept fiat deposits from your state at this time but you may still register for an account, deposit, withdrawal and trade cryptocurrency against cryptocurrency. We will be in touch with you if your state becomes available.',
         ],
         idType: [
           {label: "newK1DL", value: 'license'},
