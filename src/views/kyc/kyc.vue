@@ -581,11 +581,11 @@
         showHeader: true,
 
         //pc
-        showStep1: false,
+        showStep1: true,
         showStep2: false,
-        showStep3: true,
+        showStep3: false,
         showStep4: false,
-        currentStep: 3,
+        currentStep: 1,
         stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
         isUS: false,
         loginToken: $cookies.get('loginToken'),
@@ -1004,8 +1004,10 @@
       nextStep4(name) {
         try {
           Object.keys(this[name]).map((v) => {
-            if (!this[name][v] || this[name][v] === 'Select One') {
-              throw this.stepFourError[v]
+            if (v !== 'investor') {
+              if (!this[name][v] || this[name][v] === 'Select One') {
+                throw this.stepFourError[v]
+              }
             }
           })
           let stepParams = {}

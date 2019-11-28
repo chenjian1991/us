@@ -396,7 +396,7 @@
          toWithdraw() {//如何提现
             let language = localStorage.getItem("countryLanguage")
             language = language === "zh-CN" ? "zh-CN" : "en-us"
-            let url = `https://55support.zendesk.com/hc/${language.toLowerCase()}/articles/360004916574`;
+            let url = `https://tresso.zendesk.com/hc/en-us/articles/360037500174-How-can-I-withdraw-funds-`;
             window.open(url);
          },
          showBelow() {//切换显示地址
