@@ -1165,7 +1165,7 @@ export default {
    newK1vcode: "Verification code",
    newK1vcodepop: "Verification code is required",
    newK1vcodeWr: "Verification code is incorrect",
-   newK1idC: "Nationality",
+   newK1idC: "Country of Residence",
    newK1idT: "Source of Proof of Identity",
    newK1idNo: "ID Number",
    newK1idNopop: "Please enter your ID number",
