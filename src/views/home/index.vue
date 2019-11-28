@@ -629,6 +629,12 @@
 <style lang="less">
   #home {
     /*tooltip*/
+    .ivu-tooltip-content{
+      background-color: #2A3D4D;
+    }
+    .ivu-tooltip-arrow{
+      border-top-color: #2A3D4D;
+    }
     .ivu-tooltip-inner {
       max-width: none;
       padding: 12px 26px;
