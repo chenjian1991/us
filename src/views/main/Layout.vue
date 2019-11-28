@@ -32,12 +32,13 @@
          return {
             isShowIPModal: true,
             isShowCookiesBox: false,
-            message: 'Attention: Please note that residents of the state of Connecticut, Florida, Texas, Hawaii, Mississippi, New Jersey, Maine, New York, North Carolina, North Dakota, Ohio, South Carolina, Vermont, or Washington are not permitted to trade on tresso.com.',
+            message: 'Attention: Please note that residents of the state of Alabama, Connecticut, Georgia, Hawaii, Idaho, Louisiana, New York, North Carolina, Vermont, or Washington are not permitted to trade on tresso.com. Residents of the state of Florida, Maine, Mississippi, New Jersey, North Dakota, Ohio, South Carolina, or Texas are not permitted to utilize fiat currency on tresso.com.',
          }
       },
       methods: {
          closeIpmodal() {
             this.isShowIPModal = false
+            window.localStorage.setItem('COOKIESMODAL', 'CLOSED')
          },
          closeCookiesBox() {
             this.isShowCookiesBox = false
@@ -51,9 +52,12 @@
       mounted() {
          let cookiesModalFlag = window.localStorage.getItem('COOKIESMODAL')
          if (cookiesModalFlag !== 'CLOSED') {
-            this.isShowCookiesBox = true
+            this.isShowCookiesBox = true;
+            this.isShowIPModal = true;
          } else {
-            this.isShowCookiesBox = false
+            this.isShowCookiesBox = false;
+            this.isShowIPModal = false;
+
          }
       }
    }

@@ -13,15 +13,15 @@
          <div class="d-ib">
             <dl class="arb">
                <dt>Max Arbitrage</dt>
-               <dd>{{arbData.maxArb|noData|separate}}</dd>
+               <dd>{{arbData.maxArb|noData}}</dd>
             </dl>
             <dl class="arb">
-               <dt>Spread</dt>
-               <dd>{{arbData.spread|noData|separate}}</dd>
+               <dt>Max Spread(-)</dt>
+               <dd>{{arbData.spread|noData}}</dd>
             </dl>
             <dl class="marketAvg">
                <dt>Last Price</dt>
-               <dd>{{currentInfo.last|noData|separate}}</dd>
+               <dd>{{currentInfo.last|noData}}</dd>
             </dl>
             <dl>
                <dt>24h Change</dt>
@@ -29,16 +29,16 @@
             </dl>
             <dl>
                <dt>24h High</dt>
-               <dd>{{currentInfo.high|noData|separate}}</dd>
+               <dd>{{currentInfo.high|noData}}</dd>
             </dl>
             <dl>
                <dt>24h Low</dt>
-               <dd>{{currentInfo.low|noData|separate}}</dd>
+               <dd>{{currentInfo.low|noData}}</dd>
             </dl>
             <dl>
                <dt>24h Volume</dt>
-               <!-- <dd>{{currentInfo.hour24Volume|noData|separate}} {{currentInfo.quoteAsset|noData}}</dd> -->
-               <dd>{{currentInfo.hour24Volume|noData|separate}}</dd>
+               <!-- <dd>{{currentInfo.hour24Volume|noData}} {{currentInfo.quoteAsset|noData}}</dd> -->
+               <dd>{{currentInfo.hour24Volume|noData}}</dd>
             </dl>
          </div>
       </div>
