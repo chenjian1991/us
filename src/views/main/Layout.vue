@@ -38,6 +38,7 @@
       methods: {
          closeIpmodal() {
             this.isShowIPModal = false
+            window.localStorage.setItem('COOKIESMODAL', 'CLOSED')
          },
          closeCookiesBox() {
             this.isShowCookiesBox = false
@@ -51,9 +52,12 @@
       mounted() {
          let cookiesModalFlag = window.localStorage.getItem('COOKIESMODAL')
          if (cookiesModalFlag !== 'CLOSED') {
-            this.isShowCookiesBox = true
+            this.isShowCookiesBox = true;
+            this.isShowIPModal = true;
          } else {
-            this.isShowCookiesBox = false
+            this.isShowCookiesBox = false;
+            this.isShowIPModal = false;
+
          }
       }
    }
