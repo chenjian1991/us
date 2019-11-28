@@ -1,14 +1,17 @@
 <template>
   <main class="home home-common" id="home">
     <!--top-->
-    <div class="top bgc1 pb-5">
+    <div class="top bgc-151D24 pb-5">
       <div class="container">
-        <h1 class="c-fff f-w pt-3 pt-lg-0 top-title">Maximize Returns, Minimize Hassle</h1>
+        <h1 class="c-fff f-w pt-3 pt-lg-0 top-title">
+          Superior Trading with GBBO™: Global<br>
+          Best Bid and Offer
+        </h1>
         <section class="c-l-gray f-18 mt-1 top-desc pt-6 pt-lg-0">
-          Tresso’s institutional-grade Global Best Bid and Offer (GBBO™) technology scans the deepest global
-          liquidity pools to deliver the best prices on digital currencies. Coupled with no fees, high-speed
-          conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest
-          opportunities to win. All in a single account.
+          Tresso’s institutional-grade GBBO™ technology scans the deep liquidity pools across the globe to deliver the
+          best prices available from its network of partner nodes. Coupled with high-speed cross-fiat conversion, a
+          seamless single point of execution and no additional fees for USDD* transactions, Tresso gives the expert
+          trader more opportunities to win.
         </section>
         <router-link to='/register' class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7">
           Join the Beta
@@ -32,8 +35,17 @@
               <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
               <span class="desc">Max Arbitrage:</span>
               <span class="f-20 f-w-6 c-01B2D6 mr-4">{{gbboList.maxArb|compare}}</span>
-              <router-link :to="{path:'exchange',query:{symbol:symbol}}"
-                           class="btn btn-sm btn-primary transition-3d-hover trade-btn disabled">
+              <!--<Tooltip placement="top-start" offset="-15 25">-->
+              <!--<router-link :to="{path:'exchange',query:{symbol:symbol}}"-->
+              <!--class="btn btn-sm btn-primary transition-3d-hover trade-btn disabled">-->
+              <!--One-Click Arbitrage-->
+              <!--</router-link>-->
+              <!--<div slot="content" class="c-fff">-->
+              <!--One-Click Arbitrage is under <br> development. Ready in 2020.-->
+              <!--</div>-->
+              <!--</Tooltip>-->
+              <router-link :to="loginToken?{path:'gbbo'}:{path:'login'}"
+                           class="btn btn-sm btn-primary transition-3d-hover trade-btn">
                 One-Click Arbitrage
               </router-link>
             </div>
@@ -137,47 +149,57 @@
     </div>
 
     <!--GBBOTM-->
-    <div class="gbboTM-box pb-11 bgc2">
-      <Rowbox :rowLists="gbboTM" class="pb-5">
-        <div slot="left" class="mt-lg-3 mr-lg-5 p-5 p-lg-0">
-          <h3 class="f-24 c-fff f-w">Global Best Bid & Offer (GBBO™) fuels next-level trading</h3>
-          <section class="c-B9C9D6 f-14 f-w-6 mt-3 mb-11">
-            Building upon the foundations of National Best Bid & Offer that is required in traditional securities
-            markets,
-            GBBO™ connects disjointed, local exchanges into a unified global liquidity pool to provide its traders
-            with:
-          </section>
-          <img v-lazy="require('../../assets/images/tresso/gbboTM.png')" style="width: 100%">
-          <p class="f-14 c-01B2D6 mt-7">This power is not currently available in any single exchange, regardless of
-            size, and only available at Tresso.</p>
-        </div>
-        <div slot="right" class="mt-lg-3 p-5 p-lg-0 pl-lg-5">
-          <div class="gbboTM mb-7 t-l" v-for="(item,i) in gbboTMList" :key="i">
-            <img src="../../assets/images/tresso/checked.png" class="gbboTM-img mr-4">
-            <dl class="d-ib gbboTM-dl">
-              <dt class="f-18 f-w-5 c-fff mb-2">{{item.title}}</dt>
-              <dd class="f-14 c-B9C9D6 gbboTM-dd">{{item.des}}</dd>
-            </dl>
-          </div>
-        </div>
-      </Rowbox>
+    <div class="gbboTM-box pt-11 pb-11 bgc-12191F">
+      <div class="container p-3">
+        <h3 class="f-36 c-FEFFFF f-w-6 t-c">The Power of GBBO</h3>
+        <p class="f-16 f-w-5 c-B9C9D6 mt-6 t-c">Tresso’s proprietary technology, GBBO™, provides access* to many of the
+          deepest global liquidity pools and enables superior trade execution. <br>This power is not currently available
+          in any single exchange, regardless of size, and only available at Tresso.</p>
+        <ul class="mt-5">
+          <li class="gbbo-item t-l pr-6" v-for="(item,i) in gbboTMList" :key="i">
+            <div class="d-f mt-8">
+              <img src="../../assets/images/tresso/checked.png" class="gbboTM-img mr-4">
+              <dl class="d-ib gbboTM-dl">
+                <dt class="f-18 f-w-5 c-fff mb-2">{{item.title}}</dt>
+                <dd class="f-14 c-B9C9D6 gbboTM-dd">{{item.des}}</dd>
+              </dl>
+            </div>
+          </li>
+          <li class="f-14 c-77838F t-r">*Subject to applicable regulations</li>
+        </ul>
+      </div>
     </div>
     <!--Keep more of your margin with FREE trading-->
     <div class="free-box bgc-fff t-c pt-11 pb-11">
       <div class="container p-3">
-        <h3 class="f-36 c-d-black f-w">Keep more of your margin with FREE trading</h3>
+        <h3 class="f-36 c-304454 f-w">Keep more of your margin with FREE trading</h3>
         <div style="width: 100%;overflow-x: scroll" id="free" class="free-scroll">
           <img v-lazy="require('../../assets/images/tresso/trading.png')" class="free-img mt-9">
         </div>
+        <p class="f-14 c-77838F t-l mt-4">**Using smart order routing and matching engine technology, GBBO discovers the
+          best prices attainable from its entire global* network.</p>
       </div>
     </div>
     <!--Why Tresso?-->
-    <div class="pb-11 bgc2">
+    <div class="pb-11 bgc-12191F">
       <Rowbox :rowLists="tresso" class="pl-8 pr-8 pl-lg-0 pr-lg-0">
         <div :slot="item.name" class="tresso mt-4" v-for="(item,i) in tressoList" :key="i">
           <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
             <img v-lazy='item.img' class="tresso-img">
-            <p class="f-20 c-fff mt-6 mb-2 f-w-6">{{item.title}}</p>
+            <p class="f-20 c-fff mt-6 mb-2 f-w-6">{{item.title}}
+              <!--提示-->
+              <Tooltip placement="top-end" offset="10" v-if="i===2">
+                <img src="../../assets/images/tresso/help.png" alt="" width="16" class="ml-1 mb-2">
+                <!--<Icon type="ios-help-circle" class="help-icon c-2A3D4D"/>-->
+                <section slot="content" class="f-w-4 c-FEFFFF">
+                  Tresso offers no fee trading for USDD pairs. The displayed <br>
+                  price may include fees charged by our service providers <br>
+                  and/or market makers. <br>
+                  The fee structure for USDD pairs can be found
+                  <router-link to='/usd_fees'>here</router-link>
+                </section>
+              </Tooltip>
+            </p>
             <section class="f-16 c-B9C9D6 f-w-5">{{item.section}}</section>
           </div>
         </div>
@@ -190,7 +212,7 @@
              v-for="(item,i) in connectList"
              :key="i">
           <img v-lazy='item.img' class="connect-img">
-          <p class="f-20 c-d-black mt-4 mb-2 f-w-6">{{item.title}}</p>
+          <p class="f-20 c-304454 mt-4 mb-2 f-w-6">{{item.title}}</p>
           <section class="f-16 c-d-gray f-w-5">{{item.section}}</section>
         </div>
       </Rowbox>
@@ -207,8 +229,8 @@
               <img src="../../assets/images/tresso/left.png" class="manager-icon" alt="">
             </div>
             <div class="pl-lg-10 pr-lg-10 mt-3 mt-lg-0 p-4 p-lg-0">
-              <h4 class="f-30 c-d-black mb-2 mt-lg-7">Join the Innovation.</h4>
-              <p class="f-16 f-w-5 c-d-black mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
+              <h4 class="f-30 c-304454 mb-2 mt-lg-7">Join the Innovation.</h4>
+              <p class="f-16 f-w-5 c-304454 mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
               <section class="f-16 c-77838F mb-2 f-w-5">
                 Given the maturation of the crypto, token, and digital asset markets, the trading standards and
                 operations found in current exchanges are woefully underdeveloped when compared with those of
@@ -228,7 +250,7 @@
       </div>
     </div>
     <!--PARTNERS-->
-    <div class="partners-box bgc3 pt-lg-11 pb-lg-11">
+    <div class="partners-box bgc-1A232B pt-lg-11 pb-lg-11">
       <div class="container pt-4 pb-4">
         <h3 class="f-36 c-fff f-w t-c">PARTNERS</h3>
         <ul class="p-3 mt-lg-11 partners">
@@ -241,7 +263,7 @@
     <!--trading-->
     <div class="trading-box bgc-fff p-lg-11 t-c pt-5 pb-5">
       <div class="container p-lg-11">
-        <h3 class="f-36 c-d-black f-w t-c">Want more efficient trading?</h3>
+        <h3 class="f-36 c-304454 f-w t-c">Want more efficient trading?</h3>
         <p class="f-18 c-d-gray mt-3">Tresso is currently in closed beta. Sign up now to be first on the list.</p>
         <router-link to='/register'
                      class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7 border-0">
@@ -291,6 +313,7 @@
     },
     data() {
       return {
+        loginToken: $cookies.get('loginToken'),
         symbol: 'BTCUSD',
         turn: true,
         stompClient: null,
@@ -300,7 +323,7 @@
         priceLong: 0,
         quoteList: [],
         quoteWS: null,//行情websocket推送
-        gbboTitle: [{title: 'Arbitrage',}, {title: 'Size',}, {title: 'Best Ask',}, {title: 'Best Bid',}],
+        gbboTitle: [{title: 'Spread (-)',}, {title: 'Size',}, {title: 'Best Ask',}, {title: 'Best Bid',}],
         gbboBase: {
           baseAssets: 'BTC',
           quoteAssets: '/USD',
@@ -332,34 +355,21 @@
             name: 'left',
             img: require('../../assets/images/tresso/tresso1.png'),
             title: 'GBBO™ Technology',
-            section: 'GBBO™ provides best global pricing through smart order routing and matching engine on a global consolidated order book.'
+            section: 'GBBO™ provides best attainable global price** through smart order routing and matching engine on a global consolidated order book.'
           },
           {
             name: 'middle',
             img: require('../../assets/images/tresso/tresso2.png'),
-            title: 'Deepest Liquidity Pools',
-            section: 'Execute unbroken high volume orders via Tresso’s interconnected liquidity pools with the backing of a third party audit system.'
+            title: 'Deepest Attainable Liquidity Pools',
+            section: 'Execute high volume orders via Tresso’s access to deepest attainable liquidity pools.'
           },
           {
             name: 'right',
             img: require('../../assets/images/tresso/tresso3.png'),
-            title: 'Free Trading',
-            section: 'No transaction or withdrawal fees for every user. And never a subscription fee - always FREE to use.'
+            title: 'Free Trading (USDD Pair)',
+            section: 'No transaction, withdrawal fees or subscription fee for every user. What you see is what you pay.'
           },
         ],
-        gbboTM: {
-          title: 'GBBO™ ',
-          default: false,
-          list: [
-            [{
-              num: 6,
-              name: 'left',
-            }, {
-              num: 6,
-              name: 'right',
-            }]
-          ]
-        },
         gbboTMList: [
           {
             title: "DEEPEST LIQUIDITY",
@@ -367,7 +377,7 @@
           },
           {
             title: "BEST GLOBAL PRICES",
-            des: "Using smart order router and matching engine technology, GBBO uncovers the best available (lowest) ask price and the best available (highest) bid price in crypto trading"
+            des: "Using smart order router and matching engine technology, GBBO™ uncovers the best available (lowest) ask price and the best available (highest) bid price in crypto trading"
           },
           {
             title: "CROSS-CURRENCY CONVERSION",
@@ -525,7 +535,7 @@
           if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
             socket = new SockJS('https://' + domain + '/echart/xchange/marketdata');
           } else {
-            socket = new SockJS('http://52.68.13.17:20013/xchange/marketdata');
+            socket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
           }
           this.arbStompClient = Stomp.over(socket);
           this.arbStompClient.debug = null
@@ -542,6 +552,8 @@
               }
             });
             this.arbStompClient.subscribe(`/topic/runtime/${this.symbol}/MINUTE_1`, (message) => {
+              console.log(message)
+
               if (message.body) {
                 this.getAvgPrice(JSON.parse(message.body))
               }
@@ -554,6 +566,7 @@
       },
       // 计算平均价
       getAvgPrice(data) {
+        console.log(data)
         this.gbboList.avgPrice = data.ma
 
         //每个交易所的value的数组
@@ -613,6 +626,23 @@
     },
   }
 </script>
+<style lang="less">
+  #home {
+    /*tooltip*/
+    .ivu-tooltip-content{
+      background-color: #2A3D4D;
+    }
+    .ivu-tooltip-arrow{
+      border-top-color: #2A3D4D;
+    }
+    .ivu-tooltip-inner {
+      max-width: none;
+      padding: 12px 26px;
+      font-size: 14px;
+    }
+  }
+
+</style>
 
 <style lang="less" scoped>
   @import '../../assets/css/common.less';
@@ -651,9 +681,9 @@
     }
     @media screen and (min-width: 768px) {
       .top {
-        padding-top: 138px;
+        padding-top: 80px;
         .top-title {
-          .f-48;
+          .f-40;
         }
       }
 
@@ -689,7 +719,7 @@
       }
     }
     .gbbo {
-      .bgc1;
+      .bgc-151D24;
       .gbbo-title-list {
         width: 100%;
         border-radius: 4px 4px 0 0;
@@ -827,10 +857,12 @@
         height: 24px;
         vertical-align: text-top;
       }
-      .gbboTM {
-        .d-f;
+      .gbbo-item {
+        .d-ib;
+        width: 50%;
       }
       .gbboTM-dl {
+        text-align: left;
         vertical-align: text-top;
       }
       .gbboTM-dd {
@@ -895,7 +927,7 @@
   }
 
   .gbbo-mobile {
-    .bgc1;
+    .bgc-151D24;
     .img {
       width: 17px;
     }
