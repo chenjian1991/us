@@ -2,7 +2,7 @@
   <div class="realtime">
     <div class="realtime-item">
       <div class="realtime-item__header">
-        <div class="arb">Arbitrage</div>
+        <div class="arb">Spread(-)</div>
         <div class="amount">Size</div>
         <div class="sell">Ask</div>
         <div class="buy">Bid</div>
@@ -19,10 +19,10 @@
       </div>
       <div class="realtime-item__footer arb-footer">
         <div>
-          <p>Arbitrage Range</p>
+          <p>Total Arbitrage</p>
           <span
             class="last-arb"
-          >{{arbData.minArb | noData}}~{{arbData.maxArb | noData}}</span>
+          >{{arbData.totalArb | noData}}</span>
         </div>
         <div>
           <p>Total Size</p>
@@ -306,6 +306,7 @@ export default {
         height: 14px;
         line-height: 14px;
         color: #788390;
+        font-weight: 500;
       }
       span {
         padding-right: 8px;
