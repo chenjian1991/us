@@ -115,7 +115,7 @@
                       <span>One Click Arbitrage</span>
                   </button>
                </Tooltip> -->
-               <button class="Arbitrage-btn mybtn"  disabled="true" @click="buyBtn" >
+               <button v-else class="Arbitrage-btn mybtn"  disabled="true" @click="buyBtn" >
                       <span>Coming Soon...</span>
                 </button>
 
