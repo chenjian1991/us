@@ -581,9 +581,9 @@
         showHeader: true,
 
         //pc
-        showStep1: true,
+        showStep1: false,
         showStep2: false,
-        showStep3: false,
+        showStep3: true,
         showStep4: false,
         currentStep: 1,
         stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
@@ -886,15 +886,17 @@
         })
       },
       changeFile(e) {
-        this.file = {}
-        let file = e.target.files[0]
-        let param = new FormData() // 创建form对象
-        param.append('file', file)// 通过append向form对象添加数据
-        param.append('userId', this.userId)// 通过append向form对象添加数据
+        if(e.target.files.length){
+          this.file = {}
+          let file = e.target.files[0]
+          let param = new FormData() // 创建form对象
+          param.append('file', file)// 通过append向form对象添加数据
+          param.append('userId', this.userId)// 通过append向form对象添加数据
 
-        uploadImg(this.loginToken, param).then(res => {
-          this.file = {filePath: res.result, fileName: res.result}
-        })
+          uploadImg(this.loginToken, param).then(res => {
+            this.file = {filePath: res.result, fileName: res.result}
+          })
+        }
       },
       previous() {
         //   调接口 数据回填

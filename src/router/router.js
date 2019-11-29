@@ -13,6 +13,7 @@ import {clearLocalStorage} from '@/config'
 //zmw
 //首页
 const index = () => import('../views/home/index.vue')
+const API = () => import('../views/home/API.vue')
 
 const balances = () => import('../views/newBalances/balances.vue')
 const deposit = () => import('../views/newBalances/deposit.vue')
@@ -100,17 +101,11 @@ const router = new Router({
          redirect: '/home',
          component: Layout,
          children: [
-            // {
-            //    path: '/exchangeGBBO',
-            //    name: 'exchangeGBBO',
-            //    beforeEnter: (to, from, next) => {
-            //       checkSSOToken(to, next)
-            //    },
-            //    meta: {
-            //       title:'HomeTokenExchange'
-            //    },
-            //    component: ExchangeGBBO,
-            // },
+            {
+               path: '/API',
+               name: 'API',
+               component: API,
+            },
             {
                path: '/exchange',
                name: 'exchange',
