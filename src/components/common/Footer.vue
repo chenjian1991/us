@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="footer-info">
-      <div class="footer-info__img">
+      <!-- <div class="footer-info__img">
         <dl class="footer-info__address">
           <dt class="footer-info__title" v-once>{{ whereAbout.title }}</dt>
           <div class="footer-info__subTitle">
@@ -17,6 +17,12 @@
             <p v-for="(val, index) in whereAbout.addressTwo" :key="index.toString()" v-once>{{ val }}</p>
           </dd>
         </dl>
+      </div> -->
+      <div class="footer-info__link">
+        <dl class="footer-info__legal">
+          <dt class="footer-info__title" v-once>{{ learnMore.title }}</dt>
+          <dd class="footer-info__items" v-for="(val, index) in learnMore.content" :key="index.toString()" v-once><a :href="val.link" target="_blank" v-once>{{ val.text }}</a></dd>
+        </dl>
       </div>
       <div class="footer-info__link">
         <dl class="footer-info__legal">
@@ -24,7 +30,18 @@
           <dd class="footer-info__items" v-for="(val, index) in legalTerms.content" :key="index.toString()" v-once><a :href="val.link" target="_blank" v-once>{{ val.text }}</a></dd>
         </dl>
       </div>
-      <div class="footer-info__logo"></div>
+      <div class="footer-info__logoWrap">
+        <div class="footer-info__logoWrap__logo"></div>
+        <div class="footer-info__logoWrap__icon">
+          <a :href="item.link" v-for="(item,index) in iconInfo" :key="index">
+            <img :src="item.img" class="icon_img">
+          </a>
+        </div>
+        <div @click='$router.push("/register")'
+              class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7 border-0 footer-info__logoWrap__btn">
+          Join the Beta
+        </div>
+      </div>
     </div>
     <p class="footer-box">{{ footerTxt }}</p>
   </div>
@@ -53,7 +70,56 @@ export default {
           }
         ]
       },
-      footerTxt: '© 2019-2020 tresso.com All rights reserved'
+      learnMore: {
+        title: 'Learn More',
+        content: [
+          { 
+            text: 'About Tresso',
+            link: 'https://www.tresso.com/about'
+          }, {
+            text: 'Team',
+            link: 'https://www.tresso.com/about'
+          }, {
+            text: 'Careers',
+            link: 'https://www.tresso.com/about'
+          }, {
+            text: 'Fee Structure',
+            link: 'https://www.tresso.com/API'
+          }, {
+            text: 'Institutional Accounts',
+            link: 'javascript:;'
+          }, {
+            text: 'FAQs',
+            link: 'https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ'
+          }, {
+            text: 'Terms & Conditions',
+            link: 'https://www.tresso.com/legal/terms'
+          }
+        ]
+      },
+      iconInfo: [ 
+        {
+          img:require('../common/images/twitter.png'),
+          link:"javascript:;"
+        },
+        {
+          img:require('../common/images/facebook.png'),
+          link:"javascript:;"
+        },
+        {
+          img:require('../common/images/fly.png'),
+          link:"javascript:;"
+        },
+        {
+          img:require('../common/images/robot.png'),
+          link:"javascript:;"
+        },
+        {
+          img:require('../common/images/linkedin.png'),
+          link:"javascript:;"
+        },
+      ],
+      footerTxt: '©2019-2020 Tresso All rights reserved'
     }
   }
 }
@@ -73,9 +139,9 @@ export default {
         height: 171px;
         background: url('./images/footer_img.png') center center no-repeat/100% 100%;
       }
-      &__link{
+      /* &__link{
         width: 110px;
-      }
+      } */
       &__title{
         font-size: 16px;
         color: #fff;
@@ -98,10 +164,31 @@ export default {
           }
         }
       }
-      &__logo{
-        width: 120px;
-        height: 45px;
-        background: url('../../assets/images/tressoHeader/logo.png') center center no-repeat/100% 100%;
+      &__logoWrap{
+        position: relative;
+        &__logo{
+          width: 120px;
+          height: 45px;
+          background: url('../../assets/images/tressoHeader/logo.png') center center no-repeat/100% 100%;
+        }
+        &__icon{
+          margin-top: 30px;
+          .icon_img{
+            width: 14px;
+            height: 14px;
+            margin-right: 12px;
+          }
+        }
+        &__btn{
+          position: absolute;
+          bottom: 0;
+          right: 12px;
+          background-color: #01B2D6;
+          color: #fff;
+          &:hover{
+            color: #fff;
+          }
+        }
       }
       &__subTitle{
         font-size: 14px;
@@ -135,8 +222,11 @@ export default {
         &__title{
           padding-bottom: 20px;
         }
-        &__logo{
+        &__logoWrap{
           margin-top: 41px;
+          &__btn{
+            position: static;
+          }
         }
       }
     }
