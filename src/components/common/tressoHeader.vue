@@ -33,13 +33,9 @@
                 <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
                 </li>
-                <!--<li-->
-                <!--class="nav-item u-header__nav-item header-box ">-->
-                <!--<a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ" target="_blank"-->
-                <!--class="nav-link u-header__nav-link">-->
-                <!--FAQs-->
-                <!--</a>-->
-                <!--</li>-->
+                <li class="nav-item u-header__nav-item header-box">
+                  <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
+                </li>
                 <li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"
                     data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">
                   <router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"
@@ -49,7 +45,7 @@
                   <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu navbar-list" aria-labelledby="pagesMegaMenu" @click="hideList" ref="pagesSubMenu">
                     <li class="hs-has-sub-menu">
                       <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"
-                         class="nav-link u-header__sub-menu-nav-link">
+                         class="nav-link u-header__sub-menu-nav-link" target="_blank">
                         FAQs
                       </a>
                     </li>

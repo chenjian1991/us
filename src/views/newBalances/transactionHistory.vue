@@ -202,7 +202,7 @@
               return h('div', {}, quantity)
             },
             renderHeader: (h) => {
-              return h('div', {}, 'Size')
+              return h('div', {}, 'Amount')
             }
           },
           {
@@ -343,7 +343,7 @@
               return h('div', {}, quantity)
             },
             renderHeader: (h) => {
-              return h('div', {}, 'Size')
+              return h('div', {}, 'Amount')
             }
           },
           {
@@ -412,7 +412,7 @@
               return h('div', {}, quantity)
             },
             renderHeader: (h) => {
-              return h('div', {}, 'Size')
+              return h('div', {}, 'Amount')
             }
           },
           {

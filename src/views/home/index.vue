@@ -3,11 +3,11 @@
     <!--top-->
     <div class="top bgc-151D24 pb-5">
       <div class="container">
-        <h1 class="c-fff f-w pt-3 pt-lg-0 top-title">
-          Superior Trading with GBBO™: Global<br>
-          Best Bid and Offer
+        <h1 class="c-fff f-w-5 pt-3 pt-lg-0 top-title">
+          Superior Trading with GBBO™:<br>
+          Global Best Bid and Offer
         </h1>
-        <section class="c-l-gray f-18 mt-1 top-desc pt-6 pt-lg-0">
+        <section class="c-C7D1D9 f-18 mt-1 top-desc pt-6 pt-lg-0">
           Tresso’s institutional-grade GBBO™ technology scans the deep liquidity pools across the globe to deliver the
           best prices available from its network of partner nodes. Coupled with high-speed cross-fiat conversion, a
           seamless single point of execution and no additional fees for USDD* transactions, Tresso gives the expert
@@ -52,7 +52,6 @@
             <div class="right">
               <span class="desc">Market Avg:</span>
               <span class="f-18 c-00A077 price">{{gbboList.avgPrice|separate}}</span>
-              <!--<span class="change change-up">{{gbboList.avgChange}}</span>-->
               <span class="desc">24h Vol:</span>
               <span class="symbol c-DBE8F2">{{gbboList.vol|separate}}</span>
             </div>
@@ -120,7 +119,7 @@
         <Col span="6" class="f-18 f-w-5 c-00A077">{{gbboList.avgPrice|separate}}</Col>
         <Col span="4" class="f-16 f-w-5 c-01B2D6">{{gbboList.maxArb}}</Col>
         <Col span="6" class="t-r pr-3">
-          <router-link :to="{path:'exchange',query:{symbol:symbol}}"
+          <router-link :to="loginToken?{path:'gbbo'}:{path:'login'}"
                        class="btn btn-sm btn-primary transition-3d-hover mobile-trade-btn disabled">
             One-Click<br>Arbitrage
           </router-link>
@@ -174,7 +173,7 @@
       <div class="container p-3">
         <h3 class="f-36 c-304454 f-w">Keep more of your margin with FREE trading</h3>
         <div style="width: 100%;overflow-x: scroll" id="free" class="free-scroll">
-          <img v-lazy="require('../../assets/images/tresso/trading.png')" class="free-img mt-9">
+          <img v-lazy="require('../../assets/images/tresso/trading.png')" class="free-img mt-9" style="max-height: 390px">
         </div>
         <p class="f-14 c-77838F t-l mt-4">**Using smart order routing and matching engine technology, GBBO discovers the
           best prices attainable from its entire global* network.</p>
@@ -196,7 +195,7 @@
                   price may include fees charged by our service providers <br>
                   and/or market makers. <br>
                   The fee structure for USDD pairs can be found
-                  <router-link to='/usd_fees'>here</router-link>
+                  <router-link to='/usd_fees' class="here">here</router-link>
                 </section>
               </Tooltip>
             </p>
@@ -507,28 +506,6 @@
       },
 
       getSockJS() {
-        // if (this.stompClient === null || !this.stompClient.connected) {
-        //    const domain = document.domain;
-        //    let socket = null
-        //    if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
-        //       socket = new SockJS('https://' + domain + '/xchange/marketdata');
-        //    } else {
-        //       socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata');
-        //    }
-        //    this.stompClient = Stomp.over(socket);
-        //    this.stompClient.debug = null
-        //    this.stompClient.heartbeat.outgoing = 1000;
-        //    this.stompClient.connect({}, () => {
-        //       this.stompClient.subscribe(`/topic/bbo/${this.symbol}`, (message) => {
-        //          if (message.body) {
-        //             this.getAvgPrice(JSON.parse(message.body))
-        //          }
-        //       });
-        //    }, () => {
-        //       console.log('The websocket connet error')
-        //       this.stompClient = null
-        //    });
-        // }
         if (this.arbStompClient === null || !this.arbStompClient.connected) {
           const domain = document.domain;
           let socket = null
@@ -552,8 +529,6 @@
               }
             });
             this.arbStompClient.subscribe(`/topic/runtime/${this.symbol}/MINUTE_1`, (message) => {
-              console.log(message)
-
               if (message.body) {
                 this.getAvgPrice(JSON.parse(message.body))
               }
@@ -566,25 +541,7 @@
       },
       // 计算平均价
       getAvgPrice(data) {
-        console.log(data)
         this.gbboList.avgPrice = data.ma
-
-        //每个交易所的value的数组
-        // const providerBBOMap = Object.values(data.providerBBOMap).filter((v) => {
-        //    if (v.provider !== 'TRESSO') return v
-        // })
-        // let sum = 0
-        // let length = providerBBOMap.length
-        // sum = providerBBOMap.reduce((total, currentValue) => {
-        //    if (currentValue['askLevel'] && currentValue['bidLevel']) {
-        //       return total + currentValue['askLevel']['priceWithFee'] + currentValue['bidLevel']['priceWithFee']
-        //    } else {
-        //       --length
-        //       return total
-        //    }
-        // }, 0)
-
-        // this.gbboList.avgPrice = new BigNumber(sum).dividedBy(length * 2).toFixed(2);
       },
       arb(data) {
         this.gbboList.maxArb = data.maxArb.toFixed(2)
@@ -629,10 +586,10 @@
 <style lang="less">
   #home {
     /*tooltip*/
-    .ivu-tooltip-content{
+    .ivu-tooltip-content {
       background-color: #2A3D4D;
     }
-    .ivu-tooltip-arrow{
+    .ivu-tooltip-arrow {
       border-top-color: #2A3D4D;
     }
     .ivu-tooltip-inner {
@@ -848,6 +805,10 @@
     .tresso {
       .tresso-img {
         width: 60px;
+      }
+      .here {
+        .c-01B2D6;
+        text-decoration: underline !important;
       }
     }
 
