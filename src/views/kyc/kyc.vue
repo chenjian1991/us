@@ -581,9 +581,9 @@
         showHeader: true,
 
         //pc
-        showStep1: false,
+        showStep1: true,
         showStep2: false,
-        showStep3: true,
+        showStep3: false,
         showStep4: false,
         currentStep: 1,
         stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
