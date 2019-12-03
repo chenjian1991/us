@@ -1,5 +1,5 @@
 <template>
-  <div id="tressoHeader">
+  <div id="tressoHeader" class="tressoHeader">
     <!-- ========== HEADER ========== -->
     <header
         id="header"
@@ -13,6 +13,7 @@
             <!-- Logo -->
             <router-link to='/home' class="mr-lg-10">
               <img src="../../assets/images/tressoHeader/logo.png" alt="logo" class="logo-img">
+              <img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">
             </router-link>
             <!-- End Logo -->
             <!-- Responsive Toggle Button -->
@@ -31,28 +32,30 @@
                   <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO™</a>
                 </li>
                 <li class="nav-item u-header__nav-item header-box">
-                  <router-link to='/about' class="nav-link u-header__nav-link">ABOUT</router-link>
-                </li>
-                <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
                 </li>
                 <li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"
                     data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">
                   <router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"
                                to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">
-                    FAQs
+                    ABOUT
                   </router-link>
-                  <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu navbar-list" aria-labelledby="pagesMegaMenu" @click="hideList" ref="pagesSubMenu">
+                  <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu navbar-list"
+                      aria-labelledby="pagesMegaMenu" @click="hideList" ref="pagesSubMenu">
+                    <li class="hs-has-sub-menu">
+                      <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Who we are</router-link>
+                    </li>
+                    <li class="hs-has-sub-menu">
+                      <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Team</router-link>
+                    </li>
+                    <li class="hs-has-sub-menu">
+                      <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Careers</router-link>
+                    </li>
                     <li class="hs-has-sub-menu">
                       <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"
                          class="nav-link u-header__sub-menu-nav-link" target="_blank">
                         FAQs
                       </a>
-                    </li>
-                    <li class="hs-has-sub-menu">
-                      <router-link to='/usd_fees' class="nav-link u-header__sub-menu-nav-link">
-                        Fee Structure
-                      </router-link>
                     </li>
                   </ul>
                 </li>
@@ -78,9 +81,10 @@
                     data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">
                   <router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"
                                to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">
-                    My Account
+                    {{isLogin?email:''}}
                   </router-link>
-                  <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu" @click="hideList" ref="pagesSubMenu">
+                  <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu"
+                      @click="hideList" ref="pagesSubMenu">
                     <!-- <li class="hs-has-sub-menu">
                        <router-link to='Dashboard' class="nav-link u-header__sub-menu-nav-link">
                           Dashboard
@@ -113,6 +117,9 @@
                     </li>
                   </ul>
                 </li>
+                <li class="nav-item u-header__nav-item">
+                  <a href="javascript:;" class="nav-toggle" @click="showMenu=!showMenu"><span></span></a>
+                </li>
               </ul>
             </div>
           </nav>
@@ -120,6 +127,47 @@
         </div>
       </div>
     </header>
+    <Drawer :closable="true" v-model="showMenu">
+      <div class="drawer">
+        <div class="t-c">
+          <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110" class="mb-3">
+          <img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">
+        </div>
+        <ul class="drawer-list" @click="showMenu=false">
+          <li class="drawer-item">
+            <router-link to='/' class="nav-link u-header__nav-link">Home</router-link>
+          </li>
+          <li class="drawer-item">
+            <a class="nav-link u-header__nav-link" @click="gbboHref">GBBO</a>
+          </li>
+          <li class="drawer-item">
+            <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
+          </li>
+          <li class="drawer-item">
+            <router-link to='/about' class="nav-link u-header__nav-link">About Tresso</router-link>
+          </li>
+          <li class="drawer-item">
+            <router-link to='/about' class="nav-link u-header__nav-link">Team</router-link>
+          </li>
+          <li class="drawer-item">
+            <router-link to='/about' class="nav-link u-header__nav-link">Careers</router-link>
+          </li>
+          <li class="drawer-item">
+            <router-link to='/usd_fees' class="nav-link u-header__nav-link">Fee Structure</router-link>
+          </li>
+          <li class="drawer-item">
+            <a href="https://api.tresso.com/" target="_blank" class="nav-link u-header__nav-link">API Documents</a>
+          </li>
+          <li class="drawer-item">
+            <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ" target="_blank"
+               class="nav-link u-header__nav-link">FAQs</a>
+          </li>
+          <li class="drawer-item">
+            <router-link to='/legal/terms' class="nav-link u-header__nav-link">Terms & Conditions</router-link>
+          </li>
+        </ul>
+      </div>
+    </Drawer>
   </div>
 </template>
 
@@ -137,6 +185,8 @@
       return {
         isLogin: false,
         isgbbo: false,
+        email: localStorage.getItem('email'),
+        showMenu: false,
       };
     },
     methods: {
@@ -169,6 +219,7 @@
             userId: localStorage.getItem('loginUserId')
           }, $cookies.get('loginToken')).then(res => {//实名认证
             if (res.data) {
+              localStorage.setItem('email', res.data.email)
               resolve(res.data['identifyState'])
             }
           })
@@ -214,7 +265,7 @@
         // this.$store.dispatch("updateMarkSymbol");
         this.$store.commit("changeLoingStatus", false);
       },
-      hideList(){
+      hideList() {
         this.$refs.pagesSubMenu.style.display = 'none'
       }
     },
@@ -227,6 +278,7 @@
       loginStatus(val, oldVal) {
         if (val) {
           this.isLogin = true;
+          this.getUserInfo().then()
         } else {
           this.isLogin = false;
         }
@@ -274,6 +326,10 @@
 </script>
 <style lang="less">
   #tressoHeader {
+    /*导航*/
+    .js-mega-menu {
+      height: 78px;
+    }
     .nav-item, .u-header__nav-item {
       a {
         color: #fff;
@@ -308,62 +364,150 @@
         color: #77838F;
       }
     }
-    .router-link-exact-active, .router-link-active {
-      /*&:visited {*/
-      /*color: #01B2D6;*/
-      /*}*/
+
+  }
+
+  /*弹出菜单*/
+  .ivu-drawer-wrap {
+    z-index: 1002 !important;
+  }
+
+  .ivu-drawer {
+    width: 300px !important;
+  }
+
+  .ivu-drawer-content {
+    background-color: #1A232B !important;
+    .ivu-drawer-body {
+      padding: 0;
+    }
+    .ivu-drawer-close .ivu-icon-ios-close{
+      font-size: 38px;
+      color: #fff !important;
+    }
+    /*菜单 自定义内容*/
+    .drawer {
+      padding-top: 80px;
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+      .drawer-list {
+        padding-top: 75px;
+        .drawer-item {
+          padding-left: 40px;
+          font-size: 14px;
+          font-weight: 500;
+          a {
+            color: #B9C9D6;
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+      }
     }
   }
 </style>
 <style scoped lang="less">
   @import '../../assets/css/common.less';
 
-  #tressoHeader {
-    width: 100%;
-  }
-
-  .loginBtn:hover {
-    color: #fff !important;
-  }
-
-  a:hover {
-    color: #12869A;
-  }
-
-  .header-box {
-    padding-left: 14px;
-    padding-right: 14px;
-    font-size: 14px;
-
-  }
-
-  .header-a {
-    color: #fff !important;
-  }
-
-  .navbar-left {
-    margin-left: 0;
-  }
-
-  @blue: #01B2D6;
-  .register-btn {
-    color: @blue !important;
-    border: solid 1px @blue;
-    background-color: transparent;
-  }
-
-  .logo-img {
-    width: 110px;
-  }
-
-  .nav-link {
-    font-weight: 500;
-  }
-
   @media (min-width: 976px) {
     .gbbo-header {
       max-width: 1440px;
     }
   }
+
+  #tressoHeader {
+    width: 100%;
+  }
+
+  .tressoHeader {
+    .loginBtn:hover {
+      color: #fff !important;
+    }
+
+    a:hover {
+      color: #12869A;
+    }
+
+    .header-box {
+      padding-left: 14px;
+      padding-right: 14px;
+      font-size: 14px;
+
+    }
+
+    .header-a {
+      color: #fff !important;
+    }
+
+    .navbar-left {
+      margin-left: 0;
+    }
+
+    .register-btn {
+      color: #01B2D6 !important;
+      border: solid 1px #01B2D6;
+      background-color: transparent;
+    }
+
+    .logo-img {
+      display: block;
+      width: 140px;
+      margin-bottom: 13px;
+    }
+
+    .nav-link {
+      font-weight: 500;
+    }
+
+    /*右上角过渡*/
+    .nav-toggle {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      z-index: 12;
+    }
+
+    .nav-toggle:before, .nav-toggle:after, .nav-toggle span {
+      position: absolute;
+      content: "";
+      background: #fff;
+      height: 2px;
+      width: 30px;
+      top: 19px;
+      -webkit-transition: .4s ease;
+      transition: .4s ease;
+      -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+    }
+    .nav-toggle:before {
+      top: 10px;
+    }
+    .nav-toggle:after {
+      top: 28px;
+    }
+    /*过渡后*/
+    /*.nav-opened span {*/
+      /*opacity: 0;*/
+    /*}*/
+    /*.nav-opened:before {*/
+      /*-webkit-transform: rotate(45deg);*/
+      /*-ms-transform: rotate(45deg);*/
+      /*transform: rotate(45deg);*/
+      /*top: 19px;*/
+    /*}*/
+    /*.nav-opened:after {*/
+      /*-webkit-transform: rotate(-45deg);*/
+      /*-ms-transform: rotate(-45deg);*/
+      /*transform: rotate(-45deg);*/
+      /*top: 19px;*/
+
+    /*}*/
+  }
+
 
 </style>
