@@ -109,7 +109,7 @@
                             let code = res.code;
                         }else{
                              _that.show = false;
-                            const TIME_COUNT = 60;
+                            const TIME_COUNT = 120;
                             if(!_that.timer){
                                 _that.count = TIME_COUNT;
                                 _that.show = false;
@@ -133,7 +133,7 @@
               businessPostRequest(outerToken,params,_that){//业务发送验证码
                     postHeaderTokenBodyApi(businessSend,outerToken,params).then((res) =>{
                             _that.show = false;
-                            const TIME_COUNT = 60;
+                            const TIME_COUNT = 120;
                             if(!_that.timer){
                                 _that.count = TIME_COUNT;
                                 _that.show = false;
