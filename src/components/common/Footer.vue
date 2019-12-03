@@ -31,7 +31,10 @@
         </dl>
       </div>
       <div class="footer-info__logoWrap">
-        <div class="footer-info__logoWrap__logo"></div>
+        <a href="https://www.tresso.com">
+          <div class="footer-info__logoWrap__logo"></div>
+        </a>
+        <div class="footer-info__logoWrap__footnote">The digital asset trading platform with best execution</div>
         <div class="footer-info__logoWrap__icon">
           <a :href="item.link" v-for="(item,index) in iconInfo" :key="index">
             <img :src="item.img" class="icon_img">
@@ -84,10 +87,10 @@ export default {
             link: 'https://www.tresso.com/about'
           }, {
             text: 'Fee Structure',
-            link: 'https://www.tresso.com/API'
+            link: 'https://www.tresso.com/usd_fees'
           }, {
-            text: 'Institutional Accounts',
-            link: 'javascript:;'
+            text: 'API Documents',
+            link: 'https://api.tresso.com'
           }, {
             text: 'FAQs',
             link: 'https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ'
@@ -166,10 +169,20 @@ export default {
       }
       &__logoWrap{
         position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;        
         &__logo{
           width: 120px;
           height: 45px;
-          background: url('../../assets/images/tressoHeader/logo.png') center center no-repeat/100% 100%;
+          background: url('./images/logo.png') center center no-repeat/120px 24px;
+          cursor: pointer;
+        }
+        &__footnote{
+          padding: 5px;
+          background-color: #1F2E3B;
+          color: #B9C9D6;
+          font-size: 10px;
         }
         &__icon{
           margin-top: 30px;
