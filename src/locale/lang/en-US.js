@@ -945,7 +945,7 @@ export default {
    newK1AddAgree: "I agree this address is proof of my residency",
    newK1Addtip: "Upload a high resolution photo showing proof of the address you submitted previously. Your proof can be a government issued identity card, utility statement, bank statement, or cell phone bill that shows your address and is dated within 90 days from today.",
    newK1Addsize: "Your photo must either be in JPEG or PNG format and must be less than 1 MB in size.",
-   newK1Subsuccess: "Thank you for submitting you KYC information.",
+   newK1Subsuccess: "Thank you for submitting your KYC information.",
    newK1subtip1: "We will review your application and respond within",
    newK1subtip2: "business days.",
    newK1subtipbutt: "If you have any questions, please email us at <a href='https://tresso.zendesk.com/hc/en-us/requests/new' target='_blank'>contact-us</a>.",
