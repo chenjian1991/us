@@ -2,9 +2,9 @@
   <main id="api" class="api">
     <header class="header">
       <div class="container header-content t-c">
-        <h1 class="f-40 c-fff f-w-5">Spectacular Speed with TRESSO API*</h1>
+        <h1 class="f-40 c-fff f-w-5">Spectacular Speed with GBBO API*</h1>
         <p class="mt-4 desc">
-          In addition to all the advantages of GBBOTM Tresso’s API gives the professional trader the single most
+          In addition to all the advantages of GBBO™’s API gives the professional trader the single most
           important advantage in competitive trading: SPEED
         </p>
         <!--<div class="row d-flex justify-content-center">-->
@@ -19,8 +19,8 @@
             <!--</router-link>-->
           <!--</div>-->
         <!--</div>-->
-        <A href='javascript:void(0)' class="btn btn-sm transition-3d-hover no-bg-btn mr-sm-5">Get Started</A>
-        <a href="https://api.tresso.com/" target="_blank" class="btn btn-sm transition-3d-hover bg-btn">API Documentation</a>
+        <a :href="loginToken?'https://api.tresso.com/':'/login'" class="btn btn-sm transition-3d-hover no-bg-btn mr-sm-5">Get Started</a>
+        <a href="https://api.tresso.com/" class="btn btn-sm transition-3d-hover bg-btn">API Documentation</a>
       </div>
     </header>
     <div class="row row-box">
@@ -65,7 +65,12 @@
 
 <script>
   export default {
-    name: "API"
+    name: "API",
+    data(){
+      return{
+        loginToken: $cookies.get('loginToken'),
+      }
+    }
   }
 </script>
 
