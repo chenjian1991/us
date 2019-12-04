@@ -319,7 +319,8 @@ export default {
       orderTicketTimer: null,//orderTicket定时器
       updateAt: '',//路总需求 要加这个隐藏字段
       // maxArbitrageList:[],
-      arbData:{}
+      arbData:{},
+      _setDepthTime: ''
     }
   },
   created() {
@@ -600,12 +601,21 @@ export default {
         if (firstSymbol) {
           // this.isInitPage = true
           this.getGBBODepth()
+          this.getGBBOArb()
           this.getMyAssetData()
           this.updateSymbolHistory()
         }
         // 当有快照驱动时数据变化
         this.getSSERealTime(symbolUrl)
       })
+    },
+    GBBODepthSetTime(evt, fn){
+      clearTimeout(this._setDepthTime)
+      this._setDepthTime = setTimeout(() => {
+        console.log('reconnect', evt)
+        evt.disconnect()
+        fn.call(this)
+      }, 5000);
     },
     getGBBODepth() {
       if (this.stompClient == null || !this.stompClient.connected) {
@@ -616,13 +626,13 @@ export default {
         } else {
           socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata');
         }
-        
         this.stompClient = Stomp.over(socket);
         this.stompClient.debug = null
         this.stompClient.heartbeat.outgoing = 1000;
         this.stompClient.connect({}, (frame) => {
           this.stompClient.subscribe(`/topic/orderbook/${this.currentSymbol}`, (message) => {
             if (message.body) {
+              this.GBBODepthSetTime(this.stompClient, this.getGBBODepth)
               this.sortOrderBook(JSON.parse(message.body))
             }
           });
@@ -633,6 +643,8 @@ export default {
           this.getGBBODepth()
         });
       }
+    },
+    getGBBOArb(){
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
         const { domain } = document
         let arbSocket = null
@@ -658,11 +670,13 @@ export default {
           // 价差
           this.arbStompClient.subscribe(`/topic/arb/${this.currentSymbol}`, (message) => {
             if (message.body) {
+              this.GBBODepthSetTime(this.arbStompClient, this.getGBBOArb)
               this.getArbData(JSON.parse(message.body))
             }
           });
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
             if(message.body){
+              this.GBBODepthSetTime(this.arbStompClient, this.getGBBOArb)
               this.kLineData = JSON.parse(message.body)
             }
           })
@@ -670,10 +684,9 @@ export default {
           console.log('new Sockjs  error', error)
           this.arbStompClient.disconnect()
           this.arbStompClient = null
-          this.getGBBODepth()
+          this.getGBBOArb()
         });
       }
-
     },
     // 盘口最优ask and bid
     sortOrderBook(data) {

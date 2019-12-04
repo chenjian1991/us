@@ -2,7 +2,7 @@
   <main id="usd_fees" class="usd-fees">
     <header class="bgc-151D24 header pt-2">
       <div class="container">
-        <h1 class="f-46 f-w-5 c-fff pt-10">Fee Stucture</h1>
+        <h1 class="f-46 f-w-5 c-fff pt-10">Fee Structure</h1>
       </div>
     </header>
     <div class="container">
