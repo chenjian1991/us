@@ -18,15 +18,14 @@
                 <Icon  v-else type="md-arrow-dropdown" />
               </div>
               <ul @click="changeCoin($event)" v-if="showCoin" class="available-assets">
-                <li value='quote'> 
+                <li value='quote'>
                   {{currentInfo.quoteAsset}}
                 </li>
-                <li value='base'> 
+                <li value='base'>
                   {{currentInfo.baseAsset}}
                 </li>
               </ul>
             </div>
-              
           </div>
           <div class="trade-msg">
             <div class="price-box">
@@ -87,7 +86,6 @@
                 </div>
               </div>
             </div>
-            
             <div class="totalMoney-label">
               <em>Expect</em>&nbsp;&nbsp;
               <div>
