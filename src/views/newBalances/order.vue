@@ -217,7 +217,7 @@
                      return h('div', {}, quantity)
                   },
                   renderHeader: (h) => {
-                     return h('div', {}, this.$t('bbjyOrderAmount'))
+                     return h('div', {},'Size')
                   }
                },
                {
@@ -354,7 +354,7 @@
                      return h('div', {}, quantity)
                   },
                   renderHeader: (h) => {
-                     return h('div', {}, this.$t('bbjyOrderAmount'))
+                     return h('div', {}, 'Size')
                   }
                },
                {

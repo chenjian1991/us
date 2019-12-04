@@ -16,7 +16,7 @@
                <dd>{{arbData.maxArb|noData}}</dd>
             </dl>
             <dl class="arb">
-               <dt>Spread</dt>
+               <dt>Max Spread(-)</dt>
                <dd>{{arbData.spread|noData}}</dd>
             </dl>
             <dl class="marketAvg">

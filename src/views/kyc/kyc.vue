@@ -581,11 +581,11 @@
         showHeader: true,
 
         //pc
-        showStep1: false,
+        showStep1: true,
         showStep2: false,
-        showStep3: true,
+        showStep3: false,
         showStep4: false,
-        currentStep: 3,
+        currentStep: 1,
         stepList: ['newK1st1', 'newK1st2', 'newK1st3', 'newK1st4'],
         isUS: false,
         loginToken: $cookies.get('loginToken'),
@@ -606,7 +606,7 @@
         articleList: ['* please verify that all your information is accurate before submitting',
           'Attention customers, trading is currently only open for U.S customers, you can get ready for trading by proceeding with KYC and we will notify you as soon as trading services in your region become available.',
           'For U.S customers, trading is currently not open for those in Alabama, Alaska, Arkansas, Connecticut, Florida, Georgia, Hawaii, Idaho, Iowa, Kentucky, Louisiana, Massachusetts, Michigan, Mississippi, Nebraska, New Mexico, New York, North Carolina, North Dakota, Oregon, South Dakota, Vermont, Washington. However, you can get ready for trading by proceeding with KYC and we will notify you as soon as trading services in your state become available.',
-          'For users in Texas, New Jersey, Maine, Ohio, Tresso cannot accept fiat deposits from your state at this time but you may still register for an account, deposit, withdrawal and trade cryptocurrency against cryptocurrency. We will be in touch with you if your state becomes available.',
+          'For users in Maine, New Jersey, Ohio, Texas, Tresso cannot accept fiat deposits from your state at this time but you may still register for an account, deposit, withdrawal and trade cryptocurrency against cryptocurrency. We will be in touch with you if your state becomes available.',
         ],
         idType: [
           {label: "newK1DL", value: 'license'},
@@ -886,15 +886,17 @@
         })
       },
       changeFile(e) {
-        this.file = {}
-        let file = e.target.files[0]
-        let param = new FormData() // 创建form对象
-        param.append('file', file)// 通过append向form对象添加数据
-        param.append('userId', this.userId)// 通过append向form对象添加数据
+        if(e.target.files.length){
+          this.file = {}
+          let file = e.target.files[0]
+          let param = new FormData() // 创建form对象
+          param.append('file', file)// 通过append向form对象添加数据
+          param.append('userId', this.userId)// 通过append向form对象添加数据
 
-        uploadImg(this.loginToken, param).then(res => {
-          this.file = {filePath: res.result, fileName: res.result}
-        })
+          uploadImg(this.loginToken, param).then(res => {
+            this.file = {filePath: res.result, fileName: res.result}
+          })
+        }
       },
       previous() {
         //   调接口 数据回填
@@ -1004,8 +1006,10 @@
       nextStep4(name) {
         try {
           Object.keys(this[name]).map((v) => {
-            if (!this[name][v] || this[name][v] === 'Select One') {
-              throw this.stepFourError[v]
+            if (v !== 'investor') {
+              if (!this[name][v] || this[name][v] === 'Select One') {
+                throw this.stepFourError[v]
+              }
             }
           })
           let stepParams = {}

@@ -603,15 +603,12 @@
                                              'class': {'tradeBtn': true},
                                              on: {
                                                 click: () => {
-                                                   siteType.map(value => {
-                                                      this.$router.push({
-                                                         path: '/exchange',
-                                                         query: {
-                                                            'symbol': v.replace(/\//, ''),
-                                                            'site': value
-                                                         }
-                                                      })
-                                                   })
+                                                  this.$router.push({
+                                                    path: '/gbbo',
+                                                    query: {
+                                                      'symbol': v.replace(/\//, ''),
+                                                    }
+                                                  })
                                                 }
                                              }
                                           }, v)

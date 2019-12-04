@@ -13,11 +13,14 @@ import {clearLocalStorage} from '@/config'
 //zmw
 //首页
 const index = () => import('../views/home/index.vue')
+const API = () => import('../views/home/API.vue')
 
 const balances = () => import('../views/newBalances/balances.vue')
 const deposit = () => import('../views/newBalances/deposit.vue')
 const withdrawal = () => import('../views/newBalances/withdrawal.vue')
 const transaction_history = () => import('../views/newBalances/transactionHistory.vue')
+const fee = () => import('../views/newBalances/fee.vue')
+
 //us balance
 import deposit_usd from '../views/balances/deposit_usd.vue'
 import withdrawal_usd from '../views/balances/withdrawal_usd.vue'
@@ -98,17 +101,11 @@ const router = new Router({
          redirect: '/home',
          component: Layout,
          children: [
-            // {
-            //    path: '/exchangeGBBO',
-            //    name: 'exchangeGBBO',
-            //    beforeEnter: (to, from, next) => {
-            //       checkSSOToken(to, next)
-            //    },
-            //    meta: {
-            //       title:'HomeTokenExchange'
-            //    },
-            //    component: ExchangeGBBO,
-            // },
+            {
+               path: '/API',
+               name: 'API',
+               component: API,
+            },
             {
                path: '/exchange',
                name: 'exchange',
@@ -440,6 +437,14 @@ const router = new Router({
                },
                component: transaction_history
             },
+           {
+             path: 'usd_fees',
+             name: 'usd_fees',
+             meta: {
+               title: ''
+             },
+             component: fee
+           },
             //us
             {
                path: 'deposit_usd',

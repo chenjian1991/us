@@ -110,11 +110,14 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <!-- 买入按钮 -->
-               <Tooltip max-width="299"  class="mybtn Arbitrage-btn" v-else placement="top" content="One-Click Arbitrage is under development. Ready in 2020.">
+               <!-- <Tooltip min-width="299"  class="mybtn Arbitrage-btn" v-else placement="top" content="One-Click Arbitrage is under development. Ready in 2020.">
                   <button class="Arbitrage-btn"  disabled="true" @click="buyBtn" >
                       <span>One Click Arbitrage</span>
                   </button>
-               </Tooltip>
+               </Tooltip> -->
+               <button v-else class="Arbitrage-btn mybtn"  disabled="true" @click="buyBtn" >
+                      <span>Coming Soon...</span>
+                </button>
 
           </div>
         </div>
@@ -749,7 +752,7 @@ export default {
       height: 45px;
       .tootips{
         .ivu-tooltip-inner{
-          font-weight: 300;
+          font-weight: 350;
         }
       }
       .coinContainer{
