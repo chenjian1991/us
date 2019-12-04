@@ -601,6 +601,7 @@ export default {
         if (firstSymbol) {
           // this.isInitPage = true
           this.getGBBODepth()
+          this.getGBBOArb()
           this.getMyAssetData()
           this.updateSymbolHistory()
         }
