@@ -92,10 +92,6 @@
           <div class="view" @click="turn=!turn">
             <span>{{turn!==true?'View more':'Collapse'}}</span>
             <img src="../../assets/images/tresso/down.png" alt="" :class="{'up-down-transform':turn}">
-            <!--<span class="mr-10" @click="turn=true">View more-->
-            <!--<img src="../../assets/images/tresso/down.png" alt=""></span>-->
-            <!--<span @click="turn=false">Collapse-->
-            <!--<img src="../../assets/images/tresso/up.png" alt=""></span>-->
           </div>
         </section>
       </div>
@@ -125,14 +121,14 @@
           </router-link>
         </Col>
       </Row>
-      <div v-show="turn">
+      <div>
         <Row class="mobile-gbbo-box">
           <Col span="6" class="title">Arbitrage</Col>
           <Col span="6" class="title">Size</Col>
           <Col span="6" class="title t-r">Best Ask</Col>
           <Col span="6" class="title t-r">Best Bid</Col>
         </Row>
-        <Row class="mobile-gbbo-list" v-for="gbbo of quoteList" :key="gbbo.id">
+        <Row class="mobile-gbbo-list" v-for="gbbo of quoteList.slice(0,1)" :key="gbbo.id">
           <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
           <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
           <Col span="6" class="t-r">
@@ -143,6 +139,21 @@
             <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
             <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
           </Col>
+        </Row>
+        <Row class="mobile-gbbo-list" v-for="gbbo of quoteList.slice(1)" :key="gbbo.id" v-show="turn">
+          <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
+          <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
+          <Col span="6" class="t-r">
+            <p class="f-16 f-w-6 c-E83160">{{gbbo.sellPrice}}</p>
+            <p class="f-12 f-w-5 c-8996A2">{{gbbo.sell|marketName}}</p>
+          </Col>
+          <Col span="6" class="t-r">
+            <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
+            <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
+          </Col>
+        </Row>
+        <Row class="mobile-gbbo-list" v-show="quoteList.length===0">
+          <Col span="24" class="f-16 f-w-6 c-01B2D6 t-c">No Arbitrage Oppotunity Now</Col>
         </Row>
       </div>
     </div>
