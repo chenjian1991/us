@@ -52,7 +52,7 @@ import {geeTest} from '../../../api/usersystem.js'
                this.checkGeetest()
             },
             checkGeetest(){
-                    geeTest('0e50ea14c3b178745d1b5cbeefb96b23','1',(data)=>{
+                    geeTest('4f8eb91de0e6a7940cb7b9f63f260aa7','1',(data)=>{
                             let emailParam = {
                                     "domainCode": document.domain==='www.55com.io'?"china":'global',
                                     "personType": "GEETEST",
