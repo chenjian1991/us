@@ -6,6 +6,7 @@
       </div>
     </header>
     <div class="container">
+      <h2 style="margin-top:2.5rem">Tresso charges fees for USD trading pairs according to the fee structure below. The fee is calculated based on your total USD trading volume over the trailing 30 day period.</h2>
       <ul class="mt-lg-10 mb-lg-10 pt-lg-6 pb-lg-6 mt-5 mb-5 ul">
         <li class="li fee-header">
           <div class="li-header">PRICING TIER</div>
