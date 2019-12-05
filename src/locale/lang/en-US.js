@@ -5,7 +5,7 @@ export default {
 
    //首页
    usNotice: "Tresso, including all products and services offered hereby, is currently not available to any citizens or residents of the United States and its affiliated territories. We are not offering, soliciting, promoting, or otherwise holding out as being able to provide any service or product to any citizens or residents of the United States. Please see our Terms of Use for more information.",
-   HomeTitle: 'Tresso - Maximize Returns, Minimize Hassle',
+   HomeTitle: 'Tresso - The digital asset trading platform with best execution',
    HomeDescription: 'Tresso’s institutional-grade Global Best Bid and Offer (GBBO™) technology scans the deepest global liquidity pools to deliver the best prices on digital currencies. Coupled with no fees, high-speed conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest opportunities to win. All in a single account.',
    HomeKeyword: 'Tresso, tresso.com, GBBO',
 
@@ -90,7 +90,7 @@ export default {
    隐私条款: 'Privacy Policy',
 
    //5站title翻译
-   HomePageTitle: 'TRESSO - Maximize Returns, Minimize Hassle',
+   HomePageTitle: 'TRESSO - The digital asset trading platform with best execution',
    ExchangeTitle: 'Log In - TRESSO',
    SignUPTitle: 'Sign Up - TRESSO',
    ForgotPasswordTitle: 'Forgot Password - TRESSO',

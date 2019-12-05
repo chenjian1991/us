@@ -247,12 +247,10 @@
               <h4 class="f-30 c-304454 mb-2">Join the Innovation.</h4>
               <p class="f-16 f-w-5 c-304454 mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
               <section class="f-16 c-77838F f-w-5">
-                Given the maturation of the crypto, token, and digital asset markets, the trading standards and
-                operations found in current exchanges are woefully underdeveloped when compared with those of
-                traditional markets. Tresso’s institutional-grade trading with Global Best Bid and Offer is a
-                necessary innovation to these nontraditional markets. GBBO™ is the first of many innovations
-                that we expect to bring to this marketplace to enhance institutional trust, credence and
-                participation in nontraditional digital assets such as crypto.
+                The Internet makes connections available everywhere. Blockchain technology makes assets 
+                trustworthy, credible and has "findability." In the near future, assets can flow freely
+                 on a unified market around the world like commodities. Apifiny is committed to this 
+                 mission. Cryptocurrency is just the beginning.
               </section>
             </div>
             <img src="../../assets/images/tresso/right.png" class="right-bottom manager-icon" alt="">
