@@ -90,7 +90,7 @@ export default {
    隐私条款: 'Privacy Policy',
 
    //5站title翻译
-   HomePageTitle: 'TRESSO - Maximize Returns, Minimize Hassle',
+   HomePageTitle: 'TRESSO - The digital asset trading platform with best execution',
    ExchangeTitle: 'Log In - TRESSO',
    SignUPTitle: 'Sign Up - TRESSO',
    ForgotPasswordTitle: 'Forgot Password - TRESSO',
