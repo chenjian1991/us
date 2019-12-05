@@ -445,8 +445,8 @@
                       class="red-color"> *</span></label>
                   <Select v-model="stepThreeForm.address" size="large">
                     <Option value="Select One">Select One</Option>
-                    <Option value="home">{{$t('newK1Addtype1')}}</Option>
-                    <Option value="company">{{$t('newK1Addtype2')}}</Option>
+                    <Option value="home">residential</Option>
+                    <Option value="company">business</Option>
                   </Select>
                 </div>
                 <!--上传地址-->
