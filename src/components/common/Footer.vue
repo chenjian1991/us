@@ -40,7 +40,7 @@
             <img :src="item.img" class="icon_img">
           </a>
         </div>
-        <div @click='$router.push("/register")'
+        <div @click='$router.push("/balances")'
               class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7 border-0 footer-info__logoWrap__btn">
           Join the Beta
         </div>
@@ -237,6 +237,7 @@ export default {
         }
         &__logoWrap{
           margin-top: 41px;
+          align-items: flex-start;        
           &__btn{
             position: static;
           }
