@@ -90,7 +90,7 @@
                     <span class="media align-items-center">
                         <span class="fab fa-apple font-size-2 mr-3"></span>
                         <span class="media-body">
-                        <span class="d-block">Download on the App Store</span>
+                        <span class="d-block">Download on the</span>
                         <strong class="font-size-1">App Store</strong>
                         </span>
                     </span>
@@ -116,7 +116,7 @@
                         <span class="media align-items-center">
                             <span class="fab fa-google-play font-size-2 mr-3"></span>
                             <span class="media-body">
-                            <span class="d-block">Get it on Google Play</span>
+                            <span class="d-block">Get it on</span>
                             <strong class="font-size-1">Google Play</strong>
                             </span>
                         </span>
