@@ -201,10 +201,13 @@ export default {
       div{
         flex: 1;
       }
-      .buy,
-      .sell {
+      .buy {
         padding-left: 15px;
-        text-align: right;
+        text-align: left;
+      }
+      .sell {
+        padding-left: 25px;
+        text-align: left;
       }
       .lowest,
       .highest {
@@ -263,13 +266,18 @@ export default {
           }
           .buy,
           .sell {
-            padding-left: 15px;
             color: #788390;
-            text-align: right;
+            text-align: left;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             position: relative;
+          }
+          .buy {
+            padding-left: 15px;
+          }
+          .sell {
+            padding-left: 25px;
           }
         }
 
