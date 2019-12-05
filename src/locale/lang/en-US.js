@@ -512,7 +512,7 @@ export default {
    ggyzDownloadAndInstall: "Download and Install Google Authentication APP",
    ggyzAndroid: "Android",
    ggyzIOSMethod: 'Search “Google Authenticator” on the app store to download on iOS.',
-
+   sfrzSubmit: "Submit",
 
    ggyzAndroidMethod: 'Search “Google Authenticator” on Google Play or other Android app stores to download on Android.',
    ggyzHaveInstalled: "I have installed the APP",
