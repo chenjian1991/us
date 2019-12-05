@@ -1,17 +1,15 @@
 <template>
   <div id="tressoHeader" class="tressoHeader">
     <!-- ========== HEADER ========== -->
-    <header
-        id="header"
-        class="u-header u-header--bg-transparent u-header--show-hide-md bgc-151D24"
-        data-header-fix-moment="500"
-        data-header-fix-effect="slide">
+    <header id="header"
+            class="u-header u-header-left-aligned-nav u-header--bg-transparent u-header--show-hide-md bgc-151D24"
+            data-header-fix-moment="500" data-header-fix-effect="slide">
       <div class="u-header__section">
         <div id="logoAndNav" :class="{'gbbo-header':isgbbo}" class="container">
           <!-- Nav -->
           <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
             <!-- Logo -->
-            <router-link to='/home' class="mr-lg-10">
+            <router-link to='/home' class="mr-lg-1 logo-box">
               <img src="../../assets/images/tressoHeader/logo.png" alt="logo" class="logo-img">
               <img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">
             </router-link>
@@ -25,22 +23,21 @@
             </button>
             <!-- End Responsive Toggle Button -->
             <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
-              <!--left-->
-              <ul class="navbar-nav u-header__navbar-nav navbar-left">
-                <li
-                    class="nav-item u-header__nav-item header-box">
-                  <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO™</a>
+              <ul class="navbar-nav u-header__navbar-nav">
+                <li class="nav-item u-header__nav-item header-box">
+                  <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO</a>
                 </li>
                 <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
                 </li>
+                <!--ABOUT-->
                 <li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"
                     data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">
                   <router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"
                                to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">
                     ABOUT
                   </router-link>
-                  <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu navbar-list"
+                  <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu"
                       aria-labelledby="pagesMegaMenu" @click="hideList" ref="pagesSubMenu">
                     <li class="hs-has-sub-menu">
                       <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Who we are</router-link>
@@ -59,31 +56,24 @@
                     </li>
                   </ul>
                 </li>
-              </ul>
-              <!--login-->
-              <ul class="navbar-nav u-header__navbar-nav" v-show="!isLogin">
-                <li
-                    class="nav-item u-header__nav-item header-box">
-                  <router-link class="nav-link u-header__nav-link mr-lg-5" to='/login' style="font-size: 14px">
+                <li class="nav-item u-header__nav-last-item header-box" v-show="!isLogin">
+                  <router-link class="nav-link u-header__nav-link" to='/login' style="font-size: 14px">
                     Log In
                   </router-link>
                 </li>
-                <li
-                    class="nav-item u-header__nav-item">
-                  <router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn"
-                               to='/register'>Join the Beta
+                <li class="nav-item u-header__nav-item header-box mr-3" v-show="!isLogin">
+                  <router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn" to='/register'>
+                    Join the Beta
                   </router-link>
                 </li>
-              </ul>
-              <!--account-->
-              <ul class="navbar-nav u-header__navbar-nav" v-show="isLogin">
-                <li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"
-                    data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">
-                  <router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"
+                <li class="nav-item u-header__nav-last-item hs-has-sub-menu header-box mr-1" data-event="hover"
+                    data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right" v-show="isLogin">
+                  <router-link id="pagesMegaMenu1"
+                               class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"
                                to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">
-                    {{isLogin?email:''}}
+                    {{email}}
                   </router-link>
-                  <ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu"
+                  <ul id="pagesSubMenu1" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu"
                       @click="hideList" ref="pagesSubMenu">
                     <!-- <li class="hs-has-sub-menu">
                        <router-link to='Dashboard' class="nav-link u-header__sub-menu-nav-link">
@@ -117,11 +107,111 @@
                     </li>
                   </ul>
                 </li>
-                <li class="nav-item u-header__nav-item">
+                <!--menu-->
+                <li class="nav-item u-header__nav-item header-box">
                   <a href="javascript:;" class="nav-toggle" @click="showMenu=!showMenu"><span></span></a>
                 </li>
               </ul>
             </div>
+
+            <!--<div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">-->
+            <!--&lt;!&ndash;left&ndash;&gt;-->
+            <!--<ul class="navbar-nav u-header__navbar-nav navbar-left">-->
+            <!--<li-->
+            <!--class="nav-item u-header__nav-item header-box">-->
+            <!--<a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item u-header__nav-item header-box">-->
+            <!--<router-link to='/API' class="nav-link u-header__nav-link">API</router-link>-->
+            <!--</li>-->
+            <!--<li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"-->
+            <!--data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">-->
+            <!--<router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"-->
+            <!--to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">-->
+            <!--ABOUT-->
+            <!--</router-link>-->
+            <!--<ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu navbar-list"-->
+            <!--aria-labelledby="pagesMegaMenu" @click="hideList" ref="pagesSubMenu">-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Who we are</router-link>-->
+            <!--</li>-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Team</router-link>-->
+            <!--</li>-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Careers</router-link>-->
+            <!--</li>-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"-->
+            <!--class="nav-link u-header__sub-menu-nav-link" target="_blank">-->
+            <!--FAQs-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--&lt;!&ndash;login&ndash;&gt;-->
+            <!--<ul class="navbar-nav u-header__navbar-nav" v-show="!isLogin">-->
+            <!--<li-->
+            <!--class="nav-item u-header__nav-item header-box">-->
+            <!--<router-link class="nav-link u-header__nav-link mr-lg-5" to='/login' style="font-size: 14px">-->
+            <!--Log In-->
+            <!--</router-link>-->
+            <!--</li>-->
+            <!--<li-->
+            <!--class="nav-item u-header__nav-item">-->
+            <!--<router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn"-->
+            <!--to='/register'>Join the Beta-->
+            <!--</router-link>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--&lt;!&ndash;account&ndash;&gt;-->
+            <!--<ul class="navbar-nav u-header__navbar-nav" v-show="isLogin">-->
+            <!--<li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"-->
+            <!--data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">-->
+            <!--<router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"-->
+            <!--to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">-->
+            <!--{{isLogin?email:''}}-->
+            <!--</router-link>-->
+            <!--<ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu"-->
+            <!--@click="hideList" ref="pagesSubMenu">-->
+            <!--&lt;!&ndash; <li class="hs-has-sub-menu">-->
+            <!--<router-link to='Dashboard' class="nav-link u-header__sub-menu-nav-link">-->
+            <!--Dashboard-->
+            <!--</router-link>-->
+            <!--</li> &ndash;&gt;-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<router-link to='/balances' class="nav-link u-header__sub-menu-nav-link">-->
+            <!--Balances-->
+            <!--</router-link>-->
+            <!--</li>-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<router-link to='/order' class="nav-link u-header__sub-menu-nav-link">-->
+            <!--Orders-->
+            <!--</router-link>-->
+            <!--</li>-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<router-link to='/safeCenter' class="nav-link u-header__sub-menu-nav-link">-->
+            <!--Account & Security-->
+            <!--</router-link>-->
+            <!--</li>-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="verfiy">-->
+            <!--ID verification-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li class="hs-has-sub-menu">-->
+            <!--<a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="quitFun">-->
+            <!--Log out-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <!--<li class="nav-item u-header__nav-item">-->
+            <!--<a href="javascript:;" class="nav-toggle" @click="showMenu=!showMenu"><span></span></a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
           </nav>
           <!-- End Nav -->
         </div>
@@ -219,6 +309,7 @@
             userId: localStorage.getItem('loginUserId')
           }, $cookies.get('loginToken')).then(res => {//实名认证
             if (res.data) {
+              this.email = res.data.email
               localStorage.setItem('email', res.data.email)
               resolve(res.data['identifyState'])
             }
@@ -258,6 +349,7 @@
                   title: this.$t(11001),
                   desc: this.$t(11001)
                 });
+                localstorage.removeItem('email')
               }
             }
         );
@@ -332,7 +424,6 @@
     }
     .nav-item, .u-header__nav-item {
       a {
-        color: #fff;
         &:hover {
           color: #01B2D6;
         }
@@ -357,11 +448,11 @@
       border-radius: 4px;
     }
     .u-header__navbar-nav {
-      background-color: transparent;
+      /*background-color: transparent;*/
     }
     .hs-has-sub-menu {
       a {
-        color: #77838F;
+        /*color: #77838F;*/
       }
     }
 
@@ -381,7 +472,7 @@
     .ivu-drawer-body {
       padding: 0;
     }
-    .ivu-drawer-close .ivu-icon-ios-close{
+    .ivu-drawer-close .ivu-icon-ios-close {
       font-size: 38px;
       color: #fff !important;
     }
@@ -418,11 +509,27 @@
     }
   }
 
+  @media (max-width: 767.98px) {
+    .u-header--bg-transparent .u-header__navbar-nav {
+      .bgc-151D24;
+    }
+
+    .navbar-expand-md .u-header__nav-last-item {
+      display: block;
+    }
+  }
+
   #tressoHeader {
     width: 100%;
   }
 
   .tressoHeader {
+    .logo-box {
+      height: 100%;
+      .d-f;
+      flex-direction: column;
+      justify-content: center;
+    }
     .loginBtn:hover {
       color: #fff !important;
     }
@@ -435,15 +542,9 @@
       padding-left: 14px;
       padding-right: 14px;
       font-size: 14px;
-
-    }
-
-    .header-a {
-      color: #fff !important;
-    }
-
-    .navbar-left {
-      margin-left: 0;
+      a {
+        color: #fff;
+      }
     }
 
     .register-btn {
@@ -492,19 +593,19 @@
     }
     /*过渡后*/
     /*.nav-opened span {*/
-      /*opacity: 0;*/
+    /*opacity: 0;*/
     /*}*/
     /*.nav-opened:before {*/
-      /*-webkit-transform: rotate(45deg);*/
-      /*-ms-transform: rotate(45deg);*/
-      /*transform: rotate(45deg);*/
-      /*top: 19px;*/
+    /*-webkit-transform: rotate(45deg);*/
+    /*-ms-transform: rotate(45deg);*/
+    /*transform: rotate(45deg);*/
+    /*top: 19px;*/
     /*}*/
     /*.nav-opened:after {*/
-      /*-webkit-transform: rotate(-45deg);*/
-      /*-ms-transform: rotate(-45deg);*/
-      /*transform: rotate(-45deg);*/
-      /*top: 19px;*/
+    /*-webkit-transform: rotate(-45deg);*/
+    /*-ms-transform: rotate(-45deg);*/
+    /*transform: rotate(-45deg);*/
+    /*top: 19px;*/
 
     /*}*/
   }
