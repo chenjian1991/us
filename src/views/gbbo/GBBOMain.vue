@@ -321,7 +321,7 @@ export default {
       // maxArbitrageList:[],
       arbData:{},
       setDepthTime: '',
-      setArbTime: 0
+      setArbTime: ''
     }
   },
   created() {
