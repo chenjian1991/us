@@ -30,6 +30,18 @@ Vue.filter('scientificToNumber', function (value) {
 Vue.filter('initNumber', function (value) {
   return parseInt(value);
 });
+Vue.directive('numberOnly',{
+  bind:function(el,binding,vnode){
+      el.handler = function(){
+        el.value = el.value.replace(/\D+/,'')
+      }
+      el.addEventListener('input',el.handler);
+  },
+  unbind:function(el,binding,vnode){
+    el.removeEventListener('input',el.handler)
+    el.value = '';
+  }
+})
 new Vue({
   router,
   store,

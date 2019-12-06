@@ -57,7 +57,7 @@
                             <span class="fas fa-lock"></span>
                           </span>
                         </div>
-                        <input :minlength='6' :maxlength='6' v-model='newtradepwd' type="password" class="form-control" name="password" id="signupPassword" :placeholder="this.$t('aqzxtradeplacehoder')" aria-label="Password" aria-describedby="signupPasswordLabel" required
+                        <input v-number-only  :minlength='6' :maxlength='6' v-model='newtradepwd' type="password" class="form-control" name="password" id="signupPassword" :placeholder="this.$t('aqzxtradeplacehoder')" aria-label="Password" aria-describedby="signupPasswordLabel" 
                               :data-msg="this.$t('phoneNumberRequier')"
                                data-error-class="u-has-error"
                                data-success-class="u-has-success">
@@ -77,7 +77,7 @@
                             <span class="fas fa-lock"></span>
                           </span>
                         </div>
-                        <input :minlength='6' :maxlength='6' v-model='confirmTradepwd' type="password" class="form-control" name="confirmPassword" id="signupConfirmPassword" :placeholder="this.$t('aqzxtradeplacehoder')" aria-label="Confirm Password" aria-describedby="signupConfirmPasswordLabel" required
+                        <input v-number-only :minlength='6' :maxlength='6' v-model='confirmTradepwd' type="password" class="form-control" name="confirmPassword" id="signupConfirmPassword" :placeholder="this.$t('aqzxtradeplacehoder')" aria-label="Confirm Password" aria-describedby="signupConfirmPasswordLabel" 
                                :data-msg="this.$t('phoneNumberRequier')"
                                data-error-class="u-has-error"
                                data-success-class="u-has-success">
@@ -131,6 +131,9 @@ import {getBrowserMessage} from "@/lib/utils.js"
                             desc: this.$t('输入框不能为空')
                         });
                     return false;
+                }
+                if(this.newtradepwd.length<6||this.confirmTradepwd.length<6){
+                  return false;
                 }
                 let pattern = /[^\d]/;
               if(pattern.test(this.confirmTradepwd)){
