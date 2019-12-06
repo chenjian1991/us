@@ -236,7 +236,6 @@ import {geeTest} from '../../../api/usersystem.js'
                         this.$store.commit('CHANGEFIRSTLOGIIN',false);
                         this.$store.dispatch("getMarkSymbol");
                         if(this.fromSocial=="null"&&this.fromSite==undefined){//既不是social也不是ato
-                        debugger
                         let router = this.previousRouterName;
                         let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot','NewLoginpwd','google','safeVatification','login','OriginTradePassword'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了

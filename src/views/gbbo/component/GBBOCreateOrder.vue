@@ -649,7 +649,7 @@ export default {
       if(this.arbData.totalArb){// 必须有差价的时候才可以计算
         let price = this.currentInfo.last;
         let size = e.target.value;
-        let amount = new BigNumber(size).dividedBy(price)
+        let amount = new BigNumber(size).dividedBy(price).toNumber()
         let totalAmount = this.arbData.totalAmount;
         let totalArbitrage = this.arbData.totalArb;
         if(Number(amount)-Number(totalAmount)>0){//如果输入size大于总的total size expect = size +total arbitrage;
