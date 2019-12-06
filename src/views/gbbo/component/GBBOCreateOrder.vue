@@ -48,9 +48,9 @@
                     :disabled="arbFlag"
                   />
                   <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                  <!-- <i
+                  <i @click="clickLock('Arbi')"
                     :class="[buy_input_change_Arbitrage?'gbbo_lock':'gbbo_unlock']"
-                  /> -->
+                  />
                   <!-- <div class="currencyInput">
                   ≈ {{buyPriceCurrency | scientificToNumber}}
                   {{currencyName}}
@@ -62,11 +62,12 @@
                     type="text"
                     maxlength="14"
                     ref="buyArbitraCountInputRef"
-                    :class="{'input-empty-color':buyCountEmpty}"
+                    :class="{'input-empty-color':buyCountEmpty,'gbbo_lock_arbitra':arbCountFlag}"
                     class="input-num"
                     autocomplete="off"
                     style="ime-mode:disabled"
                     ondragenter="return false"
+                    :disabled="arbCountFlag"
                   />
                   <div class="name-show baseAsset">{{assetName}}</div>
                 </div>
@@ -108,15 +109,14 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <!-- 买入按钮 -->
-               <!-- <Tooltip min-width="299"  class="mybtn Arbitrage-btn" v-else placement="top" content="One-Click Arbitrage is under development. Ready in 2020.">
+               <Tooltip class="mybtn Arbitrage-btn" v-else placement="top" content="Coming Soon...">
                   <button class="Arbitrage-btn"  disabled="true" @click="buyBtn" >
                       <span>One Click Arbitrage</span>
                   </button>
-               </Tooltip> -->
-               <button v-else class="Arbitrage-btn mybtn"  disabled="true" @click="buyBtn" >
+               </Tooltip>
+               <!-- <button v-else class="Arbitrage-btn mybtn"  disabled="true" @click="buyBtn" >
                       <span>Coming Soon...</span>
-                </button>
-
+                </button> -->
           </div>
         </div>
       </div>
@@ -396,6 +396,7 @@ export default {
       setTradePassword: false, //localstorage 是否
       loginToken: $cookies.get("loginToken"), //登陆token
       arbFlag: true,
+      arbCountFlag:false,
       changeFlag: true,
       sellFlag: true,
       buyTotalFee: 0,
@@ -522,6 +523,11 @@ export default {
       if (name === "Arbi") {
         this.buy_input_change_Arbitrage = !this.buy_input_change_Arbitrage;
         this.arbFlag = !this.arbFlag;
+        if(this.arbFlag){
+          this.arbCountFlag = false;
+        }else{
+          this.arbCountFlag = true;
+        }
       } else if (name === "buy") {
         this.buy_input_change = !this.buy_input_change;
         this.changeFlag = !this.changeFlag;
