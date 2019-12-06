@@ -38,7 +38,7 @@
             <dl>
                <dt>24h Volume</dt>
                <!-- <dd>{{currentInfo.hour24Volume|noData}} {{currentInfo.quoteAsset|noData}}</dd> -->
-               <dd>{{currentInfo.hour24Volume|noData}}</dd>
+               <dd>{{currentInfo.hour24Volume|noData}} {{currentInfo.baseAsset|noData}}</dd>
             </dl>
          </div>
       </div>
@@ -91,7 +91,7 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.currentInfo)
+   //  console.log(this.currentInfo)
   },
   watch: {
     currentInfo: {

@@ -55,7 +55,7 @@
                         <span class="fas fa-lock"></span>
                         </span>
                     </div>
-                    <input  :maxlength='20' v-model='pwd' type="password" class="form-control" name="password" id="signupPassword" :placeholder="this.$t('aqzxpasswordplaceholder')" aria-label="Password" aria-describedby="signupPasswordLabel" required
+                    <input  :maxlength='20' v-model='pwd' type="password" class="form-control" name="password" id="signupPassword" :placeholder="this.$t('aqzxpasswordplaceholder')" aria-label="Password" aria-describedby="signupPasswordLabel" 
                             :data-msg="this.$t('phoneNumberRequier')"
                             data-error-class="u-has-error"
                             data-success-class="u-has-success">

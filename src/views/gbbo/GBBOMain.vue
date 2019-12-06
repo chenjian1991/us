@@ -659,7 +659,8 @@ export default {
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
           arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
         } else {
-          arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
+          arbSocket = new SockJS('https://www.tresso.com/echart/xchange/marketdata');
+          // arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
         }
         this.arbStompClient = Stomp.over(arbSocket);
         this.arbStompClient.debug = null
