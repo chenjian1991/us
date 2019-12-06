@@ -320,7 +320,8 @@ export default {
       updateAt: '',//路总需求 要加这个隐藏字段
       // maxArbitrageList:[],
       arbData:{},
-      _setDepthTime: ''
+      setDepthTime: '',
+      setArbTime: 0
     }
   },
   created() {
@@ -609,13 +610,20 @@ export default {
         this.getSSERealTime(symbolUrl)
       })
     },
-    GBBODepthSetTime(evt, fn){
-      clearTimeout(this._setDepthTime)
-      this._setDepthTime = setTimeout(() => {
-        console.log('reconnect', evt)
-        evt.disconnect()
-        fn.call(this)
-      }, 5000);
+    GBBODepthSetTime(evt, type, fn){
+      if(type === 'GBBODepth'){
+        clearTimeout(this.setDepthTime)
+        this.setDepthTime = setTimeout(() => {
+          evt.disconnect()
+          fn.call(this)
+        }, 5000);
+      } else if(type === 'GBBOArb'){
+        clearTimeout(this.setArbTime)
+        this.setArbTime = setTimeout(() => {
+          evt.disconnect()
+          fn.call(this)
+        }, 5000);
+      }
     },
     getGBBODepth() {
       if (this.stompClient == null || !this.stompClient.connected) {
@@ -632,7 +640,7 @@ export default {
         this.stompClient.connect({}, (frame) => {
           this.stompClient.subscribe(`/topic/orderbook/${this.currentSymbol}`, (message) => {
             if (message.body) {
-              this.GBBODepthSetTime(this.stompClient, this.getGBBODepth)
+              this.GBBODepthSetTime(this.stompClient, 'GBBODepth', this.getGBBODepth)
               this.sortOrderBook(JSON.parse(message.body))
             }
           });
@@ -670,7 +678,7 @@ export default {
           // 价差
           this.arbStompClient.subscribe(`/topic/arb/${this.currentSymbol}`, (message) => {
             if (message.body) {
-              this.GBBODepthSetTime(this.arbStompClient, this.getGBBOArb)
+              this.GBBODepthSetTime(this.arbStompClient, 'GBBOArb', this.getGBBOArb)
               this.getArbData(JSON.parse(message.body))
             }
           });
