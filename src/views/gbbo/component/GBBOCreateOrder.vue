@@ -429,8 +429,8 @@ export default {
   watch: {
     arbData(){
       if(this.buy_input_change_Arbitrage){
-        if(this.arbData.minArb&&this.arbData.maxArb){
-          this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+        if(this.arbData){
+          this.$refs.buyArbitraInput.value = this.arbData.matchMap[0].arb;
         }
       } 
     },  
@@ -671,8 +671,8 @@ export default {
       );
       e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize);
       this.buyArbitraCountInput = e.target.value;
-
-      let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
+      debugger
+       let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
        let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
        let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
        this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
