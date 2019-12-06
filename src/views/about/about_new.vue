@@ -7,7 +7,7 @@
     <!-- <div class="describe">
       <div class="describeInner container">We’re an NYC-based team of visionaries, tech-geeks, enthusiasts, and innovators with a common goal: discover simple solutions to complex problems. Tresso is dedicated to helping our traders realize the best possible outcomes through amplified trading options, speed and efficiency, We’re elevating the trading experience in crypto, token and digital asset markets.  Together, we’re driving trading innovation.</div>
     </div> -->
-    <div class="team container">
+    <div class="team container" id="team">
       <div class="title">The Tresso Team</div>
       <div class="members">
         <div class="member" v-for="(item,index) in members" :key="index">
