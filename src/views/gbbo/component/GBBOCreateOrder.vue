@@ -90,7 +90,7 @@
             <div class="totalMoney-label">
               <em>Expect</em>&nbsp;&nbsp;
               <div>
-                <!-- <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp; -->
+                <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp;
                 <span id="buy_total" class="total-num">--</span>&nbsp;
                 <span class="quoteAsset">{{assetName}}</span>
               </div>
@@ -429,7 +429,7 @@ export default {
   watch: {
     arbData(){
       if(this.buy_input_change_Arbitrage){
-        if(this.arbData){
+        if(this.arbData.matchMap[0]){
           this.$refs.buyArbitraInput.value = this.arbData.matchMap[0].arb;
         }
       } 
@@ -455,31 +455,6 @@ export default {
       this.assetName = this.currentInfo.quoteAsset;
     }
   },
-  created() {
-    var ssoProvider = {};
-    //创建实例
-    this.exchange = new Exchange(ssoProvider);
-    if (this.isLogin) {
-      this.exchange.ssoProvider.getSsoToken = function(fn) {
-        if (this.loginToken) {
-          fn(this.loginToken);
-        }
-      }.bind(this);
-    }
-  },
-  beforeMount() {
-
-    //  this.getSymbolListData();
-  },
-  mounted() {
-    this.availableCoin = this.briefInputData.quoteCoinAvailable;
-    this.$refs.sellInput.value = this.sellInputPrice;
-    this.$refs.buyInput.value = this.buyInputPrice;
-    if(this.arbData.minArb&&this.arbData.maxArb){
-      this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
-    }
-  },
-
   computed: {
     buyInTotal: function() {
       //买入总价
@@ -586,9 +561,9 @@ export default {
           let arbitraFee = this.symbolList[this.currentSymbol].commissionRate*100;
           this.buyArbitraInTotalFee = arbitraFee.toFixed(2);
 
-          let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
-          let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
-          let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
+          // let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
+          // let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
+          // let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
           this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
           break;
         case "buy":
@@ -671,11 +646,22 @@ export default {
       );
       e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize);
       this.buyArbitraCountInput = e.target.value;
-      debugger
-       let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
-       let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
-       let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
-       this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
+      if(this.arbData.totalArb){// 必须有差价的时候才可以计算
+        let price = this.currentInfo.last;
+        let size = e.target.value;
+        let amount = new BigNumber(size).dividedBy(price)
+        let totalAmount = this.arbData.totalAmount;
+        let totalArbitrage = this.arbData.totalArb;
+        if(Number(amount)-Number(totalAmount)>0){//如果输入size大于总的total size expect = size +total arbitrage;
+            this.buyArbitraInTotal=bigDecimal.add(e.target.value,totalArbitrage);
+        }
+      console.log(amount)
+      }
+      
+      //  let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
+      //  let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
+      //  let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
+      //  this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
     },
     handleBuyCountInput(e) {
       if (!this.symbolList[this.currentSymbol]) {
@@ -714,7 +700,30 @@ export default {
       this.sellCountInput = e.target.value;
     }
   },
-  components: {}
+  components: {},
+  mounted() {
+    this.availableCoin = this.briefInputData.quoteCoinAvailable;
+    this.$refs.sellInput.value = this.sellInputPrice;
+    this.$refs.buyInput.value = this.buyInputPrice;
+    if(this.arbData.minArb&&this.arbData.maxArb){
+      this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+    }
+  },
+  created() {
+    var ssoProvider = {};
+    //创建实例
+    this.exchange = new Exchange(ssoProvider);
+    if (this.isLogin) {
+      this.exchange.ssoProvider.getSsoToken = function(fn) {
+        if (this.loginToken) {
+          fn(this.loginToken);
+        }
+      }.bind(this);
+    }
+  },
+  beforeMount() {
+    //  this.getSymbolListData();
+  },
 };
 </script>
 <style lang="less">
