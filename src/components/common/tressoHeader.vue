@@ -9,9 +9,9 @@
           <!-- Nav -->
           <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
             <!-- Logo -->
-            <router-link to='/home' class="mr-lg-1 logo-box">
+            <router-link to='/home' class="mr-11 logo-box">
               <img src="../../assets/images/tressoHeader/logo.png" alt="logo" class="logo-img">
-              <img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">
+              <!--<img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">-->
             </router-link>
             <!-- End Logo -->
             <!-- Responsive Toggle Button -->
@@ -25,7 +25,7 @@
             <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
               <ul class="navbar-nav u-header__navbar-nav">
                 <li class="nav-item u-header__nav-item header-box">
-                  <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO</a>
+                  <router-link to='/gbbo' class="nav-link u-header__nav-link">GBBO</router-link>
                 </li>
                 <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -43,10 +43,7 @@
                       <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Who we are</router-link>
                     </li>
                     <li class="hs-has-sub-menu">
-                      <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Team</router-link>
-                    </li>
-                    <li class="hs-has-sub-menu">
-                      <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Careers</router-link>
+                      <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="goTeam">Team</a>
                     </li>
                     <li class="hs-has-sub-menu">
                       <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"
@@ -113,111 +110,12 @@
                 </li>
               </ul>
             </div>
-
-            <!--<div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">-->
-            <!--&lt;!&ndash;left&ndash;&gt;-->
-            <!--<ul class="navbar-nav u-header__navbar-nav navbar-left">-->
-            <!--<li-->
-            <!--class="nav-item u-header__nav-item header-box">-->
-            <!--<a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO</a>-->
-            <!--</li>-->
-            <!--<li class="nav-item u-header__nav-item header-box">-->
-            <!--<router-link to='/API' class="nav-link u-header__nav-link">API</router-link>-->
-            <!--</li>-->
-            <!--<li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"-->
-            <!--data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">-->
-            <!--<router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"-->
-            <!--to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">-->
-            <!--ABOUT-->
-            <!--</router-link>-->
-            <!--<ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu navbar-list"-->
-            <!--aria-labelledby="pagesMegaMenu" @click="hideList" ref="pagesSubMenu">-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Who we are</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Team</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Careers</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"-->
-            <!--class="nav-link u-header__sub-menu-nav-link" target="_blank">-->
-            <!--FAQs-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--&lt;!&ndash;login&ndash;&gt;-->
-            <!--<ul class="navbar-nav u-header__navbar-nav" v-show="!isLogin">-->
-            <!--<li-->
-            <!--class="nav-item u-header__nav-item header-box">-->
-            <!--<router-link class="nav-link u-header__nav-link mr-lg-5" to='/login' style="font-size: 14px">-->
-            <!--Log In-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--<li-->
-            <!--class="nav-item u-header__nav-item">-->
-            <!--<router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn"-->
-            <!--to='/register'>Join the Beta-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--&lt;!&ndash;account&ndash;&gt;-->
-            <!--<ul class="navbar-nav u-header__navbar-nav" v-show="isLogin">-->
-            <!--<li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"-->
-            <!--data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">-->
-            <!--<router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"-->
-            <!--to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">-->
-            <!--{{isLogin?email:''}}-->
-            <!--</router-link>-->
-            <!--<ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu"-->
-            <!--@click="hideList" ref="pagesSubMenu">-->
-            <!--&lt;!&ndash; <li class="hs-has-sub-menu">-->
-            <!--<router-link to='Dashboard' class="nav-link u-header__sub-menu-nav-link">-->
-            <!--Dashboard-->
-            <!--</router-link>-->
-            <!--</li> &ndash;&gt;-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/balances' class="nav-link u-header__sub-menu-nav-link">-->
-            <!--Balances-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/order' class="nav-link u-header__sub-menu-nav-link">-->
-            <!--Orders-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/safeCenter' class="nav-link u-header__sub-menu-nav-link">-->
-            <!--Account & Security-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="verfiy">-->
-            <!--ID verification-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="quitFun">-->
-            <!--Log out-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--<li class="nav-item u-header__nav-item">-->
-            <!--<a href="javascript:;" class="nav-toggle" @click="showMenu=!showMenu"><span></span></a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
           </nav>
           <!-- End Nav -->
         </div>
       </div>
     </header>
-    <Drawer :closable="true" v-model="showMenu">
+    <Drawer :closable="true" v-model="showMenu" :mask="false">
       <div class="drawer">
         <div class="t-c">
           <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110" class="mb-3">
@@ -228,20 +126,20 @@
             <router-link to='/' class="nav-link u-header__nav-link">Home</router-link>
           </li>
           <li class="drawer-item">
-            <a class="nav-link u-header__nav-link" @click="gbboHref">GBBO</a>
+            <router-link to='/gbbo' class="nav-link u-header__nav-link">GBBO</router-link>
           </li>
           <li class="drawer-item">
             <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
           </li>
           <li class="drawer-item">
-            <router-link to='/about' class="nav-link u-header__nav-link">About Tresso</router-link>
+            <router-link to='/about' class="nav-link u-header__nav-link">Who we are</router-link>
           </li>
           <li class="drawer-item">
-            <router-link to='/about' class="nav-link u-header__nav-link">Team</router-link>
+            <a href="javascript:;" class="nav-link u-header__nav-link" @click="goTeam">Team</a>
           </li>
-          <li class="drawer-item">
-            <router-link to='/about' class="nav-link u-header__nav-link">Careers</router-link>
-          </li>
+          <!--<li class="drawer-item">-->
+            <!--<router-link to='/about' class="nav-link u-header__nav-link">Careers</router-link>-->
+          <!--</li>-->
           <li class="drawer-item">
             <router-link to='/usd_fees' class="nav-link u-header__nav-link">Fee Structure</router-link>
           </li>
@@ -295,11 +193,11 @@
           this.$store.commit("changeCurrencyState", result.toCurrency);
         });
       },
-      gbboHref() {
-        if (location.href.includes('/home')) {
-          location.href = '#GBBO'
+      goTeam() {
+        if (location.href.includes('/about')) {
+          location.href = '#team'
         } else {
-          this.$router.push('/home')
+          this.$router.push('/about')
         }
       },
       //实名信息
@@ -529,6 +427,7 @@
       .d-f;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
     .loginBtn:hover {
       color: #fff !important;
@@ -555,8 +454,7 @@
 
     .logo-img {
       display: block;
-      width: 140px;
-      margin-bottom: 13px;
+      width: 148px;
     }
 
     .nav-link {
