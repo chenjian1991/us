@@ -1,9 +1,9 @@
 <template>
-  <main class="home home-common" id="home">
+  <main class="home" id="home">
     <!--top-->
-    <div class="top bgc-151D24 pb-5">
+    <div class="top pb-5">
       <div class="container">
-        <h1 class="c-fff f-w-5 pt-3 pt-lg-0 top-title">
+        <h1 class="f-40 c-fff f-w-5 pt-3 pt-lg-0 top-title">
           Superior Trading with GBBO™:<br>
           Global Best Bid and Offer
         </h1>
@@ -21,7 +21,7 @@
         </router-link>
       </div>
     </div>
-    <div class="gbbo pb-lg-11 pt-3 pt-lg-0 gbboPC" id="GBBO">
+    <div class="gbbo pb-lg-11 pt-0 gbboPC" id="GBBO">
       <div class="container">
         <div class="d-flex align-items-baseline"><span class="f-28 c-fff f-w-6 mr-4">GBBO™</span><span
             class="f-14 c-B9C9D6">Global Best Bid and Offer, Powered by APIFINY</span></div>
@@ -30,7 +30,7 @@
             <div class="left pl-7">
               <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
               <span class="desc">Max Arbitrage:</span>
-              <span class="f-20 f-w-6 c-01B2D6 mr-4">{{gbboList.maxArb|compare}}</span>
+              <span class="f-20 f-w-6 c-01B2D6 mr-4" style="width: 55px">{{gbboList.maxArb|compare}}</span>
               <router-link :to="loginToken?{path:'gbbo'}:{path:'login'}"
                            class="btn btn-sm btn-primary transition-3d-hover trade-btn">
                 One-Click Arbitrage
@@ -92,10 +92,6 @@
           <div class="view" @click="turn=!turn">
             <span>{{turn!==true?'View more':'Collapse'}}</span>
             <img src="../../assets/images/tresso/down.png" alt="" :class="{'up-down-transform':turn}">
-            <!--<span class="mr-10" @click="turn=true">View more-->
-            <!--<img src="../../assets/images/tresso/down.png" alt=""></span>-->
-            <!--<span @click="turn=false">Collapse-->
-            <!--<img src="../../assets/images/tresso/up.png" alt=""></span>-->
           </div>
         </section>
       </div>
@@ -125,14 +121,14 @@
           </router-link>
         </Col>
       </Row>
-      <div v-show="turn">
+      <div>
         <Row class="mobile-gbbo-box">
           <Col span="6" class="title">Arbitrage</Col>
           <Col span="6" class="title">Size</Col>
           <Col span="6" class="title t-r">Best Ask</Col>
           <Col span="6" class="title t-r">Best Bid</Col>
         </Row>
-        <Row class="mobile-gbbo-list" v-for="gbbo of quoteList" :key="gbbo.id">
+        <Row class="mobile-gbbo-list" v-for="gbbo of quoteList.slice(0,1)" :key="gbbo.id">
           <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
           <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
           <Col span="6" class="t-r">
@@ -143,6 +139,21 @@
             <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
             <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
           </Col>
+        </Row>
+        <Row class="mobile-gbbo-list" v-for="gbbo of quoteList.slice(1)" :key="gbbo.id" v-show="turn">
+          <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
+          <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
+          <Col span="6" class="t-r">
+            <p class="f-16 f-w-6 c-E83160">{{gbbo.sellPrice}}</p>
+            <p class="f-12 f-w-5 c-8996A2">{{gbbo.sell|marketName}}</p>
+          </Col>
+          <Col span="6" class="t-r">
+            <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
+            <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
+          </Col>
+        </Row>
+        <Row class="mobile-gbbo-list" v-show="quoteList.length===0">
+          <Col span="24" class="f-16 f-w-6 c-01B2D6 t-c">No Arbitrage Oppotunity Now</Col>
         </Row>
       </div>
     </div>
@@ -174,37 +185,6 @@
             <p class="f-14 c-77838F self">*Subject to applicable regulations</p>
           </div>
         </div>
-        <!--<Row class="mt-10">-->
-        <!--<Col span="12">-->
-        <!--<ul>-->
-        <!--<li class="gbbo-item t-l" v-for="(item,i) in gbboTMList" :key="i">-->
-        <!--<div class="d-f mb-6">-->
-        <!--<img src="../../assets/images/tresso/checked.png" class="gbboTM-img mr-4">-->
-        <!--<dl class="d-ib gbboTM-dl">-->
-        <!--<dt class="f-18 f-w-5 c-fff mb-2">{{item.title}}</dt>-->
-        <!--<dd class="f-14 c-B9C9D6 gbboTM-dd">{{item.des}}</dd>-->
-        <!--</dl>-->
-        <!--</div>-->
-        <!--</li>-->
-        <!--</ul>-->
-        <!--</Col>-->
-        <!--<Col span="12" class="t-r">-->
-        <!--<img src="../../assets/images/tresso/power.png" alt="" width="420" class="mt-2 mb-3">-->
-        <!--<p class="f-14 c-77838F pt-11">*Subject to applicable regulations</p>-->
-        <!--</Col>-->
-        <!--</Row>-->
-        <!--<ul class="mt-5">-->
-        <!--<li class="gbbo-item t-l pr-6" v-for="(item,i) in gbboTMList" :key="i">-->
-        <!--<div class="d-f mt-8">-->
-        <!--<img src="../../assets/images/tresso/checked.png" class="gbboTM-img mr-4">-->
-        <!--<dl class="d-ib gbboTM-dl">-->
-        <!--<dt class="f-18 f-w-5 c-fff mb-2">{{item.title}}</dt>-->
-        <!--<dd class="f-14 c-B9C9D6 gbboTM-dd">{{item.des}}</dd>-->
-        <!--</dl>-->
-        <!--</div>-->
-        <!--</li>-->
-        <!--<li class="f-14 c-77838F t-r">*Subject to applicable regulations</li>-->
-        <!--</ul>-->
       </div>
     </div>
     <!--Keep more of your margin with FREE trading-->
@@ -229,7 +209,6 @@
               <!--提示-->
               <Tooltip placement="top-end" offset="10" v-if="i===2">
                 <img src="../../assets/images/tresso/help.png" alt="" width="16" class="ml-1 mb-2">
-                <!--<Icon type="ios-help-circle" class="help-icon c-2A3D4D"/>-->
                 <section slot="content" class="f-w-4 c-FEFFFF">
                   Tresso offers no fee trading for USDD pairs. The displayed <br>
                   price may include fees charged by our service providers <br>
@@ -256,39 +235,31 @@
       </Rowbox>
     </div>
     <!--manager-->
-    <div class="manager-box bgc-fff p-lg-11">
+    <div class="manager-box bgc-fff pt-11 pb-11">
       <div class="container pt-4 pb-4">
-        <div class="row justify-content-between align-items-stretch">
-          <div class="col-md-5">
-            <img v-lazy='require("../../assets/images/tresso/manager.png")' class="manager-img">
+        <div class="row">
+          <div class="col-md-5 p-0 t-c">
+            <img v-lazy='require("../../assets/images/tresso/manager.png")' class="manager-img mb-3">
           </div>
-          <div class="col-md-7">
-            <div class=" mt-3 mt-lg-0">
-              <img src="../../assets/images/tresso/left.png" class="manager-icon" alt="">
-            </div>
-            <div class="pl-lg-10 pr-lg-10 mt-3 mt-lg-0 p-4 p-lg-0">
-              <h4 class="f-30 c-304454 mb-2 mt-lg-7">Join the Innovation.</h4>
+          <div class="col-md-7 manager-right">
+            <img src="../../assets/images/tresso/left.png" class="right-top manager-icon" alt="">
+            <div class="pl-3 pr-3">
+              <h4 class="f-30 c-304454 mb-2">Join the Innovation.</h4>
               <p class="f-16 f-w-5 c-304454 mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
-              <section class="f-16 c-77838F mb-2 f-w-5">
-                Given the maturation of the crypto, token, and digital asset markets, the trading standards and
-                operations found in current exchanges are woefully underdeveloped when compared with those of
-                traditional markets. Tresso’s institutional-grade trading with Global Best Bid and Offer is a
-                necessary innovation to these nontraditional markets. GBBO™ is the first of many innovations
-                that
-                we expect to bring to this marketplace to enhance institutional trust, credence and
-                participation
-                in nontraditional digital assets such as crypto.
+              <section class="f-16 c-77838F f-w-5">
+                The Internet makes connections available everywhere. Blockchain technology makes assets 
+                trustworthy, credible and has "findability." In the near future, assets can flow freely
+                 on a unified market around the world like commodities. Apifiny is committed to this 
+                 mission. Cryptocurrency is just the beginning.
               </section>
             </div>
-            <div class="t-r mt-lg-7 mt-3 mt-lg-0">
-              <img src="../../assets/images/tresso/right.png" class="manager-icon" alt="">
-            </div>
+            <img src="../../assets/images/tresso/right.png" class="right-bottom manager-icon" alt="">
           </div>
         </div>
       </div>
     </div>
     <!--PARTNERS-->
-    <div class="partners-box bgc-1A232B pt-lg-11 pb-lg-11">
+    <div class="partners-box bgc-1A232B pt-11 pb-11">
       <div class="container pt-4 pb-4">
         <h3 class="f-36 c-fff f-w t-c">PARTNERS</h3>
         <ul class="p-3 mt-lg-11 partners">
@@ -299,8 +270,8 @@
       </div>
     </div>
     <!--trading-->
-    <div class="trading-box bgc-fff p-lg-11 t-c pt-5 pb-5">
-      <div class="container p-lg-11">
+    <div class="trading-box bgc-fff pt-11 pb-11 t-c">
+      <div class="container pt-4 pb-4">
         <h3 class="f-36 c-304454 f-w t-c">Want more efficient trading</h3>
         <p class="f-18 c-d-gray mt-3">Tresso is currently in closed beta. Sign up now to be first on the list.</p>
         <router-link :to="loginToken?'/balances':'/login'"
@@ -583,17 +554,19 @@
         this.gbboList.avgPrice = data.ma
       },
       arb(data) {
-        this.gbboList.maxArb = data.maxArb.toFixed(2)
-        this.quoteList = data['matchMap'].slice(0, 5)
-        this.gbboList.sellPrice = data['matchMap'][0] && data['matchMap'][0].sellPrice
-        this.gbboList.buyPrice = data['matchMap'][0] && data['matchMap'][0].buyPrice
-        // 差价
-        const maxArb = data['matchMap'][0].arb
+        if(data.matchMap.length){
+          this.gbboList.maxArb = data.maxArb.toFixed(2)
+          this.quoteList = data['matchMap'].slice(0, 5)
+          this.gbboList.sellPrice = data['matchMap'][0] && data['matchMap'][0].sellPrice
+          this.gbboList.buyPrice = data['matchMap'][0] && data['matchMap'][0].buyPrice
+          // 差价
+          const maxArb = data['matchMap'][0].arb
 
-        if (maxArb <= 0) {
-          this.gbboList.avgChange = 0
-        } else {
-          this.gbboList.avgChange = new BigNumber(maxArb).dividedBy(this.gbboList.avgPrice).multipliedBy(100).toFixed(4) + '%';
+          if (maxArb <= 0) {
+            this.gbboList.avgChange = 0
+          } else {
+            this.gbboList.avgChange = new BigNumber(maxArb).dividedBy(this.gbboList.avgPrice).multipliedBy(100).toFixed(4) + '%';
+          }
         }
       },
       toggle() {
@@ -649,16 +622,11 @@
   @import '../../assets/css/common.less';
 
   .home {
-    @media screen and (min-width: 1200px) {
+    font-size: 0;
+    @media screen and (max-width: 576px) {
       .partners {
-        .d-f;
-        justify-content: space-between;
-      }
-    }
-    @media screen and (max-width: 1199px) {
-      .partners {
-        .partners-li {
-          text-align: center;
+        .partners-img {
+          width: 192*0.8px !important;
         }
       }
     }
@@ -680,41 +648,15 @@
         display: block !important;
       }
     }
-    @media screen and (min-width: 768px) {
-      .top {
-        padding-top: 80px;
-        .top-title {
-          .f-40;
-        }
-      }
-
-      .gbboTMBg {
-        background-size: cover;
-      }
-    }
-    @media screen and (max-width: 767px) {
-      .top {
-        .top-title {
-          .f-34;
-        }
-      }
-
-      .gbboTMBg {
-        background-size: contain;
-      }
-
-      .partners-img {
-        width: 192*0.8px !important;
-      }
-
-    }
 
     .top {
-      background: url("../../assets/images/tresso/banner.png") no-repeat;
+      background: #151D24 url("../../assets/images/tresso/banner.png") no-repeat;
       background-position: center;
       background-size: cover;
 
       min-height: 530px;
+      .d-f;
+      align-items: center;
       .top-desc {
         max-width: 750px;
       }
@@ -826,8 +768,6 @@
     }
 
     .trade-btn {
-      /*width: 160px;*/
-      /*height: 40px;*/
       padding: 7px 18px;
       .f-14;
       .c-fff;
@@ -852,10 +792,6 @@
         height: 24px;
         vertical-align: text-top;
       }
-      .gbbo-item {
-        //.d-ib;
-        /*width: 50%;*/
-      }
       .gbboTM-dl {
         text-align: left;
         vertical-align: text-top;
@@ -863,14 +799,11 @@
       .gbboTM-dd {
         line-height: 24px;
       }
-      .gbboTM-right{
+      .gbboTM-right {
         .d-f;
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-end;
-        /*.self{*/
-          /*align-self: flex-end;*/
-        /*}*/
       }
     }
 
@@ -893,14 +826,32 @@
         width: 100%;
         max-width: 370px;
       }
+      .manager-right{
+        .d-f;
+        align-items: center;
+        .right-top{
+          align-self: flex-start;
+        }
+        .right-bottom{
+          align-self: flex-end;
+        }
+      }
       .manager-icon {
         width: 23px;
       }
     }
 
     .partners-box {
+      .partners {
+        .d-f;
+        justify-content: center;
+        align-items: center;
+        flex-flow: wrap;
+      }
       .partners-img {
-        width: 192px;
+        width: 100%;
+        max-width: 192px;
+        min-width: 140px;
       }
     }
 

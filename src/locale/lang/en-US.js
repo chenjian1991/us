@@ -5,7 +5,7 @@ export default {
 
    //首页
    usNotice: "Tresso, including all products and services offered hereby, is currently not available to any citizens or residents of the United States and its affiliated territories. We are not offering, soliciting, promoting, or otherwise holding out as being able to provide any service or product to any citizens or residents of the United States. Please see our Terms of Use for more information.",
-   HomeTitle: 'Tresso - Maximize Returns, Minimize Hassle',
+   HomeTitle: 'Tresso - The digital asset trading platform with best execution',
    HomeDescription: 'Tresso’s institutional-grade Global Best Bid and Offer (GBBO™) technology scans the deepest global liquidity pools to deliver the best prices on digital currencies. Coupled with no fees, high-speed conversion, and a seamless single point of execution, Tresso gives the savvy trader the greatest opportunities to win. All in a single account.',
    HomeKeyword: 'Tresso, tresso.com, GBBO',
 
@@ -90,7 +90,7 @@ export default {
    隐私条款: 'Privacy Policy',
 
    //5站title翻译
-   HomePageTitle: 'TRESSO - Maximize Returns, Minimize Hassle',
+   HomePageTitle: 'TRESSO - The digital asset trading platform with best execution',
    ExchangeTitle: 'Log In - TRESSO',
    SignUPTitle: 'Sign Up - TRESSO',
    ForgotPasswordTitle: 'Forgot Password - TRESSO',
@@ -499,20 +499,20 @@ export default {
    aqzxgoogleplaceholder: "Enter Key backup at step 3",
    aqzxgooglecodeplaceholder: "Enter the 6-digit verification code in your GA.",
    aqzxCloseGoogleRouter: "Enable Google Authentication",
-   aqzxCloseGoogletips: "For security purposes no withdrawals are permitted for 24 hours after disable of Google Auth.",
+   aqzxCloseGoogletips: "For security reasons withdrawals from your account will be frozen for 24 hours after disabling Google Authenticator.",
    aqzxCloseGoogletitle: "Enable Google Authentication",
    aqzxCloseGooglePassword: "Login Password :",
    ggyzMAcountSecurity: "Acount & Security >",
-   ggyzMGoogleAuthentication: "Enable Google Authentication",
+   ggyzMGoogleAuthentication: "Enable Google Authenticator",
    ggyzGoogleTip: "Google Authenticator generates dynamic passwords, and it is similar to SMS dynamic verification. Google Authenticator generates a new code every 30 seconds after you bind it to apps. This verification code can be used for login, withdrawals, and for changing security settings to achieve maximum security.",
    ggyzDownloadApp: "1.Download App",
    ggyzScanQRCode: "2.Scan QR Code",
    ggyzBackupKey: "3.Backup Key",
-   ggyzEnableGoogle: "4.Enable Google Authentication",
+   ggyzEnableGoogle: "4.Enable Google Authenticator",
    ggyzDownloadAndInstall: "Download and Install Google Authentication APP",
    ggyzAndroid: "Android",
    ggyzIOSMethod: 'Search “Google Authenticator” on the app store to download on iOS.',
-
+   sfrzSubmit: "Submit",
 
    ggyzAndroidMethod: 'Search “Google Authenticator” on Google Play or other Android app stores to download on Android.',
    ggyzHaveInstalled: "I have installed the APP",
@@ -536,7 +536,7 @@ export default {
    ggyzGoogleAuthenticationCode: "Google Authentication Code：",
    ggyzEnterYourGA: "Enter the 6-digit verification code in your GA.",
    ggyzPrevStep3: "Prev Step",
-   ggyzEnableGA: "Enable Google Authentication",
+   ggyzEnableGA: "Enable Google Authenticator",
    bindgoogleSuccess: "Google verifies the success of binding",
    //实名认证
    sfrzIIDVerification: "ID Verification",

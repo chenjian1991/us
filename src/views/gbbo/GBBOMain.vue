@@ -494,7 +494,7 @@ export default {
       const curGetDate = curDate.getDate()
       const curHours = curDate.getHours()
       const curMinutes = curDate.getMinutes()
-      return new Date(`${curYear}-${curMonth}-${curGetDate} ${curHours}:${curMinutes}`).getTime()
+      return new Date(`${curYear}/${curMonth}/${curGetDate} ${curHours}:${curMinutes}`).getTime()
     },
     // k线历史数据
     getKHistoryData() {
