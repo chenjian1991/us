@@ -32,7 +32,7 @@
               <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
               <span class="desc">Max Arbitrage:</span>
               <span class="f-20 f-w-6 c-01B2D6 mr-4" style="width: 55px">{{gbboList.maxArb|compare}}</span>
-              <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" @click="clickArbitrage">One-Click
+              <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" style="cursor: pointer" @click="clickArbitrage">One-Click
                 Arbitrage
               </button>
             </div>
