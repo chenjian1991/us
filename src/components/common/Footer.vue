@@ -34,7 +34,7 @@
         <a href="https://www.tresso.com">
           <div class="footer-info__logoWrap__logo"></div>
         </a>
-        <div class="footer-info__logoWrap__footnote">The digital asset trading platform with best execution</div>
+        <!-- <div class="footer-info__logoWrap__footnote">The digital asset trading platform with best execution</div> -->
         <div class="footer-info__logoWrap__icon">
           <a :href="item.link" v-for="(item,index) in iconInfo" :key="index">
             <img :src="item.img" class="icon_img">
@@ -82,10 +82,10 @@ export default {
           }, {
             text: 'Team',
             link: 'https://www.tresso.com/about'
-          }, {
+          }, /* {
             text: 'Careers',
             link: 'https://www.tresso.com/about'
-          }, {
+          }, */ {
             text: 'Fee Structure',
             link: 'https://www.tresso.com/usd_fees'
           }, {
@@ -186,10 +186,17 @@ export default {
         }
         &__icon{
           margin-top: 30px;
-          .icon_img{
-            width: 14px;
-            height: 14px;
-            margin-right: 12px;
+          a{
+            .icon_img{
+              width: 14px;
+              height: 14px;
+              margin-right: 12px;
+            }
+            &:last-child{
+              .icon_img{
+                margin-right: 0;
+              }
+            }
           }
         }
         &__btn{
