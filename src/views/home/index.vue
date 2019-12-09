@@ -612,7 +612,6 @@
       },
       //展示数据
       arb(data) {
-        console.log(data)
         if (data.matchMap.length) {
           this.gbboList.maxArb = data.maxArb.toFixed(2)
           this.quoteList = data['matchMap'].slice(0, 5)
