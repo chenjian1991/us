@@ -311,13 +311,13 @@ export default {
       GBBO_rate: 0,
       sell_exchange_logo: '',
       buy_exchange_logo: '',
-      buy_input_change: false,//是否输入
+      buy_input_change: false, //是否输入
       sell_input_change: false,
       isInitOrderBook: true,
-      buyRangeValue: 0,//滑块值
+      buyRangeValue: 0, //滑块值
       sellRangeValue: 0,
-      orderTicketTimer: null,//orderTicket定时器
-      updateAt: '',//路总需求 要加这个隐藏字段
+      orderTicketTimer: null, //orderTicket定时器
+      updateAt: '', //路总需求 要加这个隐藏字段
       // maxArbitrageList:[],
       arbData:{},
       setDepthTime: '',
