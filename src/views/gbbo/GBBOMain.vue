@@ -9,7 +9,8 @@
           <div class="gbbomain-realtime__hd">
             <gbbo-ticker
               :currentInfo="currentInfo"
-              :arbData="arbData">
+              :arbData="arbData"
+              :dataFor24Hours="dataFor24Hours">
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->
@@ -320,8 +321,10 @@ export default {
       updateAt: '', //路总需求 要加这个隐藏字段
       // maxArbitrageList:[],
       arbData:{},
-      setDepthTime: '',
-      setArbTime: ''
+      setDepthTime: '', // 盘口深度重连定时器
+      setArbTime: '', // Arb重连定时器
+      setKlineTime: '', // k线重连定时器
+      dataFor24Hours: '' // 24小时交易量
     }
   },
   created() {
@@ -623,6 +626,12 @@ export default {
           evt.disconnect()
           fn.call(this)
         }, 5000);
+      } else if(type === 'kline'){
+        clearTimeout(this.setKlineTime)
+        this.setKlineTime = setTimeout(() => {
+          evt.disconnect()
+          fn.call(this)
+        }, 15000);
       }
     },
     getGBBODepth() {
@@ -644,6 +653,11 @@ export default {
               this.sortOrderBook(JSON.parse(message.body))
             }
           });
+          this.stompClient.subscribe(`/topic/ticker/${this.currentSymbol}`, (message) => {
+            if (message.body) {
+              this.ticker(JSON.parse(message.body))
+            }
+          });
         }, (error) => {
           console.log('new Sockjs  error')
           this.stompClient.disconnect()
@@ -651,6 +665,14 @@ export default {
           this.getGBBODepth()
         });
       }
+    },
+    //24h 交易量
+    ticker(data) {
+      const providerBBOMap = Object.values(data)
+      const sum = providerBBOMap.reduce((total, currentValue) => {
+        return total + currentValue['volume']
+      }, 0)
+      this.dataFor24Hours = sum.toFixed(2);
     },
     getGBBOArb(){
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
@@ -685,7 +707,7 @@ export default {
           });
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
             if(message.body){
-              this.GBBODepthSetTime(this.arbStompClient, this.getGBBOArb)
+              this.GBBODepthSetTime(this.arbStompClient, 'kline', this.getGBBOArb)
               this.kLineData = JSON.parse(message.body)
             }
           })

@@ -38,7 +38,8 @@
             <dl>
                <dt>24h Volume</dt>
                <!-- <dd>{{currentInfo.hour24Volume|noData}} {{currentInfo.quoteAsset|noData}}</dd> -->
-               <dd>{{currentInfo.hour24Volume|noData}} {{currentInfo.baseAsset|noData}}</dd>
+               <!-- <dd>{{currentInfo.hour24Volume|noData}} {{currentInfo.baseAsset|noData}}</dd> -->
+               <dd>{{dataFor24Hours | noData}}</dd>
             </dl>
          </div>
       </div>
@@ -73,7 +74,8 @@ export default {
       default() {
         return {}
       }
-    }
+    },
+    dataFor24Hours: String
   },
   filters: {
     noData(value) {
