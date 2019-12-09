@@ -32,7 +32,8 @@
               <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
               <span class="desc">Max Arbitrage:</span>
               <span class="f-20 f-w-6 c-01B2D6 mr-4" style="width: 55px">{{gbboList.maxArb|compare}}</span>
-              <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" style="cursor: pointer" @click="clickArbitrage">One-Click
+              <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" style="cursor: pointer"
+                      @click="clickArbitrage">One-Click
                 Arbitrage
               </button>
             </div>
@@ -45,8 +46,8 @@
           </div>
           <!--数据列表-->
           <ul class="list">
-            <li class="bgc-19232C">
-              <span class="item" v-for="item of gbboTitle">{{item.title}}</span>
+            <li class="bgc-19232C" style="height: 50px">
+              <span class="item f-14 c-DBE8F2" v-for="item of gbboTitle">{{item.title}}</span>
             </li>
             <!--点击每一行 跳到gbbo页面-->
             <router-link to="/gbbo">
@@ -90,8 +91,8 @@
             </router-link>
 
           </ul>
-          <ul class="toggle-list" v-show="turn">
-            <router-link to="/gbbo">
+          <ul v-show="turn">
+            <router-link to="/gbbo" class="toggle-list">
               <li v-for="(gbbo,i) of quoteList.slice(1)" :key="gbbo.id"
                   :class="i%2===0?'bgc-19232C':'bgc-131A21'">
                 <div class="item">
@@ -111,7 +112,8 @@
               </li>
             </router-link>
           </ul>
-          <div class="view" @click="turn=!turn">
+          <!--展开 收起-->
+          <div class="view" @click="turn=!turn" v-show="quoteList.length!==0">
             <span>{{turn!==true?'View more':'Collapse'}}</span>
             <img src="../../assets/images/tresso/down.png" alt="" :class="{'up-down-transform':turn}">
           </div>
@@ -281,10 +283,10 @@
               <h4 class="f-30 c-304454 mb-2">Join the Innovation.</h4>
               <p class="f-16 f-w-5 c-304454 mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
               <section class="f-16 c-77838F f-w-5">
-                The Internet makes connections available everywhere. Blockchain technology makes assets 
+                The Internet makes connections available everywhere. Blockchain technology makes assets
                 trustworthy, credible and has "findability." In the near future, assets can flow freely
-                 on a unified market around the world like commodities. Apifiny is committed to this 
-                 mission. Cryptocurrency is just the beginning.
+                on a unified market around the world like commodities. Apifiny is committed to this
+                mission. Cryptocurrency is just the beginning.
               </section>
             </div>
             <img src="../../assets/images/tresso/right.png" class="right-bottom manager-icon" alt="">
@@ -785,17 +787,6 @@
         .item {
           .d-ib;
           width: 25%;
-        }
-      }
-      .list {
-        li {
-          &:nth-child(1) {
-            height: 50px;
-            span {
-              .f-14;
-              .c-DBE8F2;
-            }
-          }
         }
       }
       .toggle-list {

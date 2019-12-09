@@ -11,7 +11,6 @@
             <!-- Logo -->
             <router-link to='/home' class="mr-11 logo-box">
               <img src="../../assets/images/tressoHeader/logo.png" alt="logo" class="logo-img">
-              <!--<img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">-->
             </router-link>
             <!-- End Logo -->
             <!-- Responsive Toggle Button -->
@@ -118,8 +117,7 @@
     <Drawer :closable="true" v-model="showMenu" :mask="false">
       <div class="drawer">
         <div class="t-c">
-          <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110" class="mb-3">
-          <img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">
+          <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110">
         </div>
         <ul class="drawer-list" @click="showMenu=false">
           <li class="drawer-item">
