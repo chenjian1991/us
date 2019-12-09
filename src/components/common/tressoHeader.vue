@@ -24,7 +24,7 @@
             <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
               <ul class="navbar-nav u-header__navbar-nav">
                 <li class="nav-item u-header__nav-item header-box">
-                  <router-link to='/gbbo' class="nav-link u-header__nav-link">GBBO</router-link>
+                  <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
                 </li>
                 <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -45,10 +45,12 @@
                       <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="goTeam">Team</a>
                     </li>
                     <li class="hs-has-sub-menu">
-                      <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"
-                         class="nav-link u-header__sub-menu-nav-link" target="_blank">
-                        FAQs
-                      </a>
+                      <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="goFAQs">FAQs</a>
+
+                      <!--<a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"-->
+                         <!--class="nav-link u-header__sub-menu-nav-link" target="_blank">-->
+                        <!--FAQs-->
+                      <!--</a>-->
                     </li>
                   </ul>
                 </li>
@@ -124,7 +126,7 @@
             <router-link to='/' class="nav-link u-header__nav-link">Home</router-link>
           </li>
           <li class="drawer-item">
-            <router-link to='/gbbo' class="nav-link u-header__nav-link">GBBO</router-link>
+            <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
           </li>
           <li class="drawer-item">
             <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -197,6 +199,9 @@
         } else {
           this.$router.push('/about')
         }
+      },
+      goFAQs(){
+        window.open('https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ')
       },
       //实名信息
       getUserInfo() {
