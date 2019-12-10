@@ -40,7 +40,7 @@
           Join the Beta
         </div>
         <div class="footer-info__logoWrap__icon">
-          <a :href="item.link" v-for="(item,index) in iconInfo" :key="index">
+          <a :href="item.link" v-for="(item,index) in iconInfo" target="_black" :key="index">
             <img :src="item.img" class="icon_img">
           </a>
         </div>
