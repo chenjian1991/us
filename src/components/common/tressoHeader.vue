@@ -113,7 +113,7 @@
             </div>
             <!--移动端 menu-->
             <ul class="mobile-menu">
-              <li class="d-ib header-box c-fff">
+              <li class="d-ib header-box c-fff" v-show="isLogin">
                 {{email|cutOff}}
               </li>
               <li class="d-ib">
