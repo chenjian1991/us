@@ -7,7 +7,6 @@ export const queryUserStatus = (params)=>{
 export const onloadCallback = (id,successCallback,expiredCallback,errorCallback) =>{
                 if(grecaptcha.render){
                     console.log('render success');
-                    console.log(this)
                 }
                 let widgetId=grecaptcha.render(id, {
                     'sitekey': '6Le62qUUAAAAAN9EITa_yLNUKThYL0X7sBjZ_hBo',
@@ -17,7 +16,7 @@ export const onloadCallback = (id,successCallback,expiredCallback,errorCallback)
                         if(data.length!==0){
                             successCallback(data,widgetId);
                             setTimeout(() => {
-                                grecaptcha.reset(widgetId)
+                                grecaptcha.reset(widgetId);//重置谷歌验证
                             }, 1500);
                         }
                     },
