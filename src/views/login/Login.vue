@@ -18,11 +18,11 @@
                      <Form ref="formValidate" :model='formValidate' :rules='ruleValidate'>
                         <FormItem class="form_item" prop='phoneNumber'>
                             <img src="../../assets/images/register/accountnew.svg">
-                            <Input class="isfocus_enter" v-model="formValidate.phoneNumber" :placeholder="$t('siginAcountPlaceholder')"></Input>
+                            <Input class="isfocus_enter" v-model.trim="formValidate.phoneNumber" :placeholder="$t('siginAcountPlaceholder')"></Input>
                         </FormItem>
                         <FormItem class="form_item" prop='password'>
                             <img src="../../assets/images/register/security.svg">
-                            <Input class="isfocus_enter" type="password" v-model="formValidate.password" :placeholder="$t('signPasswordPlaceholder')"></Input>
+                            <Input class="isfocus_enter" type="password" v-model.trim="formValidate.password" :placeholder="$t('signPasswordPlaceholder')"></Input>
                         </FormItem>
                          <input  type="hidden" name="captchaId" value="a3cd39c172284133a3470b7ec05a2bb0">
                          <div id="captcha"></div>
@@ -237,13 +237,21 @@ import {geeTest} from '../../../api/usersystem.js'
                         this.$store.dispatch("getMarkSymbol");
                         if(this.fromSocial=="null"&&this.fromSite==undefined){//既不是social也不是ato
                         let router = this.previousRouterName;
-                        let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot','NewLoginpwd','google','safeVatification','login'];
+                        let arr = ['resetNewpass','newPassword','activeEmail','register','verfifyEmail','login',null,'','forgot','NewLoginpwd','google','safeVatification','login','OriginTradePassword'];
                         if(arr.indexOf(this.previousRouterName)!==-1){//说明找到了
                             this.$router.push('/safeCenter')
+                        }else if(router === 'home'){
+                            this.$router.push('/gbbo')
+                            // this.$router.push({
+                            //     name:'login',
+                            //     params:{
+                            //         path:'/gbbo'
+                            //     }
+                            // })
                         }else{
                             this.$router.go(-1)
-                            
                         }
+                        
                         }else if(this.fromSite){//如果是ato
                             this.$router.push(this.fromSite)
                         }else{//如果是social

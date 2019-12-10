@@ -26,15 +26,16 @@
         <div class="d-flex align-items-baseline"><span class="f-28 c-fff f-w-6 mr-4">GBBO™</span><span
             class="f-14 c-B9C9D6">Global Best Bid and Offer, Powered by APIFINY</span></div>
         <section>
+          <!--头部-->
           <div class="quote">
             <div class="left pl-7">
               <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
               <span class="desc">Max Arbitrage:</span>
               <span class="f-20 f-w-6 c-01B2D6 mr-4" style="width: 55px">{{gbboList.maxArb|compare}}</span>
-              <router-link :to="loginToken?{path:'gbbo'}:{path:'login'}"
-                           class="btn btn-sm btn-primary transition-3d-hover trade-btn">
-                One-Click Arbitrage
-              </router-link>
+              <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" style="cursor: pointer"
+                      @click="clickArbitrage">One-Click
+                Arbitrage
+              </button>
             </div>
             <div class="right">
               <span class="desc">Market Avg:</span>
@@ -43,53 +44,76 @@
               <span class="symbol c-DBE8F2">{{gbboList.vol|separate}}</span>
             </div>
           </div>
+          <!--数据列表-->
           <ul class="list">
-            <li class="bgc-19232C">
-              <span class="item" v-for="item of gbboTitle">{{item.title}}</span>
+            <li class="bgc-19232C" style="height: 50px">
+              <span class="item f-14 c-DBE8F2" v-for="item of gbboTitle">{{item.title}}</span>
             </li>
-            <li class="bgc-131A21 f-16 c-01B2D6 justify-content-center p-0" v-show="quoteList.length===0">
-              No Arbitrage Oppotunity Now
-            </li>
-            <li v-for="gbbo of quoteList.slice(0,1)" :key="gbbo.id" class="bgc-131A21">
-              <div class="item">
-                <p class="f-20 c-01B2D6 f-w-5">{{gbbo.arb|compare}}</p>
-                <p class="f-14 c-8996A2 f-w-5">Est Return：{{gbboList.avgChange|compare}}</p>
-              </div>
-              <div class="item">
-                <span class="f-16 c-DBE8F2 f-w-5">{{gbbo.amount.toFixed(8)}}</span>
-              </div>
-              <div class="item">
-                <span class="f-16 c-E83160 f-w-5 mr-4">{{gbbo.sellPrice}}</span>
-                <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
-                <p class="f-14 c-8996A2 f-w-5">< Markets Avg {{sellDiffAvg|compare}}</p>
-              </div>
-              <div class="item">
-                <span class="f-18 c-00A077 f-w-5 mr-4">{{gbbo.buyPrice}}</span>
-                <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
-                <p class="f-14 c-8996A2 f-w-5">> Market Avg {{buyDiffAvg|compare}}</p>
-              </div>
-            </li>
+            <!--点击每一行 跳到gbbo页面-->
+            <router-link to="/gbbo">
+              <!--没数据-->
+              <li class="bgc-131A21" v-show="quoteList.length===0">
+                <div class="item">
+                  <p class="f-20 c-01B2D6 f-w-5">0</p>
+                </div>
+                <div class="item">
+                  <span class="f-16 c-DBE8F2 f-w-5">0</span>
+                </div>
+                <div class="item">
+                  <span class="f-16 c-E83160 f-w-5 mr-4">{{noDiff.sellPrice}}</span>
+                  <span class="f-14 c-8996A2">{{noDiff.sell|marketName}}</span>
+                </div>
+                <div class="item">
+                  <span class="f-18 c-00A077 f-w-5 mr-4">{{noDiff.buyPrice}}</span>
+                  <span class="f-14 c-8996A2">{{noDiff.buy|marketName}}</span>
+                </div>
+              </li>
+              <!--有数据 第一行-->
+              <li v-for="gbbo of quoteList.slice(0,1)" :key="gbbo.id" class="bgc-131A21">
+                <div class="item">
+                  <p class="f-20 c-01B2D6 f-w-5">{{gbbo.arb|compare}}</p>
+                  <p class="f-14 c-8996A2 f-w-5">Est Return：{{gbboList.avgChange|compare}}</p>
+                </div>
+                <div class="item">
+                  <span class="f-16 c-DBE8F2 f-w-5">{{gbbo.amount.toFixed(8)}}</span>
+                </div>
+                <div class="item">
+                  <span class="f-16 c-E83160 f-w-5 mr-4">{{gbbo.sellPrice}}</span>
+                  <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
+                  <p class="f-14 c-8996A2 f-w-5">< Markets Avg {{sellDiffAvg|compare}}</p>
+                </div>
+                <div class="item">
+                  <span class="f-18 c-00A077 f-w-5 mr-4">{{gbbo.buyPrice}}</span>
+                  <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
+                  <p class="f-14 c-8996A2 f-w-5">> Market Avg {{buyDiffAvg|compare}}</p>
+                </div>
+              </li>
+            </router-link>
+
           </ul>
-          <ul class="toggle-list" v-show="turn">
-            <li v-for="(gbbo,i) of quoteList.slice(1)" :key="gbbo.id"
-                :class="i%2===0?'bgc-19232C':'bgc-131A21'">
-              <div class="item">
-                <p class="f-20 c-01B2D6 f-w-5">{{gbbo.arb|compare}}</p>
-              </div>
-              <div class="item">
-                <span class="f-16 c-DBE8F2 f-w-5">{{gbbo.amount.toFixed(8)}}</span>
-              </div>
-              <div class="item">
-                <span class="f-16 c-E83160 f-w-5 mr-4">{{gbbo.sellPrice}}</span>
-                <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
-              </div>
-              <div class="item">
-                <span class="f-18 c-00A077 f-w-5 mr-4">{{gbbo.buyPrice}}</span>
-                <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
-              </div>
-            </li>
+          <ul v-show="turn">
+            <router-link to="/gbbo" class="toggle-list">
+              <li v-for="(gbbo,i) of quoteList.slice(1)" :key="gbbo.id"
+                  :class="i%2===0?'bgc-19232C':'bgc-131A21'">
+                <div class="item">
+                  <p class="f-20 c-01B2D6 f-w-5">{{gbbo.arb|compare}}</p>
+                </div>
+                <div class="item">
+                  <span class="f-16 c-DBE8F2 f-w-5">{{gbbo.amount.toFixed(8)}}</span>
+                </div>
+                <div class="item">
+                  <span class="f-16 c-E83160 f-w-5 mr-4">{{gbbo.sellPrice}}</span>
+                  <span class="f-14 c-8996A2">{{gbbo.sell|marketName}}</span>
+                </div>
+                <div class="item">
+                  <span class="f-18 c-00A077 f-w-5 mr-4">{{gbbo.buyPrice}}</span>
+                  <span class="f-14 c-8996A2">{{gbbo.buy|marketName}}</span>
+                </div>
+              </li>
+            </router-link>
           </ul>
-          <div class="view" @click="turn=!turn">
+          <!--展开 收起-->
+          <div class="view" @click="turn=!turn" v-show="quoteList.length!==0">
             <span>{{turn!==true?'View more':'Collapse'}}</span>
             <img src="../../assets/images/tresso/down.png" alt="" :class="{'up-down-transform':turn}">
           </div>
@@ -115,46 +139,58 @@
         <Col span="6" class="f-18 f-w-5 c-00A077">{{gbboList.avgPrice|separate}}</Col>
         <Col span="4" class="f-16 f-w-5 c-01B2D6">{{gbboList.maxArb}}</Col>
         <Col span="6" class="t-r pr-3">
-          <router-link :to="loginToken?{path:'gbbo'}:{path:'login'}"
-                       class="btn btn-sm btn-primary transition-3d-hover mobile-trade-btn disabled">
+          <a href="javascript:;"
+             class="btn btn-sm btn-primary transition-3d-hover mobile-trade-btn" @click="clickArbitrage">
             One-Click<br>Arbitrage
-          </router-link>
+          </a>
         </Col>
       </Row>
       <div>
         <Row class="mobile-gbbo-box">
-          <Col span="6" class="title">Arbitrage</Col>
+          <Col span="6" class="title">Spread (-)</Col>
           <Col span="6" class="title">Size</Col>
           <Col span="6" class="title t-r">Best Ask</Col>
           <Col span="6" class="title t-r">Best Bid</Col>
         </Row>
-        <Row class="mobile-gbbo-list" v-for="gbbo of quoteList.slice(0,1)" :key="gbbo.id">
-          <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
-          <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
-          <Col span="6" class="t-r">
-            <p class="f-16 f-w-6 c-E83160">{{gbbo.sellPrice}}</p>
-            <p class="f-12 f-w-5 c-8996A2">{{gbbo.sell|marketName}}</p>
-          </Col>
-          <Col span="6" class="t-r">
-            <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
-            <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
-          </Col>
-        </Row>
-        <Row class="mobile-gbbo-list" v-for="gbbo of quoteList.slice(1)" :key="gbbo.id" v-show="turn">
-          <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
-          <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
-          <Col span="6" class="t-r">
-            <p class="f-16 f-w-6 c-E83160">{{gbbo.sellPrice}}</p>
-            <p class="f-12 f-w-5 c-8996A2">{{gbbo.sell|marketName}}</p>
-          </Col>
-          <Col span="6" class="t-r">
-            <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
-            <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
-          </Col>
-        </Row>
-        <Row class="mobile-gbbo-list" v-show="quoteList.length===0">
-          <Col span="24" class="f-16 f-w-6 c-01B2D6 t-c">No Arbitrage Oppotunity Now</Col>
-        </Row>
+        <router-link to="/gbbo">
+          <Row class="mobile-gbbo-list" v-for="gbbo of quoteList.slice(0,1)" :key="gbbo.id">
+            <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
+            <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
+            <Col span="6" class="t-r">
+              <p class="f-16 f-w-6 c-E83160">{{gbbo.sellPrice}}</p>
+              <p class="f-12 f-w-5 c-8996A2">{{gbbo.sell|marketName}}</p>
+            </Col>
+            <Col span="6" class="t-r">
+              <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
+              <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
+            </Col>
+          </Row>
+          <Row class="mobile-gbbo-list" v-for="gbbo of quoteList.slice(1)" :key="gbbo.id" v-show="turn">
+            <Col span="6" class="f-16 f-w-6 c-01B2D6">{{gbbo.arb|compare}}</Col>
+            <Col span="6" class="f-16 f-w-6 c-C6D4E0">{{gbbo.amount.toFixed(8)}}</Col>
+            <Col span="6" class="t-r">
+              <p class="f-16 f-w-6 c-E83160">{{gbbo.sellPrice}}</p>
+              <p class="f-12 f-w-5 c-8996A2">{{gbbo.sell|marketName}}</p>
+            </Col>
+            <Col span="6" class="t-r">
+              <p class="f-16 f-w-6 c-00A077">{{gbbo.buyPrice}}</p>
+              <p class="f-12 f-w-5 c-8996A2">{{gbbo.buy|marketName}}</p>
+            </Col>
+          </Row>
+          <!--没数据-->
+          <Row class="mobile-gbbo-list" v-show="quoteList.length===0">
+            <Col span="6" class="f-16 f-w-6 c-01B2D6">0</Col>
+            <Col span="6" class="f-16 f-w-6 c-C6D4E0">0</Col>
+            <Col span="6" class="t-r">
+              <p class="f-16 f-w-6 c-E83160">{{noDiff.sellPrice}}</p>
+              <p class="f-12 f-w-5 c-8996A2">{{noDiff.sell|marketName}}</p>
+            </Col>
+            <Col span="6" class="t-r">
+              <p class="f-16 f-w-6 c-00A077">{{noDiff.buyPrice}}</p>
+              <p class="f-12 f-w-5 c-8996A2">{{noDiff.buy|marketName}}</p>
+            </Col>
+          </Row>
+        </router-link>
       </div>
     </div>
 
@@ -247,12 +283,10 @@
               <h4 class="f-30 c-304454 mb-2">Join the Innovation.</h4>
               <p class="f-16 f-w-5 c-304454 mb-3">David Weild, Former Vice Chairman of Nasdaq</p>
               <section class="f-16 c-77838F f-w-5">
-                Given the maturation of the crypto, token, and digital asset markets, the trading standards and
-                operations found in current exchanges are woefully underdeveloped when compared with those of
-                traditional markets. Tresso’s institutional-grade trading with Global Best Bid and Offer is a
-                necessary innovation to these nontraditional markets. GBBO™ is the first of many innovations
-                that we expect to bring to this marketplace to enhance institutional trust, credence and
-                participation in nontraditional digital assets such as crypto.
+                The Internet makes connections available everywhere. Blockchain technology makes assets
+                trustworthy, credible and has "findability." In the near future, assets can flow freely
+                on a unified market around the world like commodities. Apifiny is committed to this
+                mission. Cryptocurrency is just the beginning.
               </section>
             </div>
             <img src="../../assets/images/tresso/right.png" class="right-bottom manager-icon" alt="">
@@ -344,6 +378,12 @@
           avgPrice: '--',
           avgChange: '--',
           vol: '--',
+        },
+        noDiff: {
+          buyPrice: 0,
+          buy: "",
+          sell: "",
+          sellPrice: 0
         },
         tresso: {
           title: 'Why Tresso',
@@ -484,39 +524,22 @@
           });
           this.priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
           this.getSockJS()
-          this.getSSERealTime()
+          this.getTicker()
         })
       },
-      getSSERealTime() {
-        let url = `symbol=${this.symbol}&${this.symbol}_least=1&`
-        const baseURL = (window.location.protocol === 'http:') ? 'ws://' : 'wss://';
-        const host = window.location.host;
-        this.quoteWS = new ReconnectingWebSocket(`${baseURL}${host}/quote/realTime.ws?${url}`)
-        this.quoteWS.onopen = (e) => {
-        };
-        this.quoteWS.onmessage = (e) => {
-          //每次推送一条记录
-          let result = JSON.parse(e.data)
-          //心跳
-          if (result.ping !== undefined) {
-            var pongResponse = {};
-            pongResponse.pong = result.ping;
-            this.quoteWS.send(JSON.stringify(pongResponse))
-            return;
-          }
-          if (result) {
-            //24H交易量
-            this.gbboList.vol = bigDecimal.round(result.hour24Volume, 2)
-          }
+      //按钮逻辑
+      clickArbitrage() {
+        if (this.loginToken) {
+          this.$router.push('/gbbo')
+        } else {
+          this.$router.push({
+            name: 'login',
+            params: {
+              path: '/gbbo'
+            }
+          })
         }
-        this.quoteWS.onerror = (e) => {
-          console.log("The 'this.quoteWS' connect error");
-        }
-        //关闭时候触发
-        this.quoteWS.onclose = (e) => {
-        };
       },
-
       getSockJS() {
         if (this.arbStompClient === null || !this.arbStompClient.connected) {
           const domain = document.domain;
@@ -534,7 +557,6 @@
             const params = JSON.stringify({symbol: "BTCUSD", interval: "MINUTE_1"})
             this.arbStompClient.send("/echart/app/summarized.ws", {}, params)
 
-
             this.arbStompClient.subscribe(`/topic/arb/${this.symbol}`, (message) => {
               if (message.body) {
                 this.arb(JSON.parse(message.body))
@@ -551,12 +573,46 @@
           });
         }
       },
+      getTicker() {
+        if (this.stompClient == null || !this.stompClient.connected) {
+          const domain = document.domain;
+          let socket = null
+          if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+            socket = new SockJS('https://' + domain + '/xchange/marketdata');
+          } else {
+            socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
+          }
+          this.stompClient = Stomp.over(socket);
+          this.stompClient.debug = null
+          this.stompClient.heartbeat.outgoing = 1000;
+          this.stompClient.connect({}, () => {
+            this.stompClient.subscribe(`/topic/ticker/${this.symbol}`, (message) => {
+              if (message.body) {
+                this.ticker(JSON.parse(message.body))
+              }
+            });
+          }, () => {
+            console.log('new Sockjs  error')
+            this.stompClient.disconnect()
+          });
+        }
+      },
+      //24h 交易量
+      ticker(data) {
+        const providerBBOMap = Object.values(data)
+        let sum = 0
+        sum = providerBBOMap.reduce((total, currentValue) => {
+          return total + currentValue['volume']
+        }, 0)
+        this.gbboList.vol = (sum * this.gbboList.avgPrice).toFixed(2);
+      },
       // 计算平均价
       getAvgPrice(data) {
         this.gbboList.avgPrice = data.ma
       },
+      //展示数据
       arb(data) {
-        if(data.matchMap.length){
+        if (data.matchMap.length) {
           this.gbboList.maxArb = data.maxArb.toFixed(2)
           this.quoteList = data['matchMap'].slice(0, 5)
           this.gbboList.sellPrice = data['matchMap'][0] && data['matchMap'][0].sellPrice
@@ -569,6 +625,9 @@
           } else {
             this.gbboList.avgChange = new BigNumber(maxArb).dividedBy(this.gbboList.avgPrice).multipliedBy(100).toFixed(4) + '%';
           }
+        } else {
+          this.gbboList.maxArb = 0
+          this.noDiff = data.firstLeg
         }
       },
       toggle() {
@@ -729,17 +788,6 @@
           width: 25%;
         }
       }
-      .list {
-        li {
-          &:nth-child(1) {
-            height: 50px;
-            span {
-              .f-14;
-              .c-DBE8F2;
-            }
-          }
-        }
-      }
       .toggle-list {
         height: 312px;
       }
@@ -828,13 +876,13 @@
         width: 100%;
         max-width: 370px;
       }
-      .manager-right{
+      .manager-right {
         .d-f;
         align-items: center;
-        .right-top{
+        .right-top {
           align-self: flex-start;
         }
-        .right-bottom{
+        .right-bottom {
           align-self: flex-end;
         }
       }

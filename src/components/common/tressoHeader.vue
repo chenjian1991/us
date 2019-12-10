@@ -9,23 +9,22 @@
           <!-- Nav -->
           <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
             <!-- Logo -->
-            <router-link to='/home' class="mr-lg-1 logo-box">
+            <router-link to='/home' class="mr-lg-11 logo-box">
               <img src="../../assets/images/tressoHeader/logo.png" alt="logo" class="logo-img">
-              <img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">
             </router-link>
             <!-- End Logo -->
             <!-- Responsive Toggle Button -->
-            <button type="button" class="navbar-toggler btn u-hamburger" aria-label="Toggle navigation"
-                    aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
-                       <span id="hamburgerTrigger" class="u-hamburger__box">
-                         <span class="u-hamburger__inner"></span>
-                       </span>
-            </button>
+            <!--<button type="button" class="navbar-toggler btn u-hamburger" aria-label="Toggle navigation"-->
+            <!--aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">-->
+            <!--<span id="hamburgerTrigger" class="u-hamburger__box">-->
+            <!--<span class="u-hamburger__inner"></span>-->
+            <!--</span>-->
+            <!--</button>-->
             <!-- End Responsive Toggle Button -->
             <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
               <ul class="navbar-nav u-header__navbar-nav">
                 <li class="nav-item u-header__nav-item header-box">
-                  <a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO</a>
+                  <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
                 </li>
                 <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -43,16 +42,15 @@
                       <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Who we are</router-link>
                     </li>
                     <li class="hs-has-sub-menu">
-                      <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Team</router-link>
+                      <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="goTeam">Team</a>
                     </li>
                     <li class="hs-has-sub-menu">
-                      <router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Careers</router-link>
-                    </li>
-                    <li class="hs-has-sub-menu">
-                      <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"
-                         class="nav-link u-header__sub-menu-nav-link" target="_blank">
-                        FAQs
-                      </a>
+                      <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="goFAQs">FAQs</a>
+
+                      <!--<a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"-->
+                      <!--class="nav-link u-header__sub-menu-nav-link" target="_blank">-->
+                      <!--FAQs-->
+                      <!--</a>-->
                     </li>
                   </ul>
                 </li>
@@ -113,135 +111,44 @@
                 </li>
               </ul>
             </div>
-
-            <!--<div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">-->
-            <!--&lt;!&ndash;left&ndash;&gt;-->
-            <!--<ul class="navbar-nav u-header__navbar-nav navbar-left">-->
-            <!--<li-->
-            <!--class="nav-item u-header__nav-item header-box">-->
-            <!--<a class="nav-link u-header__nav-link" @click="gbboHref()">GBBO</a>-->
-            <!--</li>-->
-            <!--<li class="nav-item u-header__nav-item header-box">-->
-            <!--<router-link to='/API' class="nav-link u-header__nav-link">API</router-link>-->
-            <!--</li>-->
-            <!--<li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"-->
-            <!--data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">-->
-            <!--<router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"-->
-            <!--to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">-->
-            <!--ABOUT-->
-            <!--</router-link>-->
-            <!--<ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu navbar-list"-->
-            <!--aria-labelledby="pagesMegaMenu" @click="hideList" ref="pagesSubMenu">-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Who we are</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Team</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/about' class="nav-link u-header__sub-menu-nav-link">Careers</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"-->
-            <!--class="nav-link u-header__sub-menu-nav-link" target="_blank">-->
-            <!--FAQs-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--&lt;!&ndash;login&ndash;&gt;-->
-            <!--<ul class="navbar-nav u-header__navbar-nav" v-show="!isLogin">-->
-            <!--<li-->
-            <!--class="nav-item u-header__nav-item header-box">-->
-            <!--<router-link class="nav-link u-header__nav-link mr-lg-5" to='/login' style="font-size: 14px">-->
-            <!--Log In-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--<li-->
-            <!--class="nav-item u-header__nav-item">-->
-            <!--<router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn"-->
-            <!--to='/register'>Join the Beta-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--&lt;!&ndash;account&ndash;&gt;-->
-            <!--<ul class="navbar-nav u-header__navbar-nav" v-show="isLogin">-->
-            <!--<li class="nav-item hs-has-sub-menu u-header__nav-item header-box" data-event="hover"-->
-            <!--data-animation-in="slideInUp" data-animation-out="fadeOut" data-position="right">-->
-            <!--<router-link id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle header-a"-->
-            <!--to='' aria-labelledby="pagesSubMenu" aria-haspopup="true" aria-expanded="false">-->
-            <!--{{isLogin?email:''}}-->
-            <!--</router-link>-->
-            <!--<ul id="pagesSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="pagesMegaMenu"-->
-            <!--@click="hideList" ref="pagesSubMenu">-->
-            <!--&lt;!&ndash; <li class="hs-has-sub-menu">-->
-            <!--<router-link to='Dashboard' class="nav-link u-header__sub-menu-nav-link">-->
-            <!--Dashboard-->
-            <!--</router-link>-->
-            <!--</li> &ndash;&gt;-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/balances' class="nav-link u-header__sub-menu-nav-link">-->
-            <!--Balances-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/order' class="nav-link u-header__sub-menu-nav-link">-->
-            <!--Orders-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<router-link to='/safeCenter' class="nav-link u-header__sub-menu-nav-link">-->
-            <!--Account & Security-->
-            <!--</router-link>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="verfiy">-->
-            <!--ID verification-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li class="hs-has-sub-menu">-->
-            <!--<a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="quitFun">-->
-            <!--Log out-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</li>-->
-            <!--<li class="nav-item u-header__nav-item">-->
-            <!--<a href="javascript:;" class="nav-toggle" @click="showMenu=!showMenu"><span></span></a>-->
-            <!--</li>-->
-            <!--</ul>-->
-            <!--</div>-->
+            <!--移动端 menu-->
+            <ul class="mobile-menu">
+              <li class="d-ib header-box c-fff">
+                {{email|cutOff}}
+              </li>
+              <li class="d-ib">
+                <a href="javascript:;" class="nav-toggle" @click="showMenu=!showMenu"><span></span></a>
+              </li>
+            </ul>
           </nav>
           <!-- End Nav -->
         </div>
       </div>
     </header>
-    <Drawer :closable="true" v-model="showMenu">
+    <Drawer :closable="true" v-model="showMenu" :mask="false">
       <div class="drawer">
         <div class="t-c">
-          <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110" class="mb-3">
-          <img src="../../assets/images/tressoHeader/desc.png" alt="" width="260">
+          <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110">
         </div>
         <ul class="drawer-list" @click="showMenu=false">
           <li class="drawer-item">
             <router-link to='/' class="nav-link u-header__nav-link">Home</router-link>
           </li>
           <li class="drawer-item">
-            <a class="nav-link u-header__nav-link" @click="gbboHref">GBBO</a>
+            <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
           </li>
           <li class="drawer-item">
             <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
           </li>
           <li class="drawer-item">
-            <router-link to='/about' class="nav-link u-header__nav-link">About Tresso</router-link>
+            <router-link to='/about' class="nav-link u-header__nav-link">Who we are</router-link>
           </li>
           <li class="drawer-item">
-            <router-link to='/about' class="nav-link u-header__nav-link">Team</router-link>
+            <a href="javascript:;" class="nav-link u-header__nav-link" @click="goTeam">Team</a>
           </li>
-          <li class="drawer-item">
-            <router-link to='/about' class="nav-link u-header__nav-link">Careers</router-link>
-          </li>
+          <!--<li class="drawer-item">-->
+          <!--<router-link to='/about' class="nav-link u-header__nav-link">Careers</router-link>-->
+          <!--</li>-->
           <li class="drawer-item">
             <router-link to='/usd_fees' class="nav-link u-header__nav-link">Fee Structure</router-link>
           </li>
@@ -254,6 +161,23 @@
           </li>
           <li class="drawer-item">
             <router-link to='/legal/terms' class="nav-link u-header__nav-link">Terms & Conditions</router-link>
+          </li>
+        </ul>
+        <!--移动端有这两项 -->
+        <ul class="drawer-list mobile" @click="showMenu=false" v-show="isLogin">
+          <li class="drawer-item">
+            <router-link to='/balances' class="nav-link u-header__nav-link email">{{email}}</router-link>
+          </li>
+          <li class="drawer-item">
+            <a href="javascript:;" class="nav-link u-header__nav-link nav-btn" @click="quitFun">Log out</a>
+          </li>
+        </ul>
+        <ul class="drawer-list mobile" @click="showMenu=false" v-show="!isLogin">
+          <li class="drawer-item">
+            <router-link to='/login' class="nav-link u-header__nav-link">Log In</router-link>
+          </li>
+          <li class="drawer-item">
+            <router-link to='/register' class="nav-link u-header__nav-link nav-btn">Join the Beta</router-link>
           </li>
         </ul>
       </div>
@@ -271,6 +195,11 @@
 
   export default {
     name: 'tressoHeader',
+    filters: {
+      cutOff: function (value) {
+        return value.slice(0, value.lastIndexOf('@'))
+      }
+    },
     data() {
       return {
         isLogin: false,
@@ -295,12 +224,15 @@
           this.$store.commit("changeCurrencyState", result.toCurrency);
         });
       },
-      gbboHref() {
-        if (location.href.includes('/home')) {
-          location.href = '#GBBO'
+      goTeam() {
+        if (location.href.includes('/about')) {
+          location.href = '#team'
         } else {
-          this.$router.push('/home')
+          this.$router.push('/about')
         }
+      },
+      goFAQs() {
+        window.open('https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ')
       },
       //实名信息
       getUserInfo() {
@@ -419,9 +351,6 @@
 <style lang="less">
   #tressoHeader {
     /*导航*/
-    .js-mega-menu {
-      height: 78px;
-    }
     .nav-item, .u-header__nav-item {
       a {
         &:hover {
@@ -447,15 +376,6 @@
       border-top: none !important;
       border-radius: 4px;
     }
-    .u-header__navbar-nav {
-      /*background-color: transparent;*/
-    }
-    .hs-has-sub-menu {
-      a {
-        /*color: #77838F;*/
-      }
-    }
-
   }
 
   /*弹出菜单*/
@@ -476,28 +396,6 @@
       font-size: 38px;
       color: #fff !important;
     }
-    /*菜单 自定义内容*/
-    .drawer {
-      padding-top: 80px;
-      img {
-        display: block;
-        margin: 0 auto;
-      }
-      .drawer-list {
-        padding-top: 75px;
-        .drawer-item {
-          padding-left: 40px;
-          font-size: 14px;
-          font-weight: 500;
-          a {
-            color: #B9C9D6;
-            &:hover {
-              color: #fff;
-            }
-          }
-        }
-      }
-    }
   }
 </style>
 <style scoped lang="less">
@@ -509,7 +407,7 @@
     }
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     .u-header--bg-transparent .u-header__navbar-nav {
       .bgc-151D24;
     }
@@ -517,18 +415,33 @@
     .navbar-expand-md .u-header__nav-last-item {
       display: block;
     }
+
+    .mobile{
+      display: block;
+    }
+    .mobile-menu {
+      display: flex;
+      align-items: center;
+    }
   }
 
-  #tressoHeader {
-    width: 100%;
+  @media (min-width: 768px) {
+    .mobile-menu {
+      display: none;
+    }
+    .mobile{
+      display: none;
+    }
   }
 
   .tressoHeader {
+    width: 100%;
     .logo-box {
-      height: 100%;
+      height: 78px;
       .d-f;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
     .loginBtn:hover {
       color: #fff !important;
@@ -555,8 +468,7 @@
 
     .logo-img {
       display: block;
-      width: 140px;
-      margin-bottom: 13px;
+      width: 148px;
     }
 
     .nav-link {
@@ -567,7 +479,7 @@
     .nav-toggle {
       display: inline-block;
       width: 30px;
-      height: 30px;
+      height: 35px;
       position: relative;
       z-index: 12;
     }
@@ -591,24 +503,45 @@
     .nav-toggle:after {
       top: 28px;
     }
-    /*过渡后*/
-    /*.nav-opened span {*/
-    /*opacity: 0;*/
-    /*}*/
-    /*.nav-opened:before {*/
-    /*-webkit-transform: rotate(45deg);*/
-    /*-ms-transform: rotate(45deg);*/
-    /*transform: rotate(45deg);*/
-    /*top: 19px;*/
-    /*}*/
-    /*.nav-opened:after {*/
-    /*-webkit-transform: rotate(-45deg);*/
-    /*-ms-transform: rotate(-45deg);*/
-    /*transform: rotate(-45deg);*/
-    /*top: 19px;*/
+    .mobile-menu {
+      .nav-toggle:before, .nav-toggle:after, .nav-toggle span {
+        .bgc-01B2D6;
+      }
+    }
 
-    /*}*/
   }
 
+  /*菜单 自定义内容*/
+  .drawer {
+    padding-top: 80px;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+    .drawer-list {
+      padding-top: 75px;
+      .drawer-item {
+        padding-left: 40px;
+        font-size: 14px;
+        font-weight: 500;
+        .nav-link {
+          color: #B9C9D6;
+        }
+        .email{
+          .c-01B2D6;
+        }
+      }
+    }
+    /*移动端 注册和退出按钮样式*/
+    .nav-btn {
+      display: inline-block;
+      margin-left: 13px;
+      margin-top: 10px;
+      color: #01B2D6 !important;
+      border: solid 1px #01B2D6;
+      background-color: transparent;
+      border-radius: 4px;
+    }
+  }
 
 </style>

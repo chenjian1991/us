@@ -9,7 +9,8 @@
           <div class="gbbomain-realtime__hd">
             <gbbo-ticker
               :currentInfo="currentInfo"
-              :arbData="arbData">
+              :arbData="arbData"
+              :dataFor24Hours="dataFor24Hours">
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->
@@ -311,16 +312,19 @@ export default {
       GBBO_rate: 0,
       sell_exchange_logo: '',
       buy_exchange_logo: '',
-      buy_input_change: false,//是否输入
+      buy_input_change: false, //是否输入
       sell_input_change: false,
       isInitOrderBook: true,
-      buyRangeValue: 0,//滑块值
+      buyRangeValue: 0, //滑块值
       sellRangeValue: 0,
-      orderTicketTimer: null,//orderTicket定时器
-      updateAt: '',//路总需求 要加这个隐藏字段
+      orderTicketTimer: null, //orderTicket定时器
+      updateAt: '', //路总需求 要加这个隐藏字段
       // maxArbitrageList:[],
       arbData:{},
-      _setDepthTime: ''
+      setDepthTime: '', // 盘口深度重连定时器
+      setArbTime: '', // Arb重连定时器
+      setKlineTime: '', // k线重连定时器
+      dataFor24Hours: '' // 24小时交易量
     }
   },
   created() {
@@ -609,13 +613,26 @@ export default {
         this.getSSERealTime(symbolUrl)
       })
     },
-    GBBODepthSetTime(evt, fn){
-      clearTimeout(this._setDepthTime)
-      this._setDepthTime = setTimeout(() => {
-        console.log('reconnect', evt)
-        evt.disconnect()
-        fn.call(this)
-      }, 5000);
+    GBBODepthSetTime(evt, type, fn){
+      if(type === 'GBBODepth'){
+        clearTimeout(this.setDepthTime)
+        this.setDepthTime = setTimeout(() => {
+          evt.disconnect()
+          fn.call(this)
+        }, 5000);
+      } else if(type === 'GBBOArb'){
+        clearTimeout(this.setArbTime)
+        this.setArbTime = setTimeout(() => {
+          evt.disconnect()
+          fn.call(this)
+        }, 5000);
+      } else if(type === 'kline'){
+        clearTimeout(this.setKlineTime)
+        this.setKlineTime = setTimeout(() => {
+          evt.disconnect()
+          fn.call(this)
+        }, 15000);
+      }
     },
     getGBBODepth() {
       if (this.stompClient == null || !this.stompClient.connected) {
@@ -632,8 +649,13 @@ export default {
         this.stompClient.connect({}, (frame) => {
           this.stompClient.subscribe(`/topic/orderbook/${this.currentSymbol}`, (message) => {
             if (message.body) {
-              this.GBBODepthSetTime(this.stompClient, this.getGBBODepth)
+              this.GBBODepthSetTime(this.stompClient, 'GBBODepth', this.getGBBODepth)
               this.sortOrderBook(JSON.parse(message.body))
+            }
+          });
+          this.stompClient.subscribe(`/topic/ticker/${this.currentSymbol}`, (message) => {
+            if (message.body) {
+              this.ticker(JSON.parse(message.body))
             }
           });
         }, (error) => {
@@ -644,6 +666,14 @@ export default {
         });
       }
     },
+    //24h 交易量
+    ticker(data) {
+      const providerBBOMap = Object.values(data)
+      const sum = providerBBOMap.reduce((total, currentValue) => {
+        return total + currentValue['volume']
+      }, 0)
+      this.dataFor24Hours = sum.toFixed(2);
+    },
     getGBBOArb(){
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
         const { domain } = document
@@ -651,7 +681,8 @@ export default {
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
           arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
         } else {
-          arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
+          arbSocket = new SockJS('https://www.tresso.com/echart/xchange/marketdata');
+          // arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
         }
         this.arbStompClient = Stomp.over(arbSocket);
         this.arbStompClient.debug = null
@@ -670,13 +701,13 @@ export default {
           // 价差
           this.arbStompClient.subscribe(`/topic/arb/${this.currentSymbol}`, (message) => {
             if (message.body) {
-              this.GBBODepthSetTime(this.arbStompClient, this.getGBBOArb)
+              this.GBBODepthSetTime(this.arbStompClient, 'GBBOArb', this.getGBBOArb)
               this.getArbData(JSON.parse(message.body))
             }
           });
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
             if(message.body){
-              this.GBBODepthSetTime(this.arbStompClient, this.getGBBOArb)
+              this.GBBODepthSetTime(this.arbStompClient, 'kline', this.getGBBOArb)
               this.kLineData = JSON.parse(message.body)
             }
           })

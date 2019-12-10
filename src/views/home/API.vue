@@ -2,24 +2,13 @@
   <main id="api" class="api">
     <header class="header">
       <div class="container header-content t-c">
-        <h1 class="f-40 c-fff f-w-5">Spectacular Speed with GBBO API*</h1>
+        <h1 class="f-40 c-fff f-w-5">Spectacular Speed with TRESSO API</h1>
         <p class="mt-4 desc">
-          In addition to all the advantages of GBBO™’s API gives the professional trader the single most
-          important advantage in competitive trading: SPEED
+          In addition to all the advantages of GBBO™️, Tresso’s API gives the professional trader the single most important advantage in competitive trading:  SPEED
         </p>
-        <!--<div class="row d-flex justify-content-center">-->
-          <!--<div class="col-md-6">-->
-            <!--<router-link to='' class="btn btn-sm transition-3d-hover no-bg-btn">-->
-              <!--Get Started-->
-            <!--</router-link>-->
-          <!--</div>-->
-          <!--<div class="col-md-6">-->
-            <!--<router-link to='' class="btn btn-sm transition-3d-hover bg-btn">-->
-              <!--API Documentation-->
-            <!--</router-link>-->
-          <!--</div>-->
-        <!--</div>-->
-        <a :href="loginToken?'https://api.tresso.com/':'/login'" class="btn btn-sm transition-3d-hover no-bg-btn mr-sm-5">Get Started</a>
+        <router-link :to="loginToken?'/balances':'/login'" class="btn btn-sm transition-3d-hover no-bg-btn mr-sm-5">
+          Get Started
+        </router-link>
         <a href="https://api.tresso.com/" class="btn btn-sm transition-3d-hover bg-btn">API Documentation</a>
       </div>
     </header>

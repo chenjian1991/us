@@ -7,7 +7,7 @@
     <!-- <div class="describe">
       <div class="describeInner container">We’re an NYC-based team of visionaries, tech-geeks, enthusiasts, and innovators with a common goal: discover simple solutions to complex problems. Tresso is dedicated to helping our traders realize the best possible outcomes through amplified trading options, speed and efficiency, We’re elevating the trading experience in crypto, token and digital asset markets.  Together, we’re driving trading innovation.</div>
     </div> -->
-    <div class="team container">
+    <div class="team container" id="team">
       <div class="title">The Tresso Team</div>
       <div class="members">
         <div class="member" v-for="(item,index) in members" :key="index">
@@ -22,12 +22,12 @@
         </div>
       </div>
     </div>
-    <div class="opportunity">
+    <!-- <div class="opportunity">
       <div class="title container">
         <div class="oppor_title">Opportunities at Tresso</div>
         <div class="oppor_subTitle">Join our team to help reshape the future of trading</div>
       </div>
-      <!-- <div class="why container">
+      <div class="why container">
         <div class="why_ask">Why Work at Tresso?</div><br/>
         <div class="why_answer">We’re an NYC-based team of visionaries, tech-geeks, enthusiasts, and innovators with a common goal: discover simple solutions to complex problems. Tresso is dedicated to helping our traders realize the best possible outcomes through amplified trading options, speed and efficiency, We’re elevating the trading experience in crypto, token and digital asset markets. Together, we’re driving trading innovation.</div>
       </div>
@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
       <div class="opening container">
         <div class="headings">
           Current Openings:
@@ -56,7 +56,7 @@
           scrolling="auto"
         ></iframe>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

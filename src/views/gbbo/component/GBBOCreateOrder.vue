@@ -48,9 +48,9 @@
                     :disabled="arbFlag"
                   />
                   <div class="name-show quoteAsset">{{currentInfo.quoteAsset}}</div>
-                  <!-- <i
+                  <i @click="clickLock('Arbi')"
                     :class="[buy_input_change_Arbitrage?'gbbo_lock':'gbbo_unlock']"
-                  /> -->
+                  />
                   <!-- <div class="currencyInput">
                   ≈ {{buyPriceCurrency | scientificToNumber}}
                   {{currencyName}}
@@ -62,11 +62,12 @@
                     type="text"
                     maxlength="14"
                     ref="buyArbitraCountInputRef"
-                    :class="{'input-empty-color':buyCountEmpty}"
+                    :class="{'input-empty-color':buyCountEmpty,'gbbo_lock_arbitra':arbCountFlag}"
                     class="input-num"
                     autocomplete="off"
                     style="ime-mode:disabled"
                     ondragenter="return false"
+                    :disabled="arbCountFlag"
                   />
                   <div class="name-show baseAsset">{{assetName}}</div>
                 </div>
@@ -89,7 +90,7 @@
             <div class="totalMoney-label">
               <em>Expect</em>&nbsp;&nbsp;
               <div>
-                <!-- <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp; -->
+                <span id="buy_total" class="total-num">{{buyArbitraInTotal}}</span>&nbsp;
                 <span id="buy_total" class="total-num">--</span>&nbsp;
                 <span class="quoteAsset">{{assetName}}</span>
               </div>
@@ -108,15 +109,14 @@
               <em>{{$t("bbjyToTrade")}}</em>
             </button>
             <!-- 买入按钮 -->
-               <!-- <Tooltip min-width="299"  class="mybtn Arbitrage-btn" v-else placement="top" content="One-Click Arbitrage is under development. Ready in 2020.">
+               <Tooltip class="mybtn Arbitrage-btn" v-else placement="top" content="Coming Soon...">
                   <button class="Arbitrage-btn"  disabled="true" @click="buyBtn" >
                       <span>One Click Arbitrage</span>
                   </button>
-               </Tooltip> -->
-               <button v-else class="Arbitrage-btn mybtn"  disabled="true" @click="buyBtn" >
+               </Tooltip>
+               <!-- <button v-else class="Arbitrage-btn mybtn"  disabled="true" @click="buyBtn" >
                       <span>Coming Soon...</span>
-                </button>
-
+                </button> -->
           </div>
         </div>
       </div>
@@ -396,6 +396,7 @@ export default {
       setTradePassword: false, //localstorage 是否
       loginToken: $cookies.get("loginToken"), //登陆token
       arbFlag: true,
+      arbCountFlag:false,
       changeFlag: true,
       sellFlag: true,
       buyTotalFee: 0,
@@ -428,8 +429,8 @@ export default {
   watch: {
     arbData(){
       if(this.buy_input_change_Arbitrage){
-        if(this.arbData.minArb&&this.arbData.maxArb){
-          this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+        if(this.arbData.matchMap[0]){
+          this.$refs.buyArbitraInput.value = this.arbData.matchMap[0].arb;
         }
       } 
     },  
@@ -454,31 +455,6 @@ export default {
       this.assetName = this.currentInfo.quoteAsset;
     }
   },
-  created() {
-    var ssoProvider = {};
-    //创建实例
-    this.exchange = new Exchange(ssoProvider);
-    if (this.isLogin) {
-      this.exchange.ssoProvider.getSsoToken = function(fn) {
-        if (this.loginToken) {
-          fn(this.loginToken);
-        }
-      }.bind(this);
-    }
-  },
-  beforeMount() {
-
-    //  this.getSymbolListData();
-  },
-  mounted() {
-    this.availableCoin = this.briefInputData.quoteCoinAvailable;
-    this.$refs.sellInput.value = this.sellInputPrice;
-    this.$refs.buyInput.value = this.buyInputPrice;
-    if(this.arbData.minArb&&this.arbData.maxArb){
-      this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
-    }
-  },
-
   computed: {
     buyInTotal: function() {
       //买入总价
@@ -522,6 +498,11 @@ export default {
       if (name === "Arbi") {
         this.buy_input_change_Arbitrage = !this.buy_input_change_Arbitrage;
         this.arbFlag = !this.arbFlag;
+        if(this.arbFlag){
+          this.arbCountFlag = false;
+        }else{
+          this.arbCountFlag = true;
+        }
       } else if (name === "buy") {
         this.buy_input_change = !this.buy_input_change;
         this.changeFlag = !this.changeFlag;
@@ -580,9 +561,9 @@ export default {
           let arbitraFee = this.symbolList[this.currentSymbol].commissionRate*100;
           this.buyArbitraInTotalFee = arbitraFee.toFixed(2);
 
-          let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
-          let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
-          let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
+          // let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
+          // let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
+          // let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
           this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
           break;
         case "buy":
@@ -665,11 +646,22 @@ export default {
       );
       e.target.value = onlyInputNumAndPoint(e.target.value, quantityStepSize);
       this.buyArbitraCountInput = e.target.value;
-
-      let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
-       let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
-       let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
-       this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
+      if(this.arbData.totalArb){// 必须有差价的时候才可以计算
+        let price = this.currentInfo.last;
+        let size = e.target.value;
+        let amount = new BigNumber(size).dividedBy(price).toNumber()
+        let totalAmount = this.arbData.totalAmount;
+        let totalArbitrage = this.arbData.totalArb;
+        if(Number(amount)-Number(totalAmount)>0){//如果输入size大于总的total size expect = size +total arbitrage;
+            this.buyArbitraInTotal=bigDecimal.add(e.target.value,totalArbitrage);
+        }
+      console.log(amount)
+      }
+      
+      //  let arbitraPrice = this.maxArbitrageList[0].priceSubtract;
+      //  let arbitraAmount = this.maxArbitrageList[0].qtySubtract;
+      //  let profits = bigDecimal.multiply(this.maxArbitrageList[0].priceSubtract,this.maxArbitrageList[0].qtySubtract)
+      //  this.buyArbitraInTotal=bigDecimal.add(profits,this.buyArbitraCountInput)
     },
     handleBuyCountInput(e) {
       if (!this.symbolList[this.currentSymbol]) {
@@ -708,7 +700,30 @@ export default {
       this.sellCountInput = e.target.value;
     }
   },
-  components: {}
+  components: {},
+  mounted() {
+    this.availableCoin = this.briefInputData.quoteCoinAvailable;
+    this.$refs.sellInput.value = this.sellInputPrice;
+    this.$refs.buyInput.value = this.buyInputPrice;
+    if(this.arbData.minArb&&this.arbData.maxArb){
+      this.$refs.buyArbitraInput.value = this.arbData.minArb+'-'+this.arbData.maxArb;
+    }
+  },
+  created() {
+    var ssoProvider = {};
+    //创建实例
+    this.exchange = new Exchange(ssoProvider);
+    if (this.isLogin) {
+      this.exchange.ssoProvider.getSsoToken = function(fn) {
+        if (this.loginToken) {
+          fn(this.loginToken);
+        }
+      }.bind(this);
+    }
+  },
+  beforeMount() {
+    //  this.getSymbolListData();
+  },
 };
 </script>
 <style lang="less">
