@@ -604,7 +604,7 @@
         sum = providerBBOMap.reduce((total, currentValue) => {
           return total + currentValue['volume']
         }, 0)
-        this.gbboList.vol = sum.toFixed(2);
+        this.gbboList.vol = (sum * this.gbboList.avgPrice).toFixed(2);
       },
       // 计算平均价
       getAvgPrice(data) {
