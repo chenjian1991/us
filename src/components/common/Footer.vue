@@ -90,7 +90,7 @@ export default {
             link: 'https://www.tresso.com/usd_fees'
           }, {
             text: 'API Documents',
-            link: 'https://api.tresso.com'
+            link: 'https://apidoc.tresso.com'
           }, {
             text: 'FAQs',
             link: 'https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ'
