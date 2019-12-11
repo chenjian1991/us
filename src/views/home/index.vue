@@ -28,19 +28,21 @@
         <section>
           <!--头部-->
           <div class="quote">
-            <div class="left pl-7">
-              <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
+            <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
+            <div>
               <span class="desc">Max Arbitrage:</span>
-              <span class="f-20 f-w-6 c-01B2D6 mr-4" style="width: 55px">{{gbboList.maxArb|compare}}</span>
-              <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" style="cursor: pointer"
-                      @click="clickArbitrage">One-Click
-                Arbitrage
-              </button>
+              <span class="f-20 f-w-6 c-01B2D6" style="width: 55px">{{gbboList.maxArb|compare}}</span>
             </div>
-            <div class="right pl-8">
+            <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" style="cursor: pointer"
+                    @click="clickArbitrage">One-Click
+              Arbitrage
+            </button>
+            <div>
               <span class="desc">Market Avg:</span>
               <span class="f-18 c-00A077 price">{{gbboList.avgPrice|comma}}</span>
-              <span class="desc ml-4">24h Vol:</span>
+            </div>
+            <div class="t-l">
+              <span class="desc">24h Vol:</span>
               <span class="symbol c-DBE8F2">{{gbboList.vol|comma}}</span>
             </div>
           </div>
@@ -193,7 +195,6 @@
         </router-link>
       </div>
     </div>
-
     <!--GBBOTM-->
     <div class="gbboTM-box pt-11 pb-11 bgc-12191F">
       <div class="container p-3">
@@ -351,7 +352,10 @@
       },
       comma: function (value) {
         if (value === '--') return value
-        return Number(value).toLocaleString()
+        value = value.toString()
+        let point = value.indexOf('.')
+        let num = value.slice(0, point)
+        return `${Number(num).toLocaleString()}${value.slice(point)}`
 
       },
     },
@@ -735,17 +739,12 @@
       }
       .quote {
         .d-f;
-        justify-content: space-between;
+        justify-content: space-around;
+        align-items: center;
         height: 74px;
         margin-top: 20px;
         .bgc-2A3D4D;
         border-radius: 4px;
-        .left, .right {
-          .d-f;
-          align-items: center;
-          width: 50%;
-        }
-
         .desc {
           margin-right: 14px;
           .f-16;
@@ -757,7 +756,6 @@
           .f-w-6;
         }
         .price {
-          margin-right: 30px;
           .f-20;
           .f-w-6;
         }
