@@ -42,8 +42,12 @@
               <span class="f-18 c-00A077 price">{{gbboList.avgPrice|comma}}</span>
             </div>
             <div class="t-l">
-              <span class="desc">24h Vol:</span>
-              <span class="symbol c-DBE8F2">{{gbboList.vol|comma}}</span>
+              <Tooltip placement="top"
+                  content="The sum of all trading volumes over the last 24 hours from all exchanges connected within Apifiny">
+                <img src="../../assets/images/tresso/tishi.svg" alt="" width="15" style="vertical-align: sub">
+              </Tooltip>
+              <span class="desc ml-1">24h Vol:</span>
+              <span class="symbol c-DBE8F2">{{gbboList.vol?'$':''}}{{gbboList.vol|comma}}</span>
             </div>
           </div>
           <!--数据列表-->
@@ -243,7 +247,7 @@
           <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
             <img v-lazy='item.img' class="tresso-img d-block">
             <p class="d-ib f-20 c-fff mt-6 mb-2 f-w-6">{{item.title}}</p>
-            <Tooltip placement="top-end" offset="13" :delay="200" v-if="i===2">
+            <Tooltip placement="top-end" offset="13" v-if="i===2">
               <section slot="content" class="f-w-4 c-FEFFFF">
                 Tresso offers no fee trading for USDD pairs. The displayed price may include fees charged by our service
                 providers
@@ -667,16 +671,13 @@
 <style lang="less">
   #home {
     /*tooltip*/
-    .ivu-tooltip-content {
-      background-color: #2A3D4D;
-    }
     .ivu-tooltip-arrow {
       border-top-color: #2A3D4D;
     }
     .ivu-tooltip-inner {
-      /*max-width: none;*/
       padding: 12px 26px;
       font-size: 14px;
+      background-color: #2A3D4D;
       white-space: normal;
     }
   }
