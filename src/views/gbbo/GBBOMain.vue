@@ -1245,7 +1245,8 @@ export default {
             "orderType": "LIMIT",
             "orderSide": this.orderType,
             "quantity": this.buyCountInput,
-            "limitPrice": this.buyPriceInput
+            "limitPrice": this.buyPriceInput,
+            "updateAt": this.updateAt
           }, null, () => {
             this.buyDisabled = false
             this.$Notice.success({
