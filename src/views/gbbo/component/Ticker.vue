@@ -39,7 +39,7 @@
                <dt>24h Volume</dt>
                <!-- <dd>{{currentInfo.hour24Volume|noData}} {{currentInfo.quoteAsset|noData}}</dd> -->
                <!-- <dd>{{currentInfo.hour24Volume|noData}} {{currentInfo.baseAsset|noData}}</dd> -->
-               <dd>{{dataFor24Hours | noData}}</dd>
+               <dd>{{dataFor24Hours | data24hour}}</dd>
             </dl>
          </div>
       </div>
@@ -64,6 +64,7 @@
 import {
   getParseFloat
 } from "@/lib/utils.js";
+import { BigNumber } from "bignumber.js"
 
 export default {
   name: "Ticker",
@@ -81,6 +82,19 @@ export default {
     noData(value) {
       if (!value) return '--'
       return value
+    },
+    data24hour(value){
+      if (!value || value === 'NaN') return '--'
+      const format = {
+        decimalSeparator: '.',
+        groupSeparator: ',',
+        groupSize: 3,
+        secondaryGroupSize: 0,
+        fractionGroupSeparator: ' ',
+        fractionGroupSize: 0
+      }
+      BigNumber.config({ FORMAT: format })
+      return `$${new BigNumber(value).toFormat()}`
     },
     separate(value) {
       if (typeof value === "number") return getParseFloat(value)

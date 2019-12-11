@@ -673,7 +673,8 @@ export default {
       const sum = providerBBOMap.reduce((total, currentValue) => {
         return total + currentValue['volume']
       }, 0)
-      this.dataFor24Hours = sum.toFixed(2);
+      // this.dataFor24Hours = sum.toFixed(2);
+      this.dataFor24Hours = (sum * this.kLineData.ma).toFixed(2);
     },
     getGBBOArb(){
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
