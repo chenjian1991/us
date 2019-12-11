@@ -113,7 +113,7 @@
             </div>
             <!--移动端 menu-->
             <ul class="mobile-menu">
-              <li class="d-ib header-box c-fff">
+              <li class="d-ib header-box c-fff" v-show="isLogin">
                 {{email|cutOff}}
               </li>
               <li class="d-ib">
@@ -197,7 +197,11 @@
     name: 'tressoHeader',
     filters: {
       cutOff: function (value) {
-        return value.slice(0, value.lastIndexOf('@'))
+        if (value) {
+          return value.slice(0, value.lastIndexOf('@'))
+        } else {
+          return value
+        }
       }
     },
     data() {
@@ -331,6 +335,9 @@
       } else {
         this.isLogin = false;
       }
+      if (this.isLogin && localStorage.getItem('email') === null) {
+        this.getUserInfo().then()
+      }
       // //下拉框消失
       // let openList = document.getElementsByClassName("navbar-list")[0]
       // openList.addEventListener('click', function () {
@@ -416,9 +423,10 @@
       display: block;
     }
 
-    .mobile{
+    .mobile {
       display: block;
     }
+
     .mobile-menu {
       display: flex;
       align-items: center;
@@ -429,7 +437,8 @@
     .mobile-menu {
       display: none;
     }
-    .mobile{
+
+    .mobile {
       display: none;
     }
   }
@@ -527,7 +536,7 @@
         .nav-link {
           color: #B9C9D6;
         }
-        .email{
+        .email {
           .c-01B2D6;
         }
       }

@@ -28,20 +28,22 @@
         <section>
           <!--头部-->
           <div class="quote">
-            <div class="left pl-7">
-              <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
+            <span class="symbol c-fff">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</span>
+            <div>
               <span class="desc">Max Arbitrage:</span>
-              <span class="f-20 f-w-6 c-01B2D6 mr-4" style="width: 55px">{{gbboList.maxArb|compare}}</span>
-              <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" style="cursor: pointer"
-                      @click="clickArbitrage">One-Click
-                Arbitrage
-              </button>
+              <span class="f-20 f-w-6 c-01B2D6" style="width: 55px">{{gbboList.maxArb|compare}}</span>
             </div>
-            <div class="right">
+            <button class="btn btn-sm btn-primary transition-3d-hover trade-btn" style="cursor: pointer"
+                    @click="clickArbitrage">One-Click
+              Arbitrage
+            </button>
+            <div>
               <span class="desc">Market Avg:</span>
-              <span class="f-18 c-00A077 price">{{gbboList.avgPrice|separate}}</span>
+              <span class="f-18 c-00A077 price">{{gbboList.avgPrice|comma}}</span>
+            </div>
+            <div class="t-l">
               <span class="desc">24h Vol:</span>
-              <span class="symbol c-DBE8F2">{{gbboList.vol|separate}}</span>
+              <span class="symbol c-DBE8F2">{{gbboList.vol|comma}}</span>
             </div>
           </div>
           <!--数据列表-->
@@ -136,7 +138,7 @@
           <img src="../../assets/images/tresso/mobile-right.png" alt="" class="img" v-show="!turn" @click="toggle">
         </Col>
         <Col span="6" class="f-16 f-w-5 c-C7D5E1">{{gbboBase.baseAssets}}{{gbboBase.quoteAssets}}</Col>
-        <Col span="6" class="f-18 f-w-5 c-00A077">{{gbboList.avgPrice|separate}}</Col>
+        <Col span="6" class="f-18 f-w-5 c-00A077">{{gbboList.avgPrice|comma}}</Col>
         <Col span="4" class="f-16 f-w-5 c-01B2D6">{{gbboList.maxArb}}</Col>
         <Col span="6" class="t-r pr-3">
           <a href="javascript:;"
@@ -193,7 +195,6 @@
         </router-link>
       </div>
     </div>
-
     <!--GBBOTM-->
     <div class="gbboTM-box pt-11 pb-11 bgc-12191F">
       <div class="container p-3">
@@ -240,20 +241,18 @@
       <Rowbox :rowLists="tresso" class="pl-8 pr-8 pl-lg-0 pr-lg-0">
         <div :slot="item.name" class="tresso mt-4" v-for="(item,i) in tressoList" :key="i">
           <div v-bind:class="i===0?'pr-lg-8':i===1?'pl-lg-5':'pl-lg-9'">
-            <img v-lazy='item.img' class="tresso-img">
-            <p class="f-20 c-fff mt-6 mb-2 f-w-6">{{item.title}}
-              <!--提示-->
-              <Tooltip placement="top-end" offset="10" v-if="i===2">
-                <img src="../../assets/images/tresso/help.png" alt="" width="16" class="ml-1 mb-2">
-                <section slot="content" class="f-w-4 c-FEFFFF">
-                  Tresso offers no fee trading for USDD pairs. The displayed <br>
-                  price may include fees charged by our service providers <br>
-                  and/or market makers. <br>
-                  The fee structure for USD pairs can be found
-                  <router-link to='/usd_fees' class="here">here</router-link>
-                </section>
-              </Tooltip>
-            </p>
+            <img v-lazy='item.img' class="tresso-img d-block">
+            <p class="d-ib f-20 c-fff mt-6 mb-2 f-w-6">{{item.title}}</p>
+            <Tooltip placement="top-end" offset="13" :delay="200" v-if="i===2">
+              <section slot="content" class="f-w-4 c-FEFFFF">
+                Tresso offers no fee trading for USDD pairs. The displayed price may include fees charged by our service
+                providers
+                and/or market makers. <br>
+                The fee structure for USD pairs can be found
+                <router-link to='/usd_fees' class="here">here</router-link>
+              </section>
+              <img src="../../assets/images/tresso/help.png" alt="" width="16" style="vertical-align: sub" class="ml-2">
+            </Tooltip>
             <section class="f-16 c-B9C9D6 f-w-5">{{item.section}}</section>
           </div>
         </div>
@@ -351,9 +350,13 @@
           return 'Market Maker'
         }
       },
-      separate: function (value) {
+      comma: function (value) {
         if (value === '--') return value
-        return getParseFloat(value, 2)
+        value = value.toString()
+        let point = value.indexOf('.')
+        let num = value.slice(0, point)
+        return `${Number(num).toLocaleString()}${value.slice(point)}`
+
       },
     },
     data() {
@@ -671,9 +674,10 @@
       border-top-color: #2A3D4D;
     }
     .ivu-tooltip-inner {
-      max-width: none;
+      /*max-width: none;*/
       padding: 12px 26px;
       font-size: 14px;
+      white-space: normal;
     }
   }
 
@@ -735,16 +739,12 @@
       }
       .quote {
         .d-f;
-        justify-content: space-between;
+        justify-content: space-around;
+        align-items: center;
         height: 74px;
         margin-top: 20px;
         .bgc-2A3D4D;
         border-radius: 4px;
-        .left, .right {
-          .d-f;
-          align-items: center;
-        }
-
         .desc {
           margin-right: 14px;
           .f-16;
@@ -752,12 +752,10 @@
           .f-w-5;
         }
         .symbol {
-          margin-right: 20px;
           .f-20;
           .f-w-6;
         }
         .price {
-          margin-right: 30px;
           .f-20;
           .f-w-6;
         }
