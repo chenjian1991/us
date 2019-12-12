@@ -15,8 +15,7 @@
             class="underline c-C7D1D9">USDD</a> transactions, Tresso gives the expert trader more
           opportunities to win.
         </section>
-        <router-link :to="loginToken?'/balances':'/login'"
-                     class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7">
+        <router-link to="/balances" class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7">
           Join the Beta
         </router-link>
       </div>
@@ -47,7 +46,7 @@
                 <img src="../../assets/images/tresso/tishi.svg" alt="" width="15" style="vertical-align: sub">
               </Tooltip>
               <span class="desc ml-1">24h Vol:</span>
-              <span class="symbol c-DBE8F2">{{gbboList.vol?'$':''}}{{gbboList.vol|comma}}</span>
+              <span class="symbol c-DBE8F2">${{gbboList.vol|comma}}</span>
             </div>
           </div>
           <!--数据列表-->
@@ -356,6 +355,8 @@
       },
       comma: function (value) {
         if (value === '--') return value
+        if(isNaN(value)) return '--'
+
         value = value.toString()
         let point = value.indexOf('.')
         let num = value.slice(0, point)
@@ -564,16 +565,16 @@
             const params = JSON.stringify({symbol: "BTCUSD", interval: "MINUTE_1"})
             this.arbStompClient.send("/echart/app/summarized.ws", {}, params)
 
-            this.arbStompClient.subscribe(`/topic/arb/${this.symbol}`, (message) => {
-              if (message.body) {
-                this.arb(JSON.parse(message.body))
-              }
-            });
             this.arbStompClient.subscribe(`/topic/runtime/${this.symbol}/MINUTE_1`, (message) => {
               if (message.body) {
                 this.getAvgPrice(JSON.parse(message.body))
               }
             })
+            this.arbStompClient.subscribe(`/topic/arb/${this.symbol}`, (message) => {
+              if (message.body) {
+                this.getArb(JSON.parse(message.body))
+              }
+            });
           }, () => {
             console.log('The websocket connet error')
             this.arbStompClient = null
@@ -589,13 +590,14 @@
           } else {
             socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata')
           }
+
           this.stompClient = Stomp.over(socket);
           this.stompClient.debug = null
           this.stompClient.heartbeat.outgoing = 1000;
           this.stompClient.connect({}, () => {
             this.stompClient.subscribe(`/topic/ticker/${this.symbol}`, (message) => {
               if (message.body) {
-                this.ticker(JSON.parse(message.body))
+                this.getVol(JSON.parse(message.body))
               }
             });
           }, () => {
@@ -604,8 +606,12 @@
           });
         }
       },
+      // 计算平均价
+      getAvgPrice(data) {
+        this.gbboList.avgPrice = data.ma
+      },
       //24h 交易量
-      ticker(data) {
+      getVol(data) {
         const providerBBOMap = Object.values(data)
         let sum = 0
         sum = providerBBOMap.reduce((total, currentValue) => {
@@ -613,12 +619,9 @@
         }, 0)
         this.gbboList.vol = (sum * this.gbboList.avgPrice).toFixed(2);
       },
-      // 计算平均价
-      getAvgPrice(data) {
-        this.gbboList.avgPrice = data.ma
-      },
+
       //展示数据
-      arb(data) {
+      getArb(data) {
         if (data.matchMap.length) {
           this.gbboList.maxArb = data.maxArb.toFixed(2)
           this.quoteList = data['matchMap'].slice(0, 5)
