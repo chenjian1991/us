@@ -24,7 +24,7 @@
             <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
               <ul class="navbar-nav u-header__navbar-nav">
                 <li class="nav-item u-header__nav-item header-box">
-                  <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
+                  <router-link to="/gbbo" class="nav-link u-header__nav-link">GBBO</router-link>
                 </li>
                 <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -129,11 +129,13 @@
     <Drawer :closable="true" v-model="showMenu" :mask="false">
       <div class="drawer">
         <div class="t-c">
-          <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110">
+          <router-link to='/home' class="mr-lg-11 logo-box">
+            <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110">
+          </router-link>
         </div>
         <ul class="drawer-list" @click="showMenu=false">
           <li class="drawer-item">
-            <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
+            <router-link to="/gbbo" class="nav-link u-header__nav-link">GBBO</router-link>
           </li>
           <li class="drawer-item">
             <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
