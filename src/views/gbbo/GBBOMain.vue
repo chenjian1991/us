@@ -728,7 +728,7 @@ export default {
       var result = data
       //路总需求 要加这个隐藏字段
       this.updateAt = result.updateAt
-
+      console.log(result.updateAt)
       // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
       this.gbbo_asksArr = result.asks.map((val) => {
@@ -882,7 +882,7 @@ export default {
             }
             //展示当前的交易对的大盘上方行情
             if (this.currentSymbol === result.symbol) {
-              console.log(1)
+              // console.log(1)
               this.currentSymbolObj = Object.assign(result, v, this.symbolList_quote[result.symbol])
               this.showCurrentPriceInfo(this.currentSymbolObj)
             }
