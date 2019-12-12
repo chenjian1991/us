@@ -62,6 +62,8 @@ import privacy from "../views/legal/privice.vue";
 import setGoogle from "../views/google/setGoogle.vue";
 import closeGoogle from "../views/google/closeGoogle.vue";
 import identityResult from "../views/identity/identityResult.vue"
+import optionalRegistration from "../views/register/optionalRegistration"
+import institutionUser from "../views/register/institutionUser"
 
 const about = () => import('../views/about/about_new.vue')
 
@@ -486,6 +488,22 @@ const router = new Router({
                   title: 'about',
                },
                component: about
+            },
+            {
+               path:"optionalRegistration",
+               name:"optionalRegistration",
+               meta:{
+                  title: "optionalRegistration",
+               },
+               component: optionalRegistration
+            },
+            {
+               path:"institutionUser",
+               name:"institutionUser",
+               meta:{
+                  title: "institutionUser",
+               },
+               component: institutionUser
             },
          ]
       },
