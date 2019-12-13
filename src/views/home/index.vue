@@ -42,7 +42,7 @@
             </div>
             <div class="t-l">
               <Tooltip placement="top"
-                  content="The sum of all trading volumes over the last 24 hours from all exchanges connected within Apifiny">
+                       content="The sum of all trading volumes over the last 24 hours from all exchanges connected within Apifiny">
                 <img src="../../assets/images/tresso/tishi.svg" alt="" width="15" style="vertical-align: sub">
               </Tooltip>
               <span class="desc ml-1">24h Vol:</span>
@@ -355,7 +355,7 @@
       },
       comma: function (value) {
         if (value === '--') return value
-        if(isNaN(value)) return '--'
+        if (isNaN(value)) return '--'
 
         value = value.toString()
         let point = value.indexOf('.')
@@ -612,12 +612,13 @@
       },
       //24h 交易量
       getVol(data) {
+        console.log(data)
         const providerBBOMap = Object.values(data)
         let sum = 0
         sum = providerBBOMap.reduce((total, currentValue) => {
-          return total + currentValue['volume']
+          return total + currentValue['volume'] * currentValue['close']
         }, 0)
-        this.gbboList.vol = (sum * this.gbboList.avgPrice).toFixed(2);
+        this.gbboList.vol = sum.toFixed(2);
       },
 
       //展示数据
