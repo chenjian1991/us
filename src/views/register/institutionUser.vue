@@ -62,21 +62,36 @@
         </div>
       </div>
       <!-- End Form -->
-      <div class="submitBtn" @click="submit">
+      <div class="submitBtn" @click="handleSubmit">
         Submit
       </div>
     </div>
   </div>
+  <!-- 人机验证goole -->
+  <Modal
+    class-name="vertical-center-modal"
+    v-model="robotModalflag"
+    :title="this.$t('yanzheng')"
+    :mask-closable="false"
+    :scrollable="true"
+  >
+    <div id="robotInstitutionRegister"></div>
+    <p slot="footer"></p>
+  </Modal>
 </div>  
 </template>
 
 <script>
 import {getApi} from '../../../api/axios.js';
+import {onloadCallback} from '../../../api/usersystem'
+import {submitFormUrl} from '../../../api/urls'
+import {postHeaderKeyIdBodyApi} from '../../../api/axios'
 
 export default {
   data(){
     return{
       cityDate:[],
+      robotModalflag:false,
       form:[
         {
           type:'common',
@@ -213,8 +228,8 @@ export default {
         item.isTips = false
       }
     },
-    submit(){
-      //判断是否有空值
+    handleSubmit(){
+      /* //判断是否有空值
       try{
         this.form.forEach(item => {
           if(!item.value){
@@ -235,12 +250,20 @@ export default {
       }catch(text){
         this.$Message.error(text)
         return
-      }
-      const submitForm = this.getSubmitForm()
-      //提交
-        //提交失败
-        //提交成功
-        console.log('提交成功')
+      } */
+      //人机验证google
+      this.robotModalflag = true
+      onloadCallback('robotInstitutionRegister',res=>{
+        //提交
+        this.submitFormInfo(res)
+        setTimeout(() => {
+          this.robotModalflag = false;
+        }, 2000);
+      },err=>{
+        this.robotModalflag = false;
+      },netErr=>{
+        this.robotModalflag = false;
+      })
     },
     getSubmitForm(){
       const submitForm = this.form.reduce((pre,current)=>{
@@ -251,6 +274,21 @@ export default {
       },{})
       return submitForm
     },
+    submitFormInfo(res){
+      const submitForm = this.getSubmitForm()
+      postHeaderKeyIdBodyApi(submitFormUrl,{
+        personType:'GOOGLE',
+        personCode:res,
+        form:submitForm
+      }).then(res=>{
+        this.$Message.success('提交成功')
+        this.form.forEach(item => {
+          item.value = ''
+        });
+      }).catch(err=>{
+        this.$Message.error('提交失败')
+      })
+    }
   },
   mounted(){
     getApi('https://oss.55com.io/content/country/55-country.json',{}).then((res)=>{
