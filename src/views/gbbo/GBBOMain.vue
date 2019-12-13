@@ -728,7 +728,6 @@ export default {
       var result = data
       //路总需求 要加这个隐藏字段
       this.updateAt = result.updateAt
-      console.log(result.updateAt)
       // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
 
       this.gbbo_asksArr = result.asks.map((val) => {
@@ -1422,83 +1421,82 @@ export default {
           return false
         }
       } else {
-          this.exchangePassWord = ""
+        this.exchangePassWord = ""
       }
       if (this.orderType === "cancel") {
-          this.exchange.cancelOrder(this.orderID, this.exchangePassWord, (data) => {
-            //隐藏密码输入框
-            this.closePassWordPage()
-            //撤单成功
-            this.$Notice.success({
-                title: this.$t('tsTips'),
-                desc: this.$t('bbjyCancelMsg'),
-            })
-          }, () => {
-            // v.isDisabled = false;
-          });
+        this.exchange.cancelOrder(this.orderID, this.exchangePassWord, (data) => {
+          //隐藏密码输入框
+          this.closePassWordPage()
+          //撤单成功
+          this.$Notice.success({
+            title: this.$t('tsTips'),
+            desc: this.$t('bbjyCancelMsg'),
+          })
+        }, () => {
+          // v.isDisabled = false;
+        });
       } else {
-          this.sellDisabled = true;
-          this.buyDisabled = true;
-          if (this.isGBBO) {
-            this.exchange.createGBBOOrder(
-                {
-                  "symbol": this.currentSymbol,
-                  "orderType": "LIMIT",
-                  "orderSide": this.orderType,
-                  "quantity": this.orderType === "BUY" ? this.buyCountInput : this.sellCountInput,
-                  "limitPrice": this.orderType === "BUY" ? this.buyPriceInput : this.sellPriceInput,
-                },
-                this.exchangePassWord,
-                (data) => {
-                  this.orderType === "BUY" ? this.buyDisabled = false : this.sellDisabled = false
-                  this.$Notice.success({
-                      title: this.$t('tsTips'),
-                      desc: this.$t('bbjyOrderSuccess'),
-                  });
-                  //隐藏密码框
-                  this.closePassWordPage()
-                }, (error) => {
-                  //错误提示
-                  this.orderType === "BUY" ? this.buyDisabled = false : this.sellDisabled = false
-                  this.closePassWordPage()
+        this.sellDisabled = true;
+        this.buyDisabled = true;
+        if (this.isGBBO) {
+          this.exchange.createGBBOOrder(
+            {
+              "symbol": this.currentSymbol,
+              "orderType": "LIMIT",
+              "orderSide": this.orderType,
+              "quantity": this.orderType === "BUY" ? this.buyCountInput : this.sellCountInput,
+              "limitPrice": this.orderType === "BUY" ? this.buyPriceInput : this.sellPriceInput,
+            },
+            this.exchangePassWord,
+            (data) => {
+              this.orderType === "BUY" ? this.buyDisabled = false : this.sellDisabled = false
+              this.$Notice.success({
+                title: this.$t('tsTips'),
+                desc: this.$t('bbjyOrderSuccess'),
+              });
+              //隐藏密码框
+              this.closePassWordPage()
+            }, (error) => {
+              //错误提示
+              this.orderType === "BUY" ? this.buyDisabled = false : this.sellDisabled = false
+              this.closePassWordPage()
+            }
+          );
+        } else {
+          this.exchange.createNewOrder(
+            {
+              "symbol": this.currentSymbol,
+              "orderType": "LIMIT",
+              "orderSide": this.orderType,
+              "quantity": this.orderType === "BUY" ? this.buyCountInput : this.sellCountInput,
+              "limitPrice": this.orderType === "BUY" ? this.buyPriceInput : this.sellPriceInput,
+            },
+            this.exchangePassWord,
+            (data) => {
+              this.orderType === "BUY" ? this.buyDisabled = false : this.sellDisabled = false
+              if (this.orderType === "BUY" || this.orderType === "SELL") {
+                if (this.orderType === "BUY") {
+                  this.buyCountInput = ''
+                  this.$refs.buyCountInputRef.value = ''
+                } else {
+                  this.sellCountInput = ''
+                  this.$refs.sellCountInputRef.value = ''
                 }
-            );
-          } else {
-            this.exchange.createNewOrder(
-                {
-                  "symbol": this.currentSymbol,
-                  "orderType": "LIMIT",
-                  "orderSide": this.orderType,
-                  "quantity": this.orderType === "BUY" ? this.buyCountInput : this.sellCountInput,
-                  "limitPrice": this.orderType === "BUY" ? this.buyPriceInput : this.sellPriceInput,
-                },
-                this.exchangePassWord,
-                (data) => {
-                  this.orderType === "BUY" ? this.buyDisabled = false : this.sellDisabled = false
-                  if (this.orderType === "BUY" || this.orderType === "SELL") {
-                      if (this.orderType === "BUY") {
-                        this.buyCountInput = ''
-                        this.$refs.buyCountInputRef.value = ''
-                      } else {
-                        this.sellCountInput = ''
-                        this.$refs.sellCountInputRef.value = ''
-                      }
-                      this.$Notice.success({
-                        title: this.$t('tsTips'),
-                        desc: this.$t('bbjyOrderSuccess'),
-                      });
-                  }
-                  //隐藏密码框
-                  this.closePassWordPage()
-                }, (error) => {
-                  //错误提示
-                  this.sellDisabled = false;
-                  this.buyDisabled = false;
-                  this.closePassWordPage()
-                }
-            );
-          }
-
+                this.$Notice.success({
+                  title: this.$t('tsTips'),
+                  desc: this.$t('bbjyOrderSuccess'),
+                });
+              }
+              //隐藏密码框
+              this.closePassWordPage()
+            }, (error) => {
+              //错误提示
+              this.sellDisabled = false;
+              this.buyDisabled = false;
+              this.closePassWordPage()
+            }
+          );
+        }
       }
     }
   },
