@@ -42,7 +42,7 @@
             </div>
             <div class="t-l">
               <Tooltip placement="top"
-                       content="The sum of all trading volumes over the last 24 hours from all exchanges connected within Apifiny">
+                       content="The sum of all BTC trading volumes over the last 24 hours from all exchanges connected within Apifiny">
                 <img src="../../assets/images/tresso/tishi.svg" alt="" width="15" style="vertical-align: sub">
               </Tooltip>
               <span class="desc ml-1">24h Vol:</span>

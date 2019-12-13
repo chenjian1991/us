@@ -603,10 +603,10 @@
         },
         language: localStorage.getItem('countryLanguage'),
 
-        articleList: ['* please verify that all your information is accurate before submitting',
-          'Attention customers, trading is currently only open for U.S customers, you can get ready for trading by proceeding with KYC and we will notify you as soon as trading services in your region become available.',
-          'For U.S customers, trading is currently not open for those in Alabama, Alaska, Arkansas, Connecticut, Florida, Georgia, Hawaii, Idaho, Iowa, Kentucky, Louisiana, Massachusetts, Michigan, Mississippi, Nebraska, New Mexico, New York, North Carolina, North Dakota, Oregon, South Dakota, Vermont, Washington. However, you can get ready for trading by proceeding with KYC and we will notify you as soon as trading services in your state become available.',
-          'For users in Maine, New Jersey, Ohio, Texas, Tresso cannot accept fiat deposits from your state at this time but you may still register for an account, deposit, withdrawal and trade cryptocurrency against cryptocurrency. We will be in touch with you if your state becomes available.',
+        articleList: ['Please ensure that all of your information is accurate before submitting.',
+          'Trading is currently open for US customers only. You may submit an application today, and we will notify you as soon as trading services become available in your region.',
+          'Attention: Please note that residents of the state of Alabama, Alaska, Arkansas, Connecticut, Florida, Georgia, Hawaii, Idaho, Iowa, Kentucky, Louisiana, Massachusetts, Michigan, Mississippi, Nebraska, New Mexico, New York, North Carolina, North Dakota, Oregon, South Dakota, Vermont, or Washington are not permitted to trade on tresso.com. Residents of the state of Maine, New Jersey, Ohio, South Carolina, or Texas are not permitted to utilize fiat currency on tresso.com. ',
+          'For users in Maine, New Jersey, Ohio, South Carolina, or Texas, Tresso cannot accept fiat deposits from your state at this time but you may still register for an account, deposit, withdraw, and trade cryptocurrency against cryptocurrency. We will be in touch with you if your state becomes available.',
         ],
         idType: [
           {label: "newK1DL", value: 'license'},
