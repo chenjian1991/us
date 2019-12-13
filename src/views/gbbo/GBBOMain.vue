@@ -671,10 +671,11 @@ export default {
     ticker(data) {
       const providerBBOMap = Object.values(data)
       const sum = providerBBOMap.reduce((total, currentValue) => {
-        return total + currentValue['volume']
+        // return total + currentValue['volume'] * currentValue['close']
+        return bigDecimal.add(total, bigDecimal.multiply(currentValue['volume'], currentValue['close']))
       }, 0)
       // this.dataFor24Hours = sum.toFixed(2);
-      this.dataFor24Hours = (sum * this.kLineData.ma).toFixed(2);
+      this.dataFor24Hours = sum;
     },
     getGBBOArb(){
       if (this.arbStompClient == null || !this.arbStompClient.connected) {

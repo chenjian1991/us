@@ -94,7 +94,7 @@ export default {
         fractionGroupSize: 0
       }
       BigNumber.config({ FORMAT: format })
-      return `$${new BigNumber(value).toFormat()}`
+      return `$${new BigNumber(value).toFormat(2)}`
     },
     separate(value) {
       if (typeof value === "number") return getParseFloat(value)
@@ -173,7 +173,7 @@ export default {
       .bgc-031419;
       dl {
          display: inline-block;
-         margin-right: 33px;
+         margin-right: 26px;
          dt {
             font-weight: 500;
             .c-788390;
