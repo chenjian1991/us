@@ -24,7 +24,7 @@
             <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
               <ul class="navbar-nav u-header__navbar-nav">
                 <li class="nav-item u-header__nav-item header-box">
-                  <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
+                  <router-link to="/gbbo" class="nav-link u-header__nav-link">GBBO</router-link>
                 </li>
                 <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -125,17 +125,17 @@
         </div>
       </div>
     </header>
+    <!--右侧 menu-->
     <Drawer :closable="true" v-model="showMenu" :mask="false">
       <div class="drawer">
         <div class="t-c">
-          <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110">
+          <router-link to='/home' class="mr-lg-11 logo-box">
+            <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110">
+          </router-link>
         </div>
         <ul class="drawer-list" @click="showMenu=false">
           <li class="drawer-item">
-            <router-link to='/' class="nav-link u-header__nav-link">Home</router-link>
-          </li>
-          <li class="drawer-item">
-            <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
+            <router-link to="/gbbo" class="nav-link u-header__nav-link">GBBO</router-link>
           </li>
           <li class="drawer-item">
             <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -146,14 +146,11 @@
           <li class="drawer-item">
             <a href="javascript:;" class="nav-link u-header__nav-link" @click="goTeam">Team</a>
           </li>
-          <!--<li class="drawer-item">-->
-          <!--<router-link to='/about' class="nav-link u-header__nav-link">Careers</router-link>-->
-          <!--</li>-->
           <li class="drawer-item">
             <router-link to='/usd_fees' class="nav-link u-header__nav-link">Fee Structure</router-link>
           </li>
           <li class="drawer-item">
-            <a href="https://api.tresso.com/" target="_blank" class="nav-link u-header__nav-link">API Documents</a>
+            <a href="https://apidoc.tresso.com" target="_blank" class="nav-link u-header__nav-link">API Documents</a>
           </li>
           <li class="drawer-item">
             <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ" target="_blank"

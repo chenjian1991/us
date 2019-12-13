@@ -402,7 +402,9 @@ Exchange.prototype.createGBBOOrder = function (orderInfo, userpassword, fn, erro
          // _this.getOrderTicket(function (_orderId) {
          const userId = localStorage.getItem('loginUserId')
          const fourRandDigit = Math.floor(Math.random() * (999 - 100)) + 100
-         const orderId = `${userId}${new Date().getTime()}${fourRandDigit}`
+         const { updateAt } = orderInfo
+         const orderId = `${userId}${updateAt || new Date().getTime()}${fourRandDigit}`
+         delete orderInfo.updateAt
          getCreateGBBOOrder({"session": _orderSession}, {
             "accountId": _accountId,
             "orderId": orderId,
