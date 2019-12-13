@@ -9,7 +9,8 @@
           <div class="gbbomain-realtime__hd">
             <gbbo-ticker
               :currentInfo="currentInfo"
-              :arbData="arbData">
+              :arbData="arbData"
+              :dataFor24Hours="dataFor24Hours">
             </gbbo-ticker>
           </div>
           <!-- 盘口 -->
@@ -311,17 +312,20 @@ export default {
       GBBO_rate: 0,
       sell_exchange_logo: '',
       buy_exchange_logo: '',
-      buy_input_change: false,//是否输入
+      buy_input_change: false, //是否输入
       sell_input_change: false,
       isInitOrderBook: true,
-      buyRangeValue: 0,//滑块值
+      buyRangeValue: 0, //滑块值
       sellRangeValue: 0,
-      orderTicketTimer: null,//orderTicket定时器
-      updateAt: '',//路总需求 要加这个隐藏字段
+      orderTicketTimer: null, //orderTicket定时器
+      updateAt: '', //路总需求 要加这个隐藏字段
       // maxArbitrageList:[],
       arbData:{},
-      setDepthTime: '',
-      setArbTime: ''
+      setDepthTime: '', // 盘口深度重连定时器
+      setArbTime: '', // Arb重连定时器
+      setKlineTime: '', // k线重连定时器
+      dataFor24Hours: '', // 24小时交易量
+      sseOrderCount: 0 // SSEOrder重连次数计数
     }
   },
   created() {
@@ -502,7 +506,7 @@ export default {
       const matchTime = this.dateTimeFormat()
       getKlineHistoryData({
         symbol: this.currentSymbol,
-        startDateTime: matchTime - 60 * 1000 * 60,
+        startDateTime: matchTime - 60 * 1000 * 60 * 24,
         endDateTime: matchTime,
         interval: 'MINUTE_1'
       }).then((res) => {
@@ -623,6 +627,12 @@ export default {
           evt.disconnect()
           fn.call(this)
         }, 5000);
+      } else if(type === 'kline'){
+        clearTimeout(this.setKlineTime)
+        this.setKlineTime = setTimeout(() => {
+          evt.disconnect()
+          fn.call(this)
+        }, 15000);
       }
     },
     getGBBODepth() {
@@ -644,6 +654,11 @@ export default {
               this.sortOrderBook(JSON.parse(message.body))
             }
           });
+          this.stompClient.subscribe(`/topic/ticker/${this.currentSymbol}`, (message) => {
+            if (message.body) {
+              this.ticker(JSON.parse(message.body))
+            }
+          });
         }, (error) => {
           console.log('new Sockjs  error')
           this.stompClient.disconnect()
@@ -651,6 +666,15 @@ export default {
           this.getGBBODepth()
         });
       }
+    },
+    //24h 交易量
+    ticker(data) {
+      const providerBBOMap = Object.values(data)
+      const sum = providerBBOMap.reduce((total, currentValue) => {
+        return total + currentValue['volume']
+      }, 0)
+      // this.dataFor24Hours = sum.toFixed(2);
+      this.dataFor24Hours = (sum * this.kLineData.ma).toFixed(2);
     },
     getGBBOArb(){
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
@@ -685,7 +709,7 @@ export default {
           });
           this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
             if(message.body){
-              this.GBBODepthSetTime(this.arbStompClient, this.getGBBOArb)
+              this.GBBODepthSetTime(this.arbStompClient, 'kline', this.getGBBOArb)
               this.kLineData = JSON.parse(message.body)
             }
           })
@@ -871,11 +895,10 @@ export default {
       }
       this.quoteWS.onerror = (e) => {
         console.log("The 'this.quoteWS' connect error");
-
+        throw ("The this.quoteWS connect error", e)
       }
       //关闭时候触发
-      this.quoteWS.onclose = (e) => {
-      };
+      this.quoteWS.onclose = (e) => {}
     },
     //展示最新的交易资产行情信息
     //v symbol 行情合并后的对象
@@ -899,14 +922,14 @@ export default {
       this.currencyRate = legalTender.rate
       this.currencyName = legalTender.name
       if (this.currentSymbolObj.quoteAsset === "USDT" || this.currentSymbolObj.quoteAsset === "USDD") {
-          this.currentSymbolRate = 1
-          this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(this.currencyRate), 4)
+        this.currentSymbolRate = 1
+        this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(this.currencyRate), 4)
       } else if (allNowPriceObject[this.currentSymbolObj.quoteAsset + "USDT"]) {
-          //是否存在 计价资产/USDT的交易对
-          // if(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDT"].last){
-          this.currentSymbolRate = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(allNowPriceObject[this.currentSymbolObj.quoteAsset + "USDT"].last), 4)
-          this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolRate) * new BigNumber(this.currencyRate), 4)
-          // }
+        //是否存在 计价资产/USDT的交易对
+        // if(allNowPriceObject[this.currentSymbolObj.quoteAsset+"USDT"].last){
+        this.currentSymbolRate = bigDecimal.round(new BigNumber(this.currentSymbolObj.last) * new BigNumber(allNowPriceObject[this.currentSymbolObj.quoteAsset + "USDT"].last), 4)
+        this.symbolCurrency = bigDecimal.round(new BigNumber(this.currentSymbolRate) * new BigNumber(this.currencyRate), 4)
+        // }
       }
     },
     //获取交易对 下单专用
@@ -914,16 +937,18 @@ export default {
       getSymbolList().then((res) => {
         if (this.$store.state.app.isLogin || this.loginToken) {
           this.isLogin = true
+          // 如果是登录状态，请求订单列表
+          this.updateOpenListAndCompletedList()
         }
         this.symbolList = {};
         res.map((v, i) => {
           this.symbolList[v.symbol] = v
-          
         })
         //增加蒙层逻辑
         this.isShowTradeMask();
         //查询委托订单
         this.getSSEOrderList()
+        
       }).catch((error) => {
 
       })
@@ -952,9 +977,9 @@ export default {
             this.FFDeductible = 2
           }
           if (v.currency === this.currentSymbolObj.baseAsset) {
-              this.baseAssetAvailable = subNumberPoint(v.available, baseAssetQuantityLong)
+            this.baseAssetAvailable = subNumberPoint(v.available, baseAssetQuantityLong)
           } else if (v.currency === this.currentSymbolObj.quoteAsset) {
-              this.quoteCoinAvailable = subNumberPoint(v.available, quoteAssetQuantityLong)
+            this.quoteCoinAvailable = subNumberPoint(v.available, quoteAssetQuantityLong)
           }
           // 给子组件传餐
           this.briefInputData = {
@@ -969,23 +994,18 @@ export default {
     },
     /**
     * 委托单 我的成交记录
+    * 获取推送的订单
     */
-    //获取推送的订单
     getSSEOrderList() {
-      if (!this.isLogin) {
-          return false;
-      }
-      let sseOrderCount = 0
-      //刚进页面初始数据
-      this.updateOpenListAndCompletedList();
+      if (!this.isLogin) return false
       this.exchange.listFilledOrder((token, accountId) => {
-        let baseURL = window.location.protocol + '//' + window.location.host
+        const baseURL = `${window.location.protocol}//${window.location.host}`
         //判断orderId
         this.SSE_order = new EventSource(`${baseURL}/api/spot/order/detail.stream?token=${token}&accountId=${accountId}`)
-        this.SSE_order.onopen = function (e) {
-        };
+        this.SSE_order.onopen = function (e) {};
         this.SSE_order.addEventListener('_RESULT', (e) => {
-          let result = JSON.parse(e.data)
+          const result = JSON.parse(e.data)
+          if(this.sseOrderCount !== 0) this.sseOrderCount = 0
           if (result) {
             //更新列表
             this.updateOpenListAndCompletedList();
@@ -993,16 +1013,15 @@ export default {
             this.getMyAssetData()
           }
         })
-        this.SSE_order.addEventListener('_ERROR', function (e) {
-        })
+        this.SSE_order.addEventListener('_ERROR', (e) => {})
         this.SSE_order.onerror = (e) => {
           this.SSE_order.close()
-          if (sseOrderCount > 5) return
-          setTimeout(() => {
-            sseOrderCount += 1
-            this.SSE_order = new EventSource(`${baseURL}/api/spot/order/detail.stream?token=${token}&accountId=${accountId}`)
-          }, 3000)
-        };
+          if (this.sseOrderCount > 5) return
+          this.sseOrderCount += 1
+          this.getSSEOrderList()
+          localStorage.setItem('SSEOrderError', e)
+          throw('SSEOrder Error', e)
+        }
       })
     },
     //更新挂单 成交记录 更新我的委托单
@@ -1226,7 +1245,8 @@ export default {
             "orderType": "LIMIT",
             "orderSide": this.orderType,
             "quantity": this.buyCountInput,
-            "limitPrice": this.buyPriceInput
+            "limitPrice": this.buyPriceInput,
+            "updateAt": this.updateAt
           }, null, () => {
             this.buyDisabled = false
             this.$Notice.success({

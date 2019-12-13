@@ -35,14 +35,14 @@
           <div class="footer-info__logoWrap__logo"></div>
         </a>
         <!-- <div class="footer-info__logoWrap__footnote">The digital asset trading platform with best execution</div> -->
+        <div @click='$router.push("/balances")'
+              class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff border-0 footer-info__logoWrap__btn">
+          Join the Beta
+        </div>
         <div class="footer-info__logoWrap__icon">
-          <a :href="item.link" v-for="(item,index) in iconInfo" :key="index">
+          <a :href="item.link" v-for="(item,index) in iconInfo" target="_black" :key="index">
             <img :src="item.img" class="icon_img">
           </a>
-        </div>
-        <div @click='$router.push("/balances")'
-              class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7 border-0 footer-info__logoWrap__btn">
-          Join the Beta
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@ export default {
             link: 'https://www.tresso.com/usd_fees'
           }, {
             text: 'API Documents',
-            link: 'https://api.tresso.com'
+            link: 'https://apidoc.tresso.com'
           }, {
             text: 'FAQs',
             link: 'https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ'
@@ -103,24 +103,24 @@ export default {
       iconInfo: [ 
         {
           img:require('../common/images/twitter.png'),
-          link:"javascript:;"
+          link:"https://twitter.com/TressoTrade"
         },
-        {
+        /* {
           img:require('../common/images/facebook.png'),
           link:"javascript:;"
         },
         {
           img:require('../common/images/fly.png'),
           link:"javascript:;"
-        },
+        }, */
         {
           img:require('../common/images/robot.png'),
-          link:"javascript:;"
+          link:"https://www.reddit.com/r/Tresso/"
         },
-        {
+        /* {
           img:require('../common/images/linkedin.png'),
           link:"javascript:;"
-        },
+        }, */
       ],
       footerTxt: '©2019-2020 Tresso All rights reserved'
     }
@@ -185,7 +185,9 @@ export default {
           font-size: 10px;
         }
         &__icon{
-          margin-top: 30px;
+          position: absolute;
+          bottom: 0;
+          right: 0;
           a{
             .icon_img{
               width: 14px;
@@ -200,9 +202,7 @@ export default {
           }
         }
         &__btn{
-          position: absolute;
-          bottom: 0;
-          right: 12px;
+          margin-top: 38px;
           background-color: #01B2D6;
           color: #fff;
           &:hover{
@@ -245,8 +245,9 @@ export default {
         &__logoWrap{
           margin-top: 41px;
           align-items: flex-start;        
-          &__btn{
+          &__icon{
             position: static;
+            margin-top: 30px;
           }
         }
       }
