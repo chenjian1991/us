@@ -195,7 +195,7 @@ export default {
     handleSubmit(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
-          this.loaded = false;
+          // this.loaded = false;
           var _that = this;
           this.robotModalflag = true;
           onloadCallback(
