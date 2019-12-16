@@ -116,7 +116,7 @@ export default {
           value:"",
           pattern:/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
           isTips:false,
-          tips:'电子邮件格式不正确'
+          tips:'Invalid email address format'
         },
         {
           type:'selectAndInput',
@@ -207,7 +207,7 @@ export default {
           value:"",
           pattern:/^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/((\.)?(\?)?=?&?[a-zA-Z0-9_-](\?)?)*)*$/i,
           isTips:false,
-          tips:'URL地址格式不正确'
+          tips:'Invalid url format'
         },
       ]
     }
@@ -233,7 +233,7 @@ export default {
       try{
         this.form.forEach(item => {
           if(!item.value){
-            throw '请全部填写完后提交'
+            throw 'Please fill out the required fields'
           }
         });
       }catch(text){
@@ -244,7 +244,7 @@ export default {
       try{
         this.form.forEach(item => {
           if(item.isTips){
-            throw '请填写正确后提交'
+            throw 'Some of the fields were not filled out correctly'
           }
         })
       }catch(text){
@@ -281,7 +281,7 @@ export default {
         personCode:res,
         form:submitForm
       }).then(res=>{
-        this.$Message.success('提交成功')
+        this.$Message.success('Submit successfully')
         //成功后表单清空
         this.form.forEach(item => {
           //解决国家选框没有默认值问题
@@ -292,7 +292,7 @@ export default {
           }
         });
       }).catch(err=>{
-        this.$Message.error('提交失败')
+        this.$Message.error('Submit failed')
       })
     }
   },
