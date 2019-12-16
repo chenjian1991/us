@@ -54,7 +54,7 @@
 
           <div class="login_footer">
             <router-link style="color:#51809F;" to="/forgot">{{$t('dlForgot')}}</router-link>
-            <router-link style="color:#51809F;" to="/register">{{$t('dlSignup')}}</router-link>
+            <router-link style="color:#51809F;" to="/optionalRegistration">{{$t('dlSignup')}}</router-link>
           </div>
         </div>
       </div>

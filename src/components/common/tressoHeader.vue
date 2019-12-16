@@ -60,7 +60,7 @@
                   </router-link>
                 </li>
                 <li class="nav-item u-header__nav-item header-box mr-3" v-show="!isLogin">
-                  <router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn" to='/register'>
+                  <router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn" to='/optionalRegistration'>
                     Join the Beta
                   </router-link>
                 </li>
@@ -172,7 +172,7 @@
             <router-link to='/login' class="nav-link u-header__nav-link">Log In</router-link>
           </li>
           <li class="drawer-item">
-            <router-link to='/register' class="nav-link u-header__nav-link nav-btn">Join the Beta</router-link>
+            <router-link to='/optionalRegistration' class="nav-link u-header__nav-link nav-btn">Join the Beta</router-link>
           </li>
         </ul>
       </div>
