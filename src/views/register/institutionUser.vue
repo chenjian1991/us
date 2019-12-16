@@ -229,7 +229,7 @@ export default {
       }
     },
     handleSubmit(){
-      /* //判断是否有空值
+      //判断是否有空值
       try{
         this.form.forEach(item => {
           if(!item.value){
@@ -250,7 +250,7 @@ export default {
       }catch(text){
         this.$Message.error(text)
         return
-      } */
+      }
       //人机验证google
       this.robotModalflag = true
       onloadCallback('robotInstitutionRegister',res=>{
@@ -282,8 +282,14 @@ export default {
         form:submitForm
       }).then(res=>{
         this.$Message.success('提交成功')
+        //成功后表单清空
         this.form.forEach(item => {
-          item.value = ''
+          //解决国家选框没有默认值问题
+          if(item.name === 'Country'){
+            item.value = 'United States of America'
+          }else{
+            item.value = ''
+          }
         });
       }).catch(err=>{
         this.$Message.error('提交失败')

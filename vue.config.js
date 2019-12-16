@@ -14,10 +14,10 @@ const resolve = dir => {
 // http(s)://a.com/my-app/
 const BASE_URL = '/'
 
-// const targetUrl = 'http://global.dev_test_uat.55.exchange/' // 测试本地环境 国际站
+const targetUrl = 'http://global.dev_test_uat.55.exchange/' // 测试本地环境 国际站
 
-// const targetUrl='http://www.dev_test_uat.55.exchange/' // 测试本地环境
-const targetUrl = 'https://www.55.center/' //生产
+//const targetUrl='https://us.99ss.ml/home' // 测试本地环境
+//const targetUrl = 'https://www.55.center/' //生产
 
 module.exports = {
    transpileDependencies: [
