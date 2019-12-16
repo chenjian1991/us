@@ -94,6 +94,7 @@ export default {
       robotModalflag:false,
       form:[
         {
+          key:'company',
           type:'common',
           width:'col-md-12',
           name:'Full legal name of company name including any DBA names',
@@ -102,6 +103,7 @@ export default {
           tips:''
         },
         {
+          key:'contact',
           type:'common',
           width:'col-md-12',
           name:'Main Company Contact',
@@ -110,6 +112,7 @@ export default {
           tips:''
         },
         {
+          key:'email',
           type:'common',
           width:'col-md-6',
           name:'Main Contact’s Email Address',
@@ -119,6 +122,7 @@ export default {
           tips:'Invalid email address format'
         },
         {
+          key:'phone',
           type:'selectAndInput',
           width:'col-md-6',
           name:'Main Contact’s Phone Number',
@@ -128,6 +132,7 @@ export default {
           tips:''
         },
         {
+          key:'address',
           type:'common',
           width:'col-md-12',
           name:'Company Address',
@@ -136,6 +141,7 @@ export default {
           tips:''
         },
         {
+          key:'city',
           type:'common',
           width:'col-md-6',
           name:'City/Towns',
@@ -144,6 +150,7 @@ export default {
           tips:''
         },
         {
+          key:'state',
           type:'common',
           width:'col-md-6',
           name:'State/Province/County',
@@ -152,6 +159,7 @@ export default {
           tips:''
         },
         {
+          key:'zip',
           type:'common',
           width:'col-md-4',
           name:'Zip/Postal Code',
@@ -160,6 +168,7 @@ export default {
           tips:''
         },
         {
+          key:'juridiction',
           type:'common',
           width:'col-md-8',
           name:'Jurisdiction(s) of Incorporation',
@@ -168,6 +177,7 @@ export default {
           tips:''
         },
         {
+          key:'country',
           type:'select',
           width:'col-md-3',
           name:'Country',
@@ -176,6 +186,7 @@ export default {
           tips:''
         },
         {
+          key:'Cphone',
           type:'selectAndInput',
           width:'col-md-9',
           name:'Country Code & Phone Number',
@@ -185,6 +196,7 @@ export default {
           tips:''
         },
         {
+          key:'date',
           type:'common',
           width:'col-md-6',
           name:'Date of Incorporation/Formation',
@@ -193,6 +205,7 @@ export default {
           tips:''
         },
         {
+          key:'tid',
           type:'common',
           width:'col-md-6',
           name:'Federal Tax ID (TIN, EIN, VAT, GIIN, etc.)',
@@ -201,6 +214,7 @@ export default {
           tips:''
         },
         {
+          key:'url',
           type:'common',
           width:'col-md-12',
           name:'Company Website URL',
@@ -267,9 +281,9 @@ export default {
     },
     getSubmitForm(){
       const submitForm = this.form.reduce((pre,current)=>{
-        const name = current.name
+        const key = current.key
         const value = current.valuePre?current.valuePre+current.value:current.value
-        pre[name] = value
+        pre[key] = value
         return pre
       },{})
       return submitForm
