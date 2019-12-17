@@ -83,13 +83,14 @@
 
 <script>
 import {getApi} from '../../../api/axios.js';
-import {onloadCallback} from '../../../api/usersystem'
+import {googleTest} from '../../../api/usersystem'
 import {submitFormUrl} from '../../../api/urls'
 import {postHeaderKeyIdBodyApi} from '../../../api/axios'
 
 export default {
   data(){
     return{
+      robotFun:null,
       cityDate:[],
       robotModalflag:false,
       form:[
@@ -295,17 +296,7 @@ export default {
       }
       //人机验证google
       this.robotModalflag = true
-      onloadCallback('robotInstitutionRegister',res=>{
-        //提交
-        this.submitFormInfo(res)
-        setTimeout(() => {
-          this.robotModalflag = false;
-        }, 2000);
-      },err=>{
-        this.robotModalflag = false;
-      },netErr=>{
-        this.robotModalflag = false;
-      })
+      this.robotFun()
     },
     getSubmitForm(){
       const submitForm = this.form.reduce((pre,current)=>{
@@ -343,6 +334,18 @@ export default {
       const arr = res.slice(4)
       this.cityDate = arr
     })
+    this.robotFun =  googleTest('robotInstitutionRegister',res=>{
+        //提交
+        this.submitFormInfo(res)
+        setTimeout(() => {
+          this.robotModalflag = false;
+        }, 2000);
+      },err=>{
+        this.robotModalflag = false;
+      },netErr=>{
+        this.robotModalflag = false;
+      })
+
   }
 }
 </script>
