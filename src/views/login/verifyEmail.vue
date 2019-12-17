@@ -1,6 +1,17 @@
 <template>
     <div class="root">
         <div class="wrapper">
+            <Modal
+                    class-name="vertical-center-modal"
+                    v-model="robotModalflag"
+                    :title="this.$t('yanzheng')"
+                    :mask-closable="false"
+                    :scrollable='true'
+                   
+                   >
+                    <div id="robotVerify"></div>
+                    <p slot="footer"></p>
+                </Modal>
             <div class="title">{{$t('VerifyEmail')}}</div>
             <div class="mail-box">
                 <div class="content">
@@ -14,27 +25,20 @@
             
 
         </div>
-        <Modal :modal='showModal' :text="text"></Modal>
     </div>
 </template>
 
 <script>
 import {reSendEmail,ipQuery} from '../../../api/urls.js';
 import {postBaseApi,getApiLoin} from '../../../api/axios.js';
-import Modal from '@/components/Modal';
 import { debug } from 'util';
-import {geeTest} from '../../../api/usersystem.js'
+import {geeTest,onloadCallback} from '../../../api/usersystem.js'
 
 
     export default {
         name:'login',
-        components:{
-            Modal
-        },
         data() {
             return {
-                showModal:false,
-                text:'',
                 arrive:true,
                 emailName:'',
                 ipCountry:'',
@@ -49,7 +53,30 @@ import {geeTest} from '../../../api/usersystem.js'
       
         methods:{
             handleSubmit() {
-               this.checkGeetest()
+                var _that = this;
+                    this.robotModalflag = true;
+                    onloadCallback('robotVerify',function(res){
+                        if(res){
+                        let emailParam = {
+                                "domainCode": document.domain==='www.55com.io'?"china":'global',
+                                "personType": "GOOGLE",
+                                "personCode": res,
+                                "email": localStorage.getItem('emailAdderss'),
+                                "deviceType": "WEB"
+                            }
+                            _that.sendAgain(emailParam)
+                            setTimeout(()=>{
+                                _that.robotModalflag= false;
+                            },2000)
+                        }
+                },function(err){
+                        _that.robotModalflag = false;
+                        _that.loaded = true
+                },function(netError){
+                        _that.robotModalflag = false;
+                        _that.loaded = true
+                })
+            //    this.checkGeetest()
             },
             checkGeetest(){
                     geeTest('4f8eb91de0e6a7940cb7b9f63f260aa7','1',(data)=>{

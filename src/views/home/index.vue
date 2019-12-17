@@ -15,7 +15,8 @@
             class="underline c-C7D1D9">USDD</a> transactions, Tresso gives the expert trader more
           opportunities to win.
         </section>
-        <router-link to="/balances" class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7">
+        <router-link :to="'/optionalRegistration'"
+                     class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7">
           Join the Beta
         </router-link>
       </div>
@@ -42,7 +43,7 @@
             </div>
             <div class="t-l">
               <Tooltip placement="top"
-                       content="The sum of all BTC trading volumes over the last 24 hours from all exchanges connected within Apifiny">
+                       content="The sum of all BTC/USD trading volumes over the last 24 hours from all exchanges connected within Apifiny">
                 <img src="../../assets/images/tresso/tishi.svg" alt="" width="15" style="vertical-align: sub">
               </Tooltip>
               <span class="desc ml-1">24h Vol:</span>
@@ -312,7 +313,7 @@
       <div class="container pt-4 pb-4">
         <h3 class="f-36 c-304454 f-w t-c">Want more efficient trading</h3>
         <p class="f-18 c-d-gray mt-3">Tresso is currently in closed beta. Sign up now to be first on the list.</p>
-        <router-link :to="loginToken?'/balances':'/login'"
+        <router-link :to="'/optionalRegistration'"
                      class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff mt-7 border-0">
           Join the Beta
         </router-link>
