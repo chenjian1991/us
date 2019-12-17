@@ -17,7 +17,7 @@
               {{item.name}}
             </label>
             <div class="js-focus-state input-group u-form">
-              <input v-model="item.value" class="form-control u-form__input" type="text" maxlength="100" @blur="check(item)">
+              <input v-model="item.value" class="form-control u-form__input" type="text" maxlength="100" @blur="check(item)" @input = "item.oninput(item)">
             </div>
             <div class="tips text-danger" v-if="item.isTips">
               {{item.tips}}
@@ -33,13 +33,13 @@
               <div class="input-group">
                 <div class="input-group-prepend formSelect">
                   <Select  v-model="item.valuePre">
-                    <Option v-for="(city,index) in cityDate" :value="'+'+ city.code +'/'" :label="city.en" :key="index">
+                    <Option v-for="(city,index) in cityDate" :value="'+'+ city.code +'/'" :label="'+'+ city.code" :key="index">
                       <span>{{city.en}}</span>
                       <span style="float:right">+{{city.code}}</span>
                     </Option>
                   </Select>
                 </div>
-                <input v-model="item.value" class="form-control u-form__input" type="text" maxlength="100">
+                <input v-model="item.value" class="form-control u-form__input" type="text" maxlength="100" @input = "item.oninput(item)">
               </div>
             </div>
           </div>
@@ -100,7 +100,9 @@ export default {
           name:'Full legal name of company name including any DBA names',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'contact',
@@ -109,7 +111,9 @@ export default {
           name:'Main Company Contact',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'email',
@@ -119,7 +123,9 @@ export default {
           value:"",
           pattern:/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
           isTips:false,
-          tips:'Invalid email address format'
+          tips:'Invalid email address format',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'phone',
@@ -129,7 +135,9 @@ export default {
           valuePre:"+1/",
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:true,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'address',
@@ -138,7 +146,9 @@ export default {
           name:'Company Address',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'city',
@@ -147,7 +157,9 @@ export default {
           name:'City/Towns',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'state',
@@ -156,7 +168,9 @@ export default {
           name:'State/Province/County',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'zip',
@@ -165,7 +179,9 @@ export default {
           name:'Zip/Postal Code',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:true,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'juridiction',
@@ -174,7 +190,9 @@ export default {
           name:'Jurisdiction(s) of Incorporation',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'country',
@@ -183,7 +201,9 @@ export default {
           name:'Country',
           value:"United States of America",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'Cphone',
@@ -193,7 +213,9 @@ export default {
           valuePre:"+1/",
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:true,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'date',
@@ -202,7 +224,9 @@ export default {
           name:'Date of Incorporation/Formation',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'tid',
@@ -211,7 +235,9 @@ export default {
           name:'Federal Tax ID (TIN, EIN, VAT, GIIN, etc.)',
           value:"",
           isTips:false,
-          tips:''
+          tips:'',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
         {
           key:'url',
@@ -221,7 +247,9 @@ export default {
           value:"",
           pattern:/^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/((\.)?(\?)?=?&?[a-zA-Z0-9_-](\?)?)*)*$/i,
           isTips:false,
-          tips:'Invalid url format'
+          tips:'Invalid url format',
+          isInputRule:false,
+          oninput:(item)=>item.isInputRule?item.value=item.value.replace(/[^\d]/g,''):null
         },
       ]
     }
