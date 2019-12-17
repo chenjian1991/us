@@ -35,7 +35,7 @@
           <div class="footer-info__logoWrap__logo"></div>
         </a>
         <!-- <div class="footer-info__logoWrap__footnote">The digital asset trading platform with best execution</div> -->
-        <div @click='$router.push("/balances")'
+        <div @click='$router.push("/optionalRegistration")'
               class="btn btn-sm transition-3d-hover button bgc-01B2D6 f-14 c-fff border-0 footer-info__logoWrap__btn">
           Join the Beta
         </div>
