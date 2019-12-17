@@ -462,7 +462,6 @@ const clickoutside = {
                              _that.robotModalflag = true;
                              onloadCallback('robotRegister',function(res){
                                     if(res){
-                                        debugger
                                         _that.emailParams = {
                                             "domainCode":document.domain==='www.55com.io'?"china":'global',
                                             'country':_that.EmailcountryName,
