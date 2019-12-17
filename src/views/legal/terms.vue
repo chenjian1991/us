@@ -13,13 +13,17 @@
         style="font-family:'Times New Roman'; font-size:11pt">s a binding contract governing </span><span
         style="font-family:'Times New Roman'; font-size:11pt">the BETA TEST </span><span
         style="font-family:'Times New Roman'; font-size:11pt">use of the </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Apifiny Asset Network</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Apifiny</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Asset Network</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> at </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt">.com, any associated APIs and any mobile applications
-        (collectively, the “</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso
-        Sites</span><span style="font-family:'Times New Roman'; font-size:11pt">”) operated by </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Apifiny Asset Network</span><span
+        (collectively, the “</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Sites</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">”) operated by </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Apifiny</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Asset Network</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Inc. (</span><span
         style="font-family:'Times New Roman'; font-size:11pt">“</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">we</span><span
@@ -63,39 +67,49 @@
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">To be eligible to use the </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Services (as defined below), you must be (i) at least 18
-        years old or (ii)</span><span style="font-family:'Times New Roman'; font-size:11pt"> a legal entity or other
-        organization with </span><span style="font-family:'Times New Roman'; font-size:11pt">full capacity to execute
-        this User Agreement</span><span style="font-family:'Times New Roman'; font-size:11pt">. You must
-        also</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Services (as defined below), you must be (</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">i</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">) at least 18 years old or (ii)</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> a legal entity or other organization with </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">full capacity to execute this User Agreement</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">. You must also</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold; text-decoration:underline">not</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">be a resident of, or domici</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">led in,</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> one of the following states:</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">led in, or, if you are an entity, have principal offices,
+        any operations, or other connections with,</span><span style="font-family:'Times New Roman'; font-size:11pt">
+        one of the following states:</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Alabama, Connecticut, Georgia,</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Alabama, Alaska, Arkansas, Connect</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">icut, Florida, Georgia,</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Hawaii, </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Idaho, Louisiana, New York, North Carolina, Vermont,
+        style="font-family:'Times New Roman'; font-size:11pt">Idaho, Iowa, Kentucky, Louisiana, Massachusetts, Michigan,
+        Mississippi, Nebraska, New Mexico, New York, North Carolina, North Dakota, Oregon, South Dakota, Vermont,
         Washington (each, a “</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Restricted Sta</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">te</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Restricted State</span><span
         style="font-family:'Times New Roman'; font-size:11pt">”).</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> The list of Restricted States is subject to change at any
-        time.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> The list of Restr</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">icted States is subject to change at any time.</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> In the event a state becomes a Restricted State,
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> will provide users residing in that state with notice via
-        email, a notification on </span><span style="font-family:'Times New Roman'; font-size:11pt">the Tresso
-        Sites</span><span style="font-family:'Times New Roman'; font-size:11pt">, or other means deemed
-        neces</span><span style="font-family:'Times New Roman'; font-size:11pt">sary regarding terminating their access
-        to the </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        email, a notification on </span><span style="font-family:'Times New Roman'; font-size:11pt">the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Sites</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">, or other means deemed necessary regarding
+        terminati</span><span style="font-family:'Times New Roman'; font-size:11pt">ng their access to the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services.  Additionally, you are not p</span><span
         style="font-family:'Times New Roman'; font-size:11pt">ermitted to utilize fiat currency, including without
-        limitation, U.S. dollars, in conjunction with the Tresso Services if you are a resident of, or domiciled in,
-        on</span><span style="font-family:'Times New Roman'; font-size:11pt">e of the following states: Florida, Maine,
-        Mississippi, New Jersey, North Dakota, Ohio, South Carolina, or Texas. </span></p>
+        limitation, U.S. dollars, in conjunction with the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Services if you are a resident of, or domiciled in, or,
+        if you are an entity, </span><span style="font-family:'Times New Roman'; font-size:11pt">have principal offices,
+        any operations, or other connections with, one of the following states: Maine, New Jersey, Ohio, South Carolina,
+        or Texas. </span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">1.2. </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span><span
@@ -103,21 +117,25 @@
         style="font-family:'Times New Roman'; font-size:11pt">. Your </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> account (“</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso Account</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Account</span><span
         style="font-family:'Times New Roman'; font-size:11pt">”) allows you access to the following </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> services (collectively, the “</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso Services</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Services</span><span
         style="font-family:'Times New Roman'; font-size:11pt">”):</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">(i) one or more hosted Digital Asset Wallets (each, a
+        style="font-family:'Times New Roman'; font-size:11pt">(</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">i</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">) one or more hosted Digital Asset Wallets (each, a
         “</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Digital Asset
         Wallet</span><span style="font-family:'Times New Roman'; font-size:11pt">”) that allow users to transfer, track
         and store certain supported Digital Assets (</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">“Digital Asset</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">”), and (ii) a Digital Asset exchan</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">ge platform that allows for the trading of supported
-        Digital Assets for other Digital Assets, accessible at </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">“Digi</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">tal Asset</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">”), and (ii) a Digital Asset exchange platform that allows
+        for the trading of supported Digital Assets for other Digital Assets, accessible at </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt">.com, through our API or mobile application (the
         “</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Marketplace</span><span
@@ -125,25 +143,42 @@
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt; font-weight:bold">1.3.
         “As Is” Status</span><span
-        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">. By accepting
-        these terms or using the Tresso Services,</span><span
-        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> you understand
-        and acknowledge that the Tresso Services are being provided as a “Beta” version and made available on an “As Is”
-        or “As Available” basis. The Tresso Services may contain bugs, errors, and other problems. Tresso strongly
-        recommends that you </span><span
-        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">back up all data
-        and information prior to using the Tresso Services and utilize “cold storage” for your digital assets.
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">. By
+        accepti</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">ng these terms or
+        using the </span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services, you
+        understand and acknowledge that the </span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services are
+        being provided as a “Beta” version and made available on an “As Is” or “As Available” basis. The </span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services may
+        contain bugs, errors, and other pr</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">oblems.
       </span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> strongly
+        recommends that you back up all data and information prior to using the </span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services and
+        utilize “cold storage” for your digital assets. </span><span
         style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt; font-weight:bold">YOU
-        ASSUME ALL RISKS AND ALL COSTS ASSOCIATED WITH YOUR USE OF THE TRESSO SERVICES, INCLUDING, WITHOUT LIMITATION,
-        ANY AND ALL LOSSES IN</span><span
-        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt; font-weight:bold">CLUDING
-        WITHOUT LIMITATION TRADING LOSSES, ANY INTERNET ACCESS FEES, BACK-UP EXPENSES, COSTS INCURRED FOR THE USE OF
-        YOUR DEVICE AND PERIPHERALS, AND ANY DAMAGE TO ANY EQUIPMENT, SOFTWARE, INFORMATION OR DATA.</span><span
-        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> In addition,
-        Tresso is not obligated to provid</span><span
-        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">e any
-        maintenance, technical or other support for the Tresso Services.</span></p>
+        ASSUME ALL RISKS AND ALL COSTS ASSOCIATED WITH YOUR USE OF THE TRESSO SERVICES, INCLUDIN</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt; font-weight:bold">G,
+        WITHOUT LIMITATION, ANY AND ALL LOSSES INCLUDING WITHOUT LIMITATION TRADING LOSSES, ANY INTERNET ACCESS FEES,
+        BACK-UP EXPENSES, COSTS INCURRED FOR THE USE OF YOUR DEVICE AND PERIPHERALS, AND ANY DAMAGE TO ANY EQUIPMENT,
+        SOFTWARE, INFORMATION OR DATA.</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> In</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> addition,
+      </span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> is not obligated
+        to provide any maintenance, technical or other support for the </span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="background-color:#ffffff; color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services.</span>
+    </p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">1.</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">4</span><span
@@ -154,22 +189,24 @@
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> The risks of loss in trading or holding
         any Digital Asset can be immediate, substantial and irreversible.</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> There is no guarantee against losses
-        from using th</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">e </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> There </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">is no guarantee against losses from
+        using the </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Services.</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> You should therefore carefully consider
         whether trading or holding any Digital Asset is suitable for you in light of your financial condition and
         needs.</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> The following are some risks associated
-        with Digital Assets. However, these descri</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">ptions are non-exclusive and do not
-        disclose all such risks. Please consider these and other risks carefully before using the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> The following are some risks
+      </span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">associate</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">d with Digital Assets. However, these
+        descriptions are non-exclusive and do not disclose all such risks. Please consider these and other risks
+        carefully before using the </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Services.</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">&#xa0;</span></p>
-    <p style="background-color:#ffffff; margin:0pt 0pt 6pt"><span
+    <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">•</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
@@ -177,29 +214,28 @@
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Market</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> </span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Risks.</span><br /><span
-        style="font-family:'Times New Roman'; font-size:11pt">The market for Digital Assets is still new, uncertain and
-        highly volatile.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> No one should i</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">nvest in Digital Assets using funds that he or she is not
-        prepared to lose entirely.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Whether the market value for one or more Digital Assets
-        will move up or down, or whether a Digital Asset will lose all or substantially all of its value, is unknown and
-        c</span><span style="font-family:'Times New Roman'; font-size:11pt">annot be predicted.</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Market Risks.</span><br /><span
+        style="font-family:'Times New Roman'; font-size:11pt">The market for Digital Assets is still new,
+        unc</span><span style="font-family:'Times New Roman'; font-size:11pt">ertain and highly volatile.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> No one should invest in Digital Assets using funds that
+        he or she is not prepared to lose entirely.</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Whether the market value for one or more Digital Assets
+        will move up or down, or whether a Digital Asset will lose all or subs</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">tantially all of its value, is unknown and cannot be
+        predicted.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">The prices of Digital Assets have historically been
         subject to dramatic fluctuations and are highly volatile, and a decrease in the price of a single Digital Asset
-        may cause volatility in the entire market. In addition, blockchain netwo</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">rks may go offline because of bugs, hard forks, or other
-        unforeseeable reasons.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        may cause volatility in the </span><span style="font-family:'Times New Roman'; font-size:11pt">entire market. In
+        addition, blockchain networks may go offline because of bugs, hard forks, or other unforeseeable
+        reasons.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Participants in any Digital Asset market should pay close
-        attention to their position and holdings, and how they may be affected by sudden and adverse shifts in trading
-        and ot</span><span style="font-family:'Times New Roman'; font-size:11pt">her market activities. There is no
-        guarantee that any given price quoted or realized on the Marketplace represents the fair value of the subject
-        Digital Asset.</span></p>
-    <p style="background-color:#ffffff; margin:0pt 0pt 6pt"><span
+        attention to their position and holdings, and how they may be affected by</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> sudden and adverse shifts in trading and other market
+        activities. There is no guarantee that any given price quoted or realized on the Marketplace represents the fair
+        value of the subject Digital Asset.</span></p>
+    <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">•</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
@@ -208,30 +244,31 @@
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Liquidity Risks.</span><br /><span
-        style="font-family:'Times New Roman'; font-size:11pt">Digital Assets have varying degrees of
-        liquidity.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Some markets are quit</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">e liquid while others may be thinner.</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Digital Assets have varying </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">degrees of liquidity.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Some markets are quite liquid while others may be
+        thinner.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Thin markets can amplify volatility.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Factors beyond </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">’s control may affect market liquidity for any Digital
-        Asset, such as regulatory activity, market manipulation, or unexplainable price volatility.</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> control may affect market liquidity for any Digital
+        Asset, such as regulatory activity, market manipulation, or</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> unexplainable price volatility.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> </span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> ma</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">kes no representations or warranties about whether a
+        style="font-family:'Times New Roman'; font-size:11pt"> makes no representations or warranties about whether a
         Digital Asset that may be traded on the Marketplace may be traded on the Marketplace any point in the future, if
         at all.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Any Digital Asset is subject to no longer being supported
-        by </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> without notic</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">e or consent.</span></p>
-    <p style="background-color:#ffffff; margin:0pt 0pt 6pt"><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Any Digital Asset is subject to no lo</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">nger being supported by </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> without notice or consent.</span></p>
+    <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">•</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
@@ -243,11 +280,12 @@
         style="font-family:'Times New Roman'; font-size:11pt">The legal characterization of certain Digital Assets may
         be uncertain.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> This can mean that the legality of holding or trading
-        them is not always clear, and may be subject to certain legal requirements or restrictions. Whet</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">her and how one or more Digital Assets constitute
-        property, or assets, or rights of any kind may also seem unclear. You are responsible for knowing and
-        understanding how Digital Assets will be addressed, regulated, and taxed under applicable law.</span></p>
-    <p style="background-color:#ffffff; margin:0pt 0pt 6pt"><span
+        them is not always clear, and may be subject to cert</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">ain legal requirements or restrictions. Whether and how
+        one or more Digital Assets constitute property, or assets, or rights of any kind may also seem unclear. You are
+        responsible for knowing and understanding how Digital Assets will be addressed, regulate</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">d, and taxed under applicable law.</span></p>
+    <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">•</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
@@ -255,30 +293,32 @@
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Op</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">erational Risks.</span><br /><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Operational Risks.</span><br /><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> may experience sophisticated cyberattacks, unexpected
         surges in activity, or other operational or technical difficulties that may cause interruptions in the
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Services. You agree to accept the risk of transaction
-        failure result</span><span style="font-family:'Times New Roman'; font-size:11pt">ing from unanticipated or
-        heightened technical difficulties, including those resulting from sophisticated attacks.</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Services. You agree to a</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">ccept the risk of transaction failure resulting from
+        unanticipated or heightened technical difficulties, including those resulting from sophisticated
+        attacks.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> relies on its partners, which may include </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">its affiliates and which may include non-U.S. entities,
-        and service providers</span><span style="font-family:'Times New Roman'; font-size:11pt"> for many
-        signi</span><span style="font-family:'Times New Roman'; font-size:11pt">ficant operational aspects of the
+        style="font-family:'Times New Roman'; font-size:11pt">its affiliates and which may include non-U.S.
+        en</span><span style="font-family:'Times New Roman'; font-size:11pt">tities, and service providers</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> for many significant operational aspects of the
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> platform provided under a service agreement. The extent
         of </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">’s reliance may increase the operational risks related to
+        style="font-family:'Times New Roman'; font-size:11pt">’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> reliance may increase the operational risks related to
         the platform, given </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">’s lack of control over</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> lack of control ove</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">r</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> such non-US partners</span><span
         style="font-family:'Times New Roman'; font-size:11pt">.</span></p>
-    <p style="background-color:#ffffff; margin:0pt 0pt 6pt"><span
+    <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">•</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
@@ -286,40 +326,72 @@
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Custody</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Risks.</span><br /><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Custody Risks.</span><br /><span
         style="font-family:'Times New Roman'; font-size:11pt">Having Digital Assets on deposit or with any third party
         in a custodial relationship has attendant risks. These risks include security breaches, risk of contractual
         breach, and risk of loss. These risks may be heightened for </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> customers</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> because custody services are one of the services that
-      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> customers because custod</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">y services are one of the services that </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> relies on its U.S. partners, which may include its
         affiliates and which may include non-U.S. entities, to provide.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 10pt; text-align:justify"><span
         style="color:#232333; font-family:'Times New Roman'; font-size:11pt; font-weight:bold">1.5.
-        Feedback.</span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> The Tresso Services
-        are made available to you for purposes of ev</span><span
-        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">aluation and feedback. You acknowledge the
-        importance of communication between Tresso and you during your use of the Tresso Services and hereby agree to
-        receive related correspondence and updates from Tresso. In the event you request to opt out from such
-        c</span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">ommunications, your
-        participation in the Tresso Services will be canceled. During Beta, you may be asked to provide feedback
-        regarding your use of the Tresso Services. You acknowledge that Tresso owns any feedback provided, and you
-        hereby grant to Tresso, </span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">if for
-        any reason it is further needed, a perpetual, non-revocable, royalty-free worldwide license to use and/or
-        incorporate such feedback into any Tresso product or service (including the Tresso Services) at any time at the
-        sole discretion of Tresso. Tres</span><span
-        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">so will not publish feedback in a way that
-        is attributable to you without your consent.</span></p>
+        Feedback.</span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> The </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services are made available to you for
+        purposes of evaluation and fe</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">edback. You acknowledge the importance of
+        communication between </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> and you during your use of the
+      </span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services and hereby agree to receive
+        related correspondence and updates from </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">. In the event you request to opt out from
+        such communications, </span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">your
+        participation in the </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services will be canceled. During Beta,
+        you may be asked to provide feedback regarding your use of the </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services. You acknowledge that
+      </span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> owns any feedback provided, and you hereby
+        grant to </span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">, if for any reas</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">on it is further needed, a perpetual,
+        non-revocable, royalty-free worldwide license to use and/or incorporate such feedback into any </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> product or service (including the
+      </span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services) at any time at the sole
+        discretion of </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">. </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> will not pub</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">lish feedback in a way that is attributable
+        to you without your consent.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 10pt; text-align:justify"><span
         style="color:#232333; font-family:'Times New Roman'; font-size:11pt; font-weight:bold">1.6. Limitations on
         Use.</span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Limitations specific to
-        any Tresso Service may be contained in the Tresso Sites. When the Beta is not live, you will no longer have
-        access to t</span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">he Tresso Services.
-        Tresso reserves the right to modify or impose any limitations on the use of the Tresso Services at any time,
-        with or without notice to you, and certain functionality may not be available at any time.</span></p>
+        any </span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Service may be contained in the
+      </span><span style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Sites. When the Beta is not live, you will
+        no longer have access to the </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Servi</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">ces. </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> reserves the right to modify or impose any
+        limitations on the use of the </span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#232333; font-family:'Times New Roman'; font-size:11pt"> Services at any time, with or without
+        notice to you, and certain functionality may not be available at any time.</span></p>
     <ol start="2" type="1" style="margin:0pt; padding-left:0pt">
       <li
         style="background-color:#ffffff; color:#010000; font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; list-style-position:inside; margin:0pt 0pt 6pt; text-align:justify; text-decoration:none; text-indent:0pt">
@@ -334,15 +406,16 @@
           style="color:#000000; font-family:'Times New Roman'; font-size:11pt; font-weight:bold">.</span></li>
     </ol>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">2.1. Regi</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">stration of </span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">2.1. Registration of </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tre</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">sso</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Account.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">To use the </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services, you will need to register for a</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> </span><span
         style="font-family:'Times New Roman'; font-size:11pt">A</span><span
         style="font-family:'Times New Roman'; font-size:11pt">ccount.</span><span
@@ -350,8 +423,8 @@
         style="font-family:'Times New Roman'; font-size:11pt"> During the registration process, we will ask you for
         information, including your name and other personal information to verify your identity.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> We may, </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">in our sole discretion, refuse to open a </span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> We may, in our sole dis</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">cretion, refuse to open a </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Account for you, or suspend, revoke or terminate your
         account after opening. </span></p>
@@ -361,34 +434,33 @@
         style="font-family:'Times New Roman'; font-size:11pt">During registration of your </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Account, you agree to provide us with the information we
-        request fo</span><span style="font-family:'Times New Roman'; font-size:11pt">r the purposes of identity
+        request for the purposes </span><span style="font-family:'Times New Roman'; font-size:11pt">of identity
         verification and the detection of money laundering, terrorist financing, fraud, or any other financial crime and
         permit us to keep a record of such information for a minimum of five years. You will need to complete certain
-        verifi</span><span style="font-family:'Times New Roman'; font-size:11pt">cation procedures before you are
+        verification procedur</span><span style="font-family:'Times New Roman'; font-size:11pt">es before you are
         permitted to use certain </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services. Your access to one or more </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services, and the limits that apply to your use of the
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services, may be altered as a result of information
-        collected about you. The informat</span><span style="font-family:'Times New Roman'; font-size:11pt">ion we
-        request may include certain personal information, including, but not limited to, your name, address, telephone
-        number, e-mail address, date of birth, taxpayer identification number, a government identification, and
-        information regarding your bank ac</span><span style="font-family:'Times New Roman'; font-size:11pt">count (such
-        as the name of the bank, the account type, routing number, and account number). In providing us with this or any
-        other information that may be required, you confirm that the information is accurate, authentic and complete.
-        You agree to keep us </span><span style="font-family:'Times New Roman'; font-size:11pt">updated if any of the
-        information you provide changes.</span><span
+        collected about you. The information we request </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">may include certain personal information, including, but
+        not limited to, your name, address, telephone number, e-mail address, date of birth, taxpayer identification
+        number, a government identification, and information regarding your bank account (such as </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">the name of the bank, the account type, routing number,
+        and account number). In providing us with this or any other information that may be required, you confirm that
+        the information is accurate, authentic and complete. You agree to keep us updated if any </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">of the information you provide changes.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">You authorize us to make inquiries,
         whether directly or through third parties, that we consider necessary to verify your identity, to protect you
-        and/or us against fraud or other financial crime, to co</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">mply with anti-money laundering and
-        other legal requirements, and to take action we reasonably deem necessary based on the results of such
-        inquiries. When we carry out these inquiries, you acknowledge and agree that your personal information may be
-        disclos</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">ed to credit
-        reference and fraud prevention or financial crime agencies and that these agencies may respond to our inquiries
-        in full.</span></p>
+        and/or us against fraud or other financial crime, to comply with anti-</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">money laundering and other legal
+        requirements, and to take action we reasonably deem necessary based on the results of such inquiries. When we
+        carry out these inquiries, you acknowledge and agree that your personal information may be disclosed to credit
+        re</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">ference and fraud
+        prevention or financial crime agencies and that these agencies may respond to our inquiries in full.</span></p>
     <ol start="3" type="1" style="margin:0pt; padding-left:0pt">
       <li
         style="background-color:#ffffff; color:#010000; font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; list-style-position:inside; margin:0pt 0pt 6pt; text-align:justify; text-decoration:none; text-indent:0pt">
@@ -403,9 +475,9 @@
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">3.1. In General.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Upon verification of your identity, you will have the
-        ability to transfer, track a</span><span style="font-family:'Times New Roman'; font-size:11pt">nd store
-        supported Digital Assets by giving instructions through the </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        ability to transfer, track and store suppor</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">ted Digital Assets by giving instructions through the
+      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Site (each such transaction, a</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">“Digital Asset Transaction”</span><span
@@ -529,13 +601,16 @@
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">3.5. Modified Protocols.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Unless specifically announced on the </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tresso Sites</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Sites</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> or through some other official public statement of
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">, we do not support metacoins, colored coins, side chains,
-        or other derivative, enhanced, or forked protocols, toke</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">ns, or coins which supplement or interact with a Digital
-        Asset supported by </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">, we do not support </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">metacoins</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">, colored coins, side chains, or other derivative,
+        enhanced, or forked protocols, toke</span><span style="font-family:'Times New Roman'; font-size:11pt">ns, or
+        coins which supplement or interact with a Digital Asset supported by </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> (collectively, “</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Modified Protocols</span><span
         style="font-family:'Times New Roman'; font-size:11pt">”). Do not use your </span><span
@@ -559,8 +634,9 @@
         addresses, we will treat such airdropped Digital Asset as we would treat any other unsupported Digital Asset.
         You agree and understand that airdropped Digital Assets do not create a relationship be</span><span
         style="font-family:'Times New Roman'; font-size:11pt">tween us and the transferor, sender and/or the related
-        network that created the airdropped Digital Asset, and further, that we are not subject to any obligation as it
-        may relate to the transferor, sender or related network.</span></p>
+        network that created </span><span style="font-family:'Times New Roman'; font-size:11pt">the airdropped Digital
+        Asset, and further, that we are not subject to any obligation as it may relate to the transferor, sender or
+        related network.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">3.7. Operation of Digital Asset
       </span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Protocols.</span><span
@@ -571,7 +647,9 @@
         open source and anyone can use, copy, modify, and distribute them. </span><span
         style="font-family:'Times New Roman'; font-size:11pt">By using the </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Services, you acknowledge and agree (i) that </span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Services, you acknowledge and agree (</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">i</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">) that </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> is not responsible for operation of the underlying
         protocols and that </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
@@ -606,7 +684,9 @@
         style="font-family:'Times New Roman'; font-size:11pt">rotocols and networks. </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> reserves the right to take any actions in the event of an
-        attack as determined in its sole discretion, including but not limited to: (i) If </span><span
+        attack as determined in its sole discretion, including but not limited to: (</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">i</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">) If </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> reasonably believes that a Digital Asset that it supports
         has been or may be co</span><span style="font-family:'Times New Roman'; font-size:11pt">mpromised, or is or will
@@ -634,30 +714,57 @@
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">3.9.  Banking Partners</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">. You hereby agree that you will
-        additionally be a customer of Tresso’s banking partners which may be banks or trusts domiciled in and outside of
-        the U.S.  Tresso will notify you of these banking pa</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">rtners from time to time on the Tresso
-        Sites (such banking partner, the “</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso Banking Partner</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">”).  As of the date hereof, the Tresso
-        Banking Partner is Prime Trust, LLC (“</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Prime Trust</span><span
+        additionally be a customer of </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> banking partners which may be banks
+        or trusts domiciled in and outside of the U.S.  </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> will notify you of these banking
+        pa</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">rtners from time to
+        time on the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> Sites (such banking partner, the
+        “</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Banking Partner</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">”).  As of the date hereof, the
+      </span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> Banking Partner is Prime Trust, LLC
+        (“</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Prime Trust</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">”), and </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">you hereby agree to the applicable terms
         of service, privacy poli</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">cies and any guidelines or policies that
         are then in effect by Prime Trust and posted to the www.primetrust.com website (as modified from time to time in
         Prime Trust’s sole discretion and with no prior notice required). </span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> You also hereby designate Tresso
-        as</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> an authorized user on
-        the accounts opened for you at the Tresso Banking Partner pursuant to this Agreement or in the course of
-        providing Tresso Services to you (your “Banking Partner Accounts”).  You hereby authorize Tresso to make any and
-        all instruction</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">s to the
-        Tresso Banking Partner relating to your Banking Accounts, and you hereby authorize the Tresso Banking Partners
-        to accept such instructions from Tresso.  Such instructions may include, without limitation, the transfer of all
-        assets from your Bankin</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">g
-        Partner Accounts to Tresso or another Tresso Banking Partner and/or the closure of your Banking Partner
-        Accounts.  </span></p>
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> You also hereby designate
+      </span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> as</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> an authorized user on the accounts
+        opened for you at the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> Banking Partner pursuant to this
+        Agreement or in the course of providing </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> Services to you (your “Banking
+        Partner Accounts”).  You hereby authorize </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> to make any and all
+        instruction</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">s to the
+      </span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> Banking Partner relating to your
+        Banking Accounts, and you hereby authorize the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> Banking Partners to accept such
+        instructions from </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">.  Such instructions may include,
+        without limitation, the transfer of all assets from your Bankin</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">g Partner Accounts to </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> or another </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:normal"> Banking Partner and/or the closure of
+        your Banking Partner Accounts.  </span></p>
     <ol start="4" type="1" style="margin:0pt; padding-left:0pt">
       <li
         style="background-color:#ffffff; color:#010000; font-family:'Times New Roman'; font-size:11pt; font-style:normal; font-variant:normal; font-weight:bold; list-style-position:inside; margin:0pt 0pt 6pt; text-decoration:none; text-indent:0pt">
@@ -762,7 +869,8 @@
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">YOU ALSO ACKNOWLEDGE THAT FEES MAY BE
         INCLUDED IN </span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">THE PRICES OF
         CERTAIN DIGITAL ASSETS.  </span><span style="font-family:'Times New Roman'; font-size:11pt">The disclosures on
-        the Fee Schedule and the Tresso Sites are hereby incorporated herein.</span></p>
+        the Fee Schedule and the </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Sites are hereby incorporated herein.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">4.9. Trading Account Use</span><span
         style="font-family:'Times New Roman'; font-size:11pt">. By using a </span><span
@@ -885,7 +993,8 @@
         style="font-family:'Times New Roman'; font-size:11pt"> or its licensors. You may not copy, imitate or
         us</span><span style="font-family:'Times New Roman'; font-size:11pt">e them without </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">’s prior written consent.</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> prior written consent.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">5.2. Website Accuracy.</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
@@ -946,8 +1055,10 @@
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Account and/or block transactions or freeze funds
         immediately and withou</span><span style="font-family:'Times New Roman'; font-size:11pt">t notice if we
-        determine, in our sole discretion, that your Tres</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">so </span><span
+        determine, in our sole discretion, that your </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tres</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">so</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Account is associated with a Prohibited Use and/or a
         Prohibited Business.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
@@ -958,7 +1069,8 @@
         withdraw in a </span><span style="font-family:'Times New Roman'; font-size:11pt">given period (e.g., daily,
         weekly and monthly). To view your limits, login to your </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Account. Your transaction limits may vary depending on
+        style="font-family:'Times New Roman'; font-size:11pt"> </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Account. Your transaction limits may vary depending on
         your identity verification level and other factors. </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> reserves the right to change applicable limits as
@@ -1010,13 +1122,15 @@
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt">We believe someone is trying to gain unauthorized access
         to your </span><span style="font-family:'Times New Roman'; font-size:11pt">Tres</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">so A</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">so</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> A</span><span
         style="font-family:'Times New Roman'; font-size:11pt">ccount;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 36pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt">We believe there is unusual activity in your </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tresso A</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> A</span><span
         style="font-family:'Times New Roman'; font-size:11pt">ccount;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 36pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span><span
@@ -1043,8 +1157,9 @@
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Account is subject to any pending litigation,
         investigation, or government proceeding and/or we perceive a heightened risk of legal or regula</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">tory non-compliance associated with your Tresso Account
-        activity;</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">tory non-compliance associated with your </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Account activity;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 36pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Noto Sans Symbols'; font-size:11pt">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
@@ -1057,8 +1172,9 @@
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> deems as circumventing </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">’s controls, including, but not limited to, opening
-        multiple </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> controls, including, but not limited to, opening multiple
+      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Accounts</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> or abusing promotions which </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
@@ -1072,7 +1188,8 @@
         style="font-family:'Times New Roman'; font-size:11pt">If </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> suspends or closes your </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tresso A</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> A</span><span
         style="font-family:'Times New Roman'; font-size:11pt">ccount, or terminates your use of </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services for any reason, we will provide you with notice
@@ -1080,11 +1197,13 @@
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> from providing you with such notice. You acknowledge that
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">’s decision to take certain actions, including limiting
+        style="font-family:'Times New Roman'; font-size:11pt">’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> decision to take certain actions, including limiting
         ac</span><span style="font-family:'Times New Roman'; font-size:11pt">cess to, suspending, or closing your
         account, may be based on confidential criteria that are essential to </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">’s risk management and security protocols. You agree that
+        style="font-family:'Times New Roman'; font-size:11pt">’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> risk management and security protocols. You agree that
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> is under no obligation to disclose the details of its
         risk management and secur</span><span style="font-family:'Times New Roman'; font-size:11pt">ity procedures to
@@ -1255,13 +1374,8 @@
         prevailing party in any action or proceeding to enforce this Agreement shall be entitled to costs and attorneys'
         fees.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
-        style="font-family:'Times New Roman'; font-size:11pt">If the arbitrator(s) or</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> arbitration administrator would impose filing fees or
-        other administrative costs on you, we will reimburse you, upon request, to the extent such fees or costs would
-        exceed those that you would otherwise have to pay if you were proceeding instead in a cour</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">t. We will also pay additional fees or costs if required
-        to do so by the arbitration administrator's rules or applicable law. Apart from the foregoing, each Party will
-        be responsible for any other fees or costs, such as attorney fees that the Party may inc</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Apart from the foregoing, each Party will be responsible
+        for any other fees or costs, such as attorney fees that the Party may inc</span><span
         style="font-family:'Times New Roman'; font-size:11pt">ur. If a court decides that any provision of this section
         6.2 is invalid or unenforceable, that provision shall be severed and the other parts of this section 6.2 shall
         still apply. In any case, the remainder of this Agreement will continue to apply.</span></p>
@@ -1340,14 +1454,18 @@
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt">, its affiliates and service providers, and each of its or
         their respective officers, directors, </span><span style="font-family:'Times New Roman'; font-size:11pt">agents,
-        joint venturers, employees and representatives (collectively, the “</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Indemnified Parties</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">”),</span><span
+        joint </span><span style="font-family:'Times New Roman'; font-size:11pt">venturers</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">, employees and representatives (collectively, the
+        “</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Indemnified
+        Parties</span><span style="font-family:'Times New Roman'; font-size:11pt">”),</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> </span><span
         style="font-family:'Times New Roman'; font-size:11pt">harmless from any claim or demand (including attorneys'
         fees and any fines, fees or penalties imposed by any regulatory authority) arising out of or related
-        t</span><span style="font-family:'Times New Roman'; font-size:11pt">o (i) your use, misuse, or inability to use
-        the </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        t</span><span style="font-family:'Times New Roman'; font-size:11pt">o (</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">i</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">) your use, </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">misuse, or inability to use the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Sites, the Marketplace and the </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services; (ii) your breach of this Agreement, or (iii)
@@ -1357,21 +1475,44 @@
         applicable law, you hereby discharge, acquit, and otherwise release the Indemnified Parties, from any claim or
         demand (including attorneys’ fees and any fines, fees or penalties imposed by any regulatory authority)
         arisin</span><span style="color:#333333; font-family:'Times New Roman'; font-size:11pt">g out of or related to
-        the use of the Tresso Sites, the Marketplace, and the Tresso Services, including, but not limited to, claims
-        relating to the following: negligence, gross negligence, intentional interference with contract or advantageous
-        business rel</span><span style="color:#333333; font-family:'Times New Roman'; font-size:11pt">ationship,
-        defamation, privacy, publicity, misrepresentation, any financial loss not due to the fault of Tresso, the Tresso
-        Sites or the Marketplace, false identities, fraudulent acts by others, invasion of privacy, release or misuse of
-        personal informatio</span><span style="color:#333333; font-family:'Times New Roman'; font-size:11pt">n, disputes
-        with other users of the Tresso Services, failed transactions, purchases or functionality of the Tresso Sites,
-        unavailability of the Tresso Sites, its functions and/or the Tresso Services and any other technical failure
+        the use of the </span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Sites, the Marketplace, and the
+      </span><span style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Services, including, but not limited to,
+        claims relating to the following: negligence, gross negligence, intentional interference with contract or
+        advantageous business rel</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">ationship, defamation, privacy, publicity,
+        misrepresentation, any financial loss not due to the fault of </span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">, the </span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Sites or the Marketplace, false
+        identities, fraudulent acts by others, invasion of privacy, release or misuse of personal informatio</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">n, disputes with other users of the
+      </span><span style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Services, failed transactions, purchases
+        or functionality of the </span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Sites, unavailability of the </span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Sites, its functions and/or the
+      </span><span style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Services and any other technical failure
         that may result in inacce</span><span
-        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">ssibility to the Tresso Sites, the
-        Marketplace, or the Tresso Services, or any claim based on vicarious liability for torts committed by users
-        encountered or transacted with or through the Tresso Sites, the Marketplace or the Tresso Services, including,
-        bu</span><span style="color:#333333; font-family:'Times New Roman'; font-size:11pt">t not limited to, fraud,
-        computer hacking, theft or misuse of personal information, assault, battery, stalking, rape, cheating, perjury,
-        manslaughter, or murder.</span></p>
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">ssibility to the </span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Sites, the Marketplace, or the
+      </span><span style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Services, or any claim based on vicarious
+        liability for torts committed by users encountered or transacted with or through the </span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Sites, the Marketplace or the </span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt"> Services, including, bu</span><span
+        style="color:#333333; font-family:'Times New Roman'; font-size:11pt">t not limited to, fraud, computer hacking,
+        theft or misuse of personal information, assault, battery, stalking, rape, cheating, perjury, manslaughter, or
+        murder.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="color:#333333; font-family:'Times New Roman'; font-size:11pt">The above list is intended to be
         illustrative only, and not exhaustive of the types or categories of claims released by you. This release is
@@ -1404,12 +1545,12 @@
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> Prohibited Jurisdictions.</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> does not accept customers from the Restricted
-        States.</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt"> does not accept customers from Cuba, Iran, North Korea,
+        Sudan, and Syria.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">7.</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">7</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">.</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">5</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">. Limitation of Liability; No
         Warranty.</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
@@ -1440,10 +1581,11 @@
         style="font-family:'Times New Roman'; font-size:11pt"> FAILED TO PROCESS A BUY OR SELL TRANSACTION PROPERLY,
         YOUR DAMAGES ARE LIMITED TO NO MORE THAN THE VALUE OF THE SUPPORTED DIGITAL ASSET AT ISSUE IN THE TRANSACTION,
         AND T</span><span style="font-family:'Times New Roman'; font-size:11pt">HAT YOU MAY NOT RECOVER FOR LOST
-        PROFITS, LOST BUSINESS OPPORTUNITIES, OR OTHER TYPES OF SPECIAL, INCIDENTAL, INDIRECT, INTANGIBLE, OR
-        CONSEQUENTIAL DAMAGES IN EXCESS OF THE VALUE OF THE SUPPORTED DIGITAL ASSET AT ISSUE IN THE TRANSACTION. SOME
-        JURISDICTIO</span><span style="font-family:'Times New Roman'; font-size:11pt">NS DO NOT ALLOW THE EXCLUSION OR
-        LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.</span></p>
+        PROFITS, LOST BUSINESS </span><span style="font-family:'Times New Roman'; font-size:11pt">OPPORTUNITIES, OR
+        OTHER TYPES OF SPECIAL, INCIDENTAL, INDIRECT, INTANGIBLE, OR CONSEQUENTIAL DAMAGES IN EXCESS OF THE VALUE OF THE
+        SUPPORTED DIGITAL ASSET AT ISSUE IN THE TRANSACTION. SOME JURISDICTIO</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">NS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL
+        OR CONSEQUENTIAL DAMAGES SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">THE </span><span
         style="font-family:'Times New Roman'; font-size:11pt">TRESSO</span><span
@@ -1552,8 +1694,10 @@
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">In the event that </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> is acquired by or merged with a third party entity, we
-        reserve the right, in any of these circumstances, to transfer or assign the information we h</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> is acquired by or merged with a </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">third party</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> entity, we reserve the right, in any of these
+        circumstances, to transfer or assign the information we h</span><span
         style="font-family:'Times New Roman'; font-size:11pt">ave collected from you as part of such merger,
         acquisition, sale, or other change of control.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
@@ -1610,6 +1754,44 @@
         representations herein are subject to definitions and interpretations in the English language.</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Any translation provided may not accurately represent the
         information in the original English.</span></p>
+    <p style="background-color:#ffffff; margin:12pt 0pt; text-align:justify"><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">7.15  Arbitration</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> and Class Action Waiver</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">. You and </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> agree to submit to mandatory binding arbitration any and
+        all claims arising out of or related to this Agreement and/or your use of the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Services, including, but not limited to, claims for any
+        and all losses suffered by you based upon</span><span style="font-family:'Times New Roman'; font-size:11pt"> any
+        federal, state or local ordinance, statute, regulation or constitutional provision except that each Party may,
+        at its, his or her option, seek injunctive relief in court related to the improper use, disclosure or
+        misappropriation of a Party’s private,</span><span style="font-family:'Times New Roman'; font-size:11pt">
+        proprietary, confidential or trade secret information (collectively, “</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Arbitrable Claims</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">”). Further, to the fullest extent permitted by law, you
+        and </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> agree that no class or collective actions can be asserted
+        in arbitration or otherwise. To the maximu</span><span style="font-family:'Times New Roman'; font-size:11pt">m
+        extent permitted by applicable law, all claims, whether in arbitration or otherwise, must be brought solely in
+        your or </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> individual capacity, and not as a plaintiff or class
+        member in any purported class or collective proceeding. </span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">SUBJECT TO THE AB</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">OVE PROVISO, THE PARTIES HEREBY WAIVE
+        ANY RIGHTS THEY MAY HAVE TO TRIAL BY JURY IN REGARD TO ARBITRABLE CLAIMS. THE PARTIES FURTHER WAIVE ANY RIGHTS
+        THEY MAY HAVE TO PURSUE OR PARTICIPATE IN A CLASS OR COLLECTIVE ACTION PERTAINING TO ANY CLAIMS BETWEEN
+        YOU</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold"> AND TRESSO</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">. The Parties agree that, to the fullest extent permitted
+        by law, arbitration shall be the exclusive remedy for the subject matter of such claims. The arbitration shall
+        be conducted in New York City through JAMS before a single neutral arbitrato</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">r, in accordance with the JAMS arbitration rules then in
+        effect. The JAMS rules may be found and reviewed at http://www.jamsadr.com/. If, for any reason, any term of
+        this Arbitration and Class Action Waiver provision is held to be invalid or unenforceable,</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> all other valid terms and conditions herein shall be
+        severable in nature, and remain fully enforceable.</span></p>
+    <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
+        style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span></p>
     <p style="margin:0pt"><br style="page-break-before:always; clear:both" /></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">APPENDIX A: PROHIBITED USE, PROHIBITED
@@ -1620,17 +1802,20 @@
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">You may not use your </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Account to engage in the following categories of activity
-        (“</span><span style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Prohibited
-        Uses</span><span style="font-family:'Times New Roman'; font-size:11pt">”). The specific types of use listed
-        below are representative, but not exhaustive. If you are uncertain as to whether or not your use of </span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Account to engage in the following </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">categories of activity (“</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Prohibited Uses</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">”). The specific types of use listed below are
+        representative, but not exhaustive. If you are uncertain as to whether or not your use of </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Services involves a Prohibited Use, </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">or have questions about how these requirements apply to
-        you, please contact us at</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Services involves a Prohibited Use, or have questions
+        about how these re</span><span style="font-family:'Times New Roman'; font-size:11pt">quirements apply to you,
+        please contact us at</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">service@</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">.com. By opening an </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">.com. By opening </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">an</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Account, you confirm that you will not use your Account
         to do any of the following:</span></p>
@@ -1638,40 +1823,40 @@
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Unlawful Activity</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">: Activity which would violate, </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">or assist in violation of, any law, statute, ordinance, or
-        regulation, sanctions programs administered in the countries where </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">: Activity which would violate, or assist in violation of,
+        any law, </span><span style="font-family:'Times New Roman'; font-size:11pt">statute, ordinance, or regulation,
+        sanctions programs administered in the countries where </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> conducts business, including but not limited to the U.S.
         Department of Treasury's Office of Foreign Assets Control (“</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">OFAC</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">”)</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">, or which would involve proceeds of any unlawful
-        activity; publish, distribute or disseminate any unlawful material or information;</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">”), or which would involve proceeds of</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> any unlawful activity; publish, distribute or disseminate
+        any unlawful material or information;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Abusive Activity</span><span
         style="font-family:'Times New Roman'; font-size:11pt">: Actions which impose an unreasonable or
-        disproportionately large load on our infrastructure, or detriment</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">ally interfere with, intercept, or expropriate any system,
-        data, or information; transmit or upload any material to the </span><span
+        disproportionately large load on our infrastructure, or detrimentally interfere with, intercept, or
+        e</span><span style="font-family:'Times New Roman'; font-size:11pt">xpropriate any system, data, or information;
+        transmit or upload any material to the </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Site that contains viruses, Trojan horses, worms, or any
-        other harmful or deleterious programs; attempt to gain unauthorized acce</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">ss to the </span><span
+        other harmful or deleterious programs; attempt to gain unauthorized access to the </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Site, other </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Accounts, computer systems or networks connected to the
+        style="font-family:'Times New Roman'; font-size:11pt"> </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Accounts, computer systems or networks connected to the
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Sites, through password mining or any other means; use
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Account information of another party to access or use the
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Sites, except in the case of s</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">pecific authorizations by a user to access such user's
-      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Sites, except in the case of specific authorizations by a
+        user to </span><span style="font-family:'Times New Roman'; font-size:11pt">access such user's </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Account and information; or transfer your account access
         or rights to your account to a third party, unless by operation of law or with the express permission of
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
@@ -1680,17 +1865,17 @@
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Abuse Other Users</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">: Inter</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">fere with another individual's or entity's access to or
-        use of any </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">: Interfere with another individual's or en</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">tity's access to or use of any </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services; defame, abuse, extort, harass, stalk, threaten,
         blackmail or otherwise violate or infringe the legal rights (such as, but not limited to, rights of privacy,
-        publicity and i</span><span style="font-family:'Times New Roman'; font-size:11pt">ntellectual property) of
-        others; incite, threaten, facilitate, promote, or encourage hate, racial intolerance, or violent acts against
-        others; harvest or otherwise collect information from the </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        publicity and intellectual property) of others; inc</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">ite, threaten, facilitate, promote, or encourage hate,
+        racial intolerance, or violent acts against others; harvest or otherwise collect information from the
+      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Sites about others, including without limitation email
-        a</span><span style="font-family:'Times New Roman'; font-size:11pt">ddresses, without proper consent;</span></p>
+        addresses, without proper consent;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
@@ -1708,30 +1893,31 @@
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Market Manipulation</span><span
         style="font-family:'Times New Roman'; font-size:11pt">: Activities with the intention of manipulating the
-        markets of any Digital Asset, including its price, liquidity, trading volume or other characteristics;</span>
-    </p>
+        markets of any Digital Asset, in</span><span style="font-family:'Times New Roman'; font-size:11pt">cluding its
+        price, liquidity, trading volume or other characteristics;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Gambling</span><span
         style="font-family:'Times New Roman'; font-size:11pt">: Lotteries; bidding fee auctions; sports forecasting or
-        odds making; fantasy sports leagues </span><span style="font-family:'Times New Roman'; font-size:11pt">with cash
-        prizes; internet gaming; contests; sweepstakes; games of chance; and</span></p>
+        odds making; fantasy sports leagues with cash prizes; internet gaming; contests; sweepstakes; games of chance;
+        and</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Intellectual Property
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Intel</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">lectual Property
         Infringement</span><span style="font-family:'Times New Roman'; font-size:11pt">: Engage in transactions
         involving items that infringe or violate any copyright, trademark, right of publicity or privacy or any other
-        propriet</span><span style="font-family:'Times New Roman'; font-size:11pt">ary right under the law, including
-        but not limited to sales, distribution, or access to counterfeit music, movies, software, or other licensed
+        proprietary right under the law, including but not limited to sales, distribution, or access</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> to counterfeit music, movies, software, or other licensed
         materials without the appropriate authorization from the rights holder; use of </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> intellectual property, name</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">, or logo, including use of </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> trade or service marks, without express consent from
+        style="font-family:'Times New Roman'; font-size:11pt"> intellectual property, name, or logo, including use of
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> trade or service marks, without express consent
+        f</span><span style="font-family:'Times New Roman'; font-size:11pt">rom </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> or in a manner that otherwise harms </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> or the </span><span
@@ -1741,23 +1927,22 @@
         style="font-family:'Times New Roman'; font-size:11pt">.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold; text-decoration:underline">Prohibited
-        Businesse</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold; text-decoration:underline">s</span></p>
+        Businesses</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">In addition to the Prohibited Uses described above, the
-        following non-exhaustive categories of businesses, business practices, and sale items are barred from
-      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        following non-exhaustive c</span><span style="font-family:'Times New Roman'; font-size:11pt">ategories of
+        businesses, business practices, and sale items are barred from </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services (“</span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Prohibited Businesses</span><span
         style="font-family:'Times New Roman'; font-size:11pt">”). </span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">By opening a </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Account, you confirm that you wi</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">ll not use </span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Account, you confirm that you will not use </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services in connection with any of following businesses,
-        activities, practices, or items:</span></p>
+        activitie</span><span style="font-family:'Times New Roman'; font-size:11pt">s, practices, or items:</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
@@ -1770,16 +1955,16 @@
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Intellectual Property or Proprietary
         Rights Infringement:</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Sales, dis</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">tribution, or access to counterfeit music, movies,
-        software, or other licensed materials without the appropriate authorization from the rights holder;</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">Sales, distribution, or access to counterfeit music,
+        movies, software, or other licensed materials without the appropriate authorization from the rights
+        holder;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Counterfeit or Unauthorized
         Goods:</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Unauthorized sale or resale of brand name or designer
-        products or serv</span><span style="font-family:'Times New Roman'; font-size:11pt">ices; sale of goods or
+        produ</span><span style="font-family:'Times New Roman'; font-size:11pt">cts or services; sale of goods or
         services that are illegally imported or exported or which are stolen;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
@@ -1787,16 +1972,16 @@
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Regulated Products and
         Services:</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Marijuana dispensaries and related businesses; sale of
-        tobacco, e-cigarettes, and e-liquid; online prescription or pharmaceutical </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">services; age restricted goods or services; weapons and
-        munitions; gunpowder and other explosives; fireworks and related goods; toxic, flammable, and radioactive
-        materials; products and services with varying legal status on a state-by-state basis;</span></p>
+        tobacco, e-cigarettes, and e-liquid; online prescription or phar</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">maceutical services; age restricted goods or services;
+        weapons and munitions; gunpowder and other explosives; fireworks and related goods; toxic, flammable, and
+        radioactive materials; products and services with varying legal status on a state-by-state basi</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">s;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Drugs an</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">d Drug Paraphernalia:</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Drugs and Drug
+        Paraphernalia:</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Sale of narcotics, controlled substances, and any
         equipment designed for making or using drugs;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
@@ -1805,27 +1990,29 @@
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Pseudo-Pharmaceuticals:</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Pharmaceuticals and other products that make health claims
-        that have not been approved or verified by the applicable local and/or national regulatory body;</span></p>
+        that have not been approved or verified by t</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">he applicable local and/or national regulatory
+        body;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Substances designed to mimic illegal
         drugs:</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Sale of a legal substance that provides the same
-        effect</span><span style="font-family:'Times New Roman'; font-size:11pt"> as an illegal drug;</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">Sale of a legal substance that provides the same effect as
+        an illegal drug;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Adult Content and Services:</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Pornography and other obscene materials (including
-        literature, imagery and other media); sites offering any sexually-related services such as prostitution,
-        escorts, pay-per view, adult live chat features;</span></p>
+        lite</span><span style="font-family:'Times New Roman'; font-size:11pt">rature, imagery and other media); sites
+        offering any sexually-related services such as prostitution, escorts, pay-per view, adult live chat
+        features;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Mu</span><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">lti-level Marketing:</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Multi-level Marketing:</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Pyramid schemes, network marketing, and referral marketing
         programs;</span></p>
@@ -1835,59 +2022,61 @@
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">Unfair, predatory or deceptive
         practices:</span><span style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
         style="font-family:'Times New Roman'; font-size:11pt">Investment opportunities or other services that promise
-        high rewards; Sale or resale of a service without added benefit to t</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">he buyer; resale of government offerings without
-        authorization or added value; sites that we determine in our sole discretion to be unfair, deceptive, or
-        predatory towards consumers; </span><span style="font-family:'Times New Roman'; font-size:11pt">or</span></p>
+        high rewards; Sale or resale of a service without added benefit to the buyer; resale of government offerings
+        without authorization or added value; sites that </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">we determine in our sole discretion to be unfair,
+        deceptive, or predatory towards consumers; </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">or</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 9pt 18pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">High risk businesses:</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">any businesses that we believe poses elevated
-        fi</span><span style="font-family:'Times New Roman'; font-size:11pt">nancial risk, legal liability, or violates
-        card network or bank policies</span><span style="font-family:'Times New Roman'; font-size:11pt">.</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">any businesses that we believe poses elevated financial
+        risk, legal liability, or violates card network or bank policies</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">.</span></p>
     <p style="margin:0pt"><br style="page-break-before:always; clear:both" /></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt"><span
-        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">APPENDIX B: VERIFICATION PROCEDURES AND
-        LIMITS</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">APPENDIX B: VE</span><span
+        style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold">RIFICATION PROCEDURES AND LIMITS</span>
+    </p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">As a registered money services business, we are required
         to identify users on our platform. This ensures we remain in compliance with KYC/AML laws in the jurisdictions
-        in which we operate, something that is necessary for us to be able to continue to offer </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Digital Asset exchange services to our customers.
-      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        in which we operate, something that is necessary for us</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> to be able to continue to offer Digital Asset exchange
+        services to our customers. </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> collects and verifies information about you in order to:
         (a) protect </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> and the community from fraudulent users, and (b) to keep
         appropriate records of </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">’s customers.</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">’s</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> c</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">ustomers.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
-        style="font-family:'Times New Roman'; font-size:11pt">All customers who wish </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">to use </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">All customers who wish to use </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services are required to establish a </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Account by providing KYC information that include,
         without limitation, name, email address, password, state of residence, date of birth, full address, tax
-        identification number, proof of source of f</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">unds, employment information and explanation of activity.
-        Depending on your verification level, your use of all </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Services will be subject to a limit on the amount you may
-        withdraw in a given period (e.g., daily, weekly and monthly).</span></p>
-    <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
-        style="font-family:'Times New Roman'; font-size:11pt">Notwithstanding t</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">hese minimum verification procedures for the referenced
+        identifica</span><span style="font-family:'Times New Roman'; font-size:11pt">tion number, proof of source of
+        funds, employment information and explanation of activity. Depending on your verification level, your use of all
       </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Services will be subject to a limit on the amount you may
+        withdraw in a given period (e.g., daily, weekl</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">y and monthly).</span></p>
+    <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
+        style="font-family:'Times New Roman'; font-size:11pt">Notwithstanding these minimum verification procedures for
+        the referenced </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services, </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> may require you to provide or verify additional
-        information, or to wait some amount of time after completion of a transaction, before permitting you to use any
-      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Services </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">and/or before permitting you to engage in transactions
-        beyond certain volume limits.</span></p>
+        information, or to wait some amount of time after completion of a transaction, before permittin</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">g you to use any </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Services and/or before permitting you to engage in
+        transactions beyond certain volume limits.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">You may contact us at</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><span
@@ -1898,9 +2087,8 @@
         style="font-family:'Times New Roman'; font-size:11pt">to request larger limits. </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> may require you to submit to Enhanced Due Diligence.
-        Additional fees and costs may apply, and </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tre</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">sso</span><span
+        Additional </span><span style="font-family:'Times New Roman'; font-size:11pt">fees and costs may apply, and
+      </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> does not guarantee that we will raise your limits.</span>
     </p>
     <p style="margin:0pt"><br style="page-break-before:always; clear:both" /></p>
@@ -1911,22 +2099,25 @@
         style="font-family:'Times New Roman'; font-size:11pt">This policy describes how </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> delivers communications to you electronically. We may
-        amend this policy at any time by providing a revised version on </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">the Tr</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">esso Sites</span><span
+        amend this policy at any time by prov</span><span style="font-family:'Times New Roman'; font-size:11pt">iding a
+        revised version on </span><span style="font-family:'Times New Roman'; font-size:11pt">the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Sites</span><span
         style="font-family:'Times New Roman'; font-size:11pt">. The revised version will be effective at the time we
         post it. We will provide you with prior notice of any material changes via </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">the Tresso Sites</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">the </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Sites</span><span
         style="font-family:'Times New Roman'; font-size:11pt">.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold; text-decoration:underline">Electronic
         Delivery of Communications</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">You agree and consent to receive electronically all
-        communic</span><span style="font-family:'Times New Roman'; font-size:11pt">ations, agreements, documents,
-        notices and disclosures (collectively, “Communications”) that we provide in connection with your </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> Account and your use of </span><span
+        communications, agreements, documents, notices and disclosures (collectively, “Communications”) that we provide
+        in connection with your </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> Account and your use of</span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> Services. Communications include:</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 36pt; text-align:justify; text-indent:-18pt"><span
@@ -1959,56 +2150,64 @@
         style="font-family:'Times New Roman'; font-size:11pt">, emailing them to you at the primary email address listed
         in your </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt"> profile, communicating to you via instant chat, and/or
-        through other electronic communication such as text message or mobile push notification.</span></p>
+      </span><span style="font-family:'Times New Roman'; font-size:11pt">through other electronic communication such as
+        text message or mobile push notification.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold; text-decoration:underline">Hardware and
         Software Requirements</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
-        style="font-family:'Times New Roman'; font-size:11pt">In </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">order to access and retain electronic Communications, you
-        will need the following computer hardware and software:</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">In order to access and retain electronic Communications,
+        you will need the following computer hardware and software:</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 36pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">A device with an Internet connection;</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt">A device with a</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">n Internet connection;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 36pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt">A current web browser that includes 128-bit encryption
-        (e.g. Internet Explorer version 9.0 and above, Fi</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">refox version 3.6 and above, Chrome version 31.0 and
-        above, or Safari 7.0 and above) with cookies enabled;</span></p>
+        (e.g. Internet Explorer version 9.0 and above, Firefox version 3.6 and above, Chrome version 31.0 and above, or
+        Safari 7.0 and above) with cookies enabled;</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 0pt 36pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">A valid email address (your primary email address on file
-        with </span><span style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">A valid email address </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">(your primary email address on file with </span><span
+        style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
         style="font-family:'Times New Roman'; font-size:11pt">); and</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt 36pt; text-align:justify; text-indent:-18pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; text-decoration:none">●</span><span
         style="font:7.0pt 'Times New Roman'">&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Sufficient storage space to save past Communications or an
-        installed prin</span><span style="font-family:'Times New Roman'; font-size:11pt">ter to print them.</span></p>
+        installed printer to print them.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt"><span
         style="font-family:'Times New Roman'; font-size:11pt; font-weight:bold; text-decoration:underline">Updating your
         Information</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">It is your responsibility to provide us with a true,
-        accurate and complete e-mail address and your contact information, and to keep such information up to date. You
-        understand and agree that if </span><span
+        accurate and complete e-mail ad</span><span style="font-family:'Times New Roman'; font-size:11pt">dress and your
+        contact information, and to keep such information up to date. You understand and agree that if </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> sends you </span><span
-        style="font-family:'Times New Roman'; font-size:11pt">an electronic Communication but you do not receive it
-        because your primary email address on file is incorrect, out of date, blocked by your service provider, or you
-        are otherwise unable to receive electronic Communications, </span><span
+        style="font-family:'Times New Roman'; font-size:11pt"> sends you an electronic Communication but you do not
+        receive it because your primary email address on file is incorrect, out of date, block</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">ed by your service provider, or you are otherwise unable
+        to receive electronic Communications, </span><span
         style="font-family:'Times New Roman'; font-size:11pt">Tresso</span><span
-        style="font-family:'Times New Roman'; font-size:11pt"> will be deemed to have pr</span><span
-        style="font-family:'Times New Roman'; font-size:11pt">ovided the Communication to you.</span></p>
+        style="font-family:'Times New Roman'; font-size:11pt"> will be deemed to have provided the Communication to
+        you.</span></p>
     <p style="background-color:#ffffff; margin:0pt 0pt 6pt; text-align:justify"><span
         style="font-family:'Times New Roman'; font-size:11pt">You may update your information by logging into your
-        account and visiting settings or by contacting our support team at</span><span
+        account and visiting settings or by contact</span><span
+        style="font-family:'Times New Roman'; font-size:11pt">ing our support team at</span><span
         style="font-family:'Times New Roman'; font-size:11pt">&#xa0;</span><a style="color:#000000"
-        href="mailto:support@tresso.com"><span style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">service@Tresso.com</span></a><span style="font-family:'Times New Roman'; font-size:11pt">.</span></p>
+        href="mailto:support@hbus.com"><span
+          style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">service@</span></a><a
+        style="color:#000000" href="mailto:support@hbus.com"><span
+          style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">Tresso</span></a><a
+        style="color:#000000" href="mailto:support@hbus.com"><span
+          style="font-family:'Times New Roman'; font-size:11pt; text-decoration:underline">.com</span></a><span
+        style="font-family:'Times New Roman'; font-size:11pt">.</span></p>
 </div>
 </template>
 
