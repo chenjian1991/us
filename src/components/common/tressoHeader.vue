@@ -9,22 +9,22 @@
           <!-- Nav -->
           <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
             <!-- Logo -->
-            <router-link to='/home' class="mr-11 logo-box">
+            <router-link to='/home' class="mr-lg-11 logo-box">
               <img src="../../assets/images/tressoHeader/logo.png" alt="logo" class="logo-img">
             </router-link>
             <!-- End Logo -->
             <!-- Responsive Toggle Button -->
-            <button type="button" class="navbar-toggler btn u-hamburger" aria-label="Toggle navigation"
-                    aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
-                       <span id="hamburgerTrigger" class="u-hamburger__box">
-                         <span class="u-hamburger__inner"></span>
-                       </span>
-            </button>
+            <!--<button type="button" class="navbar-toggler btn u-hamburger" aria-label="Toggle navigation"-->
+            <!--aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">-->
+            <!--<span id="hamburgerTrigger" class="u-hamburger__box">-->
+            <!--<span class="u-hamburger__inner"></span>-->
+            <!--</span>-->
+            <!--</button>-->
             <!-- End Responsive Toggle Button -->
             <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse ml-lg-4">
               <ul class="navbar-nav u-header__navbar-nav">
                 <li class="nav-item u-header__nav-item header-box">
-                  <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
+                  <router-link to="/gbbo" class="nav-link u-header__nav-link">GBBO</router-link>
                 </li>
                 <li class="nav-item u-header__nav-item header-box">
                   <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -48,8 +48,8 @@
                       <a href="javascript:;" class="nav-link u-header__sub-menu-nav-link" @click="goFAQs">FAQs</a>
 
                       <!--<a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ"-->
-                         <!--class="nav-link u-header__sub-menu-nav-link" target="_blank">-->
-                        <!--FAQs-->
+                      <!--class="nav-link u-header__sub-menu-nav-link" target="_blank">-->
+                      <!--FAQs-->
                       <!--</a>-->
                     </li>
                   </ul>
@@ -111,22 +111,31 @@
                 </li>
               </ul>
             </div>
+            <!--移动端 menu-->
+            <ul class="mobile-menu">
+              <li class="d-ib header-box c-fff" v-show="isLogin">
+                {{email|cutOff}}
+              </li>
+              <li class="d-ib">
+                <a href="javascript:;" class="nav-toggle" @click="showMenu=!showMenu"><span></span></a>
+              </li>
+            </ul>
           </nav>
           <!-- End Nav -->
         </div>
       </div>
     </header>
+    <!--右侧 menu-->
     <Drawer :closable="true" v-model="showMenu" :mask="false">
       <div class="drawer">
         <div class="t-c">
-          <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110">
+          <router-link to='/home' class="mr-lg-11 logo-box">
+            <img src="../../assets/images/tressoHeader/logo.png" alt="logo" width="110">
+          </router-link>
         </div>
         <ul class="drawer-list" @click="showMenu=false">
           <li class="drawer-item">
-            <router-link to='/' class="nav-link u-header__nav-link">Home</router-link>
-          </li>
-          <li class="drawer-item">
-            <router-link :to="isLogin?'/gbbo':'/login'" class="nav-link u-header__nav-link">GBBO</router-link>
+            <router-link to="/gbbo" class="nav-link u-header__nav-link">GBBO</router-link>
           </li>
           <li class="drawer-item">
             <router-link to='/API' class="nav-link u-header__nav-link">API</router-link>
@@ -137,14 +146,11 @@
           <li class="drawer-item">
             <a href="javascript:;" class="nav-link u-header__nav-link" @click="goTeam">Team</a>
           </li>
-          <!--<li class="drawer-item">-->
-            <!--<router-link to='/about' class="nav-link u-header__nav-link">Careers</router-link>-->
-          <!--</li>-->
           <li class="drawer-item">
             <router-link to='/usd_fees' class="nav-link u-header__nav-link">Fee Structure</router-link>
           </li>
           <li class="drawer-item">
-            <a href="https://api.tresso.com/" target="_blank" class="nav-link u-header__nav-link">API Documents</a>
+            <a href="https://apidoc.tresso.com" target="_blank" class="nav-link u-header__nav-link">API Documents</a>
           </li>
           <li class="drawer-item">
             <a href="https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ" target="_blank"
@@ -152,6 +158,23 @@
           </li>
           <li class="drawer-item">
             <router-link to='/legal/terms' class="nav-link u-header__nav-link">Terms & Conditions</router-link>
+          </li>
+        </ul>
+        <!--移动端有这两项 -->
+        <ul class="drawer-list mobile" @click="showMenu=false" v-show="isLogin">
+          <li class="drawer-item">
+            <router-link to='/balances' class="nav-link u-header__nav-link email">{{email}}</router-link>
+          </li>
+          <li class="drawer-item">
+            <a href="javascript:;" class="nav-link u-header__nav-link nav-btn" @click="quitFun">Log out</a>
+          </li>
+        </ul>
+        <ul class="drawer-list mobile" @click="showMenu=false" v-show="!isLogin">
+          <li class="drawer-item">
+            <router-link to='/login' class="nav-link u-header__nav-link">Log In</router-link>
+          </li>
+          <li class="drawer-item">
+            <router-link to='/register' class="nav-link u-header__nav-link nav-btn">Join the Beta</router-link>
           </li>
         </ul>
       </div>
@@ -169,6 +192,15 @@
 
   export default {
     name: 'tressoHeader',
+    filters: {
+      cutOff: function (value) {
+        if (value) {
+          return value.slice(0, value.lastIndexOf('@'))
+        } else {
+          return value
+        }
+      }
+    },
     data() {
       return {
         isLogin: false,
@@ -200,7 +232,7 @@
           this.$router.push('/about')
         }
       },
-      goFAQs(){
+      goFAQs() {
         window.open('https://tresso.zendesk.com/hc/en-us/sections/360005901614-FAQ')
       },
       //实名信息
@@ -300,6 +332,9 @@
       } else {
         this.isLogin = false;
       }
+      if (this.isLogin && localStorage.getItem('email') === null) {
+        this.getUserInfo().then()
+      }
       // //下拉框消失
       // let openList = document.getElementsByClassName("navbar-list")[0]
       // openList.addEventListener('click', function () {
@@ -320,9 +355,6 @@
 <style lang="less">
   #tressoHeader {
     /*导航*/
-    .js-mega-menu {
-      height: 78px;
-    }
     .nav-item, .u-header__nav-item {
       a {
         &:hover {
@@ -348,15 +380,6 @@
       border-top: none !important;
       border-radius: 4px;
     }
-    .u-header__navbar-nav {
-      /*background-color: transparent;*/
-    }
-    .hs-has-sub-menu {
-      a {
-        /*color: #77838F;*/
-      }
-    }
-
   }
 
   /*弹出菜单*/
@@ -377,28 +400,6 @@
       font-size: 38px;
       color: #fff !important;
     }
-    /*菜单 自定义内容*/
-    .drawer {
-      padding-top: 80px;
-      img {
-        display: block;
-        margin: 0 auto;
-      }
-      .drawer-list {
-        padding-top: 75px;
-        .drawer-item {
-          padding-left: 40px;
-          font-size: 14px;
-          font-weight: 500;
-          a {
-            color: #B9C9D6;
-            &:hover {
-              color: #fff;
-            }
-          }
-        }
-      }
-    }
   }
 </style>
 <style scoped lang="less">
@@ -410,7 +411,7 @@
     }
   }
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     .u-header--bg-transparent .u-header__navbar-nav {
       .bgc-151D24;
     }
@@ -418,15 +419,31 @@
     .navbar-expand-md .u-header__nav-last-item {
       display: block;
     }
+
+    .mobile {
+      display: block;
+    }
+
+    .mobile-menu {
+      display: flex;
+      align-items: center;
+    }
   }
 
-  #tressoHeader {
-    width: 100%;
+  @media (min-width: 768px) {
+    .mobile-menu {
+      display: none;
+    }
+
+    .mobile {
+      display: none;
+    }
   }
 
   .tressoHeader {
+    width: 100%;
     .logo-box {
-      height: 100%;
+      height: 78px;
       .d-f;
       flex-direction: column;
       justify-content: center;
@@ -468,7 +485,7 @@
     .nav-toggle {
       display: inline-block;
       width: 30px;
-      height: 30px;
+      height: 35px;
       position: relative;
       z-index: 12;
     }
@@ -492,24 +509,45 @@
     .nav-toggle:after {
       top: 28px;
     }
-    /*过渡后*/
-    /*.nav-opened span {*/
-    /*opacity: 0;*/
-    /*}*/
-    /*.nav-opened:before {*/
-    /*-webkit-transform: rotate(45deg);*/
-    /*-ms-transform: rotate(45deg);*/
-    /*transform: rotate(45deg);*/
-    /*top: 19px;*/
-    /*}*/
-    /*.nav-opened:after {*/
-    /*-webkit-transform: rotate(-45deg);*/
-    /*-ms-transform: rotate(-45deg);*/
-    /*transform: rotate(-45deg);*/
-    /*top: 19px;*/
+    .mobile-menu {
+      .nav-toggle:before, .nav-toggle:after, .nav-toggle span {
+        .bgc-01B2D6;
+      }
+    }
 
-    /*}*/
   }
 
+  /*菜单 自定义内容*/
+  .drawer {
+    padding-top: 80px;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+    .drawer-list {
+      padding-top: 75px;
+      .drawer-item {
+        padding-left: 40px;
+        font-size: 14px;
+        font-weight: 500;
+        .nav-link {
+          color: #B9C9D6;
+        }
+        .email {
+          .c-01B2D6;
+        }
+      }
+    }
+    /*移动端 注册和退出按钮样式*/
+    .nav-btn {
+      display: inline-block;
+      margin-left: 13px;
+      margin-top: 10px;
+      color: #01B2D6 !important;
+      border: solid 1px #01B2D6;
+      background-color: transparent;
+      border-radius: 4px;
+    }
+  }
 
 </style>

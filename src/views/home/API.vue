@@ -9,7 +9,7 @@
         <router-link :to="loginToken?'/balances':'/login'" class="btn btn-sm transition-3d-hover no-bg-btn mr-sm-5">
           Get Started
         </router-link>
-        <a href="https://api.tresso.com/" class="btn btn-sm transition-3d-hover bg-btn">API Documentation</a>
+        <a href="https://apidoc.tresso.com" class="btn btn-sm transition-3d-hover bg-btn">API Documentation</a>
       </div>
     </header>
     <div class="row row-box">
