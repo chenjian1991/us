@@ -282,7 +282,6 @@
                   title: this.$t(11001),
                   desc: this.$t(11001)
                 });
-                localstorage.removeItem('email')
               }
             }
         );

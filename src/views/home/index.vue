@@ -612,7 +612,6 @@
       },
       //24h 交易量
       getVol(data) {
-        console.log(data)
         const providerBBOMap = Object.values(data)
         let sum = 0
         sum = providerBBOMap.reduce((total, currentValue) => {

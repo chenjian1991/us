@@ -511,15 +511,10 @@ function checkSSOToken(to, next) {
         next()
       }
     }).catch(error => {
-      if (to.name === "exchange") {
-        next();
-      } else {
-        $cookies.remove('loginToken', '', document.domain.split('.').slice(-2).join('.'))
-        clearLocalStorage()
-        next({
-          path: '/login'
-        })
-      }
+      clearLocalStorage()
+      next({
+        path: '/login'
+      })
     })
   } else {
     clearLocalStorage()

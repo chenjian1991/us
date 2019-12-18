@@ -81,8 +81,6 @@
   import bigDecimal from 'js-big-decimal' //除法失效
   import AccountInfo from '@/components/common/AccountInfo'
 
-  import {getCreateAccount, getAccountInfo} from '_api/exchange.js'
-
   import {
     getCurrencyList,
   } from '_api/exchange.js'
