@@ -12,7 +12,12 @@ import {scientificToNumber} from '@/lib/utils.js';
 import MetaInfo from 'vue-meta-info';
 import VueClipboard from 'vue-clipboard2'//剪切板
 import VueLazyload from 'vue-lazyload'
+import ECharts from 'vue-echarts' // 在 webpack 环境下指向 components/ECharts.vue
 
+// 手动引入 ECharts 各模块来减小打包体积
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
+Vue.component('v-chart', ECharts)
 
 Vue.config.productionTip = false
 Vue.use(iView)
