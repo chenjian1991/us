@@ -14,7 +14,7 @@
       <div class="icon">
         <img src="./imgs/icon2@2x.png" alt="">
       </div>
-      <div class="name">lnstiutional</div>
+      <div class="name">Institutional</div>
     </div>
   </div>
 </div>  
