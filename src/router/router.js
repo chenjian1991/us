@@ -27,6 +27,8 @@ import withdrawal_usd from '../views/balances/withdrawal_usd.vue'
 import bankSetting from '../views/balances/bankSetting.vue'
 
 const order = () => import('../views/newBalances/order.vue')
+const orderDetails = () => import('../views/newBalances/orderDetails.vue')
+
 const kyc = () => import('../views/kyc/kyc.vue')
 
 // const ExchangeGBBO = () => import('../views/exchangeGBBO/Exchange.vue')
@@ -395,6 +397,17 @@ const router = new Router({
             title: 'headerOrder'
           },
           component: order
+        },
+        {
+          path: 'orderDetails',
+          name: 'orderDetails',
+          beforeEnter: (to, from, next) => {
+            checkSSOToken(to, next)
+          },
+          meta: {
+            title: 'headerOrder'
+          },
+          component: orderDetails
         },
         //资产
         {

@@ -26,6 +26,8 @@ export const completedList = `${proxyURL}/spot/order/completed.list` //查询完
 export const filled = `${proxyURL}/spot/order/detail/filled.list` //查询交易明细
 export const completedList_v2 = `${proxyURL}/spot/order/completed.list_v2` //完成订单筛选
 export const filledList_v2 = `${proxyURL}/spot/order/detail/filled.list_v2` //完成订单筛选
+export const orderDetail = `${proxyURL}/spot/order/order.detail` //订单详情
+export const orderInfo = `${proxyURL}/spot/order/order.info` //订单详情
 
 //收藏币种
 export const queryFavoritesPair = `${proxyURL}/sso/favorites-pair/query-all` //收藏币种查询

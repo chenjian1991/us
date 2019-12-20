@@ -39,7 +39,9 @@ import {
    completedList_v2,
    filledList_v2,
    userInfo,
-   klineHistory
+   klineHistory,
+  orderDetail,
+  orderInfo
 } from './urls'
 
 const checkExpiredAble = (expiredAble) => {
@@ -175,6 +177,16 @@ export const getFilledList_v2 = (params) => {
 //撤单
 export const getCancelOrder = (params, data) => {
    return postBaseApi(cancelOrder, params, data)
+}
+
+//订单详情
+export const getOrderDetail = (params) => {
+  return getApi(orderDetail, params)
+}
+
+//查询订单
+export const getOrderInfo = (params) => {
+  return getApi(orderInfo, params)
 }
 //订未成交的的订单
 export const getOpenList = (params) => {
