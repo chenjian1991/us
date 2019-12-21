@@ -832,6 +832,7 @@ export default {
       this.quoteWS.onopen = (e) => {
       };
       this.quoteWS.onmessage = (e) => {
+        console.log(e)
         //每次推送一条记录
         let result = JSON.parse(e.data)
         if (result.ping !== undefined) {
