@@ -63,6 +63,8 @@ import privacy from "../views/legal/privice.vue";
 import setGoogle from "../views/google/setGoogle.vue";
 import closeGoogle from "../views/google/closeGoogle.vue";
 import identityResult from "../views/identity/identityResult.vue"
+import optionalRegistration from "../views/register/optionalRegistration"
+import institutionUser from "../views/register/institutionUser"
 
 const about = () => import('../views/about/about_new.vue')
 
@@ -384,121 +386,137 @@ const router = new Router({
         //    },
         //    component: Captial
         // },
-        //订单
-        {
-          path: 'order',
-          name: 'order',
-          beforeEnter: (to, from, next) => {
-            checkSSOToken(to, next)
-          },
-          meta: {
-            title: 'headerOrder'
-          },
-          component: order
-        },
-        //资产
-        {
-          path: 'balances',
-          name: 'balances',
-          beforeEnter: (to, from, next) => {
-            checkSSOToken(to, next)
-          },
-          meta: {
-            title: 'headerBalances'
-          },
-          component: balances
-        },
-        {
-          path: 'deposit',
-          name: 'deposit',
-          beforeEnter: (to, from, next) => {
-            checkSSOToken(to, next)
-          },
-          meta: {
-            title: 'DepositTitle'
-          },
-          component: deposit
-        },
-        {
-          path: 'withdrawal',
-          name: 'withdrawal',
-          beforeEnter: (to, from, next) => {
-            checkSSOToken(to, next)
-          },
-          meta: {
-            title: 'WithdrawalTitle'
-          },
-          component: withdrawal
-        },
-        {
-          path: 'transaction_history',
-          name: 'transaction_history',
-          beforeEnter: (to, from, next) => {
-            checkSSOToken(to, next)
-          },
-          meta: {
-            title: 'tbdhTransactionHistory'
-          },
-          component: transaction_history
-        },
-        {
-          path: 'usd_fees',
-          name: 'usd_fees',
-          meta: {
-            title: ''
-          },
-          component: fee
-        },
-        //us
-        {
-          path: 'deposit_usd',
-          name: 'deposit_usd',
-          beforeEnter: (to, from, next) => {
-            checkSSOToken(to, next)
-          },
-          meta: {
-            title: 'balanceDeposit'
-          },
-          component: deposit_usd
-        },
-        {
-          path: 'withdrawal_usd',
-          name: 'withdrawal_usd',
-          beforeEnter: (to, from, next) => {
-            checkSSOToken(to, next)
-          },
-          meta: {
-            title: 'balanceWithdraw'
-          },
-          component: withdrawal_usd
-        },
-        {
-          path: 'bankSetting',
-          name: 'bankSetting',
-          beforeEnter: (to, from, next) => {
-            checkSSOToken(to, next)
-          },
-          meta: {
-            title: 'balanceBank'
-          },
-          component: bankSetting
-        },
-        {//about
-          path: 'about',
-          name: 'about',
-          meta: {
-            title: 'about',
-          },
-          component: about
-        },
-      ]
-    },
-    {
-      path: '*',
-      name: 'error_404',
-      component: () => import('@/views/error-page/404.vue')
-    }
-  ]
+            //订单
+            {
+               path: 'order',
+               name: 'order',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'headerOrder'
+               },
+               component: order
+            },
+            //资产
+            {
+               path: 'balances',
+               name: 'balances',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'headerBalances'
+               },
+               component: balances
+            },
+            {
+               path: 'deposit',
+               name: 'deposit',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'DepositTitle'
+               },
+               component: deposit
+            },
+            {
+               path: 'withdrawal',
+               name: 'withdrawal',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'WithdrawalTitle'
+               },
+               component: withdrawal
+            },
+            {
+               path: 'transaction_history',
+               name: 'transaction_history',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'tbdhTransactionHistory'
+               },
+               component: transaction_history
+            },
+           {
+             path: 'usd_fees',
+             name: 'usd_fees',
+             meta: {
+               title: ''
+             },
+             component: fee
+           },
+            //us
+            {
+               path: 'deposit_usd',
+               name: 'deposit_usd',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'balanceDeposit'
+               },
+               component: deposit_usd
+            },
+            {
+               path: 'withdrawal_usd',
+               name: 'withdrawal_usd',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'balanceWithdraw'
+               },
+               component: withdrawal_usd
+            },
+            {
+               path: 'bankSetting',
+               name: 'bankSetting',
+               beforeEnter: (to, from, next) => {
+                  checkSSOToken(to, next)
+               },
+               meta: {
+                  title: 'balanceBank'
+               },
+               component: bankSetting
+            },
+            {//about
+               path: 'about',
+               name: 'about',
+               meta: {
+                  title: 'about',
+               },
+               component: about
+            },
+            {
+               path:"optionalRegistration",
+               name:"optionalRegistration",
+               meta:{
+                  title: "optionalRegistration",
+               },
+               component: optionalRegistration
+            },
+            {
+               path:"institutionUser",
+               name:"institutionUser",
+               meta:{
+                  title: "institutionUser",
+               },
+               component: institutionUser
+            },
+         ]
+      },
+      {
+         path: '*',
+         name: 'error_404',
+         component: () => import('@/views/error-page/404.vue')
+      }
+   ]
 })
 
 function checkSSOToken(to, next) {

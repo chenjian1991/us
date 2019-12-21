@@ -273,7 +273,7 @@ const clickoutside = {
                 if (value === ''||value ==undefined) {
                     callback(new Error(this.$t('phoneNumberRequier')));
                 } else{
-                  let pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+                  let pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,9}$/;
                     if(!pattern.test(value)){
                         callback(new Error(this.$t('emailMustExg')))
                     }else{
@@ -462,7 +462,6 @@ const clickoutside = {
                              _that.robotModalflag = true;
                              onloadCallback('robotRegister',function(res){
                                     if(res){
-                                        debugger
                                         _that.emailParams = {
                                             "domainCode":document.domain==='www.55com.io'?"china":'global',
                                             'country':_that.EmailcountryName,
