@@ -642,6 +642,7 @@ export default {
         if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
           socket = new SockJS(`https://${domain}/xchange/marketdata`);
         } else {
+          // socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata');旧的
           socket = new SockJS('http://52.194.137.116:8111/xchange/marketdata');
         }
         this.stompClient = Stomp.over(socket);
@@ -832,7 +833,6 @@ export default {
       this.quoteWS.onopen = (e) => {
       };
       this.quoteWS.onmessage = (e) => {
-        console.log(e)
         //每次推送一条记录
         let result = JSON.parse(e.data)
         if (result.ping !== undefined) {
