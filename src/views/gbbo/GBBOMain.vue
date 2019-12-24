@@ -632,7 +632,7 @@ export default {
         this.setKlineTime = setTimeout(() => {
           evt.disconnect()
           fn.call(this)
-        }, 15000);
+        }, 65000);
       }
     },
     getGBBODepth() {
