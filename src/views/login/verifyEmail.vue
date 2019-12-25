@@ -18,8 +18,8 @@
                     <p class="tips">{{$t('sendEmailto')}} <span class="font-bold" v-html="emailName"></span>. 
                         {{$t('emailSendclick')}}
                     </p>
-                    <div v-if="arrive" @click="handleSubmit" class="not-arrive">{{$t('emailDontArrive')}}</div>
-                    <div v-else class="not-arrive resentemail">{{$t('emailreSend')}}</div>
+                    <div v-if="arrive" @click="handleSubmit" class="not-arrive">Email didn't arrive?</div>
+                    <div class="not-arrive resentemail">{{$t('emailreSend')}}</div>
                 </div>
             </div>
             
