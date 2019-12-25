@@ -643,7 +643,7 @@ export default {
           socket = new SockJS(`https://${domain}/xchange/marketdata`);
         } else {
           // socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata');旧的
-          socket = new SockJS('http://52.194.137.116:8111/xchange/marketdata');
+          socket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');
         }
         this.stompClient = Stomp.over(socket);
         this.stompClient.debug = null
