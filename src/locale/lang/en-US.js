@@ -559,8 +559,8 @@ export default {
    VerifyEmail: "Verify Your Email",
    sendEmailto: "We sent a verification email to",
    emailSendclick: "Click the link inside to get started!",
-   emailDontArrive: "We resent the email. Please recheck your inbox.",
-   emailreSend: "We resent the email. Please recheck your inbox.",
+   emailDontArrive: "We re-sent the email. Please recheck your inbox.",
+   emailreSend: "We re-sent the email. Please recheck your inbox.",
    registerSucccess: "Congratulations! You have successfully registered your account. Click below to Log In.",
    siteLogin: "-Site login",
 
