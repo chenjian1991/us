@@ -72,6 +72,7 @@
               <div>{{$t("bbjyHistoryFilled")}}</div>
               <div>{{$t("bbjyHistoryTotal")}}</div>
               <div>{{$t("bbjyHistoryStatus")}}</div>
+              <div></div>
             </li>
             <!--无历史-->
             <li class="no-order" v-if="myCompletedList.length === 0">
@@ -97,6 +98,23 @@
               <div
                 :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
               >{{$t(v.orderStatus)}}</div>
+              <div>
+                <!-- <a
+                  v-if="v.orderStatus !== 'CANCELLED'"
+                  class="details"
+                  
+                  
+                  :href=""
+                  target="_blank"
+                >Details</a> -->
+                <router-link
+                  v-if="v.orderStatus !== 'CANCELLED'"
+                  class="details"
+                  tag='a'
+                  target="_blank"
+                  :to="'orderDetails?orderId=' + v.orderId"
+                >Details</router-link>
+              </div>
             </li>
           </ul>
         </div>
@@ -142,6 +160,14 @@ export default {
   methods: {
     cancelMyOrder(orderId, v) {
       this.$emit("cancelMyOrder", orderId, v);
+    },
+    orderDetail(orderId){
+      this.$router.push({
+        path: 'orderDetails',
+        query: {
+          orderId
+        }
+      })
     }
   },
   components: {}
@@ -280,6 +306,24 @@ export default {
             line-height: 22px;
             background:rgba(8,52,65,1);
             border-radius:14px;           
+            margin-left: 10px;
+            text-align: center;
+            color: #5D7C86;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #12869a;
+              color: #fff;
+              border: solid 1px #12869a;
+            }
+          }
+          .details{
+            display: inline-block;
+            width:72px;
+            height:22px;
+            line-height: 22px;
+            background:rgba(8,52,65,1);
+            border-radius:14px;
             margin-left: 10px;
             text-align: center;
             color: #5D7C86;
