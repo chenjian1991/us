@@ -29,7 +29,7 @@ export default {
       yContext: null,
       finalOptions: Object.assign(defaultOptions, this.options),
       fWidth: parseFloat(this.width) - 150,
-      fHeight: parseFloat(this.height) - 24,
+      fHeight: parseFloat(this.height) + 21,
       hasPaint: false,
       args: null,
       // 存储已全部点位对象
@@ -450,7 +450,7 @@ canvas {
   /* overflow: hidden; */
 }
 .chart, .chart-mask {
-  top: 40px;
+  top: 0px;
   left: 0;
   /* background: transparent; */
 }
