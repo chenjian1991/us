@@ -479,7 +479,7 @@ export default {
 <style lang='less'>
     .depth-container{
         width: 450px;
-        height: 486px;
+        height: 506px;
         .deepth-chart{
             height: 100%;
             .deepth-chart-layout{
@@ -493,9 +493,9 @@ export default {
                 }
             }
         }
-        canvas{
-            width: 100%;
-            height: 100%;
-        }
+        // canvas{
+        //     width: 100%;
+        //     height: 100%;
+        // }
     }
 </style>

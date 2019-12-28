@@ -5,8 +5,8 @@
     <canvas class="chart-mask" ref="chartMask" :width="fWidth" :height="fHeight"
       @mousemove="onMouseMove"
       @mouseout="onMouseOut"></canvas>
-    <canvas class="chart-x" ref="chartX" :width="fWidth" :height="24" :style="{top: fHeight+'px', left: 0}"></canvas>
-    <canvas class="chart-y" ref="chartY" :width="48" :height="fHeight" :style="{top: 0, left: fWidth+'px'}"></canvas>
+    <canvas class="chart-x" ref="chartX" :width="fWidth" :height="24" :style="{top: fHeight+'px', left: '-40px',}"></canvas>
+    <canvas class="chart-y" ref="chartY" :width="48" :height="fHeight" :style="{bottom: 0, left: 0}"></canvas>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
       yChart: null,
       yContext: null,
       finalOptions: Object.assign(defaultOptions, this.options),
-      fWidth: parseFloat(this.width) - 48,
+      fWidth: parseFloat(this.width) - 150,
       fHeight: parseFloat(this.height) - 24,
       hasPaint: false,
       args: null,
@@ -55,15 +55,15 @@ export default {
     },
     height: {
       type: String,
-      default: '300px'
+      default: '460px'
     },
     bgColor: {
       type: String,
-      default: '#000'
+      default: '#041D25'
     },
     buyFillColor: {
       type: String,
-      default: 'rgba(44, 180, 140, 0.8)'
+      default: 'rgba(44, 180, 140, 0.6)'
     },
     sellFillColor: {
       type: String,
@@ -150,7 +150,7 @@ export default {
         contextX.clearRect(0, 0, width, 24)
       }
       const { scaleW } = this.args
-      contextX.fillStyle = '#ccc'
+      contextX.fillStyle = '#2CB48C'
       let x = 0
       let y = 0
       let buyLength = data['buy'].length
@@ -212,10 +212,10 @@ export default {
       if (this.hasPaint) {
         contextY.clearRect(0, 0, 48, height)
       }
-      contextY.fillStyle = '#ccc'
+      contextY.fillStyle = '#2CB48C'
       // Y轴5等份
-      var seg = maxAmount / 5
-      for (let i = 1; i < 6; i++) {
+      var seg = maxAmount / 8
+      for (let i = 1; i < 9; i++) {
         x = this.axisFontsize || 12
         y = height - seg * i / maxAmount * height
         contextY.fillText(utils.toPretty(seg * i), x, y)
@@ -233,7 +233,11 @@ export default {
       let tempList = []
       const gap = this.gap
       context.beginPath()
-      context.fillStyle = this.buyFillColor
+      var grd=context.createLinearGradient(0,0,100,0);//  创建渐变
+      grd.addColorStop(0,"rgba(44, 180, 140, 0.1)");
+      grd.addColorStop(0.3,"rgba(44, 180, 140, 0.2)");
+      grd.addColorStop(1,"rgba(44, 180, 140, 0.3)");
+      context.fillStyle = grd
       let x = 0
       let y = paddingTop
       let lastPoint = {
@@ -271,7 +275,11 @@ export default {
 
       // 画卖单
       context.beginPath()
-      context.fillStyle = this.sellFillColor
+      var grdsell=context.createLinearGradient(0,0,100,0);//  创建渐变
+      grdsell.addColorStop(0,"rgba(232, 49, 96, 0.1)");
+      grdsell.addColorStop(0.3,"rgba(232, 49, 96, 0.2)");
+      grdsell.addColorStop(1,"rgba(232, 49, 96, 0.3)");
+      context.fillStyle = grdsell;
       context.moveTo(width / 2 + gap, height)
       lastPoint = {
         x: width / 2 + gap,
@@ -345,7 +353,7 @@ export default {
 
         if (offsetX < x) {
           // console.log(key, valueMap.get(key))
-          maskContext.strokeStyle = 'rgba(200,200,200,0.5)'
+          maskContext.strokeStyle = 'rgba(200,200,200,0.5)'//鼠标hover的时候十字线样式
           maskContext.lineWidth = 1
           maskContext.setLineDash([2])
           maskContext.clearRect(0, 0, width, height)
@@ -363,7 +371,7 @@ export default {
 
           maskContext.beginPath()
           maskContext.shadowBlur = 10
-          maskContext.shadowColor = 'rgba(0,0,0,0.8)'
+          maskContext.shadowColor = 'rgba(0,0,0,0.8)'//   提示框的shadow
           // 小圆点
           maskContext.fillStyle = 'rgba(255,255,255, 1)'
           maskContext.arc(x, y, 5, 0, 2 * Math.PI)
@@ -372,7 +380,7 @@ export default {
 
           maskContext.beginPath()
           // tips框
-          maskContext.fillStyle = 'rgba(255,255,255, 1)'
+          maskContext.fillStyle = 'rgba(255,255,255, 1)'// 提示框的背景色
           maskContext.font = '12px bold'
           let widthOffset = 120
           let heightOffset = 60
@@ -442,12 +450,14 @@ canvas {
   /* overflow: hidden; */
 }
 .chart, .chart-mask {
-  top: 0;
+  top: 40px;
   left: 0;
   /* background: transparent; */
 }
 .chart-x {
+  width: 450px;
   height: 24px;
+  text-align: left;
 }
 .chart-y {
   width: 48px;

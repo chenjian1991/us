@@ -25,6 +25,20 @@
       .ivu-tabs-bar{
         position: absolute;
         z-index: 999;
+        right: 0;
+        border-bottom:none;
+        .ivu-tabs-nav {
+          .ivu-tabs-tab-active{
+            color: #041D25;
+            background: #788390;
+            z-index: 999;
+          }
+          .ivu-tabs-tab{
+            &:hover{
+              color:#fff;
+            }
+          }
+        }
       }
     }
     &__box{
