@@ -8,6 +8,10 @@
       <button class="gbboline-btns__settime">1W</button>
       <button class="gbboline-btns__settime">1M</button>
     </div>
+    <!-- <div>
+      <button>origin</button>
+      <button>depth</button>
+    </div> -->
     <div ref="kline" class="gbboline-box"></div>
   </div>
 </template>

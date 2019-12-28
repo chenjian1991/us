@@ -41,10 +41,25 @@
         </div>
         <!--K线-->
         <div class="gbbomain-realtime__line">
-          <gbbo-kline
+          <Tabs :animated="false" value="name1">
+          <TabPane label="标签一" name="name1"> 
+            <gbbo-kline
             :historyData="historyData"
             :kLineData="kLineData">
           </gbbo-kline>
+          </TabPane>
+          <TabPane label="标签二" name="name2">
+            <gbbo-depthpic></gbbo-depthpic>
+          </TabPane>
+        </Tabs>
+         <!-- <gbbo-kline
+            :historyData="historyData"
+            :kLineData="kLineData">
+          </gbbo-kline>
+          <gbbo-depthpic></gbbo-depthpic> -->
+
+         
+         
           <div class="gbbomain-realtime__line-history">
             <!-- <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
@@ -90,6 +105,7 @@
           </div>
         </div>
     </div>
+    <!-- 深度图 -->
     <!-- 交易蒙层 -->
     <div class="quickNav" v-if="isShowMask">
       <div class="quickContent">
@@ -131,6 +147,7 @@ import GbboHistories from './component/Histories'
 import CreateOrder from './component/GBBOCreateOrder'
 import GbboRealtime from './component/GBBORealtime'
 import GbboOrder from './component/GBBOOrder'
+import GbboDepthpic from './component/GBBODepth'
 
 import {
   getSymbolList_realtime as getSymbolListRealtime,
@@ -194,10 +211,12 @@ export default {
     CreateOrder,
     GbboRealtime,
     GbboHistories,
-    GbboOrder
+    GbboOrder,
+    GbboDepthpic
   },
   data(){
     return{
+      data:null,
       historyData: {}, // k线历史数据
       kLineData: {}, // k线实时数据
       briefInputData:{
@@ -325,7 +344,8 @@ export default {
       setArbTime: '', // Arb重连定时器
       setKlineTime: '', // k线重连定时器
       dataFor24Hours: '', // 24小时交易量
-      sseOrderCount: 0 // SSEOrder重连次数计数
+      sseOrderCount: 0 ,// SSEOrder重连次数计数
+      depthPicData:{}
     }
   },
   created() {
@@ -661,6 +681,7 @@ export default {
               this.ticker(JSON.parse(message.body))
             }
           });
+         
         }, (error) => {
           console.log('new Sockjs  error')
           this.stompClient.disconnect()
@@ -710,12 +731,20 @@ export default {
               this.getArbData(JSON.parse(message.body))
             }
           });
-          this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
-            if(message.body){
-              this.GBBODepthSetTime(this.arbStompClient, 'kline', this.getGBBOArb)
-              this.kLineData = JSON.parse(message.body)
+          // this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
+          //   if(message.body){
+          //     this.GBBODepthSetTime(this.arbStompClient, 'kline', this.getGBBOArb)
+          //     this.kLineData = JSON.parse(message.body)
+          //   }
+          // })
+           // /topic/depth/BTCUSD
+           this.arbStompClient.subscribe(`/topic/depth/BTCUSD}`, (message) => {
+            if (message.body) {
+              debugger
+              this.depthPicData = JSON.parse(message.body)
+              console.log("this.depthPicData",this.depthPicData)
             }
-          })
+          });
         }, (error) => {
           console.log('new Sockjs  error', error)
           this.arbStompClient.disconnect()
@@ -1528,4 +1557,5 @@ export default {
 </script>
 <style lang="less">
 @import './GBBOMain.less';
+
 </style>

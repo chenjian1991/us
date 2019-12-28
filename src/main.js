@@ -12,6 +12,7 @@ import {scientificToNumber} from '@/lib/utils.js';
 import MetaInfo from 'vue-meta-info';
 import VueClipboard from 'vue-clipboard2'//剪切板
 import VueLazyload from 'vue-lazyload'
+import VDepthChart from '../src/depth/index.js';
 
 
 Vue.config.productionTip = false
@@ -21,6 +22,7 @@ Vue.use(VueAwesomeSwiper)
 Vue.use(MetaInfo)
 Vue.use(VueClipboard)
 Vue.use(VueLazyload)
+Vue.use(VDepthChart)
 
 
 Vue.filter('scientificToNumber', function (value) {
