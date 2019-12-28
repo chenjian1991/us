@@ -5,7 +5,7 @@
     <canvas class="chart-mask" ref="chartMask" :width="fWidth" :height="fHeight"
       @mousemove="onMouseMove"
       @mouseout="onMouseOut"></canvas>
-    <canvas class="chart-x" ref="chartX" :width="fWidth" :height="24" :style="{top: fHeight+'px', left: '-40px',}"></canvas>
+    <canvas class="chart-x" ref="chartX" :width="fWidth" :height="24" :style="{top: fHeight+'px', left: '0px',}"></canvas>
     <canvas class="chart-y" ref="chartY" :width="48" :height="fHeight" :style="{bottom: 0, left: 0}"></canvas>
     </div>
   </div>
@@ -71,7 +71,7 @@ export default {
     },
     gap: {
       type: Number,
-      default: 10
+      default: 0
     },
     axisFontsize: {
       type: Number,
@@ -153,22 +153,22 @@ export default {
       contextX.fillStyle = '#2CB48C'
       let x = 0
       let y = 0
-      let buyLength = data['buy'].length
-      let sellLength = data['sell'].length
+      let buyLength = data['bidsList'].length
+      let sellLength = data['asksList'].length
       for (let i = 0; i < buyLength + sellLength; i++) {
-        if (i % 4) continue
+        if (i % 15) continue
         let index
         let text
         let textWidth
         if (i < buyLength) {
           index = i
-          text = data['buy'][index]['price']
+          text = data['bidsList'][index]['price']
           textWidth = contextX.measureText(text).width
           x = width / 2 - i * scaleW - textWidth
           // contextX.textAlign = 'left'
         } else {
           index = sellLength - (i - buyLength) - 1
-          text = data['sell'][index]['price']
+          text = data['asksList'][index]['price']
           textWidth = contextX.measureText(text).width
           x = width / 2 + index * scaleW
           // contextX.textAlign = 'right'
@@ -244,9 +244,9 @@ export default {
         x,
         y
       }
-      for (let i in data['buy']) {
+      for (let i in data['bidsList']) {
         x = width / 2 - i * scaleW - gap
-        y = height - data['buy'][i]['total'] / maxAmount * (height) + paddingTop
+        y = height - data['bidsList'][i]['total'] / maxAmount * (height) + paddingTop
         // 处理下边距 下边距超过最大高取最大高-paddingTop (应该是paddingBottom）
         if (y > height - paddingTop) {
           y = height - paddingTop
@@ -254,8 +254,8 @@ export default {
         tempList.push({
           x,
           y,
-          value: data['buy'][i],
-          side: 'buy'
+          value: data['bidsList'][i],
+          side: 'bidsList'
         })
 
         if (this.jagged) {
@@ -285,18 +285,18 @@ export default {
         x: width / 2 + gap,
         y: height
       }
-      for (let i in data['sell']) {
-        const index = data['sell'].length - i - 1
+      for (let i in data['asksList']) {
+        const index = data['asksList'].length - i - 1
         x = width / 2 + i * scaleW + gap
-        y = height - data['sell'][index]['total'] / maxAmount * height + paddingTop
+        y = height - data['asksList'][index]['total'] / maxAmount * height + paddingTop
         if (y > height - paddingTop) {
           y = height - paddingTop
         }
         tempList.push({
           x,
           y,
-          value: data['sell'][index],
-          side: 'sell'
+          value: data['asksList'][index],
+          side: 'asksList'
         })
 
         if (this.jagged) {
@@ -326,9 +326,9 @@ export default {
     },
     _calcArgs (data, width, height) {
       if (!this.isEmptyData) {
-        const maxAmount = Math.max(data['sell'][0]['total'], data['buy'][data['buy'].length - 1]['total'])
+        const maxAmount = Math.max(data['asksList'][0]['total'], data['bidsList'][data['bidsList'].length - 1]['total'])
         const scaleH = maxAmount / height
-        const scaleW = width / 2 / data['sell'].length
+        const scaleW = width / 2 / data['asksList'].length
 
         return {
           maxAmount,
@@ -408,7 +408,7 @@ export default {
 
           maskContext.fillRect(left, top, widthOffset, heightOffset)
 
-          maskContext.fillStyle = side === 'buy' ? buyFillColor : sellFillColor
+          maskContext.fillStyle = side === 'bidsList' ? buyFillColor : sellFillColor
           maskContext.textAlign = 'left'
           // maskContext.textBaseline = 'middle'
           maskContext.shadowBlur = 0

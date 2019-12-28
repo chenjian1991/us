@@ -731,14 +731,14 @@ export default {
               this.getArbData(JSON.parse(message.body))
             }
           });
-          // this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
-          //   if(message.body){
-          //     this.GBBODepthSetTime(this.arbStompClient, 'kline', this.getGBBOArb)
-          //     this.kLineData = JSON.parse(message.body)
-          //   }
-          // })
+          this.arbStompClient.subscribe('/topic/runtime/BTCUSD/MINUTE_1', (message) => {
+            if(message.body){
+              this.GBBODepthSetTime(this.arbStompClient, 'kline', this.getGBBOArb)
+              this.kLineData = JSON.parse(message.body)
+            }
+          })
            // /topic/depth/BTCUSD
-           this.arbStompClient.subscribe(`/topic/depth/BTCUSD}`, (message) => {
+           this.arbStompClient.subscribe(`/topic/depth/BTCUSD}`, (message) => {//深度图
             if (message.body) {
               debugger
               this.depthPicData = JSON.parse(message.body)
