@@ -454,7 +454,7 @@ const clickoutside = {
                     if(res.result){// 要限制
                          this.loaded = true;
                          this.$Notice.warning({
-                            title: 'Tips',
+                            title: 'Alert',
                             desc:"We are sorry, but the service you are attempting to access is not intended for the country we've detected you are in."
                         });
                     }else{
