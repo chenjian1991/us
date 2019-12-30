@@ -192,7 +192,7 @@
                   "userId": localStorage.getItem('loginUserId'),
                }
                getHeaderTokenApi(userInfo, params, $cookies.get('loginToken')).then((res) => {
-                  this.accoundId = res.data.phone || res.data.email;
+                  this.accoundId = res.data.email || res.data.phone;
                   this.uid = res.data.userId;
                   this.identifyState = res.data.identifyState;
                   if (this.identifyState === 'SUCCESS') {

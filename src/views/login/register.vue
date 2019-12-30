@@ -7,7 +7,7 @@
                     :title="this.$t('yanzheng')"
                     :mask-closable="false"
                    >
-                    <div id="robot"></div>
+                    <div id="robotRegister"></div>
                     <p slot="footer"></p>
                 </Modal>
             <div  class="register_wraper">
@@ -120,7 +120,7 @@
                                         <div @click="controCountrylSelect">
                                             <input type="hidden">
                                             <div>
-                                                <img :src="countryFlag" alt="">
+                                                <img :src="countryFlag" alt=""><img/>>
                                                 <em v-html="globalCountryNumber" class="code"></em>
                                                 <Icon v-show="!countrySelectFlag" type="ios-arrow-down" />
                                                 <Icon v-show="countrySelectFlag" type="ios-arrow-up" />
@@ -213,7 +213,7 @@ import {register,emailRegister,ossjson,ipLimit} from '../../../api/urls.js';
 import {postBaseApi,getApi,getApiLoin} from '../../../api/axios.js';
 import Modaltips from '@/components/Modal';
 import {getBrowserMessage,getUrlKeyandEncode} from "@/lib/utils.js"
-import {geeTest} from '../../../api/usersystem.js'
+import {geeTest,onloadCallback} from '../../../api/usersystem.js'
 const clickoutside = {
     // 初始化指令
     bind(el, binding, vnode) {
@@ -273,7 +273,7 @@ const clickoutside = {
                 if (value === ''||value ==undefined) {
                     callback(new Error(this.$t('phoneNumberRequier')));
                 } else{
-                  let pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+                  let pattern = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,9}$/;
                     if(!pattern.test(value)){
                         callback(new Error(this.$t('emailMustExg')))
                     }else{
@@ -458,69 +458,105 @@ const clickoutside = {
                             desc:"We are sorry, but the service you are attempting to access is not intended for the country we've detected you are in."
                         });
                     }else{
-                        this.checkGeetest()
+                             var _that = this;
+                             _that.robotModalflag = true;
+                             onloadCallback('robotRegister',function(res){
+                                    if(res){
+                                        _that.emailParams = {
+                                            "domainCode":document.domain==='www.55com.io'?"china":'global',
+                                            'country':_that.EmailcountryName,
+                                            "email":_that.formValidate.emailNumber,
+                                            "personType": "GOOGLE",
+                                            "personCode":res,//人机校验码
+                                            // "geeCode":data,
+                                            "password":_that.setSha(_that.formValidate.confrimPassword),
+                                            "inviteFrom":_that.formValidate.referrId,
+                                            "deviceType":"WEB",
+                                            "deviceCode": _that.deviceObj.browserVersion,
+                                            "deviceInfo":{
+                                                    "deviceModel":_that.deviceObj.browserType,
+                                                    "resolution":_that.deviceObj.windowWith,
+                                            },
+                                            "detail":{
+                                                    "activityCode":getUrlKey('src'),
+                                                    "originFrom":_that.origin
+                                            },
+                                    
+                                }
+                                _that.emailRegisterFun(_that.emailParams);
+                                        setTimeout(()=>{
+                                            _that.robotModalflag= false;
+                                        },2000)
+                                    }
+                            },function(err){
+                                 _that.robotModalflag = false;
+                                 _that.loaded = true
+                            },function(netError){
+                                 _that.robotModalflag = false;
+                                 _that.loaded = true
+                            })
                     }
                 }).catch((error)=>{
                     this.loaded = true;
                 })
             },
-            checkGeetest(){
-                    geeTest('4f8eb91de0e6a7940cb7b9f63f260aa7','1',(data)=>{
-                             if(this.emailRegister){//邮箱注册
-                                this.emailParams = {
-                                    "domainCode":document.domain==='www.55com.io'?"china":'global',
-                                    'country':this.EmailcountryName,
-                                    // "name":this.formValidate.userName,
-                                    "email":this.formValidate.emailNumber,
-                                    "personType": "GEETEST",
-                                    "personCode":data,//人机校验码
-                                    "geeCode":data,
-                                    "password":this.setSha(this.formValidate.confrimPassword),
-                                    "inviteFrom":this.formValidate.referrId,
-                                    "deviceType":"WEB",
-                                    "deviceCode": this.deviceObj.browserVersion,
-                                    "deviceInfo":{
-                                            "deviceModel":this.deviceObj.browserType,
-                                            "resolution":this.deviceObj.windowWith,
-                                    },
-                                    "detail":{
-                                            "activityCode":getUrlKey('src'),
-                                             "originFrom":this.origin
-                                    },
+            // checkGeetest(){
+            //         geeTest('4f8eb91de0e6a7940cb7b9f63f260aa7','1',(data)=>{
+            //                  if(this.emailRegister){//邮箱注册
+            //                     this.emailParams = {
+            //                         "domainCode":document.domain==='www.55com.io'?"china":'global',
+            //                         'country':this.EmailcountryName,
+            //                         // "name":this.formValidate.userName,
+            //                         "email":this.formValidate.emailNumber,
+            //                         "personType": "GEETEST",
+            //                         "personCode":data,//人机校验码
+            //                         "geeCode":data,
+            //                         "password":this.setSha(this.formValidate.confrimPassword),
+            //                         "inviteFrom":this.formValidate.referrId,
+            //                         "deviceType":"WEB",
+            //                         "deviceCode": this.deviceObj.browserVersion,
+            //                         "deviceInfo":{
+            //                                 "deviceModel":this.deviceObj.browserType,
+            //                                 "resolution":this.deviceObj.windowWith,
+            //                         },
+            //                         "detail":{
+            //                                 "activityCode":getUrlKey('src'),
+            //                                  "originFrom":this.origin
+            //                         },
                                     
-                                }
-                                this.emailRegisterFun(this.emailParams);
-                             }else{//手机注册
-                                      let params = {
-                                        "country": this.phoneCountryName,
-                                        // "name": this.formValidate.userName,
-                                        "phone": this.formValidate.phoneNumber+'+'+this.countryNumber,
-                                        "phoneCode": this.formValidate.smsCode,
-                                        "personType": "GEETEST",
-                                        "personCode": data,
-                                        "geeCode": data,
-                                        "password": this.setSha(this.formValidate.confrimPassword),
-                                        "inviteFrom":this.formValidate.referrId,
-                                        "deviceType": "WEB",
-                                        "deviceCode": this.deviceObj.browserVersion,
-                                        "deviceInfo":{
-                                                "deviceModel":this.deviceObj.browserType,
-                                                "resolution":this.deviceObj.windowWith,
-                                        },
-                                        "detail":{
-                                                "activityCode":getUrlKey('src'),
-                                                 "originFrom":this.origin
-                                        },
+            //                     }
+            //                     this.emailRegisterFun(this.emailParams);
+            //                  }else{//手机注册
+            //                           let params = {
+            //                             "country": this.phoneCountryName,
+            //                             // "name": this.formValidate.userName,
+            //                             "phone": this.formValidate.phoneNumber+'+'+this.countryNumber,
+            //                             "phoneCode": this.formValidate.smsCode,
+            //                             "personType": "GEETEST",
+            //                             "personCode": data,
+            //                             "geeCode": data,
+            //                             "password": this.setSha(this.formValidate.confrimPassword),
+            //                             "inviteFrom":this.formValidate.referrId,
+            //                             "deviceType": "WEB",
+            //                             "deviceCode": this.deviceObj.browserVersion,
+            //                             "deviceInfo":{
+            //                                     "deviceModel":this.deviceObj.browserType,
+            //                                     "resolution":this.deviceObj.windowWith,
+            //                             },
+            //                             "detail":{
+            //                                     "activityCode":getUrlKey('src'),
+            //                                      "originFrom":this.origin
+            //                             },
 
-                                        }  
-                                        this.phoneRegisterFun(params)
-                             }
-                    },()=>{
-                         this.loaded = true;
-                    }).catch(error=>{
-                         this.loaded = true;
-                    })
-            },
+            //                             }  
+            //                             this.phoneRegisterFun(params)
+            //                  }
+            //         },()=>{
+            //              this.loaded = true;
+            //         }).catch(error=>{
+            //              this.loaded = true;
+            //         })
+            // },
             setSha(passwrod){
                 let sha256 = require("js-sha256").sha256//这里用的是require方法，所以没用import
                 let pw = sha256(passwrod)//要加密的密码

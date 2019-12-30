@@ -121,3 +121,5 @@ export const identifyUpdateUrl = `${proxyURLUcenter}/identify/update` //实名�
 export const uploadPic = `${proxyURLUcenter}/identify/upload`//上传图片
 
 export const fabiCost = `${proxyURL}/content/rate/front/info.query` //法币估值
+
+export const submitFormUrl = `${proxyURLUcenter}/utils/org-form` //机构提交表单
