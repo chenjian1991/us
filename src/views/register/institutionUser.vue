@@ -81,6 +81,7 @@
   <!-- 成功提交对话框 -->
   <Modal
     v-model="submitSucssesModal"
+    :mask-closable="false"
     @on-ok="()=>this.submitSucssesModal = false"
     @on-cancel="()=>this.submitSucssesModal = false">
       <p style="text-align: center;font-size: 16px;color: #000;">Thank you for submitting your information. </p>
@@ -319,11 +320,12 @@ export default {
     submitFormInfo(res){
       const submitForm = this.getSubmitForm()
       postHeaderKeyIdBodyApi(submitFormUrl,{
+        businessType: 'organization',
         personType:'GOOGLE',
         personCode:res,
         form:submitForm
       }).then(res=>{
-        this.$Message.success('Submit successfully')
+        //this.$Message.success('Submit successfully')
         this.submitSucssesModal = true
         //成功后表单清空
         this.form.forEach(item => {
