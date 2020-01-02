@@ -310,7 +310,7 @@ export default {
     submitFormInfo(res){
       const submitForm = this.getSubmitForm()
       postHeaderKeyIdBodyApi(submitFormUrl,{
-        businessType: organization,
+        businessType: 'organization',
         personType:'GOOGLE',
         personCode:res,
         form:submitForm
