@@ -506,6 +506,22 @@ const router = new Router({
           },
           component: about
         },
+        {
+          path:"optionalRegistration",
+          name:"optionalRegistration",
+          meta:{
+             title: "optionalRegistration",
+          },
+          component: optionalRegistration
+       },
+       {
+          path:"institutionUser",
+          name:"institutionUser",
+          meta:{
+             title: "institutionUser",
+          },
+          component: institutionUser
+       },
       ]
     },
     {
