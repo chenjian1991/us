@@ -6,7 +6,7 @@
         > Order Details
       </div>
       <div class="header-box">
-        <Table :columns="HeaderColumns" :data="headerData" ></Table>
+        <Table :columns="HeaderColumns" :data="headerData"></Table>
       </div>
       <div class="below">
         <div class="chart">
@@ -29,11 +29,16 @@
 
   import {Exchange} from '@/interface/exchange.js'
   import moment from 'moment'
-
+  import {
+    getSymbolList,
+  } from '_api/exchange.js'
   import {
     addSymbolSplitLine,
     dealNumber,
+    scientificToNumber,
+    getDecimalsNum
   } from '@/lib/utils.js'
+  import bigDecimal from "js-big-decimal";
 
   export default {
     name: "orderDetails",
@@ -44,15 +49,18 @@
       return {
         loginToken: $cookies.get('loginToken'),
         orderId: '',
+        symbolList: {},
+        filled: '',
+        size: '',
         colorList: [
-          '#008A61', '#199570', '#33A181', '#4CAD90', '#66B9A0', '#7FC4B0', '#99D0C0'
+          '#440A4F', '#5E0D6F', '#790E8E', '#930EAD', '#B057C3', '#CE96DA', '#EBD5F0', '#F5EAF7'
         ],
 
         HeaderColumns: [
           {
             title: 'Pair',
             key: 'symbol',
-            width: 150,
+            width: 140,
             render: (h, params) => {
               return h('div', {}, addSymbolSplitLine(params.row.symbol))
             },
@@ -60,7 +68,7 @@
           {
             title: 'Type',
             key: 'orderType',
-            width: 150,
+            width: 130,
           },
           {
             title: 'Side',
@@ -76,24 +84,36 @@
             },
           },
           {
+            title: 'Avg',
+            key: 'limitPrice',
+            align: 'right',
+            render: (h, params) => {
+              let priceLong = this.symbolList[params.row.symbol] && this.symbolList[params.row.symbol]['priceTickSize'] || 2
+              let avg = bigDecimal.round(scientificToNumber(params.row.filledAveragePrice), getDecimalsNum(priceLong))
+              return h('div', {}, avg)
+            },
+          },
+          {
             title: 'Price',
             key: 'limitPrice',
             align: 'right',
-            width: 180,
+            width: 150,
           },
           {
             title: 'Size',
             key: 'filledCumulativeQuantity',
             align: 'right',
-            width: 180,
+            width: 150,
 
           },
           {
             title: 'Filled%',
             align: 'right',
-            width: 180,
+            width: 130,
             render: (h, params) => {
               let filled = (100 * (params.row.filledCumulativeQuantity / params.row.quantity)).toFixed(2) + '%'
+              console.log(filled)
+              this.filled = filled
               return h('div', {}, filled)
             },
           },
@@ -101,7 +121,7 @@
             title: 'Total',
             key: 'total',
             align: 'right',
-            width: 180,
+            width: 160,
             render: (h, params) => {
               let total = params.row.limitPrice * params.row.quantity
               return h('div', {}, dealNumber(total, 8))
@@ -120,6 +140,9 @@
             title: 'Time',
             key: 'time',
             width: 150,
+            render: (h, params) => {
+              return h('div', {}, moment(params.row['time']).format('YYYY-MM-DD HH:mm:ss'))
+            },
           },
           {
             title: 'Price',
@@ -178,11 +201,6 @@
                   show: false
                 }
               },
-              itemStyle: {
-                normal: {
-                  color: '#008A61',
-                }
-              },
               animationType: 'scale',
               animationEasing: 'elasticOut',
               animationDelay: function (idx) {
@@ -193,21 +211,30 @@
       }
     },
     methods: {
+      init() {
+        getSymbolList().then(res => {
+          res.map((v) => {
+            this.symbolList[v.symbol] = v
+          })
+        }).catch(error => {
+        })
+        this.getOrderDetails()
+        this.getOrderInfo()
+      },
       getOrderInfo() {
-        this.exchange.getOrderInfo(this.orderId, (result) => {//获取资产
+        this.exchange.getOrderInfo(this.orderId, (result) => {//头部信息
           this.headerData = [result]
+          this.size = result.filledCumulativeQuantity
         })
       },
       getOrderDetails() {
-        this.exchange.getOrderDetail(this.orderId, (result) => {//获取资产
-          result.forEach(v => {
-            v.time = moment(v.time).format('YY-MM-DD HH:mm:ss')
-          })
+        this.exchange.getOrderDetail(this.orderId, (result) => {//详情
           this.orderDetails = result
           this.setOption(result)
         })
       },
       setOption(result) {
+        console.log(result)
         let data = []
         result.forEach((v, i) => {
           data.push({
@@ -216,7 +243,16 @@
             }
           })
         })
-        this.option.series[0].data = data
+        if (this.filled === '100.00%') {
+          this.option.series[0].data = data
+        } else {
+          data.push({
+            value: this.size, name: 'Cancelled', itemStyle: {
+              color: '#E0E0E0'
+            }
+          })
+          this.option.series[0].data = data
+        }
       },
     },
     beforeMount() {
@@ -231,8 +267,7 @@
     },
     mounted() {
       if (this.orderId) {
-        this.getOrderDetails()
-        this.getOrderInfo()
+        this.init()
       }
     }
   }
@@ -240,49 +275,62 @@
 <style lang="less">
   #orderDetails {
     /*  table 样式 start*/
+
     .ivu-table-wrapper {
       border: none;
     }
+
     .ivu-table {
       background-color: transparent;
       overflow: visible;
+
       th, td {
         height: 32px;
         border: none;
       }
+
       &:before {
         background-color: transparent;
       }
+
       &:after {
         background-color: transparent;
       }
     }
+
     .ivu-table th {
       background-color: #fff;
     }
+
     .ivu-table-header .ivu-table-cell, .ivu-table-body .ivu-table-cell {
       padding: 0;
       font-size: 12px;
       font-weight: 500;
     }
+
     .ivu-table-header .ivu-table-cell {
       color: #788390;
     }
+
     .ivu-table-body .ivu-table-cell {
       color: #1E2022;
     }
+
     .ivu-tabs-no-animation > .ivu-tabs-content {
       padding: 0 20px 10px;
     }
+
     /*table 样式 end*/
 
     /*自定义table样式*/
+
     .ivu-table-body .from-color {
       .ivu-table-cell {
         color: #788390;
       }
     }
-    .header-box{
+
+    .header-box {
       .ivu-table-body .ivu-table-cell {
         font-size: 14px;
       }
@@ -297,35 +345,43 @@
     padding: 20px 0;
     height: 100%;
     background-color: #F4F6F7;
+
     .link {
       margin-bottom: 20px;
       .f-14;
       .c-77838F;
+
       a {
         .c-77838F;
       }
     }
+
     .header-box {
       padding: 18px 24px;
       margin-bottom: 20px;
       .bgc-fff;
     }
+
     .below {
       .d-f;
       justify-content: space-between;
+
       .chart, .details {
         padding: 20px 24px;
         border-radius: 5px;
         .bgc-fff;
+
         h4 {
           .f-20;
           color: #1E2022;
         }
       }
+
       .chart {
         width: 450px;
         margin-right: 20px;
       }
+
       .details {
         width: 640px;
 
