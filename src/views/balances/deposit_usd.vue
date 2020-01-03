@@ -115,7 +115,7 @@
                {
                   key: 'ptAccName',
                   label: 'beneficiaryName',
-                  value: ''
+                  value: 'Prime Trust, LLC'
                }, {
                   key: 'ptAccAddress',
                   label: 'beneficiaryAddress',
@@ -221,8 +221,7 @@
             }, this.loginToken).then(res => {
                if (res.data.length) {
                   const formJson = res.data[0].data
-                  this.information[0].value = this.bankAccountName = `${formJson.firstName} ${formJson.lastName}`
-                  this.information = JSON.parse(JSON.stringify(this.information))
+                  this.bankAccountName = `${formJson.firstName} ${formJson.lastName}`
                }
             })
          },
