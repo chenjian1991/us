@@ -78,6 +78,15 @@
     <div id="robotInstitutionRegister"></div>
     <p slot="footer"></p>
   </Modal>
+  <!-- 成功提交对话框 -->
+  <Modal
+    v-model="submitSucssesModal"
+    :mask-closable="false"
+    @on-ok="()=>this.submitSucssesModal = false"
+    @on-cancel="()=>this.submitSucssesModal = false">
+      <p style="text-align: center;font-size: 16px;color: #000;">Thank you for submitting your information. </p>
+      <p style="text-align: center;font-size: 16px;color: #000;">We will contact you after reviewing your application internally.</p>
+  </Modal>
 </div>  
 </template>
 
@@ -93,6 +102,7 @@ export default {
       robotFun:null,
       cityDate:[],
       robotModalflag:false,
+      submitSucssesModal:false,
       form:[
         {
           key:'company',
@@ -315,7 +325,8 @@ export default {
         personCode:res,
         form:submitForm
       }).then(res=>{
-        this.$Message.success('Submit successfully')
+        //this.$Message.success('Submit successfully')
+        this.submitSucssesModal = true
         //成功后表单清空
         this.form.forEach(item => {
           //解决国家选框没有默认值问题
