@@ -1,6 +1,6 @@
 <template>
     <div class="depth-container">
-        <v-depth-chart :depthdata="depthdata"></v-depth-chart>
+        <v-depth-chart :data="data"></v-depth-chart>
     </div>
 </template>
 <script>
@@ -465,11 +465,8 @@ for (let i in data['asksList']) {
 }
 export default {
 	props:{
-		depthdata:{
+		depthPicData:{
 			type:Object,
-			default(){
-				return {}
-			}
 		},
 	},
     data(){
@@ -479,10 +476,13 @@ export default {
 	},
 	
     created(){
-         setTimeout(() => {
-      this.data = data
-    }, 1000)
-    }
+    //      setTimeout(() => {
+    //   this.data = data
+    // }, 1000)
+	},
+	mounted(){
+		console.log('ccccc',this.depthPicData)
+	}
 }
 </script>
 <style lang='less'>

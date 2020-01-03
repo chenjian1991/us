@@ -345,7 +345,7 @@ export default {
       setKlineTime: '', // k线重连定时器
       dataFor24Hours: '', // 24小时交易量
       sseOrderCount: 0 ,// SSEOrder重连次数计数
-      depthPicData:{}
+      depthPicData:null,
     }
   },
   created() {
@@ -739,8 +739,14 @@ export default {
            // /topic/depth/BTCUSD
            this.arbStompClient.subscribe(`/topic/depth/BTCUSD`, (message) => {//深度图
             if (message.body) {
-              this.depthPicData = JSON.parse(message.body)
-              console.log("this.depthPicData",this.depthPicData)
+              let asksReslut = JSON.parse(message.body).asksList;
+              let bidsResult = JSON.parse(message.body).bidsList;
+              let obj = {
+                    'asksList' : asksReslut,
+                    'bidsList' : bidsResult
+              }
+              this.depthPicData = Object.assign({},obj)
+              console.log("this.depthPicData",this.depthPicData);
             }
           });
         }, (error) => {
