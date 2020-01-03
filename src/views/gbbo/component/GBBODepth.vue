@@ -1,6 +1,6 @@
 <template>
     <div class="depth-container">
-        <v-depth-chart :data="data"></v-depth-chart>
+        <v-depth-chart :depthdata="depthdata"></v-depth-chart>
     </div>
 </template>
 <script>
@@ -452,7 +452,7 @@ for (let i in data['bidsList']) {
     total += data['bidsList'][n]['quantity']
   }
 
-  data['bidsList'][i]['total'] = total
+  data['bidsList'][i]['total'] = total.toFixed(2);
 }
 
 for (let i in data['asksList']) {
@@ -461,14 +461,23 @@ for (let i in data['asksList']) {
     total += data['asksList'][n]['quantity']
   }
 
-  data['asksList'][i]['total'] = total
+  data['asksList'][i]['total'] = total.toFixed(2)
 }
 export default {
+	props:{
+		depthdata:{
+			type:Object,
+			default(){
+				return {}
+			}
+		},
+	},
     data(){
         return{
             data:null,
         }
-    },
+	},
+	
     created(){
          setTimeout(() => {
       this.data = data

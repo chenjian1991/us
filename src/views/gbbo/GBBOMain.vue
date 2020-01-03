@@ -49,7 +49,7 @@
           </gbbo-kline>
           </TabPane>
           <TabPane label="Depth" name="name2">
-            <gbbo-depthpic></gbbo-depthpic>
+            <gbbo-depthpic :depthPicData='depthPicData'></gbbo-depthpic>
           </TabPane>
         </Tabs>
          <!-- <gbbo-kline
@@ -719,8 +719,7 @@ export default {
           // 最大价差记录
           // this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
           //   if (message.body) {
-          //     // console.log(this.maxArbitrageList)
-          //     // this.maxArbitrageList = JSON.parse(message.body)
+              // this.maxArbitrageList = JSON.parse(message.body)
           //     this.getMaxArbitrageList(JSON.parse(message.body))
           //   }
           // });
@@ -738,9 +737,8 @@ export default {
             }
           })
            // /topic/depth/BTCUSD
-           this.arbStompClient.subscribe(`/topic/depth/BTCUSD}`, (message) => {//深度图
+           this.arbStompClient.subscribe(`/topic/depth/BTCUSD`, (message) => {//深度图
             if (message.body) {
-              debugger
               this.depthPicData = JSON.parse(message.body)
               console.log("this.depthPicData",this.depthPicData)
             }
@@ -795,12 +793,13 @@ export default {
         }
       })
       if (!this.sell_input_change) {
-        this.bestBuyPrice = result.bids[0].priceWithFee
-        this.sell_exchange_logo = result.bids[0].provider // 交易所logo
-        this.sellPriceInput = this.bestBuyPrice
-        // this.$refs.sellInput.value = this.bestBuyPrice
-        this.sellInputPrice = this.bestBuyPrice;
-
+         if(result.bids[0]){
+           this.bestBuyPrice = result.bids[0].priceWithFee
+          this.sell_exchange_logo = result.bids[0].provider // 交易所logo
+          this.sellPriceInput = this.bestBuyPrice
+          // this.$refs.sellInput.value = this.bestBuyPrice
+          this.sellInputPrice = this.bestBuyPrice;
+         }
       }
       const diff = this.bestSellPrice - this.bestBuyPrice
       this.subNumber = bigDecimal.round(Math.abs(diff), priceLong)
