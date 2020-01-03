@@ -99,16 +99,15 @@
                 :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
               >{{$t(v.orderStatus)}}</div>
               <div>
-                <!-- <a
-                  v-if="v.orderStatus !== 'CANCELLED'"
-                  class="details"
-                  
-                  
-                  :href=""
-                  target="_blank"
-                >Details</a> -->
+<!--                <router-link-->
+<!--                        v-if="v.orderStatus !== 'CANCELLED'"-->
+<!--                        class="details"-->
+<!--                        tag='a'-->
+<!--                        target="_blank"-->
+<!--                        :to="'orderDetails?orderId=' + v.orderId"-->
+<!--                >Details</router-link>-->
                 <router-link
-                  v-if="v.orderStatus !== 'CANCELLED'"
+                  v-if="v.percent != 0"
                   class="details"
                   tag='a'
                   target="_blank"
