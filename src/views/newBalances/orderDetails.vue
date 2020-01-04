@@ -50,7 +50,7 @@
         loginToken: $cookies.get('loginToken'),
         orderId: '',
         symbolList: {},
-        filled: '',
+        filled: false,
         size: '',
         colorList: [
           '#440A4F', '#5E0D6F', '#790E8E', '#930EAD', '#B057C3', '#CE96DA', '#EBD5F0', '#F5EAF7'
@@ -101,7 +101,7 @@
           },
           {
             title: 'Size',
-            key: 'filledCumulativeQuantity',
+            key: 'quantity',
             align: 'right',
             width: 150,
 
@@ -112,8 +112,6 @@
             width: 130,
             render: (h, params) => {
               let filled = (100 * (params.row.filledCumulativeQuantity / params.row.quantity)).toFixed(2) + '%'
-              console.log(filled)
-              this.filled = filled
               return h('div', {}, filled)
             },
           },
@@ -212,29 +210,42 @@
     },
     methods: {
       init() {
-        getSymbolList().then(res => {
-          res.map((v) => {
+        let symbolList = new Promise(resolve => {
+              getSymbolList().then(result => {
+                resolve(result)
+              })
+            }
+        )
+        let orderInfo = new Promise(resolve => {
+              this.exchange.getOrderInfo(this.orderId, (result) => {//头部信息
+                resolve(result)
+              })
+            }
+        )
+        let orderDetails = new Promise(resolve => {
+          this.exchange.getOrderDetail(this.orderId, (result) => {//详情
+            resolve(result)
+          })
+        })
+        Promise.all([symbolList, orderInfo, orderDetails]).then(result => {
+          //symbolList
+          result[0].map((v) => {
             this.symbolList[v.symbol] = v
           })
-        }).catch(error => {
-        })
-        this.getOrderDetails()
-        this.getOrderInfo()
-      },
-      getOrderInfo() {
-        this.exchange.getOrderInfo(this.orderId, (result) => {//头部信息
-          this.headerData = [result]
-          this.size = result.filledCumulativeQuantity
-        })
-      },
-      getOrderDetails() {
-        this.exchange.getOrderDetail(this.orderId, (result) => {//详情
-          this.orderDetails = result
-          this.setOption(result)
+          //orderInfo
+          const info = result[1]
+          this.headerData = [info]
+          if (info.filledCumulativeQuantity === info.quantity) {
+            this.filled = true
+          } else {
+            this.size = result[1].quantity
+          }
+          //  orderDetails
+          this.orderDetails = result[2]
+          this.setOption(result[2])
         })
       },
       setOption(result) {
-        console.log(result)
         let data = []
         result.forEach((v, i) => {
           data.push({
@@ -243,7 +254,7 @@
             }
           })
         })
-        if (this.filled === '100.00%') {
+        if (this.filled) {
           this.option.series[0].data = data
         } else {
           data.push({
