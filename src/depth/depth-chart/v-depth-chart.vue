@@ -102,7 +102,6 @@ export default {
       handler (val) {
         this.valueMap = new Map()
         this.args = this._calcArgs(val, this.fWidth, this.fHeight)
-        console.log('val',val)
         this._drawChart(val)
       },
       immediate: false

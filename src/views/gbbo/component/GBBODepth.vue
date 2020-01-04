@@ -19,7 +19,6 @@ export default {
 		depthPicData(val,oldVal){
 			this.resultData = val;
 			this.calData(val)
-			console.log('change',val)
 		}
 	},
 	methods:{	
