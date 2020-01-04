@@ -746,7 +746,7 @@ export default {
                     'bidsList' : bidsResult
               }
               this.depthPicData = Object.assign({},obj)
-              console.log("this.depthPicData",this.depthPicData);
+              // console.log("this.depthPicData",this.depthPicData);
             }
           });
         }, (error) => {
@@ -780,11 +780,14 @@ export default {
       this.gbbo_asksArr = this.gbbo_asksArr.reverse()
 
       if (!this.buy_input_change) {
-        this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
+        if(result.asks){
+            this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
         this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
         this.buyPriceInput = this.bestSellPrice
         // this.$refs.buyInput.value = this.bestSellPrice
         this.buyInputPrice = this.bestSellPrice;
+        }
+        
       }
 
       this.gbbo_bidsArr = result.bids.map((val) => {
