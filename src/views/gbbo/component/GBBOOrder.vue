@@ -38,12 +38,12 @@
               <!-- 撤单 -->
               <div class="cancleBtn">
                 <a
-                  class="cancel"
-                  @click="cancelMyOrder(v.orderId,v)"
-                  :disabled="v.isDisabled"
+                        class="cancel"
+                        @click="cancelMyOrder(v.orderId,v)"
+                        :disabled="v.isDisabled"
                 >
-                <Icon type="md-close" />
-                {{$t(v.btnText)}}
+                  <Icon type="md-close" />
+                  {{$t(v.btnText)}}
                 </a>
               </div>
             </li>
@@ -72,7 +72,6 @@
               <div>{{$t("bbjyHistoryFilled")}}</div>
               <div>{{$t("bbjyHistoryTotal")}}</div>
               <div>{{$t("bbjyHistoryStatus")}}</div>
-              <div></div>
             </li>
             <!--无历史-->
             <li class="no-order" v-if="myCompletedList.length === 0">
@@ -84,37 +83,20 @@
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.symbol}}</div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{$t(v.orderType)}}</div>
               <div
-                :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'',v.orderSide === 'BUY'?'greenText':'redText']"
+                      :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'',v.orderSide === 'BUY'?'greenText':'redText']"
               >{{$t(v.orderSide)}}</div>
               <div
-                :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
+                      :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
               >{{v.filledAveragePrice}}</div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.limitPrice}}</div>
               <div
-                :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
+                      :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
               >{{v.filledCumulativeQuantity +'/'+ v.quantity}}</div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.percent}}%</div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.total}}</div>
               <div
-                :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
+                      :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']"
               >{{$t(v.orderStatus)}}</div>
-              <div>
-                <!-- <a
-                  v-if="v.orderStatus !== 'CANCELLED'"
-                  class="details"
-                  
-                  
-                  :href=""
-                  target="_blank"
-                >Details</a> -->
-                <router-link
-                  v-if="v.orderStatus !== 'CANCELLED'"
-                  class="details"
-                  tag='a'
-                  target="_blank"
-                  :to="'orderDetails?orderId=' + v.orderId"
-                >Details</router-link>
-              </div>
             </li>
           </ul>
         </div>
@@ -123,237 +105,211 @@
   </div>
 </template>
 <script>
-export default {
-  name: "GBBOOrder",
-  data() {
-    return {
-      hideCancleOrder: false
-    };
-  },
-  created() {},
-  mounted() {},
-  props: {
-    myOpenList: {
-      type: Array,
-      default: function() {
-        return [];
+  export default {
+    name: "GBBOOrder",
+    data() {
+      return {
+        hideCancleOrder: false
+      };
+    },
+    created() {},
+    mounted() {},
+    props: {
+      myOpenList: {
+        type: Array,
+        default: function() {
+          return [];
+        }
+      },
+      myCompletedList: {
+        type: Array,
+        default: function() {
+          return [];
+        }
       }
     },
-    myCompletedList: {
-      type: Array,
-      default: function() {
-        return [];
+    computed: {
+      myCompletedList_sort: function() {
+        return this.myCompletedList.filter(item => {
+          if (this.hideCancleOrder) {
+            return item.orderStatus !== "CANCELLED";
+          } else {
+            return item;
+          }
+        });
       }
-    }
-  },
-  computed: {
-    myCompletedList_sort: function() {
-      return this.myCompletedList.filter(item => {
-        if (this.hideCancleOrder) {
-          return item.orderStatus !== "CANCELLED";
-        } else {
-          return item;
-        }
-      });
-    }
-  },
-  methods: {
-    cancelMyOrder(orderId, v) {
-      this.$emit("cancelMyOrder", orderId, v);
     },
-    orderDetail(orderId){
-      this.$router.push({
-        path: 'orderDetails',
-        query: {
-          orderId
-        }
-      })
-    }
-  },
-  components: {}
-};
+    methods: {
+      cancelMyOrder(orderId, v) {
+        this.$emit("cancelMyOrder", orderId, v);
+      }
+    },
+    components: {}
+  };
 </script>
 <style lang="less">
-.gbbomain-order-box {
-  // flex: 1;
-  .below {
-    width: 100%;
-    .open-order {
-      margin-bottom: 6px;
-    }
-    .open-order,
-    .history {
+  .gbbomain-order-box {
+    // flex: 1;
+    .below {
       width: 100%;
-      background: #031419;
-      min-height: 160px;
+      .open-order {
+        margin-bottom: 6px;
+      }
+      .open-order,
+      .history {
+        width: 100%;
+        background: #031419;
+        min-height: 160px;
 
-      .space-between {
-        display: flex;
-        justify-content: space-between;
-        box-sizing: border-box;
-        height: 30px;
-        background: #041d25;
-        padding: 0 6px;
-        border-bottom: 1px solid #000;
-        li {
+        .space-between {
+          display: flex;
+          justify-content: space-between;
+          box-sizing: border-box;
           height: 30px;
-          line-height: 30px;
-          font-size: 12px;
-          color: #d4d4d4;
-          font-weight: 500;
-
-          a {
-            margin-left: 10px;
-            color: #d4d4d4;
+          background: #041d25;
+          padding: 0 6px;
+          border-bottom: 1px solid #000;
+          li {
+            height: 30px;
+            line-height: 30px;
             font-size: 12px;
-            text-decoration: underline !important;
-          }
+            color: #d4d4d4;
+            font-weight: 500;
 
-          .hideCancleOrder {
-            color: #D4D4D4;
-            .ivu-checkbox-inner {
-              border: 1px solid #D4D4D4;
-              border-radius: 2px;
-              background-color: #041d25;
+            a {
+              margin-left: 10px;
+              color: #d4d4d4;
+              font-size: 12px;
+              text-decoration: underline !important;
             }
-            .ivu-checkbox-checked .ivu-checkbox-inner {
-              border-color: #D4D4D4;
-              background-color: #D4D4D4;
-            }
-            .ivu-checkbox-checked .ivu-checkbox-inner:after {
-              border-color: #041d25;
-            }
-          }
 
-          &:last-child {
-            .text {
-              display: inline-block;
-              height: 50px;
-              line-height: 50px;
-              padding: 0 8px;
-              font-weight: bold;
-              cursor: pointer;
+            .hideCancleOrder {
+              color: #D4D4D4;
+              .ivu-checkbox-inner {
+                border: 1px solid #D4D4D4;
+                border-radius: 2px;
+                background-color: #041d25;
+              }
+              .ivu-checkbox-checked .ivu-checkbox-inner {
+                border-color: #D4D4D4;
+                background-color: #D4D4D4;
+              }
+              .ivu-checkbox-checked .ivu-checkbox-inner:after {
+                border-color: #041d25;
+              }
+            }
+
+            &:last-child {
+              .text {
+                display: inline-block;
+                height: 50px;
+                line-height: 50px;
+                padding: 0 8px;
+                font-weight: bold;
+                cursor: pointer;
+              }
             }
           }
         }
-      }
 
-      .table-box {
-        padding-bottom: 25px;
-        background: #031419;
-        ul {
-          li {
-            padding: 0 8px;
-            height: 30px;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #000;
+        .table-box {
+          padding-bottom: 25px;
+          background: #031419;
+          ul {
+            li {
+              padding: 0 8px;
+              height: 30px;
+              display: flex;
+              justify-content: space-between;
+              border-bottom: 1px solid #000;
 
-            div {
-              font-size: 12px;
-              text-align: right;
-              line-height: 30px;
-              font-weight: 500;
-              color: #d4d4d4;
-              flex: 1;
-              &:nth-child(1),
-              &:nth-child(2),
-              &:nth-child(3),
-              &:nth-child(4){
-                text-align: left;
+              div {
+                font-size: 12px;
+                text-align: right;
+                line-height: 30px;
+                font-weight: 500;
+                color: #d4d4d4;
+                flex: 1;
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4){
+                  text-align: left;
+                }
+                // &:last-child {
+                //   text-align: right;
+                // }
               }
-              // &:last-child {
-              //   text-align: right;
-              // }
             }
-          }
 
-          .tr-title {
-            height: 24px;
-            line-height: 24px;
-            background: #031419;
-            border-bottom: 0;
-
-            div {
+            .tr-title {
               height: 24px;
               line-height: 24px;
-              color: #788390;
-              font-size: 12px;
-              font-weight: 500;
+              background: #031419;
+              border-bottom: 0;
+
+              div {
+                height: 24px;
+                line-height: 24px;
+                color: #788390;
+                font-size: 12px;
+                font-weight: 500;
+              }
+            }
+
+            .orderItem {
+              background: #041D25;
+
+              .redText {
+                color: #d74c58;
+              }
+
+              .greenText {
+                color: #27a781;
+              }
+
+              .CANCELLED_Text {
+                color: #3f647d;
+              }
+            }
+
+            .cancel {
+              display: inline-block;
+              width:72px;
+              height:22px;
+              line-height: 22px;
+              background:rgba(8,52,65,1);
+              border-radius:14px;
+              margin-left: 10px;
+              text-align: center;
+              color: #5D7C86;
+              cursor: pointer;
+
+              &:hover {
+                background-color: #12869a;
+                color: #fff;
+                border: solid 1px #12869a;
+              }
             }
           }
 
-          .orderItem {
-            background: #041D25;
+          .no-order {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #688a9d;
+            border: none;
+            background: #031419;
+            padding: 40px;
+            height: 100%;
 
-            .redText {
-              color: #d74c58;
+            img {
+              margin-bottom: 20px;
             }
-
-            .greenText {
-              color: #27a781;
-            }
-
-            .CANCELLED_Text {
-              color: #3f647d;
-            }
-          }
-
-          .cancel {
-            display: inline-block;
-            width:72px;
-            height:22px;
-            line-height: 22px;
-            background:rgba(8,52,65,1);
-            border-radius:14px;           
-            margin-left: 10px;
-            text-align: center;
-            color: #5D7C86;
-            cursor: pointer;
-
-            &:hover {
-              background-color: #12869a;
-              color: #fff;
-              border: solid 1px #12869a;
-            }
-          }
-          .details{
-            display: inline-block;
-            width:72px;
-            height:22px;
-            line-height: 22px;
-            background:rgba(8,52,65,1);
-            border-radius:14px;
-            margin-left: 10px;
-            text-align: center;
-            color: #5D7C86;
-            cursor: pointer;
-
-            &:hover {
-              background-color: #12869a;
-              color: #fff;
-              border: solid 1px #12869a;
-            }
-          }
-        }
-
-        .no-order {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          color: #688a9d;
-          border: none;
-          background: #031419;
-          padding: 40px;
-          height: 100%;
-
-          img {
-            margin-bottom: 20px;
           }
         }
       }
     }
   }
-}
 </style>
