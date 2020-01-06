@@ -43,13 +43,14 @@
         <div class="gbbomain-realtime__line">
           <Tabs :animated="false" value="name1">
           <TabPane label="Original" name="name1"> 
-            <gbbo-kline
+            <gbbo-depthpic :depthPicData='depthPicData'></gbbo-depthpic>
+           
+          </TabPane>
+          <TabPane label="Depth" name="name2">
+               <gbbo-kline
             :historyData="historyData"
             :kLineData="kLineData">
           </gbbo-kline>
-          </TabPane>
-          <TabPane label="Depth" name="name2">
-            <gbbo-depthpic :depthPicData='depthPicData'></gbbo-depthpic>
           </TabPane>
         </Tabs>
          <!-- <gbbo-kline
@@ -739,14 +740,13 @@ export default {
            // /topic/depth/BTCUSD
            this.arbStompClient.subscribe(`/topic/depth/BTCUSD`, (message) => {//深度图
             if (message.body) {
-              let asksReslut = JSON.parse(message.body).asksList;
-              let bidsResult = JSON.parse(message.body).bidsList;
-              let obj = {
-                    'asksList' : asksReslut,
-                    'bidsList' : bidsResult
-              }
-              this.depthPicData = Object.assign({},obj)
-              // console.log("this.depthPicData",this.depthPicData);
+              console.log('message.body',message.body)
+              this.depthPicData = {
+                    'bids' :JSON.parse(message.body).bidsList,
+                    'asks' :JSON.parse(message.body).asksList,}
+              
+              // this.depthPicData = obj
+              console.log("obj",this.depthPicData);
             }
           });
         }, (error) => {

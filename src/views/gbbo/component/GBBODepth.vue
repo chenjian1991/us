@@ -1,6 +1,7 @@
 <template>
     <div class="depth-container">
-        <v-depth-chart :data="resultData"></v-depth-chart>
+        <canvas ref="deptdom" id="#depth-chart" width="500" height="400"></canvas>
+        <!-- <v-depth-chart :data="resultData"></v-depth-chart> -->
     </div>
 </template>
 <script>
@@ -12,41 +13,42 @@ export default {
 	},
     data(){
         return{
-            resultData:null,
+            dataset:null,
+            flag:0,
+            domFflag:0,
+            depth:''
         }
 	},
 	watch:{
 		depthPicData(val,oldVal){
-			this.resultData = val;
-			this.calData(val)
+            console.log('val',val)
+            this.dataset = val;
+            if(this.flag === 0 && this.domFflag === 1){
+                this.initFunc(val)
+                this.flag = 1;
+            }else if(this.domFflag === 1){
+                this.depth.update(val)
+            }
 		}
 	},
 	methods:{	
-		calData(data){
-			for (let i in data['bidsList']) {
-			  let total = 0
-			  for (let n = 0; n <= i; n++) {
-			    total += data['bidsList'][n]['quantity']
-			  }
-
-			  data['bidsList'][i]['total'] = total.toFixed(2);
-			}
-			for (let i in data['asksList']) {
-			  let total = 0
-			  for (let n = i; n < data['asksList'].length; n++) {
-			    total += data['asksList'][n]['quantity']
-			  }
-			  data['asksList'][i]['total'] = total.toFixed(2)
-		}
-
-	}
-
+        initFunc(val){
+          this.depth =  new uikit.DepthChart({
+                el: this.$refs.deptdom,  //canvas元素选择符
+                dataset: val //数据集，参见下面说明
+            })
+            console.log(this.depth)
+        }
 	},
     created(){
-   
+        
 	},
 	mounted(){
-	}
+        this.domFflag = 1;
+    },
+    destroyed(){
+
+    }
 }
 </script>
 <style lang='less'>
