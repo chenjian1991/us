@@ -780,7 +780,7 @@ export default {
       this.gbbo_asksArr = this.gbbo_asksArr.reverse()
 
       if (!this.buy_input_change) {
-        if(result.asks){
+        if(result.asks.length){
             this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
         this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
         this.buyPriceInput = this.bestSellPrice
