@@ -42,9 +42,8 @@
         <!--K线-->
         <div class="gbbomain-realtime__line">
           <Tabs :animated="false" value="name1">
-          <TabPane label="Original" name="name1"> 
+          <TabPane label="Original" name="name1">
             <gbbo-depthpic :depthPicData='depthPicData'></gbbo-depthpic>
-           
           </TabPane>
           <TabPane label="Depth" name="name2">
                <gbbo-kline
@@ -345,8 +344,8 @@ export default {
       setArbTime: '', // Arb重连定时器
       setKlineTime: '', // k线重连定时器
       dataFor24Hours: '', // 24小时交易量
-      sseOrderCount: 0 ,// SSEOrder重连次数计数
-      depthPicData:null,
+      sseOrderCount: 0, // SSEOrder重连次数计数
+      depthPicData: {}
     }
   },
   created() {
@@ -737,16 +736,16 @@ export default {
               this.kLineData = JSON.parse(message.body)
             }
           })
-           // /topic/depth/BTCUSD
-           this.arbStompClient.subscribe(`/topic/depth/BTCUSD`, (message) => {//深度图
+          // /topic/depth/BTCUSD
+          this.arbStompClient.subscribe(`/topic/depth/BTCUSD`, (message) => {//深度图
             if (message.body) {
-              console.log('message.body',message.body)
-              this.depthPicData = {
-                    'bids' :JSON.parse(message.body).bidsList,
-                    'asks' :JSON.parse(message.body).asksList,}
+              const depthData = JSON.parse(message.body)
+              const { bidsList, asksList } = depthData
               
-              // this.depthPicData = obj
-              console.log("obj",this.depthPicData);
+              this.depthPicData = {
+                bids: bidsList,
+                asks: asksList,
+              }
             }
           });
         }, (error) => {
@@ -761,7 +760,7 @@ export default {
     sortOrderBook(data) {
       const priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
       // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
-      var result = data
+      const result = data
       //路总需求 要加这个隐藏字段
       this.updateAt = result.updateAt
       // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
