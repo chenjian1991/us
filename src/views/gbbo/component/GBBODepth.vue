@@ -23,10 +23,8 @@ export default {
   },
   watch: {
     depthPicData(val, oldVal) {
-      // console.log("val", val);
-      console.log('val', val)
       const formatData = JSON.parse(JSON.stringify(val));
-      console.log(formatData)
+      
       if (this.flag === 0 && this.domFflag === 1) {
         this.initFunc(formatData);
         this.flag = 1;
