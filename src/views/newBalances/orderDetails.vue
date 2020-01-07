@@ -1,9 +1,14 @@
 <template>
   <main id="orderDetails" class="orderDetails">
     <div class="container">
-      <div class="link">
-        <router-link to="/gbbo">Exchange</router-link>
-        > Order Details
+      <div class="row align-items-center top-link">
+        <div class="col-md-6">
+          <router-link to="/gbbo">Exchange</router-link>
+          > Order Details
+        </div>
+        <div class="col-md-6 text-right f-12">
+          <span class="f-w-5">Order ID: </span>&nbsp;&nbsp;{{originalOrderId}}
+        </div>
       </div>
       <div class="header-box">
         <Table :columns="HeaderColumns" :data="headerData"></Table>
@@ -52,6 +57,7 @@
         symbolList: {},
         filled: false,
         size: '',
+        originalOrderId: '',
         colorList: [
           '#440A4F', '#5E0D6F', '#790E8E', '#930EAD', '#B057C3', '#CE96DA', '#EBD5F0', '#F5EAF7'
         ],
@@ -234,7 +240,10 @@
           })
           //orderInfo
           const info = result[1]
+          console.log(info)
+
           this.headerData = [info]
+          this.originalOrderId = info.originalOrderId
           if (info.filledCumulativeQuantity === info.quantity) {
             this.filled = true
           } else {
@@ -357,7 +366,7 @@
     height: 100%;
     background-color: #F4F6F7;
 
-    .link {
+    .top-link {
       margin-bottom: 20px;
       .f-14;
       .c-77838F;
