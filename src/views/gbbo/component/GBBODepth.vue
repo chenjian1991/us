@@ -1,5 +1,6 @@
 <template>
   <div class="depth-container" ref="depthBox">
+       <!-- <div style="height:40px"></div> -->
     <canvas
       ref="deptdom"
       id="#depth-chart"></canvas>
