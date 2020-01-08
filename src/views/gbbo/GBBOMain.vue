@@ -42,15 +42,16 @@
         <!--K线-->
         <div class="gbbomain-realtime__line">
           <Tabs :animated="false" value="name1">
-          <TabPane label="Original" name="name1">
-            <gbbo-depthpic :depthPicData='depthPicData'></gbbo-depthpic>
-          </TabPane>
-          <TabPane label="Depth" name="name2">
+              <TabPane label="Original" name="name1">
                <gbbo-kline
             :historyData="historyData"
             :kLineData="kLineData">
           </gbbo-kline>
           </TabPane>
+          <TabPane label="Depth" name="name2">
+            <gbbo-depthpic :depthPicData='depthPicData'></gbbo-depthpic>
+          </TabPane>
+        
         </Tabs>
          <!-- <gbbo-kline
             :historyData="historyData"

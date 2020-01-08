@@ -384,23 +384,23 @@
   }(Renderer);
 
   var _dark = {
-    background: '#1e2b34',
+    background: '#031419',
     bidsLineStyle: {
-      strokeStyle: '#84f766',
+      strokeStyle: '#2cb48c',
       lineWidth: 1,
       manhatton: true
     },
     asksLineStyle: {
-      strokeStyle: '#ff6939',
+      strokeStyle: '#e83160',
       lineWidth: 1,
       manhatton: true
     },
     bidsRegionStyle: {
-      fillStyle: '#2e4a3bcc',
+      fillStyle: 'rgba(44,180,140,0.3)',
       manhatton: true
     },
     asksRegionStyle: {
-      fillStyle: '#4b3735cc',
+      fillStyle: 'rgba(232,49,96,0.3)',
       manhatton: true
     },
     xgridStyle: {
