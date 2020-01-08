@@ -708,6 +708,7 @@ export default {
           arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
         } else {
           arbSocket = new SockJS('https://www.tresso.com/echart/xchange/marketdata');
+          
           // arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
         }
         this.arbStompClient = Stomp.over(arbSocket);
