@@ -41,7 +41,7 @@
         </div>
         <!--K线-->
         <div class="gbbomain-realtime__line">
-          <Tabs :animated="false" value="name2">
+          <Tabs :animated="false" value="name1">
               <TabPane label="Original" name="name1">
                <gbbo-kline
                 :historyData="historyData"
