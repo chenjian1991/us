@@ -743,7 +743,7 @@ export default {
             if (message.body) {
               const depthData = JSON.parse(message.body)
               const { bidsList, asksList } = depthData
-              console.log('depthData',depthData)
+              // console.log('depthData',depthData)
               this.depthPicData = {
                 bids: bidsList,
                 asks: asksList,
