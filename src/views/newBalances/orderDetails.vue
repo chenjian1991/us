@@ -240,8 +240,6 @@
           })
           //orderInfo
           const info = result[1]
-          console.log(info)
-
           this.headerData = [info]
           this.originalOrderId = info.originalOrderId
           if (info.filledCumulativeQuantity === info.quantity) {
@@ -275,8 +273,9 @@
         }
       },
     },
-    beforeMount() {
+    created() {
       let loginToken = this.loginToken
+
       let ssoProvider = {};
       //创建实例
       this.exchange = new Exchange(ssoProvider);
@@ -284,12 +283,10 @@
         fn(loginToken);
       };
       this.orderId = this.$route.query['orderId']
-    },
-    mounted() {
       if (this.orderId) {
         this.init()
       }
-    }
+    },
   }
 </script>
 <style lang="less">
