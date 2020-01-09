@@ -61,6 +61,7 @@ export default {
       }
     },
     historyData(val){
+      console.log('valaaa',val)
       if(Object.keys(val).length > 0){
         this.setHistoryData(val)
       }
@@ -198,7 +199,7 @@ export default {
     &-box{
       width: 450px;
       // height: 320px;
-      height: 506px;
+      height: 466px;
       color: #fff;
     }
   }

@@ -62,7 +62,7 @@ export default {
 <style lang='less'>
 .depth-container {
   width: 450px;
-  height: 506px;
+  height: 466px;
   .deepth-chart {
     height: 100%;
     .deepth-chart-layout {
