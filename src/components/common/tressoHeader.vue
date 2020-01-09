@@ -60,7 +60,8 @@
                   </router-link>
                 </li>
                 <li class="nav-item u-header__nav-item header-box mr-3" v-show="!isLogin">
-                  <router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn" to='/optionalRegistration'>
+                  <router-link class="btn btn-sm transition-3d-hover d-inline-block register-btn"
+                               to='/optionalRegistration'>
                     Join the Beta
                   </router-link>
                 </li>
@@ -174,7 +175,8 @@
             <router-link to='/login' class="nav-link u-header__nav-link">Log In</router-link>
           </li>
           <li class="drawer-item">
-            <router-link to='/optionalRegistration' class="nav-link u-header__nav-link nav-btn">Join the Beta</router-link>
+            <router-link to='/optionalRegistration' class="nav-link u-header__nav-link nav-btn">Join the Beta
+            </router-link>
           </li>
         </ul>
       </div>
@@ -316,6 +318,13 @@
       },
     },
     created() {
+      //判断是否登录有效
+      let isLogin = this.$store.state.app.isLogin;
+      if (isLogin && localStorage.getItem('loginUserId')) {
+        this.isLogin = true;
+      } else {
+        this.isLogin = false;
+      }
       this.getLegalTenderData()
     },
     mounted() {
@@ -324,13 +333,7 @@
       } else {
         this.isgbbo = false;
       }
-      //判断是否登录有效
-      let isLogin = this.$store.state.app.isLogin;
-      if (isLogin) {
-        this.isLogin = true;
-      } else {
-        this.isLogin = false;
-      }
+
       if (this.isLogin && localStorage.getItem('email') === null) {
         this.getUserInfo().then()
       }
@@ -354,26 +357,31 @@
 <style lang="less">
   #tressoHeader {
     /*导航*/
+
     .nav-item, .u-header__nav-item {
       a {
         &:hover {
           color: #01B2D6;
         }
+
         &:active {
           color: #01B2D6;
         }
       }
     }
+
     .u-header__sub-menu-nav-link {
       font-size: 14px;
       color: #77838F;
       height: 29px;
       line-height: 29px;
       padding-left: 20px;
+
       &:hover {
         color: #01B2D6;
       }
     }
+
     .u-header__sub-menu {
       width: 180px;
       border-top: none !important;
@@ -392,9 +400,11 @@
 
   .ivu-drawer-content {
     background-color: #1A232B !important;
+
     .ivu-drawer-body {
       padding: 0;
     }
+
     .ivu-drawer-close .ivu-icon-ios-close {
       font-size: 38px;
       color: #fff !important;
@@ -441,6 +451,7 @@
 
   .tressoHeader {
     width: 100%;
+
     .logo-box {
       height: 78px;
       .d-f;
@@ -448,6 +459,7 @@
       justify-content: center;
       align-items: center;
     }
+
     .loginBtn:hover {
       color: #fff !important;
     }
@@ -460,6 +472,7 @@
       padding-left: 14px;
       padding-right: 14px;
       font-size: 14px;
+
       a {
         color: #fff;
       }
@@ -481,6 +494,7 @@
     }
 
     /*右上角过渡*/
+
     .nav-toggle {
       display: inline-block;
       width: 30px;
@@ -502,12 +516,15 @@
       -ms-transform-origin: 50% 50%;
       transform-origin: 50% 50%;
     }
+
     .nav-toggle:before {
       top: 10px;
     }
+
     .nav-toggle:after {
       top: 28px;
     }
+
     .mobile-menu {
       .nav-toggle:before, .nav-toggle:after, .nav-toggle span {
         .bgc-01B2D6;
@@ -519,25 +536,32 @@
   /*菜单 自定义内容*/
   .drawer {
     padding-top: 80px;
+
     img {
       display: block;
       margin: 0 auto;
     }
+
     .drawer-list {
       padding-top: 75px;
+
       .drawer-item {
         padding-left: 40px;
         font-size: 14px;
         font-weight: 500;
+
         .nav-link {
           color: #B9C9D6;
         }
+
         .email {
           .c-01B2D6;
         }
       }
     }
+
     /*移动端 注册和退出按钮样式*/
+
     .nav-btn {
       display: inline-block;
       margin-left: 13px;

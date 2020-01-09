@@ -407,7 +407,7 @@ const router = new Router({
             checkSSOToken(to, next)
           },
           meta: {
-            title: 'headerOrder'
+            title: 'Order Details'
           },
           component: orderDetails
         },
