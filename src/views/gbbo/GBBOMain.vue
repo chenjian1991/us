@@ -705,6 +705,7 @@ export default {
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
         const { domain } = document
         let arbSocket = null
+        debugger
         const env = process.env.NODE_ENV
         if (env !== 'development') {
           arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
@@ -743,7 +744,6 @@ export default {
             if (message.body) {
               const depthData = JSON.parse(message.body)
               const { bidsList, asksList } = depthData
-              // console.log('depthData',depthData)
               this.depthPicData = {
                 bids: bidsList,
                 asks: asksList,
