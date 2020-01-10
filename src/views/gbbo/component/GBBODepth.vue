@@ -50,8 +50,8 @@ export default {
     const { depthBox: { clientWidth, clientHeight } } = this.$refs
     console.log(clientWidth, clientHeight)
 
-    this.$refs.deptdom.width = clientWidth
-    this.$refs.deptdom.height = clientHeight
+    this.$refs.deptdom.width = clientWidth;
+    this.$refs.deptdom.height = clientHeight-50;
 
   },
   destroyed() {
@@ -62,7 +62,7 @@ export default {
 <style lang='less'>
 .depth-container {
   width: 450px;
-  height: 466px;
+  height: 506px;
   .deepth-chart {
     height: 100%;
     .deepth-chart-layout {

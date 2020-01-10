@@ -198,8 +198,7 @@ export default {
     }
     &-box{
       width: 450px;
-      // height: 320px;
-      height: 466px;
+      height: 506px;
       color: #fff;
     }
   }

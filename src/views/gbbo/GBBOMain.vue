@@ -708,7 +708,7 @@ export default {
         const env = process.env.NODE_ENV
         if (env !== 'development') {
           arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
-        } else {
+        } else {//生产
           arbSocket = new SockJS('https://www.tresso.com/echart/xchange/marketdata');
           // arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
         }
