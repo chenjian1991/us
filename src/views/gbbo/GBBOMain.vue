@@ -379,6 +379,7 @@ export default {
     this.getSymbolListRealtimeData()
   },
   mounted() {
+    console.log(process.env.NODE_ENV)
     const loginUserId = localStorage.getItem('loginUserId') || this.$route.query.loginUserId;
     if (this.$route.query.loginUserId !== 'null' || this.$route.query.loginUserId !== 'undefined' || this.$route.query.loginUserId !== undefined) {
       localStorage.setItem('loginUserId', loginUserId);
@@ -656,16 +657,17 @@ export default {
         }, 65000);
       }
     },
-    getGBBODepth() {
+    getGBBODepth() {//盘口 李帅接口
       if (this.stompClient == null || !this.stompClient.connected) {
         const { domain } = document
         let socket = null
-        if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+        const env = process.env.NODE_ENV
+        // if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+        if (env !== 'development') {// 测试和生产,非本地
           socket = new SockJS(`https://${domain}/xchange/marketdata`);
         } else {
-          // socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata');旧的
-          // socket = new SockJS('http://52.194.137.116:8111/xchange/marketdata');
-          socket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');
+          // socket = new SockJS('http://52.73.95.54:8090//xchange/marketdata');//生产
+          socket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');//美国us uat
         }
         this.stompClient = Stomp.over(socket);
         this.stompClient.debug = null
@@ -705,12 +707,13 @@ export default {
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
         const { domain } = document
         let arbSocket = null
-        debugger
         const env = process.env.NODE_ENV
-        if (env !== 'development') {
+        if (env !== 'development') {//非本地localhost，包括测试和生产
           arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
-        } else {//生产
-          arbSocket = new SockJS('https://www.tresso.com/echart/xchange/marketdata');
+        } else {//本地环境
+          // arbSocket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');//美国us uat
+          // socket = new SockJS('http://52.73.95.54:8090//xchange/marketdata');//生产 地址
+          arbSocket = new SockJS('https://us.99ss.ml//echart/xchange/marketdata');
           // arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
         }
         this.arbStompClient = Stomp.over(arbSocket);
