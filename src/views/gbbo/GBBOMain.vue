@@ -665,7 +665,9 @@ export default {
         // if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
         if (env !== 'development') {// 测试和生产,非本地
           socket = new SockJS(`https://${domain}/xchange/marketdata`);
+          console.log('测试线上',`https://${domain}/xchange/marketdata`)
         } else {
+          console.log('本地',`https://${domain}/xchange/marketdata`)
           // socket = new SockJS('http://52.73.95.54:8090//xchange/marketdata');//生产
           socket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');//美国us uat
         }
