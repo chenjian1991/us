@@ -712,10 +712,12 @@ export default {
         const env = process.env.NODE_ENV
         if (env !== 'development') {//非本地localhost，包括测试和生产
           arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
+          console.log('测试线上echart',`https://${domain}/echart/xchange/marketdata`)
         } else {//本地环境
           // arbSocket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');//美国us uat
           // socket = new SockJS('http://52.73.95.54:8090//xchange/marketdata');//生产 地址
           arbSocket = new SockJS('https://us.99ss.ml//echart/xchange/marketdata');
+          console.log('本地',`https://us.99ss.ml//echart/xchange/marketdata`)
           // arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
         }
         this.arbStompClient = Stomp.over(arbSocket);
