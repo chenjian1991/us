@@ -650,7 +650,7 @@
           if (maxArb >= 0) {
             this.gbboList.avgChange = 0
           } else {
-            this.gbboList.avgChange = new BigNumber(maxArb).dividedBy(this.gbboList.avgPrice).multipliedBy(100).toFixed(4);
+            this.gbboList.avgChange = Math.abs(new BigNumber(maxArb).dividedBy(this.gbboList.avgPrice).multipliedBy(100).toFixed(4)) + "%";
           }
         } else {
           this.gbboList.maxArb = 0
