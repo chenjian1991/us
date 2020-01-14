@@ -120,7 +120,7 @@ export default {
       const baseDom = this.$refs.kline
       const klineBox = {
         width: baseDom.offsetWidth,
-        height: baseDom.offsetHeight
+        height: baseDom.offsetHeight-40
       }
       this._chart = createChart(baseDom, {
         width: klineBox.width,

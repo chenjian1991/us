@@ -2,7 +2,7 @@
   <div class="realtime">
     <div class="realtime-item">
       <div class="realtime-item__header">
-        <div class="arb">Spread(-)</div>
+        <div class="arb">Spread</div>
         <div class="amount">Size</div>
         <div class="sell">Ask</div>
         <div class="buy">Bid</div>
