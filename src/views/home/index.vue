@@ -62,22 +62,22 @@
             <!--点击每一行 跳到gbbo页面-->
             <router-link to="/gbbo">
               <!--没数据-->
-              <li class="bgc-131A21" v-show="quoteList.length===0">
-                <div class="item">
-                  <p class="f-20 c-01B2D6 f-w-5">0</p>
-                </div>
-                <div class="item">
-                  <span class="f-16 c-DBE8F2 f-w-5">0</span>
-                </div>
-                <div class="item">
-                  <span class="f-16 c-E83160 f-w-5 mr-4">{{noDiff.sellPrice}}</span>
-                  <span class="f-14 c-8996A2">{{noDiff.sell|marketName}}</span>
-                </div>
-                <div class="item">
-                  <span class="f-18 c-00A077 f-w-5 mr-4">{{noDiff.buyPrice}}</span>
-                  <span class="f-14 c-8996A2">{{noDiff.buy|marketName}}</span>
-                </div>
-              </li>
+<!--              <li class="bgc-131A21" v-show="quoteList.length===0">-->
+<!--                <div class="item">-->
+<!--                  <p class="f-20 c-01B2D6 f-w-5">0</p>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                  <span class="f-16 c-DBE8F2 f-w-5">0</span>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                  <span class="f-16 c-E83160 f-w-5 mr-4">{{noDiff.sellPrice}}</span>-->
+<!--                  <span class="f-14 c-8996A2">{{noDiff.sell|marketName}}</span>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                  <span class="f-18 c-00A077 f-w-5 mr-4">{{noDiff.buyPrice}}</span>-->
+<!--                  <span class="f-14 c-8996A2">{{noDiff.buy|marketName}}</span>-->
+<!--                </div>-->
+<!--              </li>-->
               <!--有数据 第一行-->
               <li v-for="gbbo of quoteList.slice(0,1)" :key="gbbo.id" class="bgc-131A21">
                 <div class="item">
@@ -159,7 +159,7 @@
       </Row>
       <div>
         <Row class="mobile-gbbo-box">
-          <Col span="6" class="title">Spread (-)</Col>
+          <Col span="6" class="title">Spread</Col>
           <Col span="6" class="title">Size</Col>
           <Col span="6" class="title t-r">Best Ask</Col>
           <Col span="6" class="title t-r">Best Bid</Col>
@@ -190,18 +190,18 @@
             </Col>
           </Row>
           <!--没数据-->
-          <Row class="mobile-gbbo-list" v-show="quoteList.length===0">
-            <Col span="6" class="f-16 f-w-6 c-01B2D6">0</Col>
-            <Col span="6" class="f-16 f-w-6 c-C6D4E0">0</Col>
-            <Col span="6" class="t-r">
-              <p class="f-16 f-w-6 c-E83160">{{noDiff.sellPrice}}</p>
-              <p class="f-12 f-w-5 c-8996A2">{{noDiff.sell|marketName}}</p>
-            </Col>
-            <Col span="6" class="t-r">
-              <p class="f-16 f-w-6 c-00A077">{{noDiff.buyPrice}}</p>
-              <p class="f-12 f-w-5 c-8996A2">{{noDiff.buy|marketName}}</p>
-            </Col>
-          </Row>
+<!--          <Row class="mobile-gbbo-list" v-show="quoteList.length===0">-->
+<!--            <Col span="6" class="f-16 f-w-6 c-01B2D6">0</Col>-->
+<!--            <Col span="6" class="f-16 f-w-6 c-C6D4E0">0</Col>-->
+<!--            <Col span="6" class="t-r">-->
+<!--              <p class="f-16 f-w-6 c-E83160">{{noDiff.sellPrice}}</p>-->
+<!--              <p class="f-12 f-w-5 c-8996A2">{{noDiff.sell|marketName}}</p>-->
+<!--            </Col>-->
+<!--            <Col span="6" class="t-r">-->
+<!--              <p class="f-16 f-w-6 c-00A077">{{noDiff.buyPrice}}</p>-->
+<!--              <p class="f-12 f-w-5 c-8996A2">{{noDiff.buy|marketName}}</p>-->
+<!--            </Col>-->
+<!--          </Row>-->
         </router-link>
       </div>
     </div>
@@ -391,7 +391,7 @@
         priceLong: 0,
         quoteList: [],
         quoteWS: null,//行情websocket推送
-        gbboTitle: [{title: 'Spread (-)',}, {title: 'Size',}, {title: 'Best Ask',}, {title: 'Best Bid',}],
+        gbboTitle: [{title: 'Spread',}, {title: 'Size',}, {title: 'Best Ask',}, {title: 'Best Bid',}],
         gbboBase: {
           baseAssets: 'BTC',
           quoteAssets: '/USD',
