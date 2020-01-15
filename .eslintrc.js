@@ -29,7 +29,8 @@ module.exports = {
       'vue': 'off'
     }], // 禁用增加or不增加后缀错误提示
     'import/order': 'off', // 禁用import引入排序
-    'comma-dangle': ['error', 'never'], // 禁用拖尾逗号
+    // 'comma-dangle': ['error', 'never'], // 禁用拖尾逗号
+    "comma-dangle": 'off',
     'semi': 'off', // 不提示是否添加分号
     'quotes': 'off', // 不强制区分使用双引号、单引号
     'space-before-blocks': 'off', // 不强制在块之前使用一致的空格

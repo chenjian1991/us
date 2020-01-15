@@ -61,6 +61,7 @@ export default {
       }
     },
     historyData(val){
+      console.log('valaaa',val)
       if(Object.keys(val).length > 0){
         this.setHistoryData(val)
       }
@@ -119,7 +120,7 @@ export default {
       const baseDom = this.$refs.kline
       const klineBox = {
         width: baseDom.offsetWidth,
-        height: baseDom.offsetHeight
+        height: baseDom.offsetHeight-40
       }
       this._chart = createChart(baseDom, {
         width: klineBox.width,
@@ -182,6 +183,7 @@ export default {
       text-align: right;
       overflow: hidden;
       background: #041D25;
+      display: none;
       &__settime{
         display: inline-block;
         height: 20px;
@@ -190,14 +192,13 @@ export default {
         border-right: 1px solid #000;
         color: #788390;
         background: transparent;
-        // display: none;
-        visibility: hidden;
+        display: none;
+        // visibility: hidden;
       }
     }
     &-box{
       width: 450px;
-      // height: 320px;
-      height: 486px;
+      height: 506px;
       color: #fff;
     }
   }

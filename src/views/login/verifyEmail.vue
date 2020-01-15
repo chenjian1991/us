@@ -149,10 +149,6 @@ import {geeTest,onloadCallback} from '../../../api/usersystem.js'
      .headerbox{
         flex: 0 0 auto;
      }
-    //  #app{
-    //      height: 100%;
-    //      background: #18183e;
-    //  }
     .footerBox{
          flex: 0 0 auto;
      }

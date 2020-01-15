@@ -41,10 +41,26 @@
         </div>
         <!--K线-->
         <div class="gbbomain-realtime__line">
-          <gbbo-kline
+          <Tabs :animated="false" value="name1">
+              <TabPane label="Original" name="name1">
+               <gbbo-kline
+                :historyData="historyData"
+                :kLineData="kLineData">
+              </gbbo-kline>
+          </TabPane>
+          <TabPane label="Depth" name="name2">
+            <gbbo-depthpic :depthPicData='depthPicData'></gbbo-depthpic>
+          </TabPane>
+        
+        </Tabs>
+         <!-- <gbbo-kline
             :historyData="historyData"
             :kLineData="kLineData">
           </gbbo-kline>
+          <gbbo-depthpic></gbbo-depthpic> -->
+
+         
+         
           <div class="gbbomain-realtime__line-history">
             <!-- <gbbo-histories
               :maxArbitrageList='maxArbitrageList'
@@ -90,6 +106,7 @@
           </div>
         </div>
     </div>
+    <!-- 深度图 -->
     <!-- 交易蒙层 -->
     <div class="quickNav" v-if="isShowMask">
       <div class="quickContent">
@@ -131,6 +148,7 @@ import GbboHistories from './component/Histories'
 import CreateOrder from './component/GBBOCreateOrder'
 import GbboRealtime from './component/GBBORealtime'
 import GbboOrder from './component/GBBOOrder'
+import GbboDepthpic from './component/GBBODepth'
 
 import {
   getSymbolList_realtime as getSymbolListRealtime,
@@ -194,10 +212,12 @@ export default {
     CreateOrder,
     GbboRealtime,
     GbboHistories,
-    GbboOrder
+    GbboOrder,
+    GbboDepthpic
   },
   data(){
     return{
+      data:null,
       historyData: {}, // k线历史数据
       kLineData: {}, // k线实时数据
       briefInputData:{
@@ -325,7 +345,8 @@ export default {
       setArbTime: '', // Arb重连定时器
       setKlineTime: '', // k线重连定时器
       dataFor24Hours: '', // 24小时交易量
-      sseOrderCount: 0 // SSEOrder重连次数计数
+      sseOrderCount: 0, // SSEOrder重连次数计数
+      depthPicData: {}
     }
   },
   created() {
@@ -358,6 +379,7 @@ export default {
     this.getSymbolListRealtimeData()
   },
   mounted() {
+    console.log(process.env.NODE_ENV)
     const loginUserId = localStorage.getItem('loginUserId') || this.$route.query.loginUserId;
     if (this.$route.query.loginUserId !== 'null' || this.$route.query.loginUserId !== 'undefined' || this.$route.query.loginUserId !== undefined) {
       localStorage.setItem('loginUserId', loginUserId);
@@ -635,16 +657,19 @@ export default {
         }, 65000);
       }
     },
-    getGBBODepth() {
+    getGBBODepth() {//盘口 李帅接口
       if (this.stompClient == null || !this.stompClient.connected) {
         const { domain } = document
         let socket = null
-        if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+        const env = process.env.NODE_ENV
+        // if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+        if (env !== 'development') {// 测试和生产,非本地
           socket = new SockJS(`https://${domain}/xchange/marketdata`);
+          console.log('测试线上',`https://${domain}/xchange/marketdata`)
         } else {
-          // socket = new SockJS('http://52.73.95.54:8090/xchange/marketdata');旧的
-          // socket = new SockJS('http://52.194.137.116:8111/xchange/marketdata');
-          socket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');
+          console.log('本地',`https://${domain}/xchange/marketdata`)
+          // socket = new SockJS('http://52.73.95.54:8090//xchange/marketdata');//生产
+          socket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');//美国us uat
         }
         this.stompClient = Stomp.over(socket);
         this.stompClient.debug = null
@@ -661,6 +686,7 @@ export default {
               this.ticker(JSON.parse(message.body))
             }
           });
+         
         }, (error) => {
           console.log('new Sockjs  error')
           this.stompClient.disconnect()
@@ -683,10 +709,15 @@ export default {
       if (this.arbStompClient == null || !this.arbStompClient.connected) {
         const { domain } = document
         let arbSocket = null
-        if (domain.startsWith('www.') || domain.startsWith('us.') || domain.startsWith('55ex.')) {
+        const env = process.env.NODE_ENV
+        if (env !== 'development') {//非本地localhost，包括测试和生产
           arbSocket = new SockJS(`https://${domain}/echart/xchange/marketdata`);
-        } else {
-          arbSocket = new SockJS('https://www.tresso.com/echart/xchange/marketdata');
+          console.log('测试线上echart',`https://${domain}/echart/xchange/marketdata`)
+        } else {//本地环境
+          // arbSocket = new SockJS('http://3.113.193.72:8090/xchange/marketdata');//美国us uat
+          // socket = new SockJS('http://52.73.95.54:8090//xchange/marketdata');//生产 地址
+          arbSocket = new SockJS('https://us.99ss.ml//echart/xchange/marketdata');
+          console.log('本地',`https://us.99ss.ml//echart/xchange/marketdata`)
           // arbSocket = new SockJS('http://52.68.13.17:20013/echart/xchange/marketdata');
         }
         this.arbStompClient = Stomp.over(arbSocket);
@@ -698,8 +729,7 @@ export default {
           // 最大价差记录
           // this.arbStompClient.subscribe(`/topic/runtime/${this.currentSymbol}`, (message) => {
           //   if (message.body) {
-          //     // console.log(this.maxArbitrageList)
-          //     // this.maxArbitrageList = JSON.parse(message.body)
+              // this.maxArbitrageList = JSON.parse(message.body)
           //     this.getMaxArbitrageList(JSON.parse(message.body))
           //   }
           // });
@@ -716,6 +746,17 @@ export default {
               this.kLineData = JSON.parse(message.body)
             }
           })
+          // /topic/depth/BTCUSD
+          this.arbStompClient.subscribe(`/topic/depth/BTCUSD`, (message) => {//深度图
+            if (message.body) {
+              const depthData = JSON.parse(message.body)
+              const { bidsList, asksList } = depthData
+              this.depthPicData = {
+                bids: bidsList,
+                asks: asksList,
+              }
+            }
+          });
         }, (error) => {
           console.log('new Sockjs  error', error)
           this.arbStompClient.disconnect()
@@ -728,7 +769,7 @@ export default {
     sortOrderBook(data) {
       const priceLong = getDecimalsNum(this.currentSymbolObj.priceTickSize)
       // let volumeLong = getDecimalsNum(this.currentSymbolObj.quantityStepSize)
-      var result = data
+      const result = data
       //路总需求 要加这个隐藏字段
       this.updateAt = result.updateAt
       // console.log(data, 'GBBO order asks=' + result.asks[result.asks.length - 1].priceWithFee, 'GBBO order bids=' + result.bids[0].priceWithFee)
@@ -747,11 +788,14 @@ export default {
       this.gbbo_asksArr = this.gbbo_asksArr.reverse()
 
       if (!this.buy_input_change) {
-        this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
+        if(result.asks.length){
+            this.bestSellPrice = result.asks[result.asks.length - 1].priceWithFee
         this.buy_exchange_logo = result.asks[result.asks.length - 1].provider
         this.buyPriceInput = this.bestSellPrice
         // this.$refs.buyInput.value = this.bestSellPrice
         this.buyInputPrice = this.bestSellPrice;
+        }
+        
       }
 
       this.gbbo_bidsArr = result.bids.map((val) => {
@@ -766,12 +810,13 @@ export default {
         }
       })
       if (!this.sell_input_change) {
-        this.bestBuyPrice = result.bids[0].priceWithFee
-        this.sell_exchange_logo = result.bids[0].provider // 交易所logo
-        this.sellPriceInput = this.bestBuyPrice
-        // this.$refs.sellInput.value = this.bestBuyPrice
-        this.sellInputPrice = this.bestBuyPrice;
-
+         if(result.bids[0]){
+           this.bestBuyPrice = result.bids[0].priceWithFee
+          this.sell_exchange_logo = result.bids[0].provider // 交易所logo
+          this.sellPriceInput = this.bestBuyPrice
+          // this.$refs.sellInput.value = this.bestBuyPrice
+          this.sellInputPrice = this.bestBuyPrice;
+         }
       }
       const diff = this.bestSellPrice - this.bestBuyPrice
       this.subNumber = bigDecimal.round(Math.abs(diff), priceLong)
@@ -1528,4 +1573,5 @@ export default {
 </script>
 <style lang="less">
 @import './GBBOMain.less';
+
 </style>

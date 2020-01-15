@@ -22,6 +22,29 @@
       &-history{
         margin-top: 6px;
       }
+      .ivu-tabs{
+        background: #031419;
+      }
+      .ivu-tabs-bar{
+        position: none;
+        z-index: 999;
+        right: 0;
+        border-bottom:none;
+        margin-bottom: 7px;
+        float:right;
+        .ivu-tabs-nav {
+          .ivu-tabs-tab-active{
+            color: #041D25;
+            background: #788390;
+            z-index: 999;
+          }
+          .ivu-tabs-tab{
+            &:hover{
+              color:#fff;
+            }
+          }
+        }
+      }
     }
     &__box{
       margin-top: 6px;
