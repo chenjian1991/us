@@ -80,7 +80,7 @@ export default {
   },
   filters: {
     noData(value) {
-      if (!value) return '--'
+      if (!value) return '0'
       return value
     },
     data24hour(value){

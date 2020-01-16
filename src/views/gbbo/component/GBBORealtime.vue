@@ -159,7 +159,7 @@ export default {
   },
   filters: {
     noData: function (value) {
-      if (!value) return '--'
+      if (!value) return '0'
       return value
     },
     formatNumberLength: function(value) {
