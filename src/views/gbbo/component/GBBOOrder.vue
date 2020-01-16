@@ -27,7 +27,11 @@
               {{$t("bbjyOrderTIP")}}
             </li>
             <li v-else v-for="(v,i) in myOpenList" :key="i" class="orderItem">
-              <div>{{v.createdAt}}</div>
+              <div>
+                <Tooltip placement="top" max-width="400" :content="v.originalOrderId">
+                    {{v.createdAt}}
+                </Tooltip>
+              </div>
               <div>{{v.symbol}}</div>
               <div>{{$t(v.orderType)}}</div>
               <div :class="[v.orderSide === 'BUY'?'greenText':'redText']">{{$t(v.orderSide)}}</div>
@@ -79,7 +83,11 @@
               {{$t("bbjyHistoryTIP")}}
             </li>
             <li v-else v-for="(v, i) in myCompletedList_sort" :key="i" class="orderItem">
-              <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.createdAt}}</div>
+              <div  :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">
+                 <Tooltip placement="top" max-width="400" :content="v.originalOrderId">
+                    {{v.createdAt}}
+                </Tooltip>
+                </div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{v.symbol}}</div>
               <div :class="[v.orderStatus === 'CANCELLED'?'CANCELLED_Text':'']">{{$t(v.orderType)}}</div>
               <div
