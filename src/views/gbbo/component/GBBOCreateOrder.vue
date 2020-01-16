@@ -6,7 +6,7 @@
         <div>
           <div class="available-container">
             <Tooltip class="tootips" placement="top" content="One Click Arbitrage">
-              <div>Spread</div>
+              <div>Arbitrage</div>
             </Tooltip>
             <div class="coinContainer">
               <div  @click="changeStatus">
@@ -30,7 +30,7 @@
           <div class="trade-msg">
             <div class="price-box">
               <div class="price-box-label">
-                <div class="arb-label">Arbitrage</div>
+                <div class="arb-label">Spread</div>
                 <div class="arb-label">Size</div>
               </div>
               <div class="input_container">
