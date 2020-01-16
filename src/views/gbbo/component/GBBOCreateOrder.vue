@@ -6,7 +6,7 @@
         <div>
           <div class="available-container">
             <Tooltip class="tootips" placement="top" content="One Click Arbitrage">
-              <div>Arbitrage</div>
+              <div>Spread</div>
             </Tooltip>
             <div class="coinContainer">
               <div  @click="changeStatus">

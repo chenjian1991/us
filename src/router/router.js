@@ -123,9 +123,9 @@ const router = new Router({
         {
           path: '/gbbo',
           name: 'gbbo',
-          // beforeEnter: (to, from, next) => {
-          //   checkSSOToken(to, next)
-          // },
+          beforeEnter: (to, from, next) => {
+            checkSSOToken(to, next)
+          },
           meta: {},
           component: NewGBBO
         },
