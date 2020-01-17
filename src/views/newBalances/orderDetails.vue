@@ -245,7 +245,7 @@
           if (info.filledCumulativeQuantity === info.quantity) {
             this.filled = true
           } else {
-            this.size = result[1].quantity
+            this.size = info.quantity - info.filledCumulativeQuantity
           }
           //  orderDetails
           this.orderDetails = result[2]
@@ -256,7 +256,7 @@
         let data = []
         result.forEach((v, i) => {
           data.push({
-            value: v.total, name: v.from, itemStyle: {
+            value: v.quantity, name: v.from, itemStyle: {
               color: this.colorList[i]
             }
           })
