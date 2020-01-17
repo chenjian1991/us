@@ -74,7 +74,7 @@
           {
             title: 'Type',
             key: 'orderType',
-            width: 130,
+            width: 120,
           },
           {
             title: 'Side',
@@ -109,8 +109,10 @@
             title: 'Size',
             key: 'quantity',
             align: 'right',
-            width: 150,
-
+            width: 170,
+            render: (h, params) => {
+              return h('div', {}, params.row.filledCumulativeQuantity+"/"+params.row.quantity)
+            },
           },
           {
             title: 'Filled%',
@@ -181,7 +183,7 @@
           series: [
             {
               type: 'pie',
-              radius: '55%',
+              radius: '50%',
               center: ['50%', '50%'],
               data: [],
               label: {
