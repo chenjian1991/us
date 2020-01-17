@@ -30,7 +30,7 @@
           <div class="trade-msg">
             <div class="price-box">
               <div class="price-box-label">
-                <div class="arb-label">Arbitrage</div>
+                <div class="arb-label">Spread</div>
                 <div class="arb-label">Size</div>
               </div>
               <div class="input_container">
