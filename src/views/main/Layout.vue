@@ -122,8 +122,7 @@
          font-size: 14px;
          margin-bottom: 0;
          .closeBtn {
-            // margin-left: 20px;
-            line-height: 42px;
+            // line-height: 42px;
             color: #01B2D6;
             &:hover {
                color: #fff;
