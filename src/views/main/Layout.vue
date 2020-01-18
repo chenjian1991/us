@@ -32,7 +32,7 @@
          return {
             isShowIPModal: true,
             isShowCookiesBox: false,
-            message: 'Attention: Please note that residents of the state of Alabama, Alaska, Arkansas, Connecticut, Florida, Georgia, Hawaii, Idaho, Iowa, Kentucky, Louisiana, Massachusetts, Michigan, Mississippi, Nebraska, New Mexico, New York, North Carolina, North Dakota, Oregon, South Dakota, Vermont, or Washington are not permitted to trade on tresso.com. "Residents of the state of Maine, New Jersey, Ohio, South Carolina, or Texas are not permitted to utilize fiat currency, USDD or any other stablecoin on tresso.com.',
+            message: 'Attention: Please note that residents of the state of Alabama, Alaska, Arkansas, Connecticut, Florida, Georgia, Hawaii, Idaho, Iowa, Kentucky, Louisiana, Massachusetts, Michigan, Mississippi, Nebraska, New Mexico, New York, North Carolina, North Dakota, Oregon, South Dakota, Vermont, or Washington are not permitted to trade on tresso.com. "Residents of the state of Maine, New Jersey, Ohio, South Carolina, or Texas are not permitted to utilize fiat currency, USDD or any other stablecoin on tresso.com."',
          }
       },
       methods: {
