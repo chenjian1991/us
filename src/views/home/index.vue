@@ -552,16 +552,18 @@
       },
       //按钮逻辑
       clickArbitrage() {
-        if (this.loginToken) {
-          this.$router.push('/gbbo')
-        } else {
-          this.$router.push({
-            name: 'login',
-            params: {
-              path: '/gbbo'
-            }
-          })
-        }
+        this.$router.push('/gbbo')
+
+        // if (this.loginToken) {
+        //   this.$router.push('/gbbo')
+        // } else {
+        //   this.$router.push({
+        //     name: 'login',
+        //     params: {
+        //       path: '/gbbo'
+        //     }
+        //   })
+        // }
       },
       getSockJS() {
         if (this.arbStompClient === null || !this.arbStompClient.connected) {
