@@ -14,7 +14,7 @@
     "dns": "^0.2.2",
     "echarts": "^4.1.0",
     "font-awesome": "^4.7.0",
-    "highcharts": "^7.0.3",
+    "highcharts": "^9.0.0",
     "html2canvas": "^1.0.0-alpha.12",
     "iview": "^3.0.0",
     "js-big-decimal": "^1.2.1",
