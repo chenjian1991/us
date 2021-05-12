@@ -22,7 +22,7 @@
     "js-sha256": "^0.9.0",
     "lightweight-charts": "^1.1.0",
     "lodash": "^4.17.11",
-    "mathjs": "^6.2.3",
+    "mathjs": "^7.5.1",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
     "natty-storage": "^2.2.0",
